@@ -6,7 +6,6 @@
 int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
-
     SynthProFactory* factory = new QtFactory();
     SynthPro* synthpro = factory->createSynthPro();
 
@@ -15,4 +14,8 @@ int main(int argc, char* argv[])
     delete synthpro;
 
     return result;
+
+    // Essai Commit JulienNevo. Puissant !
+    // Ahaha !!
+
 }
