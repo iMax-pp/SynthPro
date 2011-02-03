@@ -20,7 +20,7 @@ If you want to skip the style checking (when it's inevitable…) use `--no-verif
 
     $ git commit --no-verify -m "Commit message"
 
-Use this only when you can't do otherwise! (ie. when commiting `main.cpp`)
+Use this only when you can't do otherwise!
 
 ### Using Astyle
 

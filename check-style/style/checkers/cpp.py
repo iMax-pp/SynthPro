@@ -2482,8 +2482,8 @@ def _classify_include(filename, include, is_system, include_state):
     # There cannot be primary includes in header files themselves. Only an
     # include exactly matches the header filename will be is flagged as
     # primary, so that it triggers the "don't include yourself" check.
-    if filename.endswith('.h') and filename != include:
-        return _OTHER_HEADER;
+    if (filename.endswith('.h') or filename.endswith('main.cpp')) and filename != include:
+        return _OTHER_HEADER
 
     # Qt's moc files do not follow the naming and ordering rules, so they should be skipped
     if include.startswith('moc_') and include.endswith('.cpp'):
@@ -2504,11 +2504,6 @@ def _classify_include(filename, include, is_system, include_state):
     # In case the two filename bases are the same then the above lenient check
     # probably was a false positive.
     elif include_state.visited_primary_section() and target_base == include_base:
-        if include == "ResourceHandleWin.h":
-            # FIXME: Thus far, we've only seen one example of these, but if we
-            # start to see more, please consider generalizing this check
-            # somehow.
-            return _OTHER_HEADER
         return _PRIMARY_HEADER
 
     return _OTHER_HEADER
@@ -2549,11 +2544,6 @@ def check_include_line(filename, file_extension, clean_lines, line_number, inclu
         error(line_number, 'readability/streams', 3,
               'Streams are highly discouraged.')
 
-    # Look for specific includes to fix.
-    if include.startswith('wtf/') and not is_system:
-        error(line_number, 'build/include', 4,
-              'wtf includes should be <wtf/file.h> instead of "wtf/file.h".')
-
     duplicate_header = include in include_state
     if duplicate_header:
         error(line_number, 'build/include', 4,
@@ -2574,7 +2564,7 @@ def check_include_line(filename, file_extension, clean_lines, line_number, inclu
     # 2) for header files: alphabetically sorted
     # The include_state object keeps track of the last type seen
     # and complains if the header types are out of order or missing.
-    error_message = include_state.check_next_include_order(header_type, file_extension == "h")
+    error_message = include_state.check_next_include_order(header_type, file_extension == "h" or filename.endswith("main.cpp"))
 
     # Check to make sure we have a blank line after primary header.
     if not error_message and header_type == _PRIMARY_HEADER:
