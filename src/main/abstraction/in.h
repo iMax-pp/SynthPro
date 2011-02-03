@@ -4,6 +4,8 @@
 #include "port.h"
 
 class In : public Port {
+    Q_OBJECT
+
 public:
     In(QObject* parent = 0);
 };

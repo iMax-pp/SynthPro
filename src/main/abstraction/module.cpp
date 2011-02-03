@@ -1,5 +1,4 @@
 #include "module.h"
-#include "abstraction/port.h"
 
 Module::Module(QObject* parent)
     : QObject(parent)

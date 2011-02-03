@@ -22,9 +22,9 @@ public:
     /// Indicate if this port is connected to another one
     virtual bool connected() const;
     /**
-     * Indicate if this port is compatible with a given port.
-     * @returns true if this port is not connected and its direction
-     * is different from others direction and they both are gate or are not.
+     * Indicate if this port is connectable with a given port.
+     * @returns true if this port is not already connected and its direction
+     * is different from other's direction and they both are gate or are not.
      */
     virtual bool isConnectable(const Port*) const;
     /// Connect this port to the other port (this method will handle the both side of the association)
