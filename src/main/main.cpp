@@ -8,4 +8,7 @@ int main(int argc, char *argv[])
     SynthProFactory *factory = new QtFactory();
     factory->createSynthPro();
     return app.exec();
+
+    // Essai Commit JulienNevo. Puissant !
+    // Ahaha !!
 }
