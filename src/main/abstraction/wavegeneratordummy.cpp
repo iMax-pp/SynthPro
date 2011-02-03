@@ -1,8 +1,8 @@
 #include "wavegeneratordummy.h"
 
 WaveGeneratorDummy::WaveGeneratorDummy()
-        : m_intensity(SIGNAL_INTENSITY)
-        , m_currentStep(0)
+    : m_intensity(SIGNAL_INTENSITY)
+    , m_currentStep(0)
 {
 }
 

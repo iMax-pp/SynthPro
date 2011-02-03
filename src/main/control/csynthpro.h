@@ -1,11 +1,10 @@
 #ifndef CSYNTHPRO_H
 #define CSYNTHPRO_H
 
-#include <abstraction/synthpro.h>
-#include <presentation/psynthpro.h>
+#include "abstraction/synthpro.h"
+#include "presentation/psynthpro.h"
 
-class CSynthPro : public SynthPro
-{
+class CSynthPro : public SynthPro {
 private:
     PSynthPro* m_presentation;
 

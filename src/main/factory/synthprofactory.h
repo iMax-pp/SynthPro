@@ -3,8 +3,7 @@
 
 class SynthPro;
 
-class SynthProFactory
-{
+class SynthProFactory {
 public:
     virtual SynthPro* createSynthPro() = 0;
 };
