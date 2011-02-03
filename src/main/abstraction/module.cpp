@@ -1,14 +1,14 @@
 #include "module.h"
 
-Module::Module(QObject* parent)
+Module::Module(QObject* parent):QObject(parent)
 {
 }
 QList<Out> Module::outports() const
 {
-    return outports;
+    return m_outports;
 }
 
 QList<In> Module::inports() const
 {
-    return inports;
+    return m_inports;
 }

@@ -1,5 +1,9 @@
 #ifndef MODULE_H
 #define MODULE_H
+#include <QObject>
+
+class Out;
+class In;
 
 class Module
 {
@@ -11,8 +15,8 @@ public:
     virtual void process()=0 ;
 
 private:
-    QList<Out> outports ;
-    QList<In> inports ;
+    QList<Out> m_outports ;
+    QList<In> m_inports ;
 };
 
 #endif // MODULE_H
