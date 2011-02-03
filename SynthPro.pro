@@ -1,3 +1,9 @@
+DESTDIR = bin
+OBJECTS_DIR = bin/.obj
+MOC_DIR = bin/.moc
+RCC_DIR = bin/.rcc
+UI_DIR = bin /.ui
+
 HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/module.h \
     src/main/abstraction/port.h \
@@ -19,4 +25,3 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/out.cpp \
     src/main/abstraction/in.cpp
 INCLUDEPATH += src/main/
-DESTDIR = bin
