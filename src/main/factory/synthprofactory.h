@@ -6,7 +6,7 @@ class SynthPro;
 class SynthProFactory
 {
 public:
-    virtual SynthPro *createSynthPro() = 0;
+    virtual SynthPro* createSynthPro() = 0;
 };
 
 #endif // SYNTHPROFACTORY_H
