@@ -8,6 +8,8 @@ class InPort : public Port {
 
 public:
     InPort(QObject* parent = 0);
+
+    bool out() const;
 };
 
 #endif // IN_H

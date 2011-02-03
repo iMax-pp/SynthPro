@@ -8,6 +8,8 @@ class OutPort : public Port {
 
 public:
     OutPort(QObject* parent = 0);
+
+    bool out() const;
 };
 
 #endif // OUT_H
