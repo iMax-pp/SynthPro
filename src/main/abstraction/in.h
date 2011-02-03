@@ -4,8 +4,6 @@
 #include <QObject>
 #include "port.h"
 
-class Port ;
-
 class In : public Port
 {
 public:

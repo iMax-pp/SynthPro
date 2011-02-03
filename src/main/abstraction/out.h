@@ -7,7 +7,7 @@ class Out : public Port
 {
 public:
     Q_OBJECT
-    Out();
+    Out(QObject* parent=0);
 };
 
 #endif // OUT_H
