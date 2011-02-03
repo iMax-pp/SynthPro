@@ -3,11 +3,10 @@
 
 #include "port.h"
 
-class Out : public Port
-{
+class Out : public Port {
 public:
     Q_OBJECT
-    Out(QObject* parent=0);
+    Out(QObject* parent = 0);
 };
 
 #endif // OUT_H

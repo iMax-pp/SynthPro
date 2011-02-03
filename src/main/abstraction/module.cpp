@@ -1,6 +1,6 @@
 #include "module.h"
 
-Module::Module(QObject* parent):QObject(parent)
+Module::Module(QObject* parent): QObject(parent)
 {
 }
 QList<Out*> Module::outports() const

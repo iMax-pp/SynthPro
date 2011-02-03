@@ -1,7 +1,8 @@
 #include "out.h"
+
 #include <QObject>
 
-Out::Out(QObject * parent)
-    :Port(parent)
+Out::Out(QObject* parent)
+    : Port(parent)
 {
 }
