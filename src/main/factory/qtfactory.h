@@ -6,7 +6,7 @@
 class QtFactory : public SynthProFactory
 {
 public:
-    virtual SynthPro *createSynthPro();
+    virtual SynthPro* createSynthPro();
 };
 
 #endif // QTFACTORY_H

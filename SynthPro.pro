@@ -14,3 +14,4 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/psynthpro.cpp \
     src/main/main.cpp \
     src/main/factory/qtfactory.cpp
+INCLUDEPATH += src/main/
