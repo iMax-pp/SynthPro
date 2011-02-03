@@ -5,7 +5,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/csynthpro.h \
     src/main/presentation/psynthpro.h \
     src/main/factory/synthprofactory.h \
-    src/main/factory/qtfactory.h
+    src/main/factory/qtfactory.h \
+    src/main/abstraction/out.h \
+    src/main/abstraction/in.h
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
     src/main/abstraction/port.cpp \
@@ -13,6 +15,8 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/csynthpro.cpp \
     src/main/presentation/psynthpro.cpp \
     src/main/main.cpp \
-    src/main/factory/qtfactory.cpp
+    src/main/factory/qtfactory.cpp \
+    src/main/abstraction/out.cpp \
+    src/main/abstraction/in.cpp
 INCLUDEPATH += src/main/
 DESTDIR = bin
