@@ -1,14 +1,17 @@
 #include "module.h"
+#include "abstraction/port.h"
 
-Module::Module(QObject* parent): QObject(parent)
+Module::Module(QObject* parent)
+    : QObject(parent)
 {
 }
-QList<Out*> Module::outports() const
+
+QList<Out*>::const_iterator Module::outports() const
 {
-    return m_outports;
+    return m_outports.begin();
 }
 
-QList<In*> Module::inports() const
+QList<In*>::const_iterator Module::inports() const
 {
-    return m_inports;
+    return m_inports.begin();
 }

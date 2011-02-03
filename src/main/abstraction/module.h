@@ -10,8 +10,8 @@ class Module : public QObject {
 public:
     Q_OBJECT
     Module(QObject* parent = 0);
-    virtual QList<Out*> outports() const;
-    virtual QList<In*> inports() const;
+    virtual QList<Out*>::const_iterator outports() const;
+    virtual QList<In*>::const_iterator inports() const;
     virtual void process() = 0;
 
 private:
