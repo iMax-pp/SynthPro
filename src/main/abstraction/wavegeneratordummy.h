@@ -7,8 +7,7 @@
   * Dummy Wave Generator, produces a simple square sound with a fixed frequency.
   * This is useful to test the modules.
   */
-class WaveGeneratorDummy : public WaveGenerator
-{
+class WaveGeneratorDummy : public WaveGenerator {
 public:
     WaveGeneratorDummy();
     virtual void generate(const float* bufferIn, float* bufferOut, int bufferLength, float frequency);

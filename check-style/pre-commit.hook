@@ -1,0 +1,64 @@
+#!/usr/bin/env python
+
+"""
+Git pre-commit Hook
+Check coding style before commit.
+"""
+
+import os, shlex, sys
+from subprocess import PIPE, Popen
+
+
+def exec_command(command_line):
+    """Execute the given command, exit on error, or return output."""
+    process = Popen(shlex.split(command_line), stdout=PIPE, stderr=PIPE)
+    output, err = process.communicate()
+    
+    if err != '':
+        # Print error (just in case).
+        print err
+    
+    if process.returncode != 0:
+        # Exit on error.
+        sys.exit(process.returncode)
+    
+    return output
+
+
+def parse_output(output):
+    """From the command output, parse lines, keep Modified and Added files,
+       keep .cpp and .h files, and return a string of those.
+    """
+    files = ''
+    
+    for line in output.split('\n'):
+        if line.startswith(('A ', 'M ', 'AM ', 'MM ')) and line.endswith(('.cpp', '.h')):
+            files += line.lstrip(r'[AM]*')
+    
+    return files
+
+
+def base_directory():
+    """Function returning the root directory of this git repository."""
+    output = exec_command('git rev-parse --show-cdup')
+    
+    output = './' + output
+    output = output.rstrip('\n')
+    
+    return output
+
+
+def main():
+    """Main function"""
+    # Start by retrieving the files from git status and parse them.
+    output = exec_command('git status --short')
+    files = parse_output(output)
+    
+    if files != '':
+        # Change to base directory and check files.
+        os.chdir(base_directory())
+        exec_command('./check-style/check-style' + files)
+
+
+if __name__ == '__main__':
+    main()

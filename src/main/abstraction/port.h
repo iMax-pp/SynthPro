@@ -6,8 +6,7 @@
 /**
  * Modules can be linked through their ports.
  */
-class Port : public QObject
-{
+class Port : public QObject {
     Q_OBJECT
 
 public:
@@ -34,7 +33,7 @@ public:
     /// Indicate if this port can be multiplexed or mixed
     inline virtual bool replicable() const { return m_replicable; }
 
-    //virtual Buffer buffer();
+    // virtual Buffer buffer();
 
 signals:
     void connectedChanged(bool);

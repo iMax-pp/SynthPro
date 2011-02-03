@@ -1,5 +1,5 @@
-#include <factory/qtfactory.h>
-#include <abstraction/synthpro.h>
+#include "abstraction/synthpro.h"
+#include "factory/qtfactory.h"
 
 #include <QtGui>
 
@@ -14,8 +14,4 @@ int main(int argc, char* argv[])
     delete synthpro;
 
     return result;
-
-    // Essai Commit JulienNevo. Puissant !
-    // Ahaha !!
-
 }

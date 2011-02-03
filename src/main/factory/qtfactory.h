@@ -3,8 +3,7 @@
 
 #include "synthprofactory.h"
 
-class QtFactory : public SynthProFactory
-{
+class QtFactory : public SynthProFactory {
 public:
     virtual SynthPro* createSynthPro();
 };

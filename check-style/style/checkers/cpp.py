@@ -872,15 +872,9 @@ def get_header_guard_cpp_variable(filename):
     # Restores original filename in case that style checker is invoked from Emacs's
     # flymake.
     filename = re.sub(r'_flymake\.h$', '.h', filename)
+    name = sub(r'[-.\s]', '_', os.path.basename(filename)).upper()
 
-    standard_name = sub(r'[-.\s]', '_', os.path.basename(filename))
-
-    # Files under WTF typically have header guards that start with WTF_.
-    if filename.find('/wtf/'):
-        special_name = "WTF_" + standard_name
-    else:
-        special_name = standard_name
-    return (special_name, standard_name)
+    return name
 
 
 def check_for_header_guard(filename, lines, error):
@@ -916,13 +910,13 @@ def check_for_header_guard(filename, lines, error):
     if not ifndef or not define or ifndef != define:
         error(0, 'build/header_guard', 5,
               'No #ifndef header guard found, suggested CPP variable is: %s' %
-              cppvar[0])
+              cppvar)
         return
 
-    # The guard should be File_h.
-    if ifndef not in cppvar:
+    # The guard should be FILE_H.
+    if ifndef != cppvar:
         error(ifndef_line_number, 'build/header_guard', 5,
-              '#ifndef header guard has wrong style, please use: %s' % cppvar[0])
+              '#ifndef header guard has wrong style, please use: %s' % cppvar)
 
 
 def check_for_unicode_replacement_characters(lines, error):

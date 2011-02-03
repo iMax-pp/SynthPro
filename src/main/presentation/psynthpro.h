@@ -3,8 +3,7 @@
 
 #include <QMainWindow>
 
-class PSynthPro : public QMainWindow
-{
+class PSynthPro : public QMainWindow {
 public:
     PSynthPro();
 };

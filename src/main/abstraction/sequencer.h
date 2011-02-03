@@ -1,8 +1,7 @@
 #ifndef SEQUENCER_H
 #define SEQUENCER_H
 
-class Sequencer
-{
+class Sequencer {
 public:
     Sequencer();
 };
