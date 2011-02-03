@@ -12,8 +12,8 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/presentation/psynthpro.h \
     src/main/factory/synthprofactory.h \
     src/main/factory/qtfactory.h \
-    src/main/abstraction/out.h \
-    src/main/abstraction/in.h
+    src/main/abstraction/outport.h \
+    src/main/abstraction/inport.h
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
     src/main/abstraction/port.cpp \
@@ -22,6 +22,6 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/psynthpro.cpp \
     src/main/main.cpp \
     src/main/factory/qtfactory.cpp \
-    src/main/abstraction/out.cpp \
-    src/main/abstraction/in.cpp
+    src/main/abstraction/outport.cpp \
+    src/main/abstraction/inport.cpp
 INCLUDEPATH += src/main/
