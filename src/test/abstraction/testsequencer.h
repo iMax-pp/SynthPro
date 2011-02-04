@@ -11,6 +11,7 @@ private slots:
     void testSortCyclingModules();
     void testSortTwoWells();
     void testSortNoWell();
+    void testSortMixer();
 };
 
 
