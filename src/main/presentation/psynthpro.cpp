@@ -1,11 +1,13 @@
 #include "psynthpro.h"
 
 #include <QAction>
+#include <QDockWidget>
 #include <QToolBar>
 
 PSynthPro::PSynthPro()
     : QMainWindow()
-    , m_toolbar(0)
+    , m_toolBar(0)
+    , m_moduleDock(0)
 {
     initUI();
 }
@@ -17,15 +19,20 @@ void PSynthPro::promptNew()
 
 void PSynthPro::initUI()
 {
-    // Create shiny toolbar.
+    // Create Main ToolBar.
     createStaticActions();
 
-    m_toolbar = addToolBar(tr("MainToolBar"));
-    m_toolbar->addAction(m_newAct);
-    m_toolbar->addAction(m_exitAct);
-    m_toolbar->setFloatable(false);
+    m_toolBar = addToolBar(tr("Main ToolBar"));
+    m_toolBar->addAction(m_newAct);
+    m_toolBar->addAction(m_exitAct);
+    m_toolBar->setFloatable(false);
 
     setUnifiedTitleAndToolBarOnMac(true);
+
+    // Create Module Dock
+    m_moduleDock = new QDockWidget(tr("Module Dock"), this);
+    m_moduleDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    addDockWidget(Qt::LeftDockWidgetArea, m_moduleDock);
 }
 
 void PSynthPro::createStaticActions()

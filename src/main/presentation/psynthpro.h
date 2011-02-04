@@ -16,7 +16,8 @@ private:
     void initUI();
     void createStaticActions();
 
-    QToolBar* m_toolbar;
+    QToolBar* m_toolBar;
+    QDockWidget* m_moduleDock;
 
     QAction* m_newAct;
     QAction* m_exitAct;
