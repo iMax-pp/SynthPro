@@ -2,6 +2,7 @@
 
 #include <QAction>
 #include <QDockWidget>
+#include <QStatusBar>
 #include <QToolBar>
 
 PSynthPro::PSynthPro()
@@ -19,7 +20,7 @@ void PSynthPro::promptNew()
 
 void PSynthPro::initUI()
 {
-    // Create Main ToolBar.
+    // Create Main Tool Bar.
     createStaticActions();
 
     m_toolBar = addToolBar(tr("Main ToolBar"));
@@ -33,6 +34,9 @@ void PSynthPro::initUI()
     m_moduleDock = new QDockWidget(tr("Module Dock"), this);
     m_moduleDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     addDockWidget(Qt::LeftDockWidgetArea, m_moduleDock);
+
+    // Create Status Bar.
+    statusBar()->showMessage(tr("Ready"));
 }
 
 void PSynthPro::createStaticActions()
