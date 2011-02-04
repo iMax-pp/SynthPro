@@ -14,7 +14,7 @@ public:
     /**
       * Generate a square wave, with a fixed frequency. The bufferIn is ignored.
       */
-    virtual void generate(const float* bufferIn, float* bufferOut, int bufferLength, float frequency);
+    virtual void generate(const Buffer* bufferIn, Buffer* bufferOut);
 
 private:
     static const int FIXED_PERIOD = 80;
