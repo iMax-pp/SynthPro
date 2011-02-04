@@ -23,7 +23,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/buffer.h \
     src/main/presentation/moduleview.h \
     src/main/control/cmodule.h \
-    src/main/presentation/pmodule.h
+    src/main/presentation/pmodule.h \
+    src/main/presentation/pport.h \
+    src/main/control/cport.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -43,7 +45,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/buffer.cpp \
     src/main/presentation/moduleview.cpp \
     src/main/control/cmodule.cpp \
-    src/main/presentation/pmodule.cpp
+    src/main/presentation/pmodule.cpp \
+    src/main/presentation/pport.cpp \
+    src/main/control/cport.cpp
 
 INCLUDEPATH += src/main/
 
