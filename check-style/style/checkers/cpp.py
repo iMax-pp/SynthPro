@@ -2482,7 +2482,8 @@ def _classify_include(filename, include, is_system, include_state):
     # There cannot be primary includes in header files themselves. Only an
     # include exactly matches the header filename will be is flagged as
     # primary, so that it triggers the "don't include yourself" check.
-    if (filename.endswith('.h') or filename.endswith('main.cpp')) and filename != include:
+    if ((filename.endswith('.h') or filename.endswith('main.cpp') or filename.endswith('test.cpp'))
+        and filename != include):
         return _OTHER_HEADER
 
     # Qt's moc files do not follow the naming and ordering rules, so they should be skipped
@@ -2564,7 +2565,8 @@ def check_include_line(filename, file_extension, clean_lines, line_number, inclu
     # 2) for header files: alphabetically sorted
     # The include_state object keeps track of the last type seen
     # and complains if the header types are out of order or missing.
-    error_message = include_state.check_next_include_order(header_type, file_extension == "h" or filename.endswith("main.cpp"))
+    error_message = include_state.check_next_include_order(header_type,
+        file_extension == "h" or filename.endswith('main.cpp') or filename.endswith('test.cpp'))
 
     # Check to make sure we have a blank line after primary header.
     if not error_message and header_type == _PRIMARY_HEADER:
