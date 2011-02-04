@@ -24,6 +24,7 @@ public:
 public slots:
     /**
      * Sort the modules in the right order to be processed.
+     * Must be called each time the module configuration change.
      */
     void scheduleModules();
 
