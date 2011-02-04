@@ -44,7 +44,7 @@ void PSynthPro::initUI()
     createMainToolBar();
 
     // Create Module Dock
-    createModulesDock();
+    createDocks();
 
     // Create QGraphicsView
     createGraphicsView();
@@ -99,11 +99,19 @@ void PSynthPro::createMainToolBar()
     setUnifiedTitleAndToolBarOnMac(true);
 }
 
-void PSynthPro::createModulesDock()
+void PSynthPro::createDocks()
 {
-    m_moduleDock = new QDockWidget(tr("Module Dock"), this);
+    m_moduleDock = new QDockWidget(tr("Modules"), this);
     m_moduleDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     addDockWidget(Qt::LeftDockWidgetArea, m_moduleDock);    
+
+    m_inModuleDock = new QDockWidget(tr("Input Modules"), this);
+    m_inModuleDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    addDockWidget(Qt::LeftDockWidgetArea, m_inModuleDock);
+
+    m_outModuleDock = new QDockWidget(tr("Output Modules"), this);
+    m_outModuleDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    addDockWidget(Qt::LeftDockWidgetArea, m_outModuleDock);
 }
 
 void PSynthPro::createGraphicsView()
