@@ -8,6 +8,7 @@ VCO::VCO(QObject* parent)
     : Module(parent)
     , m_waveGenerator(0)
 {
+    init();
 }
 void VCO::process()
 {

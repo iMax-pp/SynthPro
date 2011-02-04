@@ -14,7 +14,8 @@ HEADERS += \
     src/test/abstraction/testoutport.h \
     src/test/abstraction/testvco.h \
     src/main/abstraction/module.h \
-    src/main/abstraction/vco.h
+    src/main/abstraction/vco.h \
+    src/main/abstraction/wavegeneratordummy.h
 
 SOURCES += src/test/test.cpp \
     src/main/abstraction/buffer.cpp \
@@ -25,6 +26,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testoutport.cpp \
     src/test/abstraction/testvco.cpp \
     src/main/abstraction/module.cpp \
-    src/main/abstraction/vco.cpp
+    src/main/abstraction/vco.cpp \
+    src/main/abstraction/wavegeneratordummy.cpp
 
 INCLUDEPATH += src/main/ src/test/
