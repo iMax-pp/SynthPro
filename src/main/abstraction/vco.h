@@ -3,19 +3,20 @@
 
 #include "module.h"
 
-class WaveGenerator ;
+class WaveGenerator;
 
-class VCO : public Module
-{
+class VCO : public Module {
     Q_OBJECT
 public:
-   VCO(QObject * parent=0);
-   virtual void process() ;
-   virtual QList<Module*>::const_iterator getReguirements() const ;
-   virtual void setWaveGenerator(WaveGenerator* waveGenerator);
+    VCO(QObject* parent = 0);
+    virtual void process();
+    virtual QList<Module*>::const_iterator getReguirements() const;
+    virtual void setWaveGenerator(WaveGenerator*);
 
 protected:
-   WaveGenerator* m_waveGenerator ;
+    WaveGenerator* m_waveGenerator;
+
+    virtual void init();
 };
 
 #endif // VCO_H
