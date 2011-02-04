@@ -10,6 +10,10 @@ public:
     OutPort(QObject* parent = 0);
 
     bool out() const;
+
+protected:
+    float* buffer;
+    float* bufferOld;
 };
 
 #endif // OUT_H

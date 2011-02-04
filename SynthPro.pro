@@ -15,8 +15,8 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/outport.h \
     src/main/abstraction/inport.h \
     src/main/abstraction/vco.h \
-    src/main/wavegenerator.h \
-    src/main/wavegeneratordummy.h
+    src/main/abstraction/wavegenerator.h \
+    src/main/abstraction/wavegeneratordummy.h
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
     src/main/abstraction/port.cpp \
