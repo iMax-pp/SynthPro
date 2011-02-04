@@ -40,3 +40,6 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/buffer.cpp
 
 INCLUDEPATH += src/main/
+
+RESOURCES += \
+    src/resources/SynthPro.qrc
