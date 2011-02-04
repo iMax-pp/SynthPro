@@ -15,3 +15,10 @@ date : semaine 5 - 2011
     - Implémentation du module;
 - Maxime :
     - Intégration du framework de test.
+
+Itération 2
+-----------
+date : semaine 5 - 2011
+
+- Julien RF. et Julien N. :
+  - Implémentation du Sequencer.
