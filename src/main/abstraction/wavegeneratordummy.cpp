@@ -1,14 +1,16 @@
 #include "wavegeneratordummy.h"
 
+#include "buffer.h"
+
 WaveGeneratorDummy::WaveGeneratorDummy()
     : m_intensity(SIGNAL_INTENSITY)
     , m_currentStep(0)
 {
 }
 
-void WaveGeneratorDummy::generate(const float*, float* bufferOut, int bufferLength, float)
+void WaveGeneratorDummy::generate(const Buffer* bufferIn, Buffer* bufferOut)
 {
-    for (int i = 0; i < bufferLength; i++) {
+    for (int i = 0, length = bufferOut->length(); i < length; i++) {
         if (++m_currentStep > FIXED_PERIOD) {
             m_intensity = -m_intensity;
             m_currentStep = 0;

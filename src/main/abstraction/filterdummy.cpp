@@ -2,11 +2,13 @@
 
 #include <QtCore>
 
+#include "buffer.h"
+
 FilterDummy::FilterDummy()
 {
 }
 
-void FilterDummy::apply(float* bufferIn, float* bufferOut, int bufferLength)
+void FilterDummy::apply(Buffer* bufferIn, Buffer* bufferOut)
 {
-    memcpy(bufferOut, bufferIn, bufferLength);
+    memcpy(bufferOut->data(), bufferIn->data(), bufferOut->length());
 }

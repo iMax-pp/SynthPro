@@ -3,19 +3,33 @@
 
 #include "module.h"
 
-class WaveGenerator ;
+class WaveGenerator;
 
-class VCO : public Module
-{
+class VCO : public Module {
     Q_OBJECT
 public:
-   VCO(QObject * parent=0);
-   virtual void process() ;
-   virtual QList<Module*>::const_iterator getReguirements() const ;
-   virtual void setWaveGenerator(WaveGenerator* waveGenerator);
+    VCO(QObject* parent = 0);
+/**
+* Process its job : put a buffer in its outPort
+*/
+    virtual void process();
+/**
+* @return his require module outputs.
+*/
+    virtual QList<Module*>::const_iterator getReguirements() const;
+/**
+* @param a wave generator (Strategy design pattern)
+*/
+    virtual void setWaveGenerator(WaveGenerator*);
 
 protected:
-   WaveGenerator* m_waveGenerator ;
+    WaveGenerator* m_waveGenerator;
+    InPort* m_defaultInPort;
+    OutPort* m_defaultOutPort;
+/*
+* Initialization of the VCO
+*/
+    virtual void init();
 };
 
 #endif // VCO_H
