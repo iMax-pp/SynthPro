@@ -13,9 +13,8 @@ const QList<Module*> Module::getReguirements() const
     m_requirements.clear();
 
     foreach (InPort* port, inports()) {
-        if (port->connection()) {
+        if (port->connection())
             m_requirements.append(port->connection()->module());
-        }
     }
 
     return m_requirements;
