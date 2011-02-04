@@ -21,7 +21,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/wavegeneratordummy.h \
     src/main/abstraction/wavegeneratorsquare.h \
     src/main/abstraction/buffer.h \
-    src/main/presentation/moduleview.h
+    src/main/presentation/moduleview.h \
+    src/main/control/cmodule.h \
+    src/main/presentation/pmodule.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -39,7 +41,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/wavegeneratordummy.cpp \
     src/main/abstraction/wavegeneratorsquare.cpp \
     src/main/abstraction/buffer.cpp \
-    src/main/presentation/moduleview.cpp
+    src/main/presentation/moduleview.cpp \
+    src/main/control/cmodule.cpp \
+    src/main/presentation/pmodule.cpp
 
 INCLUDEPATH += src/main/
 

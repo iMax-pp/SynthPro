@@ -1,19 +1,19 @@
-#include "csynthpro.h"
+#include "cmodule.h"
 
-CSynthPro::CSynthPro()
-    : SynthPro()
+CModule::CModule(QObject* parent)
+    : Module(parent)
     , m_presentation(0)
 {
 }
 
-CSynthPro::~CSynthPro()
+CModule::~CModule()
 {
     if (m_presentation) {
         delete m_presentation;
     }
 }
 
-void CSynthPro::setPresentation(PSynthPro* presentation)
+void CModule::setPresentation(PModule* presentation)
 {
     if (m_presentation) {
         delete m_presentation;
@@ -22,7 +22,7 @@ void CSynthPro::setPresentation(PSynthPro* presentation)
     m_presentation = presentation;
 }
 
-PSynthPro* CSynthPro::getPresentation() const
+PModule* CModule::getPresentation() const
 {
     return m_presentation;
 }

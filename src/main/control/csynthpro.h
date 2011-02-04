@@ -13,7 +13,7 @@ public:
     virtual ~CSynthPro();
 
     void setPresentation(PSynthPro*);
-    PSynthPro* getPresentation();
+    PSynthPro* getPresentation() const;
 };
 
 #endif // CSYNTHPRO_H
