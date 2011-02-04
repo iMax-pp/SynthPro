@@ -12,7 +12,7 @@ class FilterDummy : public Filter
 public:
     FilterDummy();
 
-    virtual void apply(float* bufferIn, float* bufferOut, int bufferLength);
+    virtual void apply(Buffer* bufferIn, Buffer* bufferOut);
 };
 
 #endif // FILTERDUMMY_H
