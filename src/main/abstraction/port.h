@@ -4,6 +4,7 @@
 #include <QObject>
 
 class Module;
+class Buffer;
 
 /**
  * Modules can be linked through their ports.
@@ -17,6 +18,12 @@ public:
 
     /// Direction of this port (in or out)
     virtual bool out() const = 0;
+
+    /**
+     * Buffer of this Port.
+     * @returns 0 if this port does not have a buffer (e.g. an unconnected input port)
+     */
+    virtual Buffer* buffer() = 0;
 
     /// @returns The Module containing this Port
     inline Module* module() const { return m_module; }
@@ -40,8 +47,6 @@ public:
 
     /// Indicate if this port is a gate
     inline bool gate() const { return m_gate; }
-
-    // virtual Buffer buffer();
 
 signals:
     void connectedChanged(bool);

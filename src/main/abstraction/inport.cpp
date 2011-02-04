@@ -9,3 +9,8 @@ bool InPort::out() const
 {
     return false;
 }
+
+Buffer* InPort::buffer()
+{
+    return m_connection ? m_connection->buffer() : 0;
+}
