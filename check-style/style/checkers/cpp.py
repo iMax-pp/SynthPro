@@ -2052,15 +2052,6 @@ def check_braces(clean_lines, line_number, error):
         error(line_number, 'whitespace/braces', 4,
               'Place brace on its own line for function definitions.')
 
-    if (match(r'\s*}\s*(else\s*({\s*)?)?$', line) and line_number > 1):
-        # We check if a closed brace has started a line to see if a
-        # one line control statement was previous.
-        previous_line = clean_lines.elided[line_number - 2]
-        if (previous_line.find('{') > 0 and previous_line.find('}') < 0
-            and search(r'\b(if|for|foreach|while|else)\b', previous_line)):
-            error(line_number, 'whitespace/braces', 4,
-                  'One line control clauses should not use braces.')
-
     # An else clause should be on the same line as the preceding closing brace.
     if match(r'\s*else\s*', line):
         previous_line = get_previous_non_blank_line(clean_lines, line_number)[0]
@@ -2256,9 +2247,9 @@ def check_for_comparisons_to_zero(clean_lines, line_number, error):
     line = clean_lines.elided[line_number]
 
     # Include NULL here so that users don't have to convert NULL to 0 first and then get this error.
-    if search(r'[=!]=\s*(NULL|0|true|false)\W', line) or search(r'\W(NULL|0|true|false)\s*[=!]=', line):
+    if search(r'[=!]=\s*(true|false)\W', line) or search(r'\W(true|false)\s*[=!]=', line):
         error(line_number, 'readability/comparison_to_zero', 5,
-              'Tests for true/false, null/non-null, and zero/non-zero should all be done without equality comparisons.')
+              'Tests for true/false should be done without equality comparisons.')
 
 
 def check_for_null(clean_lines, line_number, file_state, error):
@@ -2482,7 +2473,8 @@ def _classify_include(filename, include, is_system, include_state):
     # There cannot be primary includes in header files themselves. Only an
     # include exactly matches the header filename will be is flagged as
     # primary, so that it triggers the "don't include yourself" check.
-    if (filename.endswith('.h') or filename.endswith('main.cpp')) and filename != include:
+    if ((filename.endswith('.h') or filename.endswith('main.cpp') or filename.endswith('test.cpp'))
+        and filename != include):
         return _OTHER_HEADER
 
     # Qt's moc files do not follow the naming and ordering rules, so they should be skipped
@@ -2564,7 +2556,8 @@ def check_include_line(filename, file_extension, clean_lines, line_number, inclu
     # 2) for header files: alphabetically sorted
     # The include_state object keeps track of the last type seen
     # and complains if the header types are out of order or missing.
-    error_message = include_state.check_next_include_order(header_type, file_extension == "h" or filename.endswith("main.cpp"))
+    error_message = include_state.check_next_include_order(header_type,
+        file_extension == "h" or filename.endswith('main.cpp') or filename.endswith('test.cpp'))
 
     # Check to make sure we have a blank line after primary header.
     if not error_message and header_type == _PRIMARY_HEADER:
