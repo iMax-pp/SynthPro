@@ -10,6 +10,10 @@
 class WaveGeneratorDummy : public WaveGenerator {
 public:
     WaveGeneratorDummy();
+
+    /**
+      * Generate a square wave, with a fixed frequency. The bufferIn is ignored.
+      */
     virtual void generate(const float* bufferIn, float* bufferOut, int bufferLength, float frequency);
 
 private:
