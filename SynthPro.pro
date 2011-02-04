@@ -2,8 +2,6 @@ DESTDIR = bin
 OBJECTS_DIR = bin/.obj
 MOC_DIR = bin/.moc
 RCC_DIR = bin/.rcc
-UI_DIR = bin /.ui
-
 HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/module.h \
     src/main/abstraction/port.h \
@@ -13,7 +11,13 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/factory/synthprofactory.h \
     src/main/factory/qtfactory.h \
     src/main/abstraction/outport.h \
-    src/main/abstraction/inport.h
+    src/main/abstraction/filter.h \
+    src/main/abstraction/filterdummy.h \
+    src/main/abstraction/filterincrement.h
+    src/main/abstraction/inport.h \
+    src/main/abstraction/vco.h \
+    src/main/wavegenerator.h \
+    src/main/wavegeneratordummy.h
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
     src/main/abstraction/port.cpp \
@@ -23,5 +27,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/main.cpp \
     src/main/factory/qtfactory.cpp \
     src/main/abstraction/outport.cpp \
-    src/main/abstraction/inport.cpp
+    src/main/abstraction/filterdummy.cpp \
+    src/main/abstraction/filterincrement.cpp
+    src/main/abstraction/inport.cpp \
+    src/main/abstraction/vco.cpp \
+    src/main/abstraction/wavegeneratordummy.cpp
 INCLUDEPATH += src/main/
