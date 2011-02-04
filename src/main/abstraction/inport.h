@@ -10,6 +10,7 @@ public:
     InPort(Module* parent = 0);
 
     bool out() const;
+    Buffer* buffer();
 };
 
 #endif // IN_H
