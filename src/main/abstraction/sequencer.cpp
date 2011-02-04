@@ -11,16 +11,18 @@ Sequencer::Sequencer(SynthPro* synthpro)
 
 void Sequencer::process()
 {
-    foreach (Module* module, m_sortedModules)
+    foreach (Module* module, m_sortedModules) {
         module->process();
+    }
 }
 
 void Sequencer::findWells()
 {
     m_wells.clear();
     foreach (Module* module, m_synthpro->modules()) {
-        if (module->outports().count() == 0)
+        if (module->outports().count() == 0) {
             m_wells.append(module);
+        }
     }
 }
 
