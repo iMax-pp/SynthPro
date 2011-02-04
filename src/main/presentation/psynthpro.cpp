@@ -1,9 +1,10 @@
 #include "psynthpro.h"
 
+#include "moduleview.h"
+
 #include <QAction>
 #include <QApplication>
 #include <QDockWidget>
-#include <QGraphicsView>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -68,7 +69,7 @@ void PSynthPro::createStaticActions()
     m_aboutAct = new QAction(tr("&About"), this);
     m_aboutAct->setStatusTip(tr("Show application's About box"));
     connect(m_aboutAct, SIGNAL(triggered()), this, SLOT(about()));
-    
+
     m_aboutQtAct = new QAction(tr("About &Qt"), this);
     m_aboutQtAct->setStatusTip(tr("Show Qt library's About box"));
     connect(m_aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
@@ -103,7 +104,7 @@ void PSynthPro::createDocks()
 {
     m_moduleDock = new QDockWidget(tr("Modules"), this);
     m_moduleDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-    addDockWidget(Qt::LeftDockWidgetArea, m_moduleDock);    
+    addDockWidget(Qt::LeftDockWidgetArea, m_moduleDock);
 
     m_inModuleDock = new QDockWidget(tr("Input Modules"), this);
     m_inModuleDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
@@ -116,6 +117,6 @@ void PSynthPro::createDocks()
 
 void PSynthPro::createGraphicsView()
 {
-    m_graphicsView = new QGraphicsView(this);
-    setCentralWidget(m_graphicsView);
+    m_moduleView = new ModuleView(this);
+    setCentralWidget(m_moduleView);
 }

@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 
-class QGraphicsView;
+class ModuleView;
 
 class PSynthPro : public QMainWindow {
     Q_OBJECT
@@ -39,7 +39,7 @@ private:
     QDockWidget* m_moduleDock;
     QDockWidget* m_inModuleDock;
     QDockWidget* m_outModuleDock;
-    QGraphicsView* m_graphicsView;
+    ModuleView* m_moduleView;
 };
 
 #endif // PSYNTHPRO_H
