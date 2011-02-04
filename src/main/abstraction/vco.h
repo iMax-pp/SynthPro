@@ -15,7 +15,11 @@ public:
 
 protected:
     WaveGenerator* m_waveGenerator;
-
+    InPort* m_defaultInPort;
+    OutPort* m_defaultOutPort;
+/*
+* Initialization of the VCO
+*/
     virtual void init();
 };
 
