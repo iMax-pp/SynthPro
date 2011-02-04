@@ -18,3 +18,10 @@ Buffer* OutPort::buffer()
 {
     return &m_buffer;
 }
+
+void OutPort::switchBuffers()
+{
+    Buffer temp = m_buffer;
+    m_buffer = m_oldBuffer;
+    m_oldBuffer = temp;
+}

@@ -1,5 +1,5 @@
-#ifndef IN_H
-#define IN_H
+#ifndef INPORT_H
+#define INPORT_H
 
 #include "port.h"
 
@@ -13,4 +13,4 @@ public:
     Buffer* buffer();
 };
 
-#endif // IN_H
+#endif // INPORT_H
