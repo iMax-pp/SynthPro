@@ -5,10 +5,12 @@
 
 class Buffer {
 public:
+    static const int DEFAULT_LENGTH = 256;
+
     /**
      * Constructs a buffer of a given length, initializing its content to 0.
      */
-    Buffer(int length);
+    Buffer(int length = DEFAULT_LENGTH);
     ~Buffer();
 
     /// Direct access to the raw data of this Buffer

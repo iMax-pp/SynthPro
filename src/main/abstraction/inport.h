@@ -7,7 +7,7 @@ class InPort : public Port {
     Q_OBJECT
 
 public:
-    InPort(Module* parent = 0);
+    InPort(Module* parent = 0, bool replicable = false, bool gate = false);
 
     bool out() const;
     Buffer* buffer();

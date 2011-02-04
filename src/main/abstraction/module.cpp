@@ -8,6 +8,11 @@ Module::Module(QObject* parent)
 {
 }
 
+Module::~Module()
+{
+
+}
+
 const QList<Module*> Module::getReguirements() const
 {
     m_requirements.clear();

@@ -1,7 +1,7 @@
 #include "inport.h"
 
-InPort::InPort(Module* parent)
-    : Port(parent)
+InPort::InPort(Module* parent, bool replicable, bool gate)
+    : Port(parent, replicable, gate)
 {
 }
 

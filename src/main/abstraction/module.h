@@ -14,6 +14,7 @@ class Module : public QObject {
 
 public:
     Module(QObject* parent = 0);
+    virtual ~Module();
 
     /// Get the list of output ports of this module
     inline const QList<OutPort*> outports() const { return m_outports; }

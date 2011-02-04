@@ -6,7 +6,7 @@
 #include "abstraction/outport.h"
 
 /**
- * Mock Module with an input port and an output port
+ * Mock Module with replicable input and output ports
  */
 class MockInOutModule : public MockModule {
 public:

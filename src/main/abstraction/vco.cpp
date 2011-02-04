@@ -7,30 +7,35 @@
 VCO::VCO(QObject* parent)
     : Module(parent)
     , m_waveGenerator(0)
+    , m_vfm(this)
+    , m_out(this)
 {
+    m_inports.append(&m_vfm);
+    m_outports.append(&m_out);
     init();
 }
-void VCO::process()
+
+VCO::~VCO()
 {
-    m_defaultOutPort->switchBuffers();
-    m_waveGenerator->generate(m_defaultInPort->buffer(), m_defaultOutPort->buffer());
+    if (m_waveGenerator) {
+        delete m_waveGenerator;
+    }
 }
 
-QList<Module*>::const_iterator VCO::getReguirements() const
+void VCO::process()
 {
-    return 0;
+    m_out.switchBuffers();
+    m_waveGenerator->generate(m_vfm.buffer(), m_out.buffer());
 }
 
 void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
 {
     if (m_waveGenerator) {
-        delete(m_waveGenerator);}
+        delete m_waveGenerator;
+    }
     m_waveGenerator = waveGenerator;
 }
 
 void VCO::init()
 {
-    /// Initialization of a default InPort and a default OutPort for the VCO
-    m_defaultInPort = new InPort(this);
-    m_defaultOutPort = new OutPort(this);
 }

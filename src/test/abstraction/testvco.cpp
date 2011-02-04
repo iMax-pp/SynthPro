@@ -5,7 +5,7 @@
 
 void TestVCO::testVCO()
 {
-    VCO* vco = new VCO();
-    vco->setWaveGenerator(new WaveGeneratorDummy());
-    vco->process();
+    VCO vco;
+    vco.setWaveGenerator(new WaveGeneratorDummy);
+    vco.process();
 }

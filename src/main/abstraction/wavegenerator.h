@@ -9,7 +9,7 @@ class Buffer;
   */
 class WaveGenerator {
 public:
-    WaveGenerator() {}
+    inline WaveGenerator() {}
 
     virtual void generate(const Buffer* bufferIn, Buffer* bufferOut) = 0;
 };

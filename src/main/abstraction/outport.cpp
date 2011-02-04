@@ -2,11 +2,17 @@
 
 #include <QObject>
 
-OutPort::OutPort(Module* parent)
-    : Port(parent)
-    , m_buffer(256) // TODO make the size a parameter of the OutPort constructor
-    , m_oldBuffer(256)
+OutPort::OutPort(Module* parent, bool replicable, bool gate)
+    : Port(parent, replicable, gate)
 {
+    m_buffer = new Buffer();
+    m_oldBuffer = new Buffer();
+}
+
+OutPort::~OutPort()
+{
+    delete m_buffer;
+    delete m_oldBuffer;
 }
 
 bool OutPort::out() const
@@ -16,12 +22,12 @@ bool OutPort::out() const
 
 Buffer* OutPort::buffer()
 {
-    return &m_buffer;
+    return m_buffer;
 }
 
 void OutPort::switchBuffers()
 {
-    Buffer temp = m_buffer;
+    Buffer* temp = m_buffer;
     m_buffer = m_oldBuffer;
     m_oldBuffer = temp;
 }

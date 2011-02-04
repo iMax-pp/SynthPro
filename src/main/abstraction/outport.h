@@ -8,15 +8,16 @@ class OutPort : public Port {
     Q_OBJECT
 
 public:
-    OutPort(Module* parent = 0);
+    OutPort(Module* parent = 0, bool replicable = false, bool gate = false);
+    ~OutPort();
 
     bool out() const;
     Buffer* buffer();
     void switchBuffers();
 
 protected:
-    Buffer m_buffer;
-    Buffer m_oldBuffer;
+    Buffer *m_buffer;
+    Buffer *m_oldBuffer;
 };
 
 #endif // OUTPORT_H

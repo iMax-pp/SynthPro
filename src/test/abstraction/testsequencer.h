@@ -8,6 +8,9 @@ class TestSequencer : public QObject {
 
 private slots:
     void testSortTwoModules();
+    void testSortCyclingModules();
+    void testSortTwoWells();
+    void testSortNoWell();
 };
 
 

@@ -13,7 +13,7 @@ class Port : public QObject {
     Q_OBJECT
 
 public:
-    Port(Module* parent, bool replicable = false, bool gate = false);
+    Port(Module* parent = 0, bool replicable = false, bool gate = false);
     virtual ~Port();
 
     /// Direction of this port (in or out)
