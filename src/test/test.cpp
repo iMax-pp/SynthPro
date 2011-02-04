@@ -1,6 +1,6 @@
 #include "abstraction/testinport.h"
 #include "abstraction/testoutport.h"
-
+#include "abstraction/testvco.h"
 int main()
 {
     TestInPort testInPort;
@@ -8,4 +8,7 @@ int main()
 
     TestOutPort testOutPort;
     QTest::qExec(&testOutPort);
+
+    TestVCO testVCO;
+    QTest::qExec(&testVCO);
 }

@@ -9,7 +9,7 @@ class SynthPro : public QObject {
     Q_OBJECT
 
 public:
-    SynthPro(QObject *parent = 0);
+    SynthPro(QObject* parent = 0);
     QList<Module*> modules();
 
 private:

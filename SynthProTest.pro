@@ -11,6 +11,7 @@ HEADERS += \
     src/main/abstraction/inport.h \
     src/test/abstraction/testinport.h \
     src/main/abstraction/outport.h \
+    src/test/abstraction/testoutport.h \
     src/test/abstraction/testvco.h \
     src/main/abstraction/module.h \
     src/main/abstraction/vco.h
