@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+class QGraphicsView;
+
 class PSynthPro : public QMainWindow {
     Q_OBJECT
 
@@ -19,6 +21,7 @@ private:
     void createMenus();
     void createMainToolBar();
     void createModulesDock();
+    void createGraphicsView();
 
     QAction* m_newAct;
     QAction* m_exitAct;
@@ -29,6 +32,7 @@ private:
     QMenu* m_fileMenu;
     QMenu* m_helpMenu;
     QDockWidget* m_moduleDock;
+    QGraphicsView* m_graphicsView;
 };
 
 #endif // PSYNTHPRO_H

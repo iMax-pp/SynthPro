@@ -3,6 +3,7 @@
 #include <QAction>
 #include <QApplication>
 #include <QDockWidget>
+#include <QGraphicsView>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -11,10 +12,9 @@
 
 PSynthPro::PSynthPro()
     : QMainWindow()
-    , m_toolBar(0)
-    , m_moduleDock(0)
 {
     initUI();
+    setMinimumSize(640, 480);
 }
 
 void PSynthPro::promptNew()
@@ -45,6 +45,9 @@ void PSynthPro::initUI()
 
     // Create Module Dock
     createModulesDock();
+
+    // Create QGraphicsView
+    createGraphicsView();
 
     // Create Status Bar.
     statusBar()->showMessage(tr("Ready"));
@@ -101,4 +104,10 @@ void PSynthPro::createModulesDock()
     m_moduleDock = new QDockWidget(tr("Module Dock"), this);
     m_moduleDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     addDockWidget(Qt::LeftDockWidgetArea, m_moduleDock);    
+}
+
+void PSynthPro::createGraphicsView()
+{
+    m_graphicsView = new QGraphicsView(this);
+    setCentralWidget(m_graphicsView);
 }
