@@ -7,8 +7,7 @@
   * Dummy Filter, simply copy the bufferIn to the bufferOut.
   * This is useful to test the modules.
   */
-class FilterDummy : public Filter
-{
+class FilterDummy : public Filter {
 public:
     FilterDummy();
 

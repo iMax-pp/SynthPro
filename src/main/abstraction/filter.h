@@ -7,8 +7,7 @@ class Buffer;
   * Pure virtual class for the VCF to filter signals from an input buffer
   * to an output buffer.
   */
-class Filter
-{
+class Filter {
 public:
     Filter() {}
 
