@@ -1,8 +1,8 @@
-#ifndef OUT_H
-#define OUT_H
+#ifndef OUTPORT_H
+#define OUTPORT_H
 
-#include "port.h"
 #include "abstraction/buffer.h"
+#include "port.h"
 
 class OutPort : public Port {
     Q_OBJECT
@@ -12,10 +12,11 @@ public:
 
     bool out() const;
     Buffer* buffer();
+    void switchBuffers();
 
 protected:
     Buffer m_buffer;
     Buffer m_oldBuffer;
 };
 
-#endif // OUT_H
+#endif // OUTPORT_H

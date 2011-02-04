@@ -2,6 +2,7 @@
 
 #include "inport.h"
 #include "outport.h"
+#include "wavegenerator.h"
 
 VCO::VCO(QObject* parent)
     : Module(parent)
@@ -10,7 +11,8 @@ VCO::VCO(QObject* parent)
 }
 void VCO::process()
 {
-
+    m_defaultOutPort->switchBuffers();
+    m_waveGenerator->generate(m_defaultInPort->buffer(), m_defaultOutPort->buffer());
 }
 
 QList<Module*>::const_iterator VCO::getReguirements() const
