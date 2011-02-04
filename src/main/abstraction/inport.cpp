@@ -1,6 +1,6 @@
 #include "inport.h"
 
-InPort::InPort(QObject* parent)
+InPort::InPort(Module* parent)
     : Port(parent)
 {
 }

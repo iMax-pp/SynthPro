@@ -1,16 +1,22 @@
 #include "module.h"
 
+#include "abstraction/inport.h"
+#include "abstraction/outport.h"
+
 Module::Module(QObject* parent)
     : QObject(parent)
 {
 }
 
-QList<OutPort*>::const_iterator Module::outports() const
+const QList<Module*> Module::getReguirements() const
 {
-    return m_outports.begin();
-}
+    m_requirements.clear();
 
-QList<InPort*>::const_iterator Module::inports() const
-{
-    return m_inports.begin();
+    foreach (InPort* port, inports()) {
+        if (port->connection()) {
+            m_requirements.append(port->connection()->module());
+        }
+    }
+
+    return m_requirements;
 }
