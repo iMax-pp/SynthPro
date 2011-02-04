@@ -8,7 +8,7 @@ WaveGeneratorDummy::WaveGeneratorDummy()
 {
 }
 
-void WaveGeneratorDummy::generate(const Buffer* bufferIn, Buffer* bufferOut)
+void WaveGeneratorDummy::generate(const Buffer*, Buffer* bufferOut)
 {
     for (int i = 0, length = bufferOut->length(); i < length; i++) {
         if (++m_currentStep > FIXED_PERIOD) {

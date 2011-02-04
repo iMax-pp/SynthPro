@@ -8,6 +8,7 @@ VCO::VCO(QObject* parent)
     : Module(parent)
     , m_waveGenerator(0)
 {
+    init();
 }
 void VCO::process()
 {
@@ -22,6 +23,8 @@ QList<Module*>::const_iterator VCO::getReguirements() const
 
 void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
 {
+    if (m_waveGenerator) {
+        delete(m_waveGenerator);}
     m_waveGenerator = waveGenerator;
 }
 

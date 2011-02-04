@@ -18,7 +18,10 @@ HEADERS += \
     src/test/abstraction/mockmodule.h \
     src/test/abstraction/mockwell.h \
     src/test/abstraction/testsequencer.h \
-    src/test/abstraction/mockinoutmodule.h
+    src/test/abstraction/mockinoutmodule.h \
+    src/test/abstraction/testvco.h \
+    src/main/abstraction/vco.h \
+    src/main/abstraction/wavegeneratordummy.h
 
 SOURCES += src/test/test.cpp \
     src/main/abstraction/buffer.cpp \
@@ -33,6 +36,9 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/mockmodule.cpp \
     src/test/abstraction/mockwell.cpp \
     src/test/abstraction/testsequencer.cpp \
-    src/test/abstraction/mockinoutmodule.cpp
+    src/test/abstraction/mockinoutmodule.cpp \
+    src/test/abstraction/testvco.cpp \
+    src/main/abstraction/vco.cpp \
+    src/main/abstraction/wavegeneratordummy.cpp
 
 INCLUDEPATH += src/main/ src/test/

@@ -3,6 +3,8 @@
 
 #include "abstraction/wavegenerator.h"
 
+#include <QtGlobal>
+
 /**
   * Square Wave Generator, produces a square sound.
   */
@@ -16,12 +18,11 @@ public:
     virtual void generate(const Buffer* bufferIn, Buffer* bufferOut);
 
 private:
-    static const int SIGNAL_INTENSITY = 20000;
-
-    int m_intensity;
-    int m_currentStep;
-    int m_currentFrequency; // Changes over time according to what is
-                            // read in the bufferIn.
+    qreal m_intensity;
+    qreal m_currentStep;
+    qreal m_maximumStep;
+    qreal m_currentSignalTension;   // Changes over time according to what is
+                                    // read in the bufferIn.
 };
 
 #endif // WAVEGENERATORSQUARE_H

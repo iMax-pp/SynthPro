@@ -1,6 +1,6 @@
 #include "synthpro.h"
 
-SynthPro::SynthPro(QObject *parent)
+SynthPro::SynthPro(QObject* parent)
     : QObject(parent)
 {
 
