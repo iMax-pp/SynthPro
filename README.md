@@ -4,9 +4,27 @@
 
 SynthPro is a modular anolgic synthesizer simulator.
 
+
 ## UML Diagrams
 
 [PicasaWeb](http://picasaweb.google.com/simon.maxime/SynthPro?authkey=Gv1sRgCND6ouPy7s6rvAE)
+
+
+## Tests
+
+### How to add Tests
+
+After designing a new class, unit and functional tests **MUST** be written. To do so,
+
+- Open the `SynthProTest` project;
+- Add your class (and its dependencies) to the `.pro` file;
+- Write a test class accordingly (see `TestInPort` for an example);
+- Include the execution of this class in `test.cpp` (see `test.cpp` for examples).
+
+### How to execute Tests
+
+To execute the test cases, just run the `SynthProTest` project…
+
 
 ## Coding Style
 
