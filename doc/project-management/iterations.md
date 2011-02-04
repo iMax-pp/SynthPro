@@ -11,6 +11,7 @@ date : semaine 5 - 2011
     - Implémentation VCO, VCF;
 - Julien N. :
     - Implémentation dummy stratégie du VCO et du VCF;
+    - Implémentation du Square Wavegenerator.
 - Julien RF. :
     - Implémentation du module;
 - Maxime :

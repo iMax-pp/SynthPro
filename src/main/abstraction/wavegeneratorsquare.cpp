@@ -1,9 +1,9 @@
 #include "wavegeneratorsquare.h"
 
-#include <QtCore/qmath.h>
-
 #include "abstraction/vco.h"
 #include "buffer.h"
+
+#include <QtCore/qmath.h>
 
 WaveGeneratorSquare::WaveGeneratorSquare()
     : m_intensity(VCO::SIGNAL_INTENSITY)
