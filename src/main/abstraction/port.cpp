@@ -7,23 +7,35 @@ Port::Port(Module* parent, bool replicable, bool gate)
     , m_module(parent)
     , m_replicable(replicable)
     , m_gate(gate)
-    , m_connection(0)
 {
 
 }
 
 Port::~Port() {}
 
-void Port::connectTo(Port* to)
+bool Port::available() const
 {
-    if (m_connection != to) {
-        m_connection = to;
-        to->connectTo(this);
-        connectedChanged(true); // FIXME This signal will be emitted 2 times, one time for each side of the association
-    }
+    return m_replicable || m_connections.size() == 0;
 }
 
-bool Port::isConnectable(const Port* to) const
+bool Port::compatible(const Port *other) const
 {
-    return (!connected() && to->out() != out() && to->gate() == gate());
+     return other->out() != out() && other->gate() == gate();
+}
+
+bool Port::connectable(const Port* other) const
+{
+    return available() && compatible(other);
+}
+
+void Port::connectTo(Port* other)
+{
+    // Add the port to this connections
+    m_connections.append(other);
+
+    // Check if this port needs to be added to the other port
+    if (!other->m_connections.contains(this)) {
+        other->connectTo(this);
+        emit connectionsChanged();
+    }
 }

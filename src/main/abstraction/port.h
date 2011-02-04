@@ -28,19 +28,21 @@ public:
     /// @returns The Module containing this Port
     inline Module* module() const { return m_module; }
 
-    /// @returns The Port connected to this Port (0 if not connected)
-    inline Port* connection() const { return m_connection; }
+    /// @returns The Ports connected to this Port (FIXME is it safe?)
+    inline const QList<Port*> connections() const { return m_connections; }
 
-    /// Indicate if this port is connected to another one
-    inline bool connected() const { return m_connection; }
     /**
      * Indicate if this port is connectable with a given port.
-     * @returns true if this port is not already connected and its direction
-     * is different from other's direction and they both are gate or are not.
+     * @returns true if this port is available and other port is compatible.
+     * @see available, compatible
      */
-    bool isConnectable(const Port*) const;
-    /// Connect this port to the other port (this method will handle the both side of the association)
-    void connectTo(Port*);
+    bool connectable(const Port*) const;
+
+    /**
+     * Connect this port to the other port (this method will handle the both side of the association)
+     * @pre isConnectable(other)
+     */
+    void connectTo(Port* other);
 
     /// Indicate if this port can be multiplexed or mixed
     inline bool replicable() const { return m_replicable; }
@@ -49,13 +51,26 @@ public:
     inline bool gate() const { return m_gate; }
 
 signals:
-    void connectedChanged(bool);
+    void connectionsChanged();
 
 protected:
+    /**
+     * Indicate if this port is free.
+     * @returns true if this port is replicable or unused, otherwise false.
+     */
+    bool available() const;
+
+    /**
+     * @return true if the other Port can be plugged to this Port, that is if
+     * their directions are different and if they both are gates or are not.
+     */
+    bool compatible(const Port* other) const;
+
+
     Module* m_module;
     bool m_replicable;
     bool m_gate;
-    Port* m_connection;
+    QList<Port*> m_connections;
 };
 
 #endif // PORT_H

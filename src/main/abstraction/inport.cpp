@@ -12,5 +12,5 @@ bool InPort::out() const
 
 Buffer* InPort::buffer()
 {
-    return m_connection ? m_connection->buffer() : 0;
+    return 0; // TODO mixer behavior
 }
