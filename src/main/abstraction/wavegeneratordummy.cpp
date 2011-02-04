@@ -16,6 +16,6 @@ void WaveGeneratorDummy::generate(const Buffer*, Buffer* bufferOut)
             m_currentStep = 0;
         }
 
-        bufferOut[i] = m_intensity;
+        bufferOut->data()[i] = m_intensity;
     }
 }
