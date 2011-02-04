@@ -2,7 +2,7 @@
 
 #include "abstraction/vco.h"
 
-testVCO::testVCO()
+void TestVCO::testVCO()
 {
-    Module* vco = new VCO();
+    VCO* vco = new VCO();
 }

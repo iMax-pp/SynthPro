@@ -1,9 +1,11 @@
 #ifndef TESTVCO_H
 #define TESTVCO_H
 
+#include "abstraction/vco.h"
+
 #include <QtTest/QTest>
 
-class testVCO : public QObject {
+class TestVCO : public QObject {
     Q_OBJECT
 
 private slots:

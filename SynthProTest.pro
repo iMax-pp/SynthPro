@@ -11,9 +11,9 @@ HEADERS += \
     src/main/abstraction/inport.h \
     src/test/abstraction/testinport.h \
     src/main/abstraction/outport.h \
-    src/test/abstraction/testoutport.h \
-    src/main/abstraction/buffer.h \
-    src/test/abstraction/testvco.h
+    src/test/abstraction/testvco.h \
+    src/main/abstraction/module.h \
+    src/main/abstraction/vco.h
 
 SOURCES += src/test/test.cpp \
     src/main/abstraction/buffer.cpp \
@@ -22,7 +22,8 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testinport.cpp \
     src/main/abstraction/outport.cpp \
     src/test/abstraction/testoutport.cpp \
-    src/main/abstraction/buffer.cpp \
-    src/test/abstraction/testvco.cpp
+    src/test/abstraction/testvco.cpp \
+    src/main/abstraction/module.cpp \
+    src/main/abstraction/vco.cpp
 
 INCLUDEPATH += src/main/ src/test/
