@@ -2,7 +2,7 @@
 
 #include <QObject>
 
-OutPort::OutPort(QObject* parent)
+OutPort::OutPort(Module* parent)
     : Port(parent)
 {
 }

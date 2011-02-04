@@ -7,7 +7,7 @@ class OutPort : public Port {
     Q_OBJECT
 
 public:
-    OutPort(QObject* parent = 0);
+    OutPort(Module* parent = 0);
 
     bool out() const;
 };
