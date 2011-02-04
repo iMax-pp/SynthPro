@@ -4,12 +4,16 @@
 #include <QMainWindow>
 
 class ModuleView;
+class QGraphicsScene;
 
 class PSynthPro : public QMainWindow {
     Q_OBJECT
 
 public:
     PSynthPro();
+
+    // Set the graphics scene for the module view.
+    void setGraphicsScene(QGraphicsScene*);
 
 protected slots:
     // Ask if you REAAALLLYYY want to start a new project.

@@ -5,6 +5,7 @@
 #include <QAction>
 #include <QApplication>
 #include <QDockWidget>
+#include <QGraphicsScene>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -16,6 +17,11 @@ PSynthPro::PSynthPro()
 {
     initUI();
     setMinimumSize(640, 480);
+}
+
+void PSynthPro::setGraphicsScene(QGraphicsScene* scene)
+{
+    m_moduleView->setScene(scene);
 }
 
 void PSynthPro::promptNew()

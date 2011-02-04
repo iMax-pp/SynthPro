@@ -4,16 +4,19 @@
 #include "abstraction/synthpro.h"
 #include "presentation/psynthpro.h"
 
-class CSynthPro : public SynthPro {
-private:
-    PSynthPro* m_presentation;
+class QGraphicsScene;
 
+class CSynthPro : public SynthPro {
 public:
     CSynthPro();
     virtual ~CSynthPro();
 
     void setPresentation(PSynthPro*);
     PSynthPro* getPresentation() const;
+
+private:
+    PSynthPro* m_presentation;
+    QGraphicsScene* m_graphicsScene;
 };
 
 #endif // CSYNTHPRO_H
