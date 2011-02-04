@@ -8,8 +8,7 @@
   * decrements if <0, and copy them to the output buffer.
   * Especially used as a test.
   */
-class FilterIncrement : public Filter
-{
+class FilterIncrement : public Filter {
 public:
     FilterIncrement();
 

@@ -3,8 +3,7 @@
 
 #include <QtGlobal>
 
-class Buffer
-{
+class Buffer {
 public:
     /**
      * Constructs a buffer of a given length, initializing its content to 0.

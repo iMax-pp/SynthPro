@@ -1,8 +1,8 @@
 #include "filterdummy.h"
 
-#include <QtCore>
-
 #include "buffer.h"
+
+#include <QtCore>
 
 FilterDummy::FilterDummy()
 {
