@@ -3,8 +3,6 @@
 
 #include "module.h"
 
-//#include <QtGlobal>
-
 class WaveGenerator;
 
 class VCO : public Module {

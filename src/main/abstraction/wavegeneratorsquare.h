@@ -21,8 +21,8 @@ private:
     qreal m_intensity;
     qreal m_currentStep;
     qreal m_maximumStep;
-    qreal m_currentSignalTension;   // Changes over time according to what is
-                                    // read in the bufferIn.
+    qreal m_currentSignalTension; // Changes over time according to what is
+                                  // read in the bufferIn.
 };
 
 #endif // WAVEGENERATORSQUARE_H
