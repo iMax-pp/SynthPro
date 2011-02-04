@@ -3,6 +3,8 @@
 
 #include "module.h"
 
+//#include <QtGlobal>
+
 class WaveGenerator;
 
 class VCO : public Module {
@@ -22,7 +24,12 @@ public:
 */
     virtual void setWaveGenerator(WaveGenerator*);
 
+    static const qreal SIGNAL_INTENSITY = 20000;
+    static const qreal F0 = 261.626; // Frequency of the C4.
+    static const qreal REPLAY_FREQUENCY = 44100; // We consider it won't change.
+
 protected:
+
     WaveGenerator* m_waveGenerator;
     InPort* m_defaultInPort;
     OutPort* m_defaultOutPort;
