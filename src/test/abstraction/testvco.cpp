@@ -1,6 +1,8 @@
 #include "testvco.h"
 
+#include "abstraction/vco.h"
+
 testVCO::testVCO()
 {
-    VCO vco = VCO();
+    Module* vco = new VCO();
 }
