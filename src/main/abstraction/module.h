@@ -3,8 +3,8 @@
 
 #include <QObject>
 
-class In;
-class Out;
+class InPort;
+class OutPort;
 
 /**
  * A module is a component performing a single function (generating a signal, filtering, etc.)
@@ -16,10 +16,10 @@ public:
     Module(QObject* parent = 0);
 
     /// Get the list of output ports of this module
-    virtual QList<Out*>::const_iterator outports() const;
+    virtual QList<OutPort*>::const_iterator outports() const;
 
     /// Get the list of input ports of this module FIXME is it needed?
-    virtual QList<In*>::const_iterator inports() const;
+    virtual QList<InPort*>::const_iterator inports() const;
 
     /**
      * Operation called by the sequencer. Subclasses have to implement their own.
@@ -29,9 +29,9 @@ public:
     /// Get the list of required modules for this module to perform its function
     virtual QList<Module*>::const_iterator getReguirements() const = 0;
 
-private:
-    QList<Out*> m_outports;
-    QList<In*> m_inports;
+protected:
+    QList<OutPort*> m_outports;
+    QList<InPort*> m_inports;
 };
 
 #endif // MODULE_H
