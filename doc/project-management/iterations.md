@@ -1,0 +1,17 @@
+Itérations
+==========
+
+Contenu des différentes itérations du projet.
+
+Itération 1
+-----------
+date : semaine 5 - 2011
+
+- Cyrille :
+    - Implémentation VCO, VCF;
+- Julien N. :
+    - Implémentation dummy stratégie du VCO et du VCF;
+- Julien RF. :
+    - Implémentation du module;
+- Maxime :
+    - Intégration du framework de test.
