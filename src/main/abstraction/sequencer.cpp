@@ -11,7 +11,7 @@ Sequencer::Sequencer(SynthPro* synthpro)
 
 void Sequencer::process()
 {
-    foreach(Module* module, m_sortedModules) {
+    foreach (Module* module, m_sortedModules) {
         module->process();
     }
 }
@@ -19,7 +19,7 @@ void Sequencer::process()
 void Sequencer::findWells()
 {
     m_wells.clear();
-    foreach(Module* module, m_synthpro->modules()) {
+    foreach (Module* module, m_synthpro->modules()) {
         if (module->outports().count() == 0) {
             m_wells.append(module);
         }
@@ -39,7 +39,7 @@ void Sequencer::scheduleModules(QList<Module*> modules)
     /*
      * Find recursively the requirements of each module (starting from the wells)
      */
-    foreach(Module* module, modules) {
+    foreach (Module* module, modules) {
         if (!m_visitedModules.contains(module)) {
             // Add the module to the visited list, in order to avoid cycles
             m_visitedModules.append(module);
