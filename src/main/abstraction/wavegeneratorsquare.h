@@ -6,8 +6,7 @@
 /**
   * Square Wave Generator, produces a square sound.
   */
-class WaveGeneratorSquare : public WaveGenerator
-{
+class WaveGeneratorSquare : public WaveGenerator {
 public:
     WaveGeneratorSquare();
 
