@@ -31,6 +31,9 @@ public:
     const QList<Module*> getReguirements() const;
 
 protected:
+    /// Fetch input from all this Module input Ports (call this operation should be the first thing to do in a “process” implementation)
+    void fetchInput();
+
     QList<OutPort*> m_outports;
     QList<InPort*> m_inports;
     mutable QList<Module*> m_requirements;

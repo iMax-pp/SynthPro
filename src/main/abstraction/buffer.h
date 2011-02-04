@@ -19,6 +19,9 @@ public:
     /// @returns The length of this buffer
     inline int length() const { return m_length; }
 
+    /// Fill this buffer with 0
+    void clear();
+
 protected:
     qreal* m_data;
     int m_length;

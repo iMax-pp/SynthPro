@@ -25,3 +25,10 @@ const QList<Module*> Module::getReguirements() const
 
     return m_requirements;
 }
+
+void Module::fetchInput()
+{
+    foreach (InPort* input, m_inports) {
+        input->fetch();
+    }
+}

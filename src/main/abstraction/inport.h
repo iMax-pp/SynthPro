@@ -8,9 +8,20 @@ class InPort : public Port {
 
 public:
     InPort(Module* parent = 0, bool replicable = false, bool gate = false);
+    ~InPort();
 
+    /**
+     * Fetch data from the connections.
+     * If this port is replicable, it mixes its inputs
+     */
+    void fetch();
+
+    // Overriden methods of Module
     bool out() const;
     Buffer* buffer();
+
+protected:
+    Buffer *m_buffer;
 };
 
 #endif // INPORT_H
