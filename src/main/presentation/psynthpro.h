@@ -11,16 +11,24 @@ public:
 
 protected slots:
     void promptNew();
+    void about();
 
 private:
     void initUI();
     void createStaticActions();
-
-    QToolBar* m_toolBar;
-    QDockWidget* m_moduleDock;
+    void createMenus();
+    void createMainToolBar();
+    void createModulesDock();
 
     QAction* m_newAct;
     QAction* m_exitAct;
+    QAction* m_aboutAct;
+    QAction* m_aboutQtAct;
+    
+    QToolBar* m_toolBar;
+    QMenu* m_fileMenu;
+    QMenu* m_helpMenu;
+    QDockWidget* m_moduleDock;
 };
 
 #endif // PSYNTHPRO_H
