@@ -1,9 +1,12 @@
 #include "abstraction/testsequencer.h"
 
 #include "abstraction/mockinoutmodule.h"
+#include "abstraction/mockserializerwell.h"
 #include "abstraction/mockwell.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
+#include "abstraction/vco.h"
+#include "abstraction/wavegeneratordummy.h"
 
 #include <QtTest>
 
@@ -158,4 +161,30 @@ void TestSequencer::testSortMixer()
 
     QVERIFY(result.endsWith('3'));
     QCOMPARE(result.length(), 3);
+}
+
+/**
+ * VCO −> Serializer
+ */
+void TestSequencer::testVCOAndSerializer()
+{
+    QString result;
+    QTextStream stream(&result);
+
+    SynthPro synthpro;
+    Sequencer sequencer(&synthpro);
+
+    VCO vco;
+    vco.setWaveGenerator(new WaveGeneratorDummy);
+    synthpro.add(&vco);
+
+    MockSerializerWell output(stream);
+    synthpro.add(&output);
+
+    vco.outports().first()->connectTo(&output.input);
+
+    sequencer.scheduleModules();
+    sequencer.process();
+
+    QVERIFY(result.startsWith("20000"));
 }
