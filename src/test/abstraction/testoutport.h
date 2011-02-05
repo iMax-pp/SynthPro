@@ -8,6 +8,7 @@ class TestOutPort : public QObject {
 
 private slots:
     void testOut();
+    void testSwapBuffers();
 };
 
 #endif // TESTOUTPORT_H

@@ -13,7 +13,7 @@ public:
 
     bool out() const;
     Buffer* buffer();
-    void switchBuffers();
+    void swapBuffers();
 
 protected:
     Buffer *m_buffer;

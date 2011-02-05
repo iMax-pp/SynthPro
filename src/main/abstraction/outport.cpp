@@ -25,7 +25,7 @@ Buffer* OutPort::buffer()
     return m_buffer;
 }
 
-void OutPort::switchBuffers()
+void OutPort::swapBuffers()
 {
     Buffer* temp = m_buffer;
     m_buffer = m_oldBuffer;

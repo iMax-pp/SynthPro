@@ -24,7 +24,7 @@ VCO::~VCO()
 
 void VCO::process()
 {
-    m_out.switchBuffers();
+    m_out.swapBuffers();
     m_waveGenerator->generate(m_vfm.buffer(), m_out.buffer());
 }
 

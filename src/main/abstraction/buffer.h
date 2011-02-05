@@ -11,6 +11,7 @@ public:
      * Constructs a buffer of a given length, initializing its content to 0.
      */
     Buffer(int length = DEFAULT_LENGTH);
+    Buffer(const Buffer& source);
     ~Buffer();
 
     /// Direct access to the raw data of this Buffer
