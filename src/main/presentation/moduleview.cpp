@@ -22,7 +22,7 @@ void ModuleView::dropEvent(QDropEvent* event)
 {
     if (m_cSynthPro) {
         QString moduleType = event->mimeData()->text();
-        m_cSynthPro->addModule(moduleType);
+        m_cSynthPro->addModule(moduleType, event->pos());
     }
 
     event->acceptProposedAction();

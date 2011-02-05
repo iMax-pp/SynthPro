@@ -34,12 +34,15 @@ PSynthPro* CSynthPro::getPresentation() const
     return m_presentation;
 }
 
-void CSynthPro::addModule(QString& moduleType)
+void CSynthPro::addModule(QString& moduleType, QPoint pos)
 {
     // TODO
     // for type in moduleTypes:
     //   if type equals moduleType:
     //     module = typeFactory()
-    // add(module)
-    // scene.add(module)
+    //
+    // if module is not null:
+    //   add(module)
+    //   module.presentation().setPosition(pos)
+    //   scene.add(module)
 }

@@ -14,7 +14,7 @@ public:
     void setPresentation(PSynthPro*);
     PSynthPro* getPresentation() const;
 
-    void addModule(QString& moduleType);
+    void addModule(QString& moduleType, QPoint);
 
 private:
     PSynthPro* m_presentation;
