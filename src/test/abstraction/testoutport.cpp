@@ -4,7 +4,7 @@
 
 void TestOutPort::testOut()
 {
-    OutPort outPort;
+    OutPort outPort(0);
     QVERIFY(outPort.out());
     QVERIFY(outPort.buffer()->length() == 256);
 }

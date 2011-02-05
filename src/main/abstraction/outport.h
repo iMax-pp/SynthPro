@@ -8,7 +8,7 @@ class OutPort : public Port {
     Q_OBJECT
 
 public:
-    OutPort(Module* parent = 0, bool replicable = false, bool gate = false);
+    OutPort(Module* parent, bool replicable = false, bool gate = false);
     ~OutPort();
 
     bool out() const;

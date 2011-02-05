@@ -8,6 +8,10 @@ class TestInPort : public QObject {
 
 private slots:
     void testOut();
+    void testBuffer();
+    void testConnectable();
+    void testConnectTo();
+    void testFetch();
 };
 
 #endif // TESTINPORT_H
