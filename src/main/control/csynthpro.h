@@ -14,6 +14,8 @@ public:
     void setPresentation(PSynthPro*);
     PSynthPro* getPresentation() const;
 
+    void addModule(QString& moduleType);
+
 private:
     PSynthPro* m_presentation;
     QGraphicsScene* m_graphicsScene;

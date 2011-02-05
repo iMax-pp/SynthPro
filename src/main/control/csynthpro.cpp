@@ -33,3 +33,13 @@ PSynthPro* CSynthPro::getPresentation() const
 {
     return m_presentation;
 }
+
+void CSynthPro::addModule(QString& moduleType)
+{
+    // TODO
+    // for type in moduleTypes:
+    //   if type equals moduleType:
+    //     module = typeFactory()
+    // add(module)
+    // scene.add(module)
+}
