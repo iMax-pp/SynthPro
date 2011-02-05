@@ -147,8 +147,11 @@ void TestSequencer::testSortMixer()
     MockWell m3("3", stream);
     synthpro.add(&m3);
 
-    m1.output.connectTo(&m3.input); // m1 −> m2
+    m1.output.connectTo(&m3.input); // m1 −> m3
     m2.output.connectTo(&m3.input); // m2 −> m3
+
+    QVERIFY(m3.getReguirements().contains(&m1));
+    QVERIFY(m3.getReguirements().contains(&m2));
 
     sequencer.scheduleModules();
     sequencer.process();

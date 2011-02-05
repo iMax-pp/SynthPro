@@ -25,29 +25,23 @@ bool Port::compatible(const Port *other) const
 
 bool Port::connectable(const Port* other) const
 {
-    return available() && compatible(other);
+    return available() && compatible(other) && other->available();
 }
 
 void Port::connectTo(Port* other)
 {
-    // Add the port to this connections
-    m_connections.append(other);
-
-    // Check if this port needs to be added to the other’s connections
-    if (!other->m_connections.contains(this)) {
-        other->connectTo(this);
+    if (connectable(other)) {
+        m_connections.append(other);
+        other->m_connections.append(this);
         emit connectionsChanged();
     }
 }
 
 void Port::disconnectFrom(Port* other)
 {
-    // Remove the port from this connections
-    m_connections.removeOne(other);
-
-    // Check if this port needs to be removed from the other’s connections
-    if (other->m_connections.contains(this)) {
-        other->disconnectFrom(this);
+    if (m_connections.contains(other)) {
+        m_connections.removeOne(other);
+        other->m_connections.removeOne(this);
         emit connectionsChanged();
     }
 }

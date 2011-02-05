@@ -40,15 +40,13 @@ public:
 
     /**
      * Connect this port to the other port (this method will handle the both sides of the association)
-     * FIXME Silently ignore the call if this Port is not connectable to the other?
-     * @pre isConnectable(other)
+     * (Does nothing if this port is not connectable to the other)
      */
     void connectTo(Port* other);
 
     /**
      * Disconnect this port from the other port (this method handle the both sides of the association).
-     * FIXME Silently ignore the call if this Port is not connected to the other?
-     * @pre m_connections.contains(other)
+     * (Does nothing if this port is not connected to the other)
      */
     void disconnectFrom(Port* other);
 

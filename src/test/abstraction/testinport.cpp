@@ -86,6 +86,23 @@ void TestInPort::testDisconnectFrom()
     QVERIFY(!in.connections().contains(&out));
     QVERIFY(!out.connections().contains(&in));
     QCOMPARE(m_count, 2); // Two calls: one for the connection, one for the disconnection
+
+    m_count = 0;
+    out.connectTo(&out); // Try to connect a port to itself
+    in.connectTo(&in);
+
+    QCOMPARE(in.connections().size(), 0);
+    QCOMPARE(out.connections().size(), 0);
+    QCOMPARE(m_count, 0);
+
+    in.disconnectFrom(&out); // Try to disconnect in from out though they were not connected
+
+    QCOMPARE(m_count, 0);
+
+    OutPort outGate(0, false, true); // Create a gate
+    in.connectTo(&outGate); // Try to connect to an incompatible port
+
+    QCOMPARE(m_count, 0);
 }
 
 void TestInPort::testFetch()
