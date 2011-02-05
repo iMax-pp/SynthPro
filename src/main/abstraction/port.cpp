@@ -33,9 +33,21 @@ void Port::connectTo(Port* other)
     // Add the port to this connections
     m_connections.append(other);
 
-    // Check if this port needs to be added to the other port
+    // Check if this port needs to be added to the other’s connections
     if (!other->m_connections.contains(this)) {
         other->connectTo(this);
+        emit connectionsChanged();
+    }
+}
+
+void Port::disconnectFrom(Port* other)
+{
+    // Remove the port from this connections
+    m_connections.removeOne(other);
+
+    // Check if this port needs to be removed from the other’s connections
+    if (other->m_connections.contains(this)) {
+        other->disconnectFrom(this);
         emit connectionsChanged();
     }
 }

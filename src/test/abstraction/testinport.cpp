@@ -55,14 +55,37 @@ void TestInPort::testConnectTo()
 {
     InPort in(0);
     OutPort out(0);
+    m_count = 0;
+
+    connect(&in, SIGNAL(connectionsChanged()), SLOT(countVisit()));
+    connect(&out, SIGNAL(connectionsChanged()), SLOT(countVisit()));
 
     QVERIFY(!in.connections().contains(&out));
     QVERIFY(!out.connections().contains(&in));
+    QCOMPARE(m_count, 0);
 
     in.connectTo(&out);
 
     QVERIFY(in.connections().contains(&out));
     QVERIFY(out.connections().contains(&in));
+    QCOMPARE(m_count, 1);
+}
+
+void TestInPort::testDisconnectFrom()
+{
+    InPort in(0);
+    OutPort out(0);
+    m_count = 0;
+
+    connect(&in, SIGNAL(connectionsChanged()), SLOT(countVisit()));
+    connect(&out, SIGNAL(connectionsChanged()), SLOT(countVisit()));
+
+    in.connectTo(&out);
+    out.disconnectFrom(&in);
+
+    QVERIFY(!in.connections().contains(&out));
+    QVERIFY(!out.connections().contains(&in));
+    QCOMPARE(m_count, 2); // Two calls: one for the connection, one for the disconnection
 }
 
 void TestInPort::testFetch()
@@ -87,4 +110,9 @@ void TestInPort::testFetch()
 
     // After fetching, in buffer is identical to out buffer
     QVERIFY(!memcmp(out.buffer()->data(), in.buffer()->data(), in.buffer()->length() * sizeof(*in.buffer()->data())));
+}
+
+void TestInPort::countVisit()
+{
+    m_count++;
 }

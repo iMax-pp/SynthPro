@@ -6,12 +6,19 @@
 class TestInPort : public QObject {
     Q_OBJECT
 
+public slots:
+    void countVisit();
+
 private slots:
     void testOut();
     void testBuffer();
     void testConnectable();
     void testConnectTo();
+    void testDisconnectFrom();
     void testFetch();
+
+private:
+    int m_count;
 };
 
 #endif // TESTINPORT_H

@@ -39,10 +39,18 @@ public:
     bool connectable(const Port*) const;
 
     /**
-     * Connect this port to the other port (this method will handle the both side of the association)
+     * Connect this port to the other port (this method will handle the both sides of the association)
+     * FIXME Silently ignore the call if this Port is not connectable to the other?
      * @pre isConnectable(other)
      */
     void connectTo(Port* other);
+
+    /**
+     * Disconnect this port from the other port (this method handle the both sides of the association).
+     * FIXME Silently ignore the call if this Port is not connected to the other?
+     * @pre m_connections.contains(other)
+     */
+    void disconnectFrom(Port* other);
 
     /// Indicate if this port can be multiplexed or mixed
     inline bool replicable() const { return m_replicable; }
