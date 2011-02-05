@@ -1,0 +1,1050 @@
+format 74
+"synth"
+  revision 4
+  modified_by 3 "lesenscommun"
+
+
+  
+  // class settings
+  default_attribute_visibility private default_relation_visibility private default_operation_visibility public
+  //class diagram settings
+  draw_all_relations yes hide_attributes no hide_operations no hide_getset_operations no show_members_full_definition no show_members_visibility no show_members_stereotype no show_members_context no show_members_multiplicity no show_members_initialization no show_attribute_modifiers no member_max_width 127 show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_relation_modifiers no show_relation_visibility no show_infonote no shadow yes show_stereotype_properties no
+  //use case diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes class_drawing_mode actor shadow yes show_stereotype_properties no
+  //sequence diagram settings
+  show_full_operations_definition no write_horizontally yes class_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes show_stereotype_properties no show_class_context_mode no show_msg_context_mode no
+  //collaboration diagram settings
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no show_msg_context no draw_all_relations yes shadow yes show_stereotype_properties no
+  //object diagram settings
+   write_horizontally yes package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes show_stereotype_properties no
+  //component diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no
+  //deployment diagram settings
+  package_name_in_tab no show_context no write_horizontally yes auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no
+  //state diagram settings
+  package_name_in_tab no show_context no auto_label_position yes write_trans_label_horizontally yes show_trans_definition no draw_all_relations yes shadow yes
+  show_activities yes region_horizontally yes drawing_language uml show_stereotype_properties no
+  //activity diagram settings
+  package_name_in_tab no show_context no show_opaque_action_definition no auto_label_position yes write_flow_label_horizontally no draw_all_relations yes shadow yes
+  show_infonote yes drawing_language uml show_stereotype_properties no
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activitypartition_color transparent activityaction_color transparent parameterpin_color white 
+  font_size 9
+  diagram_format A4
+
+  mark_for_import
+  
+  classview 134531 "ports"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    sequencediagram 134531 "dnd"
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
+    end
+
+    class 134659 "POut"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 134787 "COut"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 134915 "Out"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 135043 "CSynthPro"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 140675 // <generalisation>
+	relation 138115 ---|>
+	  a public
+	    classrelation_ref 140675 // <generalisation>
+	  b parent class_ref 141571 // SynthPro
+      end
+
+      classrelation 140931 // presentation (<association>)
+	relation 138371 ----
+	  a role_name "presentation" private
+	    classrelation_ref 140931 // presentation (<association>)
+	  b role_name "controle" private
+	    classrelation_ref 141059 // controle (<association>)
+      end
+
+      classrelation 141827 // scene (<association>)
+	relation 138883 ----
+	  a role_name "scene" private
+	    classrelation_ref 141827 // scene (<association>)
+	  b role_name "" private
+	    classrelation_ref 141955 // <association>
+      end
+
+    end
+  end
+
+  classview 141059 "psm"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 141059 "PSM-Abstraction"
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 141571 "SynthPro"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129411 // modules (<composition>)
+	relation 129027 *---
+	  a role_name "modules" multiplicity "*" private
+	    classrelation_ref 129411 // modules (<composition>)
+	  b role_name "" private
+	    classrelation_ref 129539 // <composition>
+      end
+    end
+
+    class 141699 "Module"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128387 // out (<unidirectional association>)
+	relation 128387 --->
+	  a role_name "out" multiplicity "*" const_relation private
+	    classrelation_ref 128387 // out (<unidirectional association>)
+	  b parent class_ref 142083 // OutPort
+      end
+
+      classrelation 128643 // ports (<association>)
+	relation 128643 ----
+	  a role_name "ports" multiplicity "*" private
+	    classrelation_ref 128643 // ports (<association>)
+	  b role_name "module" multiplicity "1" private
+	    classrelation_ref 128771 // module (<association>)
+      end
+
+      classrelation 129539 // <composition>
+	relation_ref 129027 // <composition>
+      end
+    end
+
+    class 141827 "Port"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 128003 "isGate"
+	public explicit_return_type "bool"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 128131 "isConnected"
+	public explicit_return_type "bool"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 128259 "isIn"
+	public explicit_return_type "bool"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 128387 "isReplicable"
+	public explicit_return_type "bool"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 128515 "connectedChanged"
+	stereotype "signal"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "arg0" explicit_type "bool"
+	
+	
+	
+	
+	
+      end
+
+      classrelation 128003 // connection (<unidirectional association>)
+	relation 128003 --->
+	  a role_name "connection" multiplicity "0..1" private
+	    classrelation_ref 128003 // connection (<unidirectional association>)
+	  b parent class_ref 141827 // Port
+      end
+
+      classrelation 128771 // module (<association>)
+	relation_ref 128643 // <association>
+      end
+    end
+
+    class 141955 "InPort"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128131 // <generalisation>
+	relation 128131 ---|>
+	  a public
+	    classrelation_ref 128131 // <generalisation>
+	  b parent class_ref 141827 // Port
+      end
+
+      classrelation 130947 // <composition>
+	relation 129923 *---
+	  a role_name "" private
+	    classrelation_ref 130947 // <composition>
+	  b role_name "" private
+	    classrelation_ref 131075 // <composition>
+      end
+
+      classrelation 131203 // <composition>
+	relation 130051 *---
+	  a role_name "" private
+	    classrelation_ref 131203 // <composition>
+	  b role_name "" private
+	    classrelation_ref 131331 // <composition>
+      end
+
+      classrelation 131587 // <composition>
+	relation_ref 130179 // <composition>
+      end
+
+      classrelation 131715 // <composition>
+	relation 130307 *---
+	  a role_name "" private
+	    classrelation_ref 131715 // <composition>
+	  b role_name "" private
+	    classrelation_ref 131843 // <composition>
+      end
+
+      classrelation 132355 // <composition>
+	relation_ref 130563 // <composition>
+      end
+
+      classrelation 132867 // <composition>
+	relation_ref 130819 // <composition>
+      end
+    end
+
+    class 142083 "OutPort"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128259 // <generalisation>
+	relation 128259 ---|>
+	  a public
+	    classrelation_ref 128259 // <generalisation>
+	  b parent class_ref 141827 // Port
+      end
+
+      attribute 128131 "buffer"
+	private explicit_type "float[]"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128259 "oldBuffer"
+	private explicit_type "float[]"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 128643 "getBuffer"
+	public explicit_return_type "float[]"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 130051 // <composition>
+	relation_ref 129411 // <composition>
+      end
+
+      classrelation 130435 // <composition>
+	relation 129667 *---
+	  a role_name "" private
+	    classrelation_ref 130435 // <composition>
+	  b role_name "" private
+	    classrelation_ref 130563 // <composition>
+      end
+
+      classrelation 130819 // <composition>
+	relation_ref 129795 // <composition>
+      end
+    end
+
+    class 142211 "Sequencer"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 128771 "process"
+	stereotype "void"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 128899 "processModules"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "n" explicit_type "QList<Modules>"
+	
+	
+	
+	
+	
+      end
+
+      operation 129027 "findWells"
+	protected explicit_return_type "QList<Module>"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 142339 "VCO"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129667 // <generalisation>
+	relation 129155 ---|>
+	  a public
+	    classrelation_ref 129667 // <generalisation>
+	  b parent class_ref 141699 // Module
+      end
+
+      classrelation 129923 // out (<composition>)
+	relation 129411 *---
+	  a role_name "out" private
+	    classrelation_ref 129923 // out (<composition>)
+	  b role_name "" private
+	    classrelation_ref 130051 // <composition>
+      end
+
+      classrelation 131075 // <composition>
+	relation_ref 129923 // <composition>
+      end
+
+      classrelation 131331 // <composition>
+	relation_ref 130051 // <composition>
+      end
+
+      classrelation 131459 // fm (<composition>)
+	relation 130179 *---
+	  a role_name "fm" private
+	    classrelation_ref 131459 // fm (<composition>)
+	  b role_name "" private
+	    classrelation_ref 131587 // <composition>
+      end
+
+      classrelation 132995 // shape (<composition>)
+	relation 130947 *---
+	  a role_name "shape" private
+	    classrelation_ref 132995 // shape (<composition>)
+	  b role_name "" private
+	    classrelation_ref 133123 // <composition>
+      end
+
+      classrelation 133251 // k (<composition>)
+	relation 131075 *---
+	  a role_name "k" private
+	    classrelation_ref 133251 // k (<composition>)
+	  b role_name "" private
+	    classrelation_ref 133379 // <composition>
+      end
+
+      classrelation 133763 // generator (<composition>)
+	relation 131331 *---
+	  a role_name "generator" private
+	    classrelation_ref 133763 // generator (<composition>)
+	  b role_name "" private
+	    classrelation_ref 133891 // <composition>
+      end
+    end
+
+    class 142467 "VCF"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129795 // <generalisation>
+	relation 129283 ---|>
+	  a public
+	    classrelation_ref 129795 // <generalisation>
+	  b parent class_ref 141699 // Module
+      end
+
+      classrelation 130563 // <composition>
+	relation_ref 129667 // <composition>
+      end
+
+      classrelation 130691 // out (<composition>)
+	relation 129795 *---
+	  a role_name "out" private
+	    classrelation_ref 130691 // out (<composition>)
+	  b role_name "" private
+	    classrelation_ref 130819 // <composition>
+      end
+
+      classrelation 131843 // <composition>
+	relation_ref 130307 // <composition>
+      end
+
+      classrelation 132227 // in (<composition>)
+	relation 130563 *---
+	  a role_name "in" private
+	    classrelation_ref 132227 // in (<composition>)
+	  b role_name "" private
+	    classrelation_ref 132355 // <composition>
+      end
+
+      classrelation 132739 // freq (<composition>)
+	relation 130819 *---
+	  a role_name "freq" private
+	    classrelation_ref 132739 // freq (<composition>)
+	  b role_name "" private
+	    classrelation_ref 132867 // <composition>
+      end
+
+      classrelation 133507 // k (<composition>)
+	relation 131203 *---
+	  a role_name "k" private
+	    classrelation_ref 133507 // k (<composition>)
+	  b role_name "" private
+	    classrelation_ref 133635 // <composition>
+      end
+    end
+
+    class 142595 "Selector"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128387 "choices"
+	private explicit_type "int[]"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 129155 "GetChoice"
+	public explicit_return_type "int"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 133123 // <composition>
+	relation_ref 130947 // <composition>
+      end
+    end
+
+    class 142723 "Dimmer"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128515 "min"
+	private explicit_type "float"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128643 "max"
+	private explicit_type "float"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 129283 "getValue"
+	public explicit_return_type "float"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 133379 // <composition>
+	relation_ref 131075 // <composition>
+      end
+
+      classrelation 133635 // <composition>
+	relation_ref 131203 // <composition>
+      end
+    end
+
+    class 142851 "WaveGenerator"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 129411 "generate"
+	abstract cpp_virtual public explicit_return_type ""
+	nparams 2
+	  param in name "in" explicit_type "float[]"
+	  param in name "out" explicit_type "float[]"
+	
+	
+	
+	
+	
+      end
+
+      classrelation 133891 // <composition>
+	relation_ref 131331 // <composition>
+      end
+    end
+
+    class 142979 "Square"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 134019 // <generalisation>
+	relation 131459 ---|>
+	  a public
+	    classrelation_ref 134019 // <generalisation>
+	  b parent class_ref 142851 // WaveGenerator
+      end
+    end
+
+    class 143107 "Saw"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 134147 // <generalisation>
+	relation 131587 ---|>
+	  a public
+	    classrelation_ref 134147 // <generalisation>
+	  b parent class_ref 142851 // WaveGenerator
+      end
+    end
+
+    class 143235 "Factory"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 129539 "createVCO"
+	public return_type class_ref 142339 // VCO
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 129667 "createVCF"
+	public return_type class_ref 142467 // VCF
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 129795 "createInPort"
+	public return_type class_ref 141955 // InPort
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 129923 "createOutPort"
+	public return_type class_ref 142083 // OutPort
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 130051 "createSelector"
+	public return_type class_ref 142595 // Selector
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 130179 "createDimmer"
+	public return_type class_ref 142723 // Dimmer
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+  end
+
+  classview 147587 "pac"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 147587 "pac"
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 149763 "PSynthPro"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 140803 // <generalisation>
+	relation 138243 ---|>
+	  a public
+	    classrelation_ref 140803 // <generalisation>
+	  b parent class_ref 149891 // QMainWindow
+      end
+
+      classrelation 141059 // controle (<association>)
+	relation_ref 138371 // <association>
+      end
+
+      classrelation 141443 // <composition>
+	relation_ref 138627 // <composition>
+      end
+
+      classrelation 141571 // <composition>
+	relation 138755 *---
+	  a role_name "" private
+	    classrelation_ref 141571 // <composition>
+	  b role_name "moduleView" private
+	    classrelation_ref 141699 // moduleView (<composition>)
+	ncouples 1
+	key "" value "			"
+      end
+    end
+
+    class 149891 "QMainWindow"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 150019 "QGraphicView"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 150147 "ModuleView"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 141315 // <composition>
+	relation 138627 *---
+	  a role_name "" private
+	    classrelation_ref 141315 // <composition>
+	  b role_name "" private
+	    classrelation_ref 141443 // <composition>
+      end
+
+      classrelation 141699 // moduleView (<composition>)
+	relation_ref 138755 // <composition>
+      end
+
+      classrelation 142083 // scene (<unidirectional association>)
+	relation 139011 --->
+	  a role_name "scene" private
+	    classrelation_ref 142083 // scene (<unidirectional association>)
+	  b parent class_ref 150275 // QGraphicScene
+      end
+
+      classrelation 143491 // <generalisation>
+	relation 140291 ---|>
+	  a public
+	    classrelation_ref 143491 // <generalisation>
+	  b parent class_ref 150019 // QGraphicView
+      end
+    end
+
+    class 150275 "QGraphicScene"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 141955 // <association>
+	relation_ref 138883 // <association>
+      end
+    end
+
+    class 150403 "CModule"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142339 // <generalisation>
+	relation 139267 ---|>
+	  a public
+	    classrelation_ref 142339 // <generalisation>
+	  b parent class_ref 141699 // Module
+      end
+
+    end
+
+    class 150531 "QGraphicItem"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 150659 "PModule"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142211 // <generalisation>
+	relation 139139 ---|>
+	  a public
+	    classrelation_ref 142211 // <generalisation>
+	  b parent class_ref 150531 // QGraphicItem
+      end
+    end
+
+    class 150787 "CCVO"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142979 // <generalisation>
+	relation 139779 ---|>
+	  a public
+	    classrelation_ref 142979 // <generalisation>
+	  b parent class_ref 150403 // CModule
+      end
+    end
+
+    class 150915 "PCVO"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 143107 // <generalisation>
+	relation 139907 ---|>
+	  a public
+	    classrelation_ref 143107 // <generalisation>
+	  b parent class_ref 150659 // PModule
+      end
+    end
+
+    class 151043 "PCVF"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 143235 // <generalisation>
+	relation 140035 ---|>
+	  a public
+	    classrelation_ref 143235 // <generalisation>
+	  b parent class_ref 150659 // PModule
+      end
+    end
+
+    class 151171 "CCVF"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 143363 // <generalisation>
+	relation 140163 ---|>
+	  a public
+	    classrelation_ref 143363 // <generalisation>
+	  b parent class_ref 150403 // CModule
+      end
+    end
+
+    classdiagram 147715 "pacPort"
+      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 151299 "CPort"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 143619 // <generalisation>
+	relation 140419 ---|>
+	  a public
+	    classrelation_ref 143619 // <generalisation>
+	  b parent class_ref 141827 // Port
+      end
+
+      classrelation 144003 // <association>
+	relation_ref 140675 // <association>
+      end
+    end
+
+    class 151427 "PPort"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 143747 // <generalisation>
+	relation 140547 ---|>
+	  a public
+	    classrelation_ref 143747 // <generalisation>
+	  b parent class_ref 150531 // QGraphicItem
+      end
+
+      classrelation 143875 // <association>
+	relation 140675 ----
+	  a role_name "" private
+	    classrelation_ref 143875 // <association>
+	  b role_name "" private
+	    classrelation_ref 144003 // <association>
+      end
+    end
+  end
+end
