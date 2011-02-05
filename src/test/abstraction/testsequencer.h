@@ -12,6 +12,7 @@ private slots:
     void testSortTwoWells();
     void testSortNoWell();
     void testSortMixer();
+    void testVCOAndSerializer();
 };
 
 
