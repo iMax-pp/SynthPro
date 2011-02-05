@@ -97,6 +97,7 @@ void TestSequencer::testSortTwoWells()
 
     QVERIFY(result.startsWith('1'));
     QVERIFY(result.endsWith('4'));
+    QCOMPARE(result.length(), 4);
 }
 
 /**
