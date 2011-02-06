@@ -30,6 +30,7 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/coutport.h \
     src/main/abstraction/wavegeneratortriangle.h \
     src/main/abstraction/wavegeneratorsaw.h \
+    src/main/abstraction/wavegeneratorsinus.h \
     src/main/presentation/pchannel.h \
     src/main/control/cchannel.h
 
@@ -58,6 +59,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/coutport.cpp \
     src/main/abstraction/wavegeneratortriangle.cpp \
     src/main/abstraction/wavegeneratorsaw.cpp \
+    src/main/abstraction/wavegeneratorsinus.cpp \
     src/main/presentation/pchannel.cpp \
     src/main/control/cchannel.cpp
 
