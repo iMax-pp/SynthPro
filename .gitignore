@@ -3,5 +3,7 @@
 *.o
 *.pro.user*
 *.pyc
-Makefile
+*.xcodeproj
 bin
+Info.plist
+Makefile
