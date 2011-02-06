@@ -1,5 +1,6 @@
 #include "psynthpro.h"
 
+#include "control/csynthpro.h"
 #include "moduleview.h"
 
 #include <QAction>
@@ -12,8 +13,9 @@
 #include <QStatusBar>
 #include <QToolBar>
 
-PSynthPro::PSynthPro()
+PSynthPro::PSynthPro(CSynthPro* control)
     : QMainWindow()
+    , m_control(control)
 {
     initUI();
     setMinimumSize(640, 480);
@@ -22,6 +24,11 @@ PSynthPro::PSynthPro()
 void PSynthPro::setGraphicsScene(QGraphicsScene* scene)
 {
     m_moduleView->setScene(scene);
+}
+
+CSynthPro* PSynthPro::control() const
+{
+    return m_control;
 }
 
 void PSynthPro::promptNew()
@@ -123,6 +130,6 @@ void PSynthPro::createDocks()
 
 void PSynthPro::createGraphicsView()
 {
-    m_moduleView = new ModuleView(this);
+    m_moduleView = new ModuleView(this, control());
     setCentralWidget(m_moduleView);
 }

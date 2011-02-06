@@ -10,8 +10,9 @@ public:
     ModuleView(QWidget* parent = 0, CSynthPro* = 0);
 
 protected:
-    virtual void dragEnterEvent(QDragEnterEvent*);
-    virtual void dropEvent(QDropEvent*);
+    void dragEnterEvent(QDragEnterEvent*);
+    void dragMoveEvent(QDragMoveEvent*);
+    void dropEvent(QDropEvent*);
 
 private:
     CSynthPro* m_cSynthPro;

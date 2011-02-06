@@ -6,6 +6,8 @@
 PModule::PModule()
     : QGraphicsRectItem(0)
 {
+    setFlag(ItemIsMovable);
+
     setRect(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT);
     setPen(QPen(Qt::darkGreen));
     setBrush(QBrush(Qt::darkCyan));

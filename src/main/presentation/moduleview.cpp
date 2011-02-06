@@ -1,7 +1,7 @@
 #include "moduleview.h"
 
 #include "control/csynthpro.h"
-#include <QDragEnterEvent>
+#include <QDropEvent>
 
 ModuleView::ModuleView(QWidget* parent, CSynthPro* cSynthPro)
     : QGraphicsView(parent)
@@ -13,17 +13,25 @@ ModuleView::ModuleView(QWidget* parent, CSynthPro* cSynthPro)
 void ModuleView::dragEnterEvent(QDragEnterEvent* event)
 {
     if (event->mimeData()->hasText()) {
-        // TODO A feedback on drag enter in the graphics view?
-        event->acceptProposedAction();
+        event->accept();
+    } else {
+        event->ignore();
     }
 }
 
 void ModuleView::dropEvent(QDropEvent* event)
 {
-    if (m_cSynthPro) {
+    if (m_cSynthPro && event->mimeData()->hasText()) {
         QString moduleType = event->mimeData()->text();
         m_cSynthPro->addModule(moduleType, event->pos());
+        event->accept();
+    } else {
+        event->ignore();
     }
+}
 
-    event->acceptProposedAction();
+void ModuleView::dragMoveEvent(QDragMoveEvent* event)
+{
+    QGraphicsView::dragMoveEvent(event);
+    event->accept();
 }

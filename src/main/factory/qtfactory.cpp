@@ -8,7 +8,7 @@
 SynthPro* QtFactory::createSynthPro()
 {
     CSynthPro* synthpro = new CSynthPro();
-    PSynthPro* gui = new PSynthPro();
+    PSynthPro* gui = new PSynthPro(synthpro);
 
     synthpro->setPresentation(gui);
     gui->show();

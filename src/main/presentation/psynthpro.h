@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+class CSynthPro;
 class ModuleView;
 class QGraphicsScene;
 
@@ -10,10 +11,13 @@ class PSynthPro : public QMainWindow {
     Q_OBJECT
 
 public:
-    PSynthPro();
+    PSynthPro(CSynthPro*);
 
     // Set the graphics scene for the module view.
     void setGraphicsScene(QGraphicsScene*);
+
+    // Returns the associated control.
+    CSynthPro* control() const;
 
 protected slots:
     // Ask if you REAAALLLYYY want to start a new project.
@@ -29,6 +33,8 @@ private:
     void createMainToolBar();
     void createDocks();
     void createGraphicsView();
+
+    CSynthPro* m_control;
 
     // UI Actions.
     QAction* m_newAct;
