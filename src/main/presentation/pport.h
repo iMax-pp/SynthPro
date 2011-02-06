@@ -1,9 +1,9 @@
 #ifndef PPORT_H
 #define PPORT_H
 
-#include <QGraphicsLineItem>
+#include <QGraphicsEllipseItem>
 
-class PPort : public QGraphicsLineItem {
+class PPort : public QGraphicsEllipseItem {
 public:
     PPort(QGraphicsItem* parent = 0);
 };
