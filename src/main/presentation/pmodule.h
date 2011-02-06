@@ -6,6 +6,10 @@
 class PModule : public QGraphicsRectItem {
 public:
     PModule(QGraphicsItem* parent = 0);
+
+protected:
+    static const qreal DEFAULT_WIDTH = 150;
+    static const qreal DEFAULT_HEIGHT = 100;
 };
 
 #endif // PMODULE_H
