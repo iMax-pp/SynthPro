@@ -5,7 +5,7 @@
 
 class PPort : public QGraphicsEllipseItem {
 public:
-    PPort(QGraphicsItem* parent = 0);
+    PPort(QGraphicsItem* parent);
 };
 
 #endif // PPORT_H

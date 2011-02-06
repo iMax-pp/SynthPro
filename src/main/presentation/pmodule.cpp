@@ -3,8 +3,8 @@
 #include <QBrush>
 #include <QPen>
 
-PModule::PModule(QGraphicsItem* parent)
-    : QGraphicsRectItem(parent)
+PModule::PModule()
+    : QGraphicsRectItem(0)
 {
     setRect(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT);
     setPen(QPen(Qt::darkGreen));

@@ -5,7 +5,7 @@
 
 class PModule : public QGraphicsRectItem {
 public:
-    PModule(QGraphicsItem* parent = 0);
+    PModule();
 
 protected:
     static const qreal DEFAULT_WIDTH = 150;
