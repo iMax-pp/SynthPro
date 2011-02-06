@@ -27,7 +27,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/presentation/pport.h \
     src/main/control/cport.h \
     src/main/control/cinport.h \
-    src/main/control/coutport.h
+    src/main/control/coutport.h \
+    src/main/abstraction/wavegeneratortriangle.h \
+    src/main/abstraction/wavegeneratorsaw.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -51,7 +53,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/pport.cpp \
     src/main/control/cport.cpp \
     src/main/control/cinport.cpp \
-    src/main/control/coutport.cpp
+    src/main/control/coutport.cpp \
+    src/main/abstraction/wavegeneratortriangle.cpp \
+    src/main/abstraction/wavegeneratorsaw.cpp
 
 INCLUDEPATH += src/main/
 
