@@ -19,7 +19,7 @@ PSynthPro::PSynthPro(CSynthPro* control)
     , m_control(control)
 {
     initUI();
-    setMinimumSize(800, 600);
+    setMinimumSize(1024, 600);
 }
 
 void PSynthPro::setGraphicsScene(QGraphicsScene* scene)
@@ -141,7 +141,9 @@ void PSynthPro::createGraphicsView()
 void PSynthPro::createModuleList()
 {
     QListWidget* moduleList = new QListWidget(m_moduleDock);
-    moduleList->setSelectionMode(QListWidget::NoSelection);
+    moduleList->setSelectionMode(QListWidget::SingleSelection);
+    moduleList->setDragEnabled(true);
+    moduleList->setDragDropMode(QAbstractItemView::DragOnly);
 
     new QListWidgetItem(tr("VCO"), moduleList);
     new QListWidgetItem(tr("VCF"), moduleList);
@@ -154,7 +156,9 @@ void PSynthPro::createModuleList()
 void PSynthPro::createInputModuleList()
 {
     QListWidget* inModuleList = new QListWidget(m_inModuleDock);
-    inModuleList->setSelectionMode(QListWidget::NoSelection);
+    inModuleList->setSelectionMode(QListWidget::SingleSelection);
+    inModuleList->setDragEnabled(true);
+    inModuleList->setDragDropMode(QAbstractItemView::DragOnly);
 
     new QListWidgetItem(tr("Keyboard"), inModuleList);
 
@@ -164,7 +168,9 @@ void PSynthPro::createInputModuleList()
 void PSynthPro::createOutputModuleList()
 {
     QListWidget* outModuleList = new QListWidget(m_outModuleDock);
-    outModuleList->setSelectionMode(QListWidget::NoSelection);
+    outModuleList->setSelectionMode(QListWidget::SingleSelection);
+    outModuleList->setDragEnabled(true);
+    outModuleList->setDragDropMode(QAbstractItemView::DragOnly);
 
     new QListWidgetItem(tr("Audio Output"), outModuleList);
     new QListWidgetItem(tr("File"), outModuleList);
