@@ -29,7 +29,7 @@ void WaveGeneratorTriangle::generate(const Buffer* bufferIn, Buffer* bufferOut)
 
             // Calculate the step of the frequency. *4 because we need
             // to find a period that incorporates two phases, including
-            // above and under the 0.
+            // above and under the 0, and the "up" and "down" slope.
             qreal maximumStep = VCO::REPLAY_FREQUENCY / (frequency * 4);
 
             // Calculate the slope of the triangle.
