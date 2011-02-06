@@ -4,6 +4,7 @@
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
 #include "abstraction/outport.h"
+#include "audiodeviceprovider.h"
 
 class WaveGenerator;
 
@@ -28,7 +29,7 @@ public:
 
     static const qreal SIGNAL_INTENSITY = 20000;
     static const qreal F0 = 261.626; // Frequency of the C4.
-    static const qreal REPLAY_FREQUENCY = 44100; // We consider it won't change.
+    static const qreal REPLAY_FREQUENCY = AudioDeviceProvider::OUTPUT_FREQUENCY;
 
 protected:
 
