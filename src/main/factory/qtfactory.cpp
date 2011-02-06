@@ -1,5 +1,6 @@
 #include "qtfactory.h"
 
+#include "abstraction/sequencer.h"
 #include "abstraction/vco.h"
 #include "control/cinport.h"
 #include "control/coutport.h"
@@ -54,6 +55,12 @@ OutPort* QtFactory::createOutPortGate(Module* parent)
 
 VCO* QtFactory::createVCO()
 {
-    VCO* vco = new VCO();
+    VCO* vco = new VCO(this);
     return vco;
+}
+
+Sequencer* QtFactory::createSequencer(SynthPro *parent)
+{
+    Sequencer* sequencer = new Sequencer(parent);
+    return sequencer;
 }
