@@ -8,7 +8,7 @@
 WaveGeneratorTriangle::WaveGeneratorTriangle()
     : m_slope(0)
     , m_intensity(0)
-    , m_currentSignalTension(-1)
+    , m_currentSignalTension(-1000)
 {
 }
 

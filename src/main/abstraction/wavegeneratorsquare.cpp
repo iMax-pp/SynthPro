@@ -9,7 +9,7 @@ WaveGeneratorSquare::WaveGeneratorSquare()
     : m_intensity(VCO::SIGNAL_INTENSITY)
     , m_currentStep(0)
     , m_maximumStep(100)
-    , m_currentSignalTension(-1)
+    , m_currentSignalTension(-1000)
 {
 }
 
