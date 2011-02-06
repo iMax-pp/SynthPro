@@ -4,6 +4,7 @@
 class InPort;
 class Module;
 class OutPort;
+class Sequencer;
 class SynthPro;
 class VCO;
 
@@ -17,6 +18,7 @@ public:
     virtual OutPort* createOutPortReplicable(Module* parent) = 0;
     virtual OutPort* createOutPortGate(Module* parent) = 0;
     virtual VCO* createVCO() = 0;
+    virtual Sequencer* createSequencer(SynthPro* parent) = 0;
 };
 
 #endif // SYNTHPROFACTORY_H

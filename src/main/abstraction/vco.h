@@ -6,12 +6,13 @@
 #include "abstraction/outport.h"
 
 class WaveGenerator;
+class SynthProFactory;
 
 class VCO : public Module {
     Q_OBJECT
 
 public:
-    VCO(QObject* parent = 0);
+    VCO(SynthProFactory* factory, QObject* parent = 0);
     ~VCO();
 
     /**
@@ -33,13 +34,8 @@ public:
 protected:
 
     WaveGenerator* m_waveGenerator;
-    InPort m_vfm;
-    OutPort m_out;
-
-    /*
-     * Initialization of the VCO
-     */
-    void init();
+    InPort *m_vfm;
+    OutPort *m_out;
 };
 
 #endif // VCO_H

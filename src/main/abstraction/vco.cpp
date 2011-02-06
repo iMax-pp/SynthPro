@@ -1,18 +1,21 @@
 #include "vco.h"
 
-#include "inport.h"
-#include "outport.h"
-#include "wavegenerator.h"
+#include "abstraction/inport.h"
+#include "abstraction/outport.h"
+#include "abstraction/wavegenerator.h"
+#include "factory/synthprofactory.h"
 
-VCO::VCO(QObject* parent)
+VCO::VCO(SynthProFactory* factory, QObject* parent)
     : Module(parent)
     , m_waveGenerator(0)
-    , m_vfm(this)
-    , m_out(this)
+    , m_vfm(0)
+    , m_out(0)
 {
-    m_inports.append(&m_vfm);
-    m_outports.append(&m_out);
-    init();
+    m_vfm = factory->createInPortReplicable(this);
+    m_inports.append(m_vfm);
+
+    m_out = factory->createOutPortReplicable(this);
+    m_outports.append(m_out);
 }
 
 VCO::~VCO()
@@ -25,8 +28,8 @@ VCO::~VCO()
 void VCO::process()
 {
     fetchInput();
-    m_out.swapBuffers();
-    m_waveGenerator->generate(m_vfm.buffer(), m_out.buffer());
+    m_out->swapBuffers();
+    m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());
 }
 
 void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
@@ -35,8 +38,4 @@ void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
         delete m_waveGenerator;
     }
     m_waveGenerator = waveGenerator;
-}
-
-void VCO::init()
-{
 }
