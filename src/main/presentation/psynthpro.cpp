@@ -7,6 +7,7 @@
 #include <QApplication>
 #include <QDockWidget>
 #include <QGraphicsScene>
+#include <QListWidget>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -18,7 +19,7 @@ PSynthPro::PSynthPro(CSynthPro* control)
     , m_control(control)
 {
     initUI();
-    setMinimumSize(640, 480);
+    setMinimumSize(800, 600);
 }
 
 void PSynthPro::setGraphicsScene(QGraphicsScene* scene)
@@ -57,8 +58,11 @@ void PSynthPro::initUI()
     createMenus();
     createMainToolBar();
 
-    // Create Module Dock
+    // Create Module Docks
     createDocks();
+    createModuleList();
+    createInputModuleList();
+    createOutputModuleList();
 
     // Create QGraphicsView
     createGraphicsView();
@@ -132,4 +136,38 @@ void PSynthPro::createGraphicsView()
 {
     m_moduleView = new ModuleView(this, control());
     setCentralWidget(m_moduleView);
+}
+
+void PSynthPro::createModuleList()
+{
+    QListWidget* moduleList = new QListWidget(m_moduleDock);
+    moduleList->setSelectionMode(QListWidget::NoSelection);
+
+    new QListWidgetItem(tr("VCO"), moduleList);
+    new QListWidgetItem(tr("VCF"), moduleList);
+    new QListWidgetItem(tr("VCA"), moduleList);
+    new QListWidgetItem(tr("ADSR"), moduleList);
+
+    m_moduleDock->setWidget(moduleList);
+}
+
+void PSynthPro::createInputModuleList()
+{
+    QListWidget* inModuleList = new QListWidget(m_inModuleDock);
+    inModuleList->setSelectionMode(QListWidget::NoSelection);
+
+    new QListWidgetItem(tr("Keyboard"), inModuleList);
+
+    m_inModuleDock->setWidget(inModuleList);
+}
+
+void PSynthPro::createOutputModuleList()
+{
+    QListWidget* outModuleList = new QListWidget(m_outModuleDock);
+    outModuleList->setSelectionMode(QListWidget::NoSelection);
+
+    new QListWidgetItem(tr("Audio Output"), outModuleList);
+    new QListWidgetItem(tr("File"), outModuleList);
+
+    m_outModuleDock->setWidget(outModuleList);
 }

@@ -34,6 +34,10 @@ private:
     void createDocks();
     void createGraphicsView();
 
+    void createModuleList();
+    void createInputModuleList();
+    void createOutputModuleList();
+
     CSynthPro* m_control;
 
     // UI Actions.
