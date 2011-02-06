@@ -5,7 +5,7 @@
 
 class PChannel : public QGraphicsLineItem {
 public:
-    PChannel(QGraphicsItem* parent);
+    PChannel();
 };
 
 #endif // PCHANNEL_H
