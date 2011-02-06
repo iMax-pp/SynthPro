@@ -6,13 +6,13 @@
 
 class QGraphicsScene;
 
-class CSynthPro : public SynthPro {
+class CSynthPro : virtual public SynthPro {
 public:
     CSynthPro();
     virtual ~CSynthPro();
 
     void setPresentation(PSynthPro*);
-    PSynthPro* getPresentation() const;
+    PSynthPro* presentation() const;
 
     void addModule(QString& moduleType, QPoint);
 

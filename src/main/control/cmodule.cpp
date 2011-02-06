@@ -22,7 +22,7 @@ void CModule::setPresentation(PModule* presentation)
     m_presentation = presentation;
 }
 
-PModule* CModule::getPresentation() const
+PModule* CModule::presentation() const
 {
     return m_presentation;
 }

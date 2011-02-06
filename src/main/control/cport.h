@@ -4,13 +4,14 @@
 #include "abstraction/port.h"
 #include "presentation/pport.h"
 
-class CPort : public Port {
+class CPort /*: virtual public Port*/ {
 public:
-    CPort(Module* parent = 0, bool replicable = false, bool gate = false);
+    // CPort(Module* parent, bool replicable = false, bool gate = false);
+    CPort();
     virtual ~CPort();
 
     void setPresentation(PPort*);
-    PPort* getPresentation() const;
+    PPort* presentation() const;
 
 private:
     PPort* m_presentation;

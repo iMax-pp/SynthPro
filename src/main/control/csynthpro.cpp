@@ -29,7 +29,7 @@ void CSynthPro::setPresentation(PSynthPro* presentation)
     m_presentation->setGraphicsScene(m_graphicsScene);
 }
 
-PSynthPro* CSynthPro::getPresentation() const
+PSynthPro* CSynthPro::presentation() const
 {
     return m_presentation;
 }

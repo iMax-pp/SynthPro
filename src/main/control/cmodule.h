@@ -5,13 +5,13 @@
 #include "abstraction/module.h"
 #include "presentation/pmodule.h"
 
-class CModule :public Module {
+class CModule : virtual public Module {
 public:
     CModule(QObject* parent = 0);
     virtual ~CModule();
 
     void setPresentation(PModule*);
-    PModule* getPresentation() const;
+    PModule* presentation() const;
 
 private:
     PModule* m_presentation;

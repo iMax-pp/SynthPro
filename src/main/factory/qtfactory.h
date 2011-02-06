@@ -5,7 +5,14 @@
 
 class QtFactory : public SynthProFactory {
 public:
-    virtual SynthPro* createSynthPro();
+    SynthPro* createSynthPro();
+    InPort* createInPort(Module* parent);
+    InPort* createInPortReplicable(Module* parent);
+    InPort* createInPortGate(Module* parent);
+    OutPort* createOutPort(Module* parent);
+    OutPort* createOutPortReplicable(Module* parent);
+    OutPort* createOutPortGate(Module* parent);
+    VCO* createVCO();
 };
 
 #endif // QTFACTORY_H

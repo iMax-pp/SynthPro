@@ -1,9 +1,14 @@
 #include "cport.h"
 
-CPort::CPort(Module* parent, bool replicable, bool gate)
+/*CPort::CPort(Module* parent, bool replicable, bool gate)
     : Port(parent, replicable, gate)
     , m_presentation(0)
 {
+}*/
+CPort::CPort()
+    : m_presentation(0)
+{
+
 }
 
 CPort::~CPort()
@@ -22,7 +27,7 @@ void CPort::setPresentation(PPort* presentation)
     m_presentation = presentation;
 }
 
-PPort* CPort::getPresentation() const
+PPort* CPort::presentation() const
 {
     return m_presentation;
 }
