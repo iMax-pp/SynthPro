@@ -4,8 +4,9 @@
 #include "abstraction/testsequencer.h"
 #include "abstraction/testvco.h"
 #include "abstraction/testwavegeneratorempty.h"
-#include "abstraction/testwavegeneratortriangle.h"
+#include "abstraction/testwavegeneratorsaw.h"
 #include "abstraction/testwavegeneratorsquare.h"
+#include "abstraction/testwavegeneratortriangle.h"
 
 int main()
 {
@@ -32,4 +33,7 @@ int main()
 
     TestWaveGeneratorSquare testWaveGeneratorSquare;
     QTest::qExec(&testWaveGeneratorSquare);
+
+    TestWaveGeneratorSaw testWaveGeneratorSaw;
+    QTest::qExec(&testWaveGeneratorSaw);
 }
