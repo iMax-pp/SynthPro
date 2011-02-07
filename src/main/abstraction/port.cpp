@@ -17,9 +17,9 @@ bool Port::available() const
     return m_replicable || m_connections.size() == 0;
 }
 
-bool Port::compatible(const Port *other) const
+bool Port::compatible(const Port* other) const
 {
-     return other->out() != out() && other->gate() == gate();
+    return other->out() != out() && other->gate() == gate();
 }
 
 bool Port::connectable(const Port* other) const

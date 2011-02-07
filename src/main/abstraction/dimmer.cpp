@@ -1,6 +1,6 @@
 #include "dimmer.h"
 
-Dimmer::Dimmer(qreal min, qreal max, qreal defaultValue, QObject *parent)
+Dimmer::Dimmer(qreal min, qreal max, qreal defaultValue, QObject* parent)
     : QObject(parent)
     , m_min(min)
     , m_max(max)

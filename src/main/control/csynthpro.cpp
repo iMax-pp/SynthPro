@@ -40,6 +40,7 @@ PSynthPro* CSynthPro::presentation() const
 void CSynthPro::add(Module* module)
 {
     CModule* cModule = dynamic_cast<CModule*>(module);
+
     if (cModule) {
         SynthPro::add(module);
 
