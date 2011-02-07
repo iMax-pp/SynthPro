@@ -17,7 +17,7 @@ VCO::VCO(QObject* parent)
 {
 }
 
-void VCO::init(SynthProFactory* factory)
+void VCO::initialize(SynthProFactory* factory)
 {
     qDebug("VCO::init Creation of vfm port in the VCO");
     m_vfm = factory->createInPortReplicable(this);

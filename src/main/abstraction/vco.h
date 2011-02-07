@@ -19,7 +19,7 @@ public:
     virtual ~VCO();
 
     // Initialize the VCO (creates its ports using the factory)
-    virtual void init(SynthProFactory*);
+    virtual void initialize(SynthProFactory*);
 
     /**
      * Process its job : put a buffer in its outPort
@@ -33,7 +33,7 @@ public:
      */
     void setWaveGenerator(WaveGenerator*);
 
-    Dimmer* dimmer();
+    Dimmer* dimmer(); // FIXME I don’t think it’s a good idea to expose this dimmer to the outside
 
     static const qreal SIGNAL_INTENSITY = 20000;
     static const qreal F0 = 261.626; // Frequency of the C4.

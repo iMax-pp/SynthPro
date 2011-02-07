@@ -90,7 +90,7 @@ VCO* QtFactory::createVCO()
     vco->setPresentation(p);
 
     // Initialize it (ports creation)
-    vco->init(this);
+    vco->initialize(this);
 
     return vco;
 }

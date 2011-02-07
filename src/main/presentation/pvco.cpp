@@ -7,6 +7,9 @@
 
 PVCO::PVCO()
 {
+    // TODO move all that code below to the initialize method, using a PDimmer
+    // and a PSelector (injected as parameters) instead of QDials.
+
     // Resize PVCO to integrate the Components nicely.
     setRect(0, 0, 200, 150);
 
@@ -35,4 +38,10 @@ PVCO::PVCO()
     m_kSelector->setWidget(kSelector);
     m_kSelector->setPos(120, 90);
     m_kSelector->setMaximumSize(50, 50);
+}
+
+void PVCO::initialize(PPort* vfm, PPort* out)
+{
+    vfm->setPos(0, 70); // Yes, absolute positioning is bad.
+    out->setPos(200, 70);
 }
