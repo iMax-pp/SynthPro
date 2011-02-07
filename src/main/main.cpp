@@ -1,5 +1,6 @@
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
+#include "abstraction/wavegeneratordummy.h"
 #include "factory/qtfactory.h"
 
 #include <QtGui>
@@ -10,11 +11,16 @@ int main(int argc, char* argv[])
     SynthProFactory* factory = new QtFactory();
     SynthPro* synthpro = factory->createSynthPro();
 
-    synthpro->add(factory->createVCO());
+    VCO* vco = factory->createVCO();
+    vco->setWaveGenerator(new WaveGeneratorDummy());
+    synthpro->add(vco);
+
+    vco->process();
 
     int result = app.exec();
 
     delete synthpro;
+    delete vco;
 
     return result;
 }
