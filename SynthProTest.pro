@@ -27,6 +27,8 @@ HEADERS += \
     src/test/abstraction/mockserializerwell.h \
     src/main/factory/synthprofactory.h \
     src/main/factory/simplefactory.h \
+    src/main/abstraction/modulebufferrecorder.h \
+    src/test/abstraction/testmodulebufferrecorder.h \
     src/test/abstraction/testwavegeneratorempty.h
 
 SOURCES += src/test/test.cpp \
@@ -49,6 +51,8 @@ SOURCES += src/test/test.cpp \
     src/main/abstraction/wavegeneratorempty.cpp \
     src/test/abstraction/mockserializerwell.cpp \
     src/main/factory/simplefactory.cpp \
+    src/main/abstraction/modulebufferrecorder.cpp \
+    src/test/abstraction/testmodulebufferrecorder.cpp \
     src/test/abstraction/testwavegeneratorempty.cpp
 
 INCLUDEPATH += src/main/ src/test/

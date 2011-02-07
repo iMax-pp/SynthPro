@@ -14,6 +14,9 @@ public:
     OutPort* createOutPortGate(Module* parent);
     VCO* createVCO();
     Sequencer* createSequencer(SynthPro* parent);
+    Dimmer* createKDimmer(qreal, qreal, qreal, Module* parent);
+    ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving);
+
 };
 
 #endif // QTFACTORY_H

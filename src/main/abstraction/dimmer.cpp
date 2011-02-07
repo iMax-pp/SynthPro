@@ -1,6 +1,6 @@
 #include "dimmer.h"
 
-Dimmer::Dimmer(float min, float max, float defaultValue, QObject *parent)
+Dimmer::Dimmer(qreal min, qreal max, qreal defaultValue, QObject *parent)
     : QObject(parent)
     , m_min(min)
     , m_max(max)
@@ -9,12 +9,12 @@ Dimmer::Dimmer(float min, float max, float defaultValue, QObject *parent)
 {
 }
 
-float Dimmer::value()
+qreal Dimmer::value() const
 {
     return m_value;
 }
 
-void Dimmer::setValue(float value)
+void Dimmer::setValue(qreal value)
 {
     m_value = value;
 }

@@ -1,5 +1,6 @@
 #include "qtfactory.h"
 
+#include "abstraction/dimmer.h"
 #include "abstraction/sequencer.h"
 #include "control/cinport.h"
 #include "control/coutport.h"
@@ -66,3 +67,14 @@ Sequencer* QtFactory::createSequencer(SynthPro *parent)
     Sequencer* sequencer = new Sequencer(parent);
     return sequencer;
 }
+
+Dimmer* QtFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module *parent)
+{
+    return new Dimmer(min, max, kDefault, parent);
+}
+ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
+{
+    // TODO
+    return 0;
+}
+

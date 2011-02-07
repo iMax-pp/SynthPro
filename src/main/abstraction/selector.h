@@ -9,7 +9,7 @@ class Selector : public QObject {
     Q_OBJECT
 public:
     Selector(QList<int>, int, QObject* parent = 0);
-    int choice();
+    int choice() const;
     void setChoice(int);
 
 private:
