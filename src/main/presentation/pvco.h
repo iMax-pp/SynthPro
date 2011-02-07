@@ -10,6 +10,7 @@ public:
 
 private:
     QGraphicsProxyWidget* m_waveSelector;
+    QGraphicsProxyWidget* m_kSelector;
 };
 
 #endif // PVCO_H
