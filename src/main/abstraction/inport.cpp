@@ -26,7 +26,8 @@ Buffer* InPort::buffer()
 void InPort::fetch()
 {
     m_buffer->clear();
-    for (int i = 0 ; i < m_buffer->length() ; i++) {
+
+    for (int i = 0; i < m_buffer->length(); i++) {
         foreach (Port* connected, connections()) {
             m_buffer->data()[i] += connected->buffer()->data()[i];
         }

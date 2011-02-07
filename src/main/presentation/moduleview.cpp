@@ -8,6 +8,7 @@ ModuleView::ModuleView(QWidget* parent, CSynthPro* cSynthPro)
     : QGraphicsView(parent)
     , m_cSynthPro(cSynthPro)
 {
+    setDragMode(QGraphicsView::ScrollHandDrag);
     setAcceptDrops(true);
 }
 
@@ -23,8 +24,8 @@ void ModuleView::dragEnterEvent(QDragEnterEvent* event)
 void ModuleView::dropEvent(QDropEvent* event)
 {
     if (m_cSynthPro && event->mimeData()->hasFormat("application/x-synthpro")) {
-        QtFactory::ModuleType moduleType = (QtFactory::ModuleType) event->mimeData()->data("application/x-synthpro").toInt();
-        m_cSynthPro->addModule(moduleType, event->pos());
+        QtFactory::ModuleType moduleType = static_cast<QtFactory::ModuleType>(event->mimeData()->data("application/x-synthpro").toInt());
+        m_cSynthPro->addModule(moduleType, mapToScene(event->pos()));
         event->accept();
     } else {
         event->ignore();

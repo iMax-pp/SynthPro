@@ -23,6 +23,7 @@ void WaveGeneratorSaw::generate(const Buffer* bufferIn, Buffer* bufferOut)
         // Test if the current frequency is the same as before.
         // If yes, recalculate the output frequency.
         qreal val = dataIn[i];
+
         if (m_currentSignalTension != val) {
             m_currentSignalTension = val;
             // Convert a tension into a frequency.

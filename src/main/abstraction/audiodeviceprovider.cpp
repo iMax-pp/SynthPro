@@ -16,6 +16,7 @@ AudioDeviceProvider::AudioDeviceProvider()
 AudioDeviceProvider::~AudioDeviceProvider()
 {
     stop();
+
     if (m_audioOutput) {
         delete m_audioOutput;
     }
@@ -46,6 +47,7 @@ bool AudioDeviceProvider::initializeAudioOutput()
 
         // Search for the first output that satisfies the requested output format.
         int i = 0, size = outputDevices.count();
+
         while (!result && i < size) {
             audioDevice = outputDevices.at(i);
 
