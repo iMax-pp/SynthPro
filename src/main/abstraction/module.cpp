@@ -13,7 +13,7 @@ Module::~Module()
 
 }
 
-const QList<Module*> Module::getReguirements() const
+const QList<Module*> Module::requirements() const
 {
     m_requirements.clear();
 

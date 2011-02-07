@@ -38,16 +38,23 @@ date : semaine 6 - 2011
     - (Test unitaire sur ModuleBufferRecorder;)
     - Horloge et module Out.
 - Maxime :
-    - Gestion drag'n'drop et instanciation des composants.
-    - Gestion héritage "en diamant".
+    - Gestion drag'n'drop et instanciation des composants;
+    - Gestion héritage "en diamant";
 - Julien RF :
 - Cyrille :
-    - Réglages (potard et selecteur)
+    - Réglages (potard et selecteur);
+    - Intégration réglages dans VCO;
+    - VCA;
 
 Roadmap (todo)
+---------
 - VCA (juste une multiplication)
 - VCF
 - adsr
 - Keyboard virtuel
 - Oscillo
 - Items graphiques (VCO, VCF, ports, output, cable)
+
+Tweaking
+----------
+- Optimiser InPort::fetch() (en deux passes).
