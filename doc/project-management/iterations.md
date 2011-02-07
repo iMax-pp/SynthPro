@@ -47,9 +47,14 @@ date : semaine 6 - 2011
     - VCA;
 
 Roadmap (todo)
+---------
 - VCA (juste une multiplication)
 - VCF
 - adsr
 - Keyboard virtuel
 - Oscillo
 - Items graphiques (VCO, VCF, ports, output, cable)
+
+Tweaking
+----------
+- Optimiser InPort::fetch() (en deux passes).
