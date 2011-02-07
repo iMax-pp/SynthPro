@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 8
+  revision 10
   modified_by 2 "julien"
 
 
@@ -141,7 +141,7 @@ format 74
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
     classdiagram 141059 "PSM-Abstraction"
-      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition yes show_members_visibility yes show_members_stereotype yes show_members_context default show_members_multiplicity yes show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir no show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language uml show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      draw_all_relations yes hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition yes show_members_visibility yes show_members_stereotype yes show_members_context default show_members_multiplicity yes show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir no show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language uml show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4-Landscape
     end
 
@@ -176,13 +176,6 @@ format 74
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 128387 // out (<unidirectional association>)
-	relation 128387 --->
-	  a role_name "out" multiplicity "*" const_relation private
-	    classrelation_ref 128387 // out (<unidirectional association>)
-	  b parent class_ref 142083 // OutPort
-      end
-
       classrelation 129539 // <composition>
 	relation_ref 129027 // <composition>
       end
@@ -201,7 +194,17 @@ format 74
 	  b parent class_ref 142083 // OutPort
       end
 
-      operation 128642 "process"
+      operation 136066 "process"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 128642 "ownProcess"
 	abstract cpp_virtual public explicit_return_type ""
 	nparams 0
 	
@@ -356,32 +359,8 @@ format 74
 	  b parent class_ref 141827 // Port
       end
 
-      classrelation 130947 // <composition>
-	relation 129923 *---
-	  a role_name "" private
-	    classrelation_ref 130947 // <composition>
-	  b role_name "" private
-	    classrelation_ref 131075 // <composition>
-      end
-
-      classrelation 131203 // <composition>
-	relation 130051 *---
-	  a role_name "" private
-	    classrelation_ref 131203 // <composition>
-	  b role_name "" private
-	    classrelation_ref 131331 // <composition>
-      end
-
       classrelation 131587 // <composition>
 	relation_ref 130179 // <composition>
-      end
-
-      classrelation 131715 // <composition>
-	relation 130307 *---
-	  a role_name "" private
-	    classrelation_ref 131715 // <composition>
-	  b role_name "" private
-	    classrelation_ref 131843 // <composition>
       end
 
       classrelation 132355 // <composition>
@@ -411,6 +390,23 @@ format 74
 	
 	
       end
+
+      operation 136194 "fetch"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 135298 // buffer (<directional composition>)
+	relation 135042 *-->
+	  a role_name "buffer" private
+	    classrelation_ref 135298 // buffer (<directional composition>)
+	  b parent class_ref 128002 // Buffer
+      end
     end
 
     class 142083 "OutPort"
@@ -431,14 +427,6 @@ format 74
 
       classrelation 130051 // <composition>
 	relation_ref 129411 // <composition>
-      end
-
-      classrelation 130435 // <composition>
-	relation 129667 *---
-	  a role_name "" private
-	    classrelation_ref 130435 // <composition>
-	  b role_name "" private
-	    classrelation_ref 130563 // <composition>
       end
 
       classrelation 130819 // <composition>
@@ -463,6 +451,13 @@ format 74
 	
 	
 	
+      end
+
+      classrelation 135042 // buffer (<directional composition>)
+	relation 134914 *-->
+	  a role_name "buffer" private
+	    classrelation_ref 135042 // buffer (<directional composition>)
+	  b parent class_ref 128002 // Buffer
       end
     end
 
@@ -560,14 +555,6 @@ format 74
 	    classrelation_ref 130051 // <composition>
       end
 
-      classrelation 131075 // <composition>
-	relation_ref 129923 // <composition>
-      end
-
-      classrelation 131331 // <composition>
-	relation_ref 130051 // <composition>
-      end
-
       classrelation 131459 // fm (<composition>)
 	relation 130179 *---
 	  a role_name "fm" private
@@ -599,6 +586,17 @@ format 74
 	  b role_name "" private
 	    classrelation_ref 133891 // <composition>
       end
+
+      operation 142722 "init"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "factory" type class_ref 143235 // Factory
+	
+	
+	
+	
+	
+      end
     end
 
     class 142467 "VCF"
@@ -617,20 +615,12 @@ format 74
 	  b parent class_ref 141699 // Module
       end
 
-      classrelation 130563 // <composition>
-	relation_ref 129667 // <composition>
-      end
-
       classrelation 130691 // out (<composition>)
 	relation 129795 *---
 	  a role_name "out" private
 	    classrelation_ref 130691 // out (<composition>)
 	  b role_name "" private
 	    classrelation_ref 130819 // <composition>
-      end
-
-      classrelation 131843 // <composition>
-	relation_ref 130307 // <composition>
       end
 
       classrelation 132227 // in (<composition>)
@@ -749,8 +739,8 @@ format 74
       operation 129411 "generate"
 	abstract cpp_virtual public explicit_return_type ""
 	nparams 2
-	  param in name "in" explicit_type "float[]"
-	  param in name "out" explicit_type "float[]"
+	  param in name "in" type class_ref 128002 // Buffer
+	  param inout name "out" type class_ref 128002 // Buffer
 	
 	
 	
@@ -1043,7 +1033,7 @@ format 74
       end
     end
 
-    class 150531 "QGraphicItem"
+    class 150531 "QGraphicsItem"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -1067,7 +1057,7 @@ format 74
 	relation 139139 ---|>
 	  a public
 	    classrelation_ref 142211 // <generalisation>
-	  b parent class_ref 150531 // QGraphicItem
+	  b parent class_ref 150531 // QGraphicsItem
       end
     end
 
@@ -1140,7 +1130,7 @@ format 74
     end
 
     classdiagram 147715 "pacPort"
-      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      draw_all_relations no hide_attributes yes hide_operations yes hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language uml show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4
     end
 
@@ -1160,7 +1150,7 @@ format 74
 	  b parent class_ref 141827 // Port
       end
 
-      classrelation 144003 // <association>
+      classrelation 144003 // presentation (<association>)
 	relation_ref 140675 // <association>
       end
     end
@@ -1178,15 +1168,63 @@ format 74
 	relation 140547 ---|>
 	  a public
 	    classrelation_ref 143747 // <generalisation>
-	  b parent class_ref 150531 // QGraphicItem
+	  b parent class_ref 150531 // QGraphicsItem
       end
 
-      classrelation 143875 // <association>
+      classrelation 143875 // control (<association>)
 	relation 140675 ----
-	  a role_name "" private
-	    classrelation_ref 143875 // <association>
-	  b role_name "" private
-	    classrelation_ref 144003 // <association>
+	  a role_name "control" private
+	    classrelation_ref 143875 // control (<association>)
+	  b role_name "presentation" private
+	    classrelation_ref 144003 // presentation (<association>)
+      end
+    end
+
+    class 134530 "CInPort"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 141826 // <generalisation>
+	relation 141570 ---|>
+	  a public
+	    classrelation_ref 141826 // <generalisation>
+	  b parent class_ref 151299 // CPort
+      end
+
+      classrelation 141954 // <generalisation>
+	relation 141698 ---|>
+	  a public
+	    classrelation_ref 141954 // <generalisation>
+	  b parent class_ref 141955 // InPort
+      end
+    end
+
+    class 134658 "COutPort"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142082 // <generalisation>
+	relation 141826 ---|>
+	  a public
+	    classrelation_ref 142082 // <generalisation>
+	  b parent class_ref 142083 // OutPort
+      end
+
+      classrelation 142210 // <generalisation>
+	relation 141954 ---|>
+	  a public
+	    classrelation_ref 142210 // <generalisation>
+	  b parent class_ref 151299 // CPort
       end
     end
   end
