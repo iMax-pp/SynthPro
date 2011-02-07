@@ -39,14 +39,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/modulebufferrecorder.h \
     src/main/abstraction/selector.h \
     src/main/abstraction/wavegeneratorempty.h \
-<<<<<<< HEAD
-    src/main/abstraction/dimmer.h \
-    src/main/abstraction/VCA.h
-=======
     src/main/control/modulelistmodel.h \
     src/main/control/cvco.h \
     src/main/abstraction/dimmer.h
->>>>>>> a1857abe955a472e45d99c6736cd1985cc2039fa
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
