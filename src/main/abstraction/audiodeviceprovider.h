@@ -1,6 +1,7 @@
 #ifndef AUDIODEVICEPROVIDER_H
 #define AUDIODEVICEPROVIDER_H
 
+
 #include <QAudioFormat>
 
 class QAudioOutput;
@@ -14,8 +15,7 @@ class QIODevice;
   * For this project, we only consider one audio format, and
   * only support the one we use.
   */
-class AudioDeviceProvider
-{
+class AudioDeviceProvider {
 public:
     AudioDeviceProvider();
     ~AudioDeviceProvider();

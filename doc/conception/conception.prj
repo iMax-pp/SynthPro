@@ -1,6 +1,6 @@
 format 74
-"synth"
-  revision 4
+"conception"
+  revision 6
   modified_by 3 "lesenscommun"
 
 
@@ -121,7 +121,6 @@ format 74
 	  b role_name "" private
 	    classrelation_ref 141955 // <association>
       end
-
     end
   end
 
@@ -897,7 +896,6 @@ format 74
 	    classrelation_ref 142339 // <generalisation>
 	  b parent class_ref 141699 // Module
       end
-
     end
 
     class 150531 "QGraphicItem"
