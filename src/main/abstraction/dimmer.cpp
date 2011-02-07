@@ -18,4 +18,3 @@ void Dimmer::setValue(qreal value)
 {
     m_value = value;
 }
-

@@ -1,5 +1,6 @@
 #include "testvco.h"
 
+#include "abstraction/dimmer.h"
 #include "abstraction/mockserializerwell.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratordummy.h"
@@ -33,6 +34,8 @@ void TestVCO::testVCOwithDimmer()
 
     SimpleFactory factory;
     VCO* vco = factory.createVCO();
+    vco->dimmer()->setValue(2);
+
     MockSerializerWell output(stream);
 
     vco->outports().first()->connectTo(&output.input);
