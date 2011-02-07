@@ -68,7 +68,16 @@ Sequencer* QtFactory::createSequencer(SynthPro *parent)
     return sequencer;
 }
 
+<<<<<<< HEAD
 Dimmer* QtFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module *parent)
 {
     return new Dimmer(min, max, kDefault, parent);
 }
+=======
+ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
+{
+    // TODO
+    return 0;
+}
+
+>>>>>>> 9cbf72e75eb2141504d9c7e37009ff72fe30debf

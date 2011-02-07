@@ -1,7 +1,6 @@
 #ifndef CMODULE_H
 #define CMODULE_H
 
-
 #include "abstraction/module.h"
 #include "presentation/pmodule.h"
 

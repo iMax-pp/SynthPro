@@ -15,6 +15,7 @@ public:
     VCO* createVCO();
     Sequencer* createSequencer(SynthPro* parent);
     Dimmer* createKDimmer(qreal, qreal, qreal, Module* parent);
+
 };
 
 #endif // QTFACTORY_H
