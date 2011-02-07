@@ -6,8 +6,7 @@
 /**
   * Wave Generator that only produces an empty buffer.
   */
-class WaveGeneratorEmpty : public WaveGenerator
-{
+class WaveGeneratorEmpty : public WaveGenerator {
 public:
     WaveGeneratorEmpty();
 

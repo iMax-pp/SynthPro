@@ -2,6 +2,7 @@ DESTDIR = bin
 OBJECTS_DIR = bin/.obj
 MOC_DIR = bin/.moc
 RCC_DIR = bin/.rcc
+
 QT += multimedia
 
 HEADERS += src/main/abstraction/synthpro.h \
@@ -36,6 +37,8 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/cchannel.h \
     src/main/abstraction/audiodeviceprovider.h \
     src/main/abstraction/modulebufferrecorder.h \
+    src/main/abstraction/selector.h \
+    src/main/presentation/modulelist.h \
     src/main/abstraction/wavegeneratorempty.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
@@ -68,6 +71,8 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/cchannel.cpp \
     src/main/abstraction/audiodeviceprovider.cpp \
     src/main/abstraction/modulebufferrecorder.cpp \
+    src/main/abstraction/selector.cpp \
+    src/main/presentation/modulelist.cpp \
     src/main/abstraction/wavegeneratorempty.cpp
 
 INCLUDEPATH += src/main/
