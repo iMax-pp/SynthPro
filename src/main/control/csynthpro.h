@@ -15,12 +15,11 @@ public:
     PSynthPro* presentation() const;
 
     void add(Module*);
+    void addModule(QString& moduleType, QPoint);
 
 private:
     PSynthPro* m_presentation;
     QGraphicsScene* m_graphicsScene;
-
-    void addModule(QString& moduleType, QPoint);
 };
 
 #endif // CSYNTHPRO_H

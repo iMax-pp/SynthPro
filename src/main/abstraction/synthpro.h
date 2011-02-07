@@ -15,7 +15,7 @@ public:
     const QList<Module*> modules();
 
     /// Add a module to this SynthPro
-    void add(Module*);
+    virtual void add(Module*);
 
 private:
     QList<Module*> m_modules;

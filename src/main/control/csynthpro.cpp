@@ -37,10 +37,13 @@ PSynthPro* CSynthPro::presentation() const
 
 void CSynthPro::add(Module* module)
 {
-    SynthPro::add(module);
+    CModule* cModule = dynamic_cast<CModule*>(module);
+    if (cModule) {
+        SynthPro::add(cModule);
 
-    if (modules().contains(module)) {
-        m_graphicsScene->addItem(((CModule*)module)->presentation());
+        if (modules().contains(cModule)) {
+            m_graphicsScene->addItem(cModule->presentation());
+        }
     }
 }
 

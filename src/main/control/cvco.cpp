@@ -5,8 +5,3 @@ CVCO::CVCO(SynthProFactory* factory, QObject* parent)
     , CModule(parent)
 {
 }
-
-void CVCO::process()
-{
-    VCO::process();
-}
