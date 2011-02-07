@@ -36,6 +36,7 @@ void WaveGeneratorSquare::generate(const Buffer* bufferIn, Buffer* bufferOut)
         m_currentStep++;
         if (m_currentStep >= m_maximumStep) {
             m_currentStep -= m_maximumStep;
+            m_intensity = -m_intensity;
         }
 
         dataOut[i] = m_intensity;
