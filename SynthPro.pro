@@ -40,7 +40,8 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/selector.h \
     src/main/presentation/modulelist.h \
     src/main/abstraction/wavegeneratorempty.h \
-    src/main/abstraction/dimmer.h
+    src/main/abstraction/dimmer.h \
+    src/main/abstraction/VCA.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \

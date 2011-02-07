@@ -7,7 +7,7 @@ Selector::Selector(QList<int> choices, int default_choice, QObject *parent)
 {
 }
 
-int Selector::choice()
+int Selector::choice() const
 {
     return m_choice;
 }
