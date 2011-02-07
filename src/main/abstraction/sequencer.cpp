@@ -45,7 +45,7 @@ void Sequencer::scheduleModules(QList<Module*> modules)
             m_visitedModules.append(module);
 
             // Apply recursively this process to the required modules of the current module
-            scheduleModules(module->getReguirements());
+            scheduleModules(module->requirements());
 
             m_sortedModules.append(module);
         }

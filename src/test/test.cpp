@@ -2,6 +2,7 @@
 #include "abstraction/testoutport.h"
 #include "abstraction/testsequencer.h"
 #include "abstraction/testvco.h"
+#include "abstraction/testwavegeneratorempty.h"
 
 int main()
 {
@@ -16,4 +17,7 @@ int main()
 
     TestVCO testVCO;
     QTest::qExec(&testVCO);
+
+    TestWaveGeneratorEmpty testWaveGeneratorEmpty;
+    QTest::qExec(&testWaveGeneratorEmpty);
 }
