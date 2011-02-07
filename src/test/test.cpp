@@ -5,6 +5,7 @@
 #include "abstraction/testvco.h"
 #include "abstraction/testwavegeneratorempty.h"
 #include "abstraction/testwavegeneratorsaw.h"
+#include "abstraction/testwavegeneratorsinus.h"
 #include "abstraction/testwavegeneratorsquare.h"
 #include "abstraction/testwavegeneratortriangle.h"
 
@@ -36,4 +37,7 @@ int main()
 
     TestWaveGeneratorSaw testWaveGeneratorSaw;
     QTest::qExec(&testWaveGeneratorSaw);
+
+    TestWaveGeneratorSinus testWaveGeneratorSinus;
+    QTest::qExec(&testWaveGeneratorSinus);
 }
