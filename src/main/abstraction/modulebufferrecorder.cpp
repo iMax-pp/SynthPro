@@ -37,10 +37,8 @@ ModuleBufferRecorder::~ModuleBufferRecorder()
     m_outputFile->close();
 }
 
-void ModuleBufferRecorder::process()
+void ModuleBufferRecorder::ownProcess()
 {
-    fetchInput(); // Get the Input stream.
-
     if (m_outputFile) {
         // Process as long as we have not reach the processing limit.
         if (m_nbProcessingSaved < m_nbProcessingBeforeSaving) {

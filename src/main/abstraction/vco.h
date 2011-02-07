@@ -21,7 +21,7 @@ public:
     /**
      * Process its job : put a buffer in its outPort
      */
-    void process();
+    void ownProcess();
 
     /**
      * Set the WaveGenerator of this VCO.

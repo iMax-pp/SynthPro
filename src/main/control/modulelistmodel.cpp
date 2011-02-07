@@ -14,7 +14,7 @@ int ModuleListModel::rowCount(const QModelIndex& parent) const
         return 0;
     }
 
-    return m_modules.size();
+    return m_moduleNames.size();
 }
 
 Qt::ItemFlags ModuleListModel::flags(const QModelIndex& index) const
@@ -33,11 +33,11 @@ QVariant ModuleListModel::data(const QModelIndex& index, int role) const
     }
 
     if (role == Qt::DisplayRole) {
-        return m_modules.value(index.row());
+        return m_moduleNames.value(index.row());
     }
 
     if (role == Qt::UserRole) {
-        return m_modules.value(index.row());
+        return m_moduleTypes.value(index.row());
     }
 
     return QVariant();
@@ -45,14 +45,18 @@ QVariant ModuleListModel::data(const QModelIndex& index, int role) const
 
 QMimeData* ModuleListModel::mimeData(const QModelIndexList& indexes) const
 {
-    QMimeData* mimeData = new QMimeData();
+    QMimeData* mimeData = new QMimeData;
     QByteArray encodedData;
 
-    QDataStream stream(&encodedData, QIODevice::WriteOnly);
+    if (indexes.size() != 1) {
+        // If we have more than one item selected then…
+        // Erm don't know what to do.
+        return mimeData;
+    }
 
     foreach (QModelIndex index, indexes) {
         if (index.isValid()) {
-            stream << qVariantValue<QString>(data(index, Qt::UserRole));
+            encodedData = data(index, Qt::UserRole).toByteArray();
         }
     }
 
@@ -67,7 +71,8 @@ QStringList ModuleListModel::mimeTypes() const
     return types;
 }
 
-void ModuleListModel::addModule(const QString& moduleName)
+void ModuleListModel::addModule(const QString& moduleName, QtFactory::ModuleType moduleType)
 {
-    m_modules.append(moduleName);
+    m_moduleNames.append(moduleName);
+    m_moduleTypes.append(moduleType);
 }

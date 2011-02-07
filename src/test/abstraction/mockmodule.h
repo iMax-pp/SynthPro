@@ -16,7 +16,7 @@ public:
     MockModule(const QString& msg, QTextStream&, QObject* parent = 0);
 
     /// Write the message in the stream
-    void process();
+    void ownProcess();
 
 signals:
 
