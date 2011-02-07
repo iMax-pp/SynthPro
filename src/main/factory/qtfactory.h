@@ -14,6 +14,7 @@ public:
     OutPort* createOutPortGate(Module* parent);
     VCO* createVCO();
     Sequencer* createSequencer(SynthPro* parent);
+    ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
 };
 
 #endif // QTFACTORY_H

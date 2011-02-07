@@ -66,3 +66,10 @@ Sequencer* QtFactory::createSequencer(SynthPro *parent)
     Sequencer* sequencer = new Sequencer(parent);
     return sequencer;
 }
+
+ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
+{
+    // TODO
+    return 0;
+}
+
