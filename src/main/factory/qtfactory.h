@@ -16,16 +16,6 @@ public:
     Sequencer* createSequencer(SynthPro* parent);
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     Dimmer* createKDimmer(qreal, qreal, qreal, Module* parent);
-
-    enum ModuleType {
-        KeyboardId,
-        VCOId,
-        VCFId,
-        VCAId,
-        ADSRId,
-        AudioOuputId,
-        FileOutputId
-    };
 };
 
 #endif // QTFACTORY_H
