@@ -59,3 +59,4 @@ Roadmap (todo)
 Tweaking
 ----------
 - Optimiser InPort::fetch() (en deux passes).
+- Penser à Normaliser le signal de la sortie Out, mais également le BufferRecorder.
