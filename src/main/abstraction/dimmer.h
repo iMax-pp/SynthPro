@@ -8,7 +8,7 @@
 class Dimmer : public QObject {
     Q_OBJECT
 public:
-    Dimmer(qreal min, qreal max, qreal defaultValue, QObject *parent = 0);
+    Dimmer(qreal min, qreal max, qreal defaultValue, QObject* parent = 0);
     qreal value() const;
     void setValue(qreal);
 

@@ -22,16 +22,6 @@ public:
 
     Dimmer* createKDimmer(qreal, qreal, qreal, Module* parent);
 
-    enum ModuleType {
-        KeyboardId,
-        VCOId,
-        VCFId,
-        VCAId,
-        ADSRId,
-        AudioOuputId,
-        FileOutputId
-    };
-
 protected:
     // Convenient factory method
     InPort* createInPort(Module* parent, bool replicable, bool gate);

@@ -12,10 +12,16 @@ class QIODevice;
   * can be sent data to be played by the output, in a
   * Push mode.
   *
+  * Only one device can be given at the same time. If a second
+  * request is made for the device, it receives a 0.
+  * Once a device is not used anymore, the user should release
+  * it.
+  *
   * For this project, we only consider one audio format, and
   * only support the one we use.
   */
 class AudioDeviceProvider {
+
 public:
     AudioDeviceProvider();
     ~AudioDeviceProvider();
@@ -27,11 +33,16 @@ public:
     bool initializeAudioOutput();
 
     /**
-      * Start the returned device through the audio output in Push
-      * mode. Must be called after the initializeAudioOutput()
-      * method, else it returns 0.
+      * Return the device through the audio output in Push
+      * mode. If initializeAudioOutput() wasn't called, it does it.
+      * If the device has already been given, 0 is also returned.
       */
-    QIODevice* start();
+    QIODevice* device();
+
+    /**
+      * Release the device, so that it can be used again by another entity.
+      */
+    void releaseDevice();
 
     /**
       * Stop the audio output.
@@ -54,6 +65,9 @@ public:
     static const int BUFFER_SIZE = 5000;
 
 private:
+    bool m_initialized;
+    bool m_deviceUsed;
+    QIODevice* m_device;
     QAudioFormat m_audioFormat; // Format used by the audio output.
     QAudioOutput* m_audioOutput;
 };

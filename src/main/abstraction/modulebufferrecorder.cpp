@@ -25,6 +25,7 @@ ModuleBufferRecorder::ModuleBufferRecorder(QString fileName, int nbProcessingBef
                                       // as requested by the WAV format.
     // Open the output file.
     m_outputFile = new QFile(fileName);
+
     if (!m_outputFile->open(QIODevice::WriteOnly)) {
         qWarning("Unable to create output file.");
     } else {
@@ -45,8 +46,10 @@ void ModuleBufferRecorder::ownProcess()
             // Save the buffer from the first In Port found.
             if (m_inports.count() > 0) {
                 InPort* port = m_inports.at(0);
+
                 if (port) { // Useful ?
                     qreal* data = port->buffer()->data();
+
                     for (int i = 0, size = port->buffer()->length(); i < size; i++) {
                         // For efficiency, this is the addLittleEndianShortToFile method copied here.
                         // The stored value is 16 bits only.

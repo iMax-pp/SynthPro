@@ -6,13 +6,17 @@
 #include <QDebug>
 
 AudioDeviceProvider::AudioDeviceProvider()
-    : m_audioOutput(0)
+    : m_initialized(false)
+    , m_deviceUsed(false)
+    , m_device(0)
+    , m_audioOutput(0)
 {
 }
 
 AudioDeviceProvider::~AudioDeviceProvider()
 {
     stop();
+
     if (m_audioOutput) {
         delete m_audioOutput;
     }
@@ -20,8 +24,9 @@ AudioDeviceProvider::~AudioDeviceProvider()
 
 bool AudioDeviceProvider::initializeAudioOutput()
 {
-    // Stop the audio output in case it had been started before.
-    stop();
+    if (m_initialized) {
+        return true;
+    }
 
     // Create the desired output format.
     m_audioFormat.setFrequency(OUTPUT_FREQUENCY); // Should use SetSampleRate, but QT4.5 doesn't support it.
@@ -42,6 +47,7 @@ bool AudioDeviceProvider::initializeAudioOutput()
 
         // Search for the first output that satisfies the requested output format.
         int i = 0, size = outputDevices.count();
+
         while (!result && i < size) {
             audioDevice = outputDevices.at(i);
 
@@ -57,14 +63,38 @@ bool AudioDeviceProvider::initializeAudioOutput()
     if (result) {
         m_audioOutput = new QAudioOutput(audioDevice, m_audioFormat);
         m_audioOutput->setBufferSize(BUFFER_SIZE);
+        m_initialized = true;
     }
 
     return result;
 }
 
-QIODevice* AudioDeviceProvider::start()
+QIODevice* AudioDeviceProvider::device()
 {
-    return m_audioOutput ? m_audioOutput->start() : 0;
+    if (!m_initialized) {
+        // If the device can't be initialized, return 0.
+        if (!initializeAudioOutput()) {
+            return 0;
+        }
+    }
+
+    // Release a device, if it hasn't been given before.
+    if (!m_deviceUsed && m_audioOutput) {
+            m_device = m_audioOutput->start();
+            m_deviceUsed = true;
+            m_device->open(QIODevice::WriteOnly);
+            return m_device;
+    } else {
+        return 0;
+    }
+}
+
+void AudioDeviceProvider::releaseDevice()
+{
+    if (m_deviceUsed) {
+        m_device->close();
+        m_deviceUsed = false;
+    }
 }
 
 void AudioDeviceProvider::stop()

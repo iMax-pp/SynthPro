@@ -50,7 +50,7 @@ void PSynthPro::about()
                           "<br/>- Julien Richard-Foy"
                           "<br/>- Maxime Simon"
                           "<br/>from M2 Pro GL.</p>"
-                          ));
+                         ));
 }
 
 void PSynthPro::initUI()

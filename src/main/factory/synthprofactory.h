@@ -38,6 +38,29 @@ public:
      * @param default_value the value where the dimmer is positionned at creation
      */
     virtual Dimmer* createKDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
+
+    /*
+     * Enumeration of module types.
+     */
+    enum ModuleType {
+        KeyboardId,
+        VCOId,
+        VCFId,
+        VCAId,
+        ADSRId,
+        AudioOuputId,
+        FileOutputId
+    };
+
+    /*
+     * Enumeration of wave types.
+     */
+    enum WaveType {
+        SawWave = 0,
+        SinusWave,
+        SquareWave,
+        TriangleWave
+    };
 };
 
 #endif // SYNTHPROFACTORY_H

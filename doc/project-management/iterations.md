@@ -35,7 +35,7 @@ Itération 3
 date : semaine 6 - 2011
 
 - Julien N. :
-    - (Test unitaire sur ModuleBufferRecorder;)
+    - Test unitaire sur ModuleBufferRecorder et les WaveGenerator.
     - Horloge et module Out.
 - Maxime :
     - Gestion drag'n'drop;
@@ -59,3 +59,4 @@ Roadmap (todo)
 Tweaking
 ----------
 - Optimiser InPort::fetch() (en deux passes).
+- Penser à Normaliser le signal de la sortie Out, mais également le BufferRecorder.

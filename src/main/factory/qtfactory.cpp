@@ -11,7 +11,7 @@
 
 SynthPro* QtFactory::createSynthPro()
 {
-    CSynthPro* synthpro = new CSynthPro();
+    CSynthPro* synthpro = new CSynthPro(this);
 
     PSynthPro* gui = new PSynthPro(synthpro);
     synthpro->setPresentation(gui);
@@ -89,16 +89,17 @@ VCO* QtFactory::createVCO()
     return vco;
 }
 
-Sequencer* QtFactory::createSequencer(SynthPro *parent)
+Sequencer* QtFactory::createSequencer(SynthPro* parent)
 {
     Sequencer* sequencer = new Sequencer(parent);
     return sequencer;
 }
 
-Dimmer* QtFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module *parent)
+Dimmer* QtFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
 {
     return new Dimmer(min, max, kDefault, parent);
 }
+
 ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
 {
     // TODO
