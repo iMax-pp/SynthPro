@@ -17,6 +17,9 @@ class QIODevice;
   * Once a device is not used anymore, the user should release
   * it.
   *
+  * This class implements the Singleton design pattern. An
+  * instance can be given through the instance() method.
+  *
   * For this project, we only consider one audio format, and
   * only support the one we use.
   */

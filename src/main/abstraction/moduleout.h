@@ -30,6 +30,9 @@ public:
       */
     void ownProcess(); // *** Probably virtual
 
+public slots:
+    virtual void timerExpired();
+
 private:
     QIODevice* m_device;
     SynthProFactory* m_factory;

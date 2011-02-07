@@ -35,8 +35,8 @@ bool AudioDeviceProvider::initializeAudioOutput()
     }
 
     // Create the desired output format.
-    m_audioFormat.setFrequency(OUTPUT_FREQUENCY); // Should use SetSampleRate, but QT4.5 doesn't support it.
-    m_audioFormat.setChannels(NB_CHANNELS); // Should use SetChannelCount, but QT4.5 doesn't support it.
+    m_audioFormat.setSampleRate(OUTPUT_FREQUENCY);
+    m_audioFormat.setChannelCount(NB_CHANNELS);
     m_audioFormat.setSampleSize(BIT_RATE);
     m_audioFormat.setSampleType(QAudioFormat::SignedInt);
     m_audioFormat.setByteOrder(QAudioFormat::LittleEndian);

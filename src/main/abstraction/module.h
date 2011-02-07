@@ -34,6 +34,9 @@ public:
     /// Get the list of required modules for this module to perform its function
     const QList<Module*> requirements() const;
 
+public slots:
+    virtual void timerExpired();
+
 protected:
     /// Fetch input from all this Module input Ports (call this operation should be the first thing to do in a “process” implementation)
     void fetchInput();
