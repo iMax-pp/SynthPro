@@ -20,6 +20,9 @@ public:
     /// @returns The length of this buffer
     inline int length() const { return m_length; }
 
+    /// add a float to all buffer's values
+    void add(const qreal);
+
     /// Fill this buffer with 0
     void clear();
 

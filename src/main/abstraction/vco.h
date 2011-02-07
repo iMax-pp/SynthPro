@@ -8,13 +8,15 @@
 
 class WaveGenerator;
 class SynthProFactory;
+class Dimmer;
+class Selector;
 
 class VCO : public virtual Module {
     Q_OBJECT
 
 public:
     VCO(SynthProFactory* factory, QObject* parent = 0);
-    ~VCO();
+    virtual ~VCO();
 
     /**
      * Process its job : put a buffer in its outPort
@@ -35,8 +37,14 @@ public:
 protected:
 
     WaveGenerator* m_waveGenerator;
-    InPort *m_vfm;
-    OutPort *m_out;
+    InPort* m_vfm;
+    OutPort* m_out;
+    Selector* m_shapeSelector;
+    Dimmer* m_kDimmer;
+
+    static const qreal K_MIN = -5;
+    static const qreal K_MAX = 5;
+    static const qreal K_DEFAULT = 0;
 };
 
 #endif // VCO_H
