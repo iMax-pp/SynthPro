@@ -37,11 +37,13 @@ date : semaine 6 - 2011
 - Julien N. :
     - Test unitaire sur ModuleBufferRecorder et les WaveGenerator.
     - Horloge et module Out.
+    - Mettre Init en virtuelle dans module buffer recorder.
 - Maxime :
     - Gestion drag'n'drop;
     - Instanciation des composants;
 - Julien RF :
     - Gestion héritage "en diamant";
+    - Mettre Initialize en methode virtuelle pure pour les modules.
 - Cyrille :
     - Réglages (potard et selecteur);
     - Intégration réglages dans VCO;
