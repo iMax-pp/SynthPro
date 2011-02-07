@@ -17,10 +17,10 @@ void TestWaveGeneratorSquare::testWaveGeneratorSquare()
     SimpleFactory factory;
     ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
-    TestWaveGeneratorSquare* waveGeneratorSquare = new TestWaveGeneratorSquare();
+    WaveGeneratorSquare* waveGeneratorSquare = new WaveGeneratorSquare();
 
     VCO* vco = factory.createVCO();
-    vco->setWaveGenerator(waveGeneratorTriangle);
+    vco->setWaveGenerator(waveGeneratorSquare);
     vco->outports().at(0)->connectTo(mbr->inports().at(0));
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
