@@ -1,4 +1,5 @@
 #include "abstraction/testinport.h"
+#include "abstraction/testmodulebufferrecorder.h"
 #include "abstraction/testoutport.h"
 #include "abstraction/testsequencer.h"
 #include "abstraction/testvco.h"
@@ -20,4 +21,7 @@ int main()
 
     TestWaveGeneratorEmpty testWaveGeneratorEmpty;
     QTest::qExec(&testWaveGeneratorEmpty);
+
+    TestModuleBufferRecorder testModuleBufferRecorder;
+    QTest::qExec(&testModuleBufferRecorder);
 }

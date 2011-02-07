@@ -11,7 +11,7 @@ class SynthProFactory;
 class Dimmer;
 class Selector;
 
-class VCO : public Module {
+class VCO : public virtual Module {
     Q_OBJECT
 
 public:

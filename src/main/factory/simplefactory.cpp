@@ -1,6 +1,7 @@
 #include "simplefactory.h"
 
 #include "abstraction/inport.h"
+#include "abstraction/modulebufferrecorder.h"
 #include "abstraction/outport.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
@@ -49,4 +50,9 @@ VCO* SimpleFactory::createVCO()
 Sequencer* SimpleFactory::createSequencer(SynthPro* parent)
 {
     return new Sequencer(parent);
+}
+
+ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
+{
+    return new ModuleBufferRecorder(fileName, nbProcessingBeforeSaving, this, parent);
 }

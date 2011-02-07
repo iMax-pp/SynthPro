@@ -1,15 +1,18 @@
 #ifndef SYNTHPROFACTORY_H
 #define SYNTHPROFACTORY_H
 
-#include "QtGlobal"
+#include <QString>
+#include <QtGlobal>
 
+class Dimmer;
 class InPort;
 class Module;
+class ModuleBufferRecorder;
 class OutPort;
 class Sequencer;
 class SynthPro;
 class VCO;
-class Dimmer;
+
 
 class SynthProFactory {
 public:
@@ -29,6 +32,7 @@ public:
 * @param default_value the value where the dimmer is positionned at creation
 */
     virtual Dimmer* createKDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
+    virtual ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
 };
 
 #endif // SYNTHPROFACTORY_H
