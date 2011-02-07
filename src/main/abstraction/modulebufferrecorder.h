@@ -11,8 +11,7 @@ class QFile;
   * If the first port is disconnected, pause the recording till it is connected again.
   * Close the file automatically after a fixed number of processing.
   */
-class ModuleBufferRecorder : public Module
-{
+class ModuleBufferRecorder : public Module {
 public:
     ModuleBufferRecorder(QString fileName = "output.wav", int nbProcessingBeforeSaving = 5, QObject* parent = 0);
     virtual ~ModuleBufferRecorder();
@@ -37,24 +36,24 @@ private:
       * Creates the WAV header of the output file, as well as setting up
       * the dynamic size pointers.
       */
-    void createWAVHeader(QFile* file);
+    void createWAVHeader(QFile*);
 
     /**
       * Write the right size of the chunks and data,
       * which position has been saved while writing the buffer(s).
       * Then close the file.
       */
-    void closeWAVFile(QFile* file);
+    void closeWAVFile(QFile*);
 
     /**
       * Helper method. Adds a little endian int32 to a given file.
       */
-    void addLittleEndianIntToFile(QFile* file, int nb);
+    void addLittleEndianIntToFile(QFile*, int nb);
 
     /**
       * Helper method. Adds a little endian short (16 bits) to a given file.
       */
-    void addLittleEndianShortToFile(QFile* file, int nb);
+    void addLittleEndianShortToFile(QFile*, int nb);
 };
 
 #endif // MODULEBUFFERRECORDER_H

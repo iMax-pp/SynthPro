@@ -4,6 +4,7 @@ DESTDIR = bin/test
 OBJECTS_DIR = bin/test/.obj
 MOC_DIR = bin/test/.moc
 RCC_DIR = bin/test/.rcc
+QT += multimedia
 
 HEADERS += \
     src/main/abstraction/buffer.h \
@@ -22,6 +23,7 @@ HEADERS += \
     src/test/abstraction/testvco.h \
     src/main/abstraction/vco.h \
     src/main/abstraction/wavegeneratordummy.h \
+    src/main/abstraction/wavegeneratorempty.h \
     src/test/abstraction/mockserializerwell.h \
     src/main/factory/synthprofactory.h \
     src/main/factory/simplefactory.h
@@ -43,6 +45,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testvco.cpp \
     src/main/abstraction/vco.cpp \
     src/main/abstraction/wavegeneratordummy.cpp \
+    src/main/abstraction/wavegeneratorempty.cpp \
     src/test/abstraction/mockserializerwell.cpp \
     src/main/factory/simplefactory.cpp
 
