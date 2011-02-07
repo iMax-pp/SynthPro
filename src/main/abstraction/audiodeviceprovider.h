@@ -1,6 +1,7 @@
 #ifndef AUDIODEVICEPROVIDER_H
 #define AUDIODEVICEPROVIDER_H
 
+
 #include <QAudioFormat>
 
 class QAudioOutput;
