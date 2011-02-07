@@ -6,6 +6,7 @@
 #include "control/coutport.h"
 #include "control/csynthpro.h"
 #include "control/cvco.h"
+#include "presentation/pvco.h"
 
 SynthPro* QtFactory::createSynthPro()
 {
@@ -57,7 +58,7 @@ OutPort* QtFactory::createOutPortGate(Module* parent)
 VCO* QtFactory::createVCO()
 {
     CVCO* vco = new CVCO(this);
-    PModule* p = new PModule();
+    PVCO* p = new PVCO();
     vco->setPresentation(p);
     return vco;
 }
