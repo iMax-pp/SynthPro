@@ -16,7 +16,7 @@ class VCO : public virtual Module {
 
 public:
     VCO(SynthProFactory* factory, QObject* parent = 0);
-    ~VCO();
+    virtual ~VCO();
 
     /**
      * Process its job : put a buffer in its outPort

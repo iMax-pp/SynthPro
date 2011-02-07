@@ -4,6 +4,7 @@
 #include "abstraction/testsequencer.h"
 #include "abstraction/testvco.h"
 #include "abstraction/testwavegeneratorempty.h"
+#include "abstraction/testwavegeneratortriangle.h"
 
 int main()
 {
@@ -24,4 +25,7 @@ int main()
 
     TestModuleBufferRecorder testModuleBufferRecorder;
     QTest::qExec(&testModuleBufferRecorder);
+
+    TestWaveGeneratorTriangle testWaveGeneratorTriangle;
+    QTest::qExec(&testWaveGeneratorTriangle);
 }
