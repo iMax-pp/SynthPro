@@ -15,7 +15,7 @@ class MockSerializerWell : public Module {
 public:
     explicit MockSerializerWell(QTextStream& output, QObject* parent = 0);
 
-    void process();
+    void ownProcess();
 
 signals:
 

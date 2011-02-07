@@ -26,6 +26,12 @@ const QList<Module*> Module::requirements() const
     return m_requirements;
 }
 
+void Module::process()
+{
+    fetchInput();
+    ownProcess();
+}
+
 void Module::fetchInput()
 {
     foreach (InPort* input, m_inports) {

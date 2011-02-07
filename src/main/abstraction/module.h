@@ -23,9 +23,13 @@ public:
     inline const QList<InPort*> inports() const { return m_inports; }
 
     /**
-     * Operation called by the sequencer. Subclasses have to implement their own.
+     * Operation called by the sequencer.
+     * Fetches all input ports then call ownProcess.
      */
-    virtual void process() = 0;
+    void process();
+
+    /// Subclasses have to implement here their own process
+    virtual void ownProcess() = 0;
 
     /// Get the list of required modules for this module to perform its function
     const QList<Module*> requirements() const;

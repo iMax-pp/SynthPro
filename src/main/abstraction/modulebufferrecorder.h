@@ -21,7 +21,7 @@ public:
     /**
      * Save the first input port buffer into a file.
      */
-    void process();
+    void ownProcess();
 
 private:
     QString m_fileName;
