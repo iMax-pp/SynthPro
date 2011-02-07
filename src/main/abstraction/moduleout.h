@@ -23,12 +23,12 @@ public:
     /**
       * Instanciate the ports. Used by the factory.
       */
-    void initialize();  // *** Probably virtual
+    void initialize(); // *** Probably virtual
 
     /**
       * Process the input signal.
       */
-    void ownProcess();  // *** Probably virtual
+    void ownProcess(); // *** Probably virtual
 
 private:
     QIODevice* m_device;

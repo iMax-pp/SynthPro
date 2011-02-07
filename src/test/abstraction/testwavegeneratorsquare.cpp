@@ -1,5 +1,6 @@
 #include "testwavegeneratorsquare.h"
 
+#include "src/main/abstraction/dimmer.h"
 #include "src/main/abstraction/module.h"
 #include "src/main/abstraction/modulebufferrecorder.h"
 #include "src/main/abstraction/vco.h"

@@ -42,7 +42,7 @@ void CSynthPro::add(Module* module)
     CModule* cModule = dynamic_cast<CModule*>(module);
 
     if (cModule) {
-        SynthPro::add(module);
+        SynthPro::add(cModule);
 
         if (modules().contains(cModule)) {
             m_graphicsScene->addItem(cModule->presentation());

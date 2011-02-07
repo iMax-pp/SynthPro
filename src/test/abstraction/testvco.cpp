@@ -4,6 +4,7 @@
 #include "abstraction/mockserializerwell.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratordummy.h"
+#include "abstraction/wavegeneratorsquare.h"
 #include "factory/simplefactory.h"
 
 #include <QTextStream>
@@ -34,17 +35,27 @@ void TestVCO::testVCOwithDimmer()
 
     SimpleFactory factory;
     VCO* vco = factory.createVCO();
-    vco->dimmer()->setValue(2);
+    vco->dimmer()->setValue(0);
 
     MockSerializerWell output(stream);
-
     vco->outports().first()->connectTo(&output.input);
-
-    vco->setWaveGenerator(new WaveGeneratorDummy);
+    vco->setWaveGenerator(new WaveGeneratorSquare);
     vco->process();
     output.process();
+    int nbFronts = 0;
+    int oldValue = 0;
 
-    QVERIFY(result.startsWith("20000")); // TODO check that *all* the result is as expected (not only the first value)
+    Buffer * buffer = vco->outports().first()->buffer();
+    for (int i = 0 ; i < buffer->length()  ; i++) {
+        if (i == 0) {
+            oldValue = buffer->data()[i];
+        }
+        if (buffer->data()[i]-oldValue != 0) {
+            nbFronts++;
+        }
+        oldValue = buffer->data()[i];
+    }
+    QVERIFY(nbFronts != 0); // TODO pourquoi ça marche pas !!!!            
 
     delete vco;
 }
