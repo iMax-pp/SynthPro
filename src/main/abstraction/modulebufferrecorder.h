@@ -15,7 +15,7 @@ class SynthProFactory;
   */
 class ModuleBufferRecorder : public Module {
 public:
-    ModuleBufferRecorder(QString fileName = "output.wav", int nbProcessingBeforeSaving = 5, SynthProFactory* factory = 0, QObject* parent = 0);
+    ModuleBufferRecorder(QString fileName = "output.wav", int nbProcessingBeforeSaving = 5, SynthProFactory* = 0, QObject* parent = 0);
     virtual ~ModuleBufferRecorder();
 
     /**

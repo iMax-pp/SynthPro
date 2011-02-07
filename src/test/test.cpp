@@ -1,9 +1,9 @@
 #include "abstraction/testinport.h"
+#include "abstraction/testmodulebufferrecorder.h"
 #include "abstraction/testoutport.h"
 #include "abstraction/testsequencer.h"
 #include "abstraction/testvco.h"
 #include "abstraction/testwavegeneratorempty.h"
-#include "abstraction/testmodulebufferrecorder.h"
 
 int main()
 {

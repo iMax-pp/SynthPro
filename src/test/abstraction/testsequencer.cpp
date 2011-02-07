@@ -154,8 +154,8 @@ void TestSequencer::testSortMixer()
     m1.output.connectTo(&m3.input); // m1 −> m3
     m2.output.connectTo(&m3.input); // m2 −> m3
 
-    QVERIFY(m3.getReguirements().contains(&m1));
-    QVERIFY(m3.getReguirements().contains(&m2));
+    QVERIFY(m3.requirements().contains(&m1));
+    QVERIFY(m3.requirements().contains(&m2));
 
     sequencer.scheduleModules();
     sequencer.process();

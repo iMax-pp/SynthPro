@@ -2,9 +2,9 @@
 
 #include "audiodeviceprovider.h"
 #include "buffer.h"
+#include "factory/synthprofactory.h"
 #include "inport.h"
 #include <QFile>
-#include "factory/synthprofactory.h"
 
 ModuleBufferRecorder::ModuleBufferRecorder(QString fileName, int nbProcessingBeforeSaving, SynthProFactory* factory, QObject* parent)
     : Module(parent)
@@ -39,7 +39,7 @@ ModuleBufferRecorder::~ModuleBufferRecorder()
 
 void ModuleBufferRecorder::process()
 {
-    fetchInput();
+    fetchInput(); // Get the Input stream.
 
     if (m_outputFile) {
         // Process as long as we have not reach the processing limit.
