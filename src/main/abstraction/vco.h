@@ -9,7 +9,7 @@
 class WaveGenerator;
 class SynthProFactory;
 
-class VCO : public Module {
+class VCO : public virtual Module {
     Q_OBJECT
 
 public:

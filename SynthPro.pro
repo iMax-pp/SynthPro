@@ -38,8 +38,10 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/audiodeviceprovider.h \
     src/main/abstraction/modulebufferrecorder.h \
     src/main/abstraction/selector.h \
-    src/main/presentation/modulelist.h \
-    src/main/abstraction/wavegeneratorempty.h
+    src/main/abstraction/wavegeneratorempty.h \
+    src/main/control/modulelistmodel.h \
+    src/main/control/cvco.h \
+    src/main/abstraction/dimmer.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -72,8 +74,10 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/audiodeviceprovider.cpp \
     src/main/abstraction/modulebufferrecorder.cpp \
     src/main/abstraction/selector.cpp \
-    src/main/presentation/modulelist.cpp \
-    src/main/abstraction/wavegeneratorempty.cpp
+    src/main/abstraction/wavegeneratorempty.cpp \
+    src/main/control/modulelistmodel.cpp \
+    src/main/control/cvco.cpp \
+    src/main/abstraction/dimmer.cpp
 
 INCLUDEPATH += src/main/
 

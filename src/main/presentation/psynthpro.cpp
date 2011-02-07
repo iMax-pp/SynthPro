@@ -1,13 +1,14 @@
 #include "psynthpro.h"
 
 #include "control/csynthpro.h"
-#include "modulelist.h"
+#include "control/modulelistmodel.h"
 #include "moduleview.h"
 
 #include <QAction>
 #include <QApplication>
 #include <QDockWidget>
 #include <QGraphicsScene>
+#include <QListView>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -140,31 +141,43 @@ void PSynthPro::createGraphicsView()
 
 void PSynthPro::createModuleList()
 {
-    ModuleList* moduleList = new ModuleList(m_moduleDock);
+    QListView* moduleList = new QListView;
+    moduleList->setDragEnabled(true);
+    moduleList->setDragDropMode(QListView::DragOnly);
 
-    new QListWidgetItem(tr("VCO"), moduleList);
-    new QListWidgetItem(tr("VCF"), moduleList);
-    new QListWidgetItem(tr("VCA"), moduleList);
-    new QListWidgetItem(tr("ADSR"), moduleList);
+    ModuleListModel* model = new ModuleListModel(this);
+    model->addModule("VCF");
+    model->addModule("VCA");
+    model->addModule("ADSR");
+    moduleList->setModel(model);
 
     m_moduleDock->setWidget(moduleList);
 }
 
 void PSynthPro::createInputModuleList()
 {
-    ModuleList* inModuleList = new ModuleList(m_inModuleDock);
+    QListView* inModuleList = new QListView;
+    inModuleList->setDragEnabled(true);
+    inModuleList->setDragDropMode(QListView::DragOnly);
 
-    new QListWidgetItem(tr("Keyboard"), inModuleList);
+    ModuleListModel* model = new ModuleListModel(this);
+    model->addModule("Keyboard");
+    model->addModule("VCO");
+    inModuleList->setModel(model);
 
     m_inModuleDock->setWidget(inModuleList);
 }
 
 void PSynthPro::createOutputModuleList()
 {
-    ModuleList* outModuleList = new ModuleList(m_outModuleDock);
+    QListView* outModuleList = new QListView;
+    outModuleList->setDragEnabled(true);
+    outModuleList->setDragDropMode(QListView::DragOnly);
 
-    new QListWidgetItem(tr("Audio Output"), outModuleList);
-    new QListWidgetItem(tr("File"), outModuleList);
+    ModuleListModel* model = new ModuleListModel(this);
+    model->addModule("Audio Output");
+    model->addModule("File");
+    outModuleList->setModel(model);
 
     m_outModuleDock->setWidget(outModuleList);
 }

@@ -1,5 +1,6 @@
 #include "csynthpro.h"
 
+#include "control/cmodule.h"
 #include <QGraphicsScene>
 
 CSynthPro::CSynthPro()
@@ -32,6 +33,18 @@ void CSynthPro::setPresentation(PSynthPro* presentation)
 PSynthPro* CSynthPro::presentation() const
 {
     return m_presentation;
+}
+
+void CSynthPro::add(Module* module)
+{
+    CModule* cModule = dynamic_cast<CModule*>(module);
+    if (cModule) {
+        SynthPro::add(cModule);
+
+        if (modules().contains(cModule)) {
+            m_graphicsScene->addItem(cModule->presentation());
+        }
+    }
 }
 
 void CSynthPro::addModule(QString& moduleType, QPoint pos)
