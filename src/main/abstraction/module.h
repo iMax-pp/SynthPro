@@ -28,7 +28,7 @@ public:
     virtual void process() = 0;
 
     /// Get the list of required modules for this module to perform its function
-    const QList<Module*> getReguirements() const;
+    const QList<Module*> requirements() const;
 
 protected:
     /// Fetch input from all this Module input Ports (call this operation should be the first thing to do in a “process” implementation)

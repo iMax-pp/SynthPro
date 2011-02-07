@@ -168,7 +168,7 @@ format 74
     end
 
     class 141699 "Module"
-      visibility package 
+      abstract visibility package 
       cpp_decl ""
       java_decl ""
       php_decl ""
@@ -202,7 +202,7 @@ format 74
       end
 
       operation 128642 "process"
-	public explicit_return_type ""
+	abstract cpp_virtual public explicit_return_type ""
 	nparams 0
 	
 	

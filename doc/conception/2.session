@@ -1,0 +1,17 @@
+window_sizes 1280 782 240 1034 586 114
+diagrams
+  sequencediagram_ref 134531 // dnd
+    779 419 100 4 0 0
+  classdiagram_ref 141059 // PSM-Abstraction
+    779 419 100 18 0 0
+  classdiagram_ref 147587 // pac
+    827 468 100 4 0 0
+  active  classdiagram_ref 147715 // pacPort
+    1034 586 100 4 0 0
+end
+show_stereotypes
+selected classdiagram_ref 147715 // pacPort
+open
+  classview_ref 147587 // pac
+end
+end
