@@ -29,9 +29,8 @@ VCO::~VCO()
     }
 }
 
-void VCO::process()
+void VCO::ownProcess()
 {
-    fetchInput();
     m_vfm->buffer()->add(m_kDimmer->value());
     m_out->swapBuffers();
     m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());

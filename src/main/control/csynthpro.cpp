@@ -47,7 +47,7 @@ void CSynthPro::add(Module* module)
     }
 }
 
-void CSynthPro::addModule(QString& moduleType, QPoint pos)
+void CSynthPro::addModule(QtFactory::ModuleType moduleType, QPoint pos)
 {
     // TODO
     // for type in moduleTypes:

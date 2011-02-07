@@ -26,13 +26,19 @@ HEADERS += \
     src/main/abstraction/wavegeneratordummy.h \
     src/main/abstraction/wavegeneratorempty.h \
     src/main/abstraction/wavegeneratortriangle.h \
+    src/main/abstraction/wavegeneratorsquare.h \
+    src/main/abstraction/wavegeneratorsaw.h \
+    src/main/abstraction/wavegeneratorsinus.h \
     src/test/abstraction/mockserializerwell.h \
     src/main/factory/synthprofactory.h \
     src/main/factory/simplefactory.h \
     src/main/abstraction/modulebufferrecorder.h \
     src/test/abstraction/testmodulebufferrecorder.h \
     src/test/abstraction/testwavegeneratorempty.h \
-    src/test/abstraction/testwavegeneratortriangle.h
+    src/test/abstraction/testwavegeneratortriangle.h \
+    src/test/abstraction/testwavegeneratorsquare.h \
+    src/test/abstraction/testwavegeneratorsaw.h \
+    src/test/abstraction/testwavegeneratorsinus.h
 
 SOURCES += src/test/test.cpp \
     src/main/abstraction/buffer.cpp \
@@ -54,11 +60,17 @@ SOURCES += src/test/test.cpp \
     src/main/abstraction/wavegeneratordummy.cpp \
     src/main/abstraction/wavegeneratorempty.cpp \
     src/main/abstraction/wavegeneratortriangle.cpp \
+    src/main/abstraction/wavegeneratorsquare.cpp \
+    src/main/abstraction/wavegeneratorsaw.cpp \
+    src/main/abstraction/wavegeneratorsinus.cpp \
     src/test/abstraction/mockserializerwell.cpp \
     src/main/factory/simplefactory.cpp \
     src/main/abstraction/modulebufferrecorder.cpp \
     src/test/abstraction/testmodulebufferrecorder.cpp \
     src/test/abstraction/testwavegeneratorempty.cpp \
-    src/test/abstraction/testwavegeneratortriangle.cpp
+    src/test/abstraction/testwavegeneratortriangle.cpp \
+    src/test/abstraction/testwavegeneratorsquare.cpp \
+    src/test/abstraction/testwavegeneratorsaw.cpp \
+    src/test/abstraction/testwavegeneratorsinus.cpp
 
 INCLUDEPATH += src/main/ src/test/

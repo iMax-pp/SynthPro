@@ -2,6 +2,7 @@
 #define CSYNTHPRO_H
 
 #include "abstraction/synthpro.h"
+#include "factory/qtfactory.h"
 #include "presentation/psynthpro.h"
 
 class QGraphicsScene;
@@ -15,7 +16,7 @@ public:
     PSynthPro* presentation() const;
 
     void add(Module*);
-    void addModule(QString& moduleType, QPoint);
+    void addModule(QtFactory::ModuleType, QPoint);
 
 private:
     PSynthPro* m_presentation;
