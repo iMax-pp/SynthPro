@@ -22,6 +22,7 @@ HEADERS += \
     src/test/abstraction/mockinoutmodule.h \
     src/test/abstraction/testvco.h \
     src/main/abstraction/vco.h \
+    src/main/abstraction/dimmer.h \
     src/main/abstraction/wavegeneratordummy.h \
     src/main/abstraction/wavegeneratorempty.h \
     src/test/abstraction/mockserializerwell.h \
@@ -37,6 +38,7 @@ SOURCES += src/test/test.cpp \
     src/main/abstraction/inport.cpp \
     src/test/abstraction/testinport.cpp \
     src/main/abstraction/outport.cpp \
+    src/main/abstraction/dimmer.cpp \
     src/test/abstraction/testoutport.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/abstraction/module.cpp \

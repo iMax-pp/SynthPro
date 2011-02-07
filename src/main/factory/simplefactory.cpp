@@ -1,5 +1,6 @@
 #include "simplefactory.h"
 
+#include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/outport.h"
@@ -50,6 +51,11 @@ VCO* SimpleFactory::createVCO()
 Sequencer* SimpleFactory::createSequencer(SynthPro* parent)
 {
     return new Sequencer(parent);
+}
+
+Dimmer* SimpleFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module *parent)
+{
+    return new Dimmer(min, max, kDefault, parent);
 }
 
 ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
