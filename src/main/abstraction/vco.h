@@ -30,6 +30,8 @@ public:
      */
     void setWaveGenerator(WaveGenerator*);
 
+    Dimmer* dimmer();
+
     static const qreal SIGNAL_INTENSITY = 20000;
     static const qreal F0 = 261.626; // Frequency of the C4.
     static const qreal REPLAY_FREQUENCY = AudioDeviceProvider::OUTPUT_FREQUENCY;

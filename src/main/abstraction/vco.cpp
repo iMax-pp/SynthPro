@@ -43,3 +43,8 @@ void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
     }
     m_waveGenerator = waveGenerator;
 }
+
+Dimmer * VCO::dimmer()
+{
+    return m_kDimmer;
+}
