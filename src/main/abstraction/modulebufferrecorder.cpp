@@ -39,7 +39,7 @@ ModuleBufferRecorder::~ModuleBufferRecorder()
 
 void ModuleBufferRecorder::process()
 {
-    fetchInput();
+    fetchInput(); // Get the Input stream.
 
     if (m_outputFile) {
         // Process as long as we have not reach the processing limit.
