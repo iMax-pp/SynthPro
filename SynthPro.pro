@@ -39,6 +39,7 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/modulebufferrecorder.h \
     src/main/abstraction/selector.h \
     src/main/presentation/modulelist.h \
+    src/main/control/cvco.h \
     src/main/abstraction/wavegeneratorempty.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
@@ -73,6 +74,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/modulebufferrecorder.cpp \
     src/main/abstraction/selector.cpp \
     src/main/presentation/modulelist.cpp \
+    src/main/control/cvco.cpp \
     src/main/abstraction/wavegeneratorempty.cpp
 
 INCLUDEPATH += src/main/

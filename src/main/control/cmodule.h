@@ -5,7 +5,7 @@
 #include "abstraction/module.h"
 #include "presentation/pmodule.h"
 
-class CModule : virtual public Module {
+class CModule : public Module {
 public:
     CModule(QObject* parent = 0);
     virtual ~CModule();
