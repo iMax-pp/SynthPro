@@ -13,8 +13,8 @@ public:
     void setChoice(int);
 
 private:
-     QList<int> m_choices;
-     int m_choice;
+    QList<int> m_choices;
+    int m_choice;
 };
 
 #endif // SELECTOR_H

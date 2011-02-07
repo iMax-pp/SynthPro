@@ -21,7 +21,7 @@ public:
     Buffer* buffer();
 
 protected:
-    Buffer *m_buffer;
+    Buffer* m_buffer;
 };
 
 #endif // INPORT_H

@@ -32,6 +32,7 @@ void TestModuleBufferRecorder::testModuleBufferRecorder()
     // Now the sound is generated, we load the file, skip the WAV header, and we should
     // find only 0 till the end of the file.
     QFile file(fileName);
+
     if (!file.open(QIODevice::ReadOnly)) {
         qWarning("Unable to load output file.");
         QVERIFY(false);
@@ -42,8 +43,8 @@ void TestModuleBufferRecorder::testModuleBufferRecorder()
     result = file.seek(SKIP_HEADER_OFFSET);
 
     while (result && !file.atEnd()) {
-       QByteArray data = file.read(1);
-       result = (data.at(0) == 0);
+        QByteArray data = file.read(1);
+        result = (data.at(0) == 0);
     }
 
     QVERIFY(result);

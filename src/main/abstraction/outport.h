@@ -16,8 +16,8 @@ public:
     void swapBuffers();
 
 protected:
-    Buffer *m_buffer;
-    Buffer *m_oldBuffer;
+    Buffer* m_buffer;
+    Buffer* m_oldBuffer;
 };
 
 #endif // OUTPORT_H

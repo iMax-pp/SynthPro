@@ -15,7 +15,7 @@ public:
     VCO* createVCO();
     Sequencer* createSequencer(SynthPro* parent);
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
-    Dimmer* createKDimmer(qreal min, qreal max, qreal kDefault, Module *parent);
+    Dimmer* createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent);
 };
 
 #endif // SIMPLEFACTORY_H

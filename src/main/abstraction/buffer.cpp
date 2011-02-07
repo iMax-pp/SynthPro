@@ -9,7 +9,7 @@ Buffer::Buffer(int length)
     clear();
 }
 
-Buffer::Buffer(const Buffer &source)
+Buffer::Buffer(const Buffer& source)
     : m_length(source.length())
 {
     m_data = new qreal[m_length];
@@ -28,7 +28,7 @@ void Buffer::clear()
 
 void Buffer::add(const qreal k)
 {
-    for (int i = 0 ; i< m_length ; i++) {
+    for (int i = 0; i < m_length; i++) {
         m_data[i] += k;
     }
 }

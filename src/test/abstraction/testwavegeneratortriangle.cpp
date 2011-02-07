@@ -1,6 +1,5 @@
 #include "testwavegeneratortriangle.h"
 
-#include "src/main/abstraction/inport.h"
 #include "src/main/abstraction/module.h"
 #include "src/main/abstraction/modulebufferrecorder.h"
 #include "src/main/abstraction/vco.h"
