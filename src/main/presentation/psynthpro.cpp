@@ -2,6 +2,7 @@
 
 #include "control/csynthpro.h"
 #include "control/modulelistmodel.h"
+#include "factory/qtfactory.h"
 #include "moduleview.h"
 
 #include <QAction>
@@ -146,9 +147,9 @@ void PSynthPro::createModuleList()
     moduleList->setDragDropMode(QListView::DragOnly);
 
     ModuleListModel* model = new ModuleListModel(this);
-    model->addModule("VCF");
-    model->addModule("VCA");
-    model->addModule("ADSR");
+    model->addModule("VCF", QtFactory::VCFId);
+    model->addModule("VCA", QtFactory::VCAId);
+    model->addModule("ADSR", QtFactory::ADSRId);
     moduleList->setModel(model);
 
     m_moduleDock->setWidget(moduleList);
@@ -161,8 +162,8 @@ void PSynthPro::createInputModuleList()
     inModuleList->setDragDropMode(QListView::DragOnly);
 
     ModuleListModel* model = new ModuleListModel(this);
-    model->addModule("Keyboard");
-    model->addModule("VCO");
+    model->addModule("Keyboard", QtFactory::KeyboardId);
+    model->addModule("VCO", QtFactory::VCOId);
     inModuleList->setModel(model);
 
     m_inModuleDock->setWidget(inModuleList);
@@ -175,8 +176,8 @@ void PSynthPro::createOutputModuleList()
     outModuleList->setDragDropMode(QListView::DragOnly);
 
     ModuleListModel* model = new ModuleListModel(this);
-    model->addModule("Audio Output");
-    model->addModule("File");
+    model->addModule("Audio Output", QtFactory::AudioOuputId);
+    model->addModule("File Output", QtFactory::FileOutputId);
     outModuleList->setModel(model);
 
     m_outModuleDock->setWidget(outModuleList);

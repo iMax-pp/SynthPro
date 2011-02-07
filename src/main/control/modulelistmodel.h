@@ -1,6 +1,7 @@
 #ifndef MODULELISTMODEL_H
 #define MODULELISTMODEL_H
 
+#include "factory/qtfactory.h"
 #include <QAbstractListModel>
 #include <QStringList>
 
@@ -16,10 +17,11 @@ public:
     QMimeData* mimeData(const QModelIndexList&) const;
     QStringList mimeTypes() const;
 
-    void addModule(const QString& moduleName);
+    void addModule(const QString& moduleName, const QtFactory::ModuleType);
 
 private:
-    QList<QString> m_modules;
+    QList<QString> m_moduleNames;
+    QList<QtFactory::ModuleType> m_moduleTypes;
 };
 
 #endif // MODULELISTMODEL_H
