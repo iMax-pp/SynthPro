@@ -8,9 +8,13 @@ CPort::CPort(Module* parent, bool replicable, bool gate)
 
 CPort::~CPort()
 {
+    /* We guess that this port presentation is owned by
+     * a Module’s presentation, so it will be deleted
+     * automatically (actually if we uncomment the
+     * following lines the program crashes)
     if (m_presentation) {
         delete m_presentation;
-    }
+    }*/
 }
 
 void CPort::setPresentation(PPort* presentation)

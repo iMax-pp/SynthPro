@@ -6,7 +6,7 @@
 
 class CVCO : public VCO, public CModule {
 public:
-    CVCO(SynthProFactory* factory, QObject* parent = 0);
+    CVCO(QObject* parent = 0);
 };
 
 #endif // CVCO_H
