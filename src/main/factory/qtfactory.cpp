@@ -3,62 +3,89 @@
 #include "abstraction/dimmer.h"
 #include "abstraction/sequencer.h"
 #include "control/cinport.h"
+#include "control/cmodule.h"
 #include "control/coutport.h"
+#include "control/cport.h"
 #include "control/csynthpro.h"
 #include "control/cvco.h"
 
 SynthPro* QtFactory::createSynthPro()
 {
     CSynthPro* synthpro = new CSynthPro();
-    PSynthPro* gui = new PSynthPro(synthpro);
 
+    PSynthPro* gui = new PSynthPro(synthpro);
     synthpro->setPresentation(gui);
     gui->show();
 
     return synthpro;
 }
 
+InPort* QtFactory::createInPort(Module* parent, bool replicable, bool gate)
+{
+    CModule* cParent = dynamic_cast<CModule*>(parent);
+    qDebug(QString("QtFactory::createInPort cParent = %1, parent = %2").arg((long)cParent).arg((long)parent).toAscii());
+    CInPort* port = new CInPort(cParent, replicable, gate);
+
+    PPort* p = new PPort(cParent->presentation());
+    port->setPresentation(p);
+
+    return port;
+}
+
 InPort* QtFactory::createInPort(Module* parent)
 {
-    CInPort* port = new CInPort(parent, false, false);
-    return port;
+    return createInPort(parent, false, false);
 }
 
 InPort* QtFactory::createInPortReplicable(Module* parent)
 {
-    CInPort* port = new CInPort(parent, true, false);
-    return port;
+    return createInPort(parent, true, false);
 }
 
 InPort* QtFactory::createInPortGate(Module* parent)
 {
-    CInPort* port = new CInPort(parent, false, true);
+    return createInPort(parent, false, true);
+}
+
+OutPort* QtFactory::createOutPort(Module* parent, bool replicable, bool gate)
+{
+    CModule* cParent = dynamic_cast<CModule*>(parent);
+    qDebug(QString("QtFactory::createOutPort cParent = %1, parent = %2").arg((long)cParent).arg((long)parent).toAscii());
+    COutPort* port = new COutPort(cParent, replicable, gate);
+
+    PPort* p = new PPort(cParent->presentation());
+    port->setPresentation(p);
+
     return port;
 }
 
 OutPort* QtFactory::createOutPort(Module* parent)
 {
-    COutPort* port = new COutPort(parent, false, false);
-    return port;
+    return createOutPort(parent, false, false);
 }
 
 OutPort* QtFactory::createOutPortReplicable(Module* parent)
 {
-    COutPort* port = new COutPort(parent, true, false);
-    return port;
+    return createOutPort(parent, true, false);
 }
 
 OutPort* QtFactory::createOutPortGate(Module* parent)
 {
-    COutPort* port = new COutPort(parent, false, true);
-    return port;
+    return createOutPort(parent, false, true);
 }
 
 VCO* QtFactory::createVCO()
 {
-    CVCO* vco = new CVCO(this);
+    // Create the VCO
+    CVCO* vco = new CVCO();
+
+    // Create its presentation
     PModule* p = new PModule();
     vco->setPresentation(p);
+
+    // Initialize it (ports creation)
+    vco->init(this);
+
     return vco;
 }
 

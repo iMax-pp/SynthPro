@@ -7,15 +7,23 @@
 #include "abstraction/wavegenerator.h"
 #include "factory/synthprofactory.h"
 
-VCO::VCO(SynthProFactory* factory, QObject* parent)
+VCO::VCO(QObject* parent)
     : Module(parent)
     , m_waveGenerator(0)
     , m_vfm(0)
     , m_out(0)
+    , m_shapeSelector(0)
+    , m_kDimmer(0)
 {
+}
+
+void VCO::init(SynthProFactory* factory)
+{
+    qDebug("VCO::init Creation of vfm port in the VCO");
     m_vfm = factory->createInPortReplicable(this);
     m_inports.append(m_vfm);
 
+    qDebug("VCO::init Creation of out port in the VCO");
     m_out = factory->createOutPortReplicable(this);
     m_outports.append(m_out);
 

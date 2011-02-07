@@ -15,8 +15,11 @@ class VCO : public virtual Module {
     Q_OBJECT
 
 public:
-    VCO(SynthProFactory* factory, QObject* parent = 0);
+    VCO(QObject* parent = 0);
     virtual ~VCO();
+
+    // Initialize the VCO (creates its ports using the factory)
+    virtual void init(SynthProFactory*);
 
     /**
      * Process its job : put a buffer in its outPort
