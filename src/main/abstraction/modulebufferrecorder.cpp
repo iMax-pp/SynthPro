@@ -4,8 +4,9 @@
 #include "buffer.h"
 #include "inport.h"
 #include <QFile>
+#include "factory/synthprofactory.h"
 
-ModuleBufferRecorder::ModuleBufferRecorder(QString fileName, int nbProcessingBeforeSaving, QObject* parent)
+ModuleBufferRecorder::ModuleBufferRecorder(QString fileName, int nbProcessingBeforeSaving, SynthProFactory* factory, QObject* parent)
     : Module(parent)
     , m_fileName(fileName)
     , m_nbProcessingBeforeSaving(nbProcessingBeforeSaving)
@@ -16,9 +17,13 @@ ModuleBufferRecorder::ModuleBufferRecorder(QString fileName, int nbProcessingBef
     , m_dataLength(0)
     , m_bufferForNumbers(0)
 {
+    // Creation of an Input.
+    m_inPort = factory->createInPortReplicable(this);
+    m_inports.append(m_inPort);
+
     m_bufferForNumbers = new char(4); // The buffer is only used to write int32 or short (16 bits),
                                       // as requested by the WAV format.
-
+    // Open the output file.
     m_outputFile = new QFile(fileName);
     if (!m_outputFile->open(QIODevice::WriteOnly)) {
         qWarning("Unable to create output file.");

@@ -3,7 +3,9 @@
 
 #include "module.h"
 
+class InPort;
 class QFile;
+class SynthProFactory;
 
 /**
   * Module that saves into a WAV file what is sent in his input port.
@@ -13,7 +15,7 @@ class QFile;
   */
 class ModuleBufferRecorder : public Module {
 public:
-    ModuleBufferRecorder(QString fileName = "output.wav", int nbProcessingBeforeSaving = 5, QObject* parent = 0);
+    ModuleBufferRecorder(QString fileName = "output.wav", int nbProcessingBeforeSaving = 5, SynthProFactory* factory = 0, QObject* parent = 0);
     virtual ~ModuleBufferRecorder();
 
     /**
@@ -31,6 +33,8 @@ private:
     int m_waveDataSizePosition;
     int m_dataLength;
     char* m_bufferForNumbers; // Little buffer used to write numbers to the file. NOT thread safe.
+
+    InPort* m_inPort;
 
     /**
       * Creates the WAV header of the output file, as well as setting up
