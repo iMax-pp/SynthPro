@@ -1,7 +1,7 @@
 #include "audiodeviceprovider.h"
 
-#include <QAudioOutput>
 #include <QAudioDeviceInfo>
+#include <QAudioOutput>
 
 #include <QDebug>
 

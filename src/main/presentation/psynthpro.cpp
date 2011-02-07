@@ -1,13 +1,13 @@
 #include "psynthpro.h"
 
 #include "control/csynthpro.h"
+#include "modulelist.h"
 #include "moduleview.h"
 
 #include <QAction>
 #include <QApplication>
 #include <QDockWidget>
 #include <QGraphicsScene>
-#include <QListWidget>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -140,10 +140,7 @@ void PSynthPro::createGraphicsView()
 
 void PSynthPro::createModuleList()
 {
-    QListWidget* moduleList = new QListWidget(m_moduleDock);
-    moduleList->setSelectionMode(QListWidget::SingleSelection);
-    moduleList->setDragEnabled(true);
-    moduleList->setDragDropMode(QAbstractItemView::DragOnly);
+    ModuleList* moduleList = new ModuleList(m_moduleDock);
 
     new QListWidgetItem(tr("VCO"), moduleList);
     new QListWidgetItem(tr("VCF"), moduleList);
@@ -155,10 +152,7 @@ void PSynthPro::createModuleList()
 
 void PSynthPro::createInputModuleList()
 {
-    QListWidget* inModuleList = new QListWidget(m_inModuleDock);
-    inModuleList->setSelectionMode(QListWidget::SingleSelection);
-    inModuleList->setDragEnabled(true);
-    inModuleList->setDragDropMode(QAbstractItemView::DragOnly);
+    ModuleList* inModuleList = new ModuleList(m_inModuleDock);
 
     new QListWidgetItem(tr("Keyboard"), inModuleList);
 
@@ -167,10 +161,7 @@ void PSynthPro::createInputModuleList()
 
 void PSynthPro::createOutputModuleList()
 {
-    QListWidget* outModuleList = new QListWidget(m_outModuleDock);
-    outModuleList->setSelectionMode(QListWidget::SingleSelection);
-    outModuleList->setDragEnabled(true);
-    outModuleList->setDragDropMode(QAbstractItemView::DragOnly);
+    ModuleList* outModuleList = new ModuleList(m_outModuleDock);
 
     new QListWidgetItem(tr("Audio Output"), outModuleList);
     new QListWidgetItem(tr("File"), outModuleList);

@@ -15,8 +15,7 @@ class QIODevice;
   * For this project, we only consider one audio format, and
   * only support the one we use.
   */
-class AudioDeviceProvider
-{
+class AudioDeviceProvider {
 public:
     AudioDeviceProvider();
     ~AudioDeviceProvider();
