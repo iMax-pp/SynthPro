@@ -1,0 +1,59 @@
+format 74
+
+classinstance 128131 class_ref 134659 // POut
+  name ""   xyz 84 4 2005 life_line_z 2000
+classinstance 128259 class_ref 134787 // COut
+  name ""   xyz 144 4 2010 life_line_z 2000
+classinstance 128771 class_ref 134915 // Out
+  name ""   xyz 211 4 2005 life_line_z 2000
+classinstance 129411 class_ref 135043 // CSynthPro
+  name ""   xyz 274 4 2005 life_line_z 2000
+note 129923 "for cmodule: cmodules :
+	for cport in 		cmodule.allPorts
+cport.showConnectableFeedback(fromPort)"
+  xyzwh 386 122 2000 267 81
+durationcanvas 128387 classinstance_ref 128131 // :POut
+  xyzwh 103 83 2010 11 40
+end
+durationcanvas 128515 classinstance_ref 128259 // :COut
+  xyzwh 163 83 2010 11 25
+end
+durationcanvas 128899 classinstance_ref 128259 // :COut
+  xyzwh 163 124 2010 11 207
+end
+durationcanvas 129027 classinstance_ref 128771 // :Out
+  xyzwh 230 103 2010 11 87
+end
+durationcanvas 129539 classinstance_ref 129411 // :CSynthPro
+  xyzwh 305 202 2010 11 63
+end
+msg 128643 synchronous
+  from durationcanvas_ref 128387
+  to durationcanvas_ref 128515
+  yz 83 2015 explicitmsg "startDnD()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 110 67
+msg 129155 synchronous
+  from durationcanvas_ref 128899
+  to durationcanvas_ref 129027
+  yz 124 2015 explicitmsg "isAvalaible"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 172 108
+msg 129283 return
+  from durationcanvas_ref 129027
+  to durationcanvas_ref 128899
+  yz 141 2020 explicitmsg "true"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 191 125
+msg 129667 synchronous
+  from durationcanvas_ref 128899
+  to durationcanvas_ref 129539
+  yz 204 2015 explicitmsg "startDndFrom(FromPort)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 173 188
+msg 129795 return
+  from durationcanvas_ref 129539
+  to durationcanvas_ref 128899
+  yz 250 2015 unspecifiedmsg
+  show_full_operations_definition default drawing_language default show_context_mode default
+end
