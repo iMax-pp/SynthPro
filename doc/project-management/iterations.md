@@ -35,6 +35,7 @@ Itération 3
 date : semaine 6 - 2011
 
 - Julien N. :
+    - (Test unitaire sur ModuleBufferRecorder;)
     - Horloge et module Out.
 - Maxime :
     - Gestion drag'n'drop et instanciation des composants.
