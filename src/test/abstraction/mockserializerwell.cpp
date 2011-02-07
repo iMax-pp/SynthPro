@@ -12,9 +12,8 @@ MockSerializerWell::MockSerializerWell(QTextStream& output, QObject* parent)
     m_inports.append(&input);
 }
 
-void MockSerializerWell::process()
+void MockSerializerWell::ownProcess()
 {
-    fetchInput();
     for (int i = 0 ; i < input.buffer()->length() ; i++) {
         m_output << input.buffer()->data()[i] << endl;
     }

@@ -7,4 +7,4 @@ MockModule::MockModule(const QString& msg, QTextStream& s, QObject *parent)
 {
 }
 
-void MockModule::process() { m_s << m_msg; }
+void MockModule::ownProcess() { m_s << m_msg; }
