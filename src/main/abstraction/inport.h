@@ -3,7 +3,7 @@
 
 #include "port.h"
 
-class InPort : public Port {
+class InPort : public virtual Port {
     Q_OBJECT
 
 public:

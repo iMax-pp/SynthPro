@@ -8,7 +8,6 @@ Port::Port(Module* parent, bool replicable, bool gate)
     , m_replicable(replicable)
     , m_gate(gate)
 {
-
 }
 
 Port::~Port() {}

@@ -4,7 +4,7 @@
 #include "abstraction/buffer.h"
 #include "port.h"
 
-class OutPort : public Port {
+class OutPort : public virtual Port {
     Q_OBJECT
 
 public:

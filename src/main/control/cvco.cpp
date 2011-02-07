@@ -1,7 +1,8 @@
 #include "cvco.h"
 
 CVCO::CVCO(SynthProFactory* factory, QObject* parent)
-    : VCO(factory, parent)
+    : Module(parent)
+    , VCO(factory, parent)
     , CModule(parent)
 {
 }
