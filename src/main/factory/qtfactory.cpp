@@ -1,11 +1,16 @@
 #include "qtfactory.h"
 
+#include "abstraction/audiodeviceprovider.h"
 #include "abstraction/dimmer.h"
+#include "abstraction/modulebufferrecorder.h"
+#include "abstraction/moduleout.h"
 #include "abstraction/sequencer.h"
 #include "control/cinport.h"
 #include "control/coutport.h"
 #include "control/csynthpro.h"
 #include "control/cvco.h"
+
+#include <QIODevice>
 
 SynthPro* QtFactory::createSynthPro()
 {
@@ -75,7 +80,22 @@ Dimmer* QtFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module* p
 
 ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
 {
-    // TODO
-    return 0;
+    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(fileName, nbProcessingBeforeSaving, this, parent);
+    mbr->initialize();
+    return mbr;
 }
 
+ModuleOut* QtFactory::createModuleOut(Module* parent)
+{
+    // Do not instanciate ModuleOut if no audio device can be accessed !
+    AudioDeviceProvider adp = AudioDeviceProvider::instance();
+    if (!adp.initializeAudioOutput()) {
+        return 0;
+    }
+
+    QIODevice* device = adp.device();
+    if (!device) {
+        return 0;
+    }
+    return new ModuleOut(device, this, parent);
+}

@@ -22,6 +22,12 @@ AudioDeviceProvider::~AudioDeviceProvider()
     }
 }
 
+AudioDeviceProvider& AudioDeviceProvider::instance()
+{
+    static AudioDeviceProvider instance;
+    return instance;
+}
+
 bool AudioDeviceProvider::initializeAudioOutput()
 {
     if (m_initialized) {
