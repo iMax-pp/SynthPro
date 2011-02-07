@@ -8,6 +8,7 @@
 
 ModuleBufferRecorder::ModuleBufferRecorder(QString fileName, int nbProcessingBeforeSaving, SynthProFactory* factory, QObject* parent)
     : Module(parent)
+    , m_factory(factory)
     , m_fileName(fileName)
     , m_nbProcessingBeforeSaving(nbProcessingBeforeSaving)
     , m_nbProcessingSaved(0)
@@ -17,10 +18,6 @@ ModuleBufferRecorder::ModuleBufferRecorder(QString fileName, int nbProcessingBef
     , m_dataLength(0)
     , m_bufferForNumbers(0)
 {
-    // Creation of an Input.
-    m_inPort = factory->createInPortReplicable(this);
-    m_inports.append(m_inPort);
-
     m_bufferForNumbers = new char(4); // The buffer is only used to write int32 or short (16 bits),
                                       // as requested by the WAV format.
     // Open the output file.
@@ -36,6 +33,13 @@ ModuleBufferRecorder::ModuleBufferRecorder(QString fileName, int nbProcessingBef
 ModuleBufferRecorder::~ModuleBufferRecorder()
 {
     m_outputFile->close();
+}
+
+void ModuleBufferRecorder::initialize()
+{
+    // Creation of an Input.
+    m_inPort = m_factory->createInPortReplicable(this);
+    m_inports.append(m_inPort);
 }
 
 void ModuleBufferRecorder::ownProcess()

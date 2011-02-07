@@ -8,6 +8,7 @@ class Dimmer;
 class InPort;
 class Module;
 class ModuleBufferRecorder;
+class ModuleOut;
 class OutPort;
 class Sequencer;
 class SynthPro;
@@ -28,6 +29,7 @@ public:
 
     virtual VCO* createVCO() = 0;
     virtual ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
+    virtual ModuleOut* createModuleOut(Module* parent) = 0;
 
     virtual Sequencer* createSequencer(SynthPro* parent) = 0;
 

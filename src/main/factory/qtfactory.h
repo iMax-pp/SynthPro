@@ -17,6 +17,7 @@ public:
 
     VCO* createVCO();
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    ModuleOut* createModuleOut(Module* parent);
 
     Sequencer* createSequencer(SynthPro* parent);
 

@@ -42,6 +42,7 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/modulelistmodel.h \
     src/main/control/cvco.h \
     src/main/abstraction/dimmer.h \
+    src/main/abstraction/moduleout.h \
     src/main/presentation/pvco.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
@@ -79,6 +80,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/modulelistmodel.cpp \
     src/main/control/cvco.cpp \
     src/main/abstraction/dimmer.cpp \
+    src/main/abstraction/moduleout.cpp \
     src/main/presentation/pvco.cpp
 
 INCLUDEPATH += src/main/

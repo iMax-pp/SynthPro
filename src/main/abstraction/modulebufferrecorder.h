@@ -19,11 +19,17 @@ public:
     virtual ~ModuleBufferRecorder();
 
     /**
+      * Required method in order to instanciate the ports. Used by the factory.
+      */
+    void initialize();
+
+    /**
      * Save the first input port buffer into a file.
      */
     void ownProcess();
 
 private:
+    SynthProFactory* m_factory;
     QString m_fileName;
     const int m_nbProcessingBeforeSaving;
     int m_nbProcessingSaved;
