@@ -154,17 +154,17 @@ relationcanvas 132995 relation_ref 130819 // <composition>
 end
 relationcanvas 133251 relation_ref 130947 // <composition>
   from ref 130307 z 2001 to ref 133123
-  role_a_pos 193 314 3000 no_role_b
+  role_a_pos 175 315 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 133507 relation_ref 131075 // <composition>
   from ref 130307 z 2001 to ref 133379
-  role_a_pos 197 416 3000 no_role_b
+  role_a_pos 184 421 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 133635 relation_ref 131203 // <composition>
   from ref 130435 z 2001 to ref 133379
-  role_a_pos 202 435 3000 no_role_b
+  role_a_pos 184 440 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 133891 relation_ref 131331 // <composition>

@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 7
+  revision 8
   modified_by 2 "julien"
 
 
@@ -676,7 +676,7 @@ format 74
 	idl_decl ""
       end
 
-      operation 129155 "GetChoice"
+      operation 129155 "choice"
 	public explicit_return_type "int"
 	nparams 0
 	
@@ -718,7 +718,7 @@ format 74
 	idl_decl ""
       end
 
-      operation 129283 "getValue"
+      operation 129283 "value"
 	public explicit_return_type "float"
 	nparams 0
 	
