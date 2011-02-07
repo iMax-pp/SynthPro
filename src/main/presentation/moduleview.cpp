@@ -24,7 +24,7 @@ void ModuleView::dropEvent(QDropEvent* event)
 {
     if (m_cSynthPro && event->mimeData()->hasFormat("application/x-synthpro")) {
         QtFactory::ModuleType moduleType = (QtFactory::ModuleType) event->mimeData()->data("application/x-synthpro").toInt();
-        m_cSynthPro->addModule(moduleType, event->pos());
+        m_cSynthPro->addModule(moduleType, mapToScene(event->pos()));
         event->accept();
     } else {
         event->ignore();
