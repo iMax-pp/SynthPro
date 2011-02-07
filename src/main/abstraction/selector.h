@@ -2,7 +2,9 @@
 #define SELECTOR_H
 
 #include <QObject>
-
+/*
+* A selector allow to choose in a list of values an algorithm or a config value in a module
+*/
 class Selector : public QObject {
     Q_OBJECT
 public:

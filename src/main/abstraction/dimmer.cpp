@@ -9,12 +9,12 @@ Dimmer::Dimmer(float min, float max, float defaultValue, QObject *parent)
 {
 }
 
-Dimmer::value()
+float Dimmer::value()
 {
     return m_value;
 }
 
-Dimmer::setValue(float value)
+void Dimmer::setValue(float value)
 {
     m_value = value;
 }

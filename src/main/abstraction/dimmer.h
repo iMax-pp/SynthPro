@@ -2,7 +2,9 @@
 #define DIMMER_H
 
 #include <QObject>
-
+/*
+* A dimmer allow changing a float parameter of a module
+*/
 class Dimmer : public QObject {
     Q_OBJECT
 public:
