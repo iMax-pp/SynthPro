@@ -1,3 +1,4 @@
+#include "abstraction/testaudiodeviceprovider.h"
 #include "abstraction/testinport.h"
 #include "abstraction/testmodulebufferrecorder.h"
 #include "abstraction/testoutport.h"
@@ -40,4 +41,7 @@ int main()
 
     TestWaveGeneratorSinus testWaveGeneratorSinus;
     QTest::qExec(&testWaveGeneratorSinus);
+
+    TestAudioDeviceProvider testAudioDeviceProvider;
+    QTest::qExec(&testAudioDeviceProvider);
 }
