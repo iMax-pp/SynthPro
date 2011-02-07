@@ -22,14 +22,19 @@ HEADERS += \
     src/test/abstraction/mockinoutmodule.h \
     src/test/abstraction/testvco.h \
     src/main/abstraction/vco.h \
+    src/main/abstraction/dimmer.h \
     src/main/abstraction/wavegeneratordummy.h \
     src/main/abstraction/wavegeneratorempty.h \
+    src/main/abstraction/wavegeneratortriangle.h \
+    src/main/abstraction/wavegeneratorsquare.h \
     src/test/abstraction/mockserializerwell.h \
     src/main/factory/synthprofactory.h \
     src/main/factory/simplefactory.h \
     src/main/abstraction/modulebufferrecorder.h \
     src/test/abstraction/testmodulebufferrecorder.h \
-    src/test/abstraction/testwavegeneratorempty.h
+    src/test/abstraction/testwavegeneratorempty.h \
+    src/test/abstraction/testwavegeneratortriangle.h \
+    src/test/abstraction/testwavegeneratorsquare.h
 
 SOURCES += src/test/test.cpp \
     src/main/abstraction/buffer.cpp \
@@ -37,6 +42,7 @@ SOURCES += src/test/test.cpp \
     src/main/abstraction/inport.cpp \
     src/test/abstraction/testinport.cpp \
     src/main/abstraction/outport.cpp \
+    src/main/abstraction/dimmer.cpp \
     src/test/abstraction/testoutport.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/abstraction/module.cpp \
@@ -49,10 +55,14 @@ SOURCES += src/test/test.cpp \
     src/main/abstraction/vco.cpp \
     src/main/abstraction/wavegeneratordummy.cpp \
     src/main/abstraction/wavegeneratorempty.cpp \
+    src/main/abstraction/wavegeneratortriangle.cpp \
+    src/main/abstraction/wavegeneratorsquare.cpp \
     src/test/abstraction/mockserializerwell.cpp \
     src/main/factory/simplefactory.cpp \
     src/main/abstraction/modulebufferrecorder.cpp \
     src/test/abstraction/testmodulebufferrecorder.cpp \
-    src/test/abstraction/testwavegeneratorempty.cpp
+    src/test/abstraction/testwavegeneratorempty.cpp \
+    src/test/abstraction/testwavegeneratortriangle.cpp \
+    src/test/abstraction/testwavegeneratorsquare.cpp
 
 INCLUDEPATH += src/main/ src/test/

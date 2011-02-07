@@ -26,3 +26,22 @@ void TestVCO::testVCO()
 
     delete vco;
 }
+void TestVCO::testVCOwithDimmer()
+{
+    QString result;
+    QTextStream stream(&result);
+
+    SimpleFactory factory;
+    VCO* vco = factory.createVCO();
+    MockSerializerWell output(stream);
+
+    vco->outports().first()->connectTo(&output.input);
+
+    vco->setWaveGenerator(new WaveGeneratorDummy);
+    vco->process();
+    output.process();
+
+    QVERIFY(result.startsWith("20000")); // TODO check that *all* the result is as expected (not only the first value)
+
+    delete vco;
+}
