@@ -38,9 +38,10 @@ date : semaine 6 - 2011
     - (Test unitaire sur ModuleBufferRecorder;)
     - Horloge et module Out.
 - Maxime :
-    - Gestion drag'n'drop et instanciation des composants;
-    - Gestion héritage "en diamant";
+    - Gestion drag'n'drop;
+    - Instanciation des composants;
 - Julien RF :
+    - Gestion héritage "en diamant";
 - Cyrille :
     - Réglages (potard et selecteur);
     - Intégration réglages dans VCO;
