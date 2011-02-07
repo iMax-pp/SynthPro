@@ -1,9 +1,9 @@
-#ifndef QTFACTORY_H
-#define QTFACTORY_H
+#ifndef SIMPLEFACTORY_H
+#define SIMPLEFACTORY_H
 
-#include "synthprofactory.h"
+#include "factory/synthprofactory.h"
 
-class QtFactory : public SynthProFactory {
+class SimpleFactory : public SynthProFactory {
 public:
     SynthPro* createSynthPro();
     InPort* createInPort(Module* parent);
@@ -16,4 +16,4 @@ public:
     Sequencer* createSequencer(SynthPro* parent);
 };
 
-#endif // QTFACTORY_H
+#endif // SIMPLEFACTORY_H

@@ -22,7 +22,9 @@ HEADERS += \
     src/test/abstraction/testvco.h \
     src/main/abstraction/vco.h \
     src/main/abstraction/wavegeneratordummy.h \
-    src/test/abstraction/mockserializerwell.h
+    src/test/abstraction/mockserializerwell.h \
+    src/main/factory/synthprofactory.h \
+    src/main/factory/simplefactory.h
 
 SOURCES += src/test/test.cpp \
     src/main/abstraction/buffer.cpp \
@@ -41,6 +43,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testvco.cpp \
     src/main/abstraction/vco.cpp \
     src/main/abstraction/wavegeneratordummy.cpp \
-    src/test/abstraction/mockserializerwell.cpp
+    src/test/abstraction/mockserializerwell.cpp \
+    src/main/factory/simplefactory.cpp
 
 INCLUDEPATH += src/main/ src/test/

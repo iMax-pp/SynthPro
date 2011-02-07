@@ -7,6 +7,7 @@
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratordummy.h"
+#include "factory/simplefactory.h"
 
 #include <QtTest>
 
@@ -170,21 +171,25 @@ void TestSequencer::testVCOAndSerializer()
 {
     QString result;
     QTextStream stream(&result);
+    SimpleFactory factory;
 
-    SynthPro synthpro;
-    Sequencer sequencer(&synthpro);
+    SynthPro* synthpro = factory.createSynthPro();
+    Sequencer* sequencer = factory.createSequencer(synthpro);
 
-    VCO vco;
-    vco.setWaveGenerator(new WaveGeneratorDummy);
-    synthpro.add(&vco);
+    VCO* vco = factory.createVCO();
+    vco->setWaveGenerator(new WaveGeneratorDummy);
+    synthpro->add(vco);
 
     MockSerializerWell output(stream);
-    synthpro.add(&output);
+    synthpro->add(&output);
 
-    vco.outports().first()->connectTo(&output.input);
+    vco->outports().first()->connectTo(&output.input);
 
-    sequencer.scheduleModules();
-    sequencer.process();
+    sequencer->scheduleModules();
+    sequencer->process();
 
     QVERIFY(result.startsWith("20000"));
+
+    delete synthpro;
+    delete vco;
 }

@@ -34,7 +34,8 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/wavegeneratorsinus.h \
     src/main/presentation/pchannel.h \
     src/main/control/cchannel.h \
-    src/main/abstraction/audiodeviceprovider.h
+    src/main/abstraction/audiodeviceprovider.h \
+    src/main/abstraction/modulebufferrecorder.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -64,7 +65,8 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/wavegeneratorsinus.cpp \
     src/main/presentation/pchannel.cpp \
     src/main/control/cchannel.cpp \
-    src/main/abstraction/audiodeviceprovider.cpp
+    src/main/abstraction/audiodeviceprovider.cpp \
+    src/main/abstraction/modulebufferrecorder.cpp
 
 INCLUDEPATH += src/main/
 

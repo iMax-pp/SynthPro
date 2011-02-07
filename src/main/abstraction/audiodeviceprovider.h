@@ -48,12 +48,12 @@ public:
       */
     QAudioOutput* audioOutput();
 
-private:
     static const int OUTPUT_FREQUENCY = 44100;
     static const int BIT_RATE = 16;
     static const int NB_CHANNELS = 1; // We create Mono sounds only.
     static const int BUFFER_SIZE = 5000;
 
+private:
     QAudioFormat m_audioFormat; // Format used by the audio output.
     QAudioOutput* m_audioOutput;
 };
