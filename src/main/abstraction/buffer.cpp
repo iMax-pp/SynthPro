@@ -25,3 +25,10 @@ void Buffer::clear()
 {
     memset(m_data, 0, length() * sizeof(qreal));
 }
+
+void Buffer::add(const qreal k)
+{
+    for (int i = 0 ; i< m_length ; i++) {
+        m_data[i] += k;
+    }
+}

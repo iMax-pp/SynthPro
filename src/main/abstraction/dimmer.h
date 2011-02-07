@@ -8,14 +8,14 @@
 class Dimmer : public QObject {
     Q_OBJECT
 public:
-    Dimmer(float min, float max, float defaultValue, QObject *parent = 0);
-    float value();
-    void setValue(float);
+    Dimmer(qreal min, qreal max, qreal defaultValue, QObject *parent = 0);
+    qreal value() const;
+    void setValue(qreal);
 
 private :
-    float m_min;
-    float m_max;
-    float m_value;
+    qreal m_min;
+    qreal m_max;
+    qreal m_value;
 };
 
 #endif // DIMMER_H

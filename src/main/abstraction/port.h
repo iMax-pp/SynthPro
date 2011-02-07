@@ -72,7 +72,6 @@ protected:
      */
     bool compatible(const Port* other) const;
 
-
     Module* m_module;
     bool m_replicable;
     bool m_gate;

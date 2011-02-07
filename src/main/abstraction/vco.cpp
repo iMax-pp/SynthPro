@@ -1,7 +1,9 @@
 #include "vco.h"
 
+#include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
+#include "abstraction/selector.h"
 #include "abstraction/wavegenerator.h"
 #include "factory/synthprofactory.h"
 
@@ -16,6 +18,8 @@ VCO::VCO(SynthProFactory* factory, QObject* parent)
 
     m_out = factory->createOutPortReplicable(this);
     m_outports.append(m_out);
+
+    m_kDimmer = factory->createKDimmer(K_MIN, K_MAX, K_DEFAULT, this);
 }
 
 VCO::~VCO()
@@ -28,6 +32,7 @@ VCO::~VCO()
 void VCO::process()
 {
     fetchInput();
+    m_vfm->buffer()->add(m_kDimmer->value());
     m_out->swapBuffers();
     m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());
 }
