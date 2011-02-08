@@ -33,8 +33,8 @@ public:
      */
     void setWaveGenerator(WaveGenerator*);
 
-    qreal dimmerValue();
-    void setDimmerValue(qreal value);
+    qreal k();
+    void setK(qreal value);
 
     static const qreal SIGNAL_INTENSITY = 20000;
     static const qreal F0 = 261.626; // Frequency of the C4.
