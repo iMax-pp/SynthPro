@@ -41,6 +41,7 @@ HEADERS += \
     src/test/abstraction/testwavegeneratorsquare.h \
     src/test/abstraction/testwavegeneratorsaw.h \
     src/test/abstraction/testwavegeneratorsinus.h \
+    src/main/abstraction/clock.h \
     src/test/abstraction/testaudiodeviceprovider.h
 
 SOURCES += src/test/test.cpp \
@@ -77,6 +78,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testwavegeneratorsquare.cpp \
     src/test/abstraction/testwavegeneratorsaw.cpp \
     src/test/abstraction/testwavegeneratorsinus.cpp \
+    src/main/abstraction/clock.cpp \
     src/test/abstraction/testaudiodeviceprovider.cpp
 
 INCLUDEPATH += src/main/ src/test/
