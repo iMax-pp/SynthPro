@@ -19,11 +19,18 @@ PVCO::PVCO()
     title->setFont(QFont("Courier", 18, QFont::Bold));
 }
 
-void PVCO::initialize(PPort* vfm, PPort* out, PDimmer* kDimmer)
+void PVCO::initialize(PPort* pVfm, PPort* pOut, PDimmer* pK)
 {
-    vfm->setPos(0, 70); // Yes, absolute positioning is bad.
-    out->setPos(200, 70);
+    /*pVfm->setParentItem(settings());
+    pK->setParentItem(settings());
+    pK->setMaximumSize(60, 60);
 
-    kDimmer->setPos(10, 90);
-    kDimmer->setMaximumSize(60, 60);
+    pOut->setParentItem(out());
+
+    doLayout();*/
+    pVfm->setPos(0, 70); // Yes, absolute positioning is bad.
+    pOut->setPos(200, 70);
+
+    pK->setPos(10, 90);
+    pK->setMaximumSize(60, 60);
 }
