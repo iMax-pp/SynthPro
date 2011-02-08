@@ -51,11 +51,6 @@ VCO* SimpleFactory::createVCO()
     return vco;
 }
 
-Sequencer* SimpleFactory::createSequencer(SynthPro* parent)
-{
-    return new Sequencer(parent);
-}
-
 Dimmer* SimpleFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
 {
     return new Dimmer(min, max, kDefault, parent);
