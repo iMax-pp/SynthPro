@@ -13,10 +13,12 @@ CWire::CWire()
 CWire::~CWire()
 {
     if (m_inPort && m_inPort->wire()) {
+        // If an inPort is connected, then deconnect it.
         inPort()->setWire(0);
     }
 
     if (m_outPort && m_outPort->wire()) {
+        // If an outPort is connected, then deconnect it.
         outPort()->setWire(0);
     }
 
@@ -40,14 +42,14 @@ CInPort* CWire::inPort() const
     return m_inPort;
 }
 
-void CWire::setInPort(CInPort* inPort)
-{
-    m_inPort = inPort;
-}
-
 COutPort* CWire::outPort() const
 {
     return m_outPort;
+}
+
+void CWire::setInPort(CInPort* inPort)
+{
+    m_inPort = inPort;
 }
 
 void CWire::setOutPort(COutPort* outPort)

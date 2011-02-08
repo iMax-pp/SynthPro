@@ -14,14 +14,14 @@ public:
 
     CPort* control() const;
 
+    static const int PORT_SIZE = 15;
+
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent*);
     void mouseMoveEvent(QGraphicsSceneMouseEvent*);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent*);
 
 private:
-    static const int PORT_SIZE = 10;
-
     CPort* m_control;
     QGraphicsSimpleTextItem* m_label;
     QGraphicsEllipseItem* m_port;

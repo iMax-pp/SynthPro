@@ -17,6 +17,7 @@
 #include "presentation/pvco.h"
 #include "presentation/pwire.h"
 
+#include <QDebug>
 #include <QIODevice>
 
 SynthPro* QtFactory::createSynthPro()
@@ -33,7 +34,7 @@ SynthPro* QtFactory::createSynthPro()
 InPort* QtFactory::createInPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
-    qDebug(QString("QtFactory::createInPort cParent = %1, parent = %2").arg((long)cParent).arg((long)parent).toAscii());
+    qDebug() << "QtFactory::createInPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     CInPort* port = new CInPort(cParent, this, name, replicable, gate);
 
     PPort* p = new PPort(port, cParent->presentation());
@@ -60,7 +61,7 @@ InPort* QtFactory::createInPortGate(Module* parent, const QString& name)
 OutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
-    qDebug(QString("QtFactory::createOutPort cParent = %1, parent = %2").arg((long)cParent).arg((long)parent).toAscii());
+    qDebug() << "QtFactory::createOutPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     COutPort* port = new COutPort(cParent, this, name, replicable, gate);
 
     PPort* p = new PPort(port, cParent->presentation());
