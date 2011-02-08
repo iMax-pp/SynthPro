@@ -9,12 +9,17 @@ class COutPort;
 class CChannel {
 public:
     CChannel();
+    virtual ~CChannel();
 
     void setPresentation(PChannel*);
     PChannel* presentation() const;
 
+    CInPort* inPort() const;
     void setInPort(CInPort*);
+    COutPort* outPort() const;
     void setOutPort(COutPort*);
+
+    void updatePosition(QPointF = QPointF());
 
 private:
     PChannel* m_presentation;

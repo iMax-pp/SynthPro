@@ -1,12 +1,16 @@
 #include "pport.h"
 
+#include "control/cchannel.h"
 #include "control/cport.h"
 #include <QBrush>
 #include <QFont>
+#include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
 #include <QPen>
 
 PPort::PPort(CPort* control, QGraphicsItem* parent)
     : QGraphicsItem(parent)
+    , m_control(control)
     , m_label(0)
     , m_port(0)
 {
@@ -38,4 +42,39 @@ QRectF PPort::boundingRect() const
     return QRectF(-labelBounds.width(), -labelBounds.height() / 2,
                   portBounds.width() + labelBounds.width(),
                   portBounds.height());
+}
+
+void PPort::mousePressEvent(QGraphicsSceneMouseEvent*)
+{
+    m_control->startChannel();
+}
+
+void PPort::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
+{
+    m_control->channel()->updatePosition(event->scenePos());
+}
+
+void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
+{
+    QPointF pos = event->scenePos();
+    QList<QGraphicsItem*> items = scene()->items(pos);
+
+    // Try to retrieve the port within all the items...
+    PPort* port = 0;
+    foreach (QGraphicsItem* item, items) {
+        // by casting it.
+        port = dynamic_cast<PPort*>(item);
+        if (port) {
+            // If it's a port, don't go further.
+            break;
+        }
+    }
+
+    // In any case call the control (ie. to delete the associated channel).
+    m_control->dropChannel(port);
+}
+
+CPort* PPort::control() const
+{
+    return m_control;
 }

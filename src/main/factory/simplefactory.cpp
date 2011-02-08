@@ -87,3 +87,8 @@ ModuleOut* SimpleFactory::createModuleOut(Module* parent)
     mo->initialize(this);
     return mo;
 }
+
+CChannel* SimpleFactory::createChannel(QGraphicsScene*)
+{
+    return 0;
+}

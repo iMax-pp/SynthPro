@@ -66,28 +66,15 @@ void TestVCO::testVCOWithSelector()
 
     SimpleFactory factory;
     VCO* vco = factory.createVCO();
-
-
+    QVERIFY(vco->shape() == WaveGeneratorFactory::SawWave);
 
     MockSerializerWell output(stream);
     vco->outports().first()->connectTo(&output.input);
-    vco->setWaveGenerator(new WaveGeneratorSquare);
+    vco->setShape(WaveGeneratorFactory::SinusWave);
     vco->process();
     output.process();
-    int nbFronts = 0;
-    int oldValue = 0;
 
-    Buffer * buffer = vco->outports().first()->buffer();
-    for (int i = 0 ; i < buffer->length()  ; i++) {
-        if (i == 0) {
-            oldValue = buffer->data()[i];
-        }
-        if (buffer->data()[i]-oldValue != 0) {
-            nbFronts++;
-        }
-        oldValue = buffer->data()[i];
-    }
-    QVERIFY(nbFronts != 0);
+    QVERIFY(vco->shape() == WaveGeneratorFactory::SinusWave);
 
     delete vco;
 }

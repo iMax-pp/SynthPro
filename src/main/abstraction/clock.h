@@ -11,6 +11,16 @@ class QTimer;
   * This class manages timers in order to trigger actions
   * that has been registered.
   *
+  * The principle is that is it possible to register to a Fast Timer,
+  * which should be only used by one entity at the same time (like the
+  * ModuleOut). This delegates the call to the Sequencer to the entity.
+  *
+  * However, if no Fast Timer is used, it means that we don't need
+  * any Fast Timer, and the Internal Timer is used, a little slower,
+  * that will call the Sequencer. This is useful to trigger the
+  * module chain if there's no ModuleOut, like an oscilloscope
+  * or a BufferRecorder.
+  *
   * This class implements the Singleton design pattern. An
   * instance can be given through the instance() method.
   */
@@ -22,26 +32,43 @@ public:
     static Clock& instance();
 
     /**
+      * Start or resume the Timers.
+      */
+    void start();
+
+    /**
+      * Pause the Timers. They can be resumed with start().
+      */
+    void pause();
+
+    /**
       * Register a Module to a Fast Clock. Will call its
       * timerExpired() slot when its timer is expired.
       */
     void registerFastClock(Module*);
-    // void registerSlowClock(Module*); // TODO
 
     /**
       * Unregister a module, stop the timer it was related to.
       */
     void unregister(Module*);
 
+private slots:
+    /**
+      * When the Internal Timer is expired, call the Sequencer.
+      */
+    void internalTimerExpired();
+
 private:
-    static const int FAST_TIMER_DELAY = 5;
-    static const int SLOW_TIMER_DELAY = 50;
+    static const int FAST_TIMER_DELAY = 5; // For fast operations (sound card output).
+    static const int INTERNAL_TIMER_DELAY = 50; // For non critical operations.
+
+    bool m_started; // Indicates if the Timers are started or paused.
 
     explicit Clock(QObject *parent = 0);
     Clock(Clock&);
 
     QMap<Module*, QTimer*> m_fastTimers;
-    QMap<Module*, QTimer*> m_slowTimers;
+    QTimer* m_internalTimer;
 };
 
 #endif // CLOCK_H

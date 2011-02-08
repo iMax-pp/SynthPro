@@ -12,6 +12,8 @@ public:
     void setPresentation(PModule*);
     PModule* presentation() const;
 
+    void move();
+
 private:
     PModule* m_presentation;
 };

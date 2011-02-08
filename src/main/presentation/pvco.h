@@ -6,9 +6,12 @@
 #include "presentation/pport.h"
 #include <QGraphicsProxyWidget>
 
+class CVCO;
+
 class PVCO : public PModule {
 public:
-    PVCO();
+    PVCO(CVCO*);
+
     void initialize(PPort* vfm, PPort* out, PDimmer*);
 
 private:

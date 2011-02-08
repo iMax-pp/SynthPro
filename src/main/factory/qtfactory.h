@@ -20,8 +20,9 @@ public:
     ModuleOut* createModuleOut(Module* parent);
 
     Dimmer* createDimmer(qreal, qreal, qreal, Module* parent);
-
     Selector* createSelector(QList<int>*, int, Module* parent);
+
+    CChannel* createChannel(QGraphicsScene*);
 
 protected:
     // Convenient factory method

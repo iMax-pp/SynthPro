@@ -1,12 +1,14 @@
 #include "pmodule.h"
 
+#include "control/cmodule.h"
 #include <QBrush>
 #include <QGraphicsDropShadowEffect>
-#include <QGraphicsLinearLayout>
+#include <QGraphicsSceneMouseEvent>
 #include <QPen>
 
-PModule::PModule()
+PModule::PModule(CModule* control)
     : QGraphicsRectItem(0)
+    , m_control(control)
     , m_in(0)
     , m_name(0)
     , m_out(0)
@@ -37,4 +39,10 @@ PModule::PModule()
 void PModule::doLayout()
 {
     m_layout->doLayout();
+}
+
+void PModule::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
+{
+    QGraphicsItem::mouseMoveEvent(event);
+    m_control->move();
 }

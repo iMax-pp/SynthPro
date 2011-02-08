@@ -4,9 +4,11 @@
 #include "presentation/layoutitem.h"
 #include <QGraphicsRectItem>
 
+class CModule;
+
 class PModule : public QGraphicsRectItem {
 public:
-    PModule();
+    PModule(CModule*);
 
 protected:
     // Call this method to compute the layout of this item
@@ -17,6 +19,10 @@ protected:
     inline LayoutItem* out() const { return m_out; }
     inline LayoutItem* settings() const { return m_settings; }
 
+    void mouseMoveEvent(QGraphicsSceneMouseEvent*);
+
+
+    CModule* m_control;
     static const qreal DEFAULT_WIDTH = 150;
     static const qreal DEFAULT_HEIGHT = 100;
 
