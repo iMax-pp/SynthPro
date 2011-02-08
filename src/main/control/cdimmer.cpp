@@ -15,6 +15,7 @@ PDimmer* CDimmer::presentation() const
 void CDimmer::setPresentation(PDimmer* presentation)
 {
     m_presentation = presentation;
+    connect(m_presentation, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));
 }
 
 void CDimmer::valueChanged(int value)
