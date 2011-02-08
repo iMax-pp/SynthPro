@@ -45,7 +45,7 @@ public slots:
     virtual void timerExpired();
 
 private:
-    static const int GENERATION_BUFFER_SIZE = 900; //900;  // This must be small, but not too much (overhead).
+    static const int GENERATION_BUFFER_SIZE = 900; // 900;  // This must be small, but not too much (overhead).
     static const int FILL_COUNTER_MAX = 10;
 
     QIODevice* m_device;

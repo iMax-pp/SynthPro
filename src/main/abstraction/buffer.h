@@ -5,7 +5,7 @@
 
 class Buffer {
 public:
-    static const int DEFAULT_LENGTH = 256;
+    static const int DEFAULT_LENGTH = 900; // 256;
 
     /**
      * Constructs a buffer of a given length, initializing its content to 0.
