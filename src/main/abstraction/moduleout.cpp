@@ -23,8 +23,8 @@ void ModuleOut::initialize()
         m_inPort = m_factory->createInPortReplicable(this);
         m_inports.append(m_inPort);
 
-        Clock* clock = Clock::instance();
-        clock->registerFastClock(this);
+        Clock& clock = Clock::instance();
+        clock.registerFastClock(this);
     }
 }
 

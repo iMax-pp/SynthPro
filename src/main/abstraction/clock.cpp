@@ -12,10 +12,10 @@ Clock::~Clock()
 {
 }
 
-Clock* Clock::instance()
+Clock& Clock::instance()
 {
     static Clock instance;
-    return &instance;
+    return instance;
 }
 
 void Clock::registerFastClock(Module* module)

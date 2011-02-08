@@ -19,7 +19,7 @@ class Clock : public QObject {
 public:
     ~Clock();
 
-    static Clock* instance();
+    static Clock& instance();
 
     /**
       * Register a Module to a Fast Clock. Will call its
