@@ -15,4 +15,5 @@ int Selector::choice() const
 void Selector::setChoice(int choice)
 {
     m_choice = choice;
+    emit choiceChanged(m_choice);
 }

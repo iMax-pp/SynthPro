@@ -37,7 +37,7 @@ public:
     void setWaveGenerator(WaveGenerator*);
 
     /**
-    * @return value of the current value of the dimmer
+    * @return The current value of the dimmer
     */
     qreal k() const;
 
@@ -45,6 +45,17 @@ public:
     * set the value of the dimmer
     */
     void setK(qreal value);
+
+    /*
+     * @return The current wave shape selected
+     */
+    WaveGeneratorFactory::WaveType shape();
+
+    /**
+     * set the value of the selector
+     */
+    void setShape(WaveGeneratorFactory::WaveType);
+
 
     static const qreal SIGNAL_INTENSITY = 20000;
     static const qreal F0 = 261.626; // Frequency of the C4.

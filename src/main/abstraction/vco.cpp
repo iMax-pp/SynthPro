@@ -36,6 +36,9 @@ void VCO::initialize(SynthProFactory* factory)
     m_selectorConversionMap = m_waveGeneratorFactory->selectorConversionmap();
     m_selectorValueList = m_selectorConversionMap->keys();
     m_shapeSelector = factory->createSelector(&m_selectorValueList, 0, this);
+
+    connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
+
     m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, this);
 }
 
@@ -79,4 +82,15 @@ void VCO::waveShapeChanged(int selectedValue)
         delete m_waveGenerator;
     }
     m_waveGenerator = m_waveGeneratorFactory->getWaveGenerator(m_waveGeneratorFactory->selectorConversionmap()->value(selectedValue));
+}
+
+WaveGeneratorFactory::WaveType VCO::shape()
+{
+
+    return m_selectorConversionMap->value(m_shapeSelector->choice());
+}
+
+void VCO::setShape(WaveGeneratorFactory::WaveType shape)
+{
+    m_shapeSelector->setChoice(m_selectorConversionMap->key(shape));
 }
