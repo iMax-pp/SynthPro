@@ -3,6 +3,7 @@
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
 #include "abstraction/modulebufferrecorder.h"
+#include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
@@ -45,7 +46,7 @@ OutPort* SimpleFactory::createOutPortGate(Module* parent)
 
 VCO* SimpleFactory::createVCO()
 {
-    return new VCO(this);
+    return new VCO();
 }
 
 Sequencer* SimpleFactory::createSequencer(SynthPro* parent)
@@ -60,5 +61,22 @@ Dimmer* SimpleFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Modul
 
 ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
 {
-    return new ModuleBufferRecorder(fileName, nbProcessingBeforeSaving, this, parent);
+    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(fileName, nbProcessingBeforeSaving, this, parent);
+    mbr->initialize();
+    return mbr;
+}
+
+ModuleOut* SimpleFactory::createModuleOut(Module* parent)
+{
+    // Do not instanciate ModuleOut if no audio device can be accessed !
+    AudioDeviceProvider adp = AudioDeviceProvider::instance();
+    if (!adp.initializeAudioOutput()) {
+        return 0;
+    }
+
+    QIODevice* device = adp.device();
+    if (!device) {
+        return 0;
+    }
+    return new ModuleOut(device, this, parent);
 }

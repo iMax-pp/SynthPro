@@ -15,8 +15,11 @@ class VCO : public virtual Module {
     Q_OBJECT
 
 public:
-    VCO(SynthProFactory* factory, QObject* parent = 0);
+    VCO(QObject* parent = 0);
     virtual ~VCO();
+
+    // Initialize the VCO (creates its ports using the factory)
+    virtual void initialize(SynthProFactory*);
 
     /**
      * Process its job : put a buffer in its outPort
@@ -29,8 +32,8 @@ public:
      * @param generator a wave generator (Strategy design pattern)
      */
     void setWaveGenerator(WaveGenerator*);
-    
-    Dimmer* dimmer();
+
+    Dimmer* dimmer(); // FIXME I don’t think it’s a good idea to expose this dimmer to the outside
 
     static const qreal SIGNAL_INTENSITY = 20000;
     static const qreal F0 = 261.626; // Frequency of the C4.

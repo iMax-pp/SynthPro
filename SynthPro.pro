@@ -41,7 +41,10 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/wavegeneratorempty.h \
     src/main/control/modulelistmodel.h \
     src/main/control/cvco.h \
-    src/main/abstraction/dimmer.h
+    src/main/abstraction/dimmer.h \
+    src/main/abstraction/moduleout.h \
+    src/main/presentation/pvco.h \
+    src/main/abstraction/clock.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -77,7 +80,11 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/wavegeneratorempty.cpp \
     src/main/control/modulelistmodel.cpp \
     src/main/control/cvco.cpp \
-    src/main/abstraction/dimmer.cpp
+    src/main/abstraction/dimmer.cpp \
+    src/main/abstraction/moduleout.cpp \
+    src/main/presentation/pvco.cpp \
+    src/main/abstraction/clock.cpp
+
 
 INCLUDEPATH += src/main/
 

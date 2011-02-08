@@ -6,7 +6,8 @@
 PPort::PPort(QGraphicsItem* parent)
     : QGraphicsEllipseItem(parent)
 {
-    setRect(0, 0, 8, 8);
+    qDebug(QString("PPort::PPort parent = %1").arg((long)parent).toAscii());
+    setRect(0, 0, 10, 10);
     setBrush(QBrush(Qt::darkGreen));
     setPen(QPen(Qt::NoPen));
 }

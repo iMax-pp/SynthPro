@@ -7,3 +7,4 @@
 bin
 Info.plist
 Makefile
+doc/conception/*.session

@@ -17,14 +17,18 @@ class QIODevice;
   * Once a device is not used anymore, the user should release
   * it.
   *
+  * This class implements the Singleton design pattern. An
+  * instance can be given through the instance() method.
+  *
   * For this project, we only consider one audio format, and
   * only support the one we use.
   */
 class AudioDeviceProvider {
 
 public:
-    AudioDeviceProvider();
     ~AudioDeviceProvider();
+
+    static AudioDeviceProvider& instance();
 
     /**
       * Finds an audio output, indicate if a valid one has been
@@ -65,6 +69,8 @@ public:
     static const int BUFFER_SIZE = 5000;
 
 private:
+    AudioDeviceProvider();
+
     bool m_initialized;
     bool m_deviceUsed;
     QIODevice* m_device;
