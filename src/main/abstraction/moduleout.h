@@ -6,6 +6,7 @@
 #include <QObject>
 
 class InPort;
+class QAudioOutput;
 class QIODevice;
 class SynthProFactory;
 
@@ -20,7 +21,7 @@ class SynthProFactory;
 class ModuleOut : public Module {
     // Q_OBJECT
 public:
-    ModuleOut(QIODevice*, QObject* parent = 0);
+    ModuleOut(QIODevice*, QAudioOutput*, QObject* parent = 0);
     virtual ~ModuleOut();
 
     /**
@@ -39,6 +40,7 @@ public slots:
 private:
     QIODevice* m_device;
     InPort* m_inPort;
+    QAudioOutput* m_audioOutput;
 };
 
 #endif // MODULEOUT_H

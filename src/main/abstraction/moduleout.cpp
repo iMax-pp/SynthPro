@@ -7,9 +7,10 @@
 
 #include <QDebug>
 
-ModuleOut::ModuleOut(QIODevice* device, QObject* parent)
+ModuleOut::ModuleOut(QIODevice* device, QAudioOutput* audioOutput, QObject* parent)
     : Module(parent)
     , m_device(device)
+    , m_audioOutput(audioOutput)
 {
 }
 
@@ -19,7 +20,6 @@ ModuleOut::~ModuleOut()
 
 void ModuleOut::initialize(SynthProFactory* factory)
 {
-            qDebug() << "****** INIT ModuleOut *****";
     if (factory) {
         // Creation of an Input.
         m_inPort = factory->createInPortReplicable(this);
@@ -32,7 +32,10 @@ void ModuleOut::initialize(SynthProFactory* factory)
 
 void ModuleOut::timerExpired()
 {
-    // TODO
+    //qDebug() << "Timer Expired Module Out";
+
+
+
 }
 
 void ModuleOut::ownProcess()

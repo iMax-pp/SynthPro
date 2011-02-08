@@ -8,6 +8,11 @@ Clock::Clock(QObject *parent) :
 {
 }
 
+Clock::Clock(Clock& clock)
+    : QObject(clock.parent())
+{
+}
+
 Clock::~Clock()
 {
 }
