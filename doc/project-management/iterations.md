@@ -40,7 +40,8 @@ date : semaine 6 - 2011
     - Mettre Init en virtuelle dans module buffer recorder.
 - Maxime :
     - Gestion drag'n'drop;
-    - Instanciation des composants;
+    - Implementation graphique du potard, du sélecteur;
+    - Gestion des câbles (création, destruction, etc);
 - Julien RF :
     - Gestion héritage "en diamant";
     - Mettre Initialize en methode virtuelle pure pour les modules.
