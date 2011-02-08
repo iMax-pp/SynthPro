@@ -3,6 +3,7 @@
 #include "module.h"
 #include "sequencer.h"
 
+#include <QDebug>
 #include <QTimer>
 
 Clock::Clock(QObject *parent)
@@ -63,7 +64,11 @@ void Clock::registerFastClock(Module* module)
     QTimer* timer = new QTimer(this);
     m_fastTimers.insert(module, timer);
     connect(timer, SIGNAL(timeout()), module, SLOT(timerExpired()));
-    timer->start(FAST_TIMER_DELAY);
+
+    // Start the newly registered timer if the Clock is started.
+    if (m_started) {
+        timer->start(FAST_TIMER_DELAY);
+    }
 }
 
 void Clock::unregister(Module* module)
