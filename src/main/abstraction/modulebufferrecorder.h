@@ -15,13 +15,13 @@ class SynthProFactory;
   */
 class ModuleBufferRecorder : public Module {
 public:
-    ModuleBufferRecorder(QString fileName = "output.wav", int nbProcessingBeforeSaving = 5, SynthProFactory* = 0, QObject* parent = 0);
+    ModuleBufferRecorder(QString fileName = "output.wav", int nbProcessingBeforeSaving = 5, QObject* parent = 0);
     virtual ~ModuleBufferRecorder();
 
     /**
       * Required method in order to instanciate the ports. Used by the factory.
       */
-    void initialize();
+    void initialize(SynthProFactory*);
 
     /**
      * Save the first input port buffer into a file.
@@ -29,7 +29,6 @@ public:
     void ownProcess();
 
 private:
-    SynthProFactory* m_factory;
     QString m_fileName;
     const int m_nbProcessingBeforeSaving;
     int m_nbProcessingSaved;

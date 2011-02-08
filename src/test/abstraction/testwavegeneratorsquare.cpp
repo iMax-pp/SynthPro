@@ -1,11 +1,11 @@
 #include "testwavegeneratorsquare.h"
 
-#include "src/main/abstraction/dimmer.h"
-#include "src/main/abstraction/module.h"
-#include "src/main/abstraction/modulebufferrecorder.h"
-#include "src/main/abstraction/vco.h"
-#include "src/main/abstraction/wavegeneratorsquare.h"
-#include "src/main/factory/simplefactory.h"
+#include "abstraction/dimmer.h"
+#include "abstraction/module.h"
+#include "abstraction/modulebufferrecorder.h"
+#include "abstraction/vco.h"
+#include "abstraction/wavegeneratorsquare.h"
+#include "factory/simplefactory.h"
 
 #include <QFile>
 #include <QtTest/QTest>

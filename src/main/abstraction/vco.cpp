@@ -7,6 +7,7 @@
 #include "abstraction/wavegenerator.h"
 #include "factory/synthprofactory.h"
 
+
 VCO::VCO(QObject* parent)
     : Module(parent)
     , m_waveGenerator(0)
@@ -53,7 +54,10 @@ void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
     m_waveGenerator = waveGenerator;
 }
 
-Dimmer* VCO::dimmer()
-{
-    return m_kDimmer;
+qreal VCO::k(){
+    return m_kDimmer->value();
+}
+
+void VCO::setK(qreal value){
+    m_kDimmer->setValue(value);
 }

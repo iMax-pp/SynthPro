@@ -13,7 +13,6 @@ public:
     OutPort* createOutPortReplicable(Module* parent);
     OutPort* createOutPortGate(Module* parent);
     VCO* createVCO();
-    Sequencer* createSequencer(SynthPro* parent);
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(Module* parent);
     Dimmer* createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent);

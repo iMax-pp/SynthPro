@@ -3,10 +3,19 @@
 #include "abstraction/module.h"
 #include "abstraction/synthpro.h"
 
-Sequencer::Sequencer(SynthPro* synthpro)
-    : QObject(synthpro)
-    , m_synthpro(synthpro)
+Sequencer::Sequencer()
 {
+}
+
+Sequencer::Sequencer(Sequencer&)
+    : QObject(0)
+{
+}
+
+Sequencer& Sequencer::instance()
+{
+    static Sequencer sequencer;
+    return sequencer;
 }
 
 void Sequencer::process()
@@ -16,21 +25,21 @@ void Sequencer::process()
     }
 }
 
-void Sequencer::findWells()
+void Sequencer::findWells(const SynthPro* synthpro)
 {
     m_wells.clear();
-    foreach (Module* module, m_synthpro->modules()) {
+    foreach (Module* module, synthpro->modules()) {
         if (module->outports().count() == 0) {
             m_wells.append(module);
         }
     }
 }
 
-void Sequencer::scheduleModules()
+void Sequencer::scheduleModules(const SynthPro* synthpro)
 {
     m_sortedModules.clear();
     m_visitedModules.clear();
-    findWells();
+    findWells(synthpro);
     scheduleModules(m_wells);
 }
 
