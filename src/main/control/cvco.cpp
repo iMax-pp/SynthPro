@@ -3,6 +3,7 @@
 #include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/coutport.h"
+#include "control/cselector.h"
 #include "presentation/pvco.h"
 
 CVCO::CVCO(QObject* parent)
@@ -18,7 +19,8 @@ void CVCO::initialize(SynthProFactory* factory)
 
     CInPort* in = dynamic_cast<CInPort*>(m_vfm);
     COutPort* out = dynamic_cast<COutPort*>(m_out);
+    CSelector* selector = dynamic_cast<CSelector*>(m_shapeSelector);
     CDimmer* dimmer = dynamic_cast<CDimmer*>(m_kDimmer);
 
-    dynamic_cast<PVCO*>(presentation())->initialize(in->presentation(), out->presentation(), dimmer->presentation());
+    dynamic_cast<PVCO*>(presentation())->initialize(in->presentation(), out->presentation(), selector->presentation(), dimmer->presentation());
 }

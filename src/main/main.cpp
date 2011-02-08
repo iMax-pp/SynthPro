@@ -12,7 +12,6 @@ int main(int argc, char* argv[])
     SynthPro* synthpro = factory->createSynthPro();
 
     VCO* vco = factory->createVCO();
-    vco->setWaveGenerator(new WaveGeneratorDummy()); // FIXME, use the Selector instead.
     synthpro->add(vco);
 
     vco->process();

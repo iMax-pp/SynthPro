@@ -20,15 +20,9 @@ PVCO::PVCO(CVCO* control)
     // Create a Title.
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("VCO", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
-
-//    QList<QString> items;
-//    items << "Saw" << "Square" << "Sinus" << "Triangle";
-//    PSelector* selector = new PSelector(items, "Wave Type", this);
-//    selector->setPos(90, 48);
-//    selector->setMaximumSize(120, 115);
 }
 
-void PVCO::initialize(PPort* pVfm, PPort* pOut, PDimmer* pK)
+void PVCO::initialize(PPort* pVfm, PPort* pOut, PSelector* pSel, PDimmer* pK)
 {
     /*pVfm->setParentItem(settings());
     pK->setParentItem(settings());
@@ -40,6 +34,9 @@ void PVCO::initialize(PPort* pVfm, PPort* pOut, PDimmer* pK)
     pVfm->setPos(-7, 70); // Yes, absolute positioning is bad.
     pOut->setPos(195, 70);
 
-    pK->setPos(10, 90);
+    pK->setPos(2, 90);
     pK->setMaximumSize(60, 60);
+
+    pSel->setPos(63, 35);
+    pSel->setMaximumSize(120, 115);
 }
