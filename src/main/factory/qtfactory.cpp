@@ -5,6 +5,7 @@
 #include "abstraction/moduleout.h"
 #include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
+#include "control/cchannel.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/cmodule.h"
@@ -12,6 +13,7 @@
 #include "control/cport.h"
 #include "control/csynthpro.h"
 #include "control/cvco.h"
+#include "presentation/pchannel.h"
 #include "presentation/pdimmer.h"
 #include "presentation/pvco.h"
 
@@ -32,7 +34,7 @@ InPort* QtFactory::createInPort(Module* parent, const QString& name, bool replic
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     qDebug(QString("QtFactory::createInPort cParent = %1, parent = %2").arg((long)cParent).arg((long)parent).toAscii());
-    CInPort* port = new CInPort(cParent, name, replicable, gate);
+    CInPort* port = new CInPort(cParent, this, name, replicable, gate);
 
     PPort* p = new PPort(port, cParent->presentation());
     port->setPresentation(p);
@@ -59,7 +61,7 @@ OutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool repl
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     qDebug(QString("QtFactory::createOutPort cParent = %1, parent = %2").arg((long)cParent).arg((long)parent).toAscii());
-    COutPort* port = new COutPort(cParent, name, replicable, gate);
+    COutPort* port = new COutPort(cParent, this, name, replicable, gate);
 
     PPort* p = new PPort(port, cParent->presentation());
     port->setPresentation(p);
@@ -88,7 +90,7 @@ VCO* QtFactory::createVCO()
     CVCO* vco = new CVCO();
 
     // Create its presentation
-    PVCO* p = new PVCO();
+    PVCO* p = new PVCO(vco);
     vco->setPresentation(p);
 
     // Initialize it (ports creation)
@@ -139,4 +141,13 @@ ModuleOut* QtFactory::createModuleOut(Module* parent)
     ModuleOut* mo = new ModuleOut(device, adp.audioOutput(), parent);
     mo->initialize(this);
     return mo;
+}
+
+CChannel* QtFactory::createChannel(QGraphicsScene* scene)
+{
+    CChannel* channel = new CChannel();
+    PChannel* presentation = new PChannel(channel, scene);
+    channel->setPresentation(presentation);
+
+    return channel;
 }

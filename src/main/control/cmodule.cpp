@@ -1,5 +1,10 @@
 #include "cmodule.h"
 
+#include "abstraction/inport.h"
+#include "abstraction/outport.h"
+#include "cchannel.h"
+#include "cport.h"
+
 CModule::CModule(QObject* parent)
     : Module(parent)
     , m_presentation(0)
@@ -25,4 +30,21 @@ void CModule::setPresentation(PModule* presentation)
 PModule* CModule::presentation() const
 {
     return m_presentation;
+}
+
+void CModule::move()
+{
+    foreach (InPort* port, m_inports) {
+        CChannel* channel = dynamic_cast<CPort*>(port)->channel();
+        if (channel) {
+            channel->updatePosition();
+        }
+    }
+
+    foreach (OutPort* port, m_outports) {
+        CChannel* channel = dynamic_cast<CPort*>(port)->channel();
+        if (channel) {
+            channel->updatePosition();
+        }
+    }
 }

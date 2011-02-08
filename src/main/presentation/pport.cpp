@@ -1,12 +1,16 @@
 #include "pport.h"
 
+#include "control/cchannel.h"
 #include "control/cport.h"
 #include <QBrush>
 #include <QFont>
+#include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
 #include <QPen>
 
 PPort::PPort(CPort* control, QGraphicsItem* parent)
     : QGraphicsItem(parent)
+    , m_control(control)
     , m_label(0)
     , m_port(0)
 {
@@ -38,4 +42,24 @@ QRectF PPort::boundingRect() const
     return QRectF(-labelBounds.width(), -labelBounds.height() / 2,
                   portBounds.width() + labelBounds.width(),
                   portBounds.height());
+}
+
+void PPort::mousePressEvent(QGraphicsSceneMouseEvent*)
+{
+    m_control->startChannel();
+}
+
+void PPort::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
+{
+    m_control->channel()->updatePosition(mapToScene(event->pos()));
+}
+
+void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
+{
+    m_control->dropChannel(scene()->itemAt(mapToScene(event->pos())));
+}
+
+CPort* PPort::control() const
+{
+    return m_control;
 }

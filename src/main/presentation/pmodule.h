@@ -3,11 +3,17 @@
 
 #include <QGraphicsRectItem>
 
+class CModule;
+
 class PModule : public QGraphicsRectItem {
 public:
-    PModule();
+    PModule(CModule*);
 
 protected:
+    void mouseMoveEvent(QGraphicsSceneMouseEvent*);
+
+    CModule* m_control;
+
     static const qreal DEFAULT_WIDTH = 150;
     static const qreal DEFAULT_HEIGHT = 100;
 };

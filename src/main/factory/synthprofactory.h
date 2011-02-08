@@ -4,6 +4,7 @@
 #include <QString>
 #include <QtGlobal>
 
+class CChannel;
 class Dimmer;
 class InPort;
 class Module;
@@ -13,6 +14,7 @@ class OutPort;
 class Selector;
 class Sequencer;
 class SynthPro;
+class QGraphicsScene;
 class VCO;
 
 
@@ -43,8 +45,9 @@ public:
      * @param default_value the value where the dimmer is positionned at creation
      */
     virtual Dimmer* createDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
-
     virtual Selector* createSelector(QList<int>*, int, Module* parent) = 0;
+
+    virtual CChannel* createChannel(QGraphicsScene*) = 0;
 
     /*
      * Enumeration of module types.
