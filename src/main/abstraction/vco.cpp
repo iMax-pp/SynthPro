@@ -8,7 +8,6 @@
 #include "factory/synthprofactory.h"
 
 
-VCO::VCO(SynthProFactory* factory, QObject* parent)
 VCO::VCO(QObject* parent)
     : Module(parent)
     , m_waveGenerator(0)
