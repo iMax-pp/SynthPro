@@ -32,14 +32,19 @@ void VCO::initialize(SynthProFactory* factory)
     m_out = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_out);
 
-
+    /// Creation of the Selector
     m_selectorConversionMap = m_waveGeneratorFactory->selectorConversionmap();
     m_selectorValueList = m_selectorConversionMap->keys();
     m_shapeSelector = factory->createSelector(&m_selectorValueList, 0, this);
 
+    qDebug() << shape();
+    /// Connection of the Selector
     connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
 
+    /// Creation of the Dimmer
     m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, this);
+
+
 }
 
 VCO::~VCO()
@@ -55,7 +60,9 @@ void VCO::ownProcess()
     m_out->swapBuffers();
     m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());
 }
-
+/**
+*   DEPRECATED : it's now the WaveGeneratorFactory who instantiate the wave generator
+*/
 void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
 {
     if (m_waveGenerator) {

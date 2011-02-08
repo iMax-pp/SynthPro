@@ -46,13 +46,13 @@ public:
     */
     void setK(qreal value);
 
-    /*
-     * @return The current wave shape selected
+    /**
+     * @return The current wave shape selected, by its value on the selector himself
      */
     WaveGeneratorFactory::WaveType shape();
 
     /**
-     * set the value of the selector
+     * set the value of the selector indirectly : setting this value on the selector himself
      */
     void setShape(WaveGeneratorFactory::WaveType);
 
@@ -62,7 +62,9 @@ public:
     static const qreal REPLAY_FREQUENCY = AudioDeviceProvider::OUTPUT_FREQUENCY;
 
 public slots :
-
+    /**
+    * slot, connected to a signe emmit by the selector to inform his value changed
+    */
     void waveShapeChanged(int);
 
 protected:

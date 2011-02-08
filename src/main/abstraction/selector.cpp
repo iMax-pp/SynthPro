@@ -3,8 +3,8 @@
 Selector::Selector(QList<int>* choices, int default_choice, QObject* parent)
     : QObject(parent)
     , m_choices(choices)
-    , m_choice(default_choice)
 {
+    setChoice(default_choice);
 }
 
 int Selector::choice() const
