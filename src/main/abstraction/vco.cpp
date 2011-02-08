@@ -26,7 +26,6 @@ void VCO::initialize(SynthProFactory* factory)
 {
     qDebug("VCO::init Creation of vfm port in the VCO");
     m_vfm = factory->createInPortReplicable(this);
-
     m_inports.append(m_vfm);
 
     qDebug("VCO::init Creation of out port in the VCO");
@@ -62,16 +61,19 @@ void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
     m_waveGenerator = waveGenerator;
 }
 
-qreal VCO::k() const {
+qreal VCO::k() const
+{
     return m_kDimmer->value();
 }
 
-void VCO::setK(qreal value){
+void VCO::setK(qreal value)
+{
     m_kDimmer->setValue(value);
 }
 
-void VCO::waveShapeChanged(int selectedValue){
-    if (m_waveGenerator){
+void VCO::waveShapeChanged(int selectedValue)
+{
+    if (m_waveGenerator) {
         delete m_waveGenerator;
     }
     m_waveGenerator = m_waveGeneratorFactory->getWaveGenerator(m_waveGeneratorFactory->selectorConversionmap()->value(selectedValue));
