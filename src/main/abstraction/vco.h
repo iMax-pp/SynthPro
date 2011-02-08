@@ -37,12 +37,11 @@ public:
     void setK(qreal value);
     Dimmer* kDimmer() const;
 
-    static const qreal SIGNAL_INTENSITY = 20000;
+    static const qreal SIGNAL_INTENSITY = 5;
     static const qreal F0 = 261.626; // Frequency of the C4.
     static const qreal REPLAY_FREQUENCY = AudioDeviceProvider::OUTPUT_FREQUENCY;
 
 protected:
-
     WaveGenerator* m_waveGenerator;
     InPort* m_vfm;
     OutPort* m_out;

@@ -14,24 +14,22 @@ ModuleOut::ModuleOut(QIODevice* device, QAudioOutput* audioOutput, QObject* pare
     : Module(parent)
     , m_device(device)
     , m_audioOutput(audioOutput)
-    // , m_generationBuffer(new char[GENERATION_BUFFER_SIZE])
-    // , m_generationBufferPointer(0)
+    , m_generationBuffer(0)
+    , m_generationBufferIndex(0)
     , m_nbGeneratedBytesRemaining(0)
     , m_sequencer(Sequencer::instance())
     , m_manageSound(false)
 {
-    // m_generationBufferPointer = m_generationBuffer; // Strange, bug if initialized above...
-
 }
 
 ModuleOut::~ModuleOut()
 {
+    delete[] m_generationBuffer;
 }
 
 void ModuleOut::initialize(SynthProFactory* factory)
 {
     m_generationBuffer = new char[GENERATION_BUFFER_SIZE];
-    m_generationBufferPointer = m_generationBuffer; // Strange, bug if initialized above...
 
     for (int i = 0; i < GENERATION_BUFFER_SIZE; i++) {
         m_generationBuffer[i] = 0;
@@ -58,8 +56,6 @@ void ModuleOut::timerExpired()
     if (!m_manageSound) {
         return;
     }
-    // qDebug() << "Timer Expired Module Out";
-    // qDebug() << m_audioOutput->bytesFree();
 
     int fillCounter = 0;
     qint64 sizeWritten = 1;
@@ -73,40 +69,31 @@ void ModuleOut::timerExpired()
             if (m_nbGeneratedBytesRemaining >= nbBytesNeededByOutput) {
                 // We have more than enough. We send only what is needed.
                 // qWarning() << "Trying to write : " << nbBytesNeededByOutput;
-                sizeWritten = m_device->write(m_generationBufferPointer, nbBytesNeededByOutput);
+                sizeWritten = m_device->write(m_generationBuffer + m_generationBufferIndex, nbBytesNeededByOutput);
             } else {
                 // We don't have enough. We send what we have for now.
                 // qWarning() << "Trying to write : " << m_nbGeneratedBytesRemaining;
-                sizeWritten = m_device->write(m_generationBufferPointer, m_nbGeneratedBytesRemaining);
+                sizeWritten = m_device->write(m_generationBuffer + m_generationBufferIndex, m_nbGeneratedBytesRemaining);
             }
-            m_generationBufferPointer += sizeWritten;
+            m_generationBufferIndex += sizeWritten;
             m_nbGeneratedBytesRemaining -= sizeWritten;
 
-            // qWarning() << "Actually written : " << sizeWritten;
-            // nbBytesNeededByOutput -= sizeWritten;
             nbBytesNeededByOutput = m_audioOutput->bytesFree();
-
         } else {
             // We don't have any bytes in our buffer. We need to generate data.
-            // generate(m_generationBuffer, GENERATION_BUFFER_SIZE);
             // We call the sequencer for it to process all the modules.
             m_sequencer.process();
 
             // Now we copy our InPort to the generationBuffer. A conversion is needed.
             qreal* data = m_inPort->buffer()->data();
-            // qDebug() << m_inPort->buffer()->length();
-            for (int i = 0, size = m_inPort->buffer()->length(); i < size; i+=2) {
-                int nb = data[i];
-                // qDebug() << data[i];
-                m_generationBuffer[i] = nb / 256;
-                m_generationBuffer[i + 1] = nb % 255;
-                // m_generationBuffer[i] = 0;
-                // m_generationBuffer[i + 1] = 0;
+            for (int i = 0, size = m_inPort->buffer()->length(); i < size; i += 2) {
+                int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_UNSIGNED_INTENSITY);
+                // FIXME : Works, but can't understand why. The output seems to be 8 bits only.
+                m_generationBuffer[i] = 0; // nb / 256;
+                m_generationBuffer[i + 1] = nb; // nb & 255;
             }
-
-            m_generationBufferPointer = m_generationBuffer;
+            m_generationBufferIndex = 0;
             m_nbGeneratedBytesRemaining = GENERATION_BUFFER_SIZE;
-            // qWarning() << "Generating";
         }
 
         fillCounter++;
@@ -125,5 +112,4 @@ void ModuleOut::timerExpired()
 
 void ModuleOut::ownProcess()
 {
-    // TODO
 }
