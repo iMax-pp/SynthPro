@@ -7,7 +7,7 @@
 
 void TestAudioDeviceProvider::testAudioDeviceProvider()
 {
-    AudioDeviceProvider adp = AudioDeviceProvider::instance();
+    AudioDeviceProvider& adp = AudioDeviceProvider::instance();
     QVERIFY(adp.initializeAudioOutput());
 
     QIODevice* device = adp.device();
