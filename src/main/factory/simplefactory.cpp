@@ -46,7 +46,9 @@ OutPort* SimpleFactory::createOutPortGate(Module* parent)
 
 VCO* SimpleFactory::createVCO()
 {
-    return new VCO();
+    VCO* vco = new VCO();
+    vco->initialize(this);
+    return vco;
 }
 
 Sequencer* SimpleFactory::createSequencer(SynthPro* parent)
