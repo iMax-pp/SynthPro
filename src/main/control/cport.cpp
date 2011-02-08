@@ -71,20 +71,22 @@ void CPort::startWire()
     }
 }
 
-void CPort::dropWire(PPort* port)
+void CPort::dropWire(PPort* other)
 {
-    if (!port || port->control()->out() == out()) {
+    if (!other || other->control()->out() == out()) {
         // Drop wasn't on a port? or was on a port of the same type? delete wire.
         if (m_wire) {
             delete m_wire;
         }
-    } else if (port->control()->out()) {
-        // Otherwise connect the other outport with the wire.
-        m_wire->setOutPort(dynamic_cast<COutPort*>(port->control()));
-        port->control()->setWire(m_wire);
-    } else if (!port->control()->out()) {
-        // Otherwise connect the other inport with the wire.
-        m_wire->setInPort(dynamic_cast<CInPort*>(port->control()));
-        port->control()->setWire(m_wire);
+    } else {
+        if (other->control()->out()) {
+            // Otherwise connect the other outport with the wire.
+            m_wire->setOutPort(dynamic_cast<COutPort*>(other->control()));
+        } else if (!other->control()->out()) {
+            // Otherwise connect the other inport with the wire.
+            m_wire->setInPort(dynamic_cast<CInPort*>(other->control()));
+        }
+        other->control()->setWire(m_wire);
+        other->control()->connectTo(this);
     }
 }
