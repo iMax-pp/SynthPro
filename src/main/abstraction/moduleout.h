@@ -25,6 +25,9 @@ class SynthProFactory;
 class ModuleOut : public Module {
     // Q_OBJECT
 public:
+    static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 127;
+    static const int GENERATION_BUFFER_SIZE = 900; // This must be small, but not too much (overhead).
+
     ModuleOut(QIODevice*, QAudioOutput*, QObject* parent = 0);
     virtual ~ModuleOut();
 
@@ -48,9 +51,7 @@ public slots:
     virtual void timerExpired();
 
 private:
-    static const int GENERATION_BUFFER_SIZE = 900; // This must be small, but not too much (overhead).
     static const int FILL_COUNTER_MAX = 10;
-    static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 127;
 
     QIODevice* m_device;
     InPort* m_inPort;

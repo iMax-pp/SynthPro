@@ -29,6 +29,8 @@ public:
     void ownProcess();
 
 private:
+    static const int SIGNAL_OUT_SIGNED_INTENSITY = 32767;
+
     QString m_fileName;
     const int m_nbProcessingBeforeSaving;
     int m_nbProcessingSaved;
