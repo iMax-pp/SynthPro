@@ -41,7 +41,7 @@ public:
      * @param max max value
      * @param default_value the value where the dimmer is positionned at creation
      */
-    virtual Dimmer* createKDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
+    virtual Dimmer* createDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
 
     /*
      * Enumeration of module types.

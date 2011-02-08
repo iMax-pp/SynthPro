@@ -1,16 +1,17 @@
 #include "qtfactory.h"
 
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/dimmer.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/sequencer.h"
+#include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/cmodule.h"
 #include "control/coutport.h"
 #include "control/cport.h"
 #include "control/csynthpro.h"
 #include "control/cvco.h"
+#include "presentation/pdimmer.h"
 #include "presentation/pvco.h"
 
 #include <QIODevice>
@@ -95,9 +96,18 @@ VCO* QtFactory::createVCO()
     return vco;
 }
 
-Dimmer* QtFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
+Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
 {
-    return new Dimmer(min, max, kDefault, parent);
+    CModule* cParent = dynamic_cast<CModule*>(parent);
+    CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
+
+    PDimmer* presentation = new PDimmer(dimmer->min() * CDimmer::DISCR,
+                                        dimmer->max() * CDimmer::DISCR,
+                                        dimmer->value() * CDimmer::DISCR,
+                                        cParent->presentation());
+    dimmer->setPresentation(presentation);
+
+    return dimmer;
 }
 
 ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)

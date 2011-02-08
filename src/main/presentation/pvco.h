@@ -1,6 +1,7 @@
 #ifndef PVCO_H
 #define PVCO_H
 
+#include "presentation/pdimmer.h"
 #include "presentation/pmodule.h"
 #include "presentation/pport.h"
 #include <QGraphicsProxyWidget>
@@ -8,7 +9,7 @@
 class PVCO : public PModule {
 public:
     PVCO();
-    void initialize(PPort* vfm, PPort* out);
+    void initialize(PPort* vfm, PPort* out, PDimmer*);
 
 private:
     QGraphicsProxyWidget* m_waveSelector;
