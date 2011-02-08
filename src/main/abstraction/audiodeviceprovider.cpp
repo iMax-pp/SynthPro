@@ -13,6 +13,14 @@ AudioDeviceProvider::AudioDeviceProvider()
 {
 }
 
+AudioDeviceProvider::AudioDeviceProvider(AudioDeviceProvider&)
+    : m_initialized(false)
+    , m_deviceUsed(false)
+    , m_device(0)
+    , m_audioOutput(0)
+{
+}
+
 AudioDeviceProvider::~AudioDeviceProvider()
 {
     stop();

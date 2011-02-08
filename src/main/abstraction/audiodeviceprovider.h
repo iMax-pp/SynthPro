@@ -70,6 +70,7 @@ public:
 
 private:
     AudioDeviceProvider();
+    AudioDeviceProvider(AudioDeviceProvider&);
 
     bool m_initialized;
     bool m_deviceUsed;
