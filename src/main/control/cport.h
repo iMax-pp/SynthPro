@@ -18,7 +18,14 @@ public:
     CWire* wire() const;
     void setWire(CWire*);
 
+    /*
+     * Start drawing a wire from this port.
+     */
     void startWire();
+    /*
+     * This method is called when drawing the wire and the mouse dropped it.
+     * @param the PPort on which the wire was dropped (may be null).
+     */
     void dropWire(PPort*);
 
 private:

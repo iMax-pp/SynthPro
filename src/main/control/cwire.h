@@ -15,10 +15,15 @@ public:
     PWire* presentation() const;
 
     CInPort* inPort() const;
-    void setInPort(CInPort*);
     COutPort* outPort() const;
+
+    void setInPort(CInPort*);
     void setOutPort(COutPort*);
 
+    /*
+     * Update the position and length of the wire.
+     * @param QPointF representing the non-connected tip when DnD for connection.
+     */
     void updatePosition(QPointF = QPointF());
 
 private:

@@ -46,8 +46,7 @@ CWire* CPort::wire() const
 void CPort::setWire(CWire* wire)
 {
     if (wire && m_wire) {
-        // If we are not trying to unset the wire and if we already have a wire
-        // then delete the current wire.
+        // If we are not trying to unset the wire and if we have a wire, then delete it.
         delete m_wire;
     }
 
@@ -57,11 +56,14 @@ void CPort::setWire(CWire* wire)
 void CPort::startWire()
 {
     if (m_wire) {
+        // When starting a new wire, begin by deleting the previous one.
         delete m_wire;
     }
 
+    // And create a new one.
     m_wire = m_factory->createWire(m_presentation->scene());
 
+    // Don't forget to register ourself as one of the port (the good one of course).
     if (out()) {
         m_wire->setOutPort(dynamic_cast<COutPort*>(this));
     } else {
@@ -72,7 +74,7 @@ void CPort::startWire()
 void CPort::dropWire(PPort* port)
 {
     if (!port || port->control()->out() == out()) {
-        // Drop wasn't on a port, or was on a port of the same type, delete wire.
+        // Drop wasn't on a port? or was on a port of the same type? delete wire.
         if (m_wire) {
             delete m_wire;
         }

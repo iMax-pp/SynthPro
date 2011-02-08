@@ -1,8 +1,9 @@
 #include "pwire.h"
 
-#include "control/cwire.h"
 #include "control/cinport.h"
 #include "control/coutport.h"
+#include "control/cwire.h"
+#include "presentation/pport.h"
 #include <QDebug>
 #include <QPen>
 
@@ -15,6 +16,7 @@ PWire::PWire(CWire* control, QGraphicsScene* scene)
 
 QRectF PWire::boundingRect() const
 {
+    // Thanks to http://doc.qt.nokia.com/latest/graphicsview-diagramscene-arrow-cpp.html
     qreal extra = (pen().width() + 20) / 2.0;
     
     return QRectF(line().p1(), QSizeF(line().p2().x() - line().p1().x(),
@@ -24,13 +26,16 @@ QRectF PWire::boundingRect() const
 
 void PWire::updatePosition(QPointF point)
 {
+    // At least one of the two ports will be defined when creating the wire,
+    // so it will always be connected to at least one port.
+
     QPointF in;
     if (!m_control->inPort()) {
         // Use point if no inPort.
         in = point;
     } else {
         // Use inPort otherwise.
-        in = mapFromItem(m_control->inPort()->presentation(), 0, 0);
+        in = mapFromItem(m_control->inPort()->presentation(), PPort::PORT_SIZE / 2, 0);
     }
 
     QPointF out;
@@ -39,7 +44,7 @@ void PWire::updatePosition(QPointF point)
         out = point;
     } else {
         // Use inPort otherwise.
-        out = mapFromItem(m_control->outPort()->presentation(), 0, 0);
+        out = mapFromItem(m_control->outPort()->presentation(), PPort::PORT_SIZE / 2, 0);
     }
 
     // Draw a new line for our wire.

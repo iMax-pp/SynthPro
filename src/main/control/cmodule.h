@@ -12,6 +12,10 @@ public:
     void setPresentation(PModule*);
     PModule* presentation() const;
 
+    /*
+     * When moving the module around (event intercepted by PModule), this method
+     * updates the position of the wire hooked to the ports.
+     */
     void move();
 
 private:

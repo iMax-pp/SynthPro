@@ -3,6 +3,7 @@
 #include "control/cport.h"
 #include "control/cwire.h"
 #include <QBrush>
+#include <QDebug>
 #include <QFont>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
@@ -14,8 +15,9 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
     , m_label(0)
     , m_port(0)
 {
-    qDebug(QString("PPort::PPort parent = %1").arg((long)parent).toAscii());
+    qDebug() << "PPort::PPort parent =" << (long)parent;
 
+    // Create label for port.
     m_label = new QGraphicsSimpleTextItem(this);
     m_label->setText(control->name());
     m_label->setPen(QPen(Qt::black));
@@ -23,6 +25,7 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
     m_label->setPos(-m_label->boundingRect().width(),
                     -m_label->boundingRect().height() / 2);
 
+    // Create the port (as an ellipse).
     m_port = new QGraphicsEllipseItem(this);
     m_port->setRect(0, 0, PORT_SIZE, PORT_SIZE);
     m_port->setBrush(QBrush(Qt::darkGreen));
@@ -30,9 +33,8 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
     m_port->setPos(0, -m_port->boundingRect().height() / 2);
 }
 
-void PPort::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget)
+void PPort::paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)
 {
-
 }
 
 QRectF PPort::boundingRect() const
@@ -46,31 +48,34 @@ QRectF PPort::boundingRect() const
 
 void PPort::mousePressEvent(QGraphicsSceneMouseEvent*)
 {
+    // Someone clicked on the port, it's time to start a wire.
     m_control->startWire();
 }
 
 void PPort::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
+    // While the wire isn't connected to another port, update it with the mouse position.
     m_control->wire()->updatePosition(event->scenePos());
 }
 
 void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 {
+    // Retrieve a list of the items beneath the mouse.
     QPointF pos = event->scenePos();
     QList<QGraphicsItem*> items = scene()->items(pos);
 
-    // Try to retrieve the port within all the items...
+    // Try to find the port within all the items...
     PPort* port = 0;
     foreach (QGraphicsItem* item, items) {
-        // by casting it.
+        // ...by casting it.
         port = dynamic_cast<PPort*>(item);
         if (port) {
-            // If it's a port, don't go further.
+            // If it's the port, then don't go further.
             break;
         }
     }
 
-    // In any case call the control (ie. to delete the associated wire).
+    // In any case call the control (ie. to connect or delete the associated wire).
     m_control->dropWire(port);
 }
 

@@ -19,6 +19,9 @@ protected:
     inline LayoutItem* out() const { return m_out; }
     inline LayoutItem* settings() const { return m_settings; }
 
+    /*
+     * Intercept mouse moving to update the hooked wires accordingly.
+     */
     void mouseMoveEvent(QGraphicsSceneMouseEvent*);
 
 
