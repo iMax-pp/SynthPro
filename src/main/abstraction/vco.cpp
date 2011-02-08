@@ -6,6 +6,9 @@
 #include "abstraction/selector.h"
 #include "abstraction/wavegenerator.h"
 #include "factory/synthprofactory.h"
+#include "factory/wavegeneratorfactory.h"
+
+#include <QDebug>
 
 
 VCO::VCO(QObject* parent)
@@ -15,6 +18,7 @@ VCO::VCO(QObject* parent)
     , m_out(0)
     , m_shapeSelector(0)
     , m_kDimmer(0)
+    , m_waveGeneratorFactory(new WaveGeneratorFactory())
 {
 }
 
@@ -28,6 +32,10 @@ void VCO::initialize(SynthProFactory* factory)
     m_out = factory->createOutPortReplicable(this);
     m_outports.append(m_out);
 
+
+    m_selectorConversionMap = m_waveGeneratorFactory->selectorConversionmap();
+    m_selectorValueList = m_selectorConversionMap->keys();
+    m_shapeSelector = factory->createSelector(&m_selectorValueList, 0, this);
     m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, this);
 }
 
@@ -54,7 +62,8 @@ void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
     m_waveGenerator = waveGenerator;
 }
 
-qreal VCO::k()
+
+qreal VCO::k() const
 {
     return m_kDimmer->value();
 }
@@ -64,7 +73,10 @@ void VCO::setK(qreal value)
     m_kDimmer->setValue(value);
 }
 
-Dimmer* VCO::kDimmer() const
+void VCO::waveShapeChanged(int selectedValue)
 {
-    return m_kDimmer;
+    if (m_waveGenerator) {
+        delete m_waveGenerator;
+    }
+    m_waveGenerator = m_waveGeneratorFactory->getWaveGenerator(m_waveGeneratorFactory->selectorConversionmap()->value(selectedValue));
 }

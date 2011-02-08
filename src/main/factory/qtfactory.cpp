@@ -3,6 +3,7 @@
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleout.h"
+#include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
@@ -108,6 +109,11 @@ Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* pa
     dimmer->setPresentation(presentation);
 
     return dimmer;
+}
+
+Selector* QtFactory::createSelector(QList<int>* valuesList, int defaultValue, Module* parent)
+{
+    return new Selector(valuesList, defaultValue, parent);
 }
 
 ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)

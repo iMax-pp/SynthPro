@@ -10,6 +10,7 @@ class Module;
 class ModuleBufferRecorder;
 class ModuleOut;
 class OutPort;
+class Selector;
 class Sequencer;
 class SynthPro;
 class VCO;
@@ -43,6 +44,8 @@ public:
      */
     virtual Dimmer* createDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
 
+    virtual Selector* createSelector(QList<int>*, int, Module* parent) = 0;
+
     /*
      * Enumeration of module types.
      */
@@ -54,16 +57,6 @@ public:
         ADSRId,
         AudioOuputId,
         FileOutputId
-    };
-
-    /*
-     * Enumeration of wave types.
-     */
-    enum WaveType {
-        SawWave = 0,
-        SinusWave,
-        SquareWave,
-        TriangleWave
     };
 };
 

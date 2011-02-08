@@ -5,6 +5,7 @@
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
+#include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
@@ -55,6 +56,12 @@ Dimmer* SimpleFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module
 {
     return new Dimmer(min, max, kDefault, parent);
 }
+
+Selector* SimpleFactory::createSelector(QList<int>* valuesList, int defaultValue, Module* parent)
+{
+    return new Selector(valuesList, defaultValue, parent);
+}
+
 
 ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
 {

@@ -21,6 +21,8 @@ public:
 
     Dimmer* createDimmer(qreal, qreal, qreal, Module* parent);
 
+    Selector* createSelector(QList<int>*, int, Module* parent);
+
 protected:
     // Convenient factory method
     InPort* createInPort(Module* parent, bool replicable, bool gate);
