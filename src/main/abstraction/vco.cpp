@@ -37,13 +37,15 @@ void VCO::initialize(SynthProFactory* factory)
     m_selectorValueList = m_selectorConversionMap->keys();
     m_shapeSelector = factory->createSelector(&m_selectorValueList, 0, this);
 
-    qDebug() << shape();
     /// Connection of the Selector
     connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
 
     /// Creation of the Dimmer
     m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, this);
 
+    /// initialiser shape à la main
+    setShape(WaveGeneratorFactory::SawWave);
+    qDebug() << "shape" << shape();
 
 }
 
@@ -85,6 +87,7 @@ void VCO::setK(qreal value)
 
 void VCO::waveShapeChanged(int selectedValue)
 {
+    qDebug()<< "le slot est appelé !";
     if (m_waveGenerator) {
         delete m_waveGenerator;
     }
