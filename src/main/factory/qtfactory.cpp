@@ -1,16 +1,17 @@
 #include "qtfactory.h"
 
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/dimmer.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/sequencer.h"
+#include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/cmodule.h"
 #include "control/coutport.h"
 #include "control/cport.h"
 #include "control/csynthpro.h"
 #include "control/cvco.h"
+#include "presentation/pdimmer.h"
 #include "presentation/pvco.h"
 
 #include <QIODevice>
@@ -95,9 +96,15 @@ VCO* QtFactory::createVCO()
     return vco;
 }
 
-Dimmer* QtFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
+Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, qreal discr, Module* parent)
 {
-    return new Dimmer(min, max, kDefault, parent);
+    CDimmer* dimmer = new CDimmer(min, max, kDefault, discr, parent);
+
+    PDimmer* presentation = new PDimmer(dimmer, min * discr, max * discr, kDefault * discr,
+                                        dynamic_cast<CModule*>(parent)->presentation());
+    dimmer->setPresentation(presentation);
+
+    return dimmer;
 }
 
 ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
@@ -110,7 +117,7 @@ ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QStr
 ModuleOut* QtFactory::createModuleOut(Module* parent)
 {
     // Do not instanciate ModuleOut if no audio device can be accessed !
-    AudioDeviceProvider adp = AudioDeviceProvider::instance();
+    AudioDeviceProvider& adp = AudioDeviceProvider::instance();
     if (!adp.initializeAudioOutput()) {
         return 0;
     }

@@ -6,7 +6,6 @@
 * A dimmer allow changing a float parameter of a module
 */
 class Dimmer : public QObject {
-    Q_OBJECT
 public:
     Dimmer(qreal min, qreal max, qreal defaultValue, QObject* parent = 0);
     qreal value() const;

@@ -35,6 +35,7 @@ public:
 
     qreal k();
     void setK(qreal value);
+    Dimmer* kDimmer() const;
 
     static const qreal SIGNAL_INTENSITY = 20000;
     static const qreal F0 = 261.626; // Frequency of the C4.
@@ -51,6 +52,7 @@ protected:
     static const qreal K_MIN = -5;
     static const qreal K_MAX = 5;
     static const qreal K_DEFAULT = 0;
+    static const qreal K_DISCR = 150;
 };
 
 #endif // VCO_H

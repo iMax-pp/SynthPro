@@ -5,6 +5,8 @@
 #include "presentation/pdimmer.h"
 
 class CDimmer : public Dimmer {
+    Q_OBJECT
+
 public:
     CDimmer(qreal min, qreal max, qreal defaultValue, qreal discretization, QObject* parent = 0);
 
