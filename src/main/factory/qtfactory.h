@@ -21,6 +21,8 @@ public:
 
     Dimmer* createDimmer(qreal, qreal, qreal, Module* parent);
 
+    CChannel* createChannel(QGraphicsScene*);
+
 protected:
     // Convenient factory method
     InPort* createInPort(Module* parent, bool replicable, bool gate);

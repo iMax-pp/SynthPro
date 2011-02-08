@@ -1,12 +1,14 @@
 #include "pvco.h"
 
+#include "control/cvco.h"
 #include "pdimmer.h"
 #include <QDial>
 #include <QFont>
 #include <QGraphicsScene>
 #include <QGraphicsSimpleTextItem>
 
-PVCO::PVCO()
+PVCO::PVCO(CVCO* control)
+    : PModule(control)
 {
     // TODO move all that code below to the initialize method, using a PDimmer
     // and a PSelector (injected as parameters) instead of QDials.

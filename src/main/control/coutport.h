@@ -7,7 +7,7 @@
 
 class COutPort : public OutPort, public CPort {
 public:
-    COutPort(CModule* parent, bool replicable = false, bool gate = false);
+    COutPort(CModule* parent, SynthProFactory*, bool replicable = false, bool gate = false);
 };
 
 #endif // COUTPORT_H
