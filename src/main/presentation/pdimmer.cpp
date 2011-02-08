@@ -3,7 +3,7 @@
 #include "control/cdimmer.h"
 #include <QDial>
 
-PDimmer::PDimmer(CDimmer* control, qreal min, qreal max, qreal value, QGraphicsItem* parent)
+PDimmer::PDimmer(CDimmer* control, int min, int max, int value, QGraphicsItem* parent)
     : QGraphicsProxyWidget(parent)
 {
     // Create a Selector.

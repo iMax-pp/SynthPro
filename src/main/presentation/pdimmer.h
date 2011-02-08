@@ -7,7 +7,7 @@ class CDimmer;
 
 class PDimmer : public QGraphicsProxyWidget {
 public:
-    PDimmer(CDimmer*, qreal min, qreal max, qreal defaultValue, QGraphicsItem* parent = 0);
+    PDimmer(CDimmer*, int min, int max, int defaultValue, QGraphicsItem* parent = 0);
 };
 
 #endif // PDIMMER_H
