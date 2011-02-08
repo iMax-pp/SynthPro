@@ -88,7 +88,7 @@ ModuleOut* SimpleFactory::createModuleOut(Module* parent)
     return mo;
 }
 
-CChannel* SimpleFactory::createChannel(QGraphicsScene*)
+CWire* SimpleFactory::createWire(QGraphicsScene*)
 {
     return 0;
 }
