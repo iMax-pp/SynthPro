@@ -36,15 +36,13 @@ public:
       */
     virtual ModuleOut* createModuleOut(Module* parent) = 0;
 
-    virtual Sequencer* createSequencer(SynthPro* parent) = 0;
-
     /*
      * instantiate a dimmer's abstraction
      * @param min min value of the dimer
      * @param max max value
      * @param default_value the value where the dimmer is positionned at creation
      */
-    virtual Dimmer* createKDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
+    virtual Dimmer* createDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
 
     virtual Selector* createSelector(QList<int>*, int, Module* parent) = 0;
 

@@ -14,7 +14,8 @@ class Sequencer : public QObject {
     Q_OBJECT
 
 public:
-    Sequencer(SynthPro* parent);
+
+    static Sequencer& instance();
 
     /**
      * Process each module in the order computed before.
@@ -25,15 +26,20 @@ public slots:
     /**
      * Sort the modules in the right order to be processed.
      * Must be called each time the module configuration change.
+     * @param synthpro The SynthPro to schedule modules
      */
-    void scheduleModules();
+    void scheduleModules(const SynthPro*);
 
 protected:
     void scheduleModules(QList<Module*> modules);
-    void findWells();
+
+    /// Find the wells modules owned by the synthpro
+    void findWells(const SynthPro*);
 
 private:
-    SynthPro* m_synthpro;
+    Sequencer();
+    Sequencer(Sequencer&); // Prevent copies
+
     QList<Module*> m_visitedModules;
 
     QList<Module*> m_wells;

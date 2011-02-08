@@ -13,11 +13,14 @@ public:
     OutPort* createOutPortReplicable(Module* parent);
     OutPort* createOutPortGate(Module* parent);
     VCO* createVCO();
-    Sequencer* createSequencer(SynthPro* parent);
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(Module* parent);
+<<<<<<< HEAD
     Dimmer* createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent);
     Selector* createSelector(QList<int>* valuesList, int defaultValue, Module* parent);
+=======
+    Dimmer* createDimmer(qreal min, qreal max, qreal kDefault, Module* parent);
+>>>>>>> b36d52d75deb8dd9d3222bf0220a9c649c7c8490
 };
 
 #endif // SIMPLEFACTORY_H

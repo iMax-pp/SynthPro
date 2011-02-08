@@ -32,10 +32,11 @@ void VCO::initialize(SynthProFactory* factory)
     m_out = factory->createOutPortReplicable(this);
     m_outports.append(m_out);
 
+
     m_selectorConversionMap = m_waveGeneratorFactory->selectorConversionmap();
     m_selectorValueList = m_selectorConversionMap->keys();
     m_shapeSelector = factory->createSelector(&m_selectorValueList, 0, this);
-    m_kDimmer = factory->createKDimmer(K_MIN, K_MAX, K_DEFAULT, this);
+    m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, this);
 }
 
 VCO::~VCO()
@@ -61,6 +62,7 @@ void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
     m_waveGenerator = waveGenerator;
 }
 
+
 qreal VCO::k() const
 {
     return m_kDimmer->value();
@@ -77,4 +79,8 @@ void VCO::waveShapeChanged(int selectedValue)
         delete m_waveGenerator;
     }
     m_waveGenerator = m_waveGeneratorFactory->getWaveGenerator(m_waveGeneratorFactory->selectorConversionmap()->value(selectedValue));
+}
+    Dimmer* VCO::kDimmer() const
+{
+    return m_kDimmer;
 }

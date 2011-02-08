@@ -12,7 +12,7 @@ public:
     SynthPro(QObject* parent = 0);
 
     /// @return The list of modules contained by this SynthPro
-    const QList<Module*> modules();
+    const QList<Module*> modules() const;
 
     /// Add a module to this SynthPro
     virtual void add(Module*);

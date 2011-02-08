@@ -1,13 +1,13 @@
 #ifndef VCO_H
 #define VCO_H
 
+#include "QHash"
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
 #include "abstraction/outport.h"
 #include "audiodeviceprovider.h"
 #include "factory/wavegeneratorfactory.h"
 
-#include "QHash"
 
 class WaveGenerator;
 class SynthProFactory;
@@ -62,7 +62,7 @@ protected:
     Selector* m_shapeSelector;
     Dimmer* m_kDimmer;
     WaveGeneratorFactory* m_waveGeneratorFactory;
-    QHash<int,WaveGeneratorFactory::WaveType>* m_selectorConversionMap ;
+    QHash<int, WaveGeneratorFactory::WaveType>* m_selectorConversionMap;
     QList<int> m_selectorValueList;
 
     static const qreal K_MIN = -5;

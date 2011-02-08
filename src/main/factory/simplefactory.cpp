@@ -47,20 +47,18 @@ OutPort* SimpleFactory::createOutPortGate(Module* parent)
 
 VCO* SimpleFactory::createVCO()
 {
-    return new VCO();
+    VCO* vco = new VCO();
+    vco->initialize(this);
+    return vco;
 }
 
-Sequencer* SimpleFactory::createSequencer(SynthPro* parent)
-{
-    return new Sequencer(parent);
-}
-
-Dimmer* SimpleFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
+Dimmer* SimpleFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
 {
     return new Dimmer(min, max, kDefault, parent);
 }
 
-Selector* SimpleFactory::createSelector(QList<int>* valuesList, int defaultValue, Module* parent){
+Selector* SimpleFactory::createSelector(QList<int>* valuesList, int defaultValue, Module* parent)
+{
     return new Selector(valuesList, defaultValue, parent);
 }
 
@@ -75,7 +73,7 @@ ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(Module* parent, 
 ModuleOut* SimpleFactory::createModuleOut(Module* parent)
 {
     // Do not instanciate ModuleOut if no audio device can be accessed !
-    AudioDeviceProvider adp = AudioDeviceProvider::instance();
+    AudioDeviceProvider& adp = AudioDeviceProvider::instance();
     if (!adp.initializeAudioOutput()) {
         return 0;
     }
@@ -84,5 +82,8 @@ ModuleOut* SimpleFactory::createModuleOut(Module* parent)
     if (!device) {
         return 0;
     }
-    return new ModuleOut(device, this, parent);
+
+    ModuleOut* mo = new ModuleOut(device, adp.audioOutput(), parent);
+    mo->initialize(this);
+    return mo;
 }

@@ -21,7 +21,7 @@ void TestSequencer::testSortTwoModules()
     QTextStream stream(&result);
 
     SynthPro synthpro;
-    Sequencer sequencer(&synthpro);
+    Sequencer& sequencer = Sequencer::instance();
 
     MockInOutModule m1("1", stream);
     synthpro.add(&m1);
@@ -31,7 +31,7 @@ void TestSequencer::testSortTwoModules()
 
     m1.output.connectTo(&m2.input); // m1 −> m2
 
-    sequencer.scheduleModules();
+    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QCOMPARE(result, QString("12"));
@@ -47,7 +47,7 @@ void TestSequencer::testSortCyclingModules()
     QTextStream stream(&result);
 
     SynthPro synthpro;
-    Sequencer sequencer(&synthpro);
+    Sequencer& sequencer = Sequencer::instance();
 
     MockInOutModule m1("1", stream);
     synthpro.add(&m1);
@@ -62,7 +62,7 @@ void TestSequencer::testSortCyclingModules()
     m2.output.connectTo(&m3.input); // m2 −> m3
     m2.output.connectTo(&m1.input); // m2 −> m1
 
-    sequencer.scheduleModules();
+    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QCOMPARE(result, QString("123"));
@@ -78,7 +78,7 @@ void TestSequencer::testSortTwoWells()
     QTextStream stream(&result);
 
     SynthPro synthpro;
-    Sequencer sequencer(&synthpro);
+    Sequencer& sequencer = Sequencer::instance();
 
     MockInOutModule m1("1", stream);
     synthpro.add(&m1);
@@ -96,7 +96,7 @@ void TestSequencer::testSortTwoWells()
     m1.output.connectTo(&m3.input); // m1 −> m3
     m3.output.connectTo(&m4.input); // m3 −> m4
 
-    sequencer.scheduleModules();
+    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QVERIFY(result.startsWith('1'));
@@ -114,7 +114,7 @@ void TestSequencer::testSortNoWell()
     QTextStream stream(&result);
 
     SynthPro synthpro;
-    Sequencer sequencer(&synthpro);
+    Sequencer& sequencer = Sequencer::instance();
 
     MockInOutModule m1("1", stream);
     synthpro.add(&m1);
@@ -124,7 +124,7 @@ void TestSequencer::testSortNoWell()
 
     m1.output.connectTo(&m2.input); // m1 −> m2
 
-    sequencer.scheduleModules();
+    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QCOMPARE(result, QString("")); // No processing at all since theres no well!
@@ -140,7 +140,7 @@ void TestSequencer::testSortMixer()
     QTextStream stream(&result);
 
     SynthPro synthpro;
-    Sequencer sequencer(&synthpro);
+    Sequencer& sequencer = Sequencer::instance();
 
     MockInOutModule m1("1", stream);
     synthpro.add(&m1);
@@ -157,7 +157,7 @@ void TestSequencer::testSortMixer()
     QVERIFY(m3.requirements().contains(&m1));
     QVERIFY(m3.requirements().contains(&m2));
 
-    sequencer.scheduleModules();
+    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QVERIFY(result.endsWith('3'));
@@ -174,7 +174,7 @@ void TestSequencer::testVCOAndSerializer()
     SimpleFactory factory;
 
     SynthPro* synthpro = factory.createSynthPro();
-    Sequencer* sequencer = factory.createSequencer(synthpro);
+    Sequencer& sequencer = Sequencer::instance();
 
     VCO* vco = factory.createVCO();
     vco->setWaveGenerator(new WaveGeneratorDummy);
@@ -185,8 +185,8 @@ void TestSequencer::testVCOAndSerializer()
 
     vco->outports().first()->connectTo(&output.input);
 
-    sequencer->scheduleModules();
-    sequencer->process();
+    sequencer.scheduleModules(synthpro);
+    sequencer.process();
 
     QVERIFY(result.startsWith("20000"));
 

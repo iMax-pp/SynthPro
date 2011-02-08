@@ -19,7 +19,7 @@ class Clock : public QObject {
 public:
     ~Clock();
 
-    static Clock* instance();
+    static Clock& instance();
 
     /**
       * Register a Module to a Fast Clock. Will call its
@@ -27,6 +27,10 @@ public:
       */
     void registerFastClock(Module*);
     // void registerSlowClock(Module*); // TODO
+
+    /**
+      * Unregister a module, stop the timer it was related to.
+      */
     void unregister(Module*);
 
 private:
@@ -34,6 +38,7 @@ private:
     static const int SLOW_TIMER_DELAY = 50;
 
     explicit Clock(QObject *parent = 0);
+    Clock(Clock&);
 
     QMap<Module*, QTimer*> m_fastTimers;
     QMap<Module*, QTimer*> m_slowTimers;

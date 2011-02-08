@@ -8,14 +8,19 @@ Clock::Clock(QObject *parent) :
 {
 }
 
+Clock::Clock(Clock& clock)
+    : QObject(clock.parent())
+{
+}
+
 Clock::~Clock()
 {
 }
 
-Clock* Clock::instance()
+Clock& Clock::instance()
 {
     static Clock instance;
-    return &instance;
+    return instance;
 }
 
 void Clock::registerFastClock(Module* module)

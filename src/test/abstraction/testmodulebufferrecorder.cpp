@@ -1,11 +1,11 @@
 #include "testmodulebufferrecorder.h"
 
-#include "src/main/abstraction/inport.h"
-#include "src/main/abstraction/module.h"
-#include "src/main/abstraction/modulebufferrecorder.h"
-#include "src/main/abstraction/vco.h"
-#include "src/main/abstraction/wavegeneratorempty.h"
-#include "src/main/factory/simplefactory.h"
+#include "abstraction/inport.h"
+#include "abstraction/module.h"
+#include "abstraction/modulebufferrecorder.h"
+#include "abstraction/vco.h"
+#include "abstraction/wavegeneratorempty.h"
+#include "factory/simplefactory.h"
 
 #include <QDebug>
 #include <QFile>

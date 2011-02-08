@@ -1,17 +1,18 @@
 #include "qtfactory.h"
 
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/dimmer.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
+#include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/cmodule.h"
 #include "control/coutport.h"
 #include "control/cport.h"
 #include "control/csynthpro.h"
 #include "control/cvco.h"
+#include "presentation/pdimmer.h"
 #include "presentation/pvco.h"
 
 #include <QIODevice>
@@ -96,18 +97,22 @@ VCO* QtFactory::createVCO()
     return vco;
 }
 
-Sequencer* QtFactory::createSequencer(SynthPro* parent)
+Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
 {
-    Sequencer* sequencer = new Sequencer(parent);
-    return sequencer;
+    CModule* cParent = dynamic_cast<CModule*>(parent);
+    CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
+
+    PDimmer* presentation = new PDimmer(dimmer->min() * CDimmer::DISCR,
+                                        dimmer->max() * CDimmer::DISCR,
+                                        dimmer->value() * CDimmer::DISCR,
+                                        cParent->presentation());
+    dimmer->setPresentation(presentation);
+
+    return dimmer;
 }
 
-Dimmer* QtFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
+Selector* QtFactory::createSelector(QList<int>* valuesList, int defaultValue, Module* parent)
 {
-    return new Dimmer(min, max, kDefault, parent);
-}
-
-Selector* QtFactory::createSelector(QList<int>* valuesList, int defaultValue, Module* parent){
     return new Selector(valuesList, defaultValue, parent);
 }
 
@@ -121,7 +126,7 @@ ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QStr
 ModuleOut* QtFactory::createModuleOut(Module* parent)
 {
     // Do not instanciate ModuleOut if no audio device can be accessed !
-    AudioDeviceProvider adp = AudioDeviceProvider::instance();
+    AudioDeviceProvider& adp = AudioDeviceProvider::instance();
     if (!adp.initializeAudioOutput()) {
         return 0;
     }
@@ -130,5 +135,8 @@ ModuleOut* QtFactory::createModuleOut(Module* parent)
     if (!device) {
         return 0;
     }
-    return new ModuleOut(device, this, parent);
+
+    ModuleOut* mo = new ModuleOut(device, adp.audioOutput(), parent);
+    mo->initialize(this);
+    return mo;
 }
