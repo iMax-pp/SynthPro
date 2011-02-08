@@ -35,8 +35,8 @@ bool AudioDeviceProvider::initializeAudioOutput()
     }
 
     // Create the desired output format.
-    m_audioFormat.setSampleRate(OUTPUT_FREQUENCY);
-    m_audioFormat.setChannelCount(NB_CHANNELS);
+    m_audioFormat.setFrequency(OUTPUT_FREQUENCY);
+    m_audioFormat.setChannels(NB_CHANNELS);
     m_audioFormat.setSampleSize(BIT_RATE);
     m_audioFormat.setSampleType(QAudioFormat::SignedInt);
     m_audioFormat.setByteOrder(QAudioFormat::LittleEndian);
