@@ -51,7 +51,7 @@ VCO* SimpleFactory::createVCO()
     return vco;
 }
 
-Dimmer* SimpleFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
+Dimmer* SimpleFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
 {
     return new Dimmer(min, max, kDefault, parent);
 }

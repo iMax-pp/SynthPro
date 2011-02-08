@@ -28,7 +28,7 @@ void VCO::initialize(SynthProFactory* factory)
     m_out = factory->createOutPortReplicable(this);
     m_outports.append(m_out);
 
-    m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, K_DISCR, this);
+    m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, this);
 }
 
 VCO::~VCO()

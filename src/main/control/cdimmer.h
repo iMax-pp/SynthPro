@@ -13,6 +13,9 @@ public:
     PDimmer* presentation() const;
     void setPresentation(PDimmer*);
 
+    // Discretization factor
+    static const qreal DISCR = 150;
+
 public slots:
     void valueChanged(int value);
 

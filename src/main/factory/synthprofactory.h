@@ -40,9 +40,8 @@ public:
      * @param min min value of the dimer
      * @param max max value
      * @param default_value the value where the dimmer is positionned at creation
-     * @param discretization the factor to apply between presentation and abstraction
      */
-    virtual Dimmer* createDimmer(qreal min, qreal man, qreal default_value, qreal discretization, Module* parent) = 0;
+    virtual Dimmer* createDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
 
     /*
      * Enumeration of module types.

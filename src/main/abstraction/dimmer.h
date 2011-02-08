@@ -11,6 +11,9 @@ public:
     qreal value() const;
     void setValue(qreal);
 
+    inline qreal min() const { return m_min; }
+    inline qreal max() const { return m_max; }
+
 private :
     qreal m_min;
     qreal m_max;

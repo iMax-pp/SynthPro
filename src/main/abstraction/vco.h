@@ -52,7 +52,6 @@ protected:
     static const qreal K_MIN = -5;
     static const qreal K_MAX = 5;
     static const qreal K_DEFAULT = 0;
-    static const qreal K_DISCR = 150;
 };
 
 #endif // VCO_H
