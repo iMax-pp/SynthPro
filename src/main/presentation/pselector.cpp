@@ -1,5 +1,4 @@
 #include "pselector.h"
-#include "pselector.h"
 
 #include <QGroupBox>
 #include <QRadioButton>

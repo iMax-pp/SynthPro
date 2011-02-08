@@ -20,7 +20,7 @@ public:
     ModuleOut* createModuleOut(Module* parent);
 
     Dimmer* createDimmer(qreal, qreal, qreal, Module* parent);
-    Selector* createSelector(QList<int>*, int, Module* parent);
+    Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
 
     CWire* createWire(QGraphicsScene*);
 

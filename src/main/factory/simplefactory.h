@@ -16,7 +16,7 @@ public:
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(Module* parent);
     Dimmer* createDimmer(qreal min, qreal max, qreal kDefault, Module* parent);
-    Selector* createSelector(QList<int>* valuesList, int defaultValue, Module* parent);
+    Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
     CWire* createWire(QGraphicsScene*);
 
 };

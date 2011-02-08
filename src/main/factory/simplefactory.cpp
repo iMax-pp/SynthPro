@@ -57,9 +57,9 @@ Dimmer* SimpleFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module
     return new Dimmer(min, max, kDefault, parent);
 }
 
-Selector* SimpleFactory::createSelector(QList<int>* valuesList, int defaultValue, Module* parent)
+Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent)
 {
-    return new Selector(valuesList, defaultValue, parent);
+    return new Selector(keys, defaultKey, parent);
 }
 
 

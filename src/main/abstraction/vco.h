@@ -32,6 +32,7 @@ public:
     /**
      * Set the WaveGenerator of this VCO.
      * The VCO will then take care of deleting it.
+     * @deprecated
      * @param generator a wave generator (Strategy design pattern)
      */
     void setWaveGenerator(WaveGenerator*);
@@ -49,12 +50,12 @@ public:
     /**
      * @return The current wave shape selected, by its value on the selector himself
      */
-    WaveGeneratorFactory::WaveType shape();
+    QString shape();
 
     /**
      * set the value of the selector indirectly : setting this value on the selector himself
      */
-    void setShape(WaveGeneratorFactory::WaveType);
+    void setShape(QString);
 
 
     static const qreal SIGNAL_INTENSITY = 5;
@@ -63,19 +64,18 @@ public:
 
 public slots :
     /**
-    * slot, connected to a signe emmit by the selector to inform his value changed
+    * slot, connected to a signal emitted by the selector to inform his value changed.
     */
     void waveShapeChanged(int);
 
 protected:
     WaveGenerator* m_waveGenerator;
+    WaveGeneratorFactory* m_waveGeneratorFactory;
+
     InPort* m_vfm;
     OutPort* m_out;
     Selector* m_shapeSelector;
     Dimmer* m_kDimmer;
-    WaveGeneratorFactory* m_waveGeneratorFactory;
-    QHash<int, WaveGeneratorFactory::WaveType>* m_selectorConversionMap;
-    QList<int> m_selectorValueList;
 
     static const qreal K_MIN = -5;
     static const qreal K_MAX = 5;

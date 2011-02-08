@@ -45,7 +45,7 @@ public:
      * @param default_value the value where the dimmer is positionned at creation
      */
     virtual Dimmer* createDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
-    virtual Selector* createSelector(QList<int>*, int, Module* parent) = 0;
+    virtual Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent) = 0;
 
     virtual CWire* createWire(QGraphicsScene*) = 0;
 

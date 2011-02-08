@@ -14,6 +14,7 @@
 #include "control/cvco.h"
 #include "control/cwire.h"
 #include "presentation/pdimmer.h"
+#include "presentation/pselector.h"
 #include "presentation/pvco.h"
 #include "presentation/pwire.h"
 
@@ -114,9 +115,11 @@ Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* pa
     return dimmer;
 }
 
-Selector* QtFactory::createSelector(QList<int>* valuesList, int defaultValue, Module* parent)
+Selector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent)
 {
-    return new Selector(valuesList, defaultValue, parent);
+    PSelector* presentation = new PSelector(values, name, dynamic_cast<CModule*>(parent)->presentation());
+    // TODO CSelector
+    return new Selector(keys, defaultKey, parent);
 }
 
 ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)

@@ -14,11 +14,11 @@
 VCO::VCO(QObject* parent)
     : Module(parent)
     , m_waveGenerator(0)
+    , m_waveGeneratorFactory(new WaveGeneratorFactory())
     , m_vfm(0)
     , m_out(0)
     , m_shapeSelector(0)
     , m_kDimmer(0)
-    , m_waveGeneratorFactory(new WaveGeneratorFactory())
 {
 }
 
@@ -33,20 +33,14 @@ void VCO::initialize(SynthProFactory* factory)
     m_outports.append(m_out);
 
     /// Creation of the Selector
-    m_selectorConversionMap = m_waveGeneratorFactory->selectorConversionmap();
-    m_selectorValueList = m_selectorConversionMap->keys();
-    m_shapeSelector = factory->createSelector(&m_selectorValueList, 0, this);
+    m_shapeSelector = factory->createSelector(m_waveGeneratorFactory->selectorConversionMap().keys(), 0,
+                                              m_waveGeneratorFactory->selectorConversionMap().values(), "Wave Type", this);
 
     /// Connection of the Selector
     connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
 
     /// Creation of the Dimmer
     m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, this);
-
-    /// initialiser shape à la main
-    setShape(WaveGeneratorFactory::SawWave);
-    qDebug() << "shape" << shape();
-
 }
 
 VCO::~VCO()
@@ -62,9 +56,10 @@ void VCO::ownProcess()
     m_out->swapBuffers();
     m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());
 }
-/**
-*   DEPRECATED : it's now the WaveGeneratorFactory who instantiate the wave generator
-*/
+
+/*
+ * DEPRECATED
+ */
 void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
 {
     if (m_waveGenerator) {
@@ -73,7 +68,6 @@ void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
 
     m_waveGenerator = waveGenerator;
 }
-
 
 qreal VCO::k() const
 {
@@ -87,20 +81,21 @@ void VCO::setK(qreal value)
 
 void VCO::waveShapeChanged(int selectedValue)
 {
-    qDebug()<< "le slot est appelé !";
     if (m_waveGenerator) {
         delete m_waveGenerator;
     }
-    m_waveGenerator = m_waveGeneratorFactory->getWaveGenerator(m_waveGeneratorFactory->selectorConversionmap()->value(selectedValue));
+
+    QString waveType = m_waveGeneratorFactory->selectorConversionMap()[selectedValue];
+    m_waveGenerator = m_waveGeneratorFactory->createWaveGenerator(waveType);
 }
 
-WaveGeneratorFactory::WaveType VCO::shape()
+QString VCO::shape()
 {
 
-    return m_selectorConversionMap->value(m_shapeSelector->choice());
+    return m_waveGeneratorFactory->selectorConversionMap()[m_shapeSelector->choice()];
 }
 
-void VCO::setShape(WaveGeneratorFactory::WaveType shape)
+void VCO::setShape(QString shape)
 {
-    m_shapeSelector->setChoice(m_selectorConversionMap->key(shape));
+    m_shapeSelector->setChoice(m_waveGeneratorFactory->selectorConversionMap().key(shape));
 }

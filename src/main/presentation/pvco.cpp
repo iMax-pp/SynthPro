@@ -2,6 +2,7 @@
 
 #include "control/cvco.h"
 #include "pdimmer.h"
+#include "pselector.h"
 #include <QDial>
 #include <QFont>
 #include <QGraphicsScene>
@@ -19,6 +20,12 @@ PVCO::PVCO(CVCO* control)
     // Create a Title.
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("VCO", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
+
+//    QList<QString> items;
+//    items << "Saw" << "Square" << "Sinus" << "Triangle";
+//    PSelector* selector = new PSelector(items, "Wave Type", this);
+//    selector->setPos(90, 48);
+//    selector->setMaximumSize(120, 115);
 }
 
 void PVCO::initialize(PPort* pVfm, PPort* pOut, PDimmer* pK)

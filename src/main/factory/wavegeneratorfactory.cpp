@@ -9,33 +9,36 @@
 
 WaveGeneratorFactory::WaveGeneratorFactory()
 {
-    m_selectorConversionMap.insert(0, SawWave);
-    m_selectorConversionMap.insert(1, SinusWave);
-    m_selectorConversionMap.insert(2, SquareWave);
-    m_selectorConversionMap.insert(3, TriangleWave);
-    m_selectorConversionMap.insert(4, DummyWave);
+    m_selectorConversionMap.insert(0, "SawWave");
+    m_selectorConversionMap.insert(1, "SinusWave");
+    m_selectorConversionMap.insert(2, "SquareWave");
+    m_selectorConversionMap.insert(3, "TriangleWave");
+    m_selectorConversionMap.insert(4, "DummyWave");
 
 }
 
-WaveGenerator* WaveGeneratorFactory::getWaveGenerator(WaveType waveType)
+WaveGenerator* WaveGeneratorFactory::createWaveGenerator(const QString& waveType)
 {
-    switch (waveType) {
-    case SawWave :
-            return new WaveGeneratorSaw();
-    case SinusWave :
-            return new WaveGeneratorSinus();
-    case SquareWave :
-            return new WaveGeneratorSquare();
-    case TriangleWave :
-            return new WaveGeneratorTriangle();
-    case DummyWave :
-            return new WaveGeneratorDummy();
-    default :
-            return new WaveGeneratorDummy();
+    if (waveType == "SawWave") {
+        return new WaveGeneratorSaw();
     }
+
+    if (waveType == "SinusWave") {
+        return new WaveGeneratorSinus();
+    }
+
+    if (waveType == "SquareWave") {
+        return new WaveGeneratorSquare();
+    }
+
+    if (waveType == "TriangleWave") {
+        return new WaveGeneratorTriangle();
+    }
+
+    return new WaveGeneratorDummy();
 }
 
-QHash<int, WaveGeneratorFactory::WaveType>* WaveGeneratorFactory::selectorConversionmap()
+QHash<int, QString>& WaveGeneratorFactory::selectorConversionMap()
 {
-    return &m_selectorConversionMap;
+    return m_selectorConversionMap;
 }
