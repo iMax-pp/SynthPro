@@ -19,7 +19,7 @@ public:
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(Module* parent);
 
-    Dimmer* createDimmer(qreal, qreal, qreal, Module* parent);
+    Dimmer* createDimmer(qreal, qreal, qreal, qreal, Module* parent);
 
 protected:
     // Convenient factory method
