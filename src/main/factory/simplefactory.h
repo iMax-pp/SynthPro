@@ -17,6 +17,7 @@ public:
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(Module* parent);
     Dimmer* createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent);
+    Selector* createSelector(QList<int>* valuesList, int defaultValue, Module* parent);
 };
 
 #endif // SIMPLEFACTORY_H

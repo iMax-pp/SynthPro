@@ -23,6 +23,7 @@ HEADERS += \
     src/test/abstraction/testvco.h \
     src/main/abstraction/vco.h \
     src/main/abstraction/dimmer.h \
+    src/main/abstraction/selector.h \
     src/main/abstraction/wavegeneratordummy.h \
     src/main/abstraction/wavegeneratorempty.h \
     src/main/abstraction/wavegeneratortriangle.h \
@@ -42,6 +43,7 @@ HEADERS += \
     src/test/abstraction/testwavegeneratorsaw.h \
     src/test/abstraction/testwavegeneratorsinus.h \
     src/main/abstraction/clock.h \
+    src/main/factory/wavegeneratorfactory.h \
     src/test/abstraction/testaudiodeviceprovider.h
 
 SOURCES += src/test/test.cpp \
@@ -51,6 +53,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testinport.cpp \
     src/main/abstraction/outport.cpp \
     src/main/abstraction/dimmer.cpp \
+    src/main/abstraction/selector.cpp \
     src/test/abstraction/testoutport.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/abstraction/module.cpp \
@@ -79,6 +82,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testwavegeneratorsaw.cpp \
     src/test/abstraction/testwavegeneratorsinus.cpp \
     src/main/abstraction/clock.cpp \
+    src/main/factory/wavegeneratorfactory.cpp \
     src/test/abstraction/testaudiodeviceprovider.cpp
 
 INCLUDEPATH += src/main/ src/test/

@@ -5,6 +5,9 @@
 #include "abstraction/module.h"
 #include "abstraction/outport.h"
 #include "audiodeviceprovider.h"
+#include "factory/wavegeneratorfactory.h"
+
+#include "QHash"
 
 class WaveGenerator;
 class SynthProFactory;
@@ -33,12 +36,23 @@ public:
      */
     void setWaveGenerator(WaveGenerator*);
 
-    qreal k();
+    /**
+    * @return value of the current value of the dimmer
+    */
+    qreal k() const;
+
+    /**
+    * set the value of the dimmer
+    */
     void setK(qreal value);
 
     static const qreal SIGNAL_INTENSITY = 20000;
     static const qreal F0 = 261.626; // Frequency of the C4.
     static const qreal REPLAY_FREQUENCY = AudioDeviceProvider::OUTPUT_FREQUENCY;
+
+public slots :
+
+    void waveShapeChanged(int);
 
 protected:
 
@@ -47,6 +61,9 @@ protected:
     OutPort* m_out;
     Selector* m_shapeSelector;
     Dimmer* m_kDimmer;
+    WaveGeneratorFactory* m_waveGeneratorFactory;
+    QHash<int,WaveGeneratorFactory::WaveType>* m_selectorConversionMap ;
+    QList<int> m_selectorValueList;
 
     static const qreal K_MIN = -5;
     static const qreal K_MAX = 5;

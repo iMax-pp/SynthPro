@@ -4,6 +4,7 @@
 #include "abstraction/dimmer.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleout.h"
+#include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
 #include "control/cinport.h"
 #include "control/cmodule.h"
@@ -104,6 +105,10 @@ Sequencer* QtFactory::createSequencer(SynthPro* parent)
 Dimmer* QtFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
 {
     return new Dimmer(min, max, kDefault, parent);
+}
+
+Selector* QtFactory::createSelector(QList<int>* valuesList, int defaultValue, Module* parent){
+    return new Selector(valuesList, defaultValue, parent);
 }
 
 ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
