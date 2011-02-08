@@ -26,8 +26,8 @@ public:
       * timerExpired() slot when its timer is expired.
       */
     void registerFastClock(Module*);
-    //void registerSlowClock(Module*); // TODO
-    void unregister(Module* module);
+    // void registerSlowClock(Module*); // TODO
+    void unregister(Module*);
 
 private:
     static const int FAST_TIMER_DELAY = 5;
