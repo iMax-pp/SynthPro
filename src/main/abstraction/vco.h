@@ -33,7 +33,8 @@ public:
      */
     void setWaveGenerator(WaveGenerator*);
 
-    Dimmer* dimmer(); // FIXME I don’t think it’s a good idea to expose this dimmer to the outside
+    qreal dimmerValue();
+    void setDimmerValue(qreal value);
 
     static const qreal SIGNAL_INTENSITY = 20000;
     static const qreal F0 = 261.626; // Frequency of the C4.
