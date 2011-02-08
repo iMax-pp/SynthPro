@@ -1,14 +1,16 @@
 #include "filterincrement.h"
 
+#include "buffer.h"
+
 FilterIncrement::FilterIncrement()
 {
 }
 
-void FilterIncrement::apply(float* bufferIn, float* bufferOut, int bufferLength)
+void FilterIncrement::apply(Buffer* bufferIn, Buffer* bufferOut)
 {
-    for (int i = 0; i < bufferLength; i++) {
-        int a = bufferIn[i];
-        bufferOut[i] = (a >= 0 ? ++a : --a);
+    qreal* dataOut = bufferOut->data();
+    for (int i = 0, size = bufferOut->length(); i < size; i++) {
+        qreal a = bufferIn->data()[i];
+        dataOut[i] = (a >= 0 ? ++a : --a);
     }
-
 }

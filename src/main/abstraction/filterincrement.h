@@ -12,7 +12,7 @@ class FilterIncrement : public Filter {
 public:
     FilterIncrement();
 
-    virtual void apply(float* bufferIn, float* bufferOut, int bufferLength);
+    virtual void apply(Buffer* bufferIn, Buffer* bufferOut);
 };
 
 #endif // FILTERINCREMENT_H
