@@ -6,7 +6,7 @@ SynthPro::SynthPro(QObject* parent)
 
 }
 
-const QList<Module*> SynthPro::modules()
+const QList<Module*> SynthPro::modules() const
 {
     return m_modules;
 }

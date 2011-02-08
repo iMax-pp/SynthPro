@@ -3,6 +3,8 @@
 
 #include "module.h"
 
+#include <QObject>
+
 class InPort;
 class SynthProFactory;
 class QIODevice;
@@ -16,6 +18,7 @@ class QIODevice;
   * ???? WHO should call the Sequencer ?????
   */
 class ModuleOut : public Module {
+    // Q_OBJECT
 public:
     ModuleOut(QIODevice*, SynthProFactory* = 0, QObject* parent = 0);
     virtual ~ModuleOut();

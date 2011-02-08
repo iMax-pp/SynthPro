@@ -27,6 +27,10 @@ public:
       */
     void registerFastClock(Module*);
     // void registerSlowClock(Module*); // TODO
+
+    /**
+      * Unregister a module, stop the timer it was related to.
+      */
     void unregister(Module*);
 
 private:

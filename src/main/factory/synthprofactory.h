@@ -35,8 +35,6 @@ public:
       */
     virtual ModuleOut* createModuleOut(Module* parent) = 0;
 
-    virtual Sequencer* createSequencer(SynthPro* parent) = 0;
-
     /*
      * instantiate a dimmer's abstraction
      * @param min min value of the dimer
