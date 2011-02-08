@@ -26,18 +26,23 @@ void PChannel::updatePosition(QPointF point)
 {
     QPointF in;
     if (!m_control->inPort()) {
+        // Use point if no inPort.
         in = point;
     } else {
+        // Use inPort otherwise.
         in = mapFromItem(m_control->inPort()->presentation(), 0, 0);
     }
 
     QPointF out;
     if (!m_control->outPort()) {
+        // Use point if no outPoint
         out = point;
     } else {
+        // Use inPort otherwise.
         out = mapFromItem(m_control->outPort()->presentation(), 0, 0);
     }
 
+    // Draw a new line for our channel.
     QLineF line(in, out);
     setLine(line);
 }

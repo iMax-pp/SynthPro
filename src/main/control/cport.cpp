@@ -43,6 +43,11 @@ CChannel* CPort::channel() const
     return m_channel;
 }
 
+void CPort::setChannel(CChannel* channel)
+{
+    m_channel = channel;
+}
+
 void CPort::startChannel()
 {
     if (m_channel) {
@@ -58,15 +63,21 @@ void CPort::startChannel()
     }
 }
 
-void CPort::dropChannel(QGraphicsItem* item)
+void CPort::dropChannel(PPort* port)
 {
-    PPort* port = dynamic_cast<PPort*>(item);
-
     if (!port || port->control()->out() == out()) {
-        // Drop wasn't on a PPort, or on a port of the same type, delete channel.
+        // Drop wasn't on a port, or was on a port of the same type, delete channel.
         if (m_channel) {
             delete m_channel;
             m_channel = 0;
         }
+    } else if (port->control()->out()) {
+        // Otherwise connect the other outport with the channel.
+        m_channel->setOutPort(dynamic_cast<COutPort*>(port->control()));
+        port->control()->setChannel(m_channel);
+    } else if (!port->control()->out()) {
+        // Otherwise connect the other inport with the channel.
+        m_channel->setInPort(dynamic_cast<CInPort*>(port->control()));
+        port->control()->setChannel(m_channel);
     }
 }
