@@ -16,8 +16,10 @@ public:
     PPort* presentation() const;
 
     CChannel* channel() const;
+    void setChannel(CChannel*);
+
     void startChannel();
-    void dropChannel(QGraphicsItem*);
+    void dropChannel(PPort*);
 
 private:
     PPort* m_presentation;

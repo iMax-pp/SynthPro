@@ -51,12 +51,27 @@ void PPort::mousePressEvent(QGraphicsSceneMouseEvent*)
 
 void PPort::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
-    m_control->channel()->updatePosition(mapToScene(event->pos()));
+    m_control->channel()->updatePosition(event->scenePos());
 }
 
 void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 {
-    m_control->dropChannel(scene()->itemAt(mapToScene(event->pos())));
+    QPointF pos = event->scenePos();
+    QList<QGraphicsItem*> items = scene()->items(pos);
+
+    // Try to retrieve the port within all the items...
+    PPort* port = 0;
+    foreach (QGraphicsItem* item, items) {
+        // by casting it.
+        port = dynamic_cast<PPort*>(item);
+        if (port) {
+            // If it's a port, don't go further.
+            break;
+        }
+    }
+
+    // In any case call the control (ie. to delete the associated channel).
+    m_control->dropChannel(port);
 }
 
 CPort* PPort::control() const

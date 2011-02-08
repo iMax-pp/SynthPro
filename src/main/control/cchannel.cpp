@@ -1,5 +1,8 @@
 #include "cchannel.h"
 
+#include "cinport.h"
+#include "coutport.h"
+
 CChannel::CChannel()
     : m_presentation(0)
     , m_inPort(0)
@@ -9,6 +12,14 @@ CChannel::CChannel()
 
 CChannel::~CChannel()
 {
+    if (m_inPort && m_inPort->channel()) {
+        inPort()->setChannel(0);
+    }
+
+    if (m_outPort && m_outPort->channel()) {
+        outPort()->setChannel(0);
+    }
+
     if (m_presentation) {
         delete m_presentation;
     }
