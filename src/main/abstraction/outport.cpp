@@ -2,8 +2,8 @@
 
 #include <QObject>
 
-OutPort::OutPort(Module* parent, bool replicable, bool gate)
-    : Port(parent, replicable, gate)
+OutPort::OutPort(Module* parent, const QString& name, bool replicable, bool gate)
+    : Port(parent, name, replicable, gate)
 {
     m_buffer = new Buffer();
     m_oldBuffer = new Buffer();

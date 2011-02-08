@@ -11,6 +11,7 @@ class TestVCO : public QObject {
 private slots:
     void testVCO();
     void testVCOwithDimmer();
+    void testVCOWithSelector();
 };
 
 #endif // TESTVCO_H

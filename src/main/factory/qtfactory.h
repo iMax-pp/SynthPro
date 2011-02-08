@@ -7,26 +7,27 @@ class QtFactory : public SynthProFactory {
 public:
     SynthPro* createSynthPro();
 
-    InPort* createInPort(Module* parent);
-    InPort* createInPortReplicable(Module* parent);
-    InPort* createInPortGate(Module* parent);
+    InPort* createInPort(Module* parent, const QString& name);
+    InPort* createInPortReplicable(Module* parent, const QString& name);
+    InPort* createInPortGate(Module* parent, const QString& name);
 
-    OutPort* createOutPort(Module* parent);
-    OutPort* createOutPortReplicable(Module* parent);
-    OutPort* createOutPortGate(Module* parent);
+    OutPort* createOutPort(Module* parent, const QString& name);
+    OutPort* createOutPortReplicable(Module* parent, const QString& name);
+    OutPort* createOutPortGate(Module* parent, const QString& name);
 
     VCO* createVCO();
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(Module* parent);
 
     Dimmer* createDimmer(qreal, qreal, qreal, Module* parent);
+    Selector* createSelector(QList<int>*, int, Module* parent);
 
     CChannel* createChannel(QGraphicsScene*);
 
 protected:
     // Convenient factory method
-    InPort* createInPort(Module* parent, bool replicable, bool gate);
-    OutPort* createOutPort(Module* parent, bool replicable, bool gate);
+    InPort* createInPort(Module* parent, const QString& name, bool replicable, bool gate);
+    OutPort* createOutPort(Module* parent, const QString& name, bool replicable, bool gate);
 };
 
 #endif // QTFACTORY_H

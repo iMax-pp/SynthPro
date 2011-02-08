@@ -1,10 +1,13 @@
 #ifndef VCO_H
 #define VCO_H
 
+#include "QHash"
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
 #include "abstraction/outport.h"
 #include "audiodeviceprovider.h"
+#include "factory/wavegeneratorfactory.h"
+
 
 class WaveGenerator;
 class SynthProFactory;
@@ -33,21 +36,44 @@ public:
      */
     void setWaveGenerator(WaveGenerator*);
 
-    qreal k();
-    void setK(qreal value);
-    Dimmer* kDimmer() const;
+    /**
+    * @return The current value of the dimmer
+    */
+    qreal k() const;
 
-    static const qreal SIGNAL_INTENSITY = 20000;
+    /**
+    * set the value of the dimmer
+    */
+    void setK(qreal value);
+
+    /*
+     * @return The current wave shape selected
+     */
+    WaveGeneratorFactory::WaveType shape();
+
+    /**
+     * set the value of the selector
+     */
+    void setShape(WaveGeneratorFactory::WaveType);
+
+
+    static const qreal SIGNAL_INTENSITY = 5;
     static const qreal F0 = 261.626; // Frequency of the C4.
     static const qreal REPLAY_FREQUENCY = AudioDeviceProvider::OUTPUT_FREQUENCY;
 
-protected:
+public slots :
 
+    void waveShapeChanged(int);
+
+protected:
     WaveGenerator* m_waveGenerator;
     InPort* m_vfm;
     OutPort* m_out;
     Selector* m_shapeSelector;
     Dimmer* m_kDimmer;
+    WaveGeneratorFactory* m_waveGeneratorFactory;
+    QHash<int, WaveGeneratorFactory::WaveType>* m_selectorConversionMap;
+    QList<int> m_selectorValueList;
 
     static const qreal K_MIN = -5;
     static const qreal K_MAX = 5;

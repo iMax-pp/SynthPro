@@ -5,6 +5,7 @@
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
+#include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
@@ -14,34 +15,34 @@ SynthPro* SimpleFactory::createSynthPro()
     return new SynthPro();
 }
 
-InPort* SimpleFactory::createInPort(Module* parent)
+InPort* SimpleFactory::createInPort(Module* parent, const QString& name)
 {
-    return new InPort(parent, false, false);
+    return new InPort(parent, name, false, false);
 }
 
-InPort* SimpleFactory::createInPortReplicable(Module* parent)
+InPort* SimpleFactory::createInPortReplicable(Module* parent, const QString& name)
 {
-    return new InPort(parent, true, false);
+    return new InPort(parent, name, true, false);
 }
 
-InPort* SimpleFactory::createInPortGate(Module* parent)
+InPort* SimpleFactory::createInPortGate(Module* parent, const QString& name)
 {
-    return new InPort(parent, false, true);
+    return new InPort(parent, name, false, true);
 }
 
-OutPort* SimpleFactory::createOutPort(Module* parent)
+OutPort* SimpleFactory::createOutPort(Module* parent, const QString& name)
 {
-    return new OutPort(parent, false, false);
+    return new OutPort(parent, name, false, false);
 }
 
-OutPort* SimpleFactory::createOutPortReplicable(Module* parent)
+OutPort* SimpleFactory::createOutPortReplicable(Module* parent, const QString& name)
 {
-    return new OutPort(parent, true, false);
+    return new OutPort(parent, name, true, false);
 }
 
-OutPort* SimpleFactory::createOutPortGate(Module* parent)
+OutPort* SimpleFactory::createOutPortGate(Module* parent, const QString& name)
 {
-    return new OutPort(parent, false, true);
+    return new OutPort(parent, name, false, true);
 }
 
 VCO* SimpleFactory::createVCO()
@@ -55,6 +56,12 @@ Dimmer* SimpleFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module
 {
     return new Dimmer(min, max, kDefault, parent);
 }
+
+Selector* SimpleFactory::createSelector(QList<int>* valuesList, int defaultValue, Module* parent)
+{
+    return new Selector(valuesList, defaultValue, parent);
+}
+
 
 ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
 {

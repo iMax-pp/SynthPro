@@ -9,7 +9,7 @@ class SynthProFactory;
 
 class CPort : public virtual Port {
 public:
-    CPort(Module* parent, SynthProFactory*, bool replicable = false, bool gate = false);
+    CPort(Module* parent, SynthProFactory*, const QString& name, bool replicable = false, bool gate = false);
     virtual ~CPort();
 
     void setPresentation(PPort*);

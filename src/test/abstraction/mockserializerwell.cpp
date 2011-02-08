@@ -6,7 +6,7 @@
 
 MockSerializerWell::MockSerializerWell(QTextStream& output, QObject* parent)
     : Module(parent)
-    , input(this)
+    , input(this, "input")
     , m_output(output)
 {
     m_inports.append(&input);

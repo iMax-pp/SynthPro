@@ -2,6 +2,7 @@
 
 #include "abstraction/dimmer.h"
 #include "abstraction/mockserializerwell.h"
+#include "abstraction/selector.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratordummy.h"
 #include "abstraction/wavegeneratorsquare.h"
@@ -36,6 +37,38 @@ void TestVCO::testVCOwithDimmer()
     SimpleFactory factory;
     VCO* vco = factory.createVCO();
     vco->setK(3);
+    MockSerializerWell output(stream);
+    vco->outports().first()->connectTo(&output.input);
+    vco->setWaveGenerator(new WaveGeneratorSquare);
+    vco->process();
+    output.process();
+    int nbFronts = 0;
+    int oldValue = 0;
+
+    Buffer * buffer = vco->outports().first()->buffer();
+    for (int i = 0 ; i < buffer->length()  ; i++) {
+        if (i == 0) {
+            oldValue = buffer->data()[i];
+        }
+        if (buffer->data()[i]-oldValue != 0) {
+            nbFronts++;
+        }
+        oldValue = buffer->data()[i];
+    }
+    QVERIFY(nbFronts != 0);
+
+    delete vco;
+}
+void TestVCO::testVCOWithSelector()
+{
+    QString result;
+    QTextStream stream(&result);
+
+    SimpleFactory factory;
+    VCO* vco = factory.createVCO();
+
+
+
     MockSerializerWell output(stream);
     vco->outports().first()->connectTo(&output.input);
     vco->setWaveGenerator(new WaveGeneratorSquare);

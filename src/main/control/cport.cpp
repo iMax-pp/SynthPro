@@ -5,8 +5,8 @@
 #include "coutport.h"
 #include "factory/synthprofactory.h"
 
-CPort::CPort(Module* parent, SynthProFactory* factory, bool replicable, bool gate)
-    : Port(parent, replicable, gate)
+CPort::CPort(Module* parent, SynthProFactory* factory, const QString& name, bool replicable, bool gate)
+    : Port(parent, name, replicable, gate)
     , m_presentation(0)
     , m_channel(0)
     , m_factory(factory)
