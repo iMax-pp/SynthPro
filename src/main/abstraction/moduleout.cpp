@@ -5,10 +5,11 @@
 #include "factory/synthprofactory.h"
 #include "inport.h"
 
-ModuleOut::ModuleOut(QIODevice* device, SynthProFactory* factory, QObject* parent)
+#include <QDebug>
+
+ModuleOut::ModuleOut(QIODevice* device, QObject* parent)
     : Module(parent)
     , m_device(device)
-    , m_factory(factory)
 {
 }
 
@@ -16,11 +17,12 @@ ModuleOut::~ModuleOut()
 {
 }
 
-void ModuleOut::initialize()
+void ModuleOut::initialize(SynthProFactory* factory)
 {
-    if (m_factory) {
+            qDebug() << "****** INIT ModuleOut *****";
+    if (factory) {
         // Creation of an Input.
-        m_inPort = m_factory->createInPortReplicable(this);
+        m_inPort = factory->createInPortReplicable(this);
         m_inports.append(m_inPort);
 
         Clock& clock = Clock::instance();

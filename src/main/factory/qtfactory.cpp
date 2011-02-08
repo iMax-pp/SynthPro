@@ -119,5 +119,8 @@ ModuleOut* QtFactory::createModuleOut(Module* parent)
     if (!device) {
         return 0;
     }
-    return new ModuleOut(device, this, parent);
+
+    ModuleOut* mo = new ModuleOut(device, parent);
+    mo->initialize(this);
+    return mo;
 }
