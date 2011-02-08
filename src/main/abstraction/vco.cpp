@@ -80,7 +80,3 @@ void VCO::waveShapeChanged(int selectedValue)
     }
     m_waveGenerator = m_waveGeneratorFactory->getWaveGenerator(m_waveGeneratorFactory->selectorConversionmap()->value(selectedValue));
 }
-    Dimmer* VCO::kDimmer() const
-{
-    return m_kDimmer;
-}
