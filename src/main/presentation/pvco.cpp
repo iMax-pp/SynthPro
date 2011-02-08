@@ -30,8 +30,8 @@ void PVCO::initialize(PPort* pVfm, PPort* pOut, PDimmer* pK)
     pOut->setParentItem(out());
 
     doLayout();*/
-    pVfm->setPos(0, 70); // Yes, absolute positioning is bad.
-    pOut->setPos(200, 70);
+    pVfm->setPos(-7, 70); // Yes, absolute positioning is bad.
+    pOut->setPos(195, 70);
 
     pK->setPos(10, 90);
     pK->setMaximumSize(60, 60);
