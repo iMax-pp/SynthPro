@@ -7,6 +7,7 @@
 #include "abstraction/wavegenerator.h"
 #include "factory/synthprofactory.h"
 
+
 VCO::VCO(SynthProFactory* factory, QObject* parent)
     : Module(parent)
     , m_waveGenerator(0)

@@ -29,7 +29,7 @@ public:
      * @param generator a wave generator (Strategy design pattern)
      */
     void setWaveGenerator(WaveGenerator*);
-
+    
     Dimmer* dimmer();
 
     static const qreal SIGNAL_INTENSITY = 20000;

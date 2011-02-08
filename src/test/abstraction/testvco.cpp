@@ -35,7 +35,7 @@ void TestVCO::testVCOwithDimmer()
 
     SimpleFactory factory;
     VCO* vco = factory.createVCO();
-    vco->dimmer()->setValue(0);
+    vco->dimmer()->setValue(3);
 
     MockSerializerWell output(stream);
     vco->outports().first()->connectTo(&output.input);
@@ -55,7 +55,7 @@ void TestVCO::testVCOwithDimmer()
         }
         oldValue = buffer->data()[i];
     }
-    QVERIFY(nbFronts != 0); // TODO pourquoi ça marche pas !!!!            
+    QVERIFY(nbFronts != 0);
 
     delete vco;
 }
