@@ -39,7 +39,7 @@ void ModuleOut::initialize(SynthProFactory* factory)
 
     if (factory) {
         // Creation of an Input.
-        m_inPort = factory->createInPortReplicable(this);
+        m_inPort = factory->createInPortReplicable(this, "in");
         m_inports.append(m_inPort);
 
         // Register to a fast timer to the Clock.
@@ -95,7 +95,7 @@ void ModuleOut::timerExpired()
             // Now we copy our InPort to the generationBuffer. A conversion is needed.
             qreal* data = m_inPort->buffer()->data();
             // qDebug() << m_inPort->buffer()->length();
-            for (int i = 0, size = m_inPort->buffer()->length(); i < size; i+=2) {
+            for (int i = 0, size = m_inPort->buffer()->length(); i < size; i += 2) {
                 int nb = data[i];
                 // qDebug() << data[i];
                 m_generationBuffer[i] = nb / 256;

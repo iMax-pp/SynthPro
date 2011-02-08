@@ -27,58 +27,58 @@ SynthPro* QtFactory::createSynthPro()
     return synthpro;
 }
 
-InPort* QtFactory::createInPort(Module* parent, bool replicable, bool gate)
+InPort* QtFactory::createInPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     qDebug(QString("QtFactory::createInPort cParent = %1, parent = %2").arg((long)cParent).arg((long)parent).toAscii());
-    CInPort* port = new CInPort(cParent, replicable, gate);
+    CInPort* port = new CInPort(cParent, name, replicable, gate);
 
-    PPort* p = new PPort(cParent->presentation());
+    PPort* p = new PPort(port, cParent->presentation());
     port->setPresentation(p);
 
     return port;
 }
 
-InPort* QtFactory::createInPort(Module* parent)
+InPort* QtFactory::createInPort(Module* parent, const QString& name)
 {
-    return createInPort(parent, false, false);
+    return createInPort(parent, name, false, false);
 }
 
-InPort* QtFactory::createInPortReplicable(Module* parent)
+InPort* QtFactory::createInPortReplicable(Module* parent, const QString& name)
 {
-    return createInPort(parent, true, false);
+    return createInPort(parent, name, true, false);
 }
 
-InPort* QtFactory::createInPortGate(Module* parent)
+InPort* QtFactory::createInPortGate(Module* parent, const QString& name)
 {
-    return createInPort(parent, false, true);
+    return createInPort(parent, name, false, true);
 }
 
-OutPort* QtFactory::createOutPort(Module* parent, bool replicable, bool gate)
+OutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     qDebug(QString("QtFactory::createOutPort cParent = %1, parent = %2").arg((long)cParent).arg((long)parent).toAscii());
-    COutPort* port = new COutPort(cParent, replicable, gate);
+    COutPort* port = new COutPort(cParent, name, replicable, gate);
 
-    PPort* p = new PPort(cParent->presentation());
+    PPort* p = new PPort(port, cParent->presentation());
     port->setPresentation(p);
 
     return port;
 }
 
-OutPort* QtFactory::createOutPort(Module* parent)
+OutPort* QtFactory::createOutPort(Module* parent, const QString& name)
 {
-    return createOutPort(parent, false, false);
+    return createOutPort(parent, name, false, false);
 }
 
-OutPort* QtFactory::createOutPortReplicable(Module* parent)
+OutPort* QtFactory::createOutPortReplicable(Module* parent, const QString& name)
 {
-    return createOutPort(parent, true, false);
+    return createOutPort(parent, name, true, false);
 }
 
-OutPort* QtFactory::createOutPortGate(Module* parent)
+OutPort* QtFactory::createOutPortGate(Module* parent, const QString& name)
 {
-    return createOutPort(parent, false, true);
+    return createOutPort(parent, name, false, true);
 }
 
 VCO* QtFactory::createVCO()

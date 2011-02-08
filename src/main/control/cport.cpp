@@ -1,7 +1,7 @@
 #include "cport.h"
 
-CPort::CPort(Module* parent, bool replicable, bool gate)
-    : Port(parent, replicable, gate)
+CPort::CPort(Module* parent, const QString& name, bool replicable, bool gate)
+    : Port(parent, name, replicable, gate)
     , m_presentation(0)
 {
 }

@@ -13,7 +13,7 @@ class Port : public QObject {
     Q_OBJECT
 
 public:
-    Port(Module* parent, bool replicable = false, bool gate = false);
+    Port(Module* parent, const QString& name, bool replicable = false, bool gate = false);
     virtual ~Port();
 
     /// Direction of this port (in or out)
@@ -27,6 +27,9 @@ public:
 
     /// @returns The Module containing this Port
     inline Module* module() const { return m_module; }
+
+    /// @returns The name of this Port
+    inline const QString& name() const { return m_name; }
 
     /// @returns The Ports connected to this Port (FIXME is it safe?)
     inline const QList<Port*> connections() const { return m_connections; }
@@ -73,6 +76,7 @@ protected:
     bool compatible(const Port* other) const;
 
     Module* m_module;
+    QString m_name;
     bool m_replicable;
     bool m_gate;
     QList<Port*> m_connections;

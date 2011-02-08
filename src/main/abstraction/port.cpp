@@ -2,15 +2,16 @@
 
 #include "abstraction/module.h"
 
-Port::Port(Module* parent, bool replicable, bool gate)
+Port::Port(Module* parent, const QString& name, bool replicable, bool gate)
     : QObject(parent)
     , m_module(parent)
+    , m_name(name)
     , m_replicable(replicable)
     , m_gate(gate)
 {
 }
 
-Port::~Port() {}
+Port::~Port() { }
 
 bool Port::available() const
 {

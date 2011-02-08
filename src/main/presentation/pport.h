@@ -1,11 +1,22 @@
 #ifndef PPORT_H
 #define PPORT_H
 
-#include <QGraphicsEllipseItem>
+#include <QGraphicsItem>
 
-class PPort : public QGraphicsEllipseItem {
+class CPort;
+
+class PPort : public QGraphicsItem {
 public:
-    PPort(QGraphicsItem* parent);
+    PPort(CPort* control, QGraphicsItem* parent);
+
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+    QRectF boundingRect() const;
+
+private:
+    static const int PORT_SIZE = 10;
+
+    QGraphicsSimpleTextItem* m_label;
+    QGraphicsEllipseItem* m_port;
 };
 
 #endif // PPORT_H

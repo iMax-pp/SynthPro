@@ -1,8 +1,8 @@
 #include "cinport.h"
 
-CInPort::CInPort(CModule* parent, bool replicable, bool gate)
-    : Port(parent, replicable, gate)
-    , InPort(parent, replicable, gate)
-    , CPort(parent, replicable, gate)
+CInPort::CInPort(CModule* parent, const QString& name, bool replicable, bool gate)
+    : Port(parent, name, replicable, gate)
+    , InPort(parent, name, replicable, gate)
+    , CPort(parent, name, replicable, gate)
 {
 }

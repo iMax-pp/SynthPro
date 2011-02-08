@@ -1,8 +1,8 @@
 #include "coutport.h"
 
-COutPort::COutPort(CModule* parent, bool replicable, bool gate)
-    : Port(parent, replicable, gate)
-    , OutPort(parent, replicable, gate)
-    , CPort(parent, replicable, gate)
+COutPort::COutPort(CModule* parent, const QString& name, bool replicable, bool gate)
+    : Port(parent, name, replicable, gate)
+    , OutPort(parent, name, replicable, gate)
+    , CPort(parent, name, replicable, gate)
 {
 }

@@ -6,12 +6,12 @@
 class SimpleFactory : public SynthProFactory {
 public:
     SynthPro* createSynthPro();
-    InPort* createInPort(Module* parent);
-    InPort* createInPortReplicable(Module* parent);
-    InPort* createInPortGate(Module* parent);
-    OutPort* createOutPort(Module* parent);
-    OutPort* createOutPortReplicable(Module* parent);
-    OutPort* createOutPortGate(Module* parent);
+    InPort* createInPort(Module* parent, const QString& name);
+    InPort* createInPortReplicable(Module* parent, const QString& name);
+    InPort* createInPortGate(Module* parent, const QString& name);
+    OutPort* createOutPort(Module* parent, const QString& name);
+    OutPort* createOutPortReplicable(Module* parent, const QString& name);
+    OutPort* createOutPortGate(Module* parent, const QString& name);
     VCO* createVCO();
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(Module* parent);

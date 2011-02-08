@@ -6,13 +6,13 @@
 
 void TestInPort::testOut()
 {
-    InPort inPort(0);
+    InPort inPort(0, "in");
     QVERIFY(!inPort.out());
 }
 
 void TestInPort::testBuffer()
 {
-    InPort in(0);
+    InPort in(0, "in");
 
     // By default an unconnected port has a buffer full of “0”
     for (int i = 0 ; i < in.buffer()->length() ; i++) {
@@ -22,14 +22,14 @@ void TestInPort::testBuffer()
 
 void TestInPort::testConnectable()
 {
-    InPort in(0); // Default input port, unreplicable, not a gate
-    OutPort out(0); // Default output port, unreplicable, not a gate
+    InPort in(0, "in"); // Default input port, unreplicable, not a gate
+    OutPort out(0, "in"); // Default output port, unreplicable, not a gate
 
     QVERIFY(in.connectable(&out));
     QVERIFY(out.connectable(&in));
 
-    InPort in2(0, true); // replicable input port
-    OutPort out2(0, true); // replicable output port
+    InPort in2(0, "in2", true); // replicable input port
+    OutPort out2(0, "out2", true); // replicable output port
 
     QVERIFY(in2.connectable(&out2));
     QVERIFY(in2.connectable(&out));
@@ -40,8 +40,8 @@ void TestInPort::testConnectable()
     QVERIFY(out.connectable(&in2));
     QVERIFY(!out.connectable(&out2));
 
-    InPort inGate(0, false, true); // unreplicable input gate
-    OutPort outGate(0, false, true); // unreplicable output gate
+    InPort inGate(0, "in gate", false, true); // unreplicable input gate
+    OutPort outGate(0, "out gate", false, true); // unreplicable output gate
 
     QVERIFY(inGate.connectable(&outGate));
     QVERIFY(outGate.connectable(&inGate));
@@ -53,8 +53,8 @@ void TestInPort::testConnectable()
 
 void TestInPort::testConnectTo()
 {
-    InPort in(0);
-    OutPort out(0);
+    InPort in(0, "in");
+    OutPort out(0, "out");
     m_count = 0;
 
     connect(&in, SIGNAL(connectionsChanged()), SLOT(countVisit()));
@@ -73,8 +73,8 @@ void TestInPort::testConnectTo()
 
 void TestInPort::testDisconnectFrom()
 {
-    InPort in(0);
-    OutPort out(0);
+    InPort in(0, "in");
+    OutPort out(0, "out");
     m_count = 0;
 
     connect(&in, SIGNAL(connectionsChanged()), SLOT(countVisit()));
@@ -99,7 +99,7 @@ void TestInPort::testDisconnectFrom()
 
     QCOMPARE(m_count, 0);
 
-    OutPort outGate(0, false, true); // Create a gate
+    OutPort outGate(0, "out gate", false, true); // Create a gate
     in.connectTo(&outGate); // Try to connect to an incompatible port
 
     QCOMPARE(m_count, 0);
@@ -107,8 +107,8 @@ void TestInPort::testDisconnectFrom()
 
 void TestInPort::testFetch()
 {
-    InPort in(0);
-    OutPort out(0);
+    InPort in(0, "in");
+    OutPort out(0, "out");
 
     Buffer copyOfInitBuffer(*in.buffer());
 

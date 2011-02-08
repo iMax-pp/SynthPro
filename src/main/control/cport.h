@@ -6,7 +6,7 @@
 
 class CPort : public virtual Port {
 public:
-    CPort(Module* parent, bool replicable = false, bool gate = false);
+    CPort(Module* parent, const QString& name, bool replicable = false, bool gate = false);
     virtual ~CPort();
 
     void setPresentation(PPort*);

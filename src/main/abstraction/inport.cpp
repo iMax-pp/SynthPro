@@ -2,8 +2,8 @@
 
 #include "abstraction/buffer.h"
 
-InPort::InPort(Module* parent, bool replicable, bool gate)
-    : Port(parent, replicable, gate)
+InPort::InPort(Module* parent, const QString& name, bool replicable, bool gate)
+    : Port(parent, name, replicable, gate)
 {
     m_buffer = new Buffer();
 }

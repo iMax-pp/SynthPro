@@ -38,7 +38,7 @@ ModuleBufferRecorder::~ModuleBufferRecorder()
 void ModuleBufferRecorder::initialize(SynthProFactory* factory)
 {
     // Creation of an Input.
-    m_inPort = factory->createInPortReplicable(this);
+    m_inPort = factory->createInPortReplicable(this, "in");
     m_inports.append(m_inPort);
 }
 

@@ -4,7 +4,7 @@
 
 void TestOutPort::testOut()
 {
-    OutPort outPort(0);
+    OutPort outPort(0, "out");
     QVERIFY(outPort.out());
     QVERIFY(outPort.buffer()->length() == 256);
 }
@@ -12,7 +12,7 @@ void TestOutPort::testOut()
 // FIXME this test case seems a bit weak
 void TestOutPort::testSwapBuffers()
 {
-    OutPort out(0);
+    OutPort out(0, "out");
 
     out.buffer()->data()[0] = 1;
 
