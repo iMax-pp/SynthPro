@@ -8,6 +8,7 @@
 class InPort;
 class QAudioOutput;
 class QIODevice;
+class Sequencer;
 class SynthProFactory;
 
 /**
@@ -30,6 +31,12 @@ public:
     void initialize(SynthProFactory* = 0); // *** Probably virtual
 
     /**
+      * FIXME : not very good. Only to prevent triggering the Sequencer BEFORE
+      * we have time to add the module to the SynthPro.
+      */
+    void setSoundManagement(bool);
+
+    /**
       * Process the input signal.
       */
     void ownProcess(); // *** Probably virtual
@@ -38,9 +45,19 @@ public slots:
     virtual void timerExpired();
 
 private:
+    static const int GENERATION_BUFFER_SIZE = 900; //900;  // This must be small, but not too much (overhead).
+    static const int FILL_COUNTER_MAX = 10;
+
     QIODevice* m_device;
     InPort* m_inPort;
     QAudioOutput* m_audioOutput;
+
+    char* m_generationBuffer; // Fixed size (small), will feed the output buffer.
+    char* m_generationBufferPointer; // Points where we are inside the generation buffer.
+    int m_nbGeneratedBytesRemaining; // Indicates how many bytes of the generated buffer are still unused.
+
+    Sequencer& m_sequencer;
+    bool m_manageSound; // *** FIXME *** Not fond of it...
 };
 
 #endif // MODULEOUT_H
