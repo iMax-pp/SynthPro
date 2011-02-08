@@ -2,6 +2,7 @@
 #define MODULEOUT_H
 
 #include "module.h"
+#include "vco.h"
 
 #include <QObject>
 
@@ -16,8 +17,10 @@ class SynthProFactory;
   * At the instanciation, it requests a device to the AudioDeviceProvider.
   * It will fail if the device is used by another module.
   *
-  * It must also register to a Clock in order call the Sequencer.
-  * ???? WHO should call the Sequencer ?????
+  * It must also register to a Clock, which will call the timerExpired Slot.
+  * This will ask the sound card how many bytes it requires. If the internal
+  * buffer of the module can provide it, it does. Else, it calls the
+  * Sequencer, and copy the input of the module into the generation buffer.
   */
 class ModuleOut : public Module {
     // Q_OBJECT
@@ -28,7 +31,7 @@ public:
     /**
       * Instanciate the ports. Used by the factory.
       */
-    void initialize(SynthProFactory* = 0); // *** Probably virtual
+    void initialize(SynthProFactory* = 0);
 
     /**
       * FIXME : not very good. Only to prevent triggering the Sequencer BEFORE
@@ -39,21 +42,22 @@ public:
     /**
       * Process the input signal.
       */
-    void ownProcess(); // *** Probably virtual
+    void ownProcess();
 
 public slots:
     virtual void timerExpired();
 
 private:
-    static const int GENERATION_BUFFER_SIZE = 900; // 900;  // This must be small, but not too much (overhead).
+    static const int GENERATION_BUFFER_SIZE = 900; // This must be small, but not too much (overhead).
     static const int FILL_COUNTER_MAX = 10;
+    static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 127;
 
     QIODevice* m_device;
     InPort* m_inPort;
     QAudioOutput* m_audioOutput;
 
     char* m_generationBuffer; // Fixed size (small), will feed the output buffer.
-    char* m_generationBufferPointer; // Points where we are inside the generation buffer.
+    int m_generationBufferIndex; // Index inside the generation buffer.
     int m_nbGeneratedBytesRemaining; // Indicates how many bytes of the generated buffer are still unused.
 
     Sequencer& m_sequencer;

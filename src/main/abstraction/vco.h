@@ -57,7 +57,7 @@ public:
     void setShape(WaveGeneratorFactory::WaveType);
 
 
-    static const qreal SIGNAL_INTENSITY = 20000;
+    static const qreal SIGNAL_INTENSITY = 5;
     static const qreal F0 = 261.626; // Frequency of the C4.
     static const qreal REPLAY_FREQUENCY = AudioDeviceProvider::OUTPUT_FREQUENCY;
 
@@ -66,7 +66,6 @@ public slots :
     void waveShapeChanged(int);
 
 protected:
-
     WaveGenerator* m_waveGenerator;
     InPort* m_vfm;
     OutPort* m_out;
