@@ -1,7 +1,7 @@
 #include "pport.h"
 
-#include "control/cchannel.h"
 #include "control/cport.h"
+#include "control/cwire.h"
 #include <QBrush>
 #include <QFont>
 #include <QGraphicsScene>
@@ -46,12 +46,12 @@ QRectF PPort::boundingRect() const
 
 void PPort::mousePressEvent(QGraphicsSceneMouseEvent*)
 {
-    m_control->startChannel();
+    m_control->startWire();
 }
 
 void PPort::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
-    m_control->channel()->updatePosition(event->scenePos());
+    m_control->wire()->updatePosition(event->scenePos());
 }
 
 void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
@@ -70,8 +70,8 @@ void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
         }
     }
 
-    // In any case call the control (ie. to delete the associated channel).
-    m_control->dropChannel(port);
+    // In any case call the control (ie. to delete the associated wire).
+    m_control->dropWire(port);
 }
 
 CPort* PPort::control() const

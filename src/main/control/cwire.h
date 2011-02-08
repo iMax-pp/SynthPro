@@ -1,18 +1,18 @@
-#ifndef CCHANNEL_H
-#define CCHANNEL_H
+#ifndef CWIRE_H
+#define CWIRE_H
 
-#include "presentation/pchannel.h"
+#include "presentation/pwire.h"
 
 class CInPort;
 class COutPort;
 
-class CChannel {
+class CWire {
 public:
-    CChannel();
-    virtual ~CChannel();
+    CWire();
+    virtual ~CWire();
 
-    void setPresentation(PChannel*);
-    PChannel* presentation() const;
+    void setPresentation(PWire*);
+    PWire* presentation() const;
 
     CInPort* inPort() const;
     void setInPort(CInPort*);
@@ -22,9 +22,9 @@ public:
     void updatePosition(QPointF = QPointF());
 
 private:
-    PChannel* m_presentation;
+    PWire* m_presentation;
     CInPort* m_inPort;
     COutPort* m_outPort;
 };
 
-#endif // CCHANNEL_H
+#endif // CWIRE_H

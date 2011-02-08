@@ -4,7 +4,7 @@
 #include "abstraction/port.h"
 #include "presentation/pport.h"
 
-class CChannel;
+class CWire;
 class SynthProFactory;
 
 class CPort : public virtual Port {
@@ -15,15 +15,15 @@ public:
     void setPresentation(PPort*);
     PPort* presentation() const;
 
-    CChannel* channel() const;
-    void setChannel(CChannel*);
+    CWire* wire() const;
+    void setWire(CWire*);
 
-    void startChannel();
-    void dropChannel(PPort*);
+    void startWire();
+    void dropWire(PPort*);
 
 private:
     PPort* m_presentation;
-    CChannel* m_channel;
+    CWire* m_wire;
     SynthProFactory* m_factory;
 };
 

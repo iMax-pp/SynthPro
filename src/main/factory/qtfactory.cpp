@@ -5,7 +5,6 @@
 #include "abstraction/moduleout.h"
 #include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
-#include "control/cchannel.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/cmodule.h"
@@ -13,9 +12,10 @@
 #include "control/cport.h"
 #include "control/csynthpro.h"
 #include "control/cvco.h"
-#include "presentation/pchannel.h"
+#include "control/cwire.h"
 #include "presentation/pdimmer.h"
 #include "presentation/pvco.h"
+#include "presentation/pwire.h"
 
 #include <QIODevice>
 
@@ -143,11 +143,11 @@ ModuleOut* QtFactory::createModuleOut(Module* parent)
     return mo;
 }
 
-CChannel* QtFactory::createChannel(QGraphicsScene* scene)
+CWire* QtFactory::createWire(QGraphicsScene* scene)
 {
-    CChannel* channel = new CChannel();
-    PChannel* presentation = new PChannel(channel, scene);
-    channel->setPresentation(presentation);
+    CWire* wire = new CWire();
+    PWire* presentation = new PWire(wire, scene);
+    wire->setPresentation(presentation);
 
-    return channel;
+    return wire;
 }

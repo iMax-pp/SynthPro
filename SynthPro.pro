@@ -33,8 +33,8 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/wavegeneratortriangle.h \
     src/main/abstraction/wavegeneratorsaw.h \
     src/main/abstraction/wavegeneratorsinus.h \
-    src/main/presentation/pchannel.h \
-    src/main/control/cchannel.h \
+    src/main/presentation/pwire.h \
+    src/main/control/cwire.h \
     src/main/abstraction/audiodeviceprovider.h \
     src/main/abstraction/modulebufferrecorder.h \
     src/main/abstraction/selector.h \
@@ -76,8 +76,8 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/wavegeneratortriangle.cpp \
     src/main/abstraction/wavegeneratorsaw.cpp \
     src/main/abstraction/wavegeneratorsinus.cpp \
-    src/main/presentation/pchannel.cpp \
-    src/main/control/cchannel.cpp \
+    src/main/presentation/pwire.cpp \
+    src/main/control/cwire.cpp \
     src/main/abstraction/audiodeviceprovider.cpp \
     src/main/abstraction/modulebufferrecorder.cpp \
     src/main/abstraction/selector.cpp \

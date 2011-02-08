@@ -1,14 +1,14 @@
 #include "cport.h"
 
-#include "cchannel.h"
 #include "cinport.h"
 #include "coutport.h"
+#include "cwire.h"
 #include "factory/synthprofactory.h"
 
 CPort::CPort(Module* parent, SynthProFactory* factory, const QString& name, bool replicable, bool gate)
     : Port(parent, name, replicable, gate)
     , m_presentation(0)
-    , m_channel(0)
+    , m_wire(0)
     , m_factory(factory)
 {
 }
@@ -38,51 +38,51 @@ PPort* CPort::presentation() const
     return m_presentation;
 }
 
-CChannel* CPort::channel() const
+CWire* CPort::wire() const
 {
-    return m_channel;
+    return m_wire;
 }
 
-void CPort::setChannel(CChannel* channel)
+void CPort::setWire(CWire* wire)
 {
-    if (channel && m_channel) {
-        // If we are not trying to unset the channel and if we already have a channel
-        // then delete the current channel.
-        delete m_channel;
+    if (wire && m_wire) {
+        // If we are not trying to unset the wire and if we already have a wire
+        // then delete the current wire.
+        delete m_wire;
     }
 
-    m_channel = channel;
+    m_wire = wire;
 }
 
-void CPort::startChannel()
+void CPort::startWire()
 {
-    if (m_channel) {
-        delete m_channel;
+    if (m_wire) {
+        delete m_wire;
     }
 
-    m_channel = m_factory->createChannel(m_presentation->scene());
+    m_wire = m_factory->createWire(m_presentation->scene());
 
     if (out()) {
-        m_channel->setOutPort(dynamic_cast<COutPort*>(this));
+        m_wire->setOutPort(dynamic_cast<COutPort*>(this));
     } else {
-        m_channel->setInPort(dynamic_cast<CInPort*>(this));
+        m_wire->setInPort(dynamic_cast<CInPort*>(this));
     }
 }
 
-void CPort::dropChannel(PPort* port)
+void CPort::dropWire(PPort* port)
 {
     if (!port || port->control()->out() == out()) {
-        // Drop wasn't on a port, or was on a port of the same type, delete channel.
-        if (m_channel) {
-            delete m_channel;
+        // Drop wasn't on a port, or was on a port of the same type, delete wire.
+        if (m_wire) {
+            delete m_wire;
         }
     } else if (port->control()->out()) {
-        // Otherwise connect the other outport with the channel.
-        m_channel->setOutPort(dynamic_cast<COutPort*>(port->control()));
-        port->control()->setChannel(m_channel);
+        // Otherwise connect the other outport with the wire.
+        m_wire->setOutPort(dynamic_cast<COutPort*>(port->control()));
+        port->control()->setWire(m_wire);
     } else if (!port->control()->out()) {
-        // Otherwise connect the other inport with the channel.
-        m_channel->setInPort(dynamic_cast<CInPort*>(port->control()));
-        port->control()->setChannel(m_channel);
+        // Otherwise connect the other inport with the wire.
+        m_wire->setInPort(dynamic_cast<CInPort*>(port->control()));
+        port->control()->setWire(m_wire);
     }
 }

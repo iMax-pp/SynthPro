@@ -22,7 +22,7 @@ public:
     Dimmer* createDimmer(qreal, qreal, qreal, Module* parent);
     Selector* createSelector(QList<int>*, int, Module* parent);
 
-    CChannel* createChannel(QGraphicsScene*);
+    CWire* createWire(QGraphicsScene*);
 
 protected:
     // Convenient factory method

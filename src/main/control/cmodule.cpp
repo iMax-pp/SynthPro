@@ -2,8 +2,8 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
-#include "cchannel.h"
 #include "cport.h"
+#include "cwire.h"
 
 CModule::CModule(QObject* parent)
     : Module(parent)
@@ -35,16 +35,16 @@ PModule* CModule::presentation() const
 void CModule::move()
 {
     foreach (InPort* port, m_inports) {
-        CChannel* channel = dynamic_cast<CPort*>(port)->channel();
-        if (channel) {
-            channel->updatePosition();
+        CWire* wire = dynamic_cast<CPort*>(port)->wire();
+        if (wire) {
+            wire->updatePosition();
         }
     }
 
     foreach (OutPort* port, m_outports) {
-        CChannel* channel = dynamic_cast<CPort*>(port)->channel();
-        if (channel) {
-            channel->updatePosition();
+        CWire* wire = dynamic_cast<CPort*>(port)->wire();
+        if (wire) {
+            wire->updatePosition();
         }
     }
 }

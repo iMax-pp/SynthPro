@@ -1,19 +1,19 @@
-#include "pchannel.h"
+#include "pwire.h"
 
-#include "control/cchannel.h"
+#include "control/cwire.h"
 #include "control/cinport.h"
 #include "control/coutport.h"
 #include <QDebug>
 #include <QPen>
 
-PChannel::PChannel(CChannel* control, QGraphicsScene* scene)
+PWire::PWire(CWire* control, QGraphicsScene* scene)
     : QGraphicsLineItem(0, scene)
     , m_control(control)
 {
     setPen(QPen(Qt::green, 3, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 }
 
-QRectF PChannel::boundingRect() const
+QRectF PWire::boundingRect() const
 {
     qreal extra = (pen().width() + 20) / 2.0;
     
@@ -22,7 +22,7 @@ QRectF PChannel::boundingRect() const
                                 .normalized().adjusted(-extra, -extra, extra, extra);
 }
 
-void PChannel::updatePosition(QPointF point)
+void PWire::updatePosition(QPointF point)
 {
     QPointF in;
     if (!m_control->inPort()) {
@@ -42,7 +42,7 @@ void PChannel::updatePosition(QPointF point)
         out = mapFromItem(m_control->outPort()->presentation(), 0, 0);
     }
 
-    // Draw a new line for our channel.
+    // Draw a new line for our wire.
     QLineF line(in, out);
     setLine(line);
 }

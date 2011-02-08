@@ -4,7 +4,7 @@
 #include <QString>
 #include <QtGlobal>
 
-class CChannel;
+class CWire;
 class Dimmer;
 class InPort;
 class Module;
@@ -47,7 +47,7 @@ public:
     virtual Dimmer* createDimmer(qreal min, qreal man, qreal default_value, Module* parent) = 0;
     virtual Selector* createSelector(QList<int>*, int, Module* parent) = 0;
 
-    virtual CChannel* createChannel(QGraphicsScene*) = 0;
+    virtual CWire* createWire(QGraphicsScene*) = 0;
 
     /*
      * Enumeration of module types.
