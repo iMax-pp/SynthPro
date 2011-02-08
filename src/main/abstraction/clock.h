@@ -38,6 +38,7 @@ private:
     static const int SLOW_TIMER_DELAY = 50;
 
     explicit Clock(QObject *parent = 0);
+    Clock(Clock&);
 
     QMap<Module*, QTimer*> m_fastTimers;
     QMap<Module*, QTimer*> m_slowTimers;

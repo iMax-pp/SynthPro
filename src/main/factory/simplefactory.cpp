@@ -76,7 +76,7 @@ ModuleOut* SimpleFactory::createModuleOut(Module* parent)
         return 0;
     }
 
-    ModuleOut* mo = new ModuleOut(device, parent);
+    ModuleOut* mo = new ModuleOut(device, adp.audioOutput(), parent);
     mo->initialize(this);
     return mo;
 }
