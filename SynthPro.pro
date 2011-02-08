@@ -48,7 +48,8 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/presentation/pvco.h \
     src/main/abstraction/clock.h \
     src/main/factory/wavegeneratorfactory.h \
-    src/main/presentation/layoutitem.h
+    src/main/presentation/layoutitem.h \
+    src/main/presentation/pselector.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -91,7 +92,8 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/pvco.cpp \
     src/main/abstraction/clock.cpp \
     src/main/factory/wavegeneratorfactory.cpp \
-    src/main/presentation/layoutitem.cpp
+    src/main/presentation/layoutitem.cpp \
+    src/main/presentation/pselector.cpp
 
 
 INCLUDEPATH += src/main/
