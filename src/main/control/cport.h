@@ -26,7 +26,7 @@ public:
      * This method is called when drawing the wire and the mouse dropped it.
      * @param the PPort on which the wire was dropped (may be null).
      */
-    void dropWire(PPort*);
+    void dropWire(CPort*);
 
 private:
     PPort* m_presentation;

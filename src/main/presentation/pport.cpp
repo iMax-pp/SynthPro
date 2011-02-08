@@ -76,7 +76,11 @@ void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
     }
 
     // In any case call the control (ie. to connect or delete the associated wire).
-    m_control->dropWire(port);
+    if (port) {
+        m_control->dropWire(port->control());
+    } else {
+        m_control->dropWire(0);
+    }
 }
 
 CPort* PPort::control() const
