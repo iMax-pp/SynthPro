@@ -6,8 +6,8 @@
 #include <QObject>
 
 class InPort;
-class SynthProFactory;
 class QIODevice;
+class SynthProFactory;
 
 /**
   * Module that send its In buffer to the audio sound card.
@@ -20,13 +20,13 @@ class QIODevice;
 class ModuleOut : public Module {
     // Q_OBJECT
 public:
-    ModuleOut(QIODevice*, SynthProFactory* = 0, QObject* parent = 0);
+    ModuleOut(QIODevice*, QObject* parent = 0);
     virtual ~ModuleOut();
 
     /**
       * Instanciate the ports. Used by the factory.
       */
-    void initialize(); // *** Probably virtual
+    void initialize(SynthProFactory* = 0); // *** Probably virtual
 
     /**
       * Process the input signal.
@@ -38,7 +38,6 @@ public slots:
 
 private:
     QIODevice* m_device;
-    SynthProFactory* m_factory;
     InPort* m_inPort;
 };
 

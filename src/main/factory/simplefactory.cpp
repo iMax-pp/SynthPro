@@ -66,7 +66,7 @@ ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(Module* parent, 
 ModuleOut* SimpleFactory::createModuleOut(Module* parent)
 {
     // Do not instanciate ModuleOut if no audio device can be accessed !
-    AudioDeviceProvider adp = AudioDeviceProvider::instance();
+    AudioDeviceProvider& adp = AudioDeviceProvider::instance();
     if (!adp.initializeAudioOutput()) {
         return 0;
     }
@@ -75,5 +75,8 @@ ModuleOut* SimpleFactory::createModuleOut(Module* parent)
     if (!device) {
         return 0;
     }
-    return new ModuleOut(device, this, parent);
+
+    ModuleOut* mo = new ModuleOut(device, parent);
+    mo->initialize(this);
+    return mo;
 }
