@@ -45,6 +45,12 @@ CChannel* CPort::channel() const
 
 void CPort::setChannel(CChannel* channel)
 {
+    if (channel && m_channel) {
+        // If we are not trying to unset the channel and if we already have a channel
+        // then delete the current channel.
+        delete m_channel;
+    }
+
     m_channel = channel;
 }
 
@@ -69,7 +75,6 @@ void CPort::dropChannel(PPort* port)
         // Drop wasn't on a port, or was on a port of the same type, delete channel.
         if (m_channel) {
             delete m_channel;
-            m_channel = 0;
         }
     } else if (port->control()->out()) {
         // Otherwise connect the other outport with the channel.
