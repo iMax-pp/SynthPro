@@ -35,8 +35,7 @@ void TestVCO::testVCOwithDimmer()
 
     SimpleFactory factory;
     VCO* vco = factory.createVCO();
-    vco->dimmer()->setValue(3);
-
+    vco->setDimmerValue(3);
     MockSerializerWell output(stream);
     vco->outports().first()->connectTo(&output.input);
     vco->setWaveGenerator(new WaveGeneratorSquare);

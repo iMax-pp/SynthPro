@@ -54,7 +54,10 @@ void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
     m_waveGenerator = waveGenerator;
 }
 
-Dimmer* VCO::dimmer()
-{
-    return m_kDimmer;
+qreal VCO::dimmerValue(){
+    return m_kDimmer->value();
+}
+
+void VCO::setDimmerValue(qreal value){
+    m_kDimmer->setValue(value);
 }

@@ -108,8 +108,8 @@ Dimmer* QtFactory::createKDimmer(qreal min, qreal max, qreal kDefault, Module* p
 
 ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
 {
-    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(fileName, nbProcessingBeforeSaving, this, parent);
-    mbr->initialize();
+    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(fileName, nbProcessingBeforeSaving, parent);
+    mbr->initialize(this);
     return mbr;
 }
 
