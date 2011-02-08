@@ -37,6 +37,7 @@ void VCO::initialize(SynthProFactory* factory)
     m_selectorValueList = m_selectorConversionMap->keys();
     m_shapeSelector = factory->createSelector(&m_selectorValueList, 0, this);
 
+    qDebug() << shape();
     /// Connection of the Selector
     connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
 
