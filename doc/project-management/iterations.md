@@ -32,7 +32,7 @@ date : semaine 5 - 2011
 
 Itération 3
 -----------
-date : semaine 6 - 2011
+date : semaine 6 (7, 8 Fevrier) - 2011
 
 - Julien N. :
     - Test unitaire sur ModuleBufferRecorder et les WaveGenerator.
@@ -50,22 +50,25 @@ date : semaine 6 - 2011
     - Réglages (potard et selecteur);
     - Intégration réglages dans VCO;
 
-Itération 4 (mercredi 9)
-Julien N. :
-VCF, FilterFactory, Filtres
+Itération 4
+-----------
+date :  semaine 6 (mercredi 9 - vendredi 11)
 
-Maxime :
-C et P de VCF
-C et P de VCA
+- Julien N. :
+    - VCF, FilterFactory, Filtres
 
-Julien RF :
-Layout des modules (taille dynamique)
-Intégration des Layout.
-Aptation look&feel.
+- Maxime :
+    - C et P de VCF
+    - C et P de VCA
 
-Cyrille :
-VCA
-ADSR
+- Julien RF :
+    - Layout des modules (taille dynamique)
+    - Intégration des Layout.
+    - Adaptation look&feel.
+
+- Cyrille :
+    - VCA
+    - ADSR
 
 Roadmap (todo)
 ---------
