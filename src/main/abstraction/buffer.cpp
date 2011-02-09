@@ -32,3 +32,10 @@ void Buffer::add(const qreal k)
         m_data[i] += k;
     }
 }
+
+void Buffer::mul(const qreal gain)
+{
+    for (int i = 0; i < m_length; i++) {
+        m_data[i] = gain*m_data[i];
+    }
+}

@@ -72,7 +72,7 @@ date :  semaine 6 (mercredi 9 - vendredi 11)
 
 Roadmap (todo)
 ---------
-- VCA (juste une multiplication)
+- Retroaction.
 - VCF
 - adsr
 - Keyboard virtuel

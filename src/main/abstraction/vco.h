@@ -74,6 +74,7 @@ protected:
     static const qreal K_MIN = -5;
     static const qreal K_MAX = 5;
     static const qreal K_DEFAULT = 0;
+    static const QString SHAPE_DEFAULT;
 };
 
 #endif // VCO_H
