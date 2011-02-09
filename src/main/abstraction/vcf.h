@@ -53,6 +53,14 @@ public:
      */
     void setFilter(QString);
 
+    static const qreal R_MIN = 0;
+    static const qreal R_MAX = 5;
+    static const qreal R_DEFAULT = 0;
+
+    static const qreal CUT_OFF_MIN = 0;
+    static const qreal CUT_OFF_MAX = 20000;
+    static const qreal CUT_OFF_DEFAULT = 3000;
+
 public slots :
     /**
     * slot, connected to a signal emitted by the selector to inform his value changed.
@@ -68,10 +76,7 @@ protected:
     OutPort* m_out;
     Selector* m_filterSelector;
     Dimmer* m_rDimmer;
-
-    static const qreal R_MIN = -5;
-    static const qreal R_MAX = 5;
-    static const qreal R_DEFAULT = 0;
+    Dimmer* m_cutOffDimmer;
 };
 
 #endif // VCF_H
