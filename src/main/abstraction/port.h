@@ -1,10 +1,10 @@
 #ifndef PORT_H
 #define PORT_H
 
+#include "abstraction/buffer.h"
 #include <QObject>
 
 class Module;
-class Buffer;
 
 /**
  * Modules can be linked through their ports.
@@ -19,20 +19,17 @@ public:
     /// Direction of this port (in or out)
     virtual bool out() const = 0;
 
-    /**
-     * Buffer of this Port.
-     * @returns 0 if this port does not have a buffer (e.g. an unconnected input port)
-     */
-    virtual Buffer* buffer() = 0;
-
     /// @returns The Module containing this Port
     inline Module* module() const { return m_module; }
 
     /// @returns The name of this Port
     inline const QString& name() const { return m_name; }
 
-    /// @returns The Ports connected to this Port (FIXME is it safe?)
+    /// @returns The Ports connected to this Port
     inline const QList<Port*> connections() const { return m_connections; }
+
+    /// @returns the (readable) Buffer of this Port
+    inline Buffer* buffer() { return &m_buffer; }
 
     /**
      * Indicate if this port is connectable with a given port.
@@ -80,6 +77,7 @@ protected:
     bool m_replicable;
     bool m_gate;
     QList<Port*> m_connections;
+    Buffer m_buffer;
 };
 
 #endif // PORT_H
