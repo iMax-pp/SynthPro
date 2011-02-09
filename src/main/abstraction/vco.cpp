@@ -10,7 +10,7 @@
 
 #include <QDebug>
 
-const QString VCO::SHAPE_DEFAULT = "SquareWave";
+const QString VCO::SHAPE_DEFAULT = "SawWave";
 
 VCO::VCO(QObject* parent)
     : Module(parent)
