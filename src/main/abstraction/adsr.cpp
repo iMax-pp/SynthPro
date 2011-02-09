@@ -2,6 +2,7 @@
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/dimmer.h"
+#include "abstraction/inport.h"
 #include "abstraction/outport.h"
 #include "factory/synthprofactory.h"
 
@@ -28,42 +29,80 @@ void ADSR::initialize(SynthProFactory* factory)
 
 void ADSR::ownProcess()
 {
+
+
+    qreal oldValue =  m_gate->buffer()->data()[0];
+    qreal currentValue = 0;
+    int upGate = 0;
+    int downGate = 0;
+
+    // gate buffer analysis searching an start or a stop signal. I'm really not sure of the efficiency of this method
+    for (int i = 1; i < m_gate->buffer()->length(); i+=10) {
+        currentValue = m_gate->buffer()->data()[i];
+        if (currentValue-oldValue > GATE_LEVEL) {
+            upGate = i;
+        }
+        if (currentValue-oldValue < 1-GATE_LEVEL) {
+            downGate = i;
+        }
+
+    }
+    // if there is a upGate in the the buffer or if an ADSR cycle is begin we treat the buffer, else there is nothing to do
+    if (upGate != 0 || m_timeLine != 0) {
+        processADSR(upGate,downGate);
+    }
+}
+
+void ADSR::processADSR(int upGate,int downGate)
+{
+    // à transformer en entier
     qreal attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
     qreal decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    qreal sustainInSample = m_sustainDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
     qreal releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int bufferIndex = 0;
 
-
-
-    if (0) {
-
-        if (m_timeLine == 0) {
-            // Begin of a ADSR cycle
-            for (int i = 0;i < m_outPort->buffer()->length(); i++) {
-                if (0) {
-
-                }
-            }
-
-        } else {
-            int i = 0;
-            // A new gate signal end current running ADSR cycle
-        }
-    } else {
-        int i = 0;
-        // we continue the current running ADSR
+    // "eat" the values befor upGate
+    while (bufferIndex < upGate  && bufferIndex < m_gate->buffer()->length()){
+        bufferIndex++;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
+    while (m_timeLine < attackInSample && downGate != m_timeLine && upGate != m_timeLine && bufferIndex < m_gate->buffer()->length()) {
+        m_outPort->buffer()->data()[bufferIndex] *= 1/attackInSample;
+        m_timeLine++;
+        bufferIndex++;
+    }
+    while (m_timeLine < attackInSample + decayInSample && downGate != m_timeLine && upGate != m_timeLine && bufferIndex < m_gate->buffer()->length()) {
+        m_outPort->buffer()->data()[bufferIndex] *= (1-m_sustainDimmer->value())/decayInSample;
+        m_timeLine++;
+        bufferIndex++;
+    }
+    while (m_timeLine < downGate && upGate != m_timeLine && bufferIndex < m_gate->buffer()->length()){
+        m_outPort->buffer()->data()[bufferIndex] = m_sustainDimmer->value();
+        m_timeLine++;
+        bufferIndex++;
+    }
+    int sustainEnd = m_timeLine;
+    while (m_timeLine <= sustainEnd + releaseInSample &&  bufferIndex < m_gate->buffer()->length()) {
+        m_outPort->buffer()->data()[bufferIndex] *= m_sustainDimmer->value()/releaseInSample;
+        m_timeLine++;
+        bufferIndex++;
+    }
+    // if release is complete, reinitialization of m_timeLine
+    if (m_timeLine > sustainEnd + releaseInSample) {
+        m_timeLine = 0;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

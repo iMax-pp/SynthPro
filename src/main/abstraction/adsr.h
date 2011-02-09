@@ -17,6 +17,8 @@ public:
 
 protected:
 
+    void processADSR(int,int);
+
     static const qreal ATTACK_MIN = 0;
     static const qreal ATTACK_MAX = 2;
     static const qreal ATTACK_DEFAULT = 0.1;
@@ -32,6 +34,8 @@ protected:
     static const qreal RELEASE_MIN = 0;
     static const qreal RELEASE_MAX = 1;
     static const qreal RELEASE_DEFAULT = 0.5;
+
+    static const qreal GATE_LEVEL = 0.1;
 
     InPort* m_gate;
     OutPort* m_outPort;
