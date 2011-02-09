@@ -1,7 +1,9 @@
 #include "testwavegeneratorsinus.h"
 
+#include "abstraction/inport.h"
 #include "abstraction/module.h"
 #include "abstraction/modulebufferrecorder.h"
+#include "abstraction/outport.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratorsinus.h"
 #include "factory/simplefactory.h"
@@ -16,10 +18,8 @@ void TestWaveGeneratorSinus::testWaveGeneratorSinus()
     SimpleFactory factory;
     ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
-    WaveGeneratorSinus* waveGeneratorSinus = new WaveGeneratorSinus();
-
     VCO* vco = factory.createVCO();
-    vco->setWaveGenerator(waveGeneratorSinus);
+    vco->setShape("SinusWave");
     vco->outports().at(0)->connectTo(mbr->inports().at(0));
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
