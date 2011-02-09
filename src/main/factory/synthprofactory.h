@@ -15,6 +15,7 @@ class Selector;
 class Sequencer;
 class SynthPro;
 class QGraphicsScene;
+class VCF;
 class VCO;
 
 
@@ -31,6 +32,7 @@ public:
     virtual OutPort* createOutPortGate(Module* parent, const QString& name) = 0;
 
     virtual VCO* createVCO() = 0;
+    virtual VCF* createVCF() = 0;
     virtual ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
     /**
       * Instanciate a ModuleOut, but ONLY if the audio device isn't already used by another instance.

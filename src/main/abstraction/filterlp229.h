@@ -10,8 +10,7 @@
   * Not tested yet...
   * What is the LP slope ?
   */
-class FilterLP229 : public Filter
-{
+class FilterLP229 : public Filter {
 public:
     FilterLP229();
 

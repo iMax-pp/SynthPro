@@ -8,6 +8,7 @@
 #include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
+#include "abstraction/vcf.h"
 #include "abstraction/vco.h"
 
 SynthPro* SimpleFactory::createSynthPro()
@@ -50,6 +51,13 @@ VCO* SimpleFactory::createVCO()
     VCO* vco = new VCO();
     vco->initialize(this);
     return vco;
+}
+
+VCF* SimpleFactory::createVCF()
+{
+    VCF* vcf = new VCF();
+    vcf->initialize(this);
+    return vcf;
 }
 
 Dimmer* SimpleFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* parent)

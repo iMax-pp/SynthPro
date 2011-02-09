@@ -1,12 +1,12 @@
 #include "vcf.h"
 
 #include "abstraction/dimmer.h"
+#include "abstraction/filter.h"
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
 #include "abstraction/selector.h"
-#include "abstraction/filter.h"
-#include "factory/synthprofactory.h"
 #include "factory/filterfactory.h"
+#include "factory/synthprofactory.h"
 
 #include <QDebug>
 
@@ -24,15 +24,15 @@ VCF::VCF(QObject *parent)
 
 void VCF::initialize(SynthProFactory* factory)
 {
-    //qDebug("VCF::init Creation of in port in the VCF");
+    // qDebug("VCF::init Creation of in port in the VCF");
     m_inPort = factory->createInPortReplicable(this, "in");
     m_inports.append(m_inPort);
 
-    //qDebug("VCF::init Creation of inCutOff port in the VCF");
+    // qDebug("VCF::init Creation of inCutOff port in the VCF");
     m_inCutOffPort = factory->createInPortReplicable(this, "in Cut Off");
     m_inports.append(m_inCutOffPort);
 
-    //qDebug("VCF::init Creation of out port in the VCF");
+    // qDebug("VCF::init Creation of out port in the VCF");
     m_out = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_out);
 
@@ -58,9 +58,9 @@ VCF::~VCF()
 
 void VCF::ownProcess()
 {
-    //m_vfm->buffer()->add(m_rDimmer->value());
-    //m_out->swapBuffers();
-    //m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());
+    // m_vfm->buffer()->add(m_rDimmer->value());
+    // m_out->swapBuffers();
+    // m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());
     m_filter->apply(m_inPort->buffer(), m_inCutOffPort->buffer(), m_rDimmer->value(), m_out->buffer());
 }
 
