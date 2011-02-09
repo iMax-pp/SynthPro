@@ -7,6 +7,7 @@
 
 PortWidget::PortWidget(PPort* parent)
     : QGraphicsWidget(parent)
+    , m_parent(parent)
 {
     setMaximumSize(PORT_SIZE, PORT_SIZE);
     setMinimumSize(PORT_SIZE, PORT_SIZE);

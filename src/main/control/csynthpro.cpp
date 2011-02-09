@@ -21,6 +21,11 @@ CSynthPro::~CSynthPro()
         delete m_presentation;
     }
 
+    // Delete each module.
+    foreach (Module* module, modules()) {
+        delete module;
+    }
+
     // m_graphicsScene has no parent so we must destroy it ourselves.
     delete m_graphicsScene;
 }

@@ -20,8 +20,7 @@ public:
 private:
     qreal m_slope; // Slope of the saw.
     qreal m_intensity; // Current intensity of our calculated signal.
-    qreal m_currentSignalTension; // Changes over time according to what is
-                                  // read in the bufferIn.
+    qreal m_currentSignalTension; // Changes over time according to what is read in the bufferIn.
     const qreal m_minimumIntensity;
 };
 

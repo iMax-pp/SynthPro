@@ -29,8 +29,6 @@ void ADSR::initialize(SynthProFactory* factory)
 
 void ADSR::ownProcess()
 {
-
-
     qreal oldValue =  m_gate->buffer()->data()[0];
     qreal currentValue = 0;
     int upGate = 0;

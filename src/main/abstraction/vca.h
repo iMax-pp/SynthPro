@@ -18,8 +18,8 @@ public:
     void initialize(SynthProFactory*);
 
 
-     /// Process its job : multiply the input buffer values
-     void ownProcess();
+    /// Process its job : multiply the input buffer values
+    void ownProcess();
 
     /// @return the gain of the VCA
     qreal gain();

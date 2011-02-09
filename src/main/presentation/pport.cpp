@@ -28,6 +28,7 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
 
     QGraphicsLinearLayout* layout = new QGraphicsLinearLayout(Qt::Horizontal, this);
     m_portsLayout = new QGraphicsLinearLayout(Qt::Vertical, layout);
+
     if (control->out()) { // Oops some logic in the presentation! I’m so crappy.
         layout->addItem(m_label);
         layout->addItem(m_portsLayout);
@@ -35,6 +36,7 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
         layout->addItem(m_portsLayout);
         layout->addItem(m_label);
     }
+
     m_portsLayout->addItem(m_port);
 
     setMinimumSize(boundingRect().size());
@@ -71,8 +73,8 @@ void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
     PPort* port = 0;
     foreach (QGraphicsItem* item, items) {
         // ...by casting it.
-        port = dynamic_cast<PPort*>(item);
-        if (port) {
+        if (PortWidget* portWidget = dynamic_cast<PortWidget*>(item)) {
+            port = portWidget->parentPort();
             // If it's the port, then don't go further.
             break;
         }
