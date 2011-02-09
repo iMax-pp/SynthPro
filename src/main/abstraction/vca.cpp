@@ -6,7 +6,7 @@
 #include "factory/synthprofactory.h"
 
 VCA::VCA(QObject* parent)
-    :Module(parent)
+    : Module(parent)
 {
 }
 
@@ -27,15 +27,16 @@ void VCA::initialize(SynthProFactory* factory)
 void VCA::ownProcess()
 {
     if (m_controlInput->connections().length() != 0) {
-        for (int i = 0 ; i < m_controlInput->buffer()->length();i++) {
-            m_inPort->buffer()->data()[i] = m_inPort->buffer()->data()[i]*m_controlInput->buffer()->data()[i];
+        for (int i = 0; i < m_controlInput->buffer()->length(); i++) {
+            m_inPort->buffer()->data()[i] = m_inPort->buffer()->data()[i] * m_controlInput->buffer()->data()[i];
         }
     }
+
     // ask to the buffer to multiply its value by a coefficient
     m_inPort->buffer()->mul(m_gainDimmer->value());
 
     // copy the modified input buffer in the ouput buffer
-    for (int i = 0;i < m_inPort->buffer()->length();i++) {
+    for (int i = 0; i < m_inPort->buffer()->length(); i++) {
         m_outPort->buffer()->data()[i] = m_inPort->buffer()->data()[i];
     }
 }

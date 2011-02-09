@@ -64,7 +64,7 @@ private:
 
     bool m_started; // Indicates if the Timers are started or paused.
 
-    explicit Clock(QObject *parent = 0);
+    explicit Clock(QObject* parent = 0);
     Clock(Clock&);
 
     QMap<Module*, QTimer*> m_fastTimers;

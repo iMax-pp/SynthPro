@@ -28,10 +28,10 @@ void ADSR::initialize(SynthProFactory* factory)
 
 void ADSR::ownProcess()
 {
-    qreal attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    qreal decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    qreal sustainInSample = m_sustainDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    qreal releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal attackInSample = m_attackDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal decayInSample = m_decayDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal sustainInSample = m_sustainDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal releaseInSample = m_releaseDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY;
 
 
 
@@ -39,7 +39,7 @@ void ADSR::ownProcess()
 
         if (m_timeLine == 0) {
             // Begin of a ADSR cycle
-            for (int i = 0;i < m_outPort->buffer()->length(); i++) {
+            for (int i = 0; i < m_outPort->buffer()->length(); i++) {
                 if (0) {
 
                 }

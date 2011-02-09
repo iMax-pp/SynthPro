@@ -10,7 +10,7 @@
 
 #include <QDebug>
 
-VCF::VCF(QObject *parent)
+VCF::VCF(QObject* parent)
     : Module(parent)
     , m_filter(0)
     , m_filterFactory(new FilterFactory())

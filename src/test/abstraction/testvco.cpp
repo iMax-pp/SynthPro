@@ -46,16 +46,20 @@ void TestVCO::testVCOwithDimmer()
     int nbFronts = 0;
     int oldValue = 0;
 
-    Buffer * buffer = vco->outports().first()->buffer();
+    Buffer* buffer = vco->outports().first()->buffer();
+
     for (int i = 0 ; i < buffer->length()  ; i++) {
         if (i == 0) {
             oldValue = buffer->data()[i];
         }
-        if (buffer->data()[i]-oldValue != 0) {
+
+        if (buffer->data()[i] - oldValue != 0) {
             nbFronts++;
         }
+
         oldValue = buffer->data()[i];
     }
+
     QVERIFY(nbFronts != 0);
 
     delete vco;
