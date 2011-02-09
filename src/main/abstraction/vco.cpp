@@ -10,6 +10,7 @@
 
 #include <QDebug>
 
+const QString VCO::SHAPE_DEFAULT = "SquareWave";
 
 VCO::VCO(QObject* parent)
     : Module(parent)
@@ -42,7 +43,7 @@ void VCO::initialize(SynthProFactory* factory)
     /// Creation of the Dimmer
     m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, this);
 
-    setShape("SquareWave");
+    setShape(SHAPE_DEFAULT);
 }
 
 VCO::~VCO()
