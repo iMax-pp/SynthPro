@@ -22,7 +22,7 @@ class SynthProFactory;
   * buffer of the module can provide it, it does. Else, it calls the
   * Sequencer, and copy the input of the module into the generation buffer.
   */
-class ModuleOut : public Module {
+class ModuleOut : public virtual Module {
     // Q_OBJECT
 public:
     static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 127;
@@ -33,7 +33,7 @@ public:
     /**
       * Instanciate the ports. Used by the factory.
       */
-    void initialize(SynthProFactory* = 0);
+    virtual void initialize(SynthProFactory*);
 
     /**
       * FIXME : not very good. Only to prevent triggering the Sequencer BEFORE
@@ -49,7 +49,7 @@ public:
 public slots:
     virtual void timerExpired();
 
-private:
+protected:
     static const int FILL_COUNTER_MAX = 10;
 
     QIODevice* m_device;

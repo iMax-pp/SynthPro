@@ -50,7 +50,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/factory/wavegeneratorfactory.h \
     src/main/presentation/layoutitem.h \
     src/main/presentation/pselector.h \
-    src/main/control/cselector.h
+    src/main/control/cselector.h \
+    src/main/presentation/pmoduleout.h \
+    src/main/control/cmoduleout.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -95,7 +97,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/factory/wavegeneratorfactory.cpp \
     src/main/presentation/layoutitem.cpp \
     src/main/presentation/pselector.cpp \
-    src/main/control/cselector.cpp
+    src/main/control/cselector.cpp \
+    src/main/presentation/pmoduleout.cpp \
+    src/main/control/cmoduleout.cpp
 
 
 INCLUDEPATH += src/main/
