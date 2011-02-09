@@ -177,7 +177,7 @@ void TestSequencer::testVCOAndSerializer()
     Sequencer& sequencer = Sequencer::instance();
 
     VCO* vco = factory.createVCO();
-    vco->setWaveGenerator(new WaveGeneratorDummy);
+    vco->setShape("DummyWave");
     synthpro->add(vco);
 
     MockSerializerWell output(stream);

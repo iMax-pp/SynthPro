@@ -3,6 +3,7 @@
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
 #include "abstraction/modulebufferrecorder.h"
+#include "abstraction/outport.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratorempty.h"
 #include "factory/simplefactory.h"
@@ -18,10 +19,8 @@ void TestModuleBufferRecorder::testModuleBufferRecorder()
     SimpleFactory factory;
     ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
-    WaveGeneratorEmpty* waveGeneratorDummy = new WaveGeneratorEmpty();
-
     VCO* vco = factory.createVCO();
-    vco->setWaveGenerator(waveGeneratorDummy);
+    vco->setShape("DummyWave"); // XXX
     vco->outports().at(0)->connectTo(mbr->inports().at(0));
 
     for (int i = 0; i < NB_ITERATIONS; i++) {

@@ -42,7 +42,7 @@ void VCO::initialize(SynthProFactory* factory)
     /// Creation of the Dimmer
     m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, this);
 
-    setShape("SquareWave");
+    setShape("SawWave");
 }
 
 VCO::~VCO()
