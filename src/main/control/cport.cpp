@@ -88,5 +88,7 @@ void CPort::dropWire(CPort* other)
         }
         other->setWire(m_wire);
         other->connectTo(this);
+
+        m_wire->updatePosition();
     }
 }
