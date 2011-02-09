@@ -16,7 +16,7 @@ PVCO::PVCO(CVCO* control)
 void PVCO::initialize(PPort* pVfm, PPort* pOut, PSelector* pSel, PDimmer* pK)
 {
     // Resize PVCO to integrate the Components nicely.
-    setRect(0, 0, 225, 175);
+    setGeometry(0, 0, 225, 175);
 
     // Create a Title.
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("VCO", this);

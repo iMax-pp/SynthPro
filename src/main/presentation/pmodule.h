@@ -1,13 +1,15 @@
 #ifndef PMODULE_H
 #define PMODULE_H
 
-#include <QGraphicsRectItem>
+#include <QGraphicsWidget>
 
 class CModule;
 
-class PModule : public QGraphicsRectItem {
+class PModule : public QGraphicsWidget {
 public:
     PModule(CModule*);
+
+    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
 
 protected:
     /*

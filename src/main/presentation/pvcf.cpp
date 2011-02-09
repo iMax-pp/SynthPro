@@ -15,7 +15,7 @@ PVCF::PVCF(CVCF* control)
     // and a PSelector (injected as parameters) instead of QDials.
 
     // Resize PVCO to integrate the Components nicely.
-    setRect(0, 0, 225, 175);
+    setGeometry(0, 0, 225, 175);
 
     // Create a Title.
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("VCF", this);
