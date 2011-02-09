@@ -4,14 +4,18 @@
 #include "control/coutport.h"
 #include "control/cwire.h"
 #include "presentation/pport.h"
+#include <QApplication>
 #include <QDebug>
 #include <QPen>
+#include <QStyle>
 
 PWire::PWire(CWire* control, QGraphicsScene* scene)
     : QGraphicsLineItem(0, scene)
     , m_control(control)
 {
-    setPen(QPen(Qt::green, 3, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    QStyle* style = QApplication::style();
+    setPen(QPen(style->standardPalette().brush(QPalette::Shadow), 3,
+                Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 }
 
 QRectF PWire::boundingRect() const

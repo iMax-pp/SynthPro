@@ -1,13 +1,14 @@
 #include "pmodule.h"
 
 #include "control/cmodule.h"
+#include <QApplication>
 #include <QBrush>
 #include <QGraphicsAnchorLayout>
 #include <QGraphicsDropShadowEffect>
 #include <QGraphicsLinearLayout>
 #include <QGraphicsSceneMouseEvent>
 #include <QPainter>
-#include <QPen>
+#include <QStyle>
 
 PModule::PModule(CModule* control)
     : QGraphicsWidget(0)
@@ -46,8 +47,10 @@ PModule::PModule(CModule* control)
 
 void PModule::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 {
-    painter->setPen(QPen(Qt::darkGreen));
-    painter->setBrush(QBrush(Qt::darkCyan));
+    QStyle* style = QApplication::style();
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(style->standardPalette().brush(QPalette::Window));
+
     painter->drawRect(rect());
 }
 

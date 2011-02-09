@@ -2,12 +2,12 @@
 
 #include "control/cport.h"
 #include "control/cwire.h"
-#include <QBrush>
+#include <QApplication>
 #include <QDebug>
 #include <QFont>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
-#include <QPen>
+#include <QStyle>
 
 PPort::PPort(CPort* control, QGraphicsItem* parent)
     : QGraphicsWidget(parent)
@@ -15,10 +15,13 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
     , m_label(0)
     , m_port(0)
 {
+    QStyle* style = QApplication::style();
+
     // Create label for port.
     m_label = new QGraphicsSimpleTextItem(this);
     m_label->setText(control->name());
-    m_label->setPen(QPen(Qt::black));
+    m_label->setPen(Qt::NoPen);
+    m_label->setBrush(style->standardPalette().brush(QPalette::ButtonText));
     m_label->setFont(QFont("Courier", 10, QFont::Normal));
     m_label->setPos(-m_label->boundingRect().width(),
                     -m_label->boundingRect().height() / 2);
@@ -26,8 +29,8 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
     // Create the port (as an ellipse).
     m_port = new QGraphicsEllipseItem(this);
     m_port->setRect(0, 0, PORT_SIZE, PORT_SIZE);
-    m_port->setBrush(QBrush(Qt::darkGreen));
-    m_port->setPen(QPen(Qt::NoPen));
+    m_port->setPen(Qt::NoPen);
+    m_port->setBrush(style->standardPalette().brush(QPalette::Mid));
     m_port->setPos(0, -m_port->boundingRect().height() / 2);
 
     setMinimumSize(childrenBoundingRect().size());

@@ -51,7 +51,9 @@ HEADERS += \
     src/main/abstraction/filterincrement.h \
     src/main/abstraction/filterlp229.h \
     src/main/factory/filterfactory.h \
-    src/main/abstraction/vca.h
+    src/main/abstraction/vca.h \
+    src/test/abstraction/testvca.h
+
 
 SOURCES += src/test/test.cpp \
     src/main/abstraction/buffer.cpp \
@@ -89,13 +91,15 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testwavegeneratorsaw.cpp \
     src/test/abstraction/testwavegeneratorsinus.cpp \
     src/main/abstraction/clock.cpp \
-    src/main/factory/wavegeneratorfactory.cpp \
     src/test/abstraction/testaudiodeviceprovider.cpp \
     src/main/abstraction/vcf.cpp \
     src/main/abstraction/filterdummy.cpp \
     src/main/abstraction/filterincrement.cpp \
     src/main/abstraction/filterlp229.cpp \
     src/main/factory/filterfactory.cpp \
-    src/main/abstraction/vca.cpp
+    src/main/abstraction/vca.cpp \
+    src/test/abstraction/testvca.cpp \
+    src/main/factory/wavegeneratorfactorydummy.cpp
+
 
 INCLUDEPATH += src/main/ src/test/

@@ -3,6 +3,7 @@
 #include "abstraction/testmodulebufferrecorder.h"
 #include "abstraction/testoutport.h"
 #include "abstraction/testsequencer.h"
+#include "abstraction/testvca.h"
 #include "abstraction/testvco.h"
 #include "abstraction/testwavegeneratorempty.h"
 #include "abstraction/testwavegeneratorsaw.h"
@@ -24,11 +25,11 @@ int main()
     TestVCO testVCO;
     QTest::qExec(&testVCO);
 
+    TestVCA testVCA;
+    QTest::qExec(&testVCA);
+
     TestWaveGeneratorEmpty testWaveGeneratorEmpty;
     QTest::qExec(&testWaveGeneratorEmpty);
-
-    TestModuleBufferRecorder testModuleBufferRecorder;
-    QTest::qExec(&testModuleBufferRecorder);
 
     TestWaveGeneratorTriangle testWaveGeneratorTriangle;
     QTest::qExec(&testWaveGeneratorTriangle);
@@ -44,4 +45,7 @@ int main()
 
     TestAudioDeviceProvider testAudioDeviceProvider;
     QTest::qExec(&testAudioDeviceProvider);
+
+    TestModuleBufferRecorder testModuleBufferRecorder;
+    QTest::qExec(&testModuleBufferRecorder);
 }

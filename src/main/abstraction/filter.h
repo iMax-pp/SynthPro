@@ -14,7 +14,7 @@ class Filter {
 public:
     Filter() {}
 
-    virtual void apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal resonance, Buffer* bufferOut) = 0;
+    virtual void apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBase, qreal resonance, Buffer* bufferOut) = 0;
 };
 
 #endif // FILTER_H

@@ -20,9 +20,9 @@ void PVCO::initialize(PPort* pVfm, PPort* pOut, PSelector* pSel, PDimmer* pK)
     TextWidget* title = new TextWidget("VCO", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    pK->setMaximumSize(60, 60);
+    pK->setMaximumSize(90, 90);
 
-    pSel->setMaximumSize(120, 175);
+    pSel->setMaximumSize(120, 155);
 
     // Layout
     bottomArea()->addCornerAnchors(pVfm, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
