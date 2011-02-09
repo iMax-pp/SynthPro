@@ -1,7 +1,9 @@
 #include "pselector.h"
 
+#include <QDebug>
+
 #include <QGroupBox>
-#include <QRadioButton>
+#include <QPushButton>
 #include <QSignalMapper>
 #include <QVBoxLayout>
 
@@ -11,6 +13,8 @@ PSelector::PSelector(QList<QString> items, const QString& name, QGraphicsItem* p
     // Create a group of buttons.
     QGroupBox* group = new QGroupBox(name);
     group->setFlat(true);
+    m_buttonGroup = new QButtonGroup;
+    m_buttonGroup->setExclusive(true);
 
     // In a vertical layout.
     QVBoxLayout* vbox = new QVBoxLayout;
@@ -21,7 +25,10 @@ PSelector::PSelector(QList<QString> items, const QString& name, QGraphicsItem* p
 
     // And for each button, add it to the layout, connect it to the signalMapper.
     foreach (QString item, items) {
-        QRadioButton* button = new QRadioButton(item);
+        QPushButton* button = new QPushButton(item);
+        button->setCheckable(true);
+        button->setFlat(true);
+        m_buttonGroup->addButton(button);
         vbox->addWidget(button);
 
         signalMapper->setMapping(button, items.indexOf(item));
@@ -35,4 +42,10 @@ PSelector::PSelector(QList<QString> items, const QString& name, QGraphicsItem* p
 
     // And finally add the widget to the proxy.
     setWidget(group);
+}
+
+void PSelector::selectButton(int idx)
+{
+    QAbstractButton* button = m_buttonGroup->buttons()[idx];
+    button->setChecked(true);
 }

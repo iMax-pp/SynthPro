@@ -15,7 +15,7 @@ PVCO::PVCO(CVCO* control)
     // and a PSelector (injected as parameters) instead of QDials.
 
     // Resize PVCO to integrate the Components nicely.
-    setRect(0, 0, 200, 150);
+    setRect(0, 0, 225, 175);
 
     // Create a Title.
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("VCO", this);
@@ -32,11 +32,11 @@ void PVCO::initialize(PPort* pVfm, PPort* pOut, PSelector* pSel, PDimmer* pK)
 
     doLayout();*/
     pVfm->setPos(-7, 70); // Yes, absolute positioning is bad.
-    pOut->setPos(195, 70);
+    pOut->setPos(220, 70);
 
-    pK->setPos(2, 90);
+    pK->setPos(7, 90);
     pK->setMaximumSize(60, 60);
 
-    pSel->setPos(63, 35);
-    pSel->setMaximumSize(120, 115);
+    pSel->setPos(77, 0);
+    pSel->setMaximumSize(120, 175);
 }

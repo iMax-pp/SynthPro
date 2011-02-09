@@ -42,7 +42,7 @@ void VCO::initialize(SynthProFactory* factory)
     /// Creation of the Dimmer
     m_kDimmer = factory->createDimmer(K_MIN, K_MAX, K_DEFAULT, this);
 
-    setShape("SawShape");
+    setShape("SquareWave");
 }
 
 VCO::~VCO()
@@ -57,18 +57,6 @@ void VCO::ownProcess()
     m_vfm->buffer()->add(m_kDimmer->value());
     m_out->swapBuffers();
     m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());
-}
-
-/*
- * DEPRECATED
- */
-void VCO::setWaveGenerator(WaveGenerator* waveGenerator)
-{
-    if (m_waveGenerator) {
-        delete m_waveGenerator;
-    }
-
-    m_waveGenerator = waveGenerator;
 }
 
 qreal VCO::k() const
