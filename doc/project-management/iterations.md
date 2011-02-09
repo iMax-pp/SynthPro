@@ -46,6 +46,7 @@ date : semaine 6 - 2011
     - Gestion héritage "en diamant";
     - PModuleOut ;
     - Ajout d’une property `name` aux Ports ;
+    - Suppression de `OutPort::swapBuffers()` et *pull-up* de `InPort::m_buffer` et `OutPort::m_buffer` dans `Port`.
 - Cyrille :
     - Réglages (potard et selecteur);
     - Intégration réglages dans VCO;
