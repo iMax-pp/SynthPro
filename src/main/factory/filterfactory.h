@@ -6,8 +6,8 @@
 class Filter;
 
 /**
-*  This factory instantiate Filters according to a QString value given as parameter of the createFilter method.
-*/
+ *  This factory instantiate Filters according to a QString value given as parameter of the createFilter method.
+ */
 class FilterFactory {
 public:
     FilterFactory();

@@ -38,7 +38,7 @@ void VCF::initialize(SynthProFactory* factory)
 
     /// Creation of the Selector
     m_filterSelector = factory->createSelector(m_filterFactory->selectorConversionMap().keys(), 0,
-                                              m_filterFactory->selectorConversionMap().values(), "Filter Type", this);
+                                               m_filterFactory->selectorConversionMap().values(), "Filter Type", this);
 
     /// Connection of the Selector
     connect(m_filterSelector, SIGNAL(choiceChanged(int)), this, SLOT(filterChanged(int)));

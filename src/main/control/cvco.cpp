@@ -1,9 +1,9 @@
 #include "cvco.h"
 
-#include "control/cdimmer.h"
-#include "control/cinport.h"
-#include "control/coutport.h"
-#include "control/cselector.h"
+#include "cdimmer.h"
+#include "cinport.h"
+#include "coutport.h"
+#include "cselector.h"
 #include "presentation/pvco.h"
 
 CVCO::CVCO(QObject* parent)

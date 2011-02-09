@@ -14,6 +14,7 @@ public:
     OutPort* createOutPortGate(Module* parent, const QString& name);
     VCO* createVCO();
     VCF* createVCF();
+    VCA* createVCA();
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(Module* parent);
     Dimmer* createDimmer(qreal min, qreal max, qreal kDefault, Module* parent);

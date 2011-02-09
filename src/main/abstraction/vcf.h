@@ -1,24 +1,21 @@
 #ifndef VCF_H
 #define VCF_H
 
-#include "abstraction/inport.h"
 #include "abstraction/module.h"
-#include "abstraction/outport.h"
-#include "audiodeviceprovider.h"
-#include "factory/filterfactory.h"
 
-#include <QHash>
-#include <QObject>
-
+class InPort;
+class OutPort;
 class Dimmer;
 class Filter;
 class Selector;
+class FilterFactory;
 class SynthProFactory;
 
-class VCF : virtual public Module {
+class VCF : public virtual Module {
     Q_OBJECT
+
 public:
-    explicit VCF(QObject *parent = 0);
+    explicit VCF(QObject* parent = 0);
     virtual ~VCF();
 
     // Initialize the VCO (creates its ports using the factory)
