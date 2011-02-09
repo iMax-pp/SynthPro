@@ -3,10 +3,12 @@
 
 #include "presentation/pwire.h"
 
+#include <QObject>
+
 class CInPort;
 class COutPort;
 
-class CWire {
+class CWire : public QObject {
 public:
     CWire();
     virtual ~CWire();

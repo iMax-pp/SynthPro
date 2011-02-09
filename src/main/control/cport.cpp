@@ -45,12 +45,18 @@ CWire* CPort::wire() const
 
 void CPort::setWire(CWire* wire)
 {
-    if (wire && m_wire) {
-        // If we are not trying to unset the wire and if we have a wire, then delete it.
+    if (m_wire) {
+        // If we already have a wire, then delete it.
         delete m_wire;
     }
 
     m_wire = wire;
+    connect(m_wire, SIGNAL(destroyed()), this, SLOT(unsetWire()));
+}
+
+void CPort::unsetWire()
+{
+    m_wire = 0;
 }
 
 void CPort::startWire()
@@ -66,6 +72,7 @@ void CPort::startWire()
 
     // And create a new one.
     m_wire = m_factory->createWire(m_presentation->scene());
+    connect(m_wire, SIGNAL(destroyed()), this, SLOT(unsetWire()));
 
     // Don't forget to register ourself as one of the port (the good one of course).
     if (out()) {

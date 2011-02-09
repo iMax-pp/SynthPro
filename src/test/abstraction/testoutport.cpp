@@ -8,13 +8,3 @@ void TestOutPort::testOut()
     QVERIFY(outPort.out());
     QVERIFY(outPort.buffer()->length() == 900);
 }
-
-// FIXME this test case seems a bit weak
-void TestOutPort::testSwapBuffers()
-{
-    OutPort out(0, "out");
-
-    out.buffer()->data()[0] = 1;
-
-    QCOMPARE(out.buffer()->data()[0], 0.0);
-}

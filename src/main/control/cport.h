@@ -8,6 +8,8 @@ class CWire;
 class SynthProFactory;
 
 class CPort : public virtual Port {
+    Q_OBJECT
+
 public:
     CPort(Module* parent, SynthProFactory*, const QString& name, bool replicable = false, bool gate = false);
     virtual ~CPort();
@@ -27,6 +29,9 @@ public:
      * @param the PPort on which the wire was dropped (may be null).
      */
     void dropWire(CPort*);
+
+protected slots:
+    void unsetWire();
 
 private:
     PPort* m_presentation;
