@@ -51,7 +51,7 @@ public:
     virtual Dimmer* createDimmer(QString name, qreal min, qreal man, qreal defaultValue, Module* parent) = 0;
     virtual Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent) = 0;
 
-    virtual CWire* createWire(QGraphicsScene*) = 0;
+    virtual CWire* createWire(QGraphicsScene*) = 0; // That’s bad, QGraphicsScene should not appear in the factory (but the workaround is a bit messy, I know)
 
     /*
      * Enumeration of module types.
