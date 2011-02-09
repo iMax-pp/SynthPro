@@ -23,11 +23,13 @@ void PVCO::initialize(PPort* pVfm, PPort* pOut, PSelector* pSel, PDimmer* pK)
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     pVfm->setPos(-7, 70); // Yes, absolute positioning is bad.
+    pVfm->setZValue(1);
     pOut->setPos(220, 70);
+    pOut->setZValue(1);
 
-    pK->setPos(7, 90);
-    pK->setMaximumSize(60, 60);
+    pK->setPos(0, 20);
+    pK->setMaximumSize(90, 90);
 
-    pSel->setPos(77, 0);
+    pSel->setPos(90, 20);
     pSel->setMaximumSize(120, 175);
 }

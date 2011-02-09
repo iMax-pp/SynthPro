@@ -15,15 +15,17 @@ PVCA::PVCA(CVCA* control)
 void PVCA::initialize(PPort* in, PPort* out, PDimmer* dimmer)
 {
     // Resize PVCO to integrate the Components nicely.
-    setGeometry(0, 0, 225, 175);
+    setGeometry(0, 0, 130, 100);
 
     // Create a Title.
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("VCA", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    in->setPos(-7, 70); // Yes, absolute positioning is bad.
-    out->setPos(220, 70);
+    in->setPos(-7, 50); // Yes, absolute positioning is bad.
+    in->setZValue(1);
+    out->setPos(125, 50);
+    out->setZValue(1);
 
-    dimmer->setPos(65, 40);
+    dimmer->setPos(20, 10);
     dimmer->setMaximumSize(90, 90);
 }

@@ -18,7 +18,7 @@ void VCA::initialize(SynthProFactory* factory)
     m_outPort = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_outPort);
 
-    m_gainDimmer = factory->createDimmer(GAIN_MIN, GAIN_MAX, GAIN_DEFAULT, this);
+    m_gainDimmer = factory->createDimmer("Gain", GAIN_MIN, GAIN_MAX, GAIN_DEFAULT, this);
 }
 
 void VCA::ownProcess()

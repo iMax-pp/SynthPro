@@ -135,12 +135,12 @@ VCA* QtFactory::createVCA()
     // return vca;
     return vca;
 }
-Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
+Dimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
 
-    PDimmer* presentation = new PDimmer(dimmer->min() * CDimmer::DISCR,
+    PDimmer* presentation = new PDimmer(name, dimmer->min() * CDimmer::DISCR,
                                         dimmer->max() * CDimmer::DISCR,
                                         dimmer->value() * CDimmer::DISCR,
                                         cParent->presentation());
