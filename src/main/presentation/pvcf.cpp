@@ -13,7 +13,7 @@ PVCF::PVCF(CVCF* control)
 {
 }
 
-void PVCF::initialize(PPort* in, PPort* cutOff, PPort* out, PSelector* selector, PDimmer* dimmer)
+void PVCF::initialize(PPort* in, PPort* cutOff, PPort* out, PSelector* selector, PDimmer* rDimmer, PDimmer* cutOffDimmer)
 {
     // Resize PVCO to integrate the Components nicely.
     setGeometry(0, 0, 225, 175);
@@ -26,8 +26,11 @@ void PVCF::initialize(PPort* in, PPort* cutOff, PPort* out, PSelector* selector,
     cutOff->setPos(110, 170);
     out->setPos(220, 70);
 
-    dimmer->setPos(7, 90);
-    dimmer->setMaximumSize(60, 60);
+    rDimmer->setPos(10, 20);
+    rDimmer->setMaximumSize(60, 60);
+
+    cutOffDimmer->setPos(10, 95);
+    cutOffDimmer->setMaximumSize(60, 60);
 
     selector->setPos(77, 0);
     selector->setMaximumSize(120, 175);

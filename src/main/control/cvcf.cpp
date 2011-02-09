@@ -21,8 +21,10 @@ void CVCF::initialize(SynthProFactory* factory)
     CInPort* cutOff = dynamic_cast<CInPort*>(m_inCutOffPort);
     COutPort* out = dynamic_cast<COutPort*>(m_out);
     CSelector* selector = dynamic_cast<CSelector*>(m_filterSelector);
-    CDimmer* dimmer = dynamic_cast<CDimmer*>(m_rDimmer);
+    CDimmer* rDimmer = dynamic_cast<CDimmer*>(m_rDimmer);
+    CDimmer* cutOffDimmer = dynamic_cast<CDimmer*>(m_cutOffDimmer);
 
     dynamic_cast<PVCF*>(presentation())->initialize(in->presentation(), cutOff ->presentation(),
-                                                    out->presentation(), selector->presentation(), dimmer->presentation());
+                                                    out->presentation(), selector->presentation(),
+                                                    rDimmer->presentation(), cutOffDimmer->presentation());
 }
