@@ -40,7 +40,7 @@ public:
       * FIXME : not very good. Only to prevent triggering the Sequencer BEFORE
       * we have time to add the module to the SynthPro.
       */
-    void setSoundManagement(bool);
+    // void setSoundManagement(bool);
 
     /**
       * Process the input signal.
@@ -62,7 +62,7 @@ private:
     int m_nbGeneratedBytesRemaining; // Indicates how many bytes of the generated buffer are still unused.
 
     Sequencer& m_sequencer;
-    bool m_manageSound; // *** FIXME *** Not fond of it...
+    // bool m_manageSound; // *** FIXME *** Not fond of it...
 };
 
 #endif // MODULEOUT_H
