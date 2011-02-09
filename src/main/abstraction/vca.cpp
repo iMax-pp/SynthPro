@@ -24,11 +24,11 @@ void VCA::initialize(SynthProFactory* factory)
 void VCA::ownProcess()
 {
     // ask to the buffer to multiply its value by a coefficient
-    m_input1->buffer()->mul(m_gain->value());
+    m_inPort->buffer()->mul(m_gainDimmer->value());
 
     // copy the modified input buffer in the ouput buffer
-    for (int i = 0;i < m_input1->buffer()->length();i++) {
-        m_output1->buffer()->data()[i] = m_input1->buffer()->data()[i];
+    for (int i = 0;i < m_inPort->buffer()->length();i++) {
+        m_outPort->buffer()->data()[i] = m_inPort->buffer()->data()[i];
     }
 }
 
