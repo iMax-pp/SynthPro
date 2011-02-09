@@ -1,5 +1,5 @@
-#ifndef FILTERLP229_H
-#define FILTERLP229_H
+#ifndef FILTERHP229_H
+#define FILTERHP229_H
 
 #include "abstraction/filter.h"
 #include "abstraction/vco.h"
@@ -7,16 +7,17 @@
 #include <QtCore>
 
 /**
-  * LP Filter, from http://www.musicdsp.org/archive.php?classid=3#229.
+  * HP Filter, from http://www.musicdsp.org/archive.php?classid=3#229.
   */
-class FilterLP229 : public Filter {
+class FilterHP229 : public Filter
+{
 public:
-    FilterLP229();
+    FilterHP229();
 
     virtual void apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBase, qreal resonance, Buffer* bufferOut);
 
 private:
-    static const qreal MAX_FREQUENCY = 8000; // Highest frequency of the Low Pass.
+    static const qreal MAX_FREQUENCY = 20000; // Highest frequency of the Low Pass.
     static const qreal MIN_FREQUENCY = 250; // Lower doesn't sound nice.
 
     static const qreal RESONANCE_MIN = 0.1;
@@ -41,4 +42,4 @@ private:
     bool m_mustRecalculateFilter;
 };
 
-#endif // FILTERLP229_H
+#endif // FILTERHP229_H

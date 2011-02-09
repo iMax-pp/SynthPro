@@ -1,4 +1,4 @@
-#include "filterlp229.h"
+#include "filterhp229.h"
 
 #include "abstraction/buffer.h"
 #include "abstraction/vcf.h"
@@ -6,7 +6,7 @@
 
 #include <QtCore>
 
-FilterLP229::FilterLP229()
+FilterHP229::FilterHP229()
     : m_valueInM1(0)
     , m_valueInM2(0)
     , m_valueOutM1(0)
@@ -24,7 +24,7 @@ FilterLP229::FilterLP229()
 {
 }
 
-void FilterLP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBase, qreal resonance, Buffer* bufferOut)
+void FilterHP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBase, qreal resonance, Buffer* bufferOut)
 {
     /*
     r  = rez amount, from sqrt(2) to ~ 0.1
@@ -32,14 +32,23 @@ void FilterLP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBa
 
     out(n) = a1 * in + a2 * in(n-1) + a3 * in(n-2) - b1*out(n-1) - b2*out(n-2)
 
-    Lowpass:
-      c = 1.0 / tan(pi * f / sample_rate);
+    Highpass :
+      c = tan(pi * f / sample_rate);
 
       a1 = 1.0 / ( 1.0 + r * c + c * c);
-      a2 = 2* a1;
+      a2 = -2*a1;
       a3 = a1;
-      b1 = 2.0 * ( 1.0 - c*c) * a1;
+      b1 = 2.0 * ( c*c - 1.0) * a1;
       b2 = ( 1.0 - r * c + c * c) * a1;
+
+      Optimised :
+        c = tan(pi * f / sample_rate);
+
+        c = ( c + r ) * c;
+        a1 = 1.0 / ( 1.0 + c );
+        b1 = ( 1.0 - c );
+
+        out(n) = ( a1 * out(n-1) + in - in(n-1) ) * b1;
     */
 
     qreal* dataOut = bufferOut->data();
@@ -77,11 +86,11 @@ void FilterLP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBa
                 f = MAX_FREQUENCY;
             }
 
-            qreal c = 1.0 / tan(M_PI * f / VCO::REPLAY_FREQUENCY);
+            qreal c = tan(M_PI * f / VCO::REPLAY_FREQUENCY);
             m_a1 = 1.0 / (1.0 + m_currentResonanceNormalized * c + c * c);
-            m_a2 = 2 * m_a1;
+            m_a2 = -2 * m_a1;
             m_a3 = m_a1;
-            m_b1 = 2.0 * (1.0 - c * c) * m_a1;
+            m_b1 = 2.0 * (c * c - 1.0) * m_a1;
             m_b2 = (1.0 - m_currentResonanceNormalized * c + c * c) * m_a1;
 
             m_mustRecalculateFilter = false;

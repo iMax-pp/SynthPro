@@ -99,6 +99,7 @@ void ModuleOut::timerExpired()
         fillCounter++;
     }
 
+    /*
     if (fillCounter >= FILL_COUNTER_MAX) {
         qWarning() << "Unable to feed the sound card enough !";
     }
@@ -108,6 +109,7 @@ void ModuleOut::timerExpired()
     if (sizeWritten < 0) {
         qWarning() << "Error while writing to the sound card !";
     }
+    */
 }
 
 void ModuleOut::ownProcess()
