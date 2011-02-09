@@ -34,7 +34,7 @@ public:
     /**
       * Instanciate the ports. Used by the factory.
       */
-    void initialize(SynthProFactory* = 0);
+    virtual void initialize(SynthProFactory*);
 
     /**
       * FIXME : not very good. Only to prevent triggering the Sequencer BEFORE
