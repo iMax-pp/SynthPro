@@ -33,6 +33,7 @@ void Port::connectTo(Port* other)
     if (connectable(other)) {
         m_connections.append(other);
         other->m_connections.append(this);
+        qDebug(QString("Port::connectTo() %1 -> %2").arg(name()).arg(other->name()).toLatin1());
         emit connectionsChanged();
     }
 }
@@ -40,6 +41,7 @@ void Port::connectTo(Port* other)
 void Port::disconnectFrom(Port* other)
 {
     if (m_connections.contains(other)) {
+        qDebug(QString("Port::disconnectFrom() %1 - %2").arg(name()).arg(other->name()).toLatin1());
         m_connections.removeOne(other);
         other->m_connections.removeOne(this);
         emit connectionsChanged();

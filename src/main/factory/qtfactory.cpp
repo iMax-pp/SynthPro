@@ -2,18 +2,19 @@
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/modulebufferrecorder.h"
-#include "abstraction/moduleout.h"
 #include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/cmodule.h"
+#include "control/cmoduleout.h"
 #include "control/coutport.h"
 #include "control/cport.h"
 #include "control/cselector.h"
 #include "control/csynthpro.h"
 #include "control/cvco.h"
 #include "control/cwire.h"
+#include "presentation/pmoduleout.h"
 #include "presentation/pvco.h"
 
 #include <QDebug>
@@ -159,8 +160,13 @@ ModuleOut* QtFactory::createModuleOut(Module* parent)
         return 0;
     }
 
-    ModuleOut* mo = new ModuleOut(device, adp.audioOutput(), parent);
+    CModuleOut* mo = new CModuleOut(device, adp.audioOutput(), parent);
+
+    PModuleOut* p = new PModuleOut(mo);
+    mo->setPresentation(p);
+
     mo->initialize(this);
+
     return mo;
 }
 

@@ -1,6 +1,7 @@
 #include "csynthpro.h"
 
 #include "control/cmodule.h"
+#include "control/cmoduleout.h"
 #include "control/cvco.h"
 #include <QGraphicsScene>
 
@@ -52,7 +53,7 @@ void CSynthPro::add(Module* module)
 
 void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
 {
-    Module* module;
+    Module* module = 0;
 
     switch (moduleType) {
     case QtFactory::KeyboardId:
@@ -67,6 +68,7 @@ void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
     case QtFactory::ADSRId:
         break;
     case QtFactory::AudioOuputId:
+        module = dynamic_cast<Module*>(m_factory->createModuleOut(0));
         break;
     case QtFactory::FileOutputId:
         break;

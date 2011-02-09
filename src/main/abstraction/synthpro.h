@@ -17,6 +17,11 @@ public:
     /// Add a module to this SynthPro
     virtual void add(Module*);
 
+signals:
+    void connectionsChanged(const SynthPro*);
+
+private slots:
+    void connectionsChanged(); // FIXME Maybe a signal mapper would work?
 private:
     QList<Module*> m_modules;
 };

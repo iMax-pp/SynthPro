@@ -20,4 +20,5 @@ void CSelector::setPresentation(PSelector* presentation)
     m_presentation = presentation;
 
     connect(m_presentation, SIGNAL(choiceChanged(int)), this, SIGNAL(choiceChanged(int)));
+    connect(this, SIGNAL(choiceChanged(int)), m_presentation, SLOT(selectButton(int)));
 }

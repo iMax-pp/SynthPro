@@ -57,6 +57,10 @@ void CPort::startWire()
 {
     if (m_wire) {
         // When starting a new wire, begin by deleting the previous one.
+        CPort* other = m_wire->inPort() == this
+                       ? dynamic_cast<CPort*>(m_wire->outPort())
+                       : dynamic_cast<CPort*>(m_wire->inPort());
+        disconnectFrom(other);
         delete m_wire;
     }
 
@@ -88,5 +92,7 @@ void CPort::dropWire(CPort* other)
         }
         other->setWire(m_wire);
         other->connectTo(this);
+
+        m_wire->updatePosition();
     }
 }

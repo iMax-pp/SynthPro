@@ -3,13 +3,15 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
-#include "abstraction/outport.h"
 #include "audiodeviceprovider.h"
 #include "factory/wavegeneratorfactory.h"
 
 #include <QHash>
 
+class InPort;
+class OutPort;
 class WaveGenerator;
+class WaveGeneratorFactory;
 class SynthProFactory;
 class Dimmer;
 class Selector;
@@ -28,14 +30,6 @@ public:
      * Process its job : put a buffer in its outPort
      */
     void ownProcess();
-
-    /**
-     * Set the WaveGenerator of this VCO.
-     * The VCO will then take care of deleting it.
-     * @deprecated
-     * @param generator a wave generator (Strategy design pattern)
-     */
-    void setWaveGenerator(WaveGenerator*);
 
     /**
     * @return The current value of the dimmer

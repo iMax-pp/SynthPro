@@ -29,9 +29,9 @@ ModuleOut::~ModuleOut()
 
 void ModuleOut::initialize(SynthProFactory* factory)
 {
-    m_generationBuffer = new char[GENERATION_BUFFER_SIZE];
+    m_generationBuffer = new char[Buffer::DEFAULT_LENGTH];
 
-    for (int i = 0; i < GENERATION_BUFFER_SIZE; i++) {
+    for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
         m_generationBuffer[i] = 0;
     }
 
@@ -93,7 +93,7 @@ void ModuleOut::timerExpired()
                 m_generationBuffer[i + 1] = nb; // nb & 255;
             }
             m_generationBufferIndex = 0;
-            m_nbGeneratedBytesRemaining = GENERATION_BUFFER_SIZE;
+            m_nbGeneratedBytesRemaining = Buffer::DEFAULT_LENGTH;
         }
 
         fillCounter++;
