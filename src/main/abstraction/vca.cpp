@@ -24,8 +24,8 @@ void VCA::initialize(SynthProFactory* factory)
 void VCA::ownProcess()
 {
     m_inPort->buffer()->mul(m_gainDimmer->value());
-    for (int i;i < m_inPort->buffer()->length();i++) {
-        m_outPort->buffer()[i] = m_inPort->buffer()[i];
+    for (int i = 0;i < m_inPort->buffer()->length();i++) {
+        m_outPort->buffer()->data()[i] = m_inPort->buffer()->data()[i];
     }
 }
 

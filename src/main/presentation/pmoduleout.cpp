@@ -11,7 +11,7 @@ PModuleOut::PModuleOut(CModuleOut* control)
 
 void PModuleOut::initialize(PPort* pIn)
 {
-    setRect(0, 0, 100, 100);
+    setGeometry(0, 0, 100, 100);
 
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("Out", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));

@@ -16,7 +16,7 @@ PVCF::PVCF(CVCF* control)
 void PVCF::initialize(PPort* in, PPort* cutOff, PPort* out, PSelector* selector, PDimmer* dimmer)
 {
     // Resize PVCO to integrate the Components nicely.
-    setRect(0, 0, 225, 175);
+    setGeometry(0, 0, 225, 175);
 
     // Create a Title.
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("VCF", this);
