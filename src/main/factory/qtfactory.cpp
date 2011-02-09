@@ -117,6 +117,21 @@ VCF* QtFactory::createVCF()
     return 0;
 }
 
+VCA* QtFactory::createVCA()
+{
+    // Create the VCO
+    // CVCA* vca = new CVCA();
+
+    // Create its presentation
+    // PVCA* p = new PVCA(vca);
+    // vca->setPresentation(p);
+
+    // Initialize it (ports creation)
+    // vca->initialize(this);
+
+    // return vca;
+    return 0;
+}
 Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);

@@ -16,7 +16,5 @@ void TestOutPort::testSwapBuffers()
 
     out.buffer()->data()[0] = 1;
 
-    out.swapBuffers();
-
     QCOMPARE(out.buffer()->data()[0], 0.0);
 }
