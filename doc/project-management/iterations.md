@@ -37,7 +37,6 @@ date : semaine 6 - 2011
 - Julien N. :
     - Test unitaire sur ModuleBufferRecorder et les WaveGenerator.
     - Horloge et module Out.
-    - Mettre Init en virtuelle dans module buffer recorder.
 - Maxime :
     - Gestion drag'n'drop;
     - Implementation graphique du potard, du sélecteur;
@@ -50,7 +49,23 @@ date : semaine 6 - 2011
 - Cyrille :
     - Réglages (potard et selecteur);
     - Intégration réglages dans VCO;
-    - VCA;
+
+Itération 4 (mercredi 9)
+Julien N. :
+VCF, FilterFactory, Filtres
+
+Maxime :
+C et P de VCF
+C et P de VCA
+
+Julien RF :
+Layout des modules (taille dynamique)
+Intégration des Layout.
+Aptation look&feel.
+
+Cyrille :
+VCA
+ADSR
 
 Roadmap (todo)
 ---------
