@@ -24,13 +24,13 @@ public:
 
 
 protected:
-    static const qreal GAIN_MIN = -5;
-    static const qreal GAIN_MAX = 5;
-    static const qreal GAIN_DEFAULT = 0;
+    static const qreal GAIN_MIN = 0;
+    static const qreal GAIN_MAX = 2;
+    static const qreal GAIN_DEFAULT = 1;
 
-    InPort* m_input1;
-    OutPort* m_output1;
-    Dimmer* m_gain;
+    InPort* m_inPort;
+    OutPort* m_outPort;
+    Dimmer* m_gainDimmer;
 };
 
 #endif // VCA_H

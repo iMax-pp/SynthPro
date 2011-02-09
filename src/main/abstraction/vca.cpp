@@ -12,29 +12,29 @@ VCA::VCA(QObject* parent)
 
 void VCA::initialize(SynthProFactory* factory)
 {
-    m_input1 = factory->createInPortReplicable(this, "input1");
-    m_inports.append(m_input1);
+    m_inPort = factory->createInPortReplicable(this, "in");
+    m_inports.append(m_inPort);
 
-    m_output1 = factory->createOutPortReplicable(this, "output1");
-    m_outports.append(m_output1);
+    m_outPort = factory->createOutPortReplicable(this, "out");
+    m_outports.append(m_outPort);
 
-    m_gain = factory->createDimmer(GAIN_MIN, GAIN_MAX, GAIN_DEFAULT, this);
+    m_gainDimmer = factory->createDimmer(GAIN_MIN, GAIN_MAX, GAIN_DEFAULT, this);
 }
 
 void VCA::ownProcess()
 {
-    m_input1->buffer()->mul(m_gain->value());
-    for (int i;i < m_input1->buffer()->length();i++) {
-        m_output1->buffer()[i] = m_input1->buffer()[i];
+    m_inPort->buffer()->mul(m_gainDimmer->value());
+    for (int i = 0;i < m_inPort->buffer()->length();i++) {
+        m_outPort->buffer()->data()[i] = m_inPort->buffer()->data()[i];
     }
 }
 
 qreal VCA::gain()
 {
-    return m_gain->value();
+    return m_gainDimmer->value();
 }
 
 void VCA::setGain(qreal gain)
 {
-    m_gain->setValue(gain);
+    m_gainDimmer->setValue(gain);
 }

@@ -51,7 +51,9 @@ HEADERS += \
     src/main/abstraction/filterincrement.h \
     src/main/abstraction/filterlp229.h \
     src/main/factory/filterfactory.h \
-    src/main/abstraction/vca.h
+    src/main/abstraction/vca.h \
+    src/test/abstraction/testvca.h
+
 
 SOURCES += src/test/test.cpp \
     src/main/abstraction/buffer.cpp \
@@ -96,6 +98,8 @@ SOURCES += src/test/test.cpp \
     src/main/abstraction/filterincrement.cpp \
     src/main/abstraction/filterlp229.cpp \
     src/main/factory/filterfactory.cpp \
-    src/main/abstraction/vca.cpp
+    src/main/abstraction/vca.cpp \
+    src/test/abstraction/testvca.cpp
+
 
 INCLUDEPATH += src/main/ src/test/
