@@ -15,7 +15,7 @@ class Filter;
 class Selector;
 class SynthProFactory;
 
-class VCF : public Module {
+class VCF : virtual public Module {
     Q_OBJECT
 public:
     explicit VCF(QObject *parent = 0);

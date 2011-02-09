@@ -29,7 +29,7 @@ void VCF::initialize(SynthProFactory* factory)
     m_inports.append(m_inPort);
 
     // qDebug("VCF::init Creation of inCutOff port in the VCF");
-    m_inCutOffPort = factory->createInPortReplicable(this, "in Cut Off");
+    m_inCutOffPort = factory->createInPortReplicable(this, "in Cutoff");
     m_inports.append(m_inCutOffPort);
 
     // qDebug("VCF::init Creation of out port in the VCF");
