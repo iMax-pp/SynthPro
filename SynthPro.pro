@@ -67,7 +67,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/port.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/control/csynthpro.cpp \
-   // src/main/presentation/psynthpro.cpp \
+    src/main/presentation/psynthpro.cpp \
     src/main/main.cpp \
     src/main/factory/qtfactory.cpp \
     src/main/abstraction/outport.cpp \
