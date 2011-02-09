@@ -13,8 +13,11 @@ public:
     PortWidget(PPort* parent);
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
 
-    static const int PORT_SIZE = 15;
+    inline PPort* parentPort() const { return m_parent; }
 
+    static const int PORT_SIZE = 15;
+private:
+    PPort* m_parent;
 };
 
 #endif // PORTWIDGET_H

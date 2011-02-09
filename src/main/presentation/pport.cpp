@@ -71,8 +71,8 @@ void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
     PPort* port = 0;
     foreach (QGraphicsItem* item, items) {
         // ...by casting it.
-        port = dynamic_cast<PPort*>(item);
-        if (port) {
+        if (PortWidget* portWidget = dynamic_cast<PortWidget*>(item)) {
+            port = portWidget->parentPort();
             // If it's the port, then don't go further.
             break;
         }
