@@ -11,7 +11,7 @@ class Selector;
 class FilterFactory;
 class SynthProFactory;
 
-class VCF : public Module {
+class VCF : public virtual Module {
     Q_OBJECT
 
 public:
