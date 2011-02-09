@@ -23,9 +23,11 @@ void VCA::initialize(SynthProFactory* factory)
 
 void VCA::ownProcess()
 {
+    qDebug() << "ownProcess";
     m_input1->buffer()->mul(m_gain->value());
-    for (int i;i < m_input1->buffer()->length();i++) {
-        m_output1->buffer()[i] = m_input1->buffer()[i];
+    for (int i = 0;i < m_input1->buffer()->length();i++) {
+        qDebug() << "boucle";
+        m_output1->buffer()->data()[i] = m_input1->buffer()->data()[i];
     }
 }
 
