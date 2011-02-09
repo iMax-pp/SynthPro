@@ -2,6 +2,7 @@
 
 #include "abstraction/dimmer.h"
 #include "abstraction/mockserializerwell.h"
+#include "abstraction/outport.h"
 #include "abstraction/selector.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratordummy.h"
@@ -21,7 +22,7 @@ void TestVCO::testVCO()
 
     vco->outports().first()->connectTo(&output.input);
 
-    vco->setWaveGenerator(new WaveGeneratorDummy);
+    vco->setShape("DummyWave");
     vco->process();
     output.process();
 
@@ -39,7 +40,7 @@ void TestVCO::testVCOwithDimmer()
     vco->setK(3);
     MockSerializerWell output(stream);
     vco->outports().first()->connectTo(&output.input);
-    vco->setWaveGenerator(new WaveGeneratorSquare);
+    vco->setShape("SquareWave");
     vco->process();
     output.process();
     int nbFronts = 0;

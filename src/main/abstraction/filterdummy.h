@@ -11,7 +11,7 @@ class FilterDummy : public Filter {
 public:
     FilterDummy();
 
-    virtual void apply(Buffer* bufferIn, Buffer* bufferOut);
+    virtual void apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal resonance, Buffer* bufferOut);
 };
 
 #endif // FILTERDUMMY_H

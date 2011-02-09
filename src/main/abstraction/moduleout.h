@@ -26,7 +26,6 @@ class ModuleOut : public virtual Module {
     // Q_OBJECT
 public:
     static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 127;
-    static const int GENERATION_BUFFER_SIZE = 900; // This must be small, but not too much (overhead).
 
     ModuleOut(QIODevice*, QAudioOutput*, QObject* parent = 0);
     virtual ~ModuleOut();

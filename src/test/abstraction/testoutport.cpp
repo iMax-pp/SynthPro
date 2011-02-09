@@ -6,7 +6,7 @@ void TestOutPort::testOut()
 {
     OutPort outPort(0, "out");
     QVERIFY(outPort.out());
-    QVERIFY(outPort.buffer()->length() == 256);
+    QVERIFY(outPort.buffer()->length() == 900);
 }
 
 // FIXME this test case seems a bit weak

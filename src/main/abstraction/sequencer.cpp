@@ -20,7 +20,7 @@ Sequencer& Sequencer::instance()
 
 void Sequencer::process()
 {
-    qDebug("Sequencer::process()");
+    // qDebug("Sequencer::process()");
     foreach (Module* module, m_sortedModules) {
         module->process();
     }
@@ -38,6 +38,7 @@ void Sequencer::findWells(const SynthPro* synthpro)
 
 void Sequencer::scheduleModules(const SynthPro* synthpro)
 {
+    qDebug("Sequencer::scheduleModules()");
     m_sortedModules.clear();
     m_visitedModules.clear();
     findWells(synthpro);

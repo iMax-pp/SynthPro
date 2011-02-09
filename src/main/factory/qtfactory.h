@@ -16,6 +16,7 @@ public:
     OutPort* createOutPortGate(Module* parent, const QString& name);
 
     VCO* createVCO();
+    VCF* createVCF();
     ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(Module* parent);
 

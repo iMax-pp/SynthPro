@@ -9,15 +9,8 @@ class OutPort : public virtual Port {
 
 public:
     OutPort(Module* parent, const QString& name, bool replicable = false, bool gate = false);
-    ~OutPort();
 
-    bool out() const;
-    Buffer* buffer();
-    void swapBuffers();
-
-protected:
-    Buffer* m_buffer;
-    Buffer* m_oldBuffer;
+    inline bool out() const { return true; }
 };
 
 #endif // OUTPORT_H

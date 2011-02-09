@@ -8,7 +8,6 @@ class InPort : public virtual Port {
 
 public:
     InPort(Module* parent, const QString& name, bool replicable = false, bool gate = false);
-    ~InPort();
 
     /**
      * Fetch data from the connections.
@@ -17,11 +16,7 @@ public:
     void fetch();
 
     // Overriden methods of Module
-    bool out() const;
-    Buffer* buffer();
-
-protected:
-    Buffer* m_buffer;
+    inline bool out() const { return false; }
 };
 
 #endif // INPORT_H
