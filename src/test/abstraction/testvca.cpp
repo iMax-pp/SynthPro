@@ -9,7 +9,6 @@
 
 #include <QTextStream>
 
-
 void TestVCA::testVCA()
 {
     QString result;
@@ -22,6 +21,8 @@ void TestVCA::testVCA()
     vca->setGain(2);
     MockSerializerWell output(stream);
     vco->outports().first()->connectTo(vca->inports().first());
+
+
     vca->outports().first()->connectTo(&output.input);
     vco->process();
     vca->process();

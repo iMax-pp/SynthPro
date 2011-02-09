@@ -40,6 +40,8 @@ protected:
     Dimmer* m_decayDimmer;
     Dimmer* m_sustainDimmer;
     Dimmer* m_releaseDimmer;
+
+    int m_timeLine;
 };
 
 #endif // ADSR_H

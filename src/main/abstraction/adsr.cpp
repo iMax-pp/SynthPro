@@ -1,11 +1,13 @@
 #include "adsr.h"
 
-
+#include "abstraction/audiodeviceprovider.h"
+#include "abstraction/dimmer.h"
+#include "abstraction/outport.h"
 #include "factory/synthprofactory.h"
-
 
 ADSR::ADSR(QObject* parent)
     : Module(parent)
+    , m_timeLine(0)
 {
 }
 
@@ -26,5 +28,42 @@ void ADSR::initialize(SynthProFactory* factory)
 
 void ADSR::ownProcess()
 {
+    qreal attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal sustainInSample = m_sustainDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+
+
+
+    if (0) {
+
+        if (m_timeLine == 0) {
+            // Begin of a ADSR cycle
+            for (int i = 0;i < m_outPort->buffer()->length(); i++) {
+                if (0) {
+
+                }
+            }
+
+        } else {
+            int i = 0;
+            // A new gate signal end current running ADSR cycle
+        }
+    } else {
+        int i = 0;
+        // we continue the current running ADSR
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
