@@ -17,8 +17,10 @@ FilterLP229::FilterLP229()
     , m_b1(0)
     , m_b2(0)
     , m_currentCutOffValue(-1000)
-    , m_currentResonance(-1)
+    , m_currentCutOffBase(-1000)
+    , m_currentResonance(-1000)
     , m_currentResonanceNormalized(RESONANCE_MIN)
+    , m_mustRecalculateFilter(true)
 {
 }
 
@@ -47,22 +49,30 @@ void FilterLP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBa
     // Convert the resonance given, if it has changed.
     if (m_currentResonance != resonance) {
         m_currentResonance = resonance;
-        // Normalize the resonance, from the values given by the Resonance to the values
+        // Normalize the resonance, from the values given by the Resonance in parameter to what we require here.
         m_currentResonanceNormalized = ((m_currentResonance - VCF::R_MIN) / VCF::R_MAX)
                                        * (RESONANCE_MAX - RESONANCE_MIN) + RESONANCE_MIN;
-        m_currentCutOffValue = -1000; // Force recalculation of the filter.
+        m_mustRecalculateFilter = true;
+    }
+
+    // If the CutOffBase has changed, force recalculation of the filter.
+    if (m_currentCutOffBase != cutOffBase) {
+        m_currentCutOffBase = cutOffBase;
+        m_mustRecalculateFilter = true;
     }
 
     for (int i = 0, size = bufferIn->length(); i < size; i++) {
         // Check if the input CutOffBuffer delivers a different CutOff frequency.
         // If yes, must recalculate the filter parameters.
-        if (dataInCutOff[i] != m_currentCutOffValue) {
+        if (m_mustRecalculateFilter || (dataInCutOff[i] != m_currentCutOffValue)) {
             m_currentCutOffValue = dataInCutOff[i];
-            // Convert a signal into a frequency from 0 to MAX_FREQUENCY.
-            qreal f = (dataInCutOff[i] + VCO::SIGNAL_INTENSITY) * (MAX_FREQUENCY / (VCO::SIGNAL_INTENSITY * 2));
+            // Convert a signal into a frequency from MIN_FREQUENCY to MAX_FREQUENCY.
+            qreal f = (m_currentCutOffValue + VCO::SIGNAL_INTENSITY)
+                      * ((MAX_FREQUENCY - MIN_FREQUENCY) / (VCO::SIGNAL_INTENSITY * 2)) + MIN_FREQUENCY;
             f += cutOffBase;
-            if (f < 0) {
-                f = 0;
+
+            if (f < MIN_FREQUENCY) {
+                f = MIN_FREQUENCY;
             } else if (f > MAX_FREQUENCY) {
                 f = MAX_FREQUENCY;
             }
@@ -73,6 +83,8 @@ void FilterLP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBa
             m_a3 = m_a1;
             m_b1 = 2.0 * (1.0 - c * c) * m_a1;
             m_b2 = (1.0 - m_currentResonanceNormalized * c + c * c) * m_a1;
+
+            m_mustRecalculateFilter = false;
         }
 
         // Process the filter.
