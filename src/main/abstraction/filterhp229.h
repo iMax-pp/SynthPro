@@ -9,8 +9,7 @@
 /**
   * HP Filter, from http://www.musicdsp.org/archive.php?classid=3#229.
   */
-class FilterHP229 : public Filter
-{
+class FilterHP229 : public Filter {
 public:
     FilterHP229();
 
