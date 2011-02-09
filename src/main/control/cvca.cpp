@@ -19,7 +19,9 @@ void CVCA::initialize(SynthProFactory* factory)
 
     CInPort* in = dynamic_cast<CInPort*>(m_inPort);
     COutPort* out = dynamic_cast<COutPort*>(m_outPort);
+    CInPort* controlInput = dynamic_cast<CInPort*>(m_controlInput);
     CDimmer* dimmer = dynamic_cast<CDimmer*>(m_gainDimmer);
 
-    dynamic_cast<PVCA*>(presentation())->initialize(in->presentation(), out->presentation(), dimmer->presentation());
+    dynamic_cast<PVCA*>(presentation())->initialize(in->presentation(), out->presentation(),
+                                                    controlInput->presentation(), dimmer->presentation());
 }

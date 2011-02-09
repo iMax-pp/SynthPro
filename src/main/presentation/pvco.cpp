@@ -31,5 +31,5 @@ void PVCO::initialize(PPort* pVfm, PPort* pOut, PSelector* pSel, PDimmer* pK)
     pK->setMaximumSize(90, 90);
 
     pSel->setPos(90, 20);
-    pSel->setMaximumSize(120, 175);
+    pSel->setMaximumSize(120, 155);
 }

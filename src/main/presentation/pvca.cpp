@@ -12,10 +12,10 @@ PVCA::PVCA(CVCA* control)
 {
 }
 
-void PVCA::initialize(PPort* in, PPort* out, PDimmer* dimmer)
+void PVCA::initialize(PPort* in, PPort* out, PPort* controlInput, PDimmer* dimmer)
 {
     // Resize PVCO to integrate the Components nicely.
-    setGeometry(0, 0, 130, 100);
+    setGeometry(0, 0, 130, 110);
 
     // Create a Title.
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("VCA", this);
@@ -25,6 +25,8 @@ void PVCA::initialize(PPort* in, PPort* out, PDimmer* dimmer)
     in->setZValue(1);
     out->setPos(125, 50);
     out->setZValue(1);
+    controlInput->setPos(65, 105);
+    controlInput->setZValue(1);
 
     dimmer->setPos(20, 10);
     dimmer->setMaximumSize(90, 90);
