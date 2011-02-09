@@ -12,7 +12,7 @@ class PVCF : public PModule {
 public:
     PVCF(CVCF*);
 
-    void initialize(PPort* in, PPort* cutOff, PPort* out, PSelector*, PDimmer*);
+    void initialize(PPort* in, PPort* cutOff, PPort* out, PSelector*, PDimmer* rDimmer, PDimmer* cutOffDimmer);
 };
 
 #endif // PVCF_H
