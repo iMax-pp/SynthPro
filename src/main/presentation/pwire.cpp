@@ -3,6 +3,7 @@
 #include "control/cinport.h"
 #include "control/coutport.h"
 #include "control/cwire.h"
+#include "presentation/portwidget.h"
 #include "presentation/pport.h"
 #include <QApplication>
 #include <QDebug>
@@ -39,7 +40,7 @@ void PWire::updatePosition(QPointF point)
         in = point;
     } else {
         // Use inPort otherwise.
-        in = mapFromItem(m_control->inPort()->presentation(), PPort::PORT_SIZE / 2, 0);
+        in = mapFromItem(m_control->inPort()->presentation(), PortWidget::PORT_SIZE / 2, 0);
     }
 
     QPointF out;
@@ -48,7 +49,7 @@ void PWire::updatePosition(QPointF point)
         out = point;
     } else {
         // Use inPort otherwise.
-        out = mapFromItem(m_control->outPort()->presentation(), PPort::PORT_SIZE / 2, 0);
+        out = mapFromItem(m_control->outPort()->presentation(), PortWidget::PORT_SIZE / 2, 0);
     }
 
     // Draw a new line for our wire.

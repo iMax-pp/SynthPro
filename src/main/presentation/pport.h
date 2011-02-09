@@ -4,6 +4,9 @@
 #include <QGraphicsWidget>
 
 class CPort;
+class TextWidget;
+class PortWidget;
+class QGraphicsLinearLayout;
 
 class PPort : public QGraphicsWidget {
 public:
@@ -14,8 +17,6 @@ public:
 
     CPort* control() const;
 
-    static const int PORT_SIZE = 15;
-
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent*);
     void mouseMoveEvent(QGraphicsSceneMouseEvent*);
@@ -23,8 +24,9 @@ protected:
 
 private:
     CPort* m_control;
-    QGraphicsSimpleTextItem* m_label;
-    QGraphicsEllipseItem* m_port;
+    TextWidget* m_label;
+    PortWidget* m_port;
+    QGraphicsLinearLayout* m_portsLayout;
 };
 
 #endif // PPORT_H
