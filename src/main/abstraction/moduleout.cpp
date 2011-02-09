@@ -18,7 +18,7 @@ ModuleOut::ModuleOut(QIODevice* device, QAudioOutput* audioOutput, QObject* pare
     , m_generationBufferIndex(0)
     , m_nbGeneratedBytesRemaining(0)
     , m_sequencer(Sequencer::instance())
-    , m_manageSound(false)
+    // , m_manageSound(false)
 {
 }
 
@@ -46,16 +46,16 @@ void ModuleOut::initialize(SynthProFactory* factory)
     }
 }
 
-void ModuleOut::setSoundManagement(bool state)
-{
-    m_manageSound = state;
-}
+// void ModuleOut::setSoundManagement(bool state)
+// {
+//     m_manageSound = state;
+// }
 
 void ModuleOut::timerExpired()
 {
-    if (!m_manageSound) {
-        return;
-    }
+//    if (!m_manageSound) {
+//        return;
+//    }
 
     int fillCounter = 0;
     qint64 sizeWritten = 1;
