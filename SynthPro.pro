@@ -51,12 +51,13 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/presentation/pvco.h \
     src/main/abstraction/clock.h \
     src/main/factory/wavegeneratorfactory.h \
-    src/main/presentation/layoutitem.h \
     src/main/presentation/pselector.h \
     src/main/control/cselector.h \
     src/main/presentation/pmoduleout.h \
     src/main/control/cmoduleout.h \
-    src/main/abstraction/vca.h
+    src/main/abstraction/vca.h \
+    src/main/control/cvcf.h \
+    src/main/presentation/pvcf.h
 
 
 SOURCES += src/main/abstraction/synthpro.cpp \
@@ -64,7 +65,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/port.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/control/csynthpro.cpp \
-    src/main/presentation/psynthpro.cpp \
+   // src/main/presentation/psynthpro.cpp \
     src/main/main.cpp \
     src/main/factory/qtfactory.cpp \
     src/main/abstraction/outport.cpp \
@@ -103,12 +104,13 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/pvco.cpp \
     src/main/abstraction/clock.cpp \
     src/main/factory/wavegeneratorfactory.cpp \
-    src/main/presentation/layoutitem.cpp \
     src/main/presentation/pselector.cpp \
     src/main/control/cselector.cpp \
     src/main/presentation/pmoduleout.cpp \
     src/main/control/cmoduleout.cpp \
     src/main/abstraction/vca.cpp \
+    src/main/control/cvcf.cpp \
+    src/main/presentation/pvcf.cpp
 
 
 INCLUDEPATH += src/main/

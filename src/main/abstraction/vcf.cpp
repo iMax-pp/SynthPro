@@ -29,7 +29,7 @@ void VCF::initialize(SynthProFactory* factory)
     m_inports.append(m_inPort);
 
     // qDebug("VCF::init Creation of inCutOff port in the VCF");
-    m_inCutOffPort = factory->createInPortReplicable(this, "in Cut Off");
+    m_inCutOffPort = factory->createInPortReplicable(this, "in Cutoff");
     m_inports.append(m_inCutOffPort);
 
     // qDebug("VCF::init Creation of out port in the VCF");
@@ -38,7 +38,7 @@ void VCF::initialize(SynthProFactory* factory)
 
     /// Creation of the Selector
     m_filterSelector = factory->createSelector(m_filterFactory->selectorConversionMap().keys(), 0,
-                                              m_filterFactory->selectorConversionMap().values(), "Filter Type", this);
+                                               m_filterFactory->selectorConversionMap().values(), "Filter Type", this);
 
     /// Connection of the Selector
     connect(m_filterSelector, SIGNAL(choiceChanged(int)), this, SLOT(filterChanged(int)));

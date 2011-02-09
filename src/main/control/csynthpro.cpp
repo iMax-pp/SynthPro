@@ -2,6 +2,7 @@
 
 #include "control/cmodule.h"
 #include "control/cmoduleout.h"
+#include "control/cvcf.h"
 #include "control/cvco.h"
 #include <QGraphicsScene>
 
@@ -62,6 +63,7 @@ void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
         module = dynamic_cast<Module*>(m_factory->createVCO());
         break;
     case QtFactory::VCFId:
+        module = dynamic_cast<Module*>(m_factory->createVCF());
         break;
     case QtFactory::VCAId:
         break;
