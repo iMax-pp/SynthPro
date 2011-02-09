@@ -31,9 +31,6 @@ int main()
     TestWaveGeneratorEmpty testWaveGeneratorEmpty;
     QTest::qExec(&testWaveGeneratorEmpty);
 
-    TestModuleBufferRecorder testModuleBufferRecorder;
-    QTest::qExec(&testModuleBufferRecorder);
-
     TestWaveGeneratorTriangle testWaveGeneratorTriangle;
     QTest::qExec(&testWaveGeneratorTriangle);
 
@@ -48,4 +45,7 @@ int main()
 
     TestAudioDeviceProvider testAudioDeviceProvider;
     QTest::qExec(&testAudioDeviceProvider);
+
+    TestModuleBufferRecorder testModuleBufferRecorder;
+    QTest::qExec(&testModuleBufferRecorder);
 }

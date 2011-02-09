@@ -91,7 +91,6 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testwavegeneratorsaw.cpp \
     src/test/abstraction/testwavegeneratorsinus.cpp \
     src/main/abstraction/clock.cpp \
-    src/main/factory/wavegeneratorfactory.cpp \
     src/test/abstraction/testaudiodeviceprovider.cpp \
     src/main/abstraction/vcf.cpp \
     src/main/abstraction/filterdummy.cpp \
@@ -99,7 +98,8 @@ SOURCES += src/test/test.cpp \
     src/main/abstraction/filterlp229.cpp \
     src/main/factory/filterfactory.cpp \
     src/main/abstraction/vca.cpp \
-    src/test/abstraction/testvca.cpp
+    src/test/abstraction/testvca.cpp \
+    src/main/factory/wavegeneratorfactorydummy.cpp
 
 
 INCLUDEPATH += src/main/ src/test/
