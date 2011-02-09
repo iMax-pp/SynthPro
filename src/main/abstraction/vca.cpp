@@ -23,10 +23,11 @@ void VCA::initialize(SynthProFactory* factory)
 
 void VCA::ownProcess()
 {
-    qDebug() << "ownProcess";
+    // ask to the buffer to multiply its value by a coefficient
     m_input1->buffer()->mul(m_gain->value());
+
+    // copy the modified input buffer in the ouput buffer
     for (int i = 0;i < m_input1->buffer()->length();i++) {
-        qDebug() << "boucle";
         m_output1->buffer()->data()[i] = m_input1->buffer()->data()[i];
     }
 }
