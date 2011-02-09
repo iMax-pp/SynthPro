@@ -44,7 +44,8 @@ date : semaine 6 - 2011
     - Gestion des câbles (création, destruction, etc);
 - Julien RF :
     - Gestion héritage "en diamant";
-    - Mettre Initialize en methode virtuelle pure pour les modules.
+    - PModuleOut ;
+    - Ajout d’une property `name` aux Ports ;
 - Cyrille :
     - Réglages (potard et selecteur);
     - Intégration réglages dans VCO;
