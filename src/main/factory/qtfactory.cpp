@@ -149,8 +149,9 @@ Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* pa
 
 Selector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent)
 {
-    CSelector* selector = new CSelector(keys, defaultKey, parent);
-    PSelector* presentation = new PSelector(values, name, dynamic_cast<CModule*>(parent)->presentation());
+    CModule* cParent = dynamic_cast<CModule*>(parent);
+    CSelector* selector = new CSelector(keys, defaultKey, cParent);
+    PSelector* presentation = new PSelector(values, name, cParent->presentation());
     selector->setPresentation(presentation);
 
     return selector;

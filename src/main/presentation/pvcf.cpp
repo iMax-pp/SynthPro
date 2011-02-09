@@ -1,9 +1,9 @@
 #include "pvcf.h"
 
 #include "control/cvcf.h"
-#include "pdimmer.h"
-#include "pport.h"
-#include "pselector.h"
+#include "presentation/pdimmer.h"
+#include "presentation/pport.h"
+#include "presentation/pselector.h"
 
 #include <QFont>
 #include <QGraphicsSimpleTextItem>
@@ -16,7 +16,7 @@ PVCF::PVCF(CVCF* control)
 void PVCF::initialize(PPort* in, PPort* cutOff, PPort* out, PSelector* selector, PDimmer* dimmer)
 {
     // Resize PVCO to integrate the Components nicely.
-    setGeometry(0, 0, 225, 175);
+    QGraphicsWidget::setGeometry(0, 0, 225, 175);
 
     // Create a Title.
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("VCF", this);
