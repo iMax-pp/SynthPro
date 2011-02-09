@@ -24,9 +24,9 @@ public:
 
 
 protected:
-    static const qreal GAIN_MIN = -5;
-    static const qreal GAIN_MAX = 5;
-    static const qreal GAIN_DEFAULT = 0;
+    static const qreal GAIN_MIN = 0;
+    static const qreal GAIN_MAX = 2;
+    static const qreal GAIN_DEFAULT = 1;
 
     InPort* m_inPort;
     OutPort* m_outPort;

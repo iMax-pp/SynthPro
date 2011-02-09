@@ -15,7 +15,7 @@ PVCA::PVCA(CVCA* control)
 void PVCA::initialize(PPort* in, PPort* out, PDimmer* dimmer)
 {
     // Resize PVCO to integrate the Components nicely.
-    setRect(0, 0, 225, 175);
+    setGeometry(0, 0, 225, 175);
 
     // Create a Title.
     QGraphicsSimpleTextItem* title = new QGraphicsSimpleTextItem("VCA", this);
