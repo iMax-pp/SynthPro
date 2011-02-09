@@ -11,7 +11,7 @@ class PVCA : public PModule {
 public:
     PVCA(CVCA*);
 
-    void initialize(PPort* in, PPort* out, PDimmer*);
+    void initialize(PPort* in, PPort* out, PPort* controlIn, PDimmer*);
 };
 
 #endif // PVCA_H

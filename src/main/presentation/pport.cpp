@@ -10,12 +10,11 @@
 #include <QStyle>
 
 PPort::PPort(CPort* control, QGraphicsItem* parent)
-    : QGraphicsItem(parent)
+    : QGraphicsWidget(parent)
     , m_control(control)
     , m_label(0)
     , m_port(0)
 {
-    qDebug() << "PPort::PPort parent =" << (long)parent;
     QStyle* style = QApplication::style();
 
     // Create label for port.
@@ -33,6 +32,9 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
     m_port->setPen(Qt::NoPen);
     m_port->setBrush(style->standardPalette().brush(QPalette::Mid));
     m_port->setPos(0, -m_port->boundingRect().height() / 2);
+
+    setMinimumSize(childrenBoundingRect().size());
+    setMaximumSize(childrenBoundingRect().size());
 }
 
 void PPort::paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)

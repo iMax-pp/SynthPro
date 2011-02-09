@@ -35,51 +35,47 @@ Itération 3
 date : semaine 6 (7, 8 Fevrier) - 2011
 
 - Julien N. :
-    - Test unitaire sur ModuleBufferRecorder et les WaveGenerator.
-    - Horloge et module Out.
+    - Test unitaire sur ModuleBufferRecorder et les WaveGenerator;
+    - Horloge et module Out;
 - Maxime :
     - Gestion drag'n'drop;
     - Implementation graphique du potard, du sélecteur;
     - Gestion des câbles (création, destruction, etc);
 - Julien RF :
     - Gestion héritage "en diamant";
-    - PModuleOut ;
-    - Ajout d’une property `name` aux Ports ;
-    - Suppression de `OutPort::swapBuffers()` et *pull-up* de `InPort::m_buffer` et `OutPort::m_buffer` dans `Port`.
+    - PModuleOut;
+    - Ajout d’une property `name` aux Ports;
+    - Suppression de `OutPort::swapBuffers()` et *pull-up* de `InPort::m_buffer` et `OutPort::m_buffer` dans `Port`;
 - Cyrille :
     - Réglages (potard et selecteur);
-    - Intégration réglages dans VCO;
+    - Intégration réglages dans VCO.
 
 Itération 4
 -----------
 date :  semaine 6 (mercredi 9 - vendredi 11)
 
 - Julien N. :
-    - VCF, FilterFactory, Filtres
-
+    - VCF;
+    - Filtres (LP, HP…);
+    - FilterFactory;
 - Maxime :
-    - C et P de VCF
-    - C et P de VCA
-
+    - Contrôle et Présentation de VCF et VCA;
+    - Adaptation look&feel;
+    - Retroaction;
 - Julien RF :
-    - Layout des modules (taille dynamique)
-    - Intégration des Layout.
-    - Adaptation look&feel.
-
+    - Layout des modules (taille dynamique);
+    - Intégration des Layout;
 - Cyrille :
-    - VCA
-    - ADSR
+    - VCA;
+    - ADSR.
 
 Roadmap (todo)
 ---------
-- Retroaction.
-- VCF
-- adsr
-- Keyboard virtuel
-- Oscillo
-- Items graphiques (VCO, VCF, ports, output, cable)
+- Keyboard virtuel;
+- Oscillo;
+- Entrée MIDI.
 
 Tweaking
 ----------
-- Optimiser InPort::fetch() (en deux passes).
+- Optimiser `InPort::fetch()` (en deux passes);
 - Penser à Normaliser le signal de la sortie Out, mais également le BufferRecorder.

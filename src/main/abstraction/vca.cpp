@@ -15,14 +15,20 @@ void VCA::initialize(SynthProFactory* factory)
     m_inPort = factory->createInPortReplicable(this, "in");
     m_inports.append(m_inPort);
 
+    m_controlInput = factory->createInPort(this, "controlInput");
+    m_inports.append(m_controlInput);
+
     m_outPort = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_outPort);
 
-    m_gainDimmer = factory->createDimmer(GAIN_MIN, GAIN_MAX, GAIN_DEFAULT, this);
+    m_gainDimmer = factory->createDimmer("Gain", GAIN_MIN, GAIN_MAX, GAIN_DEFAULT, this);
 }
 
 void VCA::ownProcess()
 {
+    for (int i = 0 ; i < m_controlInput->buffer()->length();i++) {
+        m_inPort->buffer()->data()[i] = m_inPort->buffer()->data()[i]*m_controlInput->buffer()->data()[i];
+    }
     // ask to the buffer to multiply its value by a coefficient
     m_inPort->buffer()->mul(m_gainDimmer->value());
 

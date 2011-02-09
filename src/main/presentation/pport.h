@@ -1,11 +1,11 @@
 #ifndef PPORT_H
 #define PPORT_H
 
-#include <QGraphicsItem>
+#include <QGraphicsWidget>
 
 class CPort;
 
-class PPort : public QGraphicsItem {
+class PPort : public QGraphicsWidget {
 public:
     PPort(CPort*, QGraphicsItem* parent);
 

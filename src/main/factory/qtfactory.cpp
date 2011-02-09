@@ -135,12 +135,12 @@ VCA* QtFactory::createVCA()
     // return vca;
     return vca;
 }
-Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
+Dimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
 
-    PDimmer* presentation = new PDimmer(dimmer->min() * CDimmer::DISCR,
+    PDimmer* presentation = new PDimmer(name, dimmer->min() * CDimmer::DISCR,
                                         dimmer->max() * CDimmer::DISCR,
                                         dimmer->value() * CDimmer::DISCR,
                                         cParent->presentation());
@@ -151,8 +151,9 @@ Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* pa
 
 Selector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent)
 {
-    CSelector* selector = new CSelector(keys, defaultKey, parent);
-    PSelector* presentation = new PSelector(values, name, dynamic_cast<CModule*>(parent)->presentation());
+    CModule* cParent = dynamic_cast<CModule*>(parent);
+    CSelector* selector = new CSelector(keys, defaultKey, cParent);
+    PSelector* presentation = new PSelector(values, name, cParent->presentation());
     selector->setPresentation(presentation);
 
     return selector;
