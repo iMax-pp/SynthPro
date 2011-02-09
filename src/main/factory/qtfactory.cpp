@@ -12,10 +12,12 @@
 #include "control/cport.h"
 #include "control/cselector.h"
 #include "control/csynthpro.h"
+#include "control/cvca.h"
 #include "control/cvcf.h"
 #include "control/cvco.h"
 #include "control/cwire.h"
 #include "presentation/pmoduleout.h"
+#include "presentation/pvca.h"
 #include "presentation/pvcf.h"
 #include "presentation/pvco.h"
 
@@ -121,17 +123,17 @@ VCF* QtFactory::createVCF()
 VCA* QtFactory::createVCA()
 {
     // Create the VCO
-    // CVCA* vca = new CVCA();
+    CVCA* vca = new CVCA();
 
     // Create its presentation
-    // PVCA* p = new PVCA(vca);
-    // vca->setPresentation(p);
+    PVCA* p = new PVCA(vca);
+    vca->setPresentation(p);
 
     // Initialize it (ports creation)
-    // vca->initialize(this);
+    vca->initialize(this);
 
     // return vca;
-    return 0;
+    return vca;
 }
 Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
 {
