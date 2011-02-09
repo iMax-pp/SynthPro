@@ -4,7 +4,8 @@
 #include "coutport.h"
 
 CWire::CWire()
-    : m_presentation(0)
+    : QObject(0)
+    , m_presentation(0)
     , m_inPort(0)
     , m_outPort(0)
 {
@@ -12,16 +13,6 @@ CWire::CWire()
 
 CWire::~CWire()
 {
-    if (m_inPort && m_inPort->wire()) {
-        // If an inPort is connected, then deconnect it.
-        inPort()->setWire(0);
-    }
-
-    if (m_outPort && m_outPort->wire()) {
-        // If an outPort is connected, then deconnect it.
-        outPort()->setWire(0);
-    }
-
     if (m_presentation) {
         delete m_presentation;
     }

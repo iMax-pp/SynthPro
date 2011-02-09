@@ -5,8 +5,6 @@
 #include "port.h"
 
 class OutPort : public virtual Port {
-    Q_OBJECT
-
 public:
     OutPort(Module* parent, const QString& name, bool replicable = false, bool gate = false);
 
