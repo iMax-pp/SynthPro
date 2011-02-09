@@ -32,6 +32,7 @@ protected:
     static const qreal GAIN_DEFAULT = 1;
 
     InPort* m_inPort;
+    InPort* m_controlInput;
     OutPort* m_outPort;
     Dimmer* m_gainDimmer;
 };
