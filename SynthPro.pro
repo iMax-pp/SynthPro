@@ -57,7 +57,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/cmoduleout.h \
     src/main/abstraction/vca.h \
     src/main/control/cvcf.h \
-    src/main/presentation/pvcf.h
+    src/main/presentation/pvcf.h \
+    src/main/control/cvca.h \
+    src/main/presentation/pvca.h
 
 
 SOURCES += src/main/abstraction/synthpro.cpp \
@@ -110,7 +112,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/cmoduleout.cpp \
     src/main/abstraction/vca.cpp \
     src/main/control/cvcf.cpp \
-    src/main/presentation/pvcf.cpp
+    src/main/presentation/pvcf.cpp \
+    src/main/control/cvca.cpp \
+    src/main/presentation/pvca.cpp
 
 
 INCLUDEPATH += src/main/

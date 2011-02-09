@@ -12,13 +12,13 @@ VCA::VCA(QObject* parent)
 
 void VCA::initialize(SynthProFactory* factory)
 {
-    m_input1 = factory->createInPortReplicable(this, "input1");
-    m_inports.append(m_input1);
+    m_inPort = factory->createInPortReplicable(this, "in");
+    m_inports.append(m_inPort);
 
-    m_output1 = factory->createOutPortReplicable(this, "output1");
-    m_outports.append(m_output1);
+    m_outPort = factory->createOutPortReplicable(this, "out");
+    m_outports.append(m_outPort);
 
-    m_gain = factory->createDimmer(GAIN_MIN, GAIN_MAX, GAIN_DEFAULT, this);
+    m_gainDimmer = factory->createDimmer(GAIN_MIN, GAIN_MAX, GAIN_DEFAULT, this);
 }
 
 void VCA::ownProcess()
@@ -34,10 +34,10 @@ void VCA::ownProcess()
 
 qreal VCA::gain()
 {
-    return m_gain->value();
+    return m_gainDimmer->value();
 }
 
 void VCA::setGain(qreal gain)
 {
-    m_gain->setValue(gain);
+    m_gainDimmer->setValue(gain);
 }
