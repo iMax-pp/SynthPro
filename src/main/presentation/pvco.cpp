@@ -2,10 +2,10 @@
 
 #include "control/cvco.h"
 #include "pdimmer.h"
+#include "pport.h"
 #include "pselector.h"
-#include <QDial>
+
 #include <QFont>
-#include <QGraphicsScene>
 #include <QGraphicsSimpleTextItem>
 
 PVCO::PVCO(CVCO* control)

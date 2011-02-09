@@ -1,23 +1,18 @@
 #ifndef PVCO_H
 #define PVCO_H
 
-#include "presentation/pdimmer.h"
-#include "presentation/pmodule.h"
-#include "presentation/pport.h"
-#include "presentation/pselector.h"
-#include <QGraphicsProxyWidget>
+#include "pmodule.h"
 
 class CVCO;
+class PDimmer;
+class PPort;
+class PSelector;
 
 class PVCO : public PModule {
 public:
     PVCO(CVCO*);
 
     void initialize(PPort* vfm, PPort* out, PSelector*, PDimmer*);
-
-private:
-    QGraphicsProxyWidget* m_waveSelector;
-    QGraphicsProxyWidget* m_kSelector;
 };
 
 #endif // PVCO_H

@@ -32,27 +32,47 @@ date : semaine 5 - 2011
 
 Itération 3
 -----------
-date : semaine 6 - 2011
+date : semaine 6 (7, 8 Fevrier) - 2011
 
 - Julien N. :
     - Test unitaire sur ModuleBufferRecorder et les WaveGenerator.
     - Horloge et module Out.
-    - Mettre Init en virtuelle dans module buffer recorder.
 - Maxime :
     - Gestion drag'n'drop;
     - Implementation graphique du potard, du sélecteur;
     - Gestion des câbles (création, destruction, etc);
 - Julien RF :
     - Gestion héritage "en diamant";
-    - Mettre Initialize en methode virtuelle pure pour les modules.
+    - PModuleOut ;
+    - Ajout d’une property `name` aux Ports ;
+    - Suppression de `OutPort::swapBuffers()` et *pull-up* de `InPort::m_buffer` et `OutPort::m_buffer` dans `Port`.
 - Cyrille :
     - Réglages (potard et selecteur);
     - Intégration réglages dans VCO;
-    - VCA;
+
+Itération 4
+-----------
+date :  semaine 6 (mercredi 9 - vendredi 11)
+
+- Julien N. :
+    - VCF, FilterFactory, Filtres
+
+- Maxime :
+    - C et P de VCF
+    - C et P de VCA
+
+- Julien RF :
+    - Layout des modules (taille dynamique)
+    - Intégration des Layout.
+    - Adaptation look&feel.
+
+- Cyrille :
+    - VCA
+    - ADSR
 
 Roadmap (todo)
 ---------
-- VCA (juste une multiplication)
+- Retroaction.
 - VCF
 - adsr
 - Keyboard virtuel

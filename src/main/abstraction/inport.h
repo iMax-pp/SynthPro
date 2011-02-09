@@ -4,8 +4,6 @@
 #include "port.h"
 
 class InPort : public virtual Port {
-    Q_OBJECT
-
 public:
     InPort(Module* parent, const QString& name, bool replicable = false, bool gate = false);
 

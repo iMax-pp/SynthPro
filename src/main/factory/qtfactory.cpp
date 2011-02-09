@@ -12,9 +12,11 @@
 #include "control/cport.h"
 #include "control/cselector.h"
 #include "control/csynthpro.h"
+#include "control/cvcf.h"
 #include "control/cvco.h"
 #include "control/cwire.h"
 #include "presentation/pmoduleout.h"
+#include "presentation/pvcf.h"
 #include "presentation/pvco.h"
 
 #include <QDebug>
@@ -100,6 +102,37 @@ VCO* QtFactory::createVCO()
     return vco;
 }
 
+VCF* QtFactory::createVCF()
+{
+    // Create the VCF
+    CVCF* vcf = new CVCF();
+
+    // Create its presentation
+    PVCF* p = new PVCF(vcf);
+    vcf->setPresentation(p);
+
+    // Initialize it (ports creation)
+    vcf->initialize(this);
+
+    // return vco;
+    return vcf;
+}
+
+VCA* QtFactory::createVCA()
+{
+    // Create the VCO
+    // CVCA* vca = new CVCA();
+
+    // Create its presentation
+    // PVCA* p = new PVCA(vca);
+    // vca->setPresentation(p);
+
+    // Initialize it (ports creation)
+    // vca->initialize(this);
+
+    // return vca;
+    return 0;
+}
 Dimmer* QtFactory::createDimmer(qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);

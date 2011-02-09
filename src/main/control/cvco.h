@@ -2,11 +2,11 @@
 #define CVCO_H
 
 #include "abstraction/vco.h"
-#include "control/cmodule.h"
+#include "cmodule.h"
 
 class CVCO : public VCO, public CModule {
 public:
-    CVCO(QObject* parent = 0);
+    explicit CVCO(QObject* parent = 0);
 
     void initialize(SynthProFactory*);
 };

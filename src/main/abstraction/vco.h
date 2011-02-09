@@ -1,8 +1,12 @@
 #ifndef VCO_H
 #define VCO_H
 
+#include "abstraction/inport.h"
 #include "abstraction/module.h"
 #include "audiodeviceprovider.h"
+#include "factory/wavegeneratorfactory.h"
+
+#include <QHash>
 
 class InPort;
 class OutPort;
@@ -70,6 +74,7 @@ protected:
     static const qreal K_MIN = -5;
     static const qreal K_MAX = 5;
     static const qreal K_DEFAULT = 0;
+    static const QString SHAPE_DEFAULT;
 };
 
 #endif // VCO_H

@@ -23,6 +23,10 @@ public:
     /// add a float to all buffer's values
     void add(const qreal);
 
+    /// multiply all buffer's value by a real
+
+    void mul(const qreal);
+
     /// Fill this buffer with 0
     void clear();
 
