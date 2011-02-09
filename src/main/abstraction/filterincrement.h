@@ -12,7 +12,7 @@ class FilterIncrement : public Filter {
 public:
     FilterIncrement();
 
-    virtual void apply(Buffer* bufferIn, Buffer* bufferOut);
+    virtual void apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal resonance, Buffer* bufferOut);
 };
 
 #endif // FILTERINCREMENT_H

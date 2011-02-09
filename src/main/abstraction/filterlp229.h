@@ -15,7 +15,7 @@ class FilterLP229 : public Filter
 public:
     FilterLP229();
 
-    virtual void apply(Buffer* bufferIn, Buffer* bufferOut);
+    virtual void apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal resonance, Buffer* bufferOut);
 
 private:
     qreal m_valueInM1; // Value In T-1.

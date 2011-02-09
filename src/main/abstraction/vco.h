@@ -1,13 +1,13 @@
 #ifndef VCO_H
 #define VCO_H
 
-#include "QHash"
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
 #include "abstraction/outport.h"
 #include "audiodeviceprovider.h"
 #include "factory/wavegeneratorfactory.h"
 
+#include <QHash>
 
 class WaveGenerator;
 class SynthProFactory;

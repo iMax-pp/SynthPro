@@ -15,7 +15,7 @@ FilterLP229::FilterLP229()
 
 /// TODO : les params r et f peuvent varier au cours du temps !!!!! Il me faut plusieurs buffers d'entrées ?!
 
-void FilterLP229::apply(Buffer* bufferIn, Buffer* bufferOut)
+void FilterLP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal resonance, Buffer* bufferOut)
 {
     /*
     r  = rez amount, from sqrt(2) to ~ 0.1
