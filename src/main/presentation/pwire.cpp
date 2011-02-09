@@ -14,7 +14,8 @@ PWire::PWire(CWire* control, QGraphicsScene* scene)
     , m_control(control)
 {
     QStyle* style = QApplication::style();
-    setPen(QPen(style->standardPalette().brush(QPalette::Button), 3));
+    setPen(QPen(style->standardPalette().brush(QPalette::Shadow), 3,
+                Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 }
 
 QRectF PWire::boundingRect() const
