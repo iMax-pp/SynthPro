@@ -56,12 +56,12 @@ void ADSR::ownProcess()
 void ADSR::processADSR(int upGate, int downGate)
 {
     // these values are not qreals but integers
-    qreal attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    qreal decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    qreal releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
     int bufferIndex = 0;
 
-    // "eat" the values befor upGate
+    // "eat" the values before upGate
     while (bufferIndex < upGate  && bufferIndex < m_gate->buffer()->length()) {
         bufferIndex++;
     }
