@@ -17,6 +17,8 @@ public:
 
     inline CPort* control() const { return m_control; }
 
+    void addReplication(PortWidget* replication);
+
 private:
     CPort* m_control;
     TextWidget* m_label;
