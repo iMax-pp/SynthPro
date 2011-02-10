@@ -62,43 +62,4 @@ void ADSR::ownProcess()
     }
 
 }
-// Todo : calculate of the output buffer is wrong
 
-void ADSR::processADSR()
-{
-    // these values are not qreals but integers
-    qreal attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    qreal decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    qreal releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    int bufferIndex = 0;
-
-    // "eat" the values befor upGate
-    while (bufferIndex < upGate  && bufferIndex < m_gate->buffer()->length()) {
-        bufferIndex++;
-    }
-    while (m_timeLine < attackInSample && downGate != m_timeLine && upGate != m_timeLine && bufferIndex < m_gate->buffer()->length()) {
-        m_outPort->buffer()->data()[bufferIndex] = m_timeLine / attackInSample;
-        m_timeLine++;
-        bufferIndex++;
-    }
-    while (m_timeLine < attackInSample + decayInSample && downGate != m_timeLine && upGate != m_timeLine && bufferIndex < m_gate->buffer()->length()) {
-        m_outPort->buffer()->data()[bufferIndex] = m_timeLine * (1-m_sustainDimmer->value()) / decayInSample;
-        m_timeLine++;
-        bufferIndex++;
-    }
-    while (m_timeLine < downGate && upGate != m_timeLine && bufferIndex < m_gate->buffer()->length()) {
-        m_outPort->buffer()->data()[bufferIndex] = m_sustainDimmer->value();
-        m_timeLine++;
-        bufferIndex++;
-    }
-    int sustainEnd = m_timeLine;
-    while (m_timeLine <= sustainEnd + releaseInSample &&  bufferIndex < m_gate->buffer()->length()) {
-        m_outPort->buffer()->data()[bufferIndex] = m_timeLine*m_sustainDimmer->value() / releaseInSample;
-        m_timeLine++;
-        bufferIndex++;
-    }
-    // if release is complete, reinitialization of m_timeLine
-    if (m_timeLine > sustainEnd + releaseInSample) {
-        m_timeLine = 0;
-    }
-}
