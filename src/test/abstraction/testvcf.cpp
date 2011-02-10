@@ -9,7 +9,8 @@
 
 #include <QDebug>
 
-void TestVCF::testVCF() {
+void TestVCF::testVCF()
+{
     SimpleFactory factory;
 
     // VCO

@@ -6,8 +6,8 @@
 
 FilterFactory::FilterFactory()
 {
-    m_selectorConversionMap.insert(2, "FilterLP229");
-    m_selectorConversionMap.insert(3, "FilterHP229");
+    m_selectorConversionMap.insert(0, "FilterLP229");
+    m_selectorConversionMap.insert(1, "FilterHP229");
 }
 
 Filter* FilterFactory::createFilter(const QString& filterType)
