@@ -52,7 +52,7 @@ date : semaine 6 (7, 8 Fevrier) - 2011
 
 Itération 4
 -----------
-date :  semaine 6 (mercredi 9 - vendredi 11)
+date :  semaine 6 (mercredi 9 - jeudi 10)
 
 - Julien N. :
     - VCF;
@@ -72,14 +72,34 @@ date :  semaine 6 (mercredi 9 - vendredi 11)
     - VCA;
     - ADSR.
 
+Itération 5
+-----------
+date :  semaine 6 (vendredi 11 - )
+
+- Julien N. :
+    - Oscillo;
+    - Keyboard virtuel;
+
+- Maxime :
+    - PushButton (qui gere press/release) à ajouter aux interfaces (retrigger ADSR);
+    - Présentation controle ADSR;
+    - Présentation et Contrôle Module File Output;
+
+- Julien RF. :
+     - Refactoring VPort/Port;
+     - Suppression des ports répliqués;
+     - Feedback des ports (MouseHover);
+     - Wire plus jolis.
+
+- Cyrille :
+     - 
+
 Roadmap (todo)
 ---------
-- PushButton (qui gere press/release) à ajouter aux interfaces (retrigger ADSR);
-- Présentation et Contrôle Module File Output;
-- Keyboard virtuel;
-- Oscillo;
+- Fond d'écran (léger et subtil);
+- Icones dans Dockbars (et drag'n'drop d'icones);
+- Bouton on/off du synthé;
 - Entrée MIDI;
-- Suppression des modules.
 
 Tweaking
 ----------
