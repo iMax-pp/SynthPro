@@ -63,7 +63,7 @@ date :  semaine 6 (mercredi 9 - vendredi 11)
     - Contrôle et Présentation de VCF, VCA et LFO;
     - Adaptation look&feel;
     - Retroaction;
-    - Intégration du layout dans VCF, VCA, ModuleOut;
+    - Intégration du layout dans les présentations de modules;
 - Julien RF :
     - Layout des modules (taille dynamique);
     - Réplication des ports;
@@ -74,13 +74,16 @@ date :  semaine 6 (mercredi 9 - vendredi 11)
 
 Roadmap (todo)
 ---------
-- PushButton (qui gere press/release) à ajouter aux interfaces (retrigger ADSR)
+- PushButton (qui gere press/release) à ajouter aux interfaces (retrigger ADSR);
+- Présentation et Contrôle Module File Output;
 - Keyboard virtuel;
 - Oscillo;
-- Entrée MIDI.
+- Entrée MIDI;
+- Suppression des modules.
 
 Tweaking
 ----------
-- Optimisation Filtres (multiplications, ou voir site).
+- **Refactoring noms et dossiers**;
+- Optimisation Filtres (multiplications, ou voir site);
 - Optimiser `InPort::fetch()` (en deux passes);
 - Penser à Normaliser le signal de la sortie Out, mais également le BufferRecorder.
