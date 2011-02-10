@@ -2,8 +2,8 @@
 
 #include "control/cvco.h"
 #include "presentation/pdimmer.h"
-#include "presentation/pport.h"
 #include "presentation/pselector.h"
+#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>
@@ -15,22 +15,21 @@ PVCO::PVCO(CVCO* control)
 {
 }
 
-void PVCO::initialize(PPort* pVfm, PPort* pOut, PSelector* pSel, PDimmer* pK)
+void PVCO::initialize(PVirtualPort* vfm, PVirtualPort* out, PSelector* selector, PDimmer* k)
 {
     TextWidget* title = new TextWidget("VCO", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    pK->setMaximumSize(90, 90);
-
-    pSel->setMaximumSize(120, 155);
+    k->setMaximumSize(90, 90);
+    selector->setMaximumSize(120, 155);
 
     // Layout
-    bottomArea()->addCornerAnchors(pVfm, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
-    bottomArea()->addAnchor(pVfm, Qt::AnchorRight, pK, Qt::AnchorLeft);
-    bottomArea()->addAnchor(pK, Qt::AnchorRight, pSel, Qt::AnchorLeft);
-    bottomArea()->addAnchor(pSel, Qt::AnchorRight, bottomArea(), Qt::AnchorRight);
-    bottomArea()->addAnchors(pSel, bottomArea(), Qt::Vertical);
-    bottomArea()->addAnchor(pK, Qt::AnchorBottom, bottomArea(), Qt::AnchorBottom);
-    rightArea()->addAnchors(pOut, rightArea());
+    bottomArea()->addCornerAnchors(vfm, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
+    bottomArea()->addAnchor(vfm, Qt::AnchorRight, k, Qt::AnchorLeft);
+    bottomArea()->addAnchor(k, Qt::AnchorRight, selector, Qt::AnchorLeft);
+    bottomArea()->addAnchor(selector, Qt::AnchorRight, bottomArea(), Qt::AnchorRight);
+    bottomArea()->addAnchors(selector, bottomArea(), Qt::Vertical);
+    bottomArea()->addAnchor(k, Qt::AnchorBottom, bottomArea(), Qt::AnchorBottom);
+    rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
 }

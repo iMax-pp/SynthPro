@@ -5,14 +5,14 @@
 
 class CVCO;
 class PDimmer;
-class PPort;
+class PVirtualPort;
 class PSelector;
 
 class PVCO : public PModule {
 public:
     PVCO(CVCO*);
 
-    void initialize(PPort* vfm, PPort* out, PSelector*, PDimmer*);
+    void initialize(PVirtualPort* vfm, PVirtualPort* out, PSelector*, PDimmer*);
 };
 
 #endif // PVCO_H

@@ -4,8 +4,8 @@
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
 #include "abstraction/outport.h"
-#include "abstraction/port.h"
 #include "abstraction/sequencer.h"
+#include "abstraction/virtualport.h"
 
 SynthPro::SynthPro(QObject* parent)
     : QObject(parent)
@@ -23,10 +23,10 @@ void SynthPro::add(Module* module)
 {
     m_modules.append(module);
 
-    foreach (Port* port, module->inports()) {
+    foreach (VirtualPort* port, module->inports()) {
         connect(port, SIGNAL(connectionsChanged()), this, SLOT(connectionsChanged()));
     }
-    foreach (Port* port, module->outports()) {
+    foreach (VirtualPort* port, module->outports()) {
         connect(port, SIGNAL(connectionsChanged()), this, SLOT(connectionsChanged()));
     }
 }

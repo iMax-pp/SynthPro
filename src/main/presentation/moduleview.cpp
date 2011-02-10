@@ -37,3 +37,14 @@ void ModuleView::dragMoveEvent(QDragMoveEvent* event)
     QGraphicsView::dragMoveEvent(event);
     event->accept();
 }
+
+void ModuleView::wheelEvent(QWheelEvent* event)
+{
+    if (event->modifiers() & Qt::ControlModifier) {
+        qreal f = event->delta() > 0 ? 1.15 : 0.85;
+        scale(f, f);
+        event->accept();
+    } else {
+        QGraphicsView::wheelEvent(event);
+    }
+}

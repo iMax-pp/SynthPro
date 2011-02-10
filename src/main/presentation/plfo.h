@@ -5,14 +5,14 @@
 
 class CLFO;
 class PDimmer;
-class PPort;
+class PVirtualPort;
 class PSelector;
 
 class PLFO : public PModule {
 public:
     PLFO(CLFO*);
 
-    void initialize(PPort* output, PDimmer* k, PDimmer* range, PDimmer* offset, PSelector*);
+    void initialize(PVirtualPort* out, PDimmer* k, PDimmer* range, PDimmer* offset, PSelector*);
 
 };
 

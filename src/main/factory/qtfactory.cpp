@@ -4,6 +4,7 @@
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleoscilloscope.h"
 #include "abstraction/sequencer.h"
+#include "control/cadsr.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/clfo.h"
@@ -11,14 +12,15 @@
 #include "control/cmoduleout.h"
 #include "control/coscilloscope.h"
 #include "control/coutport.h"
-#include "control/cport.h"
 #include "control/cportwidget.h"
 #include "control/cselector.h"
 #include "control/csynthpro.h"
 #include "control/cvca.h"
 #include "control/cvcf.h"
 #include "control/cvco.h"
+#include "control/cvirtualport.h"
 #include "control/cwire.h"
+#include "presentation/padsr.h"
 #include "presentation/plfo.h"
 #include "presentation/pmoduleout.h"
 #include "presentation/portwidget.h"
@@ -26,6 +28,7 @@
 #include "presentation/pvca.h"
 #include "presentation/pvcf.h"
 #include "presentation/pvco.h"
+#include "presentation/pvirtualport.h"
 
 #include <QDebug>
 #include <QIODevice>
@@ -47,7 +50,7 @@ InPort* QtFactory::createInPort(Module* parent, const QString& name, bool replic
     qDebug() << "QtFactory::createInPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     CInPort* port = new CInPort(cParent, this, name, replicable, gate);
 
-    PPort* p = new PPort(port, cParent->presentation());
+    PVirtualPort* p = new PVirtualPort(port, cParent->presentation());
     port->setPresentation(p);
 
     port->initialize();
@@ -76,7 +79,7 @@ OutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool repl
     qDebug() << "QtFactory::createOutPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     COutPort* port = new COutPort(cParent, this, name, replicable, gate);
 
-    PPort* p = new PPort(port, cParent->presentation());
+    PVirtualPort* p = new PVirtualPort(port, cParent->presentation());
     port->setPresentation(p);
 
     port->initialize();
@@ -116,7 +119,7 @@ VCO* QtFactory::createVCO(SynthPro* parent)
 
 LFO* QtFactory::createLFO(SynthPro* parent)
 {
-    // Create the VCO
+    // Create the LFO
     CLFO* lfo = new CLFO(parent);
 
     // Create its presentation
@@ -147,7 +150,7 @@ VCF* QtFactory::createVCF(SynthPro* parent)
 
 VCA* QtFactory::createVCA(SynthPro* parent)
 {
-    // Create the VCO
+    // Create the VCA
     CVCA* vca = new CVCA(parent);
 
     // Create its presentation
@@ -160,6 +163,24 @@ VCA* QtFactory::createVCA(SynthPro* parent)
     // return vca;
     return vca;
 }
+
+ADSR* QtFactory::createADSR(SynthPro* parent)
+{
+    // Create the ADSR
+    CADSR* adsr = new CADSR(parent);
+
+    // Create its presentation
+    PADSR* p = new PADSR(adsr);
+    adsr->setPresentation(p);
+
+    // Initialize it (ports creation)
+    adsr->initialize(this);
+
+    // return vca;
+    return adsr;
+
+}
+
 Dimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
@@ -241,7 +262,7 @@ CWire* QtFactory::createWire(QGraphicsScene* scene)
     return wire;
 }
 
-CPortWidget* QtFactory::createPortWidget(CPort* parent, QtFactory* factory)
+CPortWidget* QtFactory::createPortWidget(CVirtualPort* parent, QtFactory* factory)
 {
     CPortWidget* cPortWidget = new CPortWidget(parent, factory);
 

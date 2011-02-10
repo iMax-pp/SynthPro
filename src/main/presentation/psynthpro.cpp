@@ -150,7 +150,6 @@ void PSynthPro::createModuleList()
     model->addModule("VCF", QtFactory::VCFId);
     model->addModule("VCA", QtFactory::VCAId);
     model->addModule("ADSR", QtFactory::ADSRId);
-    model->addModule("LFO", QtFactory::LFOId);
     moduleList->setModel(model);
 
     m_moduleDock->setWidget(moduleList);
@@ -165,6 +164,7 @@ void PSynthPro::createInputModuleList()
     ModuleListModel* model = new ModuleListModel(this);
     model->addModule("Keyboard", QtFactory::KeyboardId);
     model->addModule("VCO", QtFactory::VCOId);
+    model->addModule("LFO", QtFactory::LFOId);
     inModuleList->setModel(model);
 
     m_inModuleDock->setWidget(inModuleList);
