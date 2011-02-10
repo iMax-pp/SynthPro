@@ -23,7 +23,7 @@ void TestWaveGeneratorSaw::testWaveGeneratorSaw()
     ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
     VCO* vco = factory.createVCO(&synthPro);
-    vco->setShape("SawWave");
+    vco->setShape("Saw");
     vco->outports().at(0)->connectTo(mbr->inports().at(0));
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
@@ -32,9 +32,4 @@ void TestWaveGeneratorSaw::testWaveGeneratorSaw()
     }
 
     QVERIFY(true);
-
-    // The WaveGenerator is automatically deleted with the VCO.
-    delete mbr;
-    delete vco;
-
 }

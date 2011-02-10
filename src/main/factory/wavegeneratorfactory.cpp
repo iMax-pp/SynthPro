@@ -9,27 +9,27 @@
 
 WaveGeneratorFactory::WaveGeneratorFactory()
 {
-    m_selectorConversionMap.insert(0, "SawWave");
-    m_selectorConversionMap.insert(1, "SinusWave");
-    m_selectorConversionMap.insert(2, "SquareWave");
-    m_selectorConversionMap.insert(3, "TriangleWave");
+    m_selectorConversionMap.insert(0, "Saw");
+    m_selectorConversionMap.insert(1, "Sinus");
+    m_selectorConversionMap.insert(2, "Square");
+    m_selectorConversionMap.insert(3, "Triangle");
 }
 
 WaveGenerator* WaveGeneratorFactory::createWaveGenerator(const QString& waveType)
 {
-    if (waveType == "SawWave") {
+    if (waveType == "Saw") {
         return new WaveGeneratorSaw();
     }
 
-    if (waveType == "SinusWave") {
+    if (waveType == "Sinus") {
         return new WaveGeneratorSinus();
     }
 
-    if (waveType == "SquareWave") {
+    if (waveType == "Square") {
         return new WaveGeneratorSquare();
     }
 
-    if (waveType == "TriangleWave") {
+    if (waveType == "Triangle") {
         return new WaveGeneratorTriangle();
     }
 

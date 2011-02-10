@@ -19,11 +19,11 @@ void TestVCF::testVCF()
 
     // VCO
     VCO* vco = factory.createVCO(&synthPro);
-    vco->setShape("EmptyWave");
+    vco->setShape("Empty");
 
     // VCF
     VCF* vcf = factory.createVCF(&synthPro);
-    vcf->setFilter("FilterIncrement");
+    vcf->setFilter("Increment");
 
     vco->outports().at(0)->connectTo(vcf->inports().at(0));
 

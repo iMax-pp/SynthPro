@@ -9,8 +9,7 @@
 /**
   * Soft saturation, from http://www.musicdsp.org/showArchiveComment.php?ArchiveID=42
   */
-class FilterSoftSaturation : public Filter
-{
+class FilterSoftSaturation : public Filter {
 public:
     FilterSoftSaturation();
 

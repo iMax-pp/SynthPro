@@ -23,7 +23,7 @@ void TestWaveGeneratorSquare::testWaveGeneratorSquare()
     ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
     VCO* vco = factory.createVCO(&synthPro);
-    vco->setShape("SquareWave");
+    vco->setShape("Square");
     vco->outports().at(0)->connectTo(mbr->inports().at(0));
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
@@ -32,8 +32,4 @@ void TestWaveGeneratorSquare::testWaveGeneratorSquare()
     }
 
     QVERIFY(true);
-
-    // The WaveGenerator is automatically deleted with the VCO.
-    delete mbr;
-    delete vco;
 }

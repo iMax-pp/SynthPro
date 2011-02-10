@@ -22,7 +22,7 @@ void TestWaveGeneratorSinus::testWaveGeneratorSinus()
     ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
     VCO* vco = factory.createVCO(&synthPro);
-    vco->setShape("SinusWave");
+    vco->setShape("Sinus");
     vco->outports().at(0)->connectTo(mbr->inports().at(0));
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
@@ -31,9 +31,4 @@ void TestWaveGeneratorSinus::testWaveGeneratorSinus()
     }
 
     QVERIFY(true);
-
-    // The WaveGenerator is automatically deleted with the VCO.
-    delete mbr;
-    delete vco;
-
 }
