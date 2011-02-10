@@ -14,11 +14,11 @@ FilterFactory::FilterFactory()
 
 Filter* FilterFactory::createFilter(const QString& filterType)
 {
-    if (filterType == "Filter LP") {
+    if (filterType == "Low Pass") {
         return new FilterLP229();
     }
 
-    if (filterType == "Filter HP") {
+    if (filterType == "High Pass") {
         return new FilterHP229();
     }
 
