@@ -1,7 +1,7 @@
 #include "poscilloscope.h"
 
 #include "control/coscilloscope.h"
-#include "presentation/pport.h"
+#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>
@@ -13,7 +13,7 @@ POscilloscope::POscilloscope(COscilloscope* control)
 {
 }
 
-void POscilloscope::initialize(PPort* input)
+void POscilloscope::initialize(PVirtualPort* input)
 {
     TextWidget* title = new TextWidget("OSC", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));

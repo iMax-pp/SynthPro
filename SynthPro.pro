@@ -69,14 +69,11 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/lfo.h \
     src/main/presentation/plfo.h \
     src/main/control/clfo.h \
-<<<<<<< HEAD
     src/main/abstraction/moduleoscilloscope.h \
     src/main/presentation/poscilloscope.h \
-    src/main/control/coscilloscope.h
-=======
+    src/main/control/coscilloscope.h \
     src/main/presentation/padsr.h \
     src/main/control/cadsr.h
->>>>>>> edcc0c239cb778815f6ed91207cc2fa46214fa60
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -140,14 +137,11 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/lfo.cpp \
     src/main/presentation/plfo.cpp \
     src/main/control/clfo.cpp \
-<<<<<<< HEAD
     src/main/abstraction/moduleoscilloscope.cpp \
     src/main/presentation/poscilloscope.cpp \
-    src/main/control/coscilloscope.cpp
-=======
+    src/main/control/coscilloscope.cpp \
     src/main/presentation/padsr.cpp \
     src/main/control/cadsr.cpp
->>>>>>> edcc0c239cb778815f6ed91207cc2fa46214fa60
 
 INCLUDEPATH += src/main/
 

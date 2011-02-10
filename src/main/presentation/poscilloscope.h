@@ -4,13 +4,13 @@
 #include "presentation/pmodule.h"
 
 class COscilloscope;
-class PPort;
+class PVirtualPort;
 
 class POscilloscope : public PModule {
 public:
     POscilloscope(COscilloscope*);
 
-    void initialize(PPort* input);
+    void initialize(PVirtualPort* input);
 };
 
 #endif // POSCILLOSCOPE_H
