@@ -29,9 +29,13 @@ void CPortWidget::setPresentation(PortWidget* presentation)
 
 void CPortWidget::setWire(CWire* wire)
 {
+    // If this port is already connected, disconnect it
     if (m_wire) {
-        // If we already have a wire, then delete it.
-        delete m_wire;
+        if (port()->out()) {
+            disconnectFrom(m_wire->inPort());
+        } else {
+            disconnectFrom(m_wire->outPort());
+        }
     }
 
     m_wire = wire;
@@ -80,9 +84,9 @@ void CPortWidget::drag()
     if (m_wire) {
         // TODO Change this behavior: in this case the current wire should be moved
         // When starting a new wire, begin by deleting the previous one.
-        CPortWidget* other = m_wire->inPort() == this
-                       ? dynamic_cast<CPortWidget*>(m_wire->outPort())
-                       : dynamic_cast<CPortWidget*>(m_wire->inPort());
+        CPortWidget* other = port()->out()
+                       ? dynamic_cast<CPortWidget*>(m_wire->inPort())
+                       : dynamic_cast<CPortWidget*>(m_wire->outPort());
         disconnectFrom(other);
     }
 
