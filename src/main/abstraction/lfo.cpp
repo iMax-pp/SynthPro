@@ -1,4 +1,4 @@
-#include "vco.h"
+#include "lfo.h"
 
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
@@ -10,26 +10,25 @@
 
 #include <QDebug>
 
-const QString VCO::SHAPE_DEFAULT = "Saw";
+const QString LFO::SHAPE_DEFAULT = "Saw";
 
-VCO::VCO(SynthPro* parent)
+LFO::LFO(SynthPro* parent)
     : Module(parent)
     , m_waveGenerator(0)
     , m_waveGeneratorFactory(new WaveGeneratorFactory())
-    , m_vfm(0)
     , m_out(0)
     , m_shapeSelector(0)
     , m_kDimmer(0)
+    , m_rangeDimmer(0)
+    , m_offsetDimmer(0)
+    , m_lfoBuffer(0)
 {
 }
 
-void VCO::initialize(SynthProFactory* factory)
+void LFO::initialize(SynthProFactory* factory)
 {
-    qDebug("VCO::init Creation of vfm port in the VCO");
-    m_vfm = factory->createInPortReplicable(this, "vfm");
-    m_inports.append(m_vfm);
+    m_lfoBuffer = new Buffer();
 
-    qDebug("VCO::init Creation of out port in the VCO");
     m_out = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_out);
 
@@ -40,36 +39,64 @@ void VCO::initialize(SynthProFactory* factory)
     /// Connection of the Selector
     connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
 
-    /// Creation of the Dimmer
+    /// Creation of the Dimmers
     m_kDimmer = factory->createDimmer("K", K_MIN, K_MAX, K_DEFAULT, this);
+    m_rangeDimmer = factory->createDimmer("Range", RANGE_MIN, RANGE_MAX, RANGE_DEFAULT, this);
+    m_offsetDimmer = factory->createDimmer("Offset", OFFSET_MIN, OFFSET_MAX, OFFSET_DEFAULT, this);
 
     setShape(SHAPE_DEFAULT);
 }
 
-VCO::~VCO()
+LFO::~LFO()
 {
     if (m_waveGenerator) {
         delete m_waveGenerator;
     }
 }
 
-void VCO::ownProcess()
+void LFO::ownProcess()
 {
-    m_vfm->buffer()->add(m_kDimmer->value());
-    m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());
+    // First pass : generate the wave.
+    m_waveGenerator->generate(m_lfoBuffer, m_out->buffer());
+
+    // Second pass : amplify the output and add an offset.
+    qreal* m_dataOut = m_out->buffer()->data();
+    for (int i = 0, size = m_out->buffer()->length(); i < size; i++) {
+        m_dataOut[i] = m_dataOut[i] * m_rangeDimmer->value() + m_offsetDimmer->value();
+    }
 }
 
-qreal VCO::k() const
+qreal LFO::k() const
 {
     return m_kDimmer->value();
 }
 
-void VCO::setK(qreal value)
+void LFO::setK(qreal value)
 {
     m_kDimmer->setValue(value);
 }
 
-void VCO::waveShapeChanged(int selectedValue)
+qreal LFO::range() const
+{
+    return m_rangeDimmer->value();
+}
+
+void LFO::setRange(qreal value)
+{
+    m_rangeDimmer->setValue(value);
+}
+
+qreal LFO::offset() const
+{
+    return m_offsetDimmer->value();
+}
+
+void LFO::setOffset(qreal value)
+{
+    m_offsetDimmer->setValue(value);
+}
+
+void LFO::waveShapeChanged(int selectedValue)
 {
     if (m_waveGenerator) {
         delete m_waveGenerator;
@@ -79,13 +106,13 @@ void VCO::waveShapeChanged(int selectedValue)
     m_waveGenerator = m_waveGeneratorFactory->createWaveGenerator(waveType);
 }
 
-QString VCO::shape()
+QString LFO::shape()
 {
 
     return m_waveGeneratorFactory->selectorConversionMap()[m_shapeSelector->choice()];
 }
 
-void VCO::setShape(QString shape)
+void LFO::setShape(QString shape)
 {
     m_shapeSelector->setChoice(m_waveGeneratorFactory->selectorConversionMap().key(shape));
 }
