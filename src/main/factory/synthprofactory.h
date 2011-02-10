@@ -16,7 +16,7 @@ class SynthPro;
 class VCF;
 class VCO;
 class VCA;
-
+class LFO;
 
 class SynthProFactory {
 public:
@@ -31,6 +31,7 @@ public:
     virtual OutPort* createOutPortGate(Module* parent, const QString& name) = 0;
 
     virtual VCO* createVCO(SynthPro*) = 0;
+    virtual LFO* createLFO(SynthPro*) = 0;
     virtual VCF* createVCF(SynthPro*) = 0;
     virtual VCA* createVCA(SynthPro*) = 0;
     virtual ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
@@ -58,6 +59,7 @@ public:
         VCFId,
         VCAId,
         ADSRId,
+        LFOId,
         AudioOuputId,
         FileOutputId
     };

@@ -2,10 +2,10 @@
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/modulebufferrecorder.h"
-#include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
+#include "control/clfo.h"
 #include "control/cmodule.h"
 #include "control/cmoduleout.h"
 #include "control/coutport.h"
@@ -17,6 +17,7 @@
 #include "control/cvcf.h"
 #include "control/cvco.h"
 #include "control/cwire.h"
+#include "presentation/plfo.h"
 #include "presentation/pmoduleout.h"
 #include "presentation/portwidget.h"
 #include "presentation/pvca.h"
@@ -108,6 +109,21 @@ VCO* QtFactory::createVCO(SynthPro* parent)
     vco->initialize(this);
 
     return vco;
+}
+
+LFO* QtFactory::createLFO(SynthPro* parent)
+{
+    // Create the VCO
+    CLFO* lfo = new CLFO(parent);
+
+    // Create its presentation
+    PLFO* p = new PLFO(lfo);
+    lfo->setPresentation(p);
+
+    // Initialize it (ports creation)
+    lfo->initialize(this);
+
+    return lfo;
 }
 
 VCF* QtFactory::createVCF(SynthPro* parent)
