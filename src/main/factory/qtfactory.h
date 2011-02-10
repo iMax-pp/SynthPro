@@ -1,34 +1,43 @@
 #ifndef QTFACTORY_H
 #define QTFACTORY_H
 
-#include "synthprofactory.h"
+#include "control/cdimmer.h"
+#include "control/cinport.h"
+#include "control/clfo.h"
+#include "control/cmoduleout.h"
+#include "control/coutport.h"
+#include "control/cselector.h"
+#include "control/csynthpro.h"
+#include "control/cvca.h"
+#include "control/cvcf.h"
+#include "control/cvco.h"
+#include "factory/synthprofactory.h"
 
 class CPortWidget;
-class CVirtualPort;
 class CWire;
 class QGraphicsScene;
 
 class QtFactory : public SynthProFactory {
 public:
-    SynthPro* createSynthPro();
+    CSynthPro* createSynthPro();
 
-    InPort* createInPort(Module* parent, const QString& name);
-    InPort* createInPortReplicable(Module* parent, const QString& name);
-    InPort* createInPortGate(Module* parent, const QString& name);
+    CInPort* createInPort(Module* parent, const QString& name);
+    CInPort* createInPortReplicable(Module* parent, const QString& name);
+    CInPort* createInPortGate(Module* parent, const QString& name);
 
-    OutPort* createOutPort(Module* parent, const QString& name);
-    OutPort* createOutPortReplicable(Module* parent, const QString& name);
-    OutPort* createOutPortGate(Module* parent, const QString& name);
+    COutPort* createOutPort(Module* parent, const QString& name);
+    COutPort* createOutPortReplicable(Module* parent, const QString& name);
+    COutPort* createOutPortGate(Module* parent, const QString& name);
 
-    VCO* createVCO(SynthPro*);
-    LFO* createLFO(SynthPro*);
-    VCF* createVCF(SynthPro*);
-    VCA* createVCA(SynthPro*);
+    CVCO* createVCO(SynthPro*);
+    CLFO* createLFO(SynthPro*);
+    CVCF* createVCF(SynthPro*);
+    CVCA* createVCA(SynthPro*);
     ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
-    ModuleOut* createModuleOut(SynthPro*);
+    CModuleOut* createModuleOut(SynthPro*);
 
-    Dimmer* createDimmer(QString name, qreal min, qreal max, qreal defaultValue, Module* parent);
-    Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
+    CDimmer* createDimmer(QString name, qreal min, qreal max, qreal defaultValue, Module* parent);
+    CSelector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
 
     // Creation methods specific to the QtFactory
     CWire* createWire(QGraphicsScene*);
@@ -36,8 +45,8 @@ public:
 
 protected:
     // Convenient factory method
-    InPort* createInPort(Module* parent, const QString& name, bool replicable, bool gate);
-    OutPort* createOutPort(Module* parent, const QString& name, bool replicable, bool gate);
+    CInPort* createInPort(Module* parent, const QString& name, bool replicable, bool gate);
+    COutPort* createOutPort(Module* parent, const QString& name, bool replicable, bool gate);
 };
 
 #endif // QTFACTORY_H

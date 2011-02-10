@@ -28,7 +28,7 @@
 #include <QDebug>
 #include <QIODevice>
 
-SynthPro* QtFactory::createSynthPro()
+CSynthPro* QtFactory::createSynthPro()
 {
     CSynthPro* synthpro = new CSynthPro(this);
 
@@ -39,7 +39,7 @@ SynthPro* QtFactory::createSynthPro()
     return synthpro;
 }
 
-InPort* QtFactory::createInPort(Module* parent, const QString& name, bool replicable, bool gate)
+CInPort* QtFactory::createInPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     qDebug() << "QtFactory::createInPort cParent =" << (long)cParent << ", parent =" << (long)parent;
@@ -53,22 +53,22 @@ InPort* QtFactory::createInPort(Module* parent, const QString& name, bool replic
     return port;
 }
 
-InPort* QtFactory::createInPort(Module* parent, const QString& name)
+CInPort* QtFactory::createInPort(Module* parent, const QString& name)
 {
     return createInPort(parent, name, false, false);
 }
 
-InPort* QtFactory::createInPortReplicable(Module* parent, const QString& name)
+CInPort* QtFactory::createInPortReplicable(Module* parent, const QString& name)
 {
     return createInPort(parent, name, true, false);
 }
 
-InPort* QtFactory::createInPortGate(Module* parent, const QString& name)
+CInPort* QtFactory::createInPortGate(Module* parent, const QString& name)
 {
     return createInPort(parent, name, false, true);
 }
 
-OutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool replicable, bool gate)
+COutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     qDebug() << "QtFactory::createOutPort cParent =" << (long)cParent << ", parent =" << (long)parent;
@@ -82,22 +82,22 @@ OutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool repl
     return port;
 }
 
-OutPort* QtFactory::createOutPort(Module* parent, const QString& name)
+COutPort* QtFactory::createOutPort(Module* parent, const QString& name)
 {
     return createOutPort(parent, name, false, false);
 }
 
-OutPort* QtFactory::createOutPortReplicable(Module* parent, const QString& name)
+COutPort* QtFactory::createOutPortReplicable(Module* parent, const QString& name)
 {
     return createOutPort(parent, name, true, false);
 }
 
-OutPort* QtFactory::createOutPortGate(Module* parent, const QString& name)
+COutPort* QtFactory::createOutPortGate(Module* parent, const QString& name)
 {
     return createOutPort(parent, name, false, true);
 }
 
-VCO* QtFactory::createVCO(SynthPro* parent)
+CVCO* QtFactory::createVCO(SynthPro* parent)
 {
     // Create the VCO
     CVCO* vco = new CVCO(parent);
@@ -112,7 +112,7 @@ VCO* QtFactory::createVCO(SynthPro* parent)
     return vco;
 }
 
-LFO* QtFactory::createLFO(SynthPro* parent)
+CLFO* QtFactory::createLFO(SynthPro* parent)
 {
     // Create the VCO
     CLFO* lfo = new CLFO(parent);
@@ -127,7 +127,7 @@ LFO* QtFactory::createLFO(SynthPro* parent)
     return lfo;
 }
 
-VCF* QtFactory::createVCF(SynthPro* parent)
+CVCF* QtFactory::createVCF(SynthPro* parent)
 {
     // Create the VCF
     CVCF* vcf = new CVCF(parent);
@@ -143,7 +143,7 @@ VCF* QtFactory::createVCF(SynthPro* parent)
     return vcf;
 }
 
-VCA* QtFactory::createVCA(SynthPro* parent)
+CVCA* QtFactory::createVCA(SynthPro* parent)
 {
     // Create the VCO
     CVCA* vca = new CVCA(parent);
@@ -158,7 +158,7 @@ VCA* QtFactory::createVCA(SynthPro* parent)
     // return vca;
     return vca;
 }
-Dimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
+CDimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
@@ -172,7 +172,7 @@ Dimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefau
     return dimmer;
 }
 
-Selector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent)
+CSelector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CSelector* selector = new CSelector(keys, defaultKey, cParent);
@@ -189,7 +189,7 @@ ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(SynthPro* parent, QS
     return mbr;
 }
 
-ModuleOut* QtFactory::createModuleOut(SynthPro* parent)
+CModuleOut* QtFactory::createModuleOut(SynthPro* parent)
 {
     // Do not instanciate ModuleOut if no audio device can be accessed !
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();

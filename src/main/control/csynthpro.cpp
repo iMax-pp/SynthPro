@@ -62,31 +62,31 @@ void CSynthPro::add(Module* module)
     }
 }
 
-void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
+void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF& pos)
 {
     Module* module = 0;
 
     switch (moduleType) {
-    case QtFactory::KeyboardId:
+    case SynthProFactory::KeyboardId:
         break;
-    case QtFactory::VCOId:
+    case SynthProFactory::VCOId:
         module = dynamic_cast<Module*>(m_factory->createVCO(this));
         break;
-    case QtFactory::VCFId:
+    case SynthProFactory::VCFId:
         module = dynamic_cast<Module*>(m_factory->createVCF(this));
         break;
-    case QtFactory::VCAId:
+    case SynthProFactory::VCAId:
         module = dynamic_cast<Module*>(m_factory->createVCA(this));
         break;
-    case QtFactory::ADSRId:
+    case SynthProFactory::ADSRId:
         break;
-    case QtFactory::LFOId:
+    case SynthProFactory::LFOId:
         module = dynamic_cast<Module*>(m_factory->createLFO(this));
         break;
-    case QtFactory::AudioOuputId:
+    case SynthProFactory::AudioOuputId:
         module = dynamic_cast<Module*>(m_factory->createModuleOut(this));
         break;
-    case QtFactory::FileOutputId:
+    case SynthProFactory::FileOutputId:
         break;
     default:
         break;

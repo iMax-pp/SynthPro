@@ -2,7 +2,7 @@
 #define CSYNTHPRO_H
 
 #include "abstraction/synthpro.h"
-#include "factory/qtfactory.h"
+#include "factory/synthprofactory.h"
 #include "presentation/psynthpro.h"
 
 class CVirtualPort;
@@ -17,7 +17,7 @@ public:
     PSynthPro* presentation() const;
 
     void add(Module*);
-    void addModule(QtFactory::ModuleType, const QPointF&);
+    void addModule(SynthProFactory::ModuleType, const QPointF&);
 
     void showFeedback(CVirtualPort*);
     void hideFeedback();
