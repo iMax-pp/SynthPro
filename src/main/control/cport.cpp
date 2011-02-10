@@ -38,8 +38,6 @@ void CPort::disconnectFrom(Port* other)
         Port::disconnectFrom(other);
         // TODO
     }
-
-    dynamic_cast<CSynthPro*>(module()->synthPro())->showFeedback(this);
 }
 
 void CPort::updateWiresPositions()
@@ -49,8 +47,6 @@ void CPort::updateWiresPositions()
             cPortWidget->wire()->updatePosition();
         }
     }
-
-    dynamic_cast<CSynthPro*>(module()->synthPro())->hideFeedback();
 }
 
 void CPort::showFeedback(CPort* from)

@@ -65,6 +65,8 @@ void CPortWidget::drag()
     } else {
         m_wire->setInPort(this);
     }
+
+    dynamic_cast<CSynthPro*>(m_port->module()->synthPro())->showFeedback(this);
 }
 
 void CPortWidget::dragMove(const QPointF&)
@@ -94,6 +96,8 @@ void CPortWidget::drop(CPortWidget* target)
 
         m_wire->updatePosition();
     }
+
+    dynamic_cast<CSynthPro*>(m_port->module()->synthPro())->hideFeedback();
 }
 
 void CPortWidget::showFeedback(bool compatible)
