@@ -12,7 +12,7 @@ class PLFO : public PModule {
 public:
     PLFO(CLFO*);
 
-    void initialize(PPort* output, PDimmer* k, PDimmer* range, PDimmer* offset, PSelector*);
+    void initialize(PPort* out, PDimmer* k, PDimmer* range, PDimmer* offset, PSelector*);
 
 };
 

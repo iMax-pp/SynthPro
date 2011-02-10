@@ -8,14 +8,14 @@
 
 #include <QFont>
 #include <QGraphicsAnchorLayout>
-#include <QGraphicsSimpleTextItem>
 
 PLFO::PLFO(CLFO* control)
     : PModule(control)
 {
 }
 
-void PLFO::initialize(PPort* output, PDimmer* k, PDimmer* range, PDimmer* offset, PSelector* selector)
+void PLFO::initialize(PPort* out, PDimmer* k, PDimmer* range,
+                      PDimmer* offset, PSelector* selector)
 {
     TextWidget* title = new TextWidget("LFO", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
@@ -23,7 +23,6 @@ void PLFO::initialize(PPort* output, PDimmer* k, PDimmer* range, PDimmer* offset
     k->setMaximumSize(90, 90);
     range->setMaximumSize(90, 90);
     offset->setMaximumSize(90, 90);
-
     selector->setMaximumSize(120, 155);
 
     // Layout
@@ -35,6 +34,6 @@ void PLFO::initialize(PPort* output, PDimmer* k, PDimmer* range, PDimmer* offset
     bottomArea()->addAnchors(selector, bottomArea(), Qt::Vertical);
     bottomArea()->addAnchor(range, Qt::AnchorBottom, bottomArea(), Qt::AnchorBottom);
     bottomArea()->addAnchor(offset, Qt::AnchorBottom, bottomArea(), Qt::AnchorBottom);
-    rightArea()->addAnchors(output, rightArea());
+    rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
 }
