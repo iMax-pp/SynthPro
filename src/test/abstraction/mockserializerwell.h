@@ -13,7 +13,7 @@ class QTextStream;
 class MockSerializerWell : public Module {
     Q_OBJECT
 public:
-    explicit MockSerializerWell(SynthPro*, QTextStream& output);
+    MockSerializerWell(SynthPro*, QTextStream& output);
 
     void ownProcess();
 
