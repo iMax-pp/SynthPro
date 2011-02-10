@@ -50,6 +50,13 @@ void CPort::connectTo(Port* other)
             m_portWidgets.append(replication);
             presentation()->addReplication(replication->presentation());
         }
+        // That’s ugly, isn’t it?
+        if (other->replicable()) {
+            CPort* cOther = dynamic_cast<CPort*>(other);
+            CPortWidget* replication = m_factory->createPortWidget(cOther, m_factory);
+            cOther->m_portWidgets.append(replication);
+            cOther->presentation()->addReplication(replication->presentation());
+        }
     }
 }
 
