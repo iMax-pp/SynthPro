@@ -68,7 +68,10 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/cportwidget.h \
     src/main/abstraction/lfo.h \
     src/main/presentation/plfo.h \
-    src/main/control/clfo.h
+    src/main/control/clfo.h \
+    src/main/abstraction/moduleoscilloscope.h \
+    src/main/presentation/poscilloscope.h \
+    src/main/control/coscilloscope.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -131,7 +134,10 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/cportwidget.cpp \
     src/main/abstraction/lfo.cpp \
     src/main/presentation/plfo.cpp \
-    src/main/control/clfo.cpp
+    src/main/control/clfo.cpp \
+    src/main/abstraction/moduleoscilloscope.cpp \
+    src/main/presentation/poscilloscope.cpp \
+    src/main/control/coscilloscope.cpp
 
 INCLUDEPATH += src/main/
 

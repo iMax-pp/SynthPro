@@ -177,6 +177,7 @@ void PSynthPro::createOutputModuleList()
     outModuleList->setDragDropMode(QListView::DragOnly);
 
     ModuleListModel* model = new ModuleListModel(this);
+    model->addModule("Oscilloscope", QtFactory::OscilloscopeId);
     model->addModule("Audio Output", QtFactory::AudioOuputId);
     model->addModule("File Output", QtFactory::FileOutputId);
     outModuleList->setModel(model);

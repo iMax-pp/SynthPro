@@ -52,6 +52,8 @@ LFO::~LFO()
     if (m_waveGenerator) {
         delete m_waveGenerator;
     }
+
+    delete[] m_lfoBuffer;
 }
 
 void LFO::ownProcess()

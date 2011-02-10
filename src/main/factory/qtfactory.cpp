@@ -2,12 +2,14 @@
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/modulebufferrecorder.h"
+#include "abstraction/moduleoscilloscope.h"
 #include "abstraction/sequencer.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/clfo.h"
 #include "control/cmodule.h"
 #include "control/cmoduleout.h"
+#include "control/coscilloscope.h"
 #include "control/coutport.h"
 #include "control/cport.h"
 #include "control/cportwidget.h"
@@ -20,6 +22,7 @@
 #include "presentation/plfo.h"
 #include "presentation/pmoduleout.h"
 #include "presentation/portwidget.h"
+#include "presentation/poscilloscope.h"
 #include "presentation/pvca.h"
 #include "presentation/pvcf.h"
 #include "presentation/pvco.h"
@@ -211,6 +214,21 @@ ModuleOut* QtFactory::createModuleOut(SynthPro* parent)
     mo->initialize(this);
 
     return mo;
+}
+
+ModuleOscilloscope* QtFactory::createModuleOscilloscope(SynthPro* parent)
+{
+    // Create the Oscilloscope Controler
+    COscilloscope* co = new COscilloscope(parent);
+
+    // Create its presentation
+    POscilloscope* p = new POscilloscope(co);
+    co->setPresentation(p);
+
+    // Initialize it (ports creation)
+    co->initialize(this);
+
+    return co;
 }
 
 CWire* QtFactory::createWire(QGraphicsScene* scene)

@@ -3,6 +3,7 @@
 #include "cinport.h"
 #include "control/clfo.h"
 #include "control/cmodule.h"
+#include "control/coscilloscope.h"
 #include "control/cmoduleout.h"
 #include "control/coutport.h"
 #include "control/cport.h"
@@ -87,6 +88,9 @@ void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
         module = dynamic_cast<Module*>(m_factory->createModuleOut(this));
         break;
     case QtFactory::FileOutputId:
+        break;
+    case QtFactory::OscilloscopeId:
+        module = dynamic_cast<Module*>(m_factory->createModuleOscilloscope(this));
         break;
     default:
         break;

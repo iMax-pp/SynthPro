@@ -26,6 +26,7 @@ public:
     VCA* createVCA(SynthPro*);
     ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(SynthPro*);
+    ModuleOscilloscope* createModuleOscilloscope(SynthPro*);
 
     Dimmer* createDimmer(QString name, qreal min, qreal max, qreal defaultValue, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
