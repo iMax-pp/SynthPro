@@ -56,10 +56,15 @@ LFO::~LFO()
 
 void LFO::ownProcess()
 {
-    // First pass : generate the wave.
+    // First step : create the "input" buffer with a constant frequency, and generate the wave.
+    qreal* dataIn = m_lfoBuffer->data();
+    for (int i = 0, size = m_lfoBuffer->length(); i < size; i++) {
+        dataIn[i] = m_kDimmer->value();
+    }
+
     m_waveGenerator->generate(m_lfoBuffer, m_out->buffer());
 
-    // Second pass : amplify the output and add an offset.
+    // Second step : amplify the output and add an offset.
     qreal* m_dataOut = m_out->buffer()->data();
     for (int i = 0, size = m_out->buffer()->length(); i < size; i++) {
         m_dataOut[i] = m_dataOut[i] * m_rangeDimmer->value() + m_offsetDimmer->value();
