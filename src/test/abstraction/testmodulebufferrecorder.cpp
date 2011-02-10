@@ -19,8 +19,8 @@ void TestModuleBufferRecorder::testModuleBufferRecorder()
     SimpleFactory factory;
     ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
-    VCO* vco = factory.createVCO();
-    vco->setShape("EmptyWave"); // XXX
+    VCO* vco = factory.createVCO(0);
+    vco->setShape("EmptyWave");
     vco->outports().at(0)->connectTo(mbr->inports().at(0));
 
     for (int i = 0; i < NB_ITERATIONS; i++) {

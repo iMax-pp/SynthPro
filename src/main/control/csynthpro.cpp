@@ -66,18 +66,18 @@ void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
     case QtFactory::KeyboardId:
         break;
     case QtFactory::VCOId:
-        module = dynamic_cast<Module*>(m_factory->createVCO());
+        module = dynamic_cast<Module*>(m_factory->createVCO(this));
         break;
     case QtFactory::VCFId:
-        module = dynamic_cast<Module*>(m_factory->createVCF());
+        module = dynamic_cast<Module*>(m_factory->createVCF(this));
         break;
     case QtFactory::VCAId:
-        module = dynamic_cast<Module*>(m_factory->createVCA());
+        module = dynamic_cast<Module*>(m_factory->createVCA(this));
         break;
     case QtFactory::ADSRId:
         break;
     case QtFactory::AudioOuputId:
-        module = dynamic_cast<Module*>(m_factory->createModuleOut(0));
+        module = dynamic_cast<Module*>(m_factory->createModuleOut(this));
         break;
     case QtFactory::FileOutputId:
         break;

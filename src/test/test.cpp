@@ -4,6 +4,7 @@
 #include "abstraction/testoutport.h"
 #include "abstraction/testsequencer.h"
 #include "abstraction/testvca.h"
+#include "abstraction/testvcf.h"
 #include "abstraction/testvco.h"
 #include "abstraction/testwavegeneratorempty.h"
 #include "abstraction/testwavegeneratorsaw.h"
@@ -48,4 +49,7 @@ int main()
 
     TestModuleBufferRecorder testModuleBufferRecorder;
     QTest::qExec(&testModuleBufferRecorder);
+
+    TestVCF testVCF;
+    QTest::qExec(&testVCF);
 }

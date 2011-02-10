@@ -6,7 +6,7 @@
 #include "abstraction/outport.h"
 #include "factory/synthprofactory.h"
 
-ADSR::ADSR(QObject* parent)
+ADSR::ADSR(SynthPro* parent)
     : Module(parent)
     , m_timeLine(0)
 {

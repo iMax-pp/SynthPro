@@ -5,6 +5,7 @@
 
 class InPort;
 class OutPort;
+class SynthPro;
 
 /**
  * A module is a component performing a single function (generating a signal, filtering, etc.)
@@ -13,7 +14,7 @@ class Module : public QObject {
     Q_OBJECT
 
 public:
-    Module(QObject* parent = 0);
+    explicit Module(SynthPro*);
     virtual ~Module();
 
     /// Get the list of output ports of this module
@@ -33,6 +34,9 @@ public:
 
     /// Get the list of required modules for this module to perform its function
     const QList<Module*> requirements() const;
+
+    /// Get the parent SynthPro.
+    SynthPro* synthPro() const;
 
 public slots:
     virtual void timerExpired();

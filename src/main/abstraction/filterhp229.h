@@ -16,8 +16,8 @@ public:
     virtual void apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBase, qreal resonance, Buffer* bufferOut);
 
 private:
-    static const qreal MAX_FREQUENCY = 20000; // Highest frequency of the Low Pass.
-    static const qreal MIN_FREQUENCY = 250; // Lower doesn't sound nice.
+    static const qreal MAX_FREQUENCY = 8000; // Highest frequency of the High Pass.
+    static const qreal MIN_FREQUENCY = 30; // Lower doesn't sound nice.
 
     static const qreal RESONANCE_MIN = 0.1;
     static const qreal RESONANCE_MAX = 1.0;

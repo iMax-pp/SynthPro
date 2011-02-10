@@ -10,14 +10,15 @@ class SynthProFactory;
 
 class ADSR : public virtual Module {
     Q_OBJECT
+
 public:
-    ADSR(QObject* parent = 0);
+    explicit ADSR(SynthPro*);
     void initialize(SynthProFactory*);
     void ownProcess();
 
 protected:
 
-    void processADSR(int,int);
+    void processADSR(int, int);
 
     static const qreal ATTACK_MIN = 0;
     static const qreal ATTACK_MAX = 2;

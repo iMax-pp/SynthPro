@@ -2,8 +2,9 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
+#include "abstraction/synthpro.h"
 
-Module::Module(QObject* parent)
+Module::Module(SynthPro* parent)
     : QObject(parent)
 {
 }
@@ -23,6 +24,11 @@ const QList<Module*> Module::requirements() const
     }
 
     return m_requirements;
+}
+
+SynthPro* Module::synthPro() const
+{
+    dynamic_cast<SynthPro*>(parent());
 }
 
 void Module::process()

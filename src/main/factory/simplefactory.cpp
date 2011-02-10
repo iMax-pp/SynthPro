@@ -48,23 +48,23 @@ OutPort* SimpleFactory::createOutPortGate(Module* parent, const QString& name)
     return new OutPort(parent, name, false, true);
 }
 
-VCO* SimpleFactory::createVCO()
+VCO* SimpleFactory::createVCO(SynthPro* parent)
 {
-    VCO* vco = new VCO();
+    VCO* vco = new VCO(parent);
     vco->initialize(this);
     return vco;
 }
 
-VCF* SimpleFactory::createVCF()
+VCF* SimpleFactory::createVCF(SynthPro* parent)
 {
-    VCF* vcf = new VCF();
+    VCF* vcf = new VCF(parent);
     vcf->initialize(this);
     return vcf;
 }
 
-VCA* SimpleFactory::createVCA()
+VCA* SimpleFactory::createVCA(SynthPro* parent)
 {
-    VCA* vca = new VCA();
+    VCA* vca = new VCA(parent);
     vca->initialize(this);
     return vca;
 }
@@ -80,14 +80,14 @@ Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<Q
 }
 
 
-ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
+ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
 {
-    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(fileName, nbProcessingBeforeSaving, parent);
+    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(parent, fileName, nbProcessingBeforeSaving);
     mbr->initialize(this);
     return mbr;
 }
 
-ModuleOut* SimpleFactory::createModuleOut(Module* parent)
+ModuleOut* SimpleFactory::createModuleOut(SynthPro* parent)
 {
     // Do not instanciate ModuleOut if no audio device can be accessed !
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();
@@ -102,7 +102,7 @@ ModuleOut* SimpleFactory::createModuleOut(Module* parent)
         return 0;
     }
 
-    ModuleOut* mo = new ModuleOut(device, adp.audioOutput(), parent);
+    ModuleOut* mo = new ModuleOut(parent, device, adp.audioOutput());
     mo->initialize(this);
     return mo;
 }

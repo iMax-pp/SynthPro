@@ -1,6 +1,6 @@
 #include "mockmodule.h"
 
-MockModule::MockModule(const QString& msg, QTextStream& s, QObject* parent)
+MockModule::MockModule(SynthPro* parent, const QString& msg, QTextStream& s)
     : Module(parent)
     , m_msg(msg)
     , m_s(s)

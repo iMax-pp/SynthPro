@@ -4,8 +4,6 @@
 #include "module.h"
 #include "vco.h"
 
-#include <QObject>
-
 class InPort;
 class QAudioOutput;
 class QIODevice;
@@ -27,7 +25,7 @@ class ModuleOut : public virtual Module {
 public:
     static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 127;
 
-    ModuleOut(QIODevice*, QAudioOutput*, QObject* parent = 0);
+    ModuleOut(SynthPro*, QIODevice*, QAudioOutput*);
     virtual ~ModuleOut();
 
     /**

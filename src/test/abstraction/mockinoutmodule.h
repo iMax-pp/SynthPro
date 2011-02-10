@@ -10,7 +10,7 @@
  */
 class MockInOutModule : public MockModule {
 public:
-    MockInOutModule(const QString& msg, QTextStream&, QObject* parent = 0);
+    MockInOutModule(SynthPro*, const QString& msg, QTextStream&);
 
     InPort input;
     OutPort output;

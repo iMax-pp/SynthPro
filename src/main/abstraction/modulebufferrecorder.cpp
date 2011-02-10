@@ -1,15 +1,15 @@
 #include "modulebufferrecorder.h"
 
-#include "audiodeviceprovider.h"
-#include "buffer.h"
+#include "abstraction/audiodeviceprovider.h"
+#include "abstraction/buffer.h"
+#include "abstraction/inport.h"
+#include "abstraction/moduleout.h"
 #include "factory/synthprofactory.h"
-#include "inport.h"
-#include "moduleout.h"
 
 #include <QDebug>
 #include <QFile>
 
-ModuleBufferRecorder::ModuleBufferRecorder(QString fileName, int nbProcessingBeforeSaving, QObject* parent)
+ModuleBufferRecorder::ModuleBufferRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
     : Module(parent)
     , m_fileName(fileName)
     , m_nbProcessingBeforeSaving(nbProcessingBeforeSaving)
