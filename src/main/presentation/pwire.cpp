@@ -1,7 +1,6 @@
 #include "pwire.h"
 
-#include "control/cinport.h"
-#include "control/coutport.h"
+#include "control/cportwidget.h"
 #include "control/cwire.h"
 #include "presentation/portwidget.h"
 #include "presentation/pport.h"
@@ -29,6 +28,7 @@ QRectF PWire::boundingRect() const
            .normalized().adjusted(-extra, -extra, extra, extra);
 }
 
+// TODO PWire should not depend on CPortWidget
 void PWire::updatePosition(QPointF point)
 {
     // At least one of the two ports will be defined when creating the wire,

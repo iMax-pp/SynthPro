@@ -4,39 +4,27 @@
 #include "abstraction/port.h"
 #include "presentation/pport.h"
 
-class CWire;
-class SynthProFactory;
+class CPortWidget;
+class QtFactory;
 
 class CPort : public virtual Port {
     Q_OBJECT
 
 public:
-    CPort(Module* parent, SynthProFactory*, const QString& name, bool replicable = false, bool gate = false);
-    virtual ~CPort();
+    CPort(Module* parent, QtFactory*, const QString& name, bool replicable = false, bool gate = false);
 
     void setPresentation(PPort*);
-    PPort* presentation() const;
+    inline PPort* presentation() const { return m_presentation; }
 
-    CWire* wire() const;
-    void setWire(CWire*);
+    void connectTo(Port* other);
+    void disconnectFrom(Port* other);
 
-    /*
-     * Start drawing a wire from this port.
-     */
-    void startWire();
-    /*
-     * This method is called when drawing the wire and the mouse dropped it.
-     * @param the PPort on which the wire was dropped (may be null).
-     */
-    void dropWire(CPort*);
-
-protected slots:
-    void unsetWire();
+    void updateWiresPositions();
 
 private:
     PPort* m_presentation;
-    CWire* m_wire;
-    SynthProFactory* m_factory;
+    QtFactory* m_factory;
+    QList<CPortWidget*> m_portWidgets;
 };
 
 #endif // CPORT_H

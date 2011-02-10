@@ -7,7 +7,7 @@
 
 class CInPort : public InPort, public CPort {
 public:
-    CInPort(CModule* parent, SynthProFactory*, const QString& name, bool replicable = false, bool gate = false);
+    CInPort(CModule* parent, QtFactory*, const QString& name, bool replicable = false, bool gate = false);
 
 };
 

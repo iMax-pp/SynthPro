@@ -3,6 +3,11 @@
 
 #include "synthprofactory.h"
 
+class CPort;
+class CWire;
+class CPortWidget;
+class QGraphicsScene;
+
 class QtFactory : public SynthProFactory {
 public:
     SynthPro* createSynthPro();
@@ -24,7 +29,9 @@ public:
     Dimmer* createDimmer(QString name, qreal min, qreal max, qreal defaultValue, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
 
+    // Creation methods specific to the QtFactory
     CWire* createWire(QGraphicsScene*);
+    CPortWidget* createPortWidget(CPort*, QtFactory*);
 
 protected:
     // Convenient factory method

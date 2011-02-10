@@ -28,7 +28,7 @@ const QList<Module*> Module::requirements() const
 
 SynthPro* Module::synthPro() const
 {
-    dynamic_cast<SynthPro*>(parent());
+    return dynamic_cast<SynthPro*>(parent());
 }
 
 void Module::process()
