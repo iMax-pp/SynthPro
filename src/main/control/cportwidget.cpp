@@ -47,8 +47,12 @@ void CPortWidget::unsetWire()
 void CPortWidget::connectTo(CPortWidget* other)
 {
     if (port()->connectable(other->port())) {
+        // Connect the port to the other
         port()->connectTo(other->port());
+
+        // Create their wire
         m_wire = m_factory->createWire(presentation()->scene()); // HACK way to retrieve the scene, I think
+        other->setWire(m_wire);
         // Automatically clear our reference to the wire if the other side deletes the wire
         connect(m_wire, SIGNAL(destroyed()), this, SLOT(unsetWire()));
 
@@ -68,7 +72,6 @@ void CPortWidget::disconnectFrom(CPortWidget* other)
     port()->disconnectFrom(other->port());
     if (m_wire) {
         delete m_wire;
-        m_wire = 0;
     }
 }
 
