@@ -2,9 +2,9 @@
 
 #include "abstraction/filter.h"
 #include "abstraction/filterdummy.h"
+#include "abstraction/filterhp229.h"
 #include "abstraction/filterincrement.h"
 #include "abstraction/filterlp229.h"
-#include "abstraction/filterhp229.h"
 
 FilterFactory::FilterFactory()
 {
