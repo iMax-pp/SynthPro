@@ -19,8 +19,8 @@ void POscilloscope::initialize(PPort* input)
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     // Layout
-    //bottomArea()->addCornerAnchors(pVfm, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
-    //bottomArea()->addAnchor(pVfm, Qt::AnchorRight, pK, Qt::AnchorLeft);
+    // bottomArea()->addCornerAnchors(pVfm, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
+    // bottomArea()->addAnchor(pVfm, Qt::AnchorRight, pK, Qt::AnchorLeft);
     leftArea()->addAnchors(input, rightArea());
     centerArea()->addAnchors(title, centerArea());
 
