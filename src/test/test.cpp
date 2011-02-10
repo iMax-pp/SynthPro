@@ -6,6 +6,7 @@
 #include "abstraction/testvca.h"
 #include "abstraction/testvcf.h"
 #include "abstraction/testvco.h"
+#include "abstraction/testlfo.h"
 #include "abstraction/testwavegeneratorempty.h"
 #include "abstraction/testwavegeneratorsaw.h"
 #include "abstraction/testwavegeneratorsinus.h"
@@ -52,4 +53,7 @@ int main()
 
     TestVCF testVCF;
     QTest::qExec(&testVCF);
+
+    TestLFO testLFO;
+    QTest::qExec(&testLFO);
 }

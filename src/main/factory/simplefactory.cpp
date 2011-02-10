@@ -11,7 +11,7 @@
 #include "abstraction/vca.h"
 #include "abstraction/vcf.h"
 #include "abstraction/vco.h"
-
+#include "abstraction/lfo.h"
 
 SynthPro* SimpleFactory::createSynthPro()
 {
@@ -67,6 +67,13 @@ VCA* SimpleFactory::createVCA(SynthPro* parent)
     VCA* vca = new VCA(parent);
     vca->initialize(this);
     return vca;
+}
+
+LFO* SimpleFactory::createLFO(SynthPro* parent)
+{
+    LFO* lfo = new LFO(parent);
+    lfo->initialize(this);
+    return lfo;
 }
 
 Dimmer* SimpleFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)

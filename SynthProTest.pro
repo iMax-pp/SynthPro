@@ -21,6 +21,7 @@ HEADERS += \
     src/test/abstraction/testsequencer.h \
     src/test/abstraction/mockinoutmodule.h \
     src/test/abstraction/testvco.h \
+    src/main/abstraction/lfo.h \
     src/main/abstraction/vco.h \
     src/main/abstraction/dimmer.h \
     src/main/abstraction/selector.h \
@@ -55,7 +56,8 @@ HEADERS += \
     src/main/factory/filterfactory.h \
     src/main/abstraction/vca.h \
     src/test/abstraction/testvca.h \
-    src/test/abstraction/testvcf.h
+    src/test/abstraction/testvcf.h \
+    src/test/abstraction/testlfo.h
 
 
 SOURCES += src/test/test.cpp \
@@ -75,6 +77,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testsequencer.cpp \
     src/test/abstraction/mockinoutmodule.cpp \
     src/test/abstraction/testvco.cpp \
+    src/main/abstraction/lfo.cpp \
     src/main/abstraction/vco.cpp \
     src/main/abstraction/wavegeneratordummy.cpp \
     src/main/abstraction/wavegeneratorempty.cpp \
@@ -105,7 +108,8 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testvca.cpp \
     src/main/factory/wavegeneratorfactorydummy.cpp \
     src/main/factory/filterfactorydummy.cpp \
-    src/test/abstraction/testvcf.cpp
+    src/test/abstraction/testvcf.cpp \
+    src/test/abstraction/testlfo.cpp
 
 
 INCLUDEPATH += src/main/ src/test/
