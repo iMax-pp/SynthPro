@@ -1,15 +1,17 @@
 #include "textwidget.h"
 
+#include <QGraphicsSimpleTextItem>
 #include <QPainter>
 
 TextWidget::TextWidget(const QString& text, QGraphicsItem* parent)
     : QGraphicsWidget(parent)
-    , m_text(text)
+    , m_textitem(text, this)
 {
+    setMinimumSize(childrenBoundingRect().size());
 }
 
-void TextWidget::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
+void TextWidget::setFont(const QFont& font)
 {
-    painter->setFont(font());
-    painter->drawText(0, 0, m_text);
+    QGraphicsWidget::setFont(font);
+    m_textitem.setFont(font);
 }

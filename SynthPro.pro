@@ -18,6 +18,7 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/filterdummy.h \
     src/main/abstraction/filterincrement.h \
     src/main/abstraction/filterlp229.h \
+    src/main/abstraction/filterhp229.h \
     src/main/abstraction/inport.h \
     src/main/abstraction/vco.h \
     src/main/abstraction/wavegenerator.h \
@@ -62,7 +63,7 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/cvca.h \
     src/main/presentation/pvca.h \
     src/main/abstraction/adsr.h \
-    src/main/abstraction/filterhp229.h
+    src/main/presentation/portwidget.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -76,6 +77,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/filterdummy.cpp \
     src/main/abstraction/filterincrement.cpp \
     src/main/abstraction/filterlp229.cpp \
+    src/main/abstraction/filterhp229.cpp \
     src/main/abstraction/inport.cpp \
     src/main/abstraction/vco.cpp \
     src/main/abstraction/wavegeneratordummy.cpp \
@@ -119,8 +121,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/cvca.cpp \
     src/main/presentation/pvca.cpp \
     src/main/abstraction/adsr.cpp \
-    src/main/abstraction/filterhp229.cpp
-
+    src/main/presentation/portwidget.cpp
 
 INCLUDEPATH += src/main/
 

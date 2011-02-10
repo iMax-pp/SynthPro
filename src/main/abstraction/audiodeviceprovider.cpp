@@ -23,7 +23,8 @@ AudioDeviceProvider::AudioDeviceProvider(AudioDeviceProvider&)
 
 AudioDeviceProvider::~AudioDeviceProvider()
 {
-    stop();
+    // FIXME, it would be better to stop the AudioOutput before deleting but it's stucked on a semaphor…
+    // stop();
 
     if (m_audioOutput) {
         delete m_audioOutput;
@@ -91,22 +92,21 @@ bool AudioDeviceProvider::initializeAudioOutput()
 
 QIODevice* AudioDeviceProvider::device()
 {
-    if (!m_initialized) {
+    if (!m_initialized && !initializeAudioOutput()) {
         // If the device can't be initialized, return 0.
-        if (!initializeAudioOutput()) {
-            return 0;
-        }
+        return 0;
     }
 
     // Release a device, if it hasn't been given before.
     if (!m_deviceUsed && m_audioOutput) {
-            m_device = m_audioOutput->start();
-            m_deviceUsed = true;
-            m_device->open(QIODevice::WriteOnly);
-            return m_device;
-    } else {
-        return 0;
+        m_device = m_audioOutput->start();
+        m_deviceUsed = true;
+        m_device->open(QIODevice::WriteOnly);
+
+        return m_device;
     }
+
+    return 0;
 }
 
 void AudioDeviceProvider::releaseDevice()

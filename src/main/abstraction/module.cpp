@@ -10,7 +10,6 @@ Module::Module(QObject* parent)
 
 Module::~Module()
 {
-
 }
 
 const QList<Module*> Module::requirements() const

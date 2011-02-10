@@ -97,6 +97,7 @@ void CPort::dropWire(CPort* other)
             // Otherwise connect the other inport with the wire.
             m_wire->setInPort(dynamic_cast<CInPort*>(other));
         }
+
         other->setWire(m_wire);
         other->connectTo(this);
 

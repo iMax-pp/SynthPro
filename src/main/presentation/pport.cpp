@@ -2,39 +2,44 @@
 
 #include "control/cport.h"
 #include "control/cwire.h"
-#include <QApplication>
+#include "presentation/portwidget.h"
+#include "presentation/textwidget.h"
 #include <QDebug>
 #include <QFont>
+#include <QGraphicsLinearLayout>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
-#include <QStyle>
 
 PPort::PPort(CPort* control, QGraphicsItem* parent)
     : QGraphicsWidget(parent)
     , m_control(control)
     , m_label(0)
     , m_port(0)
+    , m_portsLayout(0)
 {
-    QStyle* style = QApplication::style();
-
     // Create label for port.
-    m_label = new QGraphicsSimpleTextItem(this);
-    m_label->setText(control->name());
-    m_label->setPen(Qt::NoPen);
-    m_label->setBrush(style->standardPalette().brush(QPalette::ButtonText));
+    m_label = new TextWidget(control->name(), this);
+    // m_label->setPen(Qt::NoPen);
+    // m_label->setBrush(style->standardPalette().brush(QPalette::ButtonText));
     m_label->setFont(QFont("Courier", 10, QFont::Normal));
-    m_label->setPos(-m_label->boundingRect().width(),
-                    -m_label->boundingRect().height() / 2);
 
     // Create the port (as an ellipse).
-    m_port = new QGraphicsEllipseItem(this);
-    m_port->setRect(0, 0, PORT_SIZE, PORT_SIZE);
-    m_port->setPen(Qt::NoPen);
-    m_port->setBrush(style->standardPalette().brush(QPalette::Mid));
-    m_port->setPos(0, -m_port->boundingRect().height() / 2);
+    m_port = new PortWidget(this);
 
-    setMinimumSize(childrenBoundingRect().size());
-    setMaximumSize(childrenBoundingRect().size());
+    QGraphicsLinearLayout* layout = new QGraphicsLinearLayout(Qt::Horizontal, this);
+    m_portsLayout = new QGraphicsLinearLayout(Qt::Vertical, layout);
+
+    if (control->out()) { // Oops some logic in the presentation! I’m so crappy.
+        layout->addItem(m_label);
+        layout->addItem(m_portsLayout);
+    } else {
+        layout->addItem(m_portsLayout);
+        layout->addItem(m_label);
+    }
+
+    m_portsLayout->addItem(m_port);
+
+    setMinimumSize(boundingRect().size());
 }
 
 void PPort::paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)
@@ -43,11 +48,7 @@ void PPort::paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)
 
 QRectF PPort::boundingRect() const
 {
-    const QRectF& labelBounds = m_label->boundingRect();
-    const QRectF& portBounds = m_port->boundingRect();
-    return QRectF(-labelBounds.width(), -labelBounds.height() / 2,
-                  portBounds.width() + labelBounds.width(),
-                  portBounds.height());
+    return childrenBoundingRect();
 }
 
 void PPort::mousePressEvent(QGraphicsSceneMouseEvent*)
@@ -72,8 +73,8 @@ void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
     PPort* port = 0;
     foreach (QGraphicsItem* item, items) {
         // ...by casting it.
-        port = dynamic_cast<PPort*>(item);
-        if (port) {
+        if (PortWidget* portWidget = dynamic_cast<PortWidget*>(item)) {
+            port = portWidget->parentPort();
             // If it's the port, then don't go further.
             break;
         }

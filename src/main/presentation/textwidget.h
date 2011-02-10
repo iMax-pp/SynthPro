@@ -7,13 +7,12 @@ class TextWidget : public QGraphicsWidget {
 public:
     TextWidget(const QString& text, QGraphicsItem* parent);
 
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
-
-    inline const QString& text() const { return m_text; }
-    inline void setText(const QString& text) { m_text = text; }
+    inline const QString text() const { return m_textitem.text(); }
+    inline void setText(const QString& text) { m_textitem.setText(text); }
+    void setFont(const QFont&);
 
 private:
-    QString m_text;
+    QGraphicsSimpleTextItem m_textitem;
 };
 
 #endif // TEXTWIDGET_H
