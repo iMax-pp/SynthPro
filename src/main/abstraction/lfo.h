@@ -96,9 +96,9 @@ protected:
     Dimmer* m_rangeDimmer;
     Dimmer* m_offsetDimmer;
 
-    static const qreal K_MIN = -5;
-    static const qreal K_MAX = -6;
-    static const qreal K_DEFAULT = -5;
+    static const qreal K_MIN = -6;
+    static const qreal K_MAX = -5;
+    static const qreal K_DEFAULT = -6;
 
     static const qreal RANGE_MIN = 0.01;
     static const qreal RANGE_MAX = 1;

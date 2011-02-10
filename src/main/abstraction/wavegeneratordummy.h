@@ -9,6 +9,8 @@
   */
 class WaveGeneratorDummy : public WaveGenerator {
 public:
+    static const int SIGNAL_INTENSITY = 5;
+
     WaveGeneratorDummy();
 
     /**
@@ -18,8 +20,6 @@ public:
 
 private:
     static const int FIXED_PERIOD = 80;
-    static const int SIGNAL_INTENSITY = 20000;
-
     int m_intensity;
     int m_currentStep;
 };

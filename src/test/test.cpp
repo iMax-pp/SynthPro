@@ -1,5 +1,6 @@
 #include "abstraction/testaudiodeviceprovider.h"
 #include "abstraction/testinport.h"
+#include "abstraction/testlfo.h"
 #include "abstraction/testmodulebufferrecorder.h"
 #include "abstraction/testoutport.h"
 #include "abstraction/testsequencer.h"
@@ -52,4 +53,7 @@ int main()
 
     TestVCF testVCF;
     QTest::qExec(&testVCF);
+
+    TestLFO testLFO;
+    QTest::qExec(&testLFO);
 }
