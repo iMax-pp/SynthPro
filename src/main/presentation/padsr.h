@@ -5,13 +5,14 @@
 
 class CADSR;
 class PDimmer;
-class PPort;
+class PVirtualPort;
 
 class PADSR : public PModule {
 public:
     PADSR(CADSR*);
 
-    void initialize(PPort* gate, PPort* out, PDimmer* attack, PDimmer* decay, PDimmer* sustain, PDimmer* release);
+    void initialize(PVirtualPort* gate, PVirtualPort* out, PDimmer* attack, PDimmer* decay,
+                    PDimmer* sustain, PDimmer* release);
 
 };
 

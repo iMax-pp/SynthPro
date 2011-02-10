@@ -2,8 +2,8 @@
 
 #include "control/cadsr.h"
 #include "presentation/pdimmer.h"
-#include "presentation/pport.h"
 #include "presentation/pselector.h"
+#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>
@@ -14,7 +14,8 @@ PADSR::PADSR(CADSR* control)
 {
 }
 
-void PADSR::initialize(PPort* gate, PPort* out, PDimmer* attack, PDimmer* decay, PDimmer* sustain, PDimmer* release)
+void PADSR::initialize(PVirtualPort* gate, PVirtualPort* out, PDimmer* attack, PDimmer* decay,
+                       PDimmer* sustain, PDimmer* release)
 {
     TextWidget* title = new TextWidget("ADSR", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
