@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-class CPort;
+class CVirtualPort;
 class CWire;
 class PortWidget;
 class QPointF;
@@ -16,12 +16,12 @@ class CPortWidget : public QObject {
     Q_OBJECT
 
 public:
-    CPortWidget(CPort* parent, QtFactory*);
+    CPortWidget(CVirtualPort* parent, QtFactory*);
 
     void setPresentation(PortWidget*);
     inline PortWidget* presentation() const { return m_presentation; }
 
-    inline CPort* port() const { return m_port; }
+    inline CVirtualPort* port() const { return m_port; }
 
     inline CWire* wire() const { return m_wire; }
     void setWire(CWire*);
@@ -47,7 +47,7 @@ protected slots:
 
 private:
     PortWidget* m_presentation;
-    CPort* m_port;
+    CVirtualPort* m_port;
     QtFactory* m_factory;
     CWire* m_wire;
     CWire* m_tmpWire;

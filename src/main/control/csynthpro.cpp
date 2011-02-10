@@ -6,10 +6,10 @@
 #include "control/cmodule.h"
 #include "control/cmoduleout.h"
 #include "control/coutport.h"
-#include "control/cport.h"
 #include "control/cvca.h"
 #include "control/cvcf.h"
 #include "control/cvco.h"
+#include "control/cvirtualport.h"
 #include <QGraphicsScene>
 
 CSynthPro::CSynthPro(SynthProFactory* factory)
@@ -100,14 +100,14 @@ void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
     }
 }
 
-void CSynthPro::showFeedback(CPort* from)
+void CSynthPro::showFeedback(CVirtualPort* from)
 {
     foreach (Module* module, modules()) {
-        foreach (Port* port, module->inports()) {
-            dynamic_cast<CInPort*>(port)->showFeedback(from);
+        foreach (VirtualPort* port, module->inports()) {
+            dynamic_cast<CInPort*>(port)->showCompatibleFeedback(from);
         }
-        foreach (Port* port, module->outports()) {
-            dynamic_cast<COutPort*>(port)->showFeedback(from);
+        foreach (VirtualPort* port, module->outports()) {
+            dynamic_cast<COutPort*>(port)->showCompatibleFeedback(from);
         }
     }
 }
@@ -115,10 +115,10 @@ void CSynthPro::showFeedback(CPort* from)
 void CSynthPro::hideFeedback()
 {
     foreach (Module* module, modules()) {
-        foreach (Port* port, module->inports()) {
+        foreach (VirtualPort* port, module->inports()) {
             dynamic_cast<CInPort*>(port)->hideFeedback();
         }
-        foreach (Port* port, module->outports()) {
+        foreach (VirtualPort* port, module->outports()) {
             dynamic_cast<COutPort*>(port)->hideFeedback();
         }
     }

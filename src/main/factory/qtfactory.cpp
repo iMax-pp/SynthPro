@@ -10,13 +10,13 @@
 #include "control/cmodule.h"
 #include "control/cmoduleout.h"
 #include "control/coutport.h"
-#include "control/cport.h"
 #include "control/cportwidget.h"
 #include "control/cselector.h"
 #include "control/csynthpro.h"
 #include "control/cvca.h"
 #include "control/cvcf.h"
 #include "control/cvco.h"
+#include "control/cvirtualport.h"
 #include "control/cwire.h"
 #include "presentation/padsr.h"
 #include "presentation/plfo.h"
@@ -25,6 +25,7 @@
 #include "presentation/pvca.h"
 #include "presentation/pvcf.h"
 #include "presentation/pvco.h"
+#include "presentation/pvirtualport.h"
 
 #include <QDebug>
 #include <QIODevice>
@@ -46,7 +47,7 @@ InPort* QtFactory::createInPort(Module* parent, const QString& name, bool replic
     qDebug() << "QtFactory::createInPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     CInPort* port = new CInPort(cParent, this, name, replicable, gate);
 
-    PPort* p = new PPort(port, cParent->presentation());
+    PVirtualPort* p = new PVirtualPort(port, cParent->presentation());
     port->setPresentation(p);
 
     port->initialize();
@@ -75,7 +76,7 @@ OutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool repl
     qDebug() << "QtFactory::createOutPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     COutPort* port = new COutPort(cParent, this, name, replicable, gate);
 
-    PPort* p = new PPort(port, cParent->presentation());
+    PVirtualPort* p = new PVirtualPort(port, cParent->presentation());
     port->setPresentation(p);
 
     port->initialize();
@@ -243,7 +244,7 @@ CWire* QtFactory::createWire(QGraphicsScene* scene)
     return wire;
 }
 
-CPortWidget* QtFactory::createPortWidget(CPort* parent, QtFactory* factory)
+CPortWidget* QtFactory::createPortWidget(CVirtualPort* parent, QtFactory* factory)
 {
     CPortWidget* cPortWidget = new CPortWidget(parent, factory);
 

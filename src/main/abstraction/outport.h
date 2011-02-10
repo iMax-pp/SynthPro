@@ -1,10 +1,9 @@
 #ifndef OUTPORT_H
 #define OUTPORT_H
 
-#include "abstraction/buffer.h"
-#include "port.h"
+#include "abstraction/virtualport.h"
 
-class OutPort : public virtual Port {
+class OutPort : public virtual VirtualPort {
 public:
     OutPort(Module* parent, const QString& name, bool replicable = false, bool gate = false);
 

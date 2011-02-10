@@ -2,8 +2,8 @@
 
 #include "control/cvco.h"
 #include "presentation/pdimmer.h"
-#include "presentation/pport.h"
 #include "presentation/pselector.h"
+#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>
@@ -15,7 +15,7 @@ PVCO::PVCO(CVCO* control)
 {
 }
 
-void PVCO::initialize(PPort* vfm, PPort* out, PSelector* selector, PDimmer* k)
+void PVCO::initialize(PVirtualPort* vfm, PVirtualPort* out, PSelector* selector, PDimmer* k)
 {
     TextWidget* title = new TextWidget("VCO", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));

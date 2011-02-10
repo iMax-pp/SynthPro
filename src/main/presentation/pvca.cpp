@@ -2,7 +2,7 @@
 
 #include "control/cvca.h"
 #include "presentation/pdimmer.h"
-#include "presentation/pport.h"
+#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>
@@ -13,7 +13,7 @@ PVCA::PVCA(CVCA* control)
 {
 }
 
-void PVCA::initialize(PPort* in, PPort* out, PPort* controlInput, PDimmer* gain)
+void PVCA::initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* controlInput, PDimmer* gain)
 {
     TextWidget* title = new TextWidget("VCA", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));

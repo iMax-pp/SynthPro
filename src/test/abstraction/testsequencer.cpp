@@ -188,5 +188,5 @@ void TestSequencer::testVCOAndSerializer()
     sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
-    QVERIFY(result.startsWith("20000"));
+    QVERIFY(result.startsWith(QString::number(VCO::SIGNAL_INTENSITY)));
 }
