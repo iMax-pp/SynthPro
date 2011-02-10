@@ -14,10 +14,12 @@ void TestVCA::testVCA()
     QString result;
     QTextStream stream(&result);
 
-    SimpleFactory factory;
 
-    VCO* vco = factory.createVCO(0);
-    VCA* vca = factory.createVCA(0);
+    SimpleFactory factory;
+    SynthPro* synth = factory.createSynthPro();
+
+    VCO* vco = factory.createVCO(synth);
+    VCA* vca = factory.createVCA(synth);
     vca->setGain(2);
     MockSerializerWell output(0, stream);
     vco->outports().first()->connectTo(vca->inports().first());
@@ -29,7 +31,6 @@ void TestVCA::testVCA()
     output.process();
     QVERIFY(result.startsWith("-0.118651"));
 
-    delete vco;
-    delete vca;
+    delete synth;
 
 }

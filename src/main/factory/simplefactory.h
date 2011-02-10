@@ -15,11 +15,14 @@ public:
     VCO* createVCO(SynthPro*);
     VCF* createVCF(SynthPro*);
     VCA* createVCA(SynthPro*);
+    ADSR* createADSR(SynthPro*);
     LFO* createLFO(SynthPro*);
     ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(SynthPro*);
     Dimmer* createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
+    ModuleOscilloscope* createModuleOscilloscope(SynthPro*);
+
 };
 
 #endif // SIMPLEFACTORY_H

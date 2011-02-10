@@ -13,12 +13,15 @@ class ADSR : public virtual Module {
 
 public:
     explicit ADSR(SynthPro*);
-    void initialize(SynthProFactory*);
+    virtual void initialize(SynthProFactory*);
     void ownProcess();
 
-protected:
+    void setAttackValue(qreal);
+    void setDecayValue(qreal);
+    void setSustainValue(qreal);
+    void setReleaseValue(qreal);
 
-    void processADSR(int, int);
+protected:
 
     static const qreal ATTACK_MIN = 0;
     static const qreal ATTACK_MAX = 2;
@@ -47,6 +50,16 @@ protected:
     Dimmer* m_releaseDimmer;
 
     int m_timeLine;
+
+    enum AdsrState {
+        IDLE,
+        ATTACK,
+        DECAY,
+        SUSTAIN,
+        RELEASE,
+    };
+    AdsrState m_currentState;
+    qreal m_gateValue;
 };
 
 #endif // ADSR_H

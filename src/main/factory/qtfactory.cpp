@@ -1,5 +1,6 @@
 #include "qtfactory.h"
 
+#include "abstraction/adsr.h"
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleoscilloscope.h"

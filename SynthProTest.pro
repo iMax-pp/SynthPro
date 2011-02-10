@@ -55,8 +55,11 @@ HEADERS += \
     src/main/abstraction/filtersoftsaturation.h \
     src/main/factory/filterfactory.h \
     src/main/abstraction/vca.h \
+    src/main/abstraction/adsr.h \
     src/test/abstraction/testvca.h \
     src/test/abstraction/testvcf.h \
+    src/test/abstraction/testadsr.h \
+    src/main/abstraction/moduleoscilloscope.h \
     src/test/abstraction/testlfo.h
 
 
@@ -105,10 +108,13 @@ SOURCES += src/test/test.cpp \
     src/main/abstraction/filterhp229.cpp \
     src/main/abstraction/filtersoftsaturation.cpp \
     src/main/abstraction/vca.cpp \
+    src/main/abstraction/adsr.cpp \
     src/test/abstraction/testvca.cpp \
     src/main/factory/wavegeneratorfactorydummy.cpp \
     src/main/factory/filterfactorydummy.cpp \
     src/test/abstraction/testvcf.cpp \
+    src/test/abstraction/testadsr.cpp \
+    src/main/abstraction/moduleoscilloscope.cpp \
     src/test/abstraction/testlfo.cpp
 
 

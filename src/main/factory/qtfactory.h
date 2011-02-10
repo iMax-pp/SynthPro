@@ -25,6 +25,7 @@ public:
     VCF* createVCF(SynthPro*);
     VCA* createVCA(SynthPro*);
     ADSR* createADSR(SynthPro*);
+
     ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(SynthPro*);
     ModuleOscilloscope* createModuleOscilloscope(SynthPro*);
