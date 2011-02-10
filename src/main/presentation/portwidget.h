@@ -3,6 +3,7 @@
 
 #include <QGraphicsWidget>
 
+class CPortWidget;
 class PPort;
 
 /**
@@ -10,14 +11,25 @@ class PPort;
  */
 class PortWidget : public QGraphicsWidget {
 public:
-    PortWidget(PPort* parent);
+    PortWidget(CPortWidget* control, PPort* parent);
+
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
 
-    inline PPort* parentPort() const { return m_parent; }
+    inline CPortWidget* control() const { return m_control; }
 
     static const int PORT_SIZE = 15;
+
+    void showFeedback(bool compatible);
+    void hideFeedback();
+
+protected:
+    // Handle drag & drop events
+    void mousePressEvent(QGraphicsSceneMouseEvent*);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent*);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent*);
+
 private:
-    PPort* m_parent;
+    CPortWidget* m_control;
 };
 
 #endif // PORTWIDGET_H

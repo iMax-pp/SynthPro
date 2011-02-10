@@ -106,8 +106,3 @@ ModuleOut* SimpleFactory::createModuleOut(SynthPro* parent)
     mo->initialize(this);
     return mo;
 }
-
-CWire* SimpleFactory::createWire(QGraphicsScene*)
-{
-    return 0;
-}

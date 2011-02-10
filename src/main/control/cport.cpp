@@ -1,106 +1,70 @@
 #include "cport.h"
 
-#include "cinport.h"
-#include "coutport.h"
-#include "cwire.h"
-#include "factory/synthprofactory.h"
+#include "control/cinport.h"
+#include "control/coutport.h"
+#include "control/cportwidget.h"
+#include "control/csynthpro.h"
+#include "control/cwire.h"
+#include "factory/qtfactory.h"
 
-CPort::CPort(Module* parent, SynthProFactory* factory, const QString& name, bool replicable, bool gate)
+CPort::CPort(Module* parent, QtFactory* factory, const QString& name, bool replicable, bool gate)
     : Port(parent, name, replicable, gate)
     , m_presentation(0)
-    , m_wire(0)
     , m_factory(factory)
 {
-}
-
-CPort::~CPort()
-{
-    /* We guess that this port presentation is owned by
-     * a Module’s presentation, so it will be deleted
-     * automatically (actually if we uncomment the
-     * following lines the program crashes)
-    if (m_presentation) {
-        delete m_presentation;
-    }*/
 }
 
 void CPort::setPresentation(PPort* presentation)
 {
     if (m_presentation) {
         delete m_presentation;
+        m_presentation = 0;
     }
 
     m_presentation = presentation;
 }
 
-PPort* CPort::presentation() const
+void CPort::connectTo(Port* other)
 {
-    return m_presentation;
-}
-
-CWire* CPort::wire() const
-{
-    return m_wire;
-}
-
-void CPort::setWire(CWire* wire)
-{
-    if (m_wire) {
-        // If we already have a wire, then delete it.
-        delete m_wire;
-    }
-
-    m_wire = wire;
-    connect(m_wire, SIGNAL(destroyed()), this, SLOT(unsetWire()));
-}
-
-void CPort::unsetWire()
-{
-    m_wire = 0;
-}
-
-void CPort::startWire()
-{
-    if (m_wire) {
-        // When starting a new wire, begin by deleting the previous one.
-        CPort* other = m_wire->inPort() == this
-                       ? dynamic_cast<CPort*>(m_wire->outPort())
-                       : dynamic_cast<CPort*>(m_wire->inPort());
-        disconnectFrom(other);
-        delete m_wire;
-    }
-
-    // And create a new one.
-    m_wire = m_factory->createWire(m_presentation->scene());
-    connect(m_wire, SIGNAL(destroyed()), this, SLOT(unsetWire()));
-
-    // Don't forget to register ourself as one of the port (the good one of course).
-    if (out()) {
-        m_wire->setOutPort(dynamic_cast<COutPort*>(this));
-    } else {
-        m_wire->setInPort(dynamic_cast<CInPort*>(this));
+    if (connectable(other)) {
+        Port::connectTo(other);
+        m_portWidgets.append(m_factory->createPortWidget(this, m_factory));
     }
 }
 
-void CPort::dropWire(CPort* other)
+void CPort::disconnectFrom(Port* other)
 {
-    if (!other || other->out() == out()) {
-        // Drop wasn't on a port? or was on a port of the same type? delete wire.
-        if (m_wire) {
-            delete m_wire;
+    if (m_connections.contains(other)) {
+        Port::disconnectFrom(other);
+        // TODO
+    }
+
+    dynamic_cast<CSynthPro*>(module()->synthPro())->showFeedback(this);
+}
+
+void CPort::updateWiresPositions()
+{
+    foreach (CPortWidget* cPortWidget, m_portWidgets) {
+        if (cPortWidget->wire()) {
+            cPortWidget->wire()->updatePosition();
         }
-    } else {
-        if (other->out()) {
-            // Otherwise connect the other outport with the wire.
-            m_wire->setOutPort(dynamic_cast<COutPort*>(other));
-        } else if (!other->out()) {
-            // Otherwise connect the other inport with the wire.
-            m_wire->setInPort(dynamic_cast<CInPort*>(other));
+    }
+
+    dynamic_cast<CSynthPro*>(module()->synthPro())->hideFeedback();
+}
+
+void CPort::showFeedback(CPort* from)
+{
+    if (from != this) {
+        foreach (CPortWidget* portWidget, m_portWidgets) {
+            portWidget->showFeedback(compatible(from));
         }
+    }
+}
 
-        other->setWire(m_wire);
-        other->connectTo(this);
-
-        m_wire->updatePosition();
+void CPort::hideFeedback()
+{
+    foreach (CPortWidget* portWidget, m_portWidgets) {
+        portWidget->hideFeedback();
     }
 }

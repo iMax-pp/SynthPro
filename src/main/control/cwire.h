@@ -5,8 +5,7 @@
 
 #include <QObject>
 
-class CInPort;
-class COutPort;
+class CPortWidget;
 
 class CWire : public QObject {
 public:
@@ -14,13 +13,13 @@ public:
     virtual ~CWire();
 
     void setPresentation(PWire*);
-    PWire* presentation() const;
+    inline PWire* presentation() const { return m_presentation; }
 
-    CInPort* inPort() const;
-    COutPort* outPort() const;
+    inline CPortWidget* inPort() const { return m_inPort; }
+    inline CPortWidget* outPort() const { return m_outPort; }
 
-    void setInPort(CInPort*);
-    void setOutPort(COutPort*);
+    void setInPort(CPortWidget*);
+    void setOutPort(CPortWidget*);
 
     /*
      * Update the position and length of the wire.
@@ -30,8 +29,8 @@ public:
 
 private:
     PWire* m_presentation;
-    CInPort* m_inPort;
-    COutPort* m_outPort;
+    CPortWidget* m_inPort;
+    CPortWidget* m_outPort;
 };
 
 #endif // CWIRE_H

@@ -35,20 +35,10 @@ PModule* CModule::presentation() const
 void CModule::move()
 {
     foreach (InPort* port, m_inports) {
-        // Update every inPorts.
-        CWire* wire = dynamic_cast<CPort*>(port)->wire();
-
-        if (wire) {
-            wire->updatePosition();
-        }
+        dynamic_cast<CPort*>(port)->updateWiresPositions();
     }
 
     foreach (OutPort* port, m_outports) {
-        // Update every outPorts.
-        CWire* wire = dynamic_cast<CPort*>(port)->wire();
-
-        if (wire) {
-            wire->updatePosition();
-        }
+        dynamic_cast<CPort*>(port)->updateWiresPositions();
     }
 }

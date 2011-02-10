@@ -15,6 +15,7 @@ CWire::~CWire()
 {
     if (m_presentation) {
         delete m_presentation;
+        m_presentation = 0;
     }
 }
 
@@ -23,27 +24,12 @@ void CWire::setPresentation(PWire* presentation)
     m_presentation = presentation;
 }
 
-PWire* CWire::presentation() const
-{
-    return m_presentation;
-}
-
-CInPort* CWire::inPort() const
-{
-    return m_inPort;
-}
-
-COutPort* CWire::outPort() const
-{
-    return m_outPort;
-}
-
-void CWire::setInPort(CInPort* inPort)
+void CWire::setInPort(CPortWidget* inPort)
 {
     m_inPort = inPort;
 }
 
-void CWire::setOutPort(COutPort* outPort)
+void CWire::setOutPort(CPortWidget* outPort)
 {
     m_outPort = outPort;
 }
