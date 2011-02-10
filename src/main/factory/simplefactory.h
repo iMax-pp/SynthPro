@@ -19,8 +19,6 @@ public:
     ModuleOut* createModuleOut(Module* parent);
     Dimmer* createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
-    CWire* createWire(QGraphicsScene*);
-
 };
 
 #endif // SIMPLEFACTORY_H

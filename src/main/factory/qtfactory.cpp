@@ -10,6 +10,7 @@
 #include "control/cmoduleout.h"
 #include "control/coutport.h"
 #include "control/cport.h"
+#include "control/cportwidget.h"
 #include "control/cselector.h"
 #include "control/csynthpro.h"
 #include "control/cvca.h"
@@ -17,6 +18,7 @@
 #include "control/cvco.h"
 #include "control/cwire.h"
 #include "presentation/pmoduleout.h"
+#include "presentation/portwidget.h"
 #include "presentation/pvca.h"
 #include "presentation/pvcf.h"
 #include "presentation/pvco.h"
@@ -194,8 +196,19 @@ ModuleOut* QtFactory::createModuleOut(Module* parent)
 CWire* QtFactory::createWire(QGraphicsScene* scene)
 {
     CWire* wire = new CWire();
+
     PWire* presentation = new PWire(wire, scene);
     wire->setPresentation(presentation);
 
     return wire;
+}
+
+CPortWidget* QtFactory::createPortWidget(CPort* parent, QtFactory* factory)
+{
+    CPortWidget* cPortWidget = new CPortWidget(parent, factory);
+
+    PortWidget* presentation = new PortWidget(cPortWidget, parent->presentation());
+    cPortWidget->setPresentation(presentation);
+
+    return cPortWidget;
 }

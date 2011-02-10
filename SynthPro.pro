@@ -62,7 +62,8 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/cvca.h \
     src/main/presentation/pvca.h \
     src/main/abstraction/adsr.h \
-    src/main/presentation/portwidget.h
+    src/main/presentation/portwidget.h \
+    src/main/control/cportwidget.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -119,7 +120,8 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/cvca.cpp \
     src/main/presentation/pvca.cpp \
     src/main/abstraction/adsr.cpp \
-    src/main/presentation/portwidget.cpp
+    src/main/presentation/portwidget.cpp \
+    src/main/control/cportwidget.cpp
 
 
 INCLUDEPATH += src/main/

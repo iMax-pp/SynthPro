@@ -4,7 +4,6 @@
 #include <QString>
 #include <QtGlobal>
 
-class CWire;
 class Dimmer;
 class InPort;
 class Module;
@@ -14,7 +13,6 @@ class OutPort;
 class Selector;
 class Sequencer;
 class SynthPro;
-class QGraphicsScene;
 class VCF;
 class VCO;
 class VCA;
@@ -50,8 +48,6 @@ public:
      */
     virtual Dimmer* createDimmer(QString name, qreal min, qreal man, qreal defaultValue, Module* parent) = 0;
     virtual Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent) = 0;
-
-    virtual CWire* createWire(QGraphicsScene*) = 0; // That’s bad, QGraphicsScene should not appear in the factory (but the workaround is a bit messy, I know)
 
     /*
      * Enumeration of module types.
