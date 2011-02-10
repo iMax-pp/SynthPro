@@ -1,6 +1,8 @@
 #include "cportwidget.h"
 
+#include "control/cmodule.h"
 #include "control/cport.h"
+#include "control/csynthpro.h"
 #include "control/cwire.h"
 #include "factory/qtfactory.h"
 #include "presentation/portwidget.h"
@@ -44,7 +46,7 @@ void CPortWidget::unsetWire()
 void CPortWidget::drag()
 {
     // TODO
-    // CWire* wire = m_factory->createWire(m_port->module()->synthpro()->scene);
+    // CWire* wire = m_factory->createWire(presentation()->scene());
     // presentation()->dragWire(wire->presentation());
     if (m_wire) {
         // When starting a new wire, begin by deleting the previous one.
@@ -56,7 +58,7 @@ void CPortWidget::drag()
     }
 
     // And create a new one.
-    m_wire = m_factory->createWire(m_presentation->scene());
+    m_wire = m_factory->createWire(presentation()->scene());
     connect(m_wire, SIGNAL(destroyed()), this, SLOT(unsetWire()));
 
     // Don't forget to register ourself as one of the port (the good one of course).
@@ -65,6 +67,8 @@ void CPortWidget::drag()
     } else {
         m_wire->setInPort(this);
     }
+
+    dynamic_cast<CSynthPro*>(m_port->module()->synthPro())->showFeedback(m_port);
 }
 
 void CPortWidget::dragMove(const QPointF&)
@@ -94,6 +98,8 @@ void CPortWidget::drop(CPortWidget* target)
 
         m_wire->updatePosition();
     }
+
+    dynamic_cast<CSynthPro*>(m_port->module()->synthPro())->hideFeedback();
 }
 
 void CPortWidget::showFeedback(bool compatible)
