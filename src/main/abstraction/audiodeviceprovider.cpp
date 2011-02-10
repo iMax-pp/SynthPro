@@ -25,7 +25,9 @@ AudioDeviceProvider::~AudioDeviceProvider()
 {
     // FIXME, it would be better to stop the AudioOutput before deleting but it's stucked on a semaphor…
     // stop();
+    if (m_device) {
 
+    }
     if (m_audioOutput) {
         delete m_audioOutput;
     }

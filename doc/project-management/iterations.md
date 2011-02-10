@@ -71,11 +71,13 @@ date :  semaine 6 (mercredi 9 - vendredi 11)
 
 Roadmap (todo)
 ---------
+- PushButton (qui gere press/release) à ajouter aux interfaces (retrigger ADSR)
 - Keyboard virtuel;
 - Oscillo;
 - Entrée MIDI.
 
 Tweaking
 ----------
+- Optimisation Filtres (multiplications, ou voir site).
 - Optimiser `InPort::fetch()` (en deux passes);
 - Penser à Normaliser le signal de la sortie Out, mais également le BufferRecorder.
