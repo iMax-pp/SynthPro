@@ -31,6 +31,7 @@ void PVCF::initialize(PVirtualPort* in, PVirtualPort* cutOff, PVirtualPort* out,
     bottomArea()->addAnchor(cutOffDimmer, Qt::AnchorRight, selector, Qt::AnchorLeft);
     bottomArea()->addAnchor(selector, Qt::AnchorRight, bottomArea(), Qt::AnchorRight);
     bottomArea()->addAnchors(selector, bottomArea(), Qt::Vertical);
+    bottomArea()->addAnchor(resonance, Qt::AnchorTop, bottomArea(), Qt::AnchorTop);
     bottomArea()->addAnchor(resonance, Qt::AnchorBottom, cutOffDimmer, Qt::AnchorTop);
     bottomArea()->addAnchor(cutOffDimmer, Qt::AnchorBottom, bottomArea(), Qt::AnchorBottom);
     leftArea()->addAnchors(in, leftArea());

@@ -21,7 +21,7 @@ void ADSR::initialize(SynthProFactory* factory)
     m_gate = factory->createInPortGate(this, "gate");
     m_inports.append(m_gate);
 
-    m_outPort = factory->createOutPortReplicable(this, "outPort");
+    m_outPort = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_outPort);
 
     m_attackDimmer = factory->createDimmer("Attack", ATTACK_MIN, ATTACK_MAX, ATTACK_DEFAULT, this);
