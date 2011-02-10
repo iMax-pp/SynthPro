@@ -1,5 +1,6 @@
 #include "testvcf.h"
 
+#include "abstraction/inport.h"
 #include "abstraction/filterincrement.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
@@ -14,11 +15,11 @@ void TestVCF::testVCF()
     SimpleFactory factory;
 
     // VCO
-    VCO* vco = factory.createVCO();
+    VCO* vco = factory.createVCO(0);
     vco->setShape("EmptyWave");
 
     // VCF
-    VCF* vcf = factory.createVCF();
+    VCF* vcf = factory.createVCF(0);
     vcf->setFilter("FilterIncrement");
 
     vco->outports().at(0)->connectTo(vcf->inports().at(0));
