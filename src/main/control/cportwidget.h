@@ -50,6 +50,7 @@ private:
     CPort* m_port;
     QtFactory* m_factory;
     CWire* m_wire;
+    CWire* m_tmpWire;
 };
 
 #endif // CPORTWIDGET_H

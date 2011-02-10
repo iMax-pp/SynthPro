@@ -11,8 +11,7 @@ public:
 
     QRectF boundingRect() const;
 
-public slots:
-    void updatePosition(QPointF);
+    void updatePosition(const QPointF&);
 
 private:
     CWire* m_control;
