@@ -14,12 +14,14 @@ PortWidget::PortWidget(CPortWidget* control, PPort* parent)
 {
     setMaximumSize(PORT_SIZE, PORT_SIZE);
     setMinimumSize(PORT_SIZE, PORT_SIZE);
+
+    hideFeedback(); // HACK to init port color.
 }
 
 void PortWidget::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 {
     painter->setPen(Qt::NoPen);
-    painter->setBrush(QApplication::style()->standardPalette().brush(QPalette::Mid));
+    painter->setBrush(palette().button());
     painter->drawEllipse(0, 0, PORT_SIZE, PORT_SIZE);
 }
 
@@ -28,18 +30,20 @@ void PortWidget::showFeedback(bool compatible)
     QPalette palette(Qt::red);
 
     if (compatible) {
-        palette.setColor(QPalette::Window, Qt::darkGreen);
+        palette.setColor(QPalette::Button, Qt::darkGreen);
     }
 
     setPalette(palette);
+    update();
 }
 
 void PortWidget::hideFeedback()
 {
     QPalette palette;
-    palette.setBrush(QPalette::Window, QApplication::style()->standardPalette().brush(QPalette::Mid));
+    palette.setBrush(QPalette::Button, QApplication::style()->standardPalette().brush(QPalette::Mid));
 
     setPalette(palette);
+    update();
 }
 
 void PortWidget::mousePressEvent(QGraphicsSceneMouseEvent* event)
