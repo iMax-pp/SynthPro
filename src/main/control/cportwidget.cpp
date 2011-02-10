@@ -95,3 +95,13 @@ void CPortWidget::drop(CPortWidget* target)
         m_wire->updatePosition();
     }
 }
+
+void CPortWidget::showFeedback(bool compatible)
+{
+    m_presentation->showFeedback(compatible);
+}
+
+void CPortWidget::hideFeedback()
+{
+    m_presentation->hideFeedback();
+}

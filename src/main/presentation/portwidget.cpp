@@ -23,6 +23,25 @@ void PortWidget::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidg
     painter->drawEllipse(0, 0, PORT_SIZE, PORT_SIZE);
 }
 
+void PortWidget::showFeedback(bool compatible)
+{
+    QPalette palette(Qt::red);
+
+    if (compatible) {
+        palette.setColor(QPalette::Window, Qt::darkGreen);
+    }
+
+    setPalette(palette);
+}
+
+void PortWidget::hideFeedback()
+{
+    QPalette palette;
+    palette.setBrush(QPalette::Window, QApplication::style()->standardPalette().brush(QPalette::Mid));
+
+    setPalette(palette);
+}
+
 void PortWidget::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {

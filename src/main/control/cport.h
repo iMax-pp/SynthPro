@@ -21,6 +21,17 @@ public:
 
     void updateWiresPositions();
 
+    /**
+     * Show feedback, called when drawing a wire from a port.
+     * @param The origin port.
+     */
+    void showFeedback(CPort* from);
+
+    /**
+     * Hide feedback, called when dropping a dragged wire.
+     */
+    void hideFeedback();
+
 private:
     PPort* m_presentation;
     QtFactory* m_factory;
