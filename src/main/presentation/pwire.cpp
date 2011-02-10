@@ -29,7 +29,7 @@ QRectF PWire::boundingRect() const
 }
 
 // TODO PWire should not depend on CPortWidget
-void PWire::updatePosition(QPointF point)
+void PWire::updatePosition(const QPointF& point)
 {
     // At least one of the two ports will be defined when creating the wire,
     // so it will always be connected to at least one port.
