@@ -9,6 +9,8 @@
 ADSR::ADSR(QObject* parent)
     : Module(parent)
     , m_timeLine(0)
+    , m_currentState(IDLE)
+    , m_gateValue(0)
 {
 }
 
@@ -29,39 +31,48 @@ void ADSR::initialize(SynthProFactory* factory)
 
 void ADSR::ownProcess()
 {
-    qreal oldValue =  m_gate->buffer()->data()[0];
+    qreal attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+
     qreal currentValue = 0;
-    int upGate = 0;
-    int downGate = 0;
-
-    // gate buffer analysis searching an start or a stop signal. I'm really not sure of the efficiency of this method
-    for (int i = 1; i < m_gate->buffer()->length(); i += 10) {
-        currentValue = m_gate->buffer()->data()[i];
-        if (currentValue-oldValue > GATE_LEVEL) {
-            upGate = i;
-        }
-        if (currentValue-oldValue < 1-GATE_LEVEL) {
-            downGate = i;
-        }
-
-    }
-    // if there is a upGate in the the buffer or if an ADSR cycle is begin we treat the buffer, else there is nothing to do
-    if (upGate != 0 || m_timeLine != 0) {
-        processADSR(upGate, downGate);
-    }
-}
-
-// Todo : calculate of the output buffer is wrong
-
-void ADSR::processADSR(int upGate, int downGate)
-{
-    // these values are not qreals but integers
-    int attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    int decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    int releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
     int bufferIndex = 0;
 
-    // "eat" the values before upGate
+    while (bufferIndex < m_gate->buffer()->length()) {
+        currentValue = m_gate->buffer()->data()[bufferIndex];
+        if (currentValue > m_gateValue && m_currentState == IDLE) {
+            // a gate "on" signal occurs
+            m_timeLine = 0;
+            m_currentState = ATTACK;
+        }
+
+        if (currentValue < m_gateValue) {
+            // a gate "of" signal occurs
+            m_currentState = RELEASE;
+        }
+        if (m_currentState == ATTACK && m_timeLine == attackInSample) {
+            m_currentState = DECAY;
+        }
+        if (m_currentState == DECAY && m_timeLine == (attackInSample + decayInSample)) {
+            m_currentState = SUSTAIN;
+        }
+        m_timeLine++;
+        bufferIndex++;
+        m_gateValue = currentValue;
+    }
+
+}
+// Todo : calculate of the output buffer is wrong
+
+void ADSR::processADSR()
+{
+    // these values are not qreals but integers
+    qreal attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    qreal releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int bufferIndex = 0;
+
+    // "eat" the values befor upGate
     while (bufferIndex < upGate  && bufferIndex < m_gate->buffer()->length()) {
         bufferIndex++;
     }

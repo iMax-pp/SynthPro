@@ -17,7 +17,7 @@ public:
 
 protected:
 
-    void processADSR(int, int);
+    void processADSR();
 
     static const qreal ATTACK_MIN = 0;
     static const qreal ATTACK_MAX = 2;
@@ -46,6 +46,16 @@ protected:
     Dimmer* m_releaseDimmer;
 
     int m_timeLine;
+
+    enum AdsrState {
+        IDLE,
+        ATTACK,
+        DECAY,
+        SUSTAIN,
+        RELEASE,
+    };
+    AdsrState m_currentState;
+    qreal m_gateValue;
 };
 
 #endif // ADSR_H
