@@ -1,6 +1,7 @@
 #include "csynthpro.h"
 
-#include "cinport.h"
+#include "control/cadsr.h"
+#include "control/cinport.h"
 #include "control/clfo.h"
 #include "control/cmodule.h"
 #include "control/cmoduleout.h"
@@ -79,6 +80,7 @@ void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
         module = dynamic_cast<Module*>(m_factory->createVCA(this));
         break;
     case QtFactory::ADSRId:
+        module = dynamic_cast<Module*>(m_factory->createADSR(this));
         break;
     case QtFactory::LFOId:
         module = dynamic_cast<Module*>(m_factory->createLFO(this));

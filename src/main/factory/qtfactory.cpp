@@ -3,6 +3,7 @@
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/sequencer.h"
+#include "control/cadsr.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/clfo.h"
@@ -17,6 +18,7 @@
 #include "control/cvcf.h"
 #include "control/cvco.h"
 #include "control/cwire.h"
+#include "presentation/padsr.h"
 #include "presentation/plfo.h"
 #include "presentation/pmoduleout.h"
 #include "presentation/portwidget.h"
@@ -113,7 +115,7 @@ VCO* QtFactory::createVCO(SynthPro* parent)
 
 LFO* QtFactory::createLFO(SynthPro* parent)
 {
-    // Create the VCO
+    // Create the LFO
     CLFO* lfo = new CLFO(parent);
 
     // Create its presentation
@@ -144,7 +146,7 @@ VCF* QtFactory::createVCF(SynthPro* parent)
 
 VCA* QtFactory::createVCA(SynthPro* parent)
 {
-    // Create the VCO
+    // Create the VCA
     CVCA* vca = new CVCA(parent);
 
     // Create its presentation
@@ -157,6 +159,24 @@ VCA* QtFactory::createVCA(SynthPro* parent)
     // return vca;
     return vca;
 }
+
+ADSR* QtFactory::createADSR(SynthPro* parent)
+{
+    // Create the ADSR
+    CADSR* adsr = new CADSR(parent);
+
+    // Create its presentation
+    PADSR* p = new PADSR(adsr);
+    adsr->setPresentation(p);
+
+    // Initialize it (ports creation)
+    adsr->initialize(this);
+
+    // return vca;
+    return adsr;
+
+}
+
 Dimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);

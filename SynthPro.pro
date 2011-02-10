@@ -68,7 +68,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/cportwidget.h \
     src/main/abstraction/lfo.h \
     src/main/presentation/plfo.h \
-    src/main/control/clfo.h
+    src/main/control/clfo.h \
+    src/main/presentation/padsr.h \
+    src/main/control/cadsr.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -131,7 +133,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/cportwidget.cpp \
     src/main/abstraction/lfo.cpp \
     src/main/presentation/plfo.cpp \
-    src/main/control/clfo.cpp
+    src/main/control/clfo.cpp \
+    src/main/presentation/padsr.cpp \
+    src/main/control/cadsr.cpp
 
 INCLUDEPATH += src/main/
 
