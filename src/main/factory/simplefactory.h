@@ -21,6 +21,8 @@ public:
     ModuleOut* createModuleOut(SynthPro*);
     Dimmer* createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
+    ModuleOscilloscope* createModuleOscilloscope(SynthPro*);
+
 };
 
 #endif // SIMPLEFACTORY_H
