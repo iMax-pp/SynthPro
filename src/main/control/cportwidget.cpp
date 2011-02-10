@@ -43,12 +43,33 @@ void CPortWidget::unsetWire()
     m_wire = 0;
 }
 
+void CPortWidget::connectTo(CPortWidget* other)
+{
+    if (port()->connectable(other->port())) {
+        port()->connectTo(other->port());
+        CWire* wire = m_factory->createWire(presentation()->scene()); // HACK way to retrieve the scene, I think
+        if (port()->out()) {
+            wire->setInPort(other);
+            wire->setOutPort(this);
+        } else {
+            wire->setInPort(this);
+            wire->setOutPort(other);
+        }
+    }
+}
+
+void CPortWidget::disconnectFrom(CPortWidget* other)
+{
+    port()->disconnectFrom(other->port());
+    if (m_wire) {
+        delete m_wire;
+    }
+}
+
 void CPortWidget::drag()
 {
-    // TODO
-    // CWire* wire = m_factory->createWire(presentation()->scene());
-    // presentation()->dragWire(wire->presentation());
     if (m_wire) {
+        // TODO Change this behavior: in this case the current wire should be moved
         // When starting a new wire, begin by deleting the previous one.
         CPort* other = m_wire->inPort() == this
                        ? dynamic_cast<CPort*>(m_wire->outPort()->port())
@@ -59,32 +80,30 @@ void CPortWidget::drag()
 
     // And create a new one.
     m_wire = m_factory->createWire(presentation()->scene());
-    connect(m_wire, SIGNAL(destroyed()), this, SLOT(unsetWire()));
+    // Automatically clear our reference to the wire if the other side deletes the wire
+    connect(wire(), SIGNAL(destroyed()), this, SLOT(unsetWire()));
 
     // Don't forget to register ourself as one of the port (the good one of course).
     if (port()->out()) {
-        m_wire->setOutPort(this);
+        wire()->setOutPort(this);
     } else {
-        m_wire->setInPort(this);
+        wire()->setInPort(this);
     }
 
-    dynamic_cast<CSynthPro*>(m_port->module()->synthPro())->showFeedback(m_port);
+    dynamic_cast<CSynthPro*>(port()->module()->synthPro())->showFeedback(port());
 }
 
-void CPortWidget::dragMove(const QPointF&)
+void CPortWidget::dragMove(const QPointF& pos)
 {
-
+    wire()->updatePosition(pos);
 }
-
 
 void CPortWidget::drop(CPortWidget* target)
 {
-    if (!target || target->port()->out() == port()->out()) {
-        // Drop wasn't on a port? or was on a port of the same type? delete wire.
-        if (m_wire) {
-            delete m_wire;
-        }
-    } else {
+    if (m_wire) {
+        delete m_wire;
+    }
+    if (target) {
         if (target->port()->out()) {
             // Otherwise connect the other outport with the wire.
             m_wire->setOutPort(target);
@@ -93,7 +112,6 @@ void CPortWidget::drop(CPortWidget* target)
             m_wire->setInPort(target);
         }
 
-        target->setWire(m_wire);
         target->port()->connectTo(this->port());
 
         m_wire->updatePosition();

@@ -53,7 +53,6 @@ void CPort::disconnectFrom(Port* other)
 {
     if (m_connections.contains(other)) {
         Port::disconnectFrom(other);
-        // TODO
     }
 }
 
