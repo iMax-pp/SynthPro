@@ -50,14 +50,14 @@ void PortWidget::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {
         event->accept();
-        m_control->drag();
+        control()->drag();
     }
 }
 
 void PortWidget::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
     // While the wire isn't connected to another port, update it with the mouse position.
-    m_control->dragMove(event->scenePos());
+    control()->dragMove(event->scenePos());
     // m_control->wire()->updatePosition(event->scenePos());
 }
 
@@ -69,19 +69,19 @@ void PortWidget::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
     QList<QGraphicsItem*> items = scene()->items(pos);
 
     // Try to find the port within all the items...
-    PortWidget* port = 0;
+    PortWidget* target = 0;
     foreach (QGraphicsItem* item, items) {
         // ...by casting it.
-        if ((port = dynamic_cast<PortWidget*>(item))) {
+        if ((target = dynamic_cast<PortWidget*>(item))) {
             // If it's the port, then don't go further.
             break;
         }
     }
 
     // In any case call the control (ie. to connect or delete the associated wire).
-    if (port) {
-        m_control->drop(port->control());
+    if (target) {
+        control()->drop(target->control());
     } else {
-        m_control->drop(0);
+        control()->drop(0);
     }
 }

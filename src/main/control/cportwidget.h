@@ -26,6 +26,9 @@ public:
     inline CWire* wire() const { return m_wire; }
     void setWire(CWire*);
 
+    void connectTo(CPortWidget* other);
+    void disconnectFrom(CPortWidget* other);
+
     /*
      * The presentation of this CPortWidget should call
      * these operations when the user attempts to drag and

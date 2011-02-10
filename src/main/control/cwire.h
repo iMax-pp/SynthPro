@@ -25,7 +25,7 @@ public:
      * Update the position and length of the wire.
      * @param QPointF representing the non-connected tip when DnD for connection.
      */
-    void updatePosition(QPointF = QPointF());
+    void updatePosition(const QPointF& = QPointF());
 
 private:
     PWire* m_presentation;
