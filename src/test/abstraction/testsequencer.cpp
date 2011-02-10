@@ -173,23 +173,20 @@ void TestSequencer::testVCOAndSerializer()
     QTextStream stream(&result);
     SimpleFactory factory;
 
-    SynthPro* synthpro = factory.createSynthPro();
+    SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    VCO* vco = factory.createVCO(synthpro);
+    VCO* vco = factory.createVCO(&synthpro);
     vco->setShape("DummyWave");
-    synthpro->add(vco);
+    synthpro.add(vco);
 
-    MockSerializerWell output(synthpro, stream);
-    synthpro->add(&output);
+    MockSerializerWell output(&synthpro, stream);
+    synthpro.add(&output);
 
     vco->outports().first()->connectTo(&output.input);
 
-    sequencer.scheduleModules(synthpro);
+    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QVERIFY(result.startsWith("20000"));
-
-    delete synthpro;
-    delete vco;
 }

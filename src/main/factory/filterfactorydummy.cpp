@@ -5,31 +5,37 @@
 #include "abstraction/filterhp229.h"
 #include "abstraction/filterincrement.h"
 #include "abstraction/filterlp229.h"
+#include "abstraction/filtersoftsaturation.h"
 
 FilterFactory::FilterFactory()
 {
-    m_selectorConversionMap.insert(0, "FilterDummy");
-    m_selectorConversionMap.insert(1, "FilterIncrement");
-    m_selectorConversionMap.insert(2, "FilterLP229");
-    m_selectorConversionMap.insert(3, "FilterHP229");
+    m_selectorConversionMap.insert(0, "Dummy");
+    m_selectorConversionMap.insert(1, "Increment");
+    m_selectorConversionMap.insert(2, "Low Pass");
+    m_selectorConversionMap.insert(3, "High Pass");
+    m_selectorConversionMap.insert(4, "Soft Saturation");
 }
 
 Filter* FilterFactory::createFilter(const QString& filterType)
 {
-    if (filterType == "FilterDummy") {
+    if (filterType == "Dummy") {
         return new FilterDummy();
     }
 
-    if (filterType == "FilterIncrement") {
+    if (filterType == "Increment") {
         return new FilterIncrement();
     }
 
-    if (filterType == "FilterLP229") {
+    if (filterType == "Low Pass") {
         return new FilterLP229();
     }
 
-    if (filterType == "FilterHP229") {
+    if (filterType == "High Pass") {
         return new FilterHP229();
+    }
+
+    if (filterType == "Soft Saturation") {
+        return new FilterSoftSaturation();
     }
 
     return new FilterDummy();

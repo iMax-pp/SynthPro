@@ -20,7 +20,7 @@ void TestModuleBufferRecorder::testModuleBufferRecorder()
     ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
     VCO* vco = factory.createVCO(0);
-    vco->setShape("EmptyWave");
+    vco->setShape("Empty");
     vco->outports().at(0)->connectTo(mbr->inports().at(0));
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
