@@ -1,13 +1,16 @@
 #include "csynthpro.h"
 
-#include "cinport.h"
+#include "control/cadsr.h"
+#include "control/cinport.h"
+#include "control/clfo.h"
 #include "control/cmodule.h"
 #include "control/cmoduleout.h"
+#include "control/coscilloscope.h"
 #include "control/coutport.h"
-#include "control/cport.h"
 #include "control/cvca.h"
 #include "control/cvcf.h"
 #include "control/cvco.h"
+#include "control/cvirtualport.h"
 #include <QGraphicsScene>
 
 CSynthPro::CSynthPro(SynthProFactory* factory)
@@ -78,11 +81,18 @@ void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
         module = dynamic_cast<Module*>(m_factory->createVCA(this));
         break;
     case QtFactory::ADSRId:
+        module = dynamic_cast<Module*>(m_factory->createADSR(this));
+        break;
+    case QtFactory::LFOId:
+        module = dynamic_cast<Module*>(m_factory->createLFO(this));
         break;
     case QtFactory::AudioOuputId:
         module = dynamic_cast<Module*>(m_factory->createModuleOut(this));
         break;
     case QtFactory::FileOutputId:
+        break;
+    case QtFactory::OscilloscopeId:
+        module = dynamic_cast<Module*>(m_factory->createModuleOscilloscope(this));
         break;
     default:
         break;
@@ -94,14 +104,14 @@ void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
     }
 }
 
-void CSynthPro::showFeedback(CPort* from)
+void CSynthPro::showFeedback(CVirtualPort* from)
 {
     foreach (Module* module, modules()) {
-        foreach (Port* port, module->inports()) {
-            dynamic_cast<CInPort*>(port)->showFeedback(from);
+        foreach (VirtualPort* port, module->inports()) {
+            dynamic_cast<CInPort*>(port)->showCompatibleFeedback(from);
         }
-        foreach (Port* port, module->outports()) {
-            dynamic_cast<COutPort*>(port)->showFeedback(from);
+        foreach (VirtualPort* port, module->outports()) {
+            dynamic_cast<COutPort*>(port)->showCompatibleFeedback(from);
         }
     }
 }
@@ -109,10 +119,10 @@ void CSynthPro::showFeedback(CPort* from)
 void CSynthPro::hideFeedback()
 {
     foreach (Module* module, modules()) {
-        foreach (Port* port, module->inports()) {
+        foreach (VirtualPort* port, module->inports()) {
             dynamic_cast<CInPort*>(port)->hideFeedback();
         }
-        foreach (Port* port, module->outports()) {
+        foreach (VirtualPort* port, module->outports()) {
             dynamic_cast<COutPort*>(port)->hideFeedback();
         }
     }

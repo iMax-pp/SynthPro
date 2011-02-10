@@ -4,13 +4,13 @@
 #include "presentation/pmodule.h"
 
 class CModuleOut;
-class PPort;
+class PVirtualPort;
 
 class PModuleOut : public PModule {
 public:
     PModuleOut(CModuleOut*);
 
-    void initialize(PPort* in);
+    void initialize(PVirtualPort* in);
 };
 
 #endif // PMODULEOUT_H

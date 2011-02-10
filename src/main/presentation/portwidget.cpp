@@ -1,14 +1,14 @@
 #include "portwidget.h"
 
 #include "control/cportwidget.h"
-#include "presentation/pport.h"
+#include "presentation/pvirtualport.h"
 #include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
 #include <QPainter>
 #include <QStyle>
 
-PortWidget::PortWidget(CPortWidget* control, PPort* parent)
+PortWidget::PortWidget(CPortWidget* control, PVirtualPort* parent)
     : QGraphicsWidget(parent)
     , m_control(control)
 {

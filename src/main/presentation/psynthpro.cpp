@@ -164,6 +164,7 @@ void PSynthPro::createInputModuleList()
     ModuleListModel* model = new ModuleListModel(this);
     model->addModule("Keyboard", QtFactory::KeyboardId);
     model->addModule("VCO", QtFactory::VCOId);
+    model->addModule("LFO", QtFactory::LFOId);
     inModuleList->setModel(model);
 
     m_inModuleDock->setWidget(inModuleList);
@@ -176,6 +177,7 @@ void PSynthPro::createOutputModuleList()
     outModuleList->setDragDropMode(QListView::DragOnly);
 
     ModuleListModel* model = new ModuleListModel(this);
+    model->addModule("Oscilloscope", QtFactory::OscilloscopeId);
     model->addModule("Audio Output", QtFactory::AudioOuputId);
     model->addModule("File Output", QtFactory::FileOutputId);
     outModuleList->setModel(model);

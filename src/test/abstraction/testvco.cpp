@@ -28,7 +28,7 @@ void TestVCO::testVCO()
     vco->process();
     output.process();
 
-    QVERIFY(result.startsWith("20000")); // TODO check that *all* the result is as expected (not only the first value)
+    QVERIFY(result.startsWith(QString::number(VCO::SIGNAL_INTENSITY))); // TODO check that *all* the result is as expected (not only the first value)
 
     delete synth;
 }

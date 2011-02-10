@@ -7,7 +7,7 @@ QT += multimedia
 
 HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/module.h \
-    src/main/abstraction/port.h \
+    src/main/abstraction/virtualport.h \
     src/main/abstraction/sequencer.h \
     src/main/control/csynthpro.h \
     src/main/presentation/psynthpro.h \
@@ -28,8 +28,8 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/presentation/moduleview.h \
     src/main/control/cmodule.h \
     src/main/presentation/pmodule.h \
-    src/main/presentation/pport.h \
-    src/main/control/cport.h \
+    src/main/presentation/pvirtualport.h \
+    src/main/control/cvirtualport.h \
     src/main/control/cinport.h \
     src/main/control/coutport.h \
     src/main/abstraction/wavegeneratortriangle.h \
@@ -65,11 +65,19 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/adsr.h \
     src/main/presentation/portwidget.h \
     src/main/abstraction/filtersoftsaturation.h \
-    src/main/control/cportwidget.h
+    src/main/control/cportwidget.h \
+    src/main/abstraction/lfo.h \
+    src/main/presentation/plfo.h \
+    src/main/control/clfo.h \
+    src/main/abstraction/moduleoscilloscope.h \
+    src/main/presentation/poscilloscope.h \
+    src/main/control/coscilloscope.h \
+    src/main/presentation/padsr.h \
+    src/main/control/cadsr.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
-    src/main/abstraction/port.cpp \
+    src/main/abstraction/virtualport.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/control/csynthpro.cpp \
     src/main/presentation/psynthpro.cpp \
@@ -88,8 +96,8 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/moduleview.cpp \
     src/main/control/cmodule.cpp \
     src/main/presentation/pmodule.cpp \
-    src/main/presentation/pport.cpp \
-    src/main/control/cport.cpp \
+    src/main/presentation/pvirtualport.cpp \
+    src/main/control/cvirtualport.cpp \
     src/main/control/cinport.cpp \
     src/main/control/coutport.cpp \
     src/main/abstraction/wavegeneratortriangle.cpp \
@@ -125,7 +133,15 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/adsr.cpp \
     src/main/presentation/portwidget.cpp \
     src/main/abstraction/filtersoftsaturation.cpp \
-    src/main/control/cportwidget.cpp
+    src/main/control/cportwidget.cpp \
+    src/main/abstraction/lfo.cpp \
+    src/main/presentation/plfo.cpp \
+    src/main/control/clfo.cpp \
+    src/main/abstraction/moduleoscilloscope.cpp \
+    src/main/presentation/poscilloscope.cpp \
+    src/main/control/coscilloscope.cpp \
+    src/main/presentation/padsr.cpp \
+    src/main/control/cadsr.cpp
 
 INCLUDEPATH += src/main/
 

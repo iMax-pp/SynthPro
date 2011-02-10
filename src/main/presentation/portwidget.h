@@ -4,14 +4,14 @@
 #include <QGraphicsWidget>
 
 class CPortWidget;
-class PPort;
+class PVirtualPort;
 
 /**
  * Represents a single port in a PPort widget
  */
 class PortWidget : public QGraphicsWidget {
 public:
-    PortWidget(CPortWidget* control, PPort* parent);
+    PortWidget(CPortWidget* control, PVirtualPort* parent);
 
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
 

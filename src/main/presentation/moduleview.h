@@ -13,6 +13,7 @@ protected:
     void dragEnterEvent(QDragEnterEvent*);
     void dragMoveEvent(QDragMoveEvent*);
     void dropEvent(QDropEvent*);
+    void wheelEvent(QWheelEvent*);
 
 private:
     CSynthPro* m_cSynthPro;

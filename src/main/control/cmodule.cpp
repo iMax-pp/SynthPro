@@ -2,7 +2,7 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
-#include "control/cport.h"
+#include "control/cvirtualport.h"
 #include "control/cwire.h"
 
 CModule::CModule(SynthPro* parent)
@@ -15,6 +15,7 @@ CModule::~CModule()
 {
     if (m_presentation) {
         delete m_presentation;
+        m_presentation = 0;
     }
 }
 
@@ -22,6 +23,7 @@ void CModule::setPresentation(PModule* presentation)
 {
     if (m_presentation) {
         delete m_presentation;
+        m_presentation = 0;
     }
 
     m_presentation = presentation;
@@ -35,10 +37,10 @@ PModule* CModule::presentation() const
 void CModule::move()
 {
     foreach (InPort* port, m_inports) {
-        dynamic_cast<CPort*>(port)->updateWiresPositions();
+        dynamic_cast<CVirtualPort*>(port)->updateWiresPositions();
     }
 
     foreach (OutPort* port, m_outports) {
-        dynamic_cast<CPort*>(port)->updateWiresPositions();
+        dynamic_cast<CVirtualPort*>(port)->updateWiresPositions();
     }
 }

@@ -3,9 +3,9 @@
 
 #include "synthprofactory.h"
 
-class CPort;
-class CWire;
 class CPortWidget;
+class CVirtualPort;
+class CWire;
 class QGraphicsScene;
 
 class QtFactory : public SynthProFactory {
@@ -21,19 +21,21 @@ public:
     OutPort* createOutPortGate(Module* parent, const QString& name);
 
     VCO* createVCO(SynthPro*);
+    LFO* createLFO(SynthPro*);
     VCF* createVCF(SynthPro*);
     VCA* createVCA(SynthPro*);
     ADSR* createADSR(SynthPro*);
 
     ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(SynthPro*);
+    ModuleOscilloscope* createModuleOscilloscope(SynthPro*);
 
     Dimmer* createDimmer(QString name, qreal min, qreal max, qreal defaultValue, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
 
     // Creation methods specific to the QtFactory
     CWire* createWire(QGraphicsScene*);
-    CPortWidget* createPortWidget(CPort*, QtFactory*);
+    CPortWidget* createPortWidget(CVirtualPort*, QtFactory*);
 
 protected:
     // Convenient factory method

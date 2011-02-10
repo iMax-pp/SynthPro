@@ -3,6 +3,7 @@
 #include "abstraction/adsr.h"
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
+#include "abstraction/lfo.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
@@ -12,7 +13,6 @@
 #include "abstraction/vca.h"
 #include "abstraction/vcf.h"
 #include "abstraction/vco.h"
-
 
 SynthPro* SimpleFactory::createSynthPro()
 {
@@ -70,11 +70,19 @@ VCA* SimpleFactory::createVCA(SynthPro* parent)
     return vca;
 }
 
+
 ADSR* SimpleFactory::createADSR(SynthPro* parent)
 {
     ADSR* adsr = new ADSR(parent);
     adsr->initialize(this);
     return adsr;
+}
+
+LFO* SimpleFactory::createLFO(SynthPro* parent)
+{
+    LFO* lfo = new LFO(parent);
+    lfo->initialize(this);
+    return lfo;
 }
 
 Dimmer* SimpleFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
