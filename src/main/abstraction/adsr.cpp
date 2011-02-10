@@ -71,7 +71,7 @@ void ADSR::ownProcess()
                 outports().first()->buffer()->data()[bufferIndex] = 1;
             }
             break;
-        case DECAY : qDebug() << "DECAY " << currentValue;
+        case DECAY :
             if (m_decayDimmer->value() != 0) {
                 qreal attack = attackInSample;
                 qreal decay = decayInSample;
@@ -81,26 +81,20 @@ void ADSR::ownProcess()
                 outports().first()->buffer()->data()[bufferIndex] = m_sustainDimmer->value();
             }
             break;
-        case SUSTAIN : qDebug() << "SUSTAIN " << currentValue;
+        case SUSTAIN :
             outports().first()->buffer()->data()[bufferIndex] = m_sustainDimmer->value();
             break;
-        case RELEASE : qDebug() << "RELEASE " << currentValue;
+        case RELEASE :
             if (m_decayDimmer->value() != 0) {
                 outports().first()->buffer()->data()[bufferIndex] =
                         m_sustainDimmer->value() - m_sustainDimmer->value()*(m_timeLine-startRelease) / releaseInSample;
             } else {
                 outports().first()->buffer()->data()[bufferIndex] = 0;
             }
-
-
             break;
-        case IDLE : qDebug() << "IDLE " << currentValue;
+        case IDLE :
             break;
         }
-
-        // qDebug() << "value " << outports().first()->buffer()->data()[bufferIndex] << ":" << inports().first()->buffer()->data()[bufferIndex];
-
-
 
         if (m_currentState != IDLE) {
             m_timeLine++;
