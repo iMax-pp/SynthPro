@@ -34,7 +34,7 @@ void CWire::setOutPort(CPortWidget* outPort)
     m_outPort = outPort;
 }
 
-void CWire::updatePosition(QPointF point)
+void CWire::updatePosition(const QPointF& point)
 {
     m_presentation->updatePosition(point);
 }
