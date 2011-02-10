@@ -4,6 +4,7 @@
 #include "abstraction/mockserializerwell.h"
 #include "abstraction/outport.h"
 #include "abstraction/selector.h"
+#include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratordummy.h"
 #include "abstraction/wavegeneratorsquare.h"

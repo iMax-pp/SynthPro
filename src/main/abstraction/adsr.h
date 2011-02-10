@@ -18,8 +18,6 @@ public:
 
 protected:
 
-    void processADSR();
-
     static const qreal ATTACK_MIN = 0;
     static const qreal ATTACK_MAX = 2;
     static const qreal ATTACK_DEFAULT = 0.1;

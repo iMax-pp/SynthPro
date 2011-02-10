@@ -1,5 +1,6 @@
 #include "simplefactory.h"
 
+#include "abstraction/adsr.h"
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
 #include "abstraction/modulebufferrecorder.h"
@@ -67,6 +68,13 @@ VCA* SimpleFactory::createVCA(SynthPro* parent)
     VCA* vca = new VCA(parent);
     vca->initialize(this);
     return vca;
+}
+
+ADSR* SimpleFactory::createADSR(SynthPro* parent)
+{
+    ADSR* adsr = new ADSR(parent);
+    adsr->initialize(this);
+    return adsr;
 }
 
 Dimmer* SimpleFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)

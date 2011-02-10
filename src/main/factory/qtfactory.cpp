@@ -1,5 +1,6 @@
 #include "qtfactory.h"
 
+#include "abstraction/adsr.h"
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/selector.h"
@@ -141,6 +142,14 @@ VCA* QtFactory::createVCA(SynthPro* parent)
     // return vca;
     return vca;
 }
+
+ADSR* QtFactory::createADSR(SynthPro* parent)
+{
+    ADSR* adsr = new ADSR(parent);
+    adsr->initialize(this);
+    return adsr;
+}
+
 Dimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
