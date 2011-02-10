@@ -122,3 +122,5 @@ ModuleOut* SimpleFactory::createModuleOut(SynthPro* parent)
     mo->initialize(this);
     return mo;
 }
+
+ModuleOscilloscope* SimpleFactory::createModuleOscilloscope(SynthPro*) {}

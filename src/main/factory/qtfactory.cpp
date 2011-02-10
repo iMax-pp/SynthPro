@@ -180,7 +180,6 @@ ADSR* QtFactory::createADSR(SynthPro* parent)
     // return vca;
     return adsr;
 
->>>>>>> 1311a3fcab64057cf97bb9c0d973a7a44ce0409c
 }
 
 Dimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
