@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
     SynthProFactory* factory = new QtFactory();
     SynthPro* synthpro = factory->createSynthPro();
 
-    VCO* vco = factory->createVCO();
+    VCO* vco = factory->createVCO(synthpro);
     synthpro->add(vco);
 
     vco->process();

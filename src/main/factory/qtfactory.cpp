@@ -89,10 +89,10 @@ OutPort* QtFactory::createOutPortGate(Module* parent, const QString& name)
     return createOutPort(parent, name, false, true);
 }
 
-VCO* QtFactory::createVCO()
+VCO* QtFactory::createVCO(SynthPro* parent)
 {
     // Create the VCO
-    CVCO* vco = new CVCO();
+    CVCO* vco = new CVCO(parent);
 
     // Create its presentation
     PVCO* p = new PVCO(vco);
@@ -104,10 +104,10 @@ VCO* QtFactory::createVCO()
     return vco;
 }
 
-VCF* QtFactory::createVCF()
+VCF* QtFactory::createVCF(SynthPro* parent)
 {
     // Create the VCF
-    CVCF* vcf = new CVCF();
+    CVCF* vcf = new CVCF(parent);
 
     // Create its presentation
     PVCF* p = new PVCF(vcf);
@@ -120,10 +120,10 @@ VCF* QtFactory::createVCF()
     return vcf;
 }
 
-VCA* QtFactory::createVCA()
+VCA* QtFactory::createVCA(SynthPro* parent)
 {
     // Create the VCO
-    CVCA* vca = new CVCA();
+    CVCA* vca = new CVCA(parent);
 
     // Create its presentation
     PVCA* p = new PVCA(vca);
@@ -159,14 +159,14 @@ Selector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QStri
     return selector;
 }
 
-ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(Module* parent, QString fileName, int nbProcessingBeforeSaving)
+ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
 {
-    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(fileName, nbProcessingBeforeSaving, parent);
+    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(parent, fileName, nbProcessingBeforeSaving);
     mbr->initialize(this);
     return mbr;
 }
 
-ModuleOut* QtFactory::createModuleOut(Module* parent)
+ModuleOut* QtFactory::createModuleOut(SynthPro* parent)
 {
     // Do not instanciate ModuleOut if no audio device can be accessed !
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();
@@ -181,7 +181,7 @@ ModuleOut* QtFactory::createModuleOut(Module* parent)
         return 0;
     }
 
-    CModuleOut* mo = new CModuleOut(device, adp.audioOutput(), parent);
+    CModuleOut* mo = new CModuleOut(parent, device, adp.audioOutput());
 
     PModuleOut* p = new PModuleOut(mo);
     mo->setPresentation(p);

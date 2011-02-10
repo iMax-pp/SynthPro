@@ -6,7 +6,7 @@
 
 class CModuleOut : public ModuleOut, public CModule {
 public:
-    CModuleOut(QIODevice*, QAudioOutput*, QObject* parent = 0);
+    CModuleOut(SynthPro*, QIODevice*, QAudioOutput*);
 
     void initialize(SynthProFactory*);
 };

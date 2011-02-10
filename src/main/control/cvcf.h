@@ -2,11 +2,11 @@
 #define CVCF_H
 
 #include "abstraction/vcf.h"
-#include "cmodule.h"
+#include "control/cmodule.h"
 
 class CVCF : public VCF, public CModule {
 public:
-    explicit CVCF(QObject* parent = 0);
+    explicit CVCF(SynthPro*);
 
     void initialize(SynthProFactory*);
 };

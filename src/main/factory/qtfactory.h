@@ -15,11 +15,11 @@ public:
     OutPort* createOutPortReplicable(Module* parent, const QString& name);
     OutPort* createOutPortGate(Module* parent, const QString& name);
 
-    VCO* createVCO();
-    VCF* createVCF();
-    VCA* createVCA();
-    ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
-    ModuleOut* createModuleOut(Module* parent);
+    VCO* createVCO(SynthPro*);
+    VCF* createVCF(SynthPro*);
+    VCA* createVCA(SynthPro*);
+    ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    ModuleOut* createModuleOut(SynthPro*);
 
     Dimmer* createDimmer(QString name, qreal min, qreal max, qreal defaultValue, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);

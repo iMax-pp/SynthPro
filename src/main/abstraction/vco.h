@@ -1,12 +1,8 @@
 #ifndef VCO_H
 #define VCO_H
 
-#include "abstraction/inport.h"
+#include "abstraction/audiodeviceprovider.h"
 #include "abstraction/module.h"
-#include "audiodeviceprovider.h"
-#include "factory/wavegeneratorfactory.h"
-
-#include <QHash>
 
 class InPort;
 class OutPort;
@@ -20,7 +16,7 @@ class VCO : public virtual Module {
     Q_OBJECT
 
 public:
-    VCO(QObject* parent = 0);
+    explicit VCO(SynthPro*);
     virtual ~VCO();
 
     // Initialize the VCO (creates its ports using the factory)
