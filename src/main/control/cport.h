@@ -22,6 +22,17 @@ public:
 
     void updateWiresPositions();
 
+    /**
+     * Show feedback, called when drawing a wire from a port.
+     * @param The origin port.
+     */
+    void showFeedback(CPort* from);
+
+    /**
+     * Hide feedback, called when dropping a dragged wire.
+     */
+    void hideFeedback();
+
 protected:
     // Replicates this port (create a CPortWidget and its presentation)
     void replicate();

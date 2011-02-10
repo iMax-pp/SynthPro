@@ -12,11 +12,15 @@ class PPort;
 class PortWidget : public QGraphicsWidget {
 public:
     PortWidget(CPortWidget* control, PPort* parent);
+
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
 
     inline CPortWidget* control() const { return m_control; }
 
     static const int PORT_SIZE = 15;
+
+    void showFeedback(bool compatible);
+    void hideFeedback();
 
 protected:
     // Handle drag & drop events
