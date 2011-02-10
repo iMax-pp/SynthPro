@@ -100,24 +100,15 @@ void CPortWidget::dragMove(const QPointF& pos)
 
 void CPortWidget::drop(CPortWidget* target)
 {
+    dynamic_cast<CSynthPro*>(m_port->module()->synthPro())->hideFeedback();
+    // Delete the temporary wire
     if (m_wire) {
         delete m_wire;
     }
+    // If the user dropped on a target, try to connect to it
     if (target) {
-        if (target->port()->out()) {
-            // Otherwise connect the other outport with the wire.
-            m_wire->setOutPort(target);
-        } else {
-            // Otherwise connect the other inport with the wire.
-            m_wire->setInPort(target);
-        }
-
         target->port()->connectTo(this->port());
-
-        m_wire->updatePosition();
     }
-
-    dynamic_cast<CSynthPro*>(m_port->module()->synthPro())->hideFeedback();
 }
 
 void CPortWidget::showFeedback(bool compatible)
