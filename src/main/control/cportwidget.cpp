@@ -1,13 +1,13 @@
 #include "cportwidget.h"
 
 #include "control/cmodule.h"
-#include "control/cport.h"
 #include "control/csynthpro.h"
+#include "control/cvirtualport.h"
 #include "control/cwire.h"
 #include "factory/qtfactory.h"
 #include "presentation/portwidget.h"
 
-CPortWidget::CPortWidget(CPort* parent, QtFactory* factory)
+CPortWidget::CPortWidget(CVirtualPort* parent, QtFactory* factory)
     : QObject(parent)
     , m_presentation(0)
     , m_port(parent)

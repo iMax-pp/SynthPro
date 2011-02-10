@@ -18,7 +18,7 @@ const QList<Module*> Module::requirements() const
     m_requirements.clear();
 
     foreach (InPort* port, inports()) {
-        foreach (Port* connected, port->connections()) {
+        foreach (VirtualPort* connected, port->connections()) {
             m_requirements.append(connected->module());
         }
     }

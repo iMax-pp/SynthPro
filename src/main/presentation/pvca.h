@@ -5,13 +5,13 @@
 
 class CVCA;
 class PDimmer;
-class PPort;
+class PVirtualPort;
 
 class PVCA : public PModule {
 public:
     PVCA(CVCA*);
 
-    void initialize(PPort* in, PPort* out, PPort* controlIn, PDimmer*);
+    void initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* controlIn, PDimmer*);
 };
 
 #endif // PVCA_H

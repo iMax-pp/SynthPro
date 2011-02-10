@@ -1,16 +1,15 @@
-#include "pport.h"
+#include "pvirtualport.h"
 
-#include "control/cport.h"
+#include "control/cvirtualport.h"
 #include "control/cwire.h"
 #include "presentation/portwidget.h"
 #include "presentation/textwidget.h"
-#include <QDebug>
 #include <QFont>
 #include <QGraphicsLinearLayout>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
 
-PPort::PPort(CPort* control, QGraphicsItem* parent)
+PVirtualPort::PVirtualPort(CVirtualPort* control, QGraphicsItem* parent)
     : QGraphicsWidget(parent)
     , m_control(control)
     , m_label(0)
@@ -36,16 +35,16 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
     setMinimumSize(boundingRect().size());
 }
 
-void PPort::paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)
+void PVirtualPort::paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)
 {
 }
 
-QRectF PPort::boundingRect() const
+QRectF PVirtualPort::boundingRect() const
 {
     return childrenBoundingRect();
 }
 
-void PPort::addReplication(PortWidget* replication)
+void PVirtualPort::addReplication(PortWidget* replication)
 {
     m_portsLayout->addItem(replication);
 }

@@ -1,9 +1,9 @@
 #ifndef INPORT_H
 #define INPORT_H
 
-#include "port.h"
+#include "abstraction/virtualport.h"
 
-class InPort : public virtual Port {
+class InPort : public virtual VirtualPort {
 public:
     InPort(Module* parent, const QString& name, bool replicable = false, bool gate = false);
 

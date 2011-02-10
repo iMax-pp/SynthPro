@@ -5,14 +5,14 @@
 
 class CVCF;
 class PDimmer;
-class PPort;
+class PVirtualPort;
 class PSelector;
 
 class PVCF : public PModule {
 public:
     PVCF(CVCF*);
 
-    void initialize(PPort* in, PPort* cutOff, PPort* out, PSelector*,
+    void initialize(PVirtualPort* in, PVirtualPort* cutOff, PVirtualPort* out, PSelector*,
                     PDimmer* resonance, PDimmer* cutOffDimmer);
 };
 

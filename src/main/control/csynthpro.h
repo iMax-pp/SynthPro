@@ -5,7 +5,7 @@
 #include "factory/qtfactory.h"
 #include "presentation/psynthpro.h"
 
-class CPort;
+class CVirtualPort;
 class QGraphicsScene;
 
 class CSynthPro : public SynthPro {
@@ -19,7 +19,7 @@ public:
     void add(Module*);
     void addModule(QtFactory::ModuleType, const QPointF&);
 
-    void showFeedback(CPort*);
+    void showFeedback(CVirtualPort*);
     void hideFeedback();
 
 private:

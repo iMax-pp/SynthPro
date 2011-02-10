@@ -3,9 +3,9 @@
 
 #include "abstraction/outport.h"
 #include "control/cmodule.h"
-#include "control/cport.h"
+#include "control/cvirtualport.h"
 
-class COutPort : public OutPort, public CPort {
+class COutPort : public OutPort, public CVirtualPort {
 public:
     COutPort(CModule* parent, QtFactory*, const QString& name, bool replicable = false, bool gate = false);
 };

@@ -3,7 +3,7 @@
 #include "control/cportwidget.h"
 #include "control/cwire.h"
 #include "presentation/portwidget.h"
-#include "presentation/pport.h"
+#include "presentation/pvirtualport.h"
 #include <QApplication>
 #include <QDebug>
 #include <QPen>

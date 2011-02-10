@@ -2,8 +2,8 @@
 
 #include "control/clfo.h"
 #include "presentation/pdimmer.h"
-#include "presentation/pport.h"
 #include "presentation/pselector.h"
+#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>
@@ -14,7 +14,7 @@ PLFO::PLFO(CLFO* control)
 {
 }
 
-void PLFO::initialize(PPort* out, PDimmer* k, PDimmer* range,
+void PLFO::initialize(PVirtualPort* out, PDimmer* k, PDimmer* range,
                       PDimmer* offset, PSelector* selector)
 {
     TextWidget* title = new TextWidget("LFO", this);

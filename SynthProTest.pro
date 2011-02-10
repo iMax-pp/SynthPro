@@ -8,7 +8,7 @@ QT += multimedia
 
 HEADERS += \
     src/main/abstraction/buffer.h \
-    src/main/abstraction/port.h \
+    src/main/abstraction/virtualport.h \
     src/main/abstraction/inport.h \
     src/test/abstraction/testinport.h \
     src/main/abstraction/outport.h \
@@ -62,7 +62,7 @@ HEADERS += \
 
 SOURCES += src/test/test.cpp \
     src/main/abstraction/buffer.cpp \
-    src/main/abstraction/port.cpp \
+    src/main/abstraction/virtualport.cpp \
     src/main/abstraction/inport.cpp \
     src/test/abstraction/testinport.cpp \
     src/main/abstraction/outport.cpp \

@@ -2,8 +2,8 @@
 
 #include "control/cvcf.h"
 #include "presentation/pdimmer.h"
-#include "presentation/pport.h"
 #include "presentation/pselector.h"
+#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>
@@ -14,7 +14,7 @@ PVCF::PVCF(CVCF* control)
 {
 }
 
-void PVCF::initialize(PPort* in, PPort* cutOff, PPort* out, PSelector* selector,
+void PVCF::initialize(PVirtualPort* in, PVirtualPort* cutOff, PVirtualPort* out, PSelector* selector,
                       PDimmer* resonance, PDimmer* cutOffDimmer)
 {
     TextWidget* title = new TextWidget("VCF", this);

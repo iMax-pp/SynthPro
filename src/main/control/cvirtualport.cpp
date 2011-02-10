@@ -1,4 +1,4 @@
-#include "cport.h"
+#include "cvirtualport.h"
 
 #include "control/cinport.h"
 #include "control/coutport.h"
@@ -6,15 +6,16 @@
 #include "control/csynthpro.h"
 #include "control/cwire.h"
 #include "factory/qtfactory.h"
+#include "presentation/pvirtualport.h"
 
-CPort::CPort(Module* parent, QtFactory* factory, const QString& name, bool replicable, bool gate)
-    : Port(parent, name, replicable, gate)
+CVirtualPort::CVirtualPort(Module* parent, QtFactory* factory, const QString& name, bool replicable, bool gate)
+    : VirtualPort(parent, name, replicable, gate)
     , m_presentation(0)
     , m_factory(factory)
 {
 }
 
-void CPort::initialize()
+void CVirtualPort::initialize()
 {
     // TODO la création des ports widget doit dépendre
     // du nombre de ports répliqués du port virtuel
@@ -24,14 +25,14 @@ void CPort::initialize()
     replicate();
 }
 
-void CPort::replicate()
+void CVirtualPort::replicate()
 {
     CPortWidget* cPortWidget = m_factory->createPortWidget(this, m_factory);
     m_portWidgets.append(cPortWidget);
     presentation()->addReplication(cPortWidget->presentation());
 }
 
-void CPort::setPresentation(PPort* presentation)
+void CVirtualPort::setPresentation(PVirtualPort* presentation)
 {
     if (m_presentation) {
         delete m_presentation;
@@ -41,10 +42,10 @@ void CPort::setPresentation(PPort* presentation)
     m_presentation = presentation;
 }
 
-void CPort::connectTo(Port* other)
+void CVirtualPort::connectTo(VirtualPort* other)
 {
     if (connectable(other)) {
-        Port::connectTo(other);
+        VirtualPort::connectTo(other);
         if (replicable()) {
             CPortWidget* replication = m_factory->createPortWidget(this, m_factory);
             m_portWidgets.append(replication);
@@ -52,7 +53,7 @@ void CPort::connectTo(Port* other)
         }
         // That’s ugly, isn’t it?
         if (other->replicable()) {
-            CPort* cOther = dynamic_cast<CPort*>(other);
+            CVirtualPort* cOther = dynamic_cast<CVirtualPort*>(other);
             CPortWidget* replication = m_factory->createPortWidget(cOther, m_factory);
             cOther->m_portWidgets.append(replication);
             cOther->presentation()->addReplication(replication->presentation());
@@ -60,14 +61,14 @@ void CPort::connectTo(Port* other)
     }
 }
 
-void CPort::disconnectFrom(Port* other)
+void CVirtualPort::disconnectFrom(VirtualPort* other)
 {
     if (m_connections.contains(other)) {
-        Port::disconnectFrom(other);
+        VirtualPort::disconnectFrom(other);
     }
 }
 
-void CPort::updateWiresPositions()
+void CVirtualPort::updateWiresPositions()
 {
     foreach (CPortWidget* cPortWidget, m_portWidgets) {
         if (cPortWidget->wire()) {
@@ -76,7 +77,7 @@ void CPort::updateWiresPositions()
     }
 }
 
-void CPort::showFeedback(CPort* from)
+void CVirtualPort::showCompatibleFeedback(CVirtualPort* from)
 {
     if (from != this) {
         foreach (CPortWidget* portWidget, m_portWidgets) {
@@ -85,7 +86,7 @@ void CPort::showFeedback(CPort* from)
     }
 }
 
-void CPort::hideFeedback()
+void CVirtualPort::hideFeedback()
 {
     foreach (CPortWidget* portWidget, m_portWidgets) {
         portWidget->hideFeedback();

@@ -1,7 +1,7 @@
 #include "pmoduleout.h"
 
 #include "control/cmoduleout.h"
-#include "presentation/pport.h"
+#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>
@@ -12,7 +12,7 @@ PModuleOut::PModuleOut(CModuleOut* control)
 {
 }
 
-void PModuleOut::initialize(PPort* in)
+void PModuleOut::initialize(PVirtualPort* in)
 {
     TextWidget* title = new TextWidget("Out", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
