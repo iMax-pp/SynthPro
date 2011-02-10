@@ -6,7 +6,6 @@
 #include "abstraction/synthpro.h"
 #include "factory/simplefactory.h"
 
-#include <QDebug>
 void TestADSR::testADSR()
 {
     SimpleFactory factory;
@@ -29,11 +28,11 @@ void TestADSR::testADSR()
     for (int i= inBuffer->length()*4 / 5 ; i< inBuffer->length() ; i++) {
         inBuffer->data()[i] = 0;
     }
-    //   adsr->ownProcess();
-
-
+    // adsr->ownProcess();
 
     QVERIFY(true);
+
+    delete synth;
 }
 void TestADSR::testADSR2Buffers()
 {
@@ -58,12 +57,6 @@ void TestADSR::testADSR2Buffers()
         inBuffer->data()[i] = 1;
     }
     adsr->ownProcess();
-    // affichage
-    for (int i= 0 ; i< inBuffer->length() ; i++) {
-        qDebug()  << adsr->outports().first()->buffer()->data()[i];
-    }
-
-
 
     for (int i = 0 ; i< inBuffer->length() / 4 ; i++) {
         inBuffer->data()[i] = 1;
@@ -77,4 +70,6 @@ void TestADSR::testADSR2Buffers()
     adsr->ownProcess();
 
     QVERIFY(true);
+
+    delete synth;
 }

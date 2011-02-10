@@ -64,7 +64,7 @@ void ADSR::ownProcess()
             m_currentState = IDLE;
         }
         switch (m_currentState) {
-        case ATTACK : qDebug() << "ATTACK " << currentValue;
+        case ATTACK :
             if (m_attackDimmer->value() != 0) {
                 outports().first()->buffer()->data()[bufferIndex] = (qreal)m_timeLine / (qreal)attackInSample;
             } else {

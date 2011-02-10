@@ -6,5 +6,5 @@ void TestOutPort::testOut()
 {
     OutPort outPort(0, "out");
     QVERIFY(outPort.out());
-    QVERIFY(outPort.buffer()->length() == 900);
+    QVERIFY(outPort.buffer()->length() == Buffer::DEFAULT_LENGTH);
 }
