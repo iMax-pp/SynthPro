@@ -71,6 +71,7 @@ date :  semaine 6 (mercredi 9 - vendredi 11)
 
 Roadmap (todo)
 ---------
+- PushButton (qui gere press/release) à ajouter aux interfaces (retrigger ADSR)
 - Keyboard virtuel;
 - Oscillo;
 - Entrée MIDI.
