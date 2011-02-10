@@ -41,7 +41,7 @@ void PWire::updatePosition(const QPointF& point)
         in = point;
     } else {
         // Use inPort otherwise.
-        in = mapFromItem(m_control->inPort()->presentation(), 0, 0);
+        in = mapFromItem(m_control->inPort()->presentation(), PortWidget::PORT_SIZE / 2,  PortWidget::PORT_SIZE / 2);
     }
 
     QPointF out;
@@ -51,7 +51,7 @@ void PWire::updatePosition(const QPointF& point)
         out = point;
     } else {
         // Use inPort otherwise.
-        out = mapFromItem(m_control->outPort()->presentation(), 0, 0);
+        out = mapFromItem(m_control->outPort()->presentation(), PortWidget::PORT_SIZE / 2, PortWidget::PORT_SIZE / 2);
     }
 
     // Draw a new line for our wire.
