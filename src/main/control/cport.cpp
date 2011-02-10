@@ -45,7 +45,11 @@ void CPort::connectTo(Port* other)
 {
     if (connectable(other)) {
         Port::connectTo(other);
-        m_portWidgets.append(m_factory->createPortWidget(this, m_factory));
+        if (replicable()) {
+            CPortWidget* replication = m_factory->createPortWidget(this, m_factory);
+            m_portWidgets.append(replication);
+            presentation()->addReplication(replication->presentation());
+        }
     }
 }
 
