@@ -6,7 +6,7 @@
 
 class CModule : public virtual Module {
 public:
-    CModule(QObject* parent = 0);
+    explicit CModule(SynthPro*);
     virtual ~CModule();
 
     void setPresentation(PModule*);

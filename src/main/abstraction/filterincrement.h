@@ -13,6 +13,8 @@ public:
     FilterIncrement();
 
     virtual void apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBase, qreal resonance, Buffer* bufferOut);
+
+    static const qreal INCREMENT_VALUE = 0.1;
 };
 
 #endif // FILTERINCREMENT_H

@@ -15,7 +15,7 @@ class VCF : public virtual Module {
     Q_OBJECT
 
 public:
-    explicit VCF(QObject* parent = 0);
+    explicit VCF(SynthPro*);
     virtual ~VCF();
 
     // Initialize the VCO (creates its ports using the factory)

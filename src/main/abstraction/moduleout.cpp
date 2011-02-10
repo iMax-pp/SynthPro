@@ -1,16 +1,16 @@
 #include "moduleout.h"
 
-#include "audiodeviceprovider.h"
-#include "buffer.h"
-#include "clock.h"
+#include "abstraction/audiodeviceprovider.h"
+#include "abstraction/buffer.h"
+#include "abstraction/clock.h"
+#include "abstraction/inport.h"
+#include "abstraction/sequencer.h"
 #include "factory/synthprofactory.h"
-#include "inport.h"
-#include "sequencer.h"
 
 #include <QAudioOutput>
 #include <QDebug>
 
-ModuleOut::ModuleOut(QIODevice* device, QAudioOutput* audioOutput, QObject* parent)
+ModuleOut::ModuleOut(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
     : Module(parent)
     , m_device(device)
     , m_audioOutput(audioOutput)

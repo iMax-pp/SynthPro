@@ -2,10 +2,10 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
-#include "cport.h"
-#include "cwire.h"
+#include "control/cport.h"
+#include "control/cwire.h"
 
-CModule::CModule(QObject* parent)
+CModule::CModule(SynthPro* parent)
     : Module(parent)
     , m_presentation(0)
 {

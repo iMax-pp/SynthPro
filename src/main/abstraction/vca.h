@@ -13,8 +13,9 @@ class SynthProFactory;
 */
 class VCA : public virtual Module {
     Q_OBJECT
+
 public:
-    VCA(QObject* parent = 0);
+    explicit VCA(SynthPro*);
     void initialize(SynthProFactory*);
 
 

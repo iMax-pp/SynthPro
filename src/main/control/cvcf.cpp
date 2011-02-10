@@ -1,12 +1,12 @@
 #include "cvcf.h"
 
-#include "cdimmer.h"
-#include "cinport.h"
-#include "coutport.h"
-#include "cselector.h"
+#include "control/cdimmer.h"
+#include "control/cinport.h"
+#include "control/coutport.h"
+#include "control/cselector.h"
 #include "presentation/pvcf.h"
 
-CVCF::CVCF(QObject* parent)
+CVCF::CVCF(SynthPro* parent)
     : Module(parent)
     , VCF(parent)
     , CModule(parent)

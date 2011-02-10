@@ -1,12 +1,12 @@
 #include "cvca.h"
 
-#include "cdimmer.h"
-#include "cinport.h"
-#include "coutport.h"
-#include "cselector.h"
+#include "control/cdimmer.h"
+#include "control/cinport.h"
+#include "control/coutport.h"
+#include "control/cselector.h"
 #include "presentation/pvca.h"
 
-CVCA::CVCA(QObject* parent)
+CVCA::CVCA(SynthPro* parent)
     : Module(parent)
     , VCA(parent)
     , CModule(parent)

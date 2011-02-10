@@ -23,10 +23,10 @@ void TestSequencer::testSortTwoModules()
     SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    MockInOutModule m1("1", stream);
+    MockInOutModule m1(&synthpro, "1", stream);
     synthpro.add(&m1);
 
-    MockWell m2("2", stream);
+    MockWell m2(&synthpro, "2", stream);
     synthpro.add(&m2);
 
     m1.output.connectTo(&m2.input); // m1 −> m2
@@ -49,13 +49,13 @@ void TestSequencer::testSortCyclingModules()
     SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    MockInOutModule m1("1", stream);
+    MockInOutModule m1(&synthpro, "1", stream);
     synthpro.add(&m1);
 
-    MockInOutModule m2("2", stream);
+    MockInOutModule m2(&synthpro, "2", stream);
     synthpro.add(&m2);
 
-    MockWell m3("3", stream);
+    MockWell m3(&synthpro, "3", stream);
     synthpro.add(&m3);
 
     m1.output.connectTo(&m2.input); // m1 −> m2
@@ -80,16 +80,16 @@ void TestSequencer::testSortTwoWells()
     SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    MockInOutModule m1("1", stream);
+    MockInOutModule m1(&synthpro, "1", stream);
     synthpro.add(&m1);
 
-    MockWell m2("2", stream);
+    MockWell m2(&synthpro, "2", stream);
     synthpro.add(&m2);
 
-    MockInOutModule m3("3", stream);
+    MockInOutModule m3(&synthpro, "3", stream);
     synthpro.add(&m3);
 
-    MockWell m4("4", stream);
+    MockWell m4(&synthpro, "4", stream);
     synthpro.add(&m4);
 
     m1.output.connectTo(&m2.input); // m1 −> m2
@@ -116,10 +116,10 @@ void TestSequencer::testSortNoWell()
     SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    MockInOutModule m1("1", stream);
+    MockInOutModule m1(&synthpro, "1", stream);
     synthpro.add(&m1);
 
-    MockInOutModule m2("2", stream);
+    MockInOutModule m2(&synthpro, "2", stream);
     synthpro.add(&m2);
 
     m1.output.connectTo(&m2.input); // m1 −> m2
@@ -142,13 +142,13 @@ void TestSequencer::testSortMixer()
     SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    MockInOutModule m1("1", stream);
+    MockInOutModule m1(&synthpro, "1", stream);
     synthpro.add(&m1);
 
-    MockInOutModule m2("2", stream);
+    MockInOutModule m2(&synthpro, "2", stream);
     synthpro.add(&m2);
 
-    MockWell m3("3", stream);
+    MockWell m3(&synthpro, "3", stream);
     synthpro.add(&m3);
 
     m1.output.connectTo(&m3.input); // m1 −> m3
@@ -176,11 +176,11 @@ void TestSequencer::testVCOAndSerializer()
     SynthPro* synthpro = factory.createSynthPro();
     Sequencer& sequencer = Sequencer::instance();
 
-    VCO* vco = factory.createVCO();
+    VCO* vco = factory.createVCO(synthpro);
     vco->setShape("DummyWave");
     synthpro->add(vco);
 
-    MockSerializerWell output(stream);
+    MockSerializerWell output(synthpro, stream);
     synthpro->add(&output);
 
     vco->outports().first()->connectTo(&output.input);
