@@ -21,7 +21,7 @@ void POscilloscope::initialize(PVirtualPort* input)
     // Layout
     // bottomArea()->addCornerAnchors(pVfm, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
     // bottomArea()->addAnchor(pVfm, Qt::AnchorRight, pK, Qt::AnchorLeft);
-    leftArea()->addAnchors(input, rightArea());
+    leftArea()->addAnchors(input, leftArea());
     centerArea()->addAnchors(title, centerArea());
 
     // TODO : Bottom = oscillo.
