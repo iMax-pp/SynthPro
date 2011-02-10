@@ -22,10 +22,16 @@ PModule::PModule(CModule* control)
 
     // Setup Layout
     QGraphicsAnchorLayout* layout = new QGraphicsAnchorLayout(this);
+    layout->setSpacing(0);
+
     m_leftArea->setParentLayoutItem(layout);
+    m_leftArea->setSpacing(0);
     m_centerArea->setParentLayoutItem(layout);
+    m_centerArea->setSpacing(0);
     m_bottomArea->setParentLayoutItem(layout);
+    m_bottomArea->setSpacing(0);
     m_rightArea->setParentLayoutItem(layout);
+    m_rightArea->setSpacing(0);
 
     layout->addAnchor(m_leftArea, Qt::AnchorRight, m_centerArea, Qt::AnchorLeft);
     layout->addAnchor(m_bottomArea, Qt::AnchorTop, m_centerArea, Qt::AnchorBottom);

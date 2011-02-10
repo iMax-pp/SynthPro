@@ -27,10 +27,10 @@ void POscilloscope::initialize(PVirtualPort* input)
     // Layout
     // bottomArea()->addCornerAnchors(pVfm, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
     // bottomArea()->addAnchor(pVfm, Qt::AnchorRight, pK, Qt::AnchorLeft);
+    leftArea()->addAnchors(input, leftArea());
 
     // TODO : Bottom = oscillo. But Crash !!
 
-    leftArea()->addAnchors(input, leftArea());
     rightArea()->addAnchors(m_pOscilloscopeView, rightArea());
     //bottomArea()->addAnchors(m_pOscilloscopeView, bottomArea());
     centerArea()->addAnchors(title, centerArea());

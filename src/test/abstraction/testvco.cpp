@@ -4,6 +4,7 @@
 #include "abstraction/mockserializerwell.h"
 #include "abstraction/outport.h"
 #include "abstraction/selector.h"
+#include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratordummy.h"
 #include "abstraction/wavegeneratorsquare.h"
@@ -17,7 +18,8 @@ void TestVCO::testVCO()
     QTextStream stream(&result);
 
     SimpleFactory factory;
-    VCO* vco = factory.createVCO(0);
+    SynthPro* synth = factory.createSynthPro();
+    VCO* vco = factory.createVCO(synth);
     MockSerializerWell output(0, stream);
 
     vco->outports().first()->connectTo(&output.input);
@@ -28,7 +30,7 @@ void TestVCO::testVCO()
 
     QVERIFY(result.startsWith(QString::number(VCO::SIGNAL_INTENSITY))); // TODO check that *all* the result is as expected (not only the first value)
 
-    delete vco;
+    delete synth;
 }
 void TestVCO::testVCOwithDimmer()
 {
@@ -36,7 +38,8 @@ void TestVCO::testVCOwithDimmer()
     QTextStream stream(&result);
 
     SimpleFactory factory;
-    VCO* vco = factory.createVCO(0);
+    SynthPro* synth = factory.createSynthPro();
+    VCO* vco = factory.createVCO(synth);
     vco->setK(3);
     MockSerializerWell output(0, stream);
     vco->outports().first()->connectTo(&output.input);
@@ -62,7 +65,7 @@ void TestVCO::testVCOwithDimmer()
 
     QVERIFY(nbFronts != 0);
 
-    delete vco;
+    delete synth;
 }
 void TestVCO::testVCOWithSelector()
 {
@@ -70,7 +73,9 @@ void TestVCO::testVCOWithSelector()
     QTextStream stream(&result);
 
     SimpleFactory factory;
-    VCO* vco = factory.createVCO(0);
+
+    SynthPro* synth = factory.createSynthPro();
+    VCO* vco = factory.createVCO(synth);
     QVERIFY(vco->shape() == "Saw");
 
     MockSerializerWell output(0, stream);
@@ -81,5 +86,5 @@ void TestVCO::testVCOWithSelector()
 
     QVERIFY(vco->shape() == "Sinus");
 
-    delete vco;
+    delete synth;
 }
