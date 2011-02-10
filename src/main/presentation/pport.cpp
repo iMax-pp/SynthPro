@@ -44,3 +44,8 @@ QRectF PPort::boundingRect() const
 {
     return childrenBoundingRect();
 }
+
+void PPort::addReplication(PortWidget* replication)
+{
+    m_portsLayout->addItem(replication);
+}

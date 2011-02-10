@@ -12,6 +12,7 @@ class CPort : public virtual Port {
 
 public:
     CPort(Module* parent, QtFactory*, const QString& name, bool replicable = false, bool gate = false);
+    void initialize();
 
     void setPresentation(PPort*);
     inline PPort* presentation() const { return m_presentation; }
@@ -31,6 +32,10 @@ public:
      * Hide feedback, called when dropping a dragged wire.
      */
     void hideFeedback();
+
+protected:
+    // Replicates this port (create a CPortWidget and its presentation)
+    void replicate();
 
 private:
     PPort* m_presentation;

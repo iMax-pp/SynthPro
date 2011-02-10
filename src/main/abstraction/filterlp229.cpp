@@ -88,14 +88,36 @@ void FilterLP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBa
         }
 
         // Process the filter.
-        qreal in = dataIn[i];
-        qreal out = m_a1 * in + m_a2 * m_valueInM1 + m_a3 * m_valueInM2 - m_b1 * m_valueOutM1 - m_b2 * m_valueOutM2;
-        dataOut[i] = out;
+//        qreal in = dataIn[i];
+//        qreal out = m_a1 * in + m_a2 * m_valueInM1 + m_a3 * m_valueInM2 - m_b1 * m_valueOutM1 - m_b2 * m_valueOutM2;
+//        dataOut[i] = out;
 
-        m_valueInM2 = m_valueInM1;
-        m_valueInM1 = in;
+//        m_valueInM2 = m_valueInM1;
+//        m_valueInM1 = in;
 
-        m_valueOutM2 = m_valueOutM1;
-        m_valueOutM1 = out;
+//        m_valueOutM2 = m_valueOutM1;
+//        m_valueOutM1 = out;
+
+        // ESSAI Soft Saturation.
+        qreal a = 0.1;
+        qreal x = dataIn[i];
+        bool positive = (x >= 0);
+        if (!positive) {
+            x = -x;
+        }
+
+        if (x > 1) {
+            x = a + ( x - a) / (1+ ((x - a) / (1 - a)) * ((x - a) / (1 - a)));
+        } else if (x > a) {
+            x = (a + 1) / 2;
+        }
+
+        if (!positive) {
+            x = -x;
+        }
+
+        dataOut[i] = x;
+
+
     }
 }

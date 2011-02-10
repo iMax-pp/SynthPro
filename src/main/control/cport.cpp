@@ -14,6 +14,23 @@ CPort::CPort(Module* parent, QtFactory* factory, const QString& name, bool repli
 {
 }
 
+void CPort::initialize()
+{
+    // TODO la création des ports widget doit dépendre
+    // du nombre de ports répliqués du port virtuel
+    // Donc il est possible qu’il soit nécessaire d’affiner
+    // la représentation des réplications des ports dans
+    // l’abstraction
+    replicate();
+}
+
+void CPort::replicate()
+{
+    CPortWidget* cPortWidget = m_factory->createPortWidget(this, m_factory);
+    m_portWidgets.append(cPortWidget);
+    presentation()->addReplication(cPortWidget->presentation());
+}
+
 void CPort::setPresentation(PPort* presentation)
 {
     if (m_presentation) {
