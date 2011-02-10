@@ -3,9 +3,9 @@
 #include "control/cinport.h"
 #include "presentation/pmoduleout.h"
 
-CModuleOut::CModuleOut(QIODevice* device, QAudioOutput* output, QObject* parent)
+CModuleOut::CModuleOut(SynthPro* parent, QIODevice* device, QAudioOutput* output)
     : Module(parent)
-    , ModuleOut(device, output, parent)
+    , ModuleOut(parent, device, output)
     , CModule(parent)
 {
 }

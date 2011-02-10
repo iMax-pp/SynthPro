@@ -16,10 +16,10 @@ void TestVCA::testVCA()
 
     SimpleFactory factory;
 
-    VCO* vco = factory.createVCO();
-    VCA* vca = factory.createVCA();
+    VCO* vco = factory.createVCO(0);
+    VCA* vca = factory.createVCA(0);
     vca->setGain(2);
-    MockSerializerWell output(stream);
+    MockSerializerWell output(0, stream);
     vco->outports().first()->connectTo(vca->inports().first());
 
 

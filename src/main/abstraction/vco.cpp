@@ -12,7 +12,7 @@
 
 const QString VCO::SHAPE_DEFAULT = "SawWave";
 
-VCO::VCO(QObject* parent)
+VCO::VCO(SynthPro* parent)
     : Module(parent)
     , m_waveGenerator(0)
     , m_waveGeneratorFactory(new WaveGeneratorFactory())

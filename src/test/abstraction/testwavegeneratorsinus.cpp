@@ -18,7 +18,7 @@ void TestWaveGeneratorSinus::testWaveGeneratorSinus()
     SimpleFactory factory;
     ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
-    VCO* vco = factory.createVCO();
+    VCO* vco = factory.createVCO(0);
     vco->setShape("SinusWave");
     vco->outports().at(0)->connectTo(mbr->inports().at(0));
 

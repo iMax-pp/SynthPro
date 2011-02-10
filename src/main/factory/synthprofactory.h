@@ -32,15 +32,15 @@ public:
     virtual OutPort* createOutPortReplicable(Module* parent, const QString& name) = 0;
     virtual OutPort* createOutPortGate(Module* parent, const QString& name) = 0;
 
-    virtual VCO* createVCO() = 0;
-    virtual VCF* createVCF() = 0;
-    virtual VCA* createVCA() = 0;
-    virtual ModuleBufferRecorder* createModuleBufferRecorder(Module* parent, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
+    virtual VCO* createVCO(SynthPro*) = 0;
+    virtual VCF* createVCF(SynthPro*) = 0;
+    virtual VCA* createVCA(SynthPro*) = 0;
+    virtual ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
     /**
       * Instanciate a ModuleOut, but ONLY if the audio device isn't already used by another instance.
       * @return ModuleOut if instanciation successful, 0 if not.
       */
-    virtual ModuleOut* createModuleOut(Module* parent) = 0;
+    virtual ModuleOut* createModuleOut(SynthPro*) = 0;
 
     /*
      * instantiate a dimmer's abstraction

@@ -5,7 +5,7 @@
 #include "abstraction/outport.h"
 #include "factory/synthprofactory.h"
 
-VCA::VCA(QObject* parent)
+VCA::VCA(SynthPro* parent)
     : Module(parent)
 {
 }

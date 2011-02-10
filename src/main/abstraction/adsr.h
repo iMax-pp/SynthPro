@@ -10,8 +10,9 @@ class SynthProFactory;
 
 class ADSR : public virtual Module {
     Q_OBJECT
+
 public:
-    ADSR(QObject* parent = 0);
+    explicit ADSR(SynthPro*);
     void initialize(SynthProFactory*);
     void ownProcess();
 
