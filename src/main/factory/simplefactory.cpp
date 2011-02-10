@@ -91,11 +91,13 @@ ModuleOut* SimpleFactory::createModuleOut(Module* parent)
 {
     // Do not instanciate ModuleOut if no audio device can be accessed !
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();
+
     if (!adp.initializeAudioOutput()) {
         return 0;
     }
 
     QIODevice* device = adp.device();
+
     if (!device) {
         return 0;
     }

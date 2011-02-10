@@ -23,10 +23,10 @@ QRectF PWire::boundingRect() const
 {
     // Thanks to http://doc.qt.nokia.com/latest/graphicsview-diagramscene-arrow-cpp.html
     qreal extra = (pen().width() + 20) / 2.0;
-    
+
     return QRectF(line().p1(), QSizeF(line().p2().x() - line().p1().x(),
                                       line().p2().y() - line().p1().y()))
-                                .normalized().adjusted(-extra, -extra, extra, extra);
+           .normalized().adjusted(-extra, -extra, extra, extra);
 }
 
 void PWire::updatePosition(QPointF point)
@@ -35,6 +35,7 @@ void PWire::updatePosition(QPointF point)
     // so it will always be connected to at least one port.
 
     QPointF in;
+
     if (!m_control->inPort()) {
         // Use point if no inPort.
         in = point;
@@ -44,6 +45,7 @@ void PWire::updatePosition(QPointF point)
     }
 
     QPointF out;
+
     if (!m_control->outPort()) {
         // Use point if no outPoint
         out = point;

@@ -18,7 +18,6 @@ int main(int argc, char* argv[])
 
     int result = app.exec();
 
-    delete vco;
     delete synthpro;
 
     return result;

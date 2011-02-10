@@ -6,7 +6,7 @@
 #include <QDebug>
 #include <QTimer>
 
-Clock::Clock(QObject *parent)
+Clock::Clock(QObject* parent)
     : QObject(parent)
     , m_started(false)
     , m_internalTimer(new QTimer(this))
@@ -33,6 +33,7 @@ Clock& Clock::instance()
 void Clock::start()
 {
     qDebug("Clock::start");
+
     if (!m_started) {
         // If no Fast Timers are present, we only start the Internal one.
         if (m_fastTimers.count() == 0) {
@@ -42,6 +43,7 @@ void Clock::start()
                 timer->start(FAST_TIMER_DELAY);
             }
         }
+
         m_started = true;
     }
 }
