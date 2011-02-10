@@ -12,7 +12,6 @@
 POscilloscope::POscilloscope(COscilloscope* control)
     : PModule(control)
 {
-    delete m_pOscilloscopeView;
 }
 
 void POscilloscope::initialize(PVirtualPort* input)
@@ -20,18 +19,10 @@ void POscilloscope::initialize(PVirtualPort* input)
     TextWidget* title = new TextWidget("OSC", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    m_pOscilloscopeView = new POscilloscopeView(0);
-
-    //bottomArea()->addCornerAnchors(m_pOscilloscopeView, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
+    m_pOscilloscopeView = new POscilloscopeView(this);
 
     // Layout
-    // bottomArea()->addCornerAnchors(pVfm, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
-    // bottomArea()->addAnchor(pVfm, Qt::AnchorRight, pK, Qt::AnchorLeft);
     leftArea()->addAnchors(input, leftArea());
-
-    // TODO : Bottom = oscillo. But Crash !!
-
-    rightArea()->addAnchors(m_pOscilloscopeView, rightArea());
-    //bottomArea()->addAnchors(m_pOscilloscopeView, bottomArea());
+    bottomArea()->addAnchors(m_pOscilloscopeView, bottomArea());
     centerArea()->addAnchors(title, centerArea());
 }

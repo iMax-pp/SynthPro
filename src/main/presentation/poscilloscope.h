@@ -4,8 +4,8 @@
 #include "presentation/pmodule.h"
 
 class COscilloscope;
-class PVirtualPort;
 class POscilloscopeView;
+class PVirtualPort;
 
 class POscilloscope : public PModule {
 public:

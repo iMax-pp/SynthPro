@@ -1,10 +1,10 @@
 #ifndef POSCILLOSCOPEVIEW_H
 #define POSCILLOSCOPEVIEW_H
 
+#include "abstraction/buffer.h"
 #include <QGraphicsWidget>
 
-class POscilloscopeView : public QGraphicsWidget
-{
+class POscilloscopeView : public QGraphicsWidget {
 public:
     POscilloscopeView(QGraphicsItem* parent);
 
@@ -20,8 +20,7 @@ public:
 private:
     // COscilloscopeView m_control;
     qreal* m_inBuffer; // FIXME : Try. Stashed here for the moment.
-    static const int BUFFER_SIZE = 900; // TODO : from VCO.
-    static const qreal STEP = BUFFER_SIZE / WIDTH;
+    static const qreal STEP = Buffer::DEFAULT_LENGTH / WIDTH;
     qreal m_ratioY;
 };
 

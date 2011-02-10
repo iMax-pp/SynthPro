@@ -1,46 +1,37 @@
 #include "poscilloscopeview.h"
 
 #include "abstraction/vco.h"
-
 #include <QPainter>
+
 POscilloscopeView::POscilloscopeView(QGraphicsItem *parent)
     : QGraphicsWidget(parent)
 {
-
-
     setMinimumSize(boundingRect().size());
- /*
-    m_inBuffer = new qreal[BUFFER_SIZE]; // FIXME : Try.
-    for (int i = 0; i < BUFFER_SIZE; i++) {
+
+    m_inBuffer = new qreal[Buffer::DEFAULT_LENGTH]; // FIXME : Try.
+    for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
         m_inBuffer[i] = 0;
     }
-    */
 }
 
-void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem* options, QWidget* widget)
+void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 {
-    QBrush brush(Qt::SolidPattern); // TODO : create elsewhere.
-    painter->fillRect(0, 0, WIDTH, HEIGHT, brush);
+    painter->fillRect(0, 0, WIDTH, HEIGHT, QBrush(Qt::SolidPattern));
 
-    QPen pen(QColor(255, 255, 255)); // TODO : create elsewhere.
-    painter->setPen(pen);
+    painter->setPen(QPen(QColor(255, 255, 255)));
 
     m_ratioY = VCO::SIGNAL_INTENSITY / HEIGHT;
 
-    // FIXME : the more I do, the more it crashes !
-/*
-    //int indexBuffer = 0;
+    int indexBuffer = 0;
     int middleY = HEIGHT / 2;
+
     for (int i = 0; i < WIDTH ; i++) {
-        //painter->drawPoint(i, (int)(middleY + m_inBuffer[(int)indexBuffer] * m_ratioY));
-        painter->drawPoint(i, middleY);
-        //indexBuffer += STEP;
+        painter->drawPoint(i, (int)(middleY + m_inBuffer[(int)indexBuffer] * m_ratioY));
+        indexBuffer += STEP;
     }
-*/
 }
 
 QRectF POscilloscopeView::boundingRect() const
 {
-    return QRectF(0, 0, WIDTH + 10, HEIGHT + 10);
-    //return childrenBoundingRect();
+    return QRectF(-5, -5, WIDTH + 10, HEIGHT + 10);
 }
