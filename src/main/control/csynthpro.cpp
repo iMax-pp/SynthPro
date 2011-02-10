@@ -1,7 +1,10 @@
 #include "csynthpro.h"
 
+#include "cinport.h"
 #include "control/cmodule.h"
 #include "control/cmoduleout.h"
+#include "control/coutport.h"
+#include "control/cport.h"
 #include "control/cvca.h"
 #include "control/cvcf.h"
 #include "control/cvco.h"
@@ -88,5 +91,29 @@ void CSynthPro::addModule(QtFactory::ModuleType moduleType, const QPointF& pos)
     if (module) {
         add(module);
         dynamic_cast<CModule*>(module)->presentation()->setPos(pos);
+    }
+}
+
+void CSynthPro::showFeedback(CPort* from)
+{
+    foreach (Module* module, modules()) {
+        foreach (Port* port, module->inports()) {
+            dynamic_cast<CInPort*>(port)->showFeedback(from);
+        }
+        foreach (Port* port, module->outports()) {
+            dynamic_cast<COutPort*>(port)->showFeedback(from);
+        }
+    }
+}
+
+void CSynthPro::hideFeedback()
+{
+    foreach (Module* module, modules()) {
+        foreach (Port* port, module->inports()) {
+            dynamic_cast<CInPort*>(port)->hideFeedback();
+        }
+        foreach (Port* port, module->outports()) {
+            dynamic_cast<COutPort*>(port)->hideFeedback();
+        }
     }
 }

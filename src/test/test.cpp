@@ -1,3 +1,4 @@
+#include "abstraction/testadsr.h"
 #include "abstraction/testaudiodeviceprovider.h"
 #include "abstraction/testinport.h"
 #include "abstraction/testmodulebufferrecorder.h"
@@ -28,6 +29,9 @@ int main()
 
     TestVCA testVCA;
     QTest::qExec(&testVCA);
+
+    TestADSR testADSR;
+    QTest::qExec(&testADSR);
 
     TestWaveGeneratorEmpty testWaveGeneratorEmpty;
     QTest::qExec(&testWaveGeneratorEmpty);

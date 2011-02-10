@@ -23,7 +23,7 @@ void TestVCO::testVCO()
 
     vco->outports().first()->connectTo(&output.input);
 
-    vco->setShape("DummyWave");
+    vco->setShape("Dummy");
     vco->process();
     output.process();
 
@@ -42,7 +42,7 @@ void TestVCO::testVCOwithDimmer()
     vco->setK(3);
     MockSerializerWell output(0, stream);
     vco->outports().first()->connectTo(&output.input);
-    vco->setShape("SquareWave");
+    vco->setShape("Square");
     vco->process();
     output.process();
     int nbFronts = 0;
@@ -72,17 +72,18 @@ void TestVCO::testVCOWithSelector()
     QTextStream stream(&result);
 
     SimpleFactory factory;
+
     SynthPro* synth = factory.createSynthPro();
     VCO* vco = factory.createVCO(synth);
-    QVERIFY(vco->shape() == "SawWave");
+    QVERIFY(vco->shape() == "Saw");
 
     MockSerializerWell output(0, stream);
     vco->outports().first()->connectTo(&output.input);
-    vco->setShape("SinusWave");
+    vco->setShape("Sinus");
     vco->process();
     output.process();
 
-    QVERIFY(vco->shape() == "SinusWave");
+    QVERIFY(vco->shape() == "Sinus");
 
     delete synth;
 }

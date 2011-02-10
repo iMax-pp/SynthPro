@@ -36,6 +36,9 @@ public:
     void dragMove(const QPointF&);
     void drop(CPortWidget* target);
 
+    void showFeedback(bool compatible);
+    void hideFeedback();
+
 protected slots:
     void unsetWire();
 

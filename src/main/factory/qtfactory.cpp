@@ -46,6 +46,8 @@ InPort* QtFactory::createInPort(Module* parent, const QString& name, bool replic
     PPort* p = new PPort(port, cParent->presentation());
     port->setPresentation(p);
 
+    port->initialize();
+
     return port;
 }
 
@@ -72,6 +74,8 @@ OutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool repl
 
     PPort* p = new PPort(port, cParent->presentation());
     port->setPresentation(p);
+
+    port->initialize();
 
     return port;
 }

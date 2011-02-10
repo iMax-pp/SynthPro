@@ -1,9 +1,10 @@
 #include "testvcf.h"
 
-#include "abstraction/inport.h"
 #include "abstraction/filterincrement.h"
+#include "abstraction/inport.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
+#include "abstraction/synthpro.h"
 #include "abstraction/vcf.h"
 #include "abstraction/vco.h"
 #include "factory/simplefactory.h"
@@ -12,15 +13,17 @@
 
 void TestVCF::testVCF()
 {
+    SynthPro synthPro(0);
+
     SimpleFactory factory;
 
     // VCO
-    VCO* vco = factory.createVCO(0);
-    vco->setShape("EmptyWave");
+    VCO* vco = factory.createVCO(&synthPro);
+    vco->setShape("Empty");
 
     // VCF
-    VCF* vcf = factory.createVCF(0);
-    vcf->setFilter("FilterIncrement");
+    VCF* vcf = factory.createVCF(&synthPro);
+    vcf->setFilter("Increment");
 
     vco->outports().at(0)->connectTo(vcf->inports().at(0));
 
