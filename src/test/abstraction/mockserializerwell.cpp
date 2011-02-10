@@ -4,7 +4,7 @@
 
 #include <QTextStream>
 
-MockSerializerWell::MockSerializerWell(QTextStream& output, QObject* parent)
+MockSerializerWell::MockSerializerWell(SynthPro* parent, QTextStream& output)
     : Module(parent)
     , input(this, "input")
     , m_output(output)

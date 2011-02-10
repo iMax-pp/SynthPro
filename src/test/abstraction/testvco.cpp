@@ -17,8 +17,8 @@ void TestVCO::testVCO()
     QTextStream stream(&result);
 
     SimpleFactory factory;
-    VCO* vco = factory.createVCO();
-    MockSerializerWell output(stream);
+    VCO* vco = factory.createVCO(0);
+    MockSerializerWell output(0, stream);
 
     vco->outports().first()->connectTo(&output.input);
 
@@ -36,9 +36,9 @@ void TestVCO::testVCOwithDimmer()
     QTextStream stream(&result);
 
     SimpleFactory factory;
-    VCO* vco = factory.createVCO();
+    VCO* vco = factory.createVCO(0);
     vco->setK(3);
-    MockSerializerWell output(stream);
+    MockSerializerWell output(0, stream);
     vco->outports().first()->connectTo(&output.input);
     vco->setShape("SquareWave");
     vco->process();
@@ -70,10 +70,10 @@ void TestVCO::testVCOWithSelector()
     QTextStream stream(&result);
 
     SimpleFactory factory;
-    VCO* vco = factory.createVCO();
+    VCO* vco = factory.createVCO(0);
     QVERIFY(vco->shape() == "SawWave");
 
-    MockSerializerWell output(stream);
+    MockSerializerWell output(0, stream);
     vco->outports().first()->connectTo(&output.input);
     vco->setShape("SinusWave");
     vco->process();

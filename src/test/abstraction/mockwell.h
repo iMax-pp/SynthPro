@@ -9,7 +9,7 @@
  */
 class MockWell : public MockModule {
 public:
-    MockWell(const QString& msg, QTextStream&, QObject* parent = 0);
+    MockWell(SynthPro*, const QString& msg, QTextStream&);
 
     InPort input;
 };
