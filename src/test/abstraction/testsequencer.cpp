@@ -191,5 +191,4 @@ void TestSequencer::testVCOAndSerializer()
     QVERIFY(result.startsWith("20000"));
 
     delete synthpro;
-    delete vco;
 }
