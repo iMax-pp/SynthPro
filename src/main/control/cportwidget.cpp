@@ -1,6 +1,8 @@
 #include "cportwidget.h"
 
+#include "control/cmodule.h"
 #include "control/cport.h"
+#include "control/csynthpro.h"
 #include "control/cwire.h"
 #include "factory/qtfactory.h"
 #include "presentation/portwidget.h"
@@ -66,7 +68,7 @@ void CPortWidget::drag()
         m_wire->setInPort(this);
     }
 
-    dynamic_cast<CSynthPro*>(m_port->module()->synthPro())->showFeedback(this);
+    dynamic_cast<CSynthPro*>(m_port->module()->synthPro())->showFeedback(m_port);
 }
 
 void CPortWidget::dragMove(const QPointF&)
