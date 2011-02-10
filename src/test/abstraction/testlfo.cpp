@@ -1,9 +1,9 @@
 #include "testlfo.h"
 
 #include "abstraction/dimmer.h"
+#include "abstraction/lfo.h"
 #include "abstraction/outport.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/lfo.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratorsquare.h"
 #include "factory/simplefactory.h"

@@ -58,13 +58,16 @@ date :  semaine 6 (mercredi 9 - vendredi 11)
     - VCF;
     - Filtres (LP, HP…);
     - FilterFactory;
+    - LFO;
 - Maxime :
-    - Contrôle et Présentation de VCF et VCA;
+    - Contrôle et Présentation de VCF, VCA et LFO;
     - Adaptation look&feel;
     - Retroaction;
+    - Intégration du layout dans VCF, VCA, ModuleOut;
 - Julien RF :
     - Layout des modules (taille dynamique);
-    - Intégration des Layout;
+    - Réplication des ports;
+    - Intégration du layout dans VCO;
 - Cyrille :
     - VCA;
     - ADSR.

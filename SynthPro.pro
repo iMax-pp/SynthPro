@@ -66,7 +66,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/presentation/portwidget.h \
     src/main/abstraction/filtersoftsaturation.h \
     src/main/control/cportwidget.h \
-    src/main/abstraction/lfo.h
+    src/main/abstraction/lfo.h \
+    src/main/presentation/plfo.h \
+    src/main/control/clfo.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -127,7 +129,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/portwidget.cpp \
     src/main/abstraction/filtersoftsaturation.cpp \
     src/main/control/cportwidget.cpp \
-    src/main/abstraction/lfo.cpp
+    src/main/abstraction/lfo.cpp \
+    src/main/presentation/plfo.cpp \
+    src/main/control/clfo.cpp
 
 INCLUDEPATH += src/main/
 

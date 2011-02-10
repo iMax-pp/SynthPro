@@ -2,6 +2,7 @@
 
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
+#include "abstraction/lfo.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
@@ -11,7 +12,6 @@
 #include "abstraction/vca.h"
 #include "abstraction/vcf.h"
 #include "abstraction/vco.h"
-#include "abstraction/lfo.h"
 
 SynthPro* SimpleFactory::createSynthPro()
 {
