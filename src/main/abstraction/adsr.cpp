@@ -6,6 +6,8 @@
 #include "abstraction/outport.h"
 #include "factory/synthprofactory.h"
 
+#include <QDebug>
+
 ADSR::ADSR(SynthPro* parent)
     : Module(parent)
     , m_timeLine(0)
@@ -31,12 +33,13 @@ void ADSR::initialize(SynthProFactory* factory)
 
 void ADSR::ownProcess()
 {
-    qreal attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    qreal decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    qreal releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
 
     qreal currentValue = 0;
     int bufferIndex = 0;
+    qreal startRelease = 0;
 
     while (bufferIndex < m_gate->buffer()->length()) {
         currentValue = m_gate->buffer()->data()[bufferIndex];
@@ -49,6 +52,7 @@ void ADSR::ownProcess()
         if (currentValue < m_gateValue) {
             // a gate "of" signal occurs
             m_currentState = RELEASE;
+            startRelease = m_timeLine;
         }
         if (m_currentState == ATTACK && m_timeLine == attackInSample) {
             m_currentState = DECAY;
@@ -56,10 +60,74 @@ void ADSR::ownProcess()
         if (m_currentState == DECAY && m_timeLine == (attackInSample + decayInSample)) {
             m_currentState = SUSTAIN;
         }
-        m_timeLine++;
+        if (m_currentState == RELEASE &&  m_timeLine == startRelease + releaseInSample) {
+            m_currentState = IDLE;
+        }
+        switch (m_currentState) {
+        case ATTACK : qDebug() << "ATTACK " << currentValue;
+            if (m_attackDimmer->value() != 0) {
+                outports().first()->buffer()->data()[bufferIndex] = (qreal)m_timeLine / (qreal)attackInSample;
+            } else {
+                outports().first()->buffer()->data()[bufferIndex] = 1;
+            }
+            break;
+        case DECAY : qDebug() << "DECAY " << currentValue;
+            if (m_decayDimmer->value() != 0) {
+                qreal attack = attackInSample;
+                qreal decay = decayInSample;
+                qreal sustain = m_sustainDimmer->value();
+                outports().first()->buffer()->data()[bufferIndex] = m_timeLine*((sustain-1) / (decay)) + (1 + attack*(1-sustain) / decay);
+            } else {
+                outports().first()->buffer()->data()[bufferIndex] = m_sustainDimmer->value();
+            }
+            break;
+        case SUSTAIN : qDebug() << "SUSTAIN " << currentValue;
+            outports().first()->buffer()->data()[bufferIndex] = m_sustainDimmer->value();
+            break;
+        case RELEASE : qDebug() << "RELEASE " << currentValue;
+            if (m_decayDimmer->value() != 0) {
+                outports().first()->buffer()->data()[bufferIndex] =
+                        m_sustainDimmer->value() - m_sustainDimmer->value()*(m_timeLine-startRelease) / releaseInSample;
+            } else {
+                outports().first()->buffer()->data()[bufferIndex] = 0;
+            }
+
+
+            break;
+        case IDLE : qDebug() << "IDLE " << currentValue;
+            break;
+        }
+
+        // qDebug() << "value " << outports().first()->buffer()->data()[bufferIndex] << ":" << inports().first()->buffer()->data()[bufferIndex];
+
+
+
+        if (m_currentState != IDLE) {
+            m_timeLine++;
+        }
+
         bufferIndex++;
         m_gateValue = currentValue;
     }
 
 }
 
+void ADSR::setAttackValue(qreal value)
+{
+    m_attackDimmer->setValue(value);
+}
+
+void ADSR::setDecayValue(qreal value)
+{
+    m_decayDimmer->setValue(value);
+}
+
+void ADSR::setSustainValue(qreal value)
+{
+    m_sustainDimmer->setValue(value);
+}
+
+void ADSR::setReleaseValue(qreal value)
+{
+    m_releaseDimmer->setValue(value);
+}

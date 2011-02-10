@@ -13,8 +13,13 @@ class ADSR : public virtual Module {
 
 public:
     explicit ADSR(SynthPro*);
-    void initialize(SynthProFactory*);
+    virtual void initialize(SynthProFactory*);
     void ownProcess();
+
+    void setAttackValue(qreal);
+    void setDecayValue(qreal);
+    void setSustainValue(qreal);
+    void setReleaseValue(qreal);
 
 protected:
 
