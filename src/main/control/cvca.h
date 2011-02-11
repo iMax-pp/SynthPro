@@ -1,7 +1,7 @@
 #ifndef CVCA_H
 #define CVCA_H
 
-#include "abstraction/vca.h"
+#include "abstraction/module/vca.h"
 #include "control/cmodule.h"
 
 class CVCA : public VCA, public CModule {

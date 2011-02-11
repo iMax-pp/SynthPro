@@ -1,7 +1,7 @@
 #ifndef CKEYBOARD_H
 #define CKEYBOARD_H
 
-#include "abstraction/keyboard.h"
+#include "abstraction/module/keyboard.h"
 #include "control/cmodule.h"
 
 class CKeyboard : public Keyboard, public CModule {

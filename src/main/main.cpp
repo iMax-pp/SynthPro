@@ -1,6 +1,6 @@
+#include "abstraction/module/vco.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vco.h"
-#include "abstraction/wavegeneratordummy.h"
+#include "abstraction/wavegen/wavegeneratordummy.h"
 #include "factory/qtfactory.h"
 
 #include <QtGui>

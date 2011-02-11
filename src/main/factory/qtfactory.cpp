@@ -1,8 +1,8 @@
 #include "qtfactory.h"
 
-#include "abstraction/adsr.h"
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/oscilloscope.h"
+#include "abstraction/module/adsr.h"
+#include "abstraction/module/oscilloscope.h"
 #include "abstraction/port.h"
 #include "abstraction/sequencer.h"
 #include "control/cwire.h"

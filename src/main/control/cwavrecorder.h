@@ -1,7 +1,7 @@
 #ifndef CWAVRECORDER_H
 #define CWAVRECORDER_H
 
-#include "abstraction/wavrecorder.h"
+#include "abstraction/module/wavrecorder.h"
 #include "control/cmodule.h"
 
 class CWavRecorder : public WavRecorder, public CModule {

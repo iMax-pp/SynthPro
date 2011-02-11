@@ -1,7 +1,7 @@
 #ifndef CSPEAKER_H
 #define CSPEAKER_H
 
-#include "abstraction/speaker.h"
+#include "abstraction/module/speaker.h"
 #include "control/cmodule.h"
 
 class CSpeaker : public Speaker, public CModule {

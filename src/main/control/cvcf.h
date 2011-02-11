@@ -1,7 +1,7 @@
 #ifndef CVCF_H
 #define CVCF_H
 
-#include "abstraction/vcf.h"
+#include "abstraction/module/vcf.h"
 #include "control/cmodule.h"
 
 class CVCF : public VCF, public CModule {

@@ -15,6 +15,8 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
     setMaximumSize(PORT_SIZE, PORT_SIZE);
     setMinimumSize(PORT_SIZE, PORT_SIZE);
 
+    setAcceptHoverEvents(true);
+
     hideFeedback(); // HACK to init port color.
 }
 
@@ -44,6 +46,32 @@ void PPort::hideFeedback()
 
     setPalette(palette);
     update();
+}
+
+void PPort::showClickFeedback()
+{
+    QPalette p;
+    p.resolve(palette());
+    p.setColor(QPalette::Button, Qt::yellow);
+    setPalette(p);
+}
+
+void PPort::hideClickFeedback()
+{
+    hideFeedback();
+}
+
+void PPort::showDropFeedback()
+{
+    QPalette p;
+    p.resolve(palette());
+    p.setColor(QPalette::Button, Qt::green);
+    setPalette(p);
+}
+
+void PPort::hideDropFeedback()
+{
+    hideFeedback();
 }
 
 void PPort::mousePressEvent(QGraphicsSceneMouseEvent* event)
@@ -84,4 +112,16 @@ void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
     } else {
         control()->drop(0);
     }
+}
+
+void PPort::hoverEnterEvent(QGraphicsSceneHoverEvent* event)
+{
+    control()->mouseEnter();
+    QGraphicsWidget::hoverEnterEvent(event);
+}
+
+void PPort::hoverLeaveEvent(QGraphicsSceneHoverEvent* event)
+{
+    control()->mouseLeave();
+    QGraphicsWidget::hoverLeaveEvent(event);
 }

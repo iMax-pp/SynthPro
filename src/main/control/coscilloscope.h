@@ -1,7 +1,7 @@
 #ifndef COSCILLOSCOPE_H
 #define COSCILLOSCOPE_H
 
-#include "abstraction/oscilloscope.h"
+#include "abstraction/module/oscilloscope.h"
 #include "control/cmodule.h"
 
 class COscilloscope : public Oscilloscope, public CModule {

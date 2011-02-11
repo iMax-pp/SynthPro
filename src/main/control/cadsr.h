@@ -1,7 +1,7 @@
 #ifndef CADSR_H
 #define CADSR_H
 
-#include "abstraction/adsr.h"
+#include "abstraction/module/adsr.h"
 #include "control/cmodule.h"
 
 class CADSR : public ADSR, public CModule {

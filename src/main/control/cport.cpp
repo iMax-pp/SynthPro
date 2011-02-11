@@ -6,6 +6,7 @@
 #include "control/cwire.h"
 #include "factory/qtfactory.h"
 #include "presentation/pport.h"
+#include <QGraphicsScene>
 
 CPort::CPort(CVirtualPort* parent, QtFactory* factory)
     : Port(parent)
@@ -13,6 +14,7 @@ CPort::CPort(CVirtualPort* parent, QtFactory* factory)
     , m_factory(factory)
     , m_wire(0)
     , m_tmpWire(0)
+    , m_clickableFeedback(0)
 {
 }
 
@@ -90,6 +92,21 @@ void CPort::drag()
 
 void CPort::dragMove(const QPointF& pos)
 {
+    if (PPort* pport = dynamic_cast<PPort*>(presentation()->scene()->itemAt(pos))) {
+        if (!m_clickableFeedback) {
+            m_clickableFeedback = pport;
+            if (vPort()->connectable(pport->control()->vPort())) {
+                pport->showDropFeedback();
+            } else {
+                // pport->showUnDropFeedback();
+            }
+        }
+    } else {
+        if (m_clickableFeedback) {
+            m_clickableFeedback->hideDropFeedback();
+            m_clickableFeedback = 0;
+        }
+    }
     if (m_tmpWire) {
         m_tmpWire->updatePosition(pos);
     }
@@ -109,12 +126,22 @@ void CPort::drop(CPort* target)
     }
 }
 
+void CPort::mouseEnter()
+{
+    presentation()->showClickFeedback();
+}
+
+void CPort::mouseLeave()
+{
+    presentation()->hideClickFeedback();
+}
+
 void CPort::showFeedback(bool compatible)
 {
-    m_presentation->showFeedback(compatible);
+    presentation()->showFeedback(compatible);
 }
 
 void CPort::hideFeedback()
 {
-    m_presentation->hideFeedback();
+    presentation()->hideFeedback();
 }
