@@ -63,8 +63,8 @@ void TestSequencer::testSortCyclingModules()
     synthpro.add(&m3);
 
     m1.output.connections().first()->connect(m2.input.connections().first()); // m1 −> m2
-    m2.output.connections().first()->connect(m3.input.connections().first()); // m2 −> m3
-    m2.output.connections().first()->connect(m1.input.connections().first()); // m2 −> m1
+    m2.output.connections().at(0)->connect(m3.input.connections().first()); // m2 −> m3
+    m2.output.connections().at(1)->connect(m1.input.connections().first()); // m2 −> m1
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();
@@ -97,8 +97,8 @@ void TestSequencer::testSortTwoWells()
     MockWell m4(&synthpro, "4", stream, &factory);
     synthpro.add(&m4);
 
-    m1.output.connections().first()->connect(m2.input.connections().first()); // m1 −> m2
-    m1.output.connections().first()->connect(m3.input.connections().first()); // m1 −> m3
+    m1.output.connections().at(0)->connect(m2.input.connections().first()); // m1 −> m2
+    m1.output.connections().at(1)->connect(m3.input.connections().first()); // m1 −> m3
     m3.output.connections().first()->connect(m4.input.connections().first()); // m3 −> m4
 
     sequencer.scheduleModules(&synthpro);
@@ -158,8 +158,8 @@ void TestSequencer::testSortMixer()
     MockWell m3(&synthpro, "3", stream, &factory);
     synthpro.add(&m3);
 
-    m1.output.connections().first()->connect(m3.input.connections().first()); // m1 −> m3
-    m2.output.connections().first()->connect(m3.input.connections().first()); // m2 −> m3
+    m1.output.connections().first()->connect(m3.input.connections().at(0)); // m1 −> m3
+    m2.output.connections().first()->connect(m3.input.connections().at(1)); // m2 −> m3
 
     QVERIFY(m3.requirements().contains(&m1));
     QVERIFY(m3.requirements().contains(&m2));

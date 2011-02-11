@@ -35,9 +35,12 @@ void TestInPort::testConnectable()
     InPort* in = factory.createInPort(0, "in"); // Default input port, unreplicable, not a gate
     OutPort* out = factory.createOutPort(0, "in"); // Default output port, unreplicable, not a gate
 
+    qDebug("ici");
     QVERIFY(in->connectable(out));
+    qDebug("labas");
     QVERIFY(out->connectable(in));
 
+    qDebug("la");
     InPort* in2 = factory.createInPortReplicable(0, "in2"); // replicable input port
     OutPort* out2 = factory.createOutPortReplicable(0, "out2"); // replicable output port
 
