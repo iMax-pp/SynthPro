@@ -1,8 +1,7 @@
 #ifndef SPEAKER_H
 #define SPEAKER_H
 
-#include "module.h"
-#include "vco.h"
+#include "abstraction/module.h"
 
 class InPort;
 class QAudioOutput;

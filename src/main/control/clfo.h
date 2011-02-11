@@ -1,7 +1,7 @@
 #ifndef CLFO_H
 #define CLFO_H
 
-#include "abstraction/lfo.h"
+#include "abstraction/module/lfo.h"
 #include "control/cmodule.h"
 
 class CLFO : public LFO, public CModule {

@@ -1,7 +1,7 @@
 #ifndef OSCILLOSCOPE_H
 #define OSCILLOSCOPE_H
 
-#include "module.h"
+#include "abstraction/module.h"
 
 class InPort;
 class SynthPro;

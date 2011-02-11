@@ -1,8 +1,7 @@
 #ifndef FILTERSOFTSATURATION_H
 #define FILTERSOFTSATURATION_H
 
-#include "abstraction/filter.h"
-#include "abstraction/vco.h"
+#include "abstraction/filter/filter.h"
 
 #include <QtCore>
 

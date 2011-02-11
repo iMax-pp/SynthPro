@@ -4,6 +4,7 @@
 #include "abstraction/buffer.h"
 #include "abstraction/clock.h"
 #include "abstraction/inport.h"
+#include "abstraction/module/vco.h"
 #include "abstraction/sequencer.h"
 #include "factory/synthprofactory.h"
 

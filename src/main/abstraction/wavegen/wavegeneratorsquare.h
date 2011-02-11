@@ -1,7 +1,7 @@
 #ifndef WAVEGENERATORSQUARE_H
 #define WAVEGENERATORSQUARE_H
 
-#include "abstraction/wavegenerator.h"
+#include "abstraction/wavegen/wavegenerator.h"
 
 #include <QtGlobal>
 

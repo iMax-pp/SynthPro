@@ -1,7 +1,7 @@
 #ifndef FILTERDUMMY_H
 #define FILTERDUMMY_H
 
-#include "abstraction/filter.h"
+#include "abstraction/filter/filter.h"
 
 /**
   * Dummy Filter, simply copy the bufferIn to the bufferOut.

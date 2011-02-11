@@ -1,7 +1,7 @@
 #ifndef WAVRECORDER_H
 #define WAVRECORDER_H
 
-#include "module.h"
+#include "abstraction/module.h"
 
 class InPort;
 class QFile;

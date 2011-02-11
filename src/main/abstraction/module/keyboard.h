@@ -1,7 +1,7 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
-#include "module.h"
+#include "abstraction/module.h"
 
 class OutPort;
 class SynthPro;

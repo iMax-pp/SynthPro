@@ -1,7 +1,7 @@
 #ifndef WAVEGENERATOREMPTY_H
 #define WAVEGENERATOREMPTY_H
 
-#include "abstraction/wavegenerator.h"
+#include "abstraction/wavegen/wavegenerator.h"
 
 /**
   * Wave Generator that only produces an empty buffer.

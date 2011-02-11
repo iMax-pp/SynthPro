@@ -1,7 +1,7 @@
 #ifndef CDELAY_H
 #define CDELAY_H
 
-#include "abstraction/delay.h"
+#include "abstraction/module/delay.h"
 #include "control/cmodule.h"
 
 class CDelay : public Delay, public CModule {

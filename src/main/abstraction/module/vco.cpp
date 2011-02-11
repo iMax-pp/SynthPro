@@ -4,7 +4,7 @@
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
 #include "abstraction/selector.h"
-#include "abstraction/wavegenerator.h"
+#include "abstraction/wavegen/wavegenerator.h"
 #include "factory/synthprofactory.h"
 #include "factory/wavegeneratorfactory.h"
 

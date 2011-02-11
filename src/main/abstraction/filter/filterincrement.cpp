@@ -1,6 +1,6 @@
 #include "filterincrement.h"
 
-#include "buffer.h"
+#include "abstraction/buffer.h"
 
 FilterIncrement::FilterIncrement()
 {

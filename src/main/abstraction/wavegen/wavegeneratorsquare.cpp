@@ -1,7 +1,7 @@
 #include "wavegeneratorsquare.h"
 
-#include "abstraction/vco.h"
-#include "buffer.h"
+#include "abstraction/buffer.h"
+#include "abstraction/module/vco.h"
 
 #include <QtCore/qmath.h>
 

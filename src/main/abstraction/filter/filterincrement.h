@@ -1,7 +1,7 @@
 #ifndef FILTERINCREMENT_H
 #define FILTERINCREMENT_H
 
-#include "abstraction/filter.h"
+#include "abstraction/filter/filter.h"
 
 /**
   * Dummy Filter that increments every value of the input buffer if >0,

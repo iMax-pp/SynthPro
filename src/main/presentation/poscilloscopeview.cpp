@@ -1,6 +1,6 @@
 #include "poscilloscopeview.h"
 
-#include "abstraction/vco.h"
+#include "abstraction/module/vco.h"
 #include <QPainter>
 
 POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)

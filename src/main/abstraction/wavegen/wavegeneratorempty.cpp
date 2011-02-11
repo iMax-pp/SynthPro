@@ -1,6 +1,6 @@
 #include "wavegeneratorempty.h"
 
-#include "buffer.h"
+#include "abstraction/buffer.h"
 
 WaveGeneratorEmpty::WaveGeneratorEmpty()
 {

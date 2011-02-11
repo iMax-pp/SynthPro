@@ -1,7 +1,7 @@
 #include "vcf.h"
 
 #include "abstraction/dimmer.h"
-#include "abstraction/filter.h"
+#include "abstraction/filter/filter.h"
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
 #include "abstraction/selector.h"

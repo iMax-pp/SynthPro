@@ -1,6 +1,6 @@
 #include "filterdummy.h"
 
-#include "buffer.h"
+#include "abstraction/buffer.h"
 
 #include <QtCore>
 

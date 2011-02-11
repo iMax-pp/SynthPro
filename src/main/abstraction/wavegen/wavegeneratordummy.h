@@ -1,7 +1,7 @@
 #ifndef WAVEGENERATORDUMMY_H
 #define WAVEGENERATORDUMMY_H
 
-#include "abstraction/wavegenerator.h"
+#include "abstraction/wavegen/wavegenerator.h"
 
 /**
   * Dummy Wave Generator, produces a simple square sound with a fixed frequency.

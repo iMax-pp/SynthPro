@@ -1,8 +1,8 @@
 #include "filterlp229.h"
 
 #include "abstraction/buffer.h"
-#include "abstraction/vcf.h"
-#include "abstraction/vco.h"
+#include "abstraction/module/vcf.h"
+#include "abstraction/module/vco.h"
 
 #include <QtCore>
 

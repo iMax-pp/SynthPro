@@ -1,7 +1,7 @@
 #ifndef WAVEGENERATORSAW_H
 #define WAVEGENERATORSAW_H
 
-#include "abstraction/wavegenerator.h"
+#include "abstraction/wavegen/wavegenerator.h"
 
 #include <QtGlobal>
 

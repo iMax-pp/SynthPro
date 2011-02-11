@@ -1,7 +1,7 @@
 #ifndef WAVEGENERATORSINUS_H
 #define WAVEGENERATORSINUS_H
 
-#include "abstraction/wavegenerator.h"
+#include "abstraction/wavegen/wavegenerator.h"
 
 #include <QtGlobal>
 

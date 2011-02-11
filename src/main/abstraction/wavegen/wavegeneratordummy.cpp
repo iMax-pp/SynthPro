@@ -1,6 +1,6 @@
 #include "wavegeneratordummy.h"
 
-#include "buffer.h"
+#include "abstraction/buffer.h"
 
 #include <QDebug>
 

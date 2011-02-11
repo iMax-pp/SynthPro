@@ -1,9 +1,9 @@
 #include "filterfactory.h"
 
-#include "abstraction/filter.h"
-#include "abstraction/filterhp229.h"
-#include "abstraction/filterlp229.h"
-#include "abstraction/filtersoftsaturation.h"
+#include "abstraction/filter/filter.h"
+#include "abstraction/filter/filterhp229.h"
+#include "abstraction/filter/filterlp229.h"
+#include "abstraction/filter/filtersoftsaturation.h"
 
 FilterFactory::FilterFactory()
 {
