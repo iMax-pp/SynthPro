@@ -41,5 +41,6 @@ void PKeyboard::keyboardKeyPressed(int keyPressed)
 
 void PKeyboard::keyboardKeyReleased(int keyPressed)
 {
-    //m_control->keyboardKeyReleased(int keyPressed);
+    CKeyboard* control = dynamic_cast<CKeyboard*>(m_control);
+    control->keyboardKeyReleased(keyPressed);
 }

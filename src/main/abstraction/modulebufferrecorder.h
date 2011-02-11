@@ -14,7 +14,7 @@ class SynthProFactory;
   * Close the file automatically after a fixed number of processing.
   */
 class ModuleBufferRecorder : public virtual Module {
-    //Q_OBJECT
+    // Q_OBJECT
 
 public:
     ModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
