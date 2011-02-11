@@ -6,6 +6,7 @@
 #include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
+#include <QDebug>
 #include <QFont>
 #include <QGraphicsAnchorLayout>
 #include <QGraphicsSimpleTextItem>
@@ -21,12 +22,24 @@ void PKeyboard::initialize(PVirtualPort *outputFrequency, PVirtualPort *outputGa
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     m_pKeyboardView = new PKeyboardView(this);
+    connect(m_pKeyboardView, SIGNAL(keyboardKeyPressed(int)), this, SLOT(keyboardKeyPressed(int)));
+    connect(m_pKeyboardView, SIGNAL(keyboardKeyReleased(int)), this, SLOT(keyboardKeyReleased(int)));
 
     // Layout
     rightArea()->addAnchors(outputFrequency, rightArea());
-    // TODO : add second output.
-    // bottomArea()->addAnchors(outputGate, bottomArea());
+    leftArea()->addAnchors(outputGate, leftArea());
 
     bottomArea()->addAnchors(m_pKeyboardView, bottomArea());
     centerArea()->addAnchors(title, centerArea());
+}
+
+void PKeyboard::keyboardKeyPressed(int keyPressed)
+{
+    CKeyboard* control = dynamic_cast<CKeyboard*>(m_control);
+    control->keyboardKeyPressed(keyPressed);
+}
+
+void PKeyboard::keyboardKeyReleased(int keyPressed)
+{
+    // m_control->keyboardKeyReleased(int keyPressed);
 }

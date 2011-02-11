@@ -11,17 +11,24 @@ PKeyboardView::PKeyboardView(QGraphicsItem* parent)
 
     // Create the keyboard keys.
     int x = 0;
+    int keyNumber = FIRST_KEY_NUMBER;
     for (int i = 0; i < NB_OCTAVES; i++) {
-        // Adding the white keys.
         for (int k = 0 ; k < NB_WHITE_KEYS_PER_OCTAVE; k++) {
-            PKeyboardKey* whiteKey = new PKeyboardKey(this, true);
+            // Adding the white keys.
+            PKeyboardKey* whiteKey = new PKeyboardKey(this, keyNumber, true);
+            connect(whiteKey, SIGNAL(keyboardKeyPressed(int)), this, SIGNAL(keyboardKeyPressed(int)));
+            connect(whiteKey, SIGNAL(keyboardKeyReleased(int)), this, SIGNAL(keyboardKeyReleased(int)));
             whiteKey->setPos(x, 0);
+            keyNumber++;
 
             // Adding the black keys.
             if ((k != 2) && (k != 6)) {
-                PKeyboardKey* blackKey = new PKeyboardKey(this, false);
+                PKeyboardKey* blackKey = new PKeyboardKey(this, keyNumber, false);
+                connect(blackKey, SIGNAL(keyboardKeyPressed(int)), this, SIGNAL(keyboardKeyPressed(int)));
+                connect(blackKey, SIGNAL(keyboardKeyReleased(int)), this, SIGNAL(keyboardKeyReleased(int)));
                 blackKey->setPos(x + (PKeyboardKey::WHITE_KEY_WIDTH * 2 - PKeyboardKey::BLACK_KEY_WIDTH) / 2, 0);
                 blackKey->setZValue(1);
+                keyNumber++;
             }
 
             x += PKeyboardKey::WHITE_KEY_WIDTH;
