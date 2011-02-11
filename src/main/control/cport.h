@@ -34,6 +34,9 @@ public:
     void dragMove(const QPointF&);
     void drop(CPort* target);
 
+    void mouseEnter();
+    void mouseLeave();
+
     void showFeedback(bool compatible);
     void hideFeedback();
 

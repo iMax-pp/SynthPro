@@ -109,12 +109,22 @@ void CPort::drop(CPort* target)
     }
 }
 
+void CPort::mouseEnter()
+{
+    presentation()->showClickableFeedback();
+}
+
+void CPort::mouseLeave()
+{
+    presentation()->hideClickableFeedback();
+}
+
 void CPort::showFeedback(bool compatible)
 {
-    m_presentation->showFeedback(compatible);
+    presentation()->showFeedback(compatible);
 }
 
 void CPort::hideFeedback()
 {
-    m_presentation->hideFeedback();
+    presentation()->hideFeedback();
 }

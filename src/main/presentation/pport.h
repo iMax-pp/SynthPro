@@ -22,11 +22,16 @@ public:
     void showFeedback(bool compatible);
     void hideFeedback();
 
+    void showClickableFeedback();
+    void hideClickableFeedback();
+
 protected:
     // Handle drag & drop events
     void mousePressEvent(QGraphicsSceneMouseEvent*);
     void mouseMoveEvent(QGraphicsSceneMouseEvent*);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent*);
+    void hoverEnterEvent(QGraphicsSceneHoverEvent*);
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent*);
 
 private:
     CPort* m_control;
