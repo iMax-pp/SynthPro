@@ -9,11 +9,12 @@ class POscilloscopeView;
 class PVirtualPort;
 
 class POscilloscope : public PModule {
+
 public:
     POscilloscope(COscilloscope*);
 
     void initialize(PVirtualPort* input);
-    void setVisualizedBuffer(Buffer* buffer);
+    void setVisualizedBuffer(Buffer*);
     void refreshOscilloscopeView();
 
 private:

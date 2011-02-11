@@ -35,7 +35,8 @@ void POscilloscope::setVisualizedBuffer(Buffer* buffer)
     }
 }
 
-void POscilloscope::refreshOscilloscopeView() {
+void POscilloscope::refreshOscilloscopeView()
+{
     if  (m_pOscilloscopeView) {
         m_pOscilloscopeView->update(0, 0, m_pOscilloscopeView->WIDTH, m_pOscilloscopeView->HEIGHT);
     }
