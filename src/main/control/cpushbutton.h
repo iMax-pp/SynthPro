@@ -7,7 +7,6 @@
 class CPushButton : public PushButton {
 public:
     CPushButton(QObject* parent = 0);
-    virtual ~CPushButton();
 
     PPushButton* presentation() const;
     void setPresentation(PPushButton*);

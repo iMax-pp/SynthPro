@@ -6,14 +6,6 @@ CPushButton::CPushButton(QObject* parent)
 {
 }
 
-
-CPushButton::~CPushButton()
-{
-    if (m_presentation) {
-        delete m_presentation;
-    }
-}
-
 PPushButton* CPushButton::presentation() const
 {
     return m_presentation;
