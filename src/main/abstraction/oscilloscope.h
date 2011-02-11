@@ -1,5 +1,5 @@
-#ifndef MODULEOSCILLOSCOPE_H
-#define MODULEOSCILLOSCOPE_H
+#ifndef OSCILLOSCOPE_H
+#define OSCILLOSCOPE_H
 
 #include "module.h"
 
@@ -31,4 +31,4 @@ protected:
     InPort* m_inPort;
 };
 
-#endif // MODULEOSCILLOSCOPE_H
+#endif // OSCILLOSCOPE_H

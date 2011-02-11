@@ -12,6 +12,7 @@
 #include "control/cvcf.h"
 #include "control/cvco.h"
 #include "control/cvirtualport.h"
+#include "control/cwavrecorder.h"
 #include <QGraphicsScene>
 
 CSynthPro::CSynthPro(SynthProFactory* factory)
@@ -92,6 +93,7 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
         module = dynamic_cast<Module*>(m_factory->createSpeaker(this));
         break;
     case SynthProFactory::FileOutputId:
+        module = dynamic_cast<Module*>(m_factory->createWavRecorder(this, "output.wav", 480));
         break;
     case SynthProFactory::OscilloscopeId:
         module = dynamic_cast<Module*>(m_factory->createOscilloscope(this));

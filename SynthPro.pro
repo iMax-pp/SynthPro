@@ -84,7 +84,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/cpushbutton.h \
     src/main/presentation/ppushbutton.h \
     src/main/presentation/pkeyboardview.h \
-    src/main/presentation/pkeyboardkey.h
+    src/main/presentation/pkeyboardkey.h \
+    src/main/control/cwavrecorder.h \
+    src/main/presentation/pwavrecorder.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -163,7 +165,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/cpushbutton.cpp \
     src/main/presentation/ppushbutton.cpp \
     src/main/presentation/pkeyboardview.cpp \
-    src/main/presentation/pkeyboardkey.cpp
+    src/main/presentation/pkeyboardkey.cpp \
+    src/main/control/cwavrecorder.cpp \
+    src/main/presentation/pwavrecorder.cpp
 
 INCLUDEPATH += src/main/
 
