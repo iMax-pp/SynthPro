@@ -10,6 +10,11 @@ public:
     explicit COscilloscope(SynthPro*);
 
     void initialize(SynthProFactory*);
+
+    /**
+      * Process the input signal.
+      */
+    virtual void ownProcess();
 };
 
 #endif // COSCILLOSCOPE_H

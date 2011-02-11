@@ -6,6 +6,7 @@
 class InPort;
 class OutPort;
 class Dimmer;
+class PushButton;
 class SynthProFactory;
 
 class ADSR : public virtual Module {
@@ -13,6 +14,7 @@ class ADSR : public virtual Module {
 
 public:
     explicit ADSR(SynthPro*);
+
     virtual void initialize(SynthProFactory*);
     void ownProcess();
 
@@ -48,6 +50,7 @@ protected:
     Dimmer* m_decayDimmer;
     Dimmer* m_sustainDimmer;
     Dimmer* m_releaseDimmer;
+    PushButton* m_manualControl;
 
     int m_timeLine;
 
@@ -58,8 +61,10 @@ protected:
         SUSTAIN,
         RELEASE,
     };
+
     AdsrState m_currentState;
     qreal m_gateValue;
+    qreal m_startRelease;
 };
 
 #endif // ADSR_H

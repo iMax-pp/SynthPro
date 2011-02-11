@@ -4,6 +4,7 @@
 #include <QString>
 #include <QtGlobal>
 
+class ADSR;
 class Dimmer;
 class InPort;
 class LFO;
@@ -13,9 +14,11 @@ class ModuleOscilloscope;
 class ModuleOut;
 class OutPort;
 class Port;
+class PushButton;
 class Selector;
 class Sequencer;
 class SynthPro;
+class VCA;
 class VCF;
 class VCO;
 class VCA;
@@ -59,6 +62,7 @@ public:
      */
     virtual Dimmer* createDimmer(QString name, qreal min, qreal man, qreal defaultValue, Module* parent) = 0;
     virtual Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent) = 0;
+    virtual PushButton* createPushButton(QString name, Module* parent) = 0;
 
     /*
      * Enumeration of module types.

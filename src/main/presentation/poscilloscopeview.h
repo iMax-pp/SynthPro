@@ -11,16 +11,16 @@ public:
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
     QRectF boundingRect() const;
 
-    // Useful ??
-    // inline VOscilloscopeView control() const { return m_control; }
+    /**
+      * Define the buffer to be visualized.
+      */
+    void setVisualizedBuffer(Buffer*);
 
     static const int WIDTH = 200;
     static const int HEIGHT = 150;
 
 private:
-    // COscilloscopeView m_control;
-    qreal* m_inBuffer; // FIXME : Try. Stashed here for the moment.
-    static const qreal STEP = Buffer::DEFAULT_LENGTH / WIDTH;
+    Buffer* m_inBuffer;
     qreal m_ratioY;
 };
 

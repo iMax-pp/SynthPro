@@ -1,18 +1,18 @@
-#ifndef MODULEOSCILLOSCOPE_H
-#define MODULEOSCILLOSCOPE_H
+#ifndef MODULEKEYBOARD_H
+#define MODULEKEYBOARD_H
 
 #include "module.h"
 
-class InPort;
+class OutPort;
 class SynthPro;
 class SynthProFactory;
 
-class ModuleOscilloscope : public virtual Module {
+class ModuleKeyboard : public virtual Module {
     Q_OBJECT
 
 public:
-    ModuleOscilloscope(SynthPro*);
-    virtual ~ModuleOscilloscope();
+    ModuleKeyboard(SynthPro*);
+    virtual ~ModuleKeyboard();
 
     /**
       * Instanciate the ports. Used by the factory.
@@ -28,7 +28,8 @@ public slots:
     virtual void timerExpired();
 
 protected:
-    InPort* m_inPort;
+    OutPort* m_outPortFrequency;
+    OutPort* m_outPortGate;
 };
 
-#endif // MODULEOSCILLOSCOPE_H
+#endif // MODULEKEYBOARD_H

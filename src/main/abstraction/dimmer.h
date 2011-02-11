@@ -3,8 +3,8 @@
 
 #include <QObject>
 /*
-* A dimmer allow changing a float parameter of a module
-*/
+ * A dimmer allow changing a float parameter of a module
+ */
 class Dimmer : public QObject {
 public:
     Dimmer(qreal min, qreal max, qreal defaultValue, QObject* parent = 0);
