@@ -41,14 +41,14 @@ public:
     CVCF* createVCF(SynthPro*);
     CVCA* createVCA(SynthPro*);
     CADSR* createADSR(SynthPro*);
-    ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     CKeyboard* createModuleKeyboard(SynthPro*);
     CModuleOut* createModuleOut(SynthPro*);
     COscilloscope* createModuleOscilloscope(SynthPro*);
 
-    CDimmer* createDimmer(QString name, qreal min, qreal max, qreal defaultValue, Module* parent);
-    CSelector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
-    CPushButton* createPushButton(QString name, Module* parent);
+    CDimmer* createDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent);
+    CSelector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent);
+    CPushButton* createPushButton(const QString& name, Module* parent);
 
     // Creation methods specific to the QtFactory
     CWire* createWire(QGraphicsScene*);
