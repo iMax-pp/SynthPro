@@ -20,7 +20,7 @@ void TestWaveGeneratorTriangle::testWaveGeneratorTriangle()
     QString fileName = "testWaveGeneratorTriangle.wav";
 
     SimpleFactory factory;
-    WavRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
+    WavRecorder* mbr = factory.createWavRecorder(0, fileName, NB_ITERATIONS);
 
     VCO* vco = factory.createVCO(&synthPro);
     vco->setShape("Triangle");
