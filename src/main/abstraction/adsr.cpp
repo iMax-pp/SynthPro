@@ -4,6 +4,7 @@
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
+#include "abstraction/pushbutton.h"
 #include "factory/synthprofactory.h"
 
 #include <QDebug>
@@ -38,12 +39,15 @@ void ADSR::ownProcess()
     int decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
     int releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
 
-    qreal currentValue = 0;
     int bufferIndex = 0;
+    qreal currentValue = m_manualControl->pushed() ? 1 : 0;
     qreal startRelease = 0;
 
     while (bufferIndex < m_gate->buffer()->length()) {
-        currentValue = m_gate->buffer()->data()[bufferIndex];
+        if (currentValue == 0) {
+            currentValue = m_gate->buffer()->data()[bufferIndex];
+        }
+
         if (currentValue > m_gateValue && m_currentState == IDLE) {
             // a gate "on" signal occurs
             m_timeLine = 0;
