@@ -18,6 +18,7 @@ public:
     VCA* createVCA(SynthPro*);
     ADSR* createADSR(SynthPro*);
     LFO* createLFO(SynthPro*);
+    Delay* createDelay(SynthPro*);
     WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     Speaker* createSpeaker(SynthPro*);
     ModuleKeyboard* createModuleKeyboard(SynthPro*);

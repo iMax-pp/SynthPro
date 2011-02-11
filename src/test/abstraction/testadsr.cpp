@@ -69,11 +69,11 @@ void TestADSR::testADSR2Buffers()
         inBuffer->data()[i] = 1;
     }
 
-    adsr->ownProcess();
+        /*adsr->ownProcess();
     for (int i = 0 ; i< inBuffer->length() ; i++) {
         stream  << i << " " << adsr->outports().first()->buffer()->data()[i] << "\n";
 
-    }
+    }*/
 
 
 
@@ -85,11 +85,11 @@ void TestADSR::testADSR2Buffers()
     }
     adsr->ownProcess();
 
-    for (int i = 0 ; i< inBuffer->length() ; i++) {
+    /*for (int i = 0 ; i< inBuffer->length() ; i++) {
         int index = i+900;
         stream  << index << " " <<  adsr->outports().first()->buffer()->data()[i] << "\n";
 
-    }
+    }*/
 
     // qDebug() << result;
     QVERIFY(true);

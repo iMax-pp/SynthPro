@@ -1,6 +1,7 @@
 #include "simplefactory.h"
 
 #include "abstraction/adsr.h"
+#include "abstraction/delay.h"
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
 #include "abstraction/lfo.h"
@@ -99,6 +100,14 @@ ADSR* SimpleFactory::createADSR(SynthPro* parent)
     adsr->initialize(this);
     return adsr;
 }
+
+Delay* SimpleFactory::createDelay(SynthPro* parent)
+{
+    Delay* delay = new Delay(parent);
+    delay->initialize(this);
+    return delay;
+}
+
 
 LFO* SimpleFactory::createLFO(SynthPro* parent)
 {

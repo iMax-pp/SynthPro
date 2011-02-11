@@ -42,7 +42,9 @@ public:
     CVCF* createVCF(SynthPro*);
     CVCA* createVCA(SynthPro*);
     CADSR* createADSR(SynthPro*);
-    CWavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    CDelay* createDelay(SynthPro *);
+
+    WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     CKeyboard* createModuleKeyboard(SynthPro*);
     CSpeaker* createSpeaker(SynthPro*);
     COscilloscope* createOscilloscope(SynthPro*);

@@ -50,6 +50,7 @@ bool Port::disconnect()
 
 void Port::_disconnect()
 {
-    emit disconnected(this, m_connection);
+    Port* target = m_connection;
     m_connection = 0;
+    emit disconnected(this, target);
 }
