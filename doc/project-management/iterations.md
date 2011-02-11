@@ -79,21 +79,19 @@ date :  semaine 6 (vendredi 11 - )
 - Julien N. :
     - Oscillo;
     - Keyboard virtuel;
-
 - Maxime :
     - PushButton (qui gere press/release) à ajouter aux interfaces (retrigger ADSR);
-    - Présentation controle ADSR;
-    - Présentation et Contrôle Module File Output;
-
+    - Présentation et contrôle ADSR, WavRecorder, Delay;
+    - Refactoring des noms de modules;
 - Julien RF. :
-     - Refactoring VPort/Port;
-     - Suppression des ports répliqués;
-     - Feedback des ports (MouseHover);
-     - Wire plus jolis.
-
+    - Refactoring VPort/Port;
+    - Suppression des ports répliqués;
+    - Feedback des ports (MouseHover);
+    - Wire plus jolis;
 - Cyrille :
-     - ADSR;
-     - Doc.
+    - ADSR;
+    - Delay;
+    - Doc.
 
 Roadmap (todo)
 ---------
