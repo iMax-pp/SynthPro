@@ -82,7 +82,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/presentation/pkeyboard.h \
     src/main/abstraction/pushbutton.h \
     src/main/control/cpushbutton.h \
-    src/main/presentation/ppushbutton.h
+    src/main/presentation/ppushbutton.h \
+    src/main/presentation/pkeyboardview.h \
+    src/main/presentation/pkeyboardkey.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -159,7 +161,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/pkeyboard.cpp \
     src/main/abstraction/pushbutton.cpp \
     src/main/control/cpushbutton.cpp \
-    src/main/presentation/ppushbutton.cpp
+    src/main/presentation/ppushbutton.cpp \
+    src/main/presentation/pkeyboardview.cpp \
+    src/main/presentation/pkeyboardkey.cpp
 
 INCLUDEPATH += src/main/
 
