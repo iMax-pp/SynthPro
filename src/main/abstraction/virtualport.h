@@ -70,7 +70,7 @@ protected:
     /// Remove a replication of this VirtualPort
     virtual bool removePort(Port*);
     /// Replicate this VirtualPort and returns the newly created Port
-    Port* replicate();
+    virtual Port* replicate();
 
 protected slots:
     void connection(Port*, Port*);
