@@ -1,5 +1,5 @@
-#ifndef MODULEKEYBOARD_H
-#define MODULEKEYBOARD_H
+#ifndef KEYBOARD_H
+#define KEYBOARD_H
 
 #include "module.h"
 
@@ -7,12 +7,12 @@ class OutPort;
 class SynthPro;
 class SynthProFactory;
 
-class ModuleKeyboard : public virtual Module {
+class Keyboard : public virtual Module {
     Q_OBJECT
 
 public:
-    ModuleKeyboard(SynthPro*);
-    virtual ~ModuleKeyboard();
+    Keyboard(SynthPro*);
+    virtual ~Keyboard();
 
     /**
       * Instanciate the ports. Used by the factory.
@@ -39,4 +39,4 @@ protected:
     bool m_pressed;
 };
 
-#endif // MODULEKEYBOARD_H
+#endif // KEYBOARD_H

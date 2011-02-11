@@ -21,7 +21,7 @@ public:
     Delay* createDelay(SynthPro*);
     WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     Speaker* createSpeaker(SynthPro*);
-    ModuleKeyboard* createModuleKeyboard(SynthPro*);
+    Keyboard* createKeyboard(SynthPro*);
     Dimmer* createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent);
     Oscilloscope* createOscilloscope(SynthPro*);

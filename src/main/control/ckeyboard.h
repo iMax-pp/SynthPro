@@ -1,10 +1,10 @@
 #ifndef CKEYBOARD_H
 #define CKEYBOARD_H
 
-#include "abstraction/modulekeyboard.h"
+#include "abstraction/keyboard.h"
 #include "control/cmodule.h"
 
-class CKeyboard : public ModuleKeyboard, public CModule {
+class CKeyboard : public Keyboard, public CModule {
 
 public:
     explicit CKeyboard(SynthPro*);

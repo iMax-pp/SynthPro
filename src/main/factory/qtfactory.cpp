@@ -238,7 +238,7 @@ CWavRecorder* QtFactory::createWavRecorder(SynthPro* parent, const QString& file
     return mbr;
 }
 
-CKeyboard* QtFactory::createModuleKeyboard(SynthPro* parent)
+CKeyboard* QtFactory::createKeyboard(SynthPro* parent)
 {
     // Create the Keyboard Controler
     CKeyboard* ck = new CKeyboard(parent);

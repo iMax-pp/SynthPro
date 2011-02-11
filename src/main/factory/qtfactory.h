@@ -46,7 +46,7 @@ public:
     CDelay* createDelay(SynthPro*);
 
     CWavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
-    CKeyboard* createModuleKeyboard(SynthPro*);
+    CKeyboard* createKeyboard(SynthPro*);
     CSpeaker* createSpeaker(SynthPro*);
     COscilloscope* createOscilloscope(SynthPro*);
 
