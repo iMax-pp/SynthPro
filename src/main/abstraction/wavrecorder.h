@@ -1,5 +1,5 @@
-#ifndef MODULEBUFFERRECORDER_H
-#define MODULEBUFFERRECORDER_H
+#ifndef WAVRECORDER_H
+#define WAVRECORDER_H
 
 #include "module.h"
 
@@ -13,10 +13,11 @@ class SynthProFactory;
   * If the first port is disconnected, pause the recording till it is connected again.
   * Close the file automatically after a fixed number of processing.
   */
-class ModuleBufferRecorder : public Module {
+class WavRecorder : public virtual Module {
+
 public:
-    ModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
-    virtual ~ModuleBufferRecorder();
+    WavRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    virtual ~WavRecorder();
 
     /**
       * Required method in order to instanciate the ports. Used by the factory.
@@ -67,4 +68,4 @@ private:
     void addLittleEndianShortToFile(QFile*, int nb);
 };
 
-#endif // MODULEBUFFERRECORDER_H
+#endif // WAVRECORDER_H

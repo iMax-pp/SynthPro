@@ -15,6 +15,9 @@ public:
       * Process the input signal.
       */
     virtual void ownProcess();
+
+    void keyboardKeyPressed(int keyPressed);
+    void keyboardKeyReleased(int keyPressed);
 };
 
 #endif // CKEYBOARD_H

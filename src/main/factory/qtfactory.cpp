@@ -2,10 +2,10 @@
 
 #include "abstraction/adsr.h"
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleoscilloscope.h"
 #include "abstraction/port.h"
 #include "abstraction/sequencer.h"
+#include "abstraction/wavrecorder.h"
 #include "control/cwire.h"
 #include "presentation/padsr.h"
 #include "presentation/pkeyboard.h"
@@ -214,9 +214,9 @@ CPushButton* QtFactory::createPushButton(const QString& name, Module* parent)
     return pushButton;
 }
 
-ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
+WavRecorder* QtFactory::createWavRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
 {
-    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(parent, fileName, nbProcessingBeforeSaving);
+    WavRecorder* mbr = new WavRecorder(parent, fileName, nbProcessingBeforeSaving);
     mbr->initialize(this);
     return mbr;
 }

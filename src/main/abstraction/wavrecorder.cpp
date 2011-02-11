@@ -1,4 +1,4 @@
-#include "modulebufferrecorder.h"
+#include "wavrecorder.h"
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/buffer.h"
@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QFile>
 
-ModuleBufferRecorder::ModuleBufferRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
+WavRecorder::WavRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
     : Module(parent)
     , m_fileName(fileName)
     , m_nbProcessingBeforeSaving(nbProcessingBeforeSaving)
@@ -33,19 +33,19 @@ ModuleBufferRecorder::ModuleBufferRecorder(SynthPro* parent, QString fileName, i
     }
 }
 
-ModuleBufferRecorder::~ModuleBufferRecorder()
+WavRecorder::~WavRecorder()
 {
     m_outputFile->close();
 }
 
-void ModuleBufferRecorder::initialize(SynthProFactory* factory)
+void WavRecorder::initialize(SynthProFactory* factory)
 {
     // Creation of an Input.
     m_inPort = factory->createInPortReplicable(this, "in");
     m_inports.append(m_inPort);
 }
 
-void ModuleBufferRecorder::ownProcess()
+void WavRecorder::ownProcess()
 {
     if (m_outputFile) {
         // Process as long as we have not reach the processing limit.
@@ -79,7 +79,7 @@ void ModuleBufferRecorder::ownProcess()
     }
 }
 
-void ModuleBufferRecorder::createWAVHeader(QFile* file)
+void WavRecorder::createWAVHeader(QFile* file)
 {
     file->write("RIFF");
 
@@ -105,7 +105,7 @@ void ModuleBufferRecorder::createWAVHeader(QFile* file)
     addLittleEndianIntToFile(file, 0xffffffff); // Chunk Format Data Size. Use a fake size, for now.
 }
 
-void ModuleBufferRecorder::closeWAVFile(QFile* file)
+void WavRecorder::closeWAVFile(QFile* file)
 {
     // Set the previously skipped size.
     file->seek(m_riffDataSizePosition);
@@ -115,17 +115,17 @@ void ModuleBufferRecorder::closeWAVFile(QFile* file)
 
     file->close();
 
-    qDebug() << "ModuleBufferRecorder::closeWAVFile Done !";
+    qDebug() << "WavRecorder::closeWAVFile Done !";
 }
 
-void ModuleBufferRecorder::addLittleEndianShortToFile(QFile* file, int nb)
+void WavRecorder::addLittleEndianShortToFile(QFile* file, int nb)
 {
     m_bufferForNumbers[0] = nb & 0xff;
     m_bufferForNumbers[1] = (nb / 0x100) & 0xff;
     file->write(m_bufferForNumbers, 2);
 }
 
-void ModuleBufferRecorder::addLittleEndianIntToFile(QFile* file, int nb)
+void WavRecorder::addLittleEndianIntToFile(QFile* file, int nb)
 {
     m_bufferForNumbers[0] = nb & 0xff;
     m_bufferForNumbers[1] = (nb / 0x100) & 0xff;
