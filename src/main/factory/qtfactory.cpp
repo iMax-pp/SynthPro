@@ -180,6 +180,12 @@ CADSR* QtFactory::createADSR(SynthPro* parent)
 
 }
 
+CDelay* QtFactory::createDelay(SynthPro *)
+{
+
+}
+
+
 CDimmer* QtFactory::createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);

@@ -83,6 +83,7 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/pushbutton.h \
     src/main/control/cpushbutton.h \
     src/main/presentation/ppushbutton.h \
+    src/main/abstraction/delay.h \
     src/main/presentation/pkeyboardview.h \
     src/main/presentation/pkeyboardkey.h
 
@@ -162,6 +163,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/pushbutton.cpp \
     src/main/control/cpushbutton.cpp \
     src/main/presentation/ppushbutton.cpp \
+    src/main/abstraction/delay.cpp \
     src/main/presentation/pkeyboardview.cpp \
     src/main/presentation/pkeyboardkey.cpp
 
