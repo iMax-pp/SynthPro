@@ -2,11 +2,11 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
-#include "abstraction/modulebufferrecorder.h"
 #include "abstraction/outport.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratorsaw.h"
+#include "abstraction/wavrecorder.h"
 #include "factory/simplefactory.h"
 
 
@@ -20,7 +20,7 @@ void TestWaveGeneratorSaw::testWaveGeneratorSaw()
     QString fileName = "testWaveGeneratorSaw.wav";
 
     SimpleFactory factory;
-    ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
+    WavRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
     VCO* vco = factory.createVCO(&synthPro);
     vco->setShape("Saw");

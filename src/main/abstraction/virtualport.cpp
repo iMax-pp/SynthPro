@@ -4,6 +4,8 @@
 #include "abstraction/port.h"
 #include "factory/synthprofactory.h"
 
+#include <QDebug>
+
 VirtualPort::VirtualPort(Module* parent, const QString& name, SynthProFactory* factory, bool replicable, bool gate)
     : QObject(parent)
     , m_module(parent)
@@ -32,7 +34,7 @@ Port* VirtualPort::replicate()
 
 bool VirtualPort::available() const
 {
-    return m_replicable || m_connections.size() == 0;
+    return m_replicable || !m_connections.first()->connection();
 }
 
 bool VirtualPort::compatible(const VirtualPort* other) const

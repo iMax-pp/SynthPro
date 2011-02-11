@@ -2,10 +2,10 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
-#include "abstraction/modulebufferrecorder.h"
 #include "abstraction/outport.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratorempty.h"
+#include "abstraction/wavrecorder.h"
 #include "factory/simplefactory.h"
 
 #include <QDebug>
@@ -17,7 +17,7 @@ void TestModuleBufferRecorder::testModuleBufferRecorder()
     QString fileName = "testModuleBufferRecorder.wav";
 
     SimpleFactory factory;
-    ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
+    WavRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
     VCO* vco = factory.createVCO(0);
     vco->setShape("Empty");
