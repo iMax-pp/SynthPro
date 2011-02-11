@@ -18,4 +18,11 @@ void COscilloscope::initialize(SynthProFactory* factory)
     CInPort* in = dynamic_cast<CInPort*>(m_inPort);
 
     dynamic_cast<POscilloscope*>(presentation())->initialize(in->presentation());
+
+    dynamic_cast<POscilloscope*>(presentation())->setVisualizedBuffer(inports().at(0)->buffer());
+}
+
+void COscilloscope::ownProcess()
+{
+    dynamic_cast<POscilloscope*>(presentation())->refreshOscilloscopeView();
 }

@@ -3,6 +3,7 @@
 
 #include "presentation/pmodule.h"
 
+class Buffer;
 class COscilloscope;
 class POscilloscopeView;
 class PVirtualPort;
@@ -12,6 +13,8 @@ public:
     POscilloscope(COscilloscope*);
 
     void initialize(PVirtualPort* input);
+    void setVisualizedBuffer(Buffer*);
+    void refreshOscilloscopeView();
 
 private:
     POscilloscopeView* m_pOscilloscopeView;

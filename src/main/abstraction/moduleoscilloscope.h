@@ -22,7 +22,7 @@ public:
     /**
       * Process the input signal.
       */
-    void ownProcess();
+    virtual void ownProcess();
 
 public slots:
     virtual void timerExpired();
