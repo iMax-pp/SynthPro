@@ -10,6 +10,7 @@ MockSerializerWell::MockSerializerWell(SynthPro* parent, QTextStream& output, Sy
     , input(this, "input", factory)
     , m_output(output)
 {
+    input.initialize();
     m_inports.append(&input);
 }
 
