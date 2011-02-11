@@ -85,18 +85,34 @@ date :  semaine 6 (vendredi 11 - )
     - Refactoring des noms de modules;
 - Julien RF. :
     - Refactoring VPort/Port;
+- Cyrille :
+    - ADSR;
+    - Doc.
+
+Itération 6
+-----------
+date :  semaine 7 (Lundi 14-)
+
+- Julien N. :
+    - Mappage clavier virtual/clavier réel.
+    - ?
+- Maxime :
+    - Feedback dimmer, interaction dimmer avec clavier (pour précision).
+    - WaveRecorder dans fichier selectionné.
+    - On/Off SynthPro.
+- Julien RF. :
     - Suppression des ports répliqués;
     - Feedback des ports (MouseHover);
     - Wire plus jolis;
 - Cyrille :
-    - ADSR;
     - Delay;
-    - Doc.
+    - Mixer;
 
 Roadmap (todo)
 ---------
 - Oscillo stabilisé;
 - Molette Oscillo (zoom Y);
+- Symétrie de l'audio engine.
 - Fond d'écran (léger et subtil);
 - Icones dans Dockbars (et drag'n'drop d'icones);
 - Bouton on/off du synthé;
