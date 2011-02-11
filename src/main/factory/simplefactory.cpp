@@ -6,12 +6,12 @@
 #include "abstraction/lfo.h"
 #include "abstraction/modulekeyboard.h"
 #include "abstraction/moduleoscilloscope.h"
-#include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
 #include "abstraction/pushbutton.h"
 #include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
+#include "abstraction/speaker.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vca.h"
 #include "abstraction/vcf.h"
@@ -125,9 +125,9 @@ WavRecorder* SimpleFactory::createWavRecorder(SynthPro* parent, const QString& f
     return mbr;
 }
 
-ModuleOut* SimpleFactory::createModuleOut(SynthPro* parent)
+Speaker* SimpleFactory::createSpeaker(SynthPro* parent)
 {
-    // Do not instanciate ModuleOut if no audio device can be accessed !
+    // Do not instanciate Speaker if no audio device can be accessed !
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();
 
     if (!adp.initializeAudioOutput()) {
@@ -140,7 +140,7 @@ ModuleOut* SimpleFactory::createModuleOut(SynthPro* parent)
         return 0;
     }
 
-    ModuleOut* mo = new ModuleOut(parent, device, adp.audioOutput());
+    Speaker* mo = new Speaker(parent, device, adp.audioOutput());
     mo->initialize(this);
     return mo;
 }
