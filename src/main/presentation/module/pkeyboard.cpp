@@ -1,7 +1,7 @@
 #include "pkeyboard.h"
 
 #include "abstraction/buffer.h"
-#include "control/ckeyboard.h"
+#include "control/module/ckeyboard.h"
 #include "presentation/pkeyboardview.h"
 #include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"

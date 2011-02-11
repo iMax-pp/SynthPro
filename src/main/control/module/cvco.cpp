@@ -4,7 +4,7 @@
 #include "control/cinport.h"
 #include "control/coutport.h"
 #include "control/cselector.h"
-#include "presentation/pvco.h"
+#include "presentation/module/pvco.h"
 
 CVCO::CVCO(SynthPro* parent)
     : Module(parent)

@@ -1,6 +1,6 @@
 #include "plfo.h"
 
-#include "control/clfo.h"
+#include "control/module/clfo.h"
 #include "presentation/pdimmer.h"
 #include "presentation/pselector.h"
 #include "presentation/pvirtualport.h"

@@ -1,7 +1,7 @@
 #include "cwavrecorder.h"
 
 #include "control/cinport.h"
-#include "presentation/pwavrecorder.h"
+#include "presentation/module/pwavrecorder.h"
 
 CWavRecorder::CWavRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
     : Module(parent)

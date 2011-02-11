@@ -1,7 +1,7 @@
 #include "poscilloscope.h"
 
 #include "abstraction/buffer.h"
-#include "control/coscilloscope.h"
+#include "control/module/coscilloscope.h"
 #include "presentation/poscilloscopeview.h"
 #include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"

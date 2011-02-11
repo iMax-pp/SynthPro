@@ -2,11 +2,11 @@
 
 #include "abstraction/dimmer.h"
 #include "abstraction/mockserializerwell.h"
+#include "abstraction/module/speaker.h"
+#include "abstraction/module/vco.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
-#include "abstraction/speaker.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vco.h"
 #include "factory/simplefactory.h"
 
 #include <QTextStream>

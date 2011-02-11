@@ -2,12 +2,12 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
+#include "abstraction/module/vco.h"
+#include "abstraction/module/wavrecorder.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vco.h"
-#include "abstraction/wavegeneratorsaw.h"
-#include "abstraction/wavrecorder.h"
+#include "abstraction/wavegen/wavegeneratorsaw.h"
 #include "factory/simplefactory.h"
 
 

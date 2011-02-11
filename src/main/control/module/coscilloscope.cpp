@@ -2,7 +2,7 @@
 
 #include "control/cdimmer.h"
 #include "control/cinport.h"
-#include "presentation/poscilloscope.h"
+#include "presentation/module/poscilloscope.h"
 
 COscilloscope::COscilloscope(SynthPro* parent)
     : Module(parent)

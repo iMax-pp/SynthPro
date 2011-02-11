@@ -1,6 +1,6 @@
 #include "pvco.h"
 
-#include "control/cvco.h"
+#include "control/module/cvco.h"
 #include "presentation/pdimmer.h"
 #include "presentation/pselector.h"
 #include "presentation/pvirtualport.h"

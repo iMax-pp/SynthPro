@@ -1,7 +1,7 @@
 #ifndef TESTVCA_H
 #define TESTVCA_H
 
-#include "abstraction/vca.h"
+#include "abstraction/module/vca.h"
 
 #include <QtTest/QTest>
 

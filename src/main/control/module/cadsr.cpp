@@ -5,7 +5,7 @@
 #include "control/coutport.h"
 #include "control/cpushbutton.h"
 #include "control/cselector.h"
-#include "presentation/padsr.h"
+#include "presentation/module/padsr.h"
 
 CADSR::CADSR(SynthPro* parent)
     : Module(parent)

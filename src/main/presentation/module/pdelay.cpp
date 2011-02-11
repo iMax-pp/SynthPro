@@ -1,6 +1,6 @@
 #include "pdelay.h"
 
-#include "control/cdelay.h"
+#include "control/module/cdelay.h"
 #include "presentation/pdimmer.h"
 #include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"

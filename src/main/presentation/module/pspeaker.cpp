@@ -1,6 +1,6 @@
 #include "pspeaker.h"
 
-#include "control/cspeaker.h"
+#include "control/module/cspeaker.h"
 #include "presentation/pixmapwidget.h"
 #include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"

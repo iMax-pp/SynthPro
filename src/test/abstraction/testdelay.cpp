@@ -1,7 +1,7 @@
 #include "testdelay.h"
 
+#include "abstraction/module/vco.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vco.h"
 
 #include "factory/simplefactory.h"
 

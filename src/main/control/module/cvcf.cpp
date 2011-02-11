@@ -4,7 +4,7 @@
 #include "control/cinport.h"
 #include "control/coutport.h"
 #include "control/cselector.h"
-#include "presentation/pvcf.h"
+#include "presentation/module/pvcf.h"
 
 CVCF::CVCF(SynthPro* parent)
     : Module(parent)

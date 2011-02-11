@@ -2,11 +2,11 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
+#include "abstraction/module/vco.h"
+#include "abstraction/module/wavrecorder.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
-#include "abstraction/vco.h"
-#include "abstraction/wavegeneratorempty.h"
-#include "abstraction/wavrecorder.h"
+#include "abstraction/wavegen/wavegeneratorempty.h"
 #include "factory/simplefactory.h"
 
 #include <QDebug>

@@ -1,6 +1,6 @@
 #include "padsr.h"
 
-#include "control/cadsr.h"
+#include "control/module/cadsr.h"
 #include "presentation/pdimmer.h"
 #include "presentation/ppushbutton.h"
 #include "presentation/pvirtualport.h"

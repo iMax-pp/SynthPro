@@ -1,7 +1,7 @@
 #include "ckeyboard.h"
 
 #include "control/coutport.h"
-#include "presentation/pkeyboard.h"
+#include "presentation/module/pkeyboard.h"
 
 #include <QDebug>
 

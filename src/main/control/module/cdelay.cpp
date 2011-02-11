@@ -3,7 +3,7 @@
 #include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/coutport.h"
-#include "presentation/pdelay.h"
+#include "presentation/module/pdelay.h"
 
 CDelay::CDelay(SynthPro* parent)
     : Module(parent)

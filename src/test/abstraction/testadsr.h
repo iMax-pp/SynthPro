@@ -1,7 +1,7 @@
 #ifndef TESTADSR_H
 #define TESTADSR_H
 
-#include "abstraction/adsr.h"
+#include "abstraction/module/adsr.h"
 
 #include <QtTest/QTest>
 

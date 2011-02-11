@@ -1,6 +1,6 @@
 #include "pwavrecorder.h"
 
-#include "control/cwavrecorder.h"
+#include "control/module/cwavrecorder.h"
 #include "presentation/pixmapwidget.h"
 #include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"

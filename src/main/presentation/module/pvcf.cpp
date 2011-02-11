@@ -1,6 +1,6 @@
 #include "pvcf.h"
 
-#include "control/cvcf.h"
+#include "control/module/cvcf.h"
 #include "presentation/pdimmer.h"
 #include "presentation/pselector.h"
 #include "presentation/pvirtualport.h"

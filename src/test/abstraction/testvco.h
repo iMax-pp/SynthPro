@@ -1,7 +1,7 @@
 #ifndef TESTVCO_H
 #define TESTVCO_H
 
-#include "abstraction/vco.h"
+#include "abstraction/module/vco.h"
 
 #include <QtTest/QTest>
 

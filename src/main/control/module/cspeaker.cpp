@@ -1,7 +1,7 @@
 #include "cspeaker.h"
 
 #include "control/cinport.h"
-#include "presentation/pspeaker.h"
+#include "presentation/module/pspeaker.h"
 
 CSpeaker::CSpeaker(SynthPro* parent, QIODevice* device, QAudioOutput* output)
     : Module(parent)

@@ -4,7 +4,7 @@
 #include "control/cinport.h"
 #include "control/coutport.h"
 #include "control/cselector.h"
-#include "presentation/plfo.h"
+#include "presentation/module/plfo.h"
 
 CLFO::CLFO(SynthPro* parent)
     : Module(parent)

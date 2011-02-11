@@ -1,6 +1,6 @@
 #include "pvca.h"
 
-#include "control/cvca.h"
+#include "control/module/cvca.h"
 #include "presentation/pdimmer.h"
 #include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"

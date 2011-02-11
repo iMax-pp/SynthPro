@@ -4,7 +4,7 @@
 #include "control/cinport.h"
 #include "control/coutport.h"
 #include "control/cselector.h"
-#include "presentation/pvca.h"
+#include "presentation/module/pvca.h"
 
 CVCA::CVCA(SynthPro* parent)
     : Module(parent)
