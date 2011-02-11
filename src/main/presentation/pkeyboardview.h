@@ -2,6 +2,7 @@
 #define PKEYBOARDVIEW_H
 
 #include "presentation/pkeyboardkey.h"
+
 #include <QGraphicsWidget>
 
 class PKeyboardView : public QGraphicsWidget {
