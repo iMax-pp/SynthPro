@@ -3,7 +3,7 @@
 #include "control/csynthpro.h"
 #include "control/modulelistmodel.h"
 #include "factory/qtfactory.h"
-#include "moduleview.h"
+#include "presentation/widget/moduleview.h"
 
 #include <QAction>
 #include <QApplication>

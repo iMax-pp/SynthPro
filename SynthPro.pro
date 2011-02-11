@@ -83,14 +83,14 @@ HEADERS += \
     src/main/presentation/module/pvcf.h \
     src/main/presentation/module/pvco.h \
     src/main/presentation/module/pwavrecorder.h \
-    src/main/presentation/moduleview.h \
-    src/main/presentation/pixmapwidget.h \
-    src/main/presentation/pkeyboardkey.h \
-    src/main/presentation/pkeyboardview.h \
     src/main/presentation/pmodule.h \
-    src/main/presentation/poscilloscopeview.h \
     src/main/presentation/psynthpro.h \
-    src/main/presentation/textwidget.h
+    src/main/presentation/widget/moduleview.h \
+    src/main/presentation/widget/pixmapwidget.h \
+    src/main/presentation/widget/pkeyboardkey.h \
+    src/main/presentation/widget/pkeyboardview.h \
+    src/main/presentation/widget/poscilloscopeview.h \
+    src/main/presentation/widget/textwidget.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -168,14 +168,14 @@ SOURCES += \
     src/main/presentation/module/pvcf.cpp \
     src/main/presentation/module/pvco.cpp \
     src/main/presentation/module/pwavrecorder.cpp \
-    src/main/presentation/moduleview.cpp \
-    src/main/presentation/pixmapwidget.cpp \
-    src/main/presentation/pkeyboardkey.cpp \
-    src/main/presentation/pkeyboardview.cpp \
     src/main/presentation/pmodule.cpp \
-    src/main/presentation/poscilloscopeview.cpp \
     src/main/presentation/psynthpro.cpp \
-    src/main/presentation/textwidget.cpp
+    src/main/presentation/widget/moduleview.cpp \
+    src/main/presentation/widget/pixmapwidget.cpp \
+    src/main/presentation/widget/pkeyboardkey.cpp \
+    src/main/presentation/widget/pkeyboardview.cpp \
+    src/main/presentation/widget/poscilloscopeview.cpp \
+    src/main/presentation/widget/textwidget.cpp
 
 INCLUDEPATH += src/main/
 

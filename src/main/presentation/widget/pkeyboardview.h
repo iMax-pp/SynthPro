@@ -1,7 +1,7 @@
 #ifndef PKEYBOARDVIEW_H
 #define PKEYBOARDVIEW_H
 
-#include "presentation/pkeyboardkey.h"
+#include "presentation/widget/pkeyboardkey.h"
 
 #include <QGraphicsWidget>
 

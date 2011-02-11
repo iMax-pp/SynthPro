@@ -4,7 +4,7 @@
 #include "presentation/component/pdimmer.h"
 #include "presentation/component/ppushbutton.h"
 #include "presentation/component/pvirtualport.h"
-#include "presentation/textwidget.h"
+#include "presentation/widget/textwidget.h"
 
 #include <QFont>
 #include <QGraphicsAnchorLayout>

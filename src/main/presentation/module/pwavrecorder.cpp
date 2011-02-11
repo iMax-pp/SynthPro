@@ -2,8 +2,8 @@
 
 #include "control/module/cwavrecorder.h"
 #include "presentation/component/pvirtualport.h"
-#include "presentation/pixmapwidget.h"
-#include "presentation/textwidget.h"
+#include "presentation/widget/pixmapwidget.h"
+#include "presentation/widget/textwidget.h"
 
 #include <QFont>
 #include <QGraphicsAnchorLayout>

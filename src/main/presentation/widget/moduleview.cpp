@@ -1,4 +1,4 @@
-#include "moduleview.h"
+#include "presentation/widget/moduleview.h"
 
 #include "control/csynthpro.h"
 #include "factory/qtfactory.h"

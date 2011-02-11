@@ -3,8 +3,8 @@
 #include "abstraction/buffer.h"
 #include "control/module/ckeyboard.h"
 #include "presentation/component/pvirtualport.h"
-#include "presentation/pkeyboardview.h"
-#include "presentation/textwidget.h"
+#include "presentation/widget/pkeyboardview.h"
+#include "presentation/widget/textwidget.h"
 
 #include <QDebug>
 #include <QFont>
