@@ -105,6 +105,7 @@ date :  semaine 7 (Lundi 14-)
     - Feedback des ports (MouseHover);
     - Wire plus jolis;
 - Cyrille :
+    - Fixer VCA (multiplier In par somme du dimmer et control), en une passe !
     - Delay;
     - Mixer;
 
