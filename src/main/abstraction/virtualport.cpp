@@ -47,7 +47,7 @@ bool VirtualPort::connectable(const VirtualPort* other) const
 
 void VirtualPort::connection(Port* own, Port* target)
 {
-    if (replicable()) {
+    if (m_connections.last()->connection() && replicable()) {
         replicate();
     }
 
