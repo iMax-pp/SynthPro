@@ -14,7 +14,6 @@ class CPort : public Port {
 
 public:
     CPort(CVirtualPort* parent, QtFactory*);
-    ~CPort();
 
     void setPresentation(PPort*);
     inline PPort* presentation() const { return m_presentation; }

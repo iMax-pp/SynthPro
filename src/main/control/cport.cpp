@@ -16,13 +16,6 @@ CPort::CPort(CVirtualPort* parent, QtFactory* factory)
 {
 }
 
-CPort::~CPort()
-{
-    if (m_presentation) {
-        delete m_presentation;
-    }
-}
-
 void CPort::setPresentation(PPort* presentation)
 {
     if (m_presentation) {
@@ -48,8 +41,8 @@ bool CPort::connect(Port* other)
     if (Port::connect(other)) {
         CPort* cOther = dynamic_cast<CPort*>(other);
         // Create their wire
-        CWire* wire = m_factory->createWire(presentation()->scene());
-        setWire(wire); // HACK way to retrieve the scene, I think
+        CWire* wire = m_factory->createWire(presentation()->scene()); // HACK way to retrieve the scene, I think
+        setWire(wire);
         cOther->setWire(wire);
 
         if (vPort()->out()) {
@@ -67,13 +60,10 @@ bool CPort::connect(Port* other)
 
 bool CPort::disconnect()
 {
-    if (Port::disconnect()) {
-        if (m_wire) {
-            delete m_wire;
-        }
-        return true;
+    if (m_wire) {
+        delete m_wire;
     }
-    return false;
+    return Port::disconnect();
 }
 
 void CPort::drag()

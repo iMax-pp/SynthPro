@@ -22,6 +22,18 @@ Port* CVirtualPort::replicate()
     return cPort;
 }
 
+bool CVirtualPort::removePort(Port* port)
+{
+    CPort* cPort = dynamic_cast<CPort*>(port);
+    if (VirtualPort::removePort(cPort)) {
+        // TODO Remove replication
+        // presentation()->removeReplication(cPort->presentation());
+        // cPort->deleteLater();
+        return true;
+    }
+    return false;
+}
+
 void CVirtualPort::setPresentation(PVirtualPort* presentation)
 {
     if (m_presentation) {

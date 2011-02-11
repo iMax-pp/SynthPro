@@ -48,3 +48,9 @@ void PVirtualPort::addReplication(PPort* replication)
 {
     m_portsLayout->addItem(replication);
 }
+
+void PVirtualPort::removeReplication(PPort* replication)
+{
+    m_portsLayout->removeItem(replication);
+    delete replication;
+}

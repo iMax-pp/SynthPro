@@ -30,6 +30,7 @@ public:
 
 protected:
     Port* replicate();
+    bool removePort(Port*);
 
 private:
     PVirtualPort* m_presentation;
