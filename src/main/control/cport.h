@@ -47,6 +47,7 @@ private:
     QtFactory* m_factory;
     CWire* m_wire;
     CWire* m_tmpWire;
+    PPort* m_clickableFeedback;
 };
 
 #endif // CPORT_H

@@ -48,7 +48,7 @@ void PPort::hideFeedback()
     update();
 }
 
-void PPort::showClickableFeedback()
+void PPort::showClickFeedback()
 {
     QPalette p;
     p.resolve(palette());
@@ -56,7 +56,20 @@ void PPort::showClickableFeedback()
     setPalette(p);
 }
 
-void PPort::hideClickableFeedback()
+void PPort::hideClickFeedback()
+{
+    hideFeedback();
+}
+
+void PPort::showDropFeedback()
+{
+    QPalette p;
+    p.resolve(palette());
+    p.setColor(QPalette::Button, Qt::green);
+    setPalette(p);
+}
+
+void PPort::hideDropFeedback()
 {
     hideFeedback();
 }
