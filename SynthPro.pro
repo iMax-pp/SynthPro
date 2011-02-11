@@ -5,175 +5,175 @@ RCC_DIR = bin/.rcc
 
 QT += multimedia
 
-HEADERS += src/main/abstraction/synthpro.h \
-    src/main/abstraction/module.h \
-    src/main/abstraction/virtualport.h \
-    src/main/abstraction/sequencer.h \
-    src/main/control/csynthpro.h \
-    src/main/presentation/psynthpro.h \
-    src/main/factory/synthprofactory.h \
-    src/main/factory/qtfactory.h \
-    src/main/abstraction/outport.h \
+HEADERS += src/main/abstraction/audiodeviceprovider.h \
+    src/main/abstraction/buffer.h \
+    src/main/abstraction/clock.h \
+    src/main/abstraction/dimmer.h \
     src/main/abstraction/filter/filter.h \
     src/main/abstraction/filter/filterdummy.h \
+    src/main/abstraction/filter/filterhp229.h \
     src/main/abstraction/filter/filterincrement.h \
     src/main/abstraction/filter/filterlp229.h \
-    src/main/abstraction/filter/filterhp229.h \
+    src/main/abstraction/filter/filtersoftsaturation.h \
     src/main/abstraction/inport.h \
+    src/main/abstraction/module.h \
+    src/main/abstraction/module/adsr.h \
+    src/main/abstraction/module/delay.h \
+    src/main/abstraction/module/keyboard.h \
+    src/main/abstraction/module/lfo.h \
+    src/main/abstraction/module/oscilloscope.h \
+    src/main/abstraction/module/speaker.h \
+    src/main/abstraction/module/vca.h \
+    src/main/abstraction/module/vcf.h \
     src/main/abstraction/module/vco.h \
+    src/main/abstraction/module/wavrecorder.h \
+    src/main/abstraction/outport.h \
+    src/main/abstraction/port.h \
+    src/main/abstraction/pushbutton.h \
+    src/main/abstraction/selector.h \
+    src/main/abstraction/sequencer.h \
+    src/main/abstraction/synthpro.h \
+    src/main/abstraction/virtualport.h \
     src/main/abstraction/wavegen/wavegenerator.h \
     src/main/abstraction/wavegen/wavegeneratordummy.h \
-    src/main/abstraction/wavegen/wavegeneratorsquare.h \
-    src/main/abstraction/buffer.h \
-    src/main/presentation/moduleview.h \
-    src/main/control/cmodule.h \
-    src/main/presentation/pmodule.h \
-    src/main/presentation/pvirtualport.h \
-    src/main/control/cvirtualport.h \
-    src/main/control/cinport.h \
-    src/main/control/coutport.h \
-    src/main/abstraction/wavegen/wavegeneratortriangle.h \
+    src/main/abstraction/wavegen/wavegeneratorempty.h \
     src/main/abstraction/wavegen/wavegeneratorsaw.h \
     src/main/abstraction/wavegen/wavegeneratorsinus.h \
-    src/main/abstraction/module/vcf.h \
-    src/main/factory/filterfactory.h \
-    src/main/presentation/pwire.h \
-    src/main/control/cwire.h \
-    src/main/abstraction/audiodeviceprovider.h \
-    src/main/abstraction/module/wavrecorder.h \
-    src/main/abstraction/selector.h \
-    src/main/abstraction/wavegen/wavegeneratorempty.h \
-    src/main/control/modulelistmodel.h \
-    src/main/control/cvco.h \
-    src/main/abstraction/dimmer.h \
-    src/main/control/cdimmer.h \
-    src/main/presentation/pdimmer.h \
-    src/main/abstraction/module/speaker.h \
-    src/main/presentation/pvco.h \
-    src/main/abstraction/clock.h \
-    src/main/factory/wavegeneratorfactory.h \
-    src/main/presentation/pselector.h \
-    src/main/control/cselector.h \
-    src/main/presentation/pspeaker.h \
-    src/main/control/cspeaker.h \
-    src/main/abstraction/module/vca.h \
-    src/main/control/cvcf.h \
-    src/main/presentation/pvcf.h \
-    src/main/presentation/textwidget.h \
-    src/main/control/cvca.h \
-    src/main/presentation/pvca.h \
-    src/main/abstraction/module/adsr.h \
-    src/main/presentation/pport.h \
-    src/main/abstraction/filter/filtersoftsaturation.h \
-    src/main/control/cport.h \
-    src/main/abstraction/module/lfo.h \
-    src/main/presentation/module/plfo.h \
-    src/main/control/clfo.h \
-    src/main/abstraction/module/oscilloscope.h \
-    src/main/presentation/poscilloscope.h \
-    src/main/control/coscilloscope.h \
-    src/main/presentation/padsr.h \
+    src/main/abstraction/wavegen/wavegeneratorsquare.h \
+    src/main/abstraction/wavegen/wavegeneratortriangle.h \
     src/main/control/cadsr.h \
-    src/main/presentation/poscilloscopeview.h \
-    src/main/presentation/pixmapwidget.h \
-    src/main/abstraction/port.h \
-    src/main/abstraction/module/keyboard.h \
-    src/main/control/ckeyboard.h \
-    src/main/presentation/pkeyboard.h \
-    src/main/abstraction/pushbutton.h \
-    src/main/control/cpushbutton.h \
-    src/main/presentation/ppushbutton.h \
-    src/main/abstraction/module/delay.h \
-    src/main/presentation/pkeyboardview.h \
-    src/main/presentation/pkeyboardkey.h \
-    src/main/control/cwavrecorder.h \
-    src/main/presentation/pwavrecorder.h \
     src/main/control/cdelay.h \
-    src/main/presentation/pdelay.h
+    src/main/control/cdimmer.h \
+    src/main/control/cinport.h \
+    src/main/control/ckeyboard.h \
+    src/main/control/clfo.h \
+    src/main/control/cmodule.h \
+    src/main/control/coscilloscope.h \
+    src/main/control/coutport.h \
+    src/main/control/cport.h \
+    src/main/control/cpushbutton.h \
+    src/main/control/cselector.h \
+    src/main/control/cspeaker.h \
+    src/main/control/csynthpro.h \
+    src/main/control/cvca.h \
+    src/main/control/cvcf.h \
+    src/main/control/cvco.h \
+    src/main/control/cvirtualport.h \
+    src/main/control/cwavrecorder.h \
+    src/main/control/cwire.h \
+    src/main/control/modulelistmodel.h \
+    src/main/factory/filterfactory.h \
+    src/main/factory/qtfactory.h \
+    src/main/factory/synthprofactory.h \
+    src/main/factory/wavegeneratorfactory.h \
+    src/main/presentation/plfo.h \
+    src/main/presentation/moduleview.h \
+    src/main/presentation/padsr.h \
+    src/main/presentation/pdelay.h \
+    src/main/presentation/pdimmer.h \
+    src/main/presentation/pixmapwidget.h \
+    src/main/presentation/pkeyboard.h \
+    src/main/presentation/pkeyboardkey.h \
+    src/main/presentation/pkeyboardview.h \
+    src/main/presentation/pmodule.h \
+    src/main/presentation/poscilloscope.h \
+    src/main/presentation/poscilloscopeview.h \
+    src/main/presentation/pport.h \
+    src/main/presentation/ppushbutton.h \
+    src/main/presentation/pselector.h \
+    src/main/presentation/pspeaker.h \
+    src/main/presentation/psynthpro.h \
+    src/main/presentation/pvca.h \
+    src/main/presentation/pvcf.h \
+    src/main/presentation/pvco.h \
+    src/main/presentation/pvirtualport.h \
+    src/main/presentation/pwavrecorder.h \
+    src/main/presentation/pwire.h \
+    src/main/presentation/textwidget.h
 
-SOURCES += src/main/abstraction/synthpro.cpp \
-    src/main/abstraction/module.cpp \
-    src/main/abstraction/virtualport.cpp \
-    src/main/abstraction/sequencer.cpp \
-    src/main/control/csynthpro.cpp \
-    src/main/presentation/psynthpro.cpp \
-    src/main/main.cpp \
-    src/main/factory/qtfactory.cpp \
-    src/main/abstraction/outport.cpp \
+SOURCES += src/main/abstraction/audiodeviceprovider.cpp \
+    src/main/abstraction/buffer.cpp \
+    src/main/abstraction/clock.cpp \
+    src/main/abstraction/dimmer.cpp \
     src/main/abstraction/filter/filterdummy.cpp \
+    src/main/abstraction/filter/filterhp229.cpp \
     src/main/abstraction/filter/filterincrement.cpp \
     src/main/abstraction/filter/filterlp229.cpp \
-    src/main/abstraction/filter/filterhp229.cpp \
+    src/main/abstraction/filter/filtersoftsaturation.cpp \
     src/main/abstraction/inport.cpp \
+    src/main/abstraction/module.cpp \
+    src/main/abstraction/module/adsr.cpp \
+    src/main/abstraction/module/delay.cpp \
+    src/main/abstraction/module/keyboard.cpp \
+    src/main/abstraction/module/lfo.cpp \
+    src/main/abstraction/module/oscilloscope.cpp \
+    src/main/abstraction/module/speaker.cpp \
+    src/main/abstraction/module/vca.cpp \
+    src/main/abstraction/module/vcf.cpp \
     src/main/abstraction/module/vco.cpp \
+    src/main/abstraction/module/wavrecorder.cpp \
+    src/main/abstraction/outport.cpp \
+    src/main/abstraction/port.cpp \
+    src/main/abstraction/pushbutton.cpp \
+    src/main/abstraction/selector.cpp \
+    src/main/abstraction/sequencer.cpp \
+    src/main/abstraction/synthpro.cpp \
+    src/main/abstraction/virtualport.cpp \
     src/main/abstraction/wavegen/wavegeneratordummy.cpp \
-    src/main/abstraction/wavegen/wavegeneratorsquare.cpp \
-    src/main/abstraction/buffer.cpp \
-    src/main/presentation/moduleview.cpp \
-    src/main/control/cmodule.cpp \
-    src/main/presentation/pmodule.cpp \
-    src/main/presentation/pvirtualport.cpp \
-    src/main/control/cvirtualport.cpp \
-    src/main/control/cinport.cpp \
-    src/main/control/coutport.cpp \
-    src/main/abstraction/wavegen/wavegeneratortriangle.cpp \
+    src/main/abstraction/wavegen/wavegeneratorempty.cpp \
     src/main/abstraction/wavegen/wavegeneratorsaw.cpp \
     src/main/abstraction/wavegen/wavegeneratorsinus.cpp \
-    src/main/abstraction/module/vcf.cpp \
-    src/main/factory/filterfactory.cpp \
-    src/main/presentation/pwire.cpp \
-    src/main/control/cwire.cpp \
-    src/main/abstraction/audiodeviceprovider.cpp \
-    src/main/abstraction/module/wavrecorder.cpp \
-    src/main/abstraction/selector.cpp \
-    src/main/abstraction/wavegen/wavegeneratorempty.cpp \
-    src/main/control/modulelistmodel.cpp \
-    src/main/control/cvco.cpp \
-    src/main/abstraction/dimmer.cpp \
-    src/main/control/cdimmer.cpp \
-    src/main/presentation/pdimmer.cpp \
-    src/main/abstraction/module/speaker.cpp \
-    src/main/presentation/pvco.cpp \
-    src/main/abstraction/clock.cpp \
-    src/main/factory/wavegeneratorfactory.cpp \
-    src/main/presentation/pselector.cpp \
-    src/main/control/cselector.cpp \
-    src/main/presentation/pspeaker.cpp \
-    src/main/control/cspeaker.cpp \
-    src/main/abstraction/module/vca.cpp \
-    src/main/control/cvcf.cpp \
-    src/main/presentation/pvcf.cpp \
-    src/main/presentation/textwidget.cpp \
-    src/main/control/cvca.cpp \
-    src/main/presentation/pvca.cpp \
-    src/main/abstraction/module/adsr.cpp \
-    src/main/presentation/pport.cpp \
-    src/main/abstraction/filter/filtersoftsaturation.cpp \
-    src/main/control/cport.cpp \
-    src/main/abstraction/module/lfo.cpp \
-    src/main/presentation/plfo.cpp \
-    src/main/control/clfo.cpp \
-    src/main/abstraction/module/oscilloscope.cpp \
-    src/main/presentation/poscilloscope.cpp \
-    src/main/control/coscilloscope.cpp \
-    src/main/presentation/padsr.cpp \
+    src/main/abstraction/wavegen/wavegeneratorsquare.cpp \
+    src/main/abstraction/wavegen/wavegeneratortriangle.cpp \
     src/main/control/cadsr.cpp \
-    src/main/presentation/poscilloscopeview.cpp \
-    src/main/presentation/pixmapwidget.cpp \
-    src/main/abstraction/port.cpp \
-    src/main/abstraction/module/keyboard.cpp \
-    src/main/control/ckeyboard.cpp \
-    src/main/presentation/pkeyboard.cpp \
-    src/main/abstraction/pushbutton.cpp \
-    src/main/control/cpushbutton.cpp \
-    src/main/presentation/ppushbutton.cpp \
-    src/main/abstraction/module/delay.cpp \
-    src/main/presentation/pkeyboardview.cpp \
-    src/main/presentation/pkeyboardkey.cpp \
-    src/main/control/cwavrecorder.cpp \
-    src/main/presentation/pwavrecorder.cpp \
     src/main/control/cdelay.cpp \
-    src/main/presentation/pdelay.cpp
+    src/main/control/cdimmer.cpp \
+    src/main/control/cinport.cpp \
+    src/main/control/ckeyboard.cpp \
+    src/main/control/clfo.cpp \
+    src/main/control/cmodule.cpp \
+    src/main/control/coscilloscope.cpp \
+    src/main/control/coutport.cpp \
+    src/main/control/cport.cpp \
+    src/main/control/cpushbutton.cpp \
+    src/main/control/cselector.cpp \
+    src/main/control/cspeaker.cpp \
+    src/main/control/csynthpro.cpp \
+    src/main/control/cvca.cpp \
+    src/main/control/cvcf.cpp \
+    src/main/control/cvco.cpp \
+    src/main/control/cvirtualport.cpp \
+    src/main/control/cwavrecorder.cpp \
+    src/main/control/cwire.cpp \
+    src/main/control/modulelistmodel.cpp \
+    src/main/factory/filterfactory.cpp \
+    src/main/factory/qtfactory.cpp \
+    src/main/factory/wavegeneratorfactory.cpp \
+    src/main/main.cpp \
+    src/main/presentation/moduleview.cpp \
+    src/main/presentation/padsr.cpp \
+    src/main/presentation/pdelay.cpp \
+    src/main/presentation/pdimmer.cpp \
+    src/main/presentation/pixmapwidget.cpp \
+    src/main/presentation/pkeyboard.cpp \
+    src/main/presentation/pkeyboardkey.cpp \
+    src/main/presentation/pkeyboardview.cpp \
+    src/main/presentation/plfo.cpp \
+    src/main/presentation/pmodule.cpp \
+    src/main/presentation/poscilloscope.cpp \
+    src/main/presentation/poscilloscopeview.cpp \
+    src/main/presentation/pport.cpp \
+    src/main/presentation/ppushbutton.cpp \
+    src/main/presentation/pselector.cpp \
+    src/main/presentation/pspeaker.cpp \
+    src/main/presentation/psynthpro.cpp \
+    src/main/presentation/pvca.cpp \
+    src/main/presentation/pvcf.cpp \
+    src/main/presentation/pvco.cpp \
+    src/main/presentation/pvirtualport.cpp \
+    src/main/presentation/pwavrecorder.cpp \
+    src/main/presentation/pwire.cpp \
+    src/main/presentation/textwidget.cpp
 
 INCLUDEPATH += src/main/
 
