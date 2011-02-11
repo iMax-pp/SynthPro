@@ -7,12 +7,12 @@ class InPort;
 class SynthPro;
 class SynthProFactory;
 
-class ModuleOscilloscope : public virtual Module {
+class Oscilloscope : public virtual Module {
     Q_OBJECT
 
 public:
-    ModuleOscilloscope(SynthPro*);
-    virtual ~ModuleOscilloscope();
+    Oscilloscope(SynthPro*);
+    virtual ~Oscilloscope();
 
     /**
       * Instanciate the ports. Used by the factory.

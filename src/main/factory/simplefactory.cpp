@@ -5,7 +5,7 @@
 #include "abstraction/inport.h"
 #include "abstraction/lfo.h"
 #include "abstraction/modulekeyboard.h"
-#include "abstraction/moduleoscilloscope.h"
+#include "abstraction/oscilloscope.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
 #include "abstraction/pushbutton.h"
@@ -145,9 +145,9 @@ Speaker* SimpleFactory::createSpeaker(SynthPro* parent)
     return mo;
 }
 
-ModuleOscilloscope* SimpleFactory::createModuleOscilloscope(SynthPro* synthPro)
+Oscilloscope* SimpleFactory::createOscilloscope(SynthPro* synthPro)
 {
-    return new ModuleOscilloscope(synthPro);
+    return new Oscilloscope(synthPro);
 }
 
 ModuleKeyboard* SimpleFactory::createModuleKeyboard(SynthPro* synthpro)

@@ -44,7 +44,7 @@ public:
     WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     CKeyboard* createModuleKeyboard(SynthPro*);
     CSpeaker* createSpeaker(SynthPro*);
-    COscilloscope* createModuleOscilloscope(SynthPro*);
+    COscilloscope* createOscilloscope(SynthPro*);
 
     CDimmer* createDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent);
     CSelector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent);
