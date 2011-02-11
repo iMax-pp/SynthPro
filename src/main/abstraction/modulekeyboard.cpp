@@ -3,6 +3,8 @@
 #include "abstraction/outport.h"
 #include "factory/synthprofactory.h"
 
+#include <QDebug>
+
 ModuleKeyboard::ModuleKeyboard(SynthPro* parent)
     : Module(parent)
     , m_keyPressedNumber(0)
@@ -22,14 +24,13 @@ void ModuleKeyboard::initialize(SynthProFactory* factory)
         m_outports.append(m_outPortFrequency);
 
         // Creation of the gate output.
-        m_outPortGate = factory->createOutPortReplicable(this, "gate");
+        m_outPortGate = factory->createOutPortGate(this, "gate");
         m_outports.append(m_outPortGate);
     }
 }
 
 void ModuleKeyboard::timerExpired()
 {
-
 }
 
 void ModuleKeyboard::ownProcess()
@@ -45,7 +46,7 @@ void ModuleKeyboard::ownProcess()
     qreal* dataOutGate = m_outports.at(1)->buffer()->data();
 
     // Convert a key number into a tension.
-    int valueFrequency = m_keyPressedNumber / NUMBER_KEYS_IN_OCTAVE;
+    qreal valueFrequency = (qreal)m_keyPressedNumber / NUMBER_KEYS_IN_OCTAVE;
 
     for (int i = 0, size = m_outports.at(0)->buffer()->length(); i < size; i++) {
         // Fill the Gate out buffer. We consider the whole buffer has the same value.
@@ -53,7 +54,4 @@ void ModuleKeyboard::ownProcess()
         // Fill the Frequency out buffer. Same remark as above.
         dataOutFrequency[i] = valueFrequency;
     }
-
-
-
 }

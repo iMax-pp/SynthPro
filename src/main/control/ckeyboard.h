@@ -11,11 +11,6 @@ public:
 
     void initialize(SynthProFactory*);
 
-    /**
-      * Process the input signal.
-      */
-    virtual void ownProcess();
-
     void keyboardKeyPressed(int keyPressed);
     void keyboardKeyReleased(int keyPressed);
 };
