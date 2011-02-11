@@ -32,32 +32,6 @@ void CVirtualPort::setPresentation(PVirtualPort* presentation)
     m_presentation = presentation;
 }
 
-/*void CVirtualPort::connectTo(VirtualPort* other)
-{
-    if (connectable(other)) {
-        VirtualPort::connectTo(other);
-        if (replicable()) {
-            CPort* replication = m_factory->createPortWidget(this, m_factory);
-            m_portWidgets.append(replication);
-            presentation()->addReplication(replication->presentation());
-        }
-        // That’s ugly, isn’t it?
-        if (other->replicable()) {
-            CVirtualPort* cOther = dynamic_cast<CVirtualPort*>(other);
-            CPort* replication = m_factory->createPortWidget(cOther, m_factory);
-            cOther->m_portWidgets.append(replication);
-            cOther->presentation()->addReplication(replication->presentation());
-        }
-    }
-}
-
-void CVirtualPort::disconnectFrom(VirtualPort* other)
-{
-    if (m_connections.contains(other)) {
-        VirtualPort::disconnectFrom(other);
-    }
-}*/
-
 void CVirtualPort::updateWiresPositions()
 {
     foreach (Port* port, connections()) {

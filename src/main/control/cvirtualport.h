@@ -15,9 +15,6 @@ public:
     void setPresentation(PVirtualPort*);
     inline PVirtualPort* presentation() const { return m_presentation; }
 
-    // void connectTo(VirtualPort* other);
-    // void disconnectFrom(VirtualPort* other);
-
     void updateWiresPositions();
 
     /**
