@@ -73,7 +73,7 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
 
     switch (moduleType) {
     case SynthProFactory::KeyboardId:
-        module = dynamic_cast<Module*>(m_factory->createModuleKeyboard(this));
+        module = dynamic_cast<Module*>(m_factory->createKeyboard(this));
         break;
     case SynthProFactory::VCOId:
         module = dynamic_cast<Module*>(m_factory->createVCO(this));

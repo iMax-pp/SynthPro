@@ -10,7 +10,7 @@ class Dimmer;
 class InPort;
 class LFO;
 class Module;
-class ModuleKeyboard;
+class Keyboard;
 class Oscilloscope;
 class OutPort;
 class Port;
@@ -46,7 +46,7 @@ public:
     virtual ADSR* createADSR(SynthPro*) = 0;
     virtual Delay* createDelay(SynthPro*) = 0;
     virtual WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
-    virtual ModuleKeyboard* createModuleKeyboard(SynthPro*) = 0;
+    virtual Keyboard* createKeyboard(SynthPro*) = 0;
 
     /**
       * Instanciate a Speaker, but ONLY if the audio device isn't already used by another instance.

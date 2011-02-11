@@ -4,8 +4,8 @@
 #include "abstraction/delay.h"
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
+#include "abstraction/keyboard.h"
 #include "abstraction/lfo.h"
-#include "abstraction/modulekeyboard.h"
 #include "abstraction/oscilloscope.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
@@ -159,9 +159,9 @@ Oscilloscope* SimpleFactory::createOscilloscope(SynthPro* synthPro)
     return new Oscilloscope(synthPro);
 }
 
-ModuleKeyboard* SimpleFactory::createModuleKeyboard(SynthPro* synthpro)
+Keyboard* SimpleFactory::createKeyboard(SynthPro* synthpro)
 {
-    return new ModuleKeyboard(synthpro);
+    return new Keyboard(synthpro);
 }
 
 PushButton* SimpleFactory::createPushButton(const QString&, Module *parent)

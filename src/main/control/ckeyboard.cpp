@@ -7,14 +7,14 @@
 
 CKeyboard::CKeyboard(SynthPro* parent)
     : Module(parent)
-    , ModuleKeyboard(parent)
+    , Keyboard(parent)
     , CModule(parent)
 {
 }
 
 void CKeyboard::initialize(SynthProFactory* factory)
 {
-    ModuleKeyboard::initialize(factory);
+    Keyboard::initialize(factory);
 
     COutPort* outFrequency = dynamic_cast<COutPort*>(m_outPortFrequency);
     COutPort* outGate = dynamic_cast<COutPort*>(m_outPortGate);

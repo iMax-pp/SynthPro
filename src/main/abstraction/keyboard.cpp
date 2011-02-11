@@ -1,22 +1,22 @@
-#include "modulekeyboard.h"
+#include "keyboard.h"
 
 #include "abstraction/outport.h"
 #include "factory/synthprofactory.h"
 
 #include <QDebug>
 
-ModuleKeyboard::ModuleKeyboard(SynthPro* parent)
+Keyboard::Keyboard(SynthPro* parent)
     : Module(parent)
     , m_keyPressedNumber(0)
     , m_pressed(false)
 {
 }
 
-ModuleKeyboard::~ModuleKeyboard()
+Keyboard::~Keyboard()
 {
 }
 
-void ModuleKeyboard::initialize(SynthProFactory* factory)
+void Keyboard::initialize(SynthProFactory* factory)
 {
     if (factory) {
         // Creation of the frequency output.
@@ -29,11 +29,11 @@ void ModuleKeyboard::initialize(SynthProFactory* factory)
     }
 }
 
-void ModuleKeyboard::timerExpired()
+void Keyboard::timerExpired()
 {
 }
 
-void ModuleKeyboard::ownProcess()
+void Keyboard::ownProcess()
 {
     int valueGate;
     if (m_pressed) {

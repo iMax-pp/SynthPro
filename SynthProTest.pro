@@ -63,7 +63,7 @@ HEADERS += \
     src/test/abstraction/testdelay.h \
     src/main/abstraction/oscilloscope.h \
     src/main/abstraction/pushbutton.h \
-    src/main/abstraction/modulekeyboard.h \
+    src/main/abstraction/keyboard.h \
     src/main/abstraction/port.h \
     src/test/abstraction/testlfo.h \
 
@@ -123,7 +123,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testdelay.cpp \
     src/main/abstraction/oscilloscope.cpp \
     src/main/abstraction/pushbutton.cpp \
-    src/main/abstraction/modulekeyboard.cpp \
+    src/main/abstraction/keyboard.cpp \
     src/main/abstraction/port.cpp \
     src/test/abstraction/testlfo.cpp
 

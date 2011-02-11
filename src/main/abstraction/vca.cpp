@@ -26,7 +26,7 @@ void VCA::initialize(SynthProFactory* factory)
 
 void VCA::ownProcess()
 {
-    if (m_controlInput->connections().length() != 0) {
+    if (!m_controlInput->available()) {
         for (int i = 0; i < m_controlInput->buffer()->length(); i++) {
             m_inPort->buffer()->data()[i] = m_inPort->buffer()->data()[i] * m_controlInput->buffer()->data()[i];
         }

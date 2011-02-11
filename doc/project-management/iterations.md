@@ -79,26 +79,41 @@ date :  semaine 6 (vendredi 11 - )
 - Julien N. :
     - Oscillo;
     - Keyboard virtuel;
-
 - Maxime :
     - PushButton (qui gere press/release) à ajouter aux interfaces (retrigger ADSR);
-    - Présentation controle ADSR;
-    - Présentation et Contrôle Module File Output;
-
+    - Présentation et contrôle ADSR, WavRecorder, Delay;
+    - Refactoring des noms de modules;
 - Julien RF. :
-     - Refactoring VPort/Port;
-     - Suppression des ports répliqués;
-     - Feedback des ports (MouseHover);
-     - Wire plus jolis.
-
+    - Refactoring VPort/Port;
 - Cyrille :
-     - ADSR;
-     - Doc.
+    - ADSR;
+    - Doc.
+
+Itération 6
+-----------
+date :  semaine 7 (Lundi 14-)
+
+- Julien N. :
+    - Mappage clavier virtual/clavier réel.
+    - ?
+- Maxime :
+    - Feedback dimmer, interaction dimmer avec clavier (pour précision).
+    - WaveRecorder dans fichier selectionné.
+    - On/Off SynthPro.
+- Julien RF. :
+    - Suppression des ports répliqués;
+    - Feedback des ports (MouseHover);
+    - Wire plus jolis;
+- Cyrille :
+    - Fixer VCA (multiplier In par somme du dimmer et control), en une passe !
+    - Delay;
+    - Mixer;
 
 Roadmap (todo)
 ---------
 - Oscillo stabilisé;
 - Molette Oscillo (zoom Y);
+- Symétrie de l'audio engine.
 - Fond d'écran (léger et subtil);
 - Icones dans Dockbars (et drag'n'drop d'icones);
 - Bouton on/off du synthé;

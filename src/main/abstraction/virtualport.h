@@ -50,16 +50,16 @@ public:
     /// Indicate if this port is a gate
     inline bool gate() const { return m_gate; }
 
-signals:
-    void connectionsChanged();
-
-protected:
     /**
      * Indicate if this VirtualPort is free.
      * @returns true if this VirtualPort is replicable or unused, otherwise false.
      */
     bool available() const;
 
+signals:
+    void connectionsChanged();
+
+protected:
     /**
      * @return true if the other VirtualPort can be plugged to this VirtualPort, that is if
      * their directions are different and if they both are gates or are not.
