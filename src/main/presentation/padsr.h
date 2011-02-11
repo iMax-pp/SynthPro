@@ -5,6 +5,7 @@
 
 class CADSR;
 class PDimmer;
+class PPushButton;
 class PVirtualPort;
 
 class PADSR : public PModule {
@@ -12,7 +13,7 @@ public:
     PADSR(CADSR*);
 
     void initialize(PVirtualPort* gate, PVirtualPort* out, PDimmer* attack, PDimmer* decay,
-                    PDimmer* sustain, PDimmer* release);
+                    PDimmer* sustain, PDimmer* release, PPushButton* manual);
 
 };
 

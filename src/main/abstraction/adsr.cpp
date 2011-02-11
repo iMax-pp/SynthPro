@@ -30,6 +30,7 @@ void ADSR::initialize(SynthProFactory* factory)
     m_sustainDimmer = factory->createDimmer("Sustain", SUSTAIN_MIN, SUSTAIN_MAX, SUSTAIN_DEFAULT, this);
     m_releaseDimmer = factory->createDimmer("Release", RELEASE_MIN, RELEASE_MAX, RELEASE_DEFAULT, this);
 
+    m_manualControl = factory->createPushButton("Manual", this);
 }
 
 void ADSR::ownProcess()

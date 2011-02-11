@@ -3,6 +3,7 @@
 #include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/coutport.h"
+#include "control/cpushbutton.h"
 #include "control/cselector.h"
 #include "presentation/padsr.h"
 
@@ -23,8 +24,10 @@ void CADSR::initialize(SynthProFactory* factory)
     CDimmer* decay = dynamic_cast<CDimmer*>(m_decayDimmer);
     CDimmer* sustain = dynamic_cast<CDimmer*>(m_sustainDimmer);
     CDimmer* release = dynamic_cast<CDimmer*>(m_releaseDimmer);
+    CPushButton* manual = dynamic_cast<CPushButton*>(m_manualControl);
 
     dynamic_cast<PADSR*>(presentation())->initialize(gate->presentation(), out->presentation(),
                                                      attack->presentation(), decay->presentation(),
-                                                     sustain->presentation(), release->presentation());
+                                                     sustain->presentation(), release->presentation(),
+                                                     manual->presentation());
 }
