@@ -9,7 +9,6 @@
 #include "factory/synthprofactory.h"
 
 #include <QAudioOutput>
-#include <QDebug>
 
 Speaker::Speaker(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
     : Module(parent)

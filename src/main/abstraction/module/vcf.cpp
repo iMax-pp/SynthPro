@@ -8,8 +8,6 @@
 #include "factory/filterfactory.h"
 #include "factory/synthprofactory.h"
 
-#include <QDebug>
-
 VCF::VCF(SynthPro* parent)
     : Module(parent)
     , m_filter(0)
@@ -24,15 +22,12 @@ VCF::VCF(SynthPro* parent)
 
 void VCF::initialize(SynthProFactory* factory)
 {
-    // qDebug("VCF::init Creation of in port in the VCF");
     m_inPort = factory->createInPortReplicable(this, "in");
     m_inports.append(m_inPort);
 
-    // qDebug("VCF::init Creation of inCutOff port in the VCF");
     m_inCutOffPort = factory->createInPortReplicable(this, "in Cutoff");
     m_inports.append(m_inCutOffPort);
 
-    // qDebug("VCF::init Creation of out port in the VCF");
     m_out = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_out);
 

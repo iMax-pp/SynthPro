@@ -8,8 +8,6 @@
 #include "factory/synthprofactory.h"
 #include "factory/wavegeneratorfactory.h"
 
-#include <QDebug>
-
 const QString VCO::SHAPE_DEFAULT = "Saw";
 
 VCO::VCO(SynthPro* parent)

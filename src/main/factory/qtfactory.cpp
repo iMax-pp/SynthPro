@@ -20,7 +20,6 @@
 #include "presentation/module/pvco.h"
 #include "presentation/module/pwavrecorder.h"
 
-#include <QDebug>
 #include <QIODevice>
 
 CSynthPro* QtFactory::createSynthPro()

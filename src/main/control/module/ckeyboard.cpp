@@ -3,8 +3,6 @@
 #include "control/component/coutport.h"
 #include "presentation/module/pkeyboard.h"
 
-#include <QDebug>
-
 CKeyboard::CKeyboard(SynthPro* parent)
     : Module(parent)
     , Keyboard(parent)

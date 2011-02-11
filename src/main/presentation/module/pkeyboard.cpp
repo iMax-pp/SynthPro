@@ -6,7 +6,6 @@
 #include "presentation/widget/pkeyboardview.h"
 #include "presentation/widget/textwidget.h"
 
-#include <QDebug>
 #include <QFont>
 #include <QGraphicsAnchorLayout>
 #include <QGraphicsSimpleTextItem>

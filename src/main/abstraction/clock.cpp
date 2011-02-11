@@ -1,9 +1,8 @@
 #include "clock.h"
 
-#include "module.h"
-#include "sequencer.h"
+#include "abstraction/module.h"
+#include "abstraction/sequencer.h"
 
-#include <QDebug>
 #include <QTimer>
 
 Clock::Clock(QObject* parent)

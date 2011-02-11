@@ -4,8 +4,8 @@
 #include "control/component/cwire.h"
 #include "presentation/component/pport.h"
 #include "presentation/component/pvirtualport.h"
+
 #include <QApplication>
-#include <QDebug>
 #include <QPen>
 #include <QStyle>
 

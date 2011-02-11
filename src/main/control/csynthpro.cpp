@@ -14,6 +14,7 @@
 #include "control/module/cvcf.h"
 #include "control/module/cvco.h"
 #include "control/module/cwavrecorder.h"
+
 #include <QGraphicsScene>
 
 CSynthPro::CSynthPro(SynthProFactory* factory)

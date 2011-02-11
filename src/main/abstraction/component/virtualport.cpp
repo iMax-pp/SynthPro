@@ -4,8 +4,6 @@
 #include "abstraction/module.h"
 #include "factory/synthprofactory.h"
 
-#include <QDebug>
-
 VirtualPort::VirtualPort(Module* parent, const QString& name, SynthProFactory* factory, bool replicable, bool gate)
     : QObject(parent)
     , m_module(parent)

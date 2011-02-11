@@ -3,8 +3,6 @@
 #include "abstraction/component/outport.h"
 #include "factory/synthprofactory.h"
 
-#include <QDebug>
-
 Keyboard::Keyboard(SynthPro* parent)
     : Module(parent)
     , m_keyPressedNumber(0)

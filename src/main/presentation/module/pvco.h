@@ -1,7 +1,7 @@
 #ifndef PVCO_H
 #define PVCO_H
 
-#include "pmodule.h"
+#include "presentation/pmodule.h"
 
 class CVCO;
 class PDimmer;

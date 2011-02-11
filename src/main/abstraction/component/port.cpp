@@ -2,6 +2,8 @@
 
 #include "abstraction/component/virtualport.h"
 
+#include <QDebug>
+
 Port::Port(VirtualPort* vPort)
     : QObject(vPort)
     , m_vPort(vPort)
@@ -19,7 +21,7 @@ bool Port::connect(Port* other)
         this->_connect(other);
         other->_connect(this);
 
-        qDebug(QString("Port::connect() %1 -> %2").arg(vPort()->name()).arg(other->vPort()->name()).toLatin1());
+        qDebug() << "Port::connect()" << vPort()->name() << "->" << other->vPort()->name();
 
         return true;
     }
@@ -38,7 +40,7 @@ void Port::_connect(Port* other)
 bool Port::disconnect()
 {
     if (connection()) {
-        qDebug(QString("Port::disconnect() %1 - %2").arg(vPort()->name()).arg(m_connection->vPort()->name()).toLatin1());
+        qDebug() << "Port::disconnect()" << vPort()->name() << "-" << m_connection->vPort()->name();
 
         m_connection->_disconnect();
         this->_disconnect();

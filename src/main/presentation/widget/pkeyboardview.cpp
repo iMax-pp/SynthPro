@@ -1,7 +1,5 @@
 #include "pkeyboardview.h"
 
-#include "pkeyboardkey.h"
-
 #include <QPainter>
 
 PKeyboardView::PKeyboardView(QGraphicsItem* parent)

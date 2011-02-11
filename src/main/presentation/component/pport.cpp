@@ -2,6 +2,7 @@
 
 #include "control/component/cport.h"
 #include "presentation/component/pvirtualport.h"
+
 #include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>

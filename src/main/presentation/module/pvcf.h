@@ -1,7 +1,7 @@
 #ifndef PVCF_H
 #define PVCF_H
 
-#include "pmodule.h"
+#include "presentation/pmodule.h"
 
 class CVCF;
 class PDimmer;

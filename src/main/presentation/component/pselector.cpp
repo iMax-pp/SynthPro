@@ -1,7 +1,5 @@
 #include "pselector.h"
 
-#include <QDebug>
-
 #include <QGroupBox>
 #include <QPushButton>
 #include <QSignalMapper>
