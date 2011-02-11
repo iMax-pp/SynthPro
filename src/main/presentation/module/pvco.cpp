@@ -1,9 +1,9 @@
 #include "pvco.h"
 
 #include "control/module/cvco.h"
-#include "presentation/pdimmer.h"
-#include "presentation/pselector.h"
-#include "presentation/pvirtualport.h"
+#include "presentation/component/pdimmer.h"
+#include "presentation/component/pselector.h"
+#include "presentation/component/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>

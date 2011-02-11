@@ -2,8 +2,8 @@
 
 #include "abstraction/buffer.h"
 #include "control/module/coscilloscope.h"
+#include "presentation/component/pvirtualport.h"
 #include "presentation/poscilloscopeview.h"
-#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>

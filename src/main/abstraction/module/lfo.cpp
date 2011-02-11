@@ -1,9 +1,9 @@
 #include "lfo.h"
 
-#include "abstraction/dimmer.h"
-#include "abstraction/inport.h"
-#include "abstraction/outport.h"
-#include "abstraction/selector.h"
+#include "abstraction/component/dimmer.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/selector.h"
 #include "abstraction/wavegen/wavegenerator.h"
 #include "factory/synthprofactory.h"
 #include "factory/wavegeneratorfactory.h"

@@ -1,8 +1,8 @@
 #ifndef CPUSHBUTTON_H
 #define CPUSHBUTTON_H
 
-#include "abstraction/pushbutton.h"
-#include "presentation/ppushbutton.h"
+#include "abstraction/component/pushbutton.h"
+#include "presentation/component/ppushbutton.h"
 
 class CPushButton : public PushButton {
 public:

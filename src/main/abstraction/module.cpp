@@ -1,8 +1,8 @@
 #include "module.h"
 
-#include "abstraction/inport.h"
-#include "abstraction/outport.h"
-#include "abstraction/port.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/port.h"
 #include "abstraction/synthpro.h"
 
 Module::Module(SynthPro* parent)

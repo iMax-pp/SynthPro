@@ -1,10 +1,10 @@
 #include "cadsr.h"
 
-#include "control/cdimmer.h"
-#include "control/cinport.h"
-#include "control/coutport.h"
-#include "control/cpushbutton.h"
-#include "control/cselector.h"
+#include "control/component/cdimmer.h"
+#include "control/component/cinport.h"
+#include "control/component/coutport.h"
+#include "control/component/cpushbutton.h"
+#include "control/component/cselector.h"
 #include "presentation/module/padsr.h"
 
 CADSR::CADSR(SynthPro* parent)

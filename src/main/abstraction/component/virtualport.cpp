@@ -1,7 +1,7 @@
 #include "virtualport.h"
 
+#include "abstraction/component/port.h"
 #include "abstraction/module.h"
-#include "abstraction/port.h"
 #include "factory/synthprofactory.h"
 
 #include <QDebug>

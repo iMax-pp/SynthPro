@@ -1,12 +1,12 @@
 #ifndef QTFACTORY_H
 #define QTFACTORY_H
 
-#include "control/cdimmer.h"
-#include "control/cinport.h"
-#include "control/coutport.h"
-#include "control/cport.h"
-#include "control/cpushbutton.h"
-#include "control/cselector.h"
+#include "control/component/cdimmer.h"
+#include "control/component/cinport.h"
+#include "control/component/coutport.h"
+#include "control/component/cport.h"
+#include "control/component/cpushbutton.h"
+#include "control/component/cselector.h"
 #include "control/csynthpro.h"
 #include "control/module/cadsr.h"
 #include "control/module/cdelay.h"

@@ -1,7 +1,7 @@
 #include "inport.h"
 
 #include "abstraction/buffer.h"
-#include "abstraction/port.h"
+#include "abstraction/component/port.h"
 
 #include <QDebug>
 

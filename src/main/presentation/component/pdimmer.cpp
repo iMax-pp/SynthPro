@@ -1,6 +1,6 @@
 #include "pdimmer.h"
 
-#include "control/cdimmer.h"
+#include "control/component/cdimmer.h"
 #include <QDial>
 #include <QGroupBox>
 #include <QVBoxLayout>

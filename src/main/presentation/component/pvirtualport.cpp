@@ -1,8 +1,8 @@
 #include "pvirtualport.h"
 
-#include "control/cvirtualport.h"
-#include "control/cwire.h"
-#include "presentation/pport.h"
+#include "control/component/cvirtualport.h"
+#include "control/component/cwire.h"
+#include "presentation/component/pport.h"
 #include "presentation/textwidget.h"
 #include <QFont>
 #include <QGraphicsLinearLayout>

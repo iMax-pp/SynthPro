@@ -1,12 +1,12 @@
 #include "cvirtualport.h"
 
-#include "control/cinport.h"
-#include "control/coutport.h"
-#include "control/cport.h"
+#include "control/component/cinport.h"
+#include "control/component/coutport.h"
+#include "control/component/cport.h"
+#include "control/component/cwire.h"
 #include "control/csynthpro.h"
-#include "control/cwire.h"
 #include "factory/qtfactory.h"
-#include "presentation/pvirtualport.h"
+#include "presentation/component/pvirtualport.h"
 
 CVirtualPort::CVirtualPort(Module* parent, QtFactory* factory, const QString& name, bool replicable, bool gate)
     : VirtualPort(parent, name, factory, replicable, gate)

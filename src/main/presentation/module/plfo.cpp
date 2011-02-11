@@ -1,9 +1,9 @@
 #include "plfo.h"
 
 #include "control/module/clfo.h"
-#include "presentation/pdimmer.h"
-#include "presentation/pselector.h"
-#include "presentation/pvirtualport.h"
+#include "presentation/component/pdimmer.h"
+#include "presentation/component/pselector.h"
+#include "presentation/component/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>

@@ -1,7 +1,7 @@
 #include "coscilloscope.h"
 
-#include "control/cdimmer.h"
-#include "control/cinport.h"
+#include "control/component/cdimmer.h"
+#include "control/component/cinport.h"
 #include "presentation/module/poscilloscope.h"
 
 COscilloscope::COscilloscope(SynthPro* parent)

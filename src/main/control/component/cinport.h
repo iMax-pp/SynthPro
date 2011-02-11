@@ -1,9 +1,9 @@
 #ifndef CINPORT_H
 #define CINPORT_H
 
-#include "abstraction/inport.h"
+#include "abstraction/component/inport.h"
 #include "control/cmodule.h"
-#include "control/cvirtualport.h"
+#include "control/component/cvirtualport.h"
 
 class CInPort : public InPort, public CVirtualPort {
 public:

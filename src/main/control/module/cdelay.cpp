@@ -1,8 +1,8 @@
 #include "cdelay.h"
 
-#include "control/cdimmer.h"
-#include "control/cinport.h"
-#include "control/coutport.h"
+#include "control/component/cdimmer.h"
+#include "control/component/cinport.h"
+#include "control/component/coutport.h"
 #include "presentation/module/pdelay.h"
 
 CDelay::CDelay(SynthPro* parent)

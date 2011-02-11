@@ -1,11 +1,11 @@
 #include "cport.h"
 
 #include "control/cmodule.h"
+#include "control/component/cvirtualport.h"
+#include "control/component/cwire.h"
 #include "control/csynthpro.h"
-#include "control/cvirtualport.h"
-#include "control/cwire.h"
 #include "factory/qtfactory.h"
-#include "presentation/pport.h"
+#include "presentation/component/pport.h"
 #include <QGraphicsScene>
 
 CPort::CPort(CVirtualPort* parent, QtFactory* factory)

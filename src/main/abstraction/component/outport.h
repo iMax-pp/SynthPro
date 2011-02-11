@@ -1,7 +1,7 @@
 #ifndef OUTPORT_H
 #define OUTPORT_H
 
-#include "abstraction/virtualport.h"
+#include "abstraction/component/virtualport.h"
 
 class OutPort : public virtual VirtualPort {
 public:

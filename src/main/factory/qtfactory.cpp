@@ -1,11 +1,14 @@
 #include "qtfactory.h"
 
 #include "abstraction/audiodeviceprovider.h"
+#include "abstraction/component/port.h"
 #include "abstraction/module/adsr.h"
 #include "abstraction/module/oscilloscope.h"
-#include "abstraction/port.h"
 #include "abstraction/sequencer.h"
-#include "control/cwire.h"
+#include "control/component/cwire.h"
+#include "presentation/component/pport.h"
+#include "presentation/component/ppushbutton.h"
+#include "presentation/component/pvirtualport.h"
 #include "presentation/module/padsr.h"
 #include "presentation/module/pdelay.h"
 #include "presentation/module/pkeyboard.h"
@@ -16,9 +19,6 @@
 #include "presentation/module/pvcf.h"
 #include "presentation/module/pvco.h"
 #include "presentation/module/pwavrecorder.h"
-#include "presentation/pport.h"
-#include "presentation/ppushbutton.h"
-#include "presentation/pvirtualport.h"
 
 #include <QDebug>
 #include <QIODevice>

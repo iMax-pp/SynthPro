@@ -1,9 +1,9 @@
 #include "csynthpro.h"
 
-#include "control/cinport.h"
 #include "control/cmodule.h"
-#include "control/coutport.h"
-#include "control/cvirtualport.h"
+#include "control/component/cinport.h"
+#include "control/component/coutport.h"
+#include "control/component/cvirtualport.h"
 #include "control/module/cadsr.h"
 #include "control/module/cdelay.h"
 #include "control/module/ckeyboard.h"

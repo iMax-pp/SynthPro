@@ -1,8 +1,8 @@
 #include "pwavrecorder.h"
 
 #include "control/module/cwavrecorder.h"
+#include "presentation/component/pvirtualport.h"
 #include "presentation/pixmapwidget.h"
-#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>

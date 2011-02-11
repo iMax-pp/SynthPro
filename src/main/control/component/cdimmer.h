@@ -1,8 +1,8 @@
 #ifndef CDIMMER_H
 #define CDIMMER_H
 
-#include "abstraction/dimmer.h"
-#include "presentation/pdimmer.h"
+#include "abstraction/component/dimmer.h"
+#include "presentation/component/pdimmer.h"
 
 class CDimmer : public Dimmer {
     Q_OBJECT

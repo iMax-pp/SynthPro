@@ -1,9 +1,9 @@
 #include "padsr.h"
 
 #include "control/module/cadsr.h"
-#include "presentation/pdimmer.h"
-#include "presentation/ppushbutton.h"
-#include "presentation/pvirtualport.h"
+#include "presentation/component/pdimmer.h"
+#include "presentation/component/ppushbutton.h"
+#include "presentation/component/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>

@@ -1,10 +1,10 @@
 #include "vcf.h"
 
-#include "abstraction/dimmer.h"
+#include "abstraction/component/dimmer.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/selector.h"
 #include "abstraction/filter/filter.h"
-#include "abstraction/inport.h"
-#include "abstraction/outport.h"
-#include "abstraction/selector.h"
 #include "factory/filterfactory.h"
 #include "factory/synthprofactory.h"
 

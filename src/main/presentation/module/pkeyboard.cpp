@@ -2,8 +2,8 @@
 
 #include "abstraction/buffer.h"
 #include "control/module/ckeyboard.h"
+#include "presentation/component/pvirtualport.h"
 #include "presentation/pkeyboardview.h"
-#include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QDebug>

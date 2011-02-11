@@ -1,6 +1,6 @@
 #include "port.h"
 
-#include "abstraction/virtualport.h"
+#include "abstraction/component/virtualport.h"
 
 Port::Port(VirtualPort* vPort)
     : QObject(vPort)

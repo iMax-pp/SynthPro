@@ -1,11 +1,11 @@
 #include "testmodulebufferrecorder.h"
 
-#include "abstraction/inport.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/port.h"
 #include "abstraction/module.h"
 #include "abstraction/module/vco.h"
 #include "abstraction/module/wavrecorder.h"
-#include "abstraction/outport.h"
-#include "abstraction/port.h"
 #include "abstraction/wavegen/wavegeneratorempty.h"
 #include "factory/simplefactory.h"
 

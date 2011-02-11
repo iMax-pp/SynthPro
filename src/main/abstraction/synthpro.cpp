@@ -1,11 +1,11 @@
 #include "synthpro.h"
 
 #include "abstraction/clock.h"
-#include "abstraction/inport.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/virtualport.h"
 #include "abstraction/module.h"
-#include "abstraction/outport.h"
 #include "abstraction/sequencer.h"
-#include "abstraction/virtualport.h"
 
 SynthPro::SynthPro(QObject* parent)
     : QObject(parent)

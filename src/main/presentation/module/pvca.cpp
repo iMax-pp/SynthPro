@@ -1,8 +1,8 @@
 #include "pvca.h"
 
 #include "control/module/cvca.h"
-#include "presentation/pdimmer.h"
-#include "presentation/pvirtualport.h"
+#include "presentation/component/pdimmer.h"
+#include "presentation/component/pvirtualport.h"
 #include "presentation/textwidget.h"
 
 #include <QFont>

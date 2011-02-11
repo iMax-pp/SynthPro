@@ -1,9 +1,9 @@
 #include "pwire.h"
 
-#include "control/cport.h"
-#include "control/cwire.h"
-#include "presentation/pport.h"
-#include "presentation/pvirtualport.h"
+#include "control/component/cport.h"
+#include "control/component/cwire.h"
+#include "presentation/component/pport.h"
+#include "presentation/component/pvirtualport.h"
 #include <QApplication>
 #include <QDebug>
 #include <QPen>

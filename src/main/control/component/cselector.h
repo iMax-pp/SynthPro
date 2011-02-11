@@ -1,8 +1,8 @@
 #ifndef CSELECTOR_H
 #define CSELECTOR_H
 
-#include "abstraction/selector.h"
-#include "presentation/pselector.h"
+#include "abstraction/component/selector.h"
+#include "presentation/component/pselector.h"
 
 class CSelector : public Selector {
 public:

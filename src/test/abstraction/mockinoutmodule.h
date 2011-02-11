@@ -1,9 +1,9 @@
 #ifndef MOCKINOUTMODULE_H
 #define MOCKINOUTMODULE_H
 
-#include "abstraction/inport.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
 #include "abstraction/mockmodule.h"
-#include "abstraction/outport.h"
 
 class SynthProFactory;
 

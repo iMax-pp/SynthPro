@@ -1,8 +1,8 @@
 #include "vca.h"
 
-#include "abstraction/dimmer.h"
-#include "abstraction/inport.h"
-#include "abstraction/outport.h"
+#include "abstraction/component/dimmer.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
 #include "factory/synthprofactory.h"
 
 VCA::VCA(SynthPro* parent)

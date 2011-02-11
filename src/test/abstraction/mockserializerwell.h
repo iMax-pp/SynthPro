@@ -1,7 +1,7 @@
 #ifndef MOCKSERIALIZERWELL_H
 #define MOCKSERIALIZERWELL_H
 
-#include "abstraction/inport.h"
+#include "abstraction/component/inport.h"
 #include "abstraction/module.h"
 
 class QTextStream;

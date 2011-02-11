@@ -1,7 +1,7 @@
 #ifndef CPORT_H
 #define CPORT_H
 
-#include "abstraction/port.h"
+#include "abstraction/component/port.h"
 
 class CVirtualPort;
 class CWire;

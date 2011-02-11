@@ -1,9 +1,9 @@
 #include "clfo.h"
 
-#include "control/cdimmer.h"
-#include "control/cinport.h"
-#include "control/coutport.h"
-#include "control/cselector.h"
+#include "control/component/cdimmer.h"
+#include "control/component/cinport.h"
+#include "control/component/coutport.h"
+#include "control/component/cselector.h"
 #include "presentation/module/plfo.h"
 
 CLFO::CLFO(SynthPro* parent)

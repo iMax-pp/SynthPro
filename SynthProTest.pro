@@ -11,14 +11,19 @@ HEADERS += \
     src/main/abstraction/audiodeviceprovider.h \
     src/main/abstraction/buffer.h \
     src/main/abstraction/clock.h \
-    src/main/abstraction/dimmer.h \
+    src/main/abstraction/component/dimmer.h \
+    src/main/abstraction/component/inport.h \
+    src/main/abstraction/component/outport.h \
+    src/main/abstraction/component/port.h \
+    src/main/abstraction/component/pushbutton.h \
+    src/main/abstraction/component/selector.h \
+    src/main/abstraction/component/virtualport.h \
     src/main/abstraction/filter/filter.h \
     src/main/abstraction/filter/filterdummy.h \
     src/main/abstraction/filter/filterhp229.h \
     src/main/abstraction/filter/filterincrement.h \
     src/main/abstraction/filter/filterlp229.h \
     src/main/abstraction/filter/filtersoftsaturation.h \
-    src/main/abstraction/inport.h \
     src/main/abstraction/module.h \
     src/main/abstraction/module/adsr.h \
     src/main/abstraction/module/delay.h \
@@ -30,13 +35,8 @@ HEADERS += \
     src/main/abstraction/module/vcf.h \
     src/main/abstraction/module/vco.h \
     src/main/abstraction/module/wavrecorder.h \
-    src/main/abstraction/outport.h \
-    src/main/abstraction/port.h \
-    src/main/abstraction/pushbutton.h \
-    src/main/abstraction/selector.h \
     src/main/abstraction/sequencer.h \
     src/main/abstraction/synthpro.h \
-    src/main/abstraction/virtualport.h \
     src/main/abstraction/wavegen/wavegeneratordummy.h \
     src/main/abstraction/wavegen/wavegeneratorempty.h \
     src/main/abstraction/wavegen/wavegeneratorsaw.h \
@@ -72,13 +72,18 @@ SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
     src/main/abstraction/buffer.cpp \
     src/main/abstraction/clock.cpp \
-    src/main/abstraction/dimmer.cpp \
+    src/main/abstraction/component/dimmer.cpp \
+    src/main/abstraction/component/inport.cpp \
+    src/main/abstraction/component/outport.cpp \
+    src/main/abstraction/component/port.cpp \
+    src/main/abstraction/component/pushbutton.cpp \
+    src/main/abstraction/component/selector.cpp \
+    src/main/abstraction/component/virtualport.cpp \
     src/main/abstraction/filter/filterdummy.cpp \
     src/main/abstraction/filter/filterhp229.cpp \
     src/main/abstraction/filter/filterincrement.cpp \
     src/main/abstraction/filter/filterlp229.cpp \
     src/main/abstraction/filter/filtersoftsaturation.cpp \
-    src/main/abstraction/inport.cpp \
     src/main/abstraction/module.cpp \
     src/main/abstraction/module/adsr.cpp \
     src/main/abstraction/module/delay.cpp \
@@ -90,13 +95,8 @@ SOURCES += \
     src/main/abstraction/module/vcf.cpp \
     src/main/abstraction/module/vco.cpp \
     src/main/abstraction/module/wavrecorder.cpp \
-    src/main/abstraction/outport.cpp \
-    src/main/abstraction/port.cpp \
-    src/main/abstraction/pushbutton.cpp \
-    src/main/abstraction/selector.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/abstraction/synthpro.cpp \
-    src/main/abstraction/virtualport.cpp \
     src/main/abstraction/wavegen/wavegeneratordummy.cpp \
     src/main/abstraction/wavegen/wavegeneratorempty.cpp \
     src/main/abstraction/wavegen/wavegeneratorsaw.cpp \

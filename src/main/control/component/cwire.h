@@ -1,7 +1,7 @@
 #ifndef CWIRE_H
 #define CWIRE_H
 
-#include "presentation/pwire.h"
+#include "presentation/component/pwire.h"
 
 #include <QObject>
 

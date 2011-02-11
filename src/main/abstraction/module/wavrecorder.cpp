@@ -2,7 +2,7 @@
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/buffer.h"
-#include "abstraction/inport.h"
+#include "abstraction/component/inport.h"
 #include "abstraction/module/speaker.h"
 #include "abstraction/module/vco.h"
 #include "factory/synthprofactory.h"

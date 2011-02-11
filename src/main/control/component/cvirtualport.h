@@ -1,7 +1,7 @@
 #ifndef CVIRTUALPORT_H
 #define CVIRTUALPORT_H
 
-#include "abstraction/virtualport.h"
+#include "abstraction/component/virtualport.h"
 
 class PVirtualPort;
 class QtFactory;

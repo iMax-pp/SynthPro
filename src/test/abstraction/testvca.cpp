@@ -1,11 +1,11 @@
 #include "testvca.h"
 
-#include "abstraction/dimmer.h"
+#include "abstraction/component/dimmer.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/port.h"
 #include "abstraction/mockserializerwell.h"
 #include "abstraction/module/speaker.h"
 #include "abstraction/module/vco.h"
-#include "abstraction/outport.h"
-#include "abstraction/port.h"
 #include "abstraction/synthpro.h"
 #include "factory/simplefactory.h"
 
