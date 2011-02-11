@@ -15,6 +15,8 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
 {
     painter->fillRect(0, 0, WIDTH, HEIGHT, QBrush(Qt::SolidPattern));
     painter->setPen(QPen(QColor(255, 255, 255)));
+    painter->setClipping(true);
+    painter->setClipRect(0, 0, WIDTH, HEIGHT, Qt::ReplaceClip);
 
     int currentRatioY = ((HEIGHT / 2) / VCO::SIGNAL_INTENSITY) * m_ratioY;
 
