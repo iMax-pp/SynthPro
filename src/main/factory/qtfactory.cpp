@@ -48,7 +48,6 @@ CPort* QtFactory::createPort(VirtualPort* vPort)
 CInPort* QtFactory::createInPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
-    qDebug() << "QtFactory::createInPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     CInPort* port = new CInPort(cParent, this, name, replicable, gate);
 
     PVirtualPort* p = new PVirtualPort(port, cParent->presentation());
@@ -77,7 +76,6 @@ CInPort* QtFactory::createInPortGate(Module* parent, const QString& name)
 COutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
-    qDebug() << "QtFactory::createOutPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     COutPort* port = new COutPort(cParent, this, name, replicable, gate);
 
     PVirtualPort* p = new PVirtualPort(port, cParent->presentation());

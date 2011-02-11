@@ -51,7 +51,7 @@ void VirtualPort::connection(Port* own, Port* target)
         replicate();
     }
 
-    if (own->connection() == target->connection()) { // Emit only once the signal (otherwise it would be emitted by both sides)
+    if (own->connection() == target && target->connection() == own) { // Emit only once the signal (otherwise it would be emitted by both sides)
         emit connectionsChanged();
     }
 }
@@ -63,7 +63,7 @@ void VirtualPort::disconnection(Port* own, Port* target)
         removePort(own);
     }
 
-    if (own->connection() != target->connection()) {
+    if (!own->connection() && !target->connection()) {
         emit connectionsChanged();
     }
 }
