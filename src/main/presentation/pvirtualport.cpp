@@ -2,7 +2,7 @@
 
 #include "control/cvirtualport.h"
 #include "control/cwire.h"
-#include "presentation/portwidget.h"
+#include "presentation/pport.h"
 #include "presentation/textwidget.h"
 #include <QFont>
 #include <QGraphicsLinearLayout>
@@ -44,7 +44,7 @@ QRectF PVirtualPort::boundingRect() const
     return childrenBoundingRect();
 }
 
-void PVirtualPort::addReplication(PortWidget* replication)
+void PVirtualPort::addReplication(PPort* replication)
 {
     m_portsLayout->addItem(replication);
 }

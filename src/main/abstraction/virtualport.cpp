@@ -1,17 +1,34 @@
 #include "virtualport.h"
 
 #include "abstraction/module.h"
+#include "abstraction/port.h"
+#include "factory/synthprofactory.h"
 
-VirtualPort::VirtualPort(Module* parent, const QString& name, bool replicable, bool gate)
+VirtualPort::VirtualPort(Module* parent, const QString& name, SynthProFactory* factory, bool replicable, bool gate)
     : QObject(parent)
     , m_module(parent)
     , m_name(name)
     , m_replicable(replicable)
     , m_gate(gate)
+    , m_factory(factory)
 {
 }
 
+void VirtualPort::initialize()
+{
+    replicate(); // Create at least one port
+}
+
 VirtualPort::~VirtualPort() { }
+
+Port* VirtualPort::replicate()
+{
+    Port* port = m_factory->createPort(this);
+    connect(port, SIGNAL(connected(Port*, Port*)), this, SLOT(connection(Port*, Port*)));
+    connect(port, SIGNAL(disconnected(Port*, Port*)), this, SLOT(disconnection(Port*, Port*)));
+    m_connections.append(port);
+    return port;
+}
 
 bool VirtualPort::available() const
 {
@@ -28,22 +45,30 @@ bool VirtualPort::connectable(const VirtualPort* other) const
     return available() && compatible(other) && other->available();
 }
 
-void VirtualPort::connectTo(VirtualPort* other)
+void VirtualPort::connection(Port* own, Port* target)
 {
-    if (connectable(other)) {
-        m_connections.append(other);
-        other->m_connections.append(this);
-        qDebug(QString("VirtualPort::connectTo() %1 -> %2").arg(name()).arg(other->name()).toLatin1());
+    if (replicable()) {
+        replicate();
+    }
+
+    if (own->connection() == target->connection()) { // Emit only once the signal (otherwise it would be emitted by both sides)
         emit connectionsChanged();
     }
 }
 
-void VirtualPort::disconnectFrom(VirtualPort* other)
+void VirtualPort::disconnection(Port* own, Port* target)
 {
-    if (m_connections.contains(other)) {
-        qDebug(QString("VirtualPort::disconnectFrom() %1 - %2").arg(name()).arg(other->name()).toLatin1());
-        m_connections.removeOne(other);
-        other->m_connections.removeOne(this);
+    // Remove the connection
+    if (replicable() && m_connections.size() > 0) {
+        removePort(own);
+    }
+
+    if (own->connection() != target->connection()) {
         emit connectionsChanged();
     }
+}
+
+bool VirtualPort::removePort(Port* port)
+{
+    return m_connections.removeOne(port);
 }

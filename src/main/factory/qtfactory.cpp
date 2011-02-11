@@ -4,15 +4,15 @@
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleoscilloscope.h"
+#include "abstraction/port.h"
 #include "abstraction/sequencer.h"
-#include "control/cportwidget.h"
 #include "control/cwire.h"
 #include "presentation/padsr.h"
 #include "presentation/pkeyboard.h"
 #include "presentation/plfo.h"
 #include "presentation/pmoduleout.h"
-#include "presentation/portwidget.h"
 #include "presentation/poscilloscope.h"
+#include "presentation/pport.h"
 #include "presentation/ppushbutton.h"
 #include "presentation/pvca.h"
 #include "presentation/pvcf.h"
@@ -31,6 +31,18 @@ CSynthPro* QtFactory::createSynthPro()
     gui->show();
 
     return synthpro;
+}
+
+CPort* QtFactory::createPort(VirtualPort* vPort)
+{
+    CVirtualPort* cVPort = dynamic_cast<CVirtualPort*>(vPort);
+
+    CPort* port = new CPort(cVPort, this);
+
+    PPort* presentation = new PPort(port, cVPort->presentation());
+    port->setPresentation(presentation);
+
+    return port;
 }
 
 CInPort* QtFactory::createInPort(Module* parent, const QString& name, bool replicable, bool gate)
@@ -274,14 +286,4 @@ CWire* QtFactory::createWire(QGraphicsScene* scene)
     wire->setPresentation(presentation);
 
     return wire;
-}
-
-CPortWidget* QtFactory::createPortWidget(CVirtualPort* parent, QtFactory* factory)
-{
-    CPortWidget* cPortWidget = new CPortWidget(parent, factory);
-
-    PortWidget* presentation = new PortWidget(cPortWidget, parent->presentation());
-    cPortWidget->setPresentation(presentation);
-
-    return cPortWidget;
 }

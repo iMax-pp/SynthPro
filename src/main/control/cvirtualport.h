@@ -3,7 +3,6 @@
 
 #include "abstraction/virtualport.h"
 
-class CPortWidget;
 class PVirtualPort;
 class QtFactory;
 
@@ -12,13 +11,12 @@ class CVirtualPort : public virtual VirtualPort {
 
 public:
     CVirtualPort(Module* parent, QtFactory*, const QString& name, bool replicable = false, bool gate = false);
-    void initialize();
 
     void setPresentation(PVirtualPort*);
     inline PVirtualPort* presentation() const { return m_presentation; }
 
-    void connectTo(VirtualPort* other);
-    void disconnectFrom(VirtualPort* other);
+    // void connectTo(VirtualPort* other);
+    // void disconnectFrom(VirtualPort* other);
 
     void updateWiresPositions();
 
@@ -34,13 +32,11 @@ public:
     void hideFeedback();
 
 protected:
-    // Replicates this port (create a CPortWidget and its presentation)
-    void replicate();
+    Port* replicate();
 
 private:
     PVirtualPort* m_presentation;
     QtFactory* m_factory;
-    QList<CPortWidget*> m_portWidgets;
 };
 
 #endif // CVIRTUALPORT_H

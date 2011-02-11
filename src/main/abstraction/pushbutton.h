@@ -3,16 +3,13 @@
 
 #include <QObject>
 
-class Buffer;
-
 class PushButton : public QObject {
     Q_OBJECT
 
 public:
     PushButton(QObject* parent = 0);
-    virtual ~PushButton();
 
-    Buffer* buffer() const;
+    inline bool pushed() const { return m_pushed; }
 
 public slots:
     void push();
@@ -23,7 +20,7 @@ signals:
     void buttonReleased();
 
 private:
-    Buffer* m_buffer;
+    bool m_pushed;
 };
 
 #endif // PUSHBUTTON_H

@@ -9,6 +9,7 @@
 #include "control/cmoduleout.h"
 #include "control/coscilloscope.h"
 #include "control/coutport.h"
+#include "control/cport.h"
 #include "control/cpushbutton.h"
 #include "control/cselector.h"
 #include "control/csynthpro.h"
@@ -24,6 +25,8 @@ class QGraphicsScene;
 class QtFactory : public SynthProFactory {
 public:
     CSynthPro* createSynthPro();
+
+    CPort* createPort(VirtualPort* vPort);
 
     CInPort* createInPort(Module* parent, const QString& name);
     CInPort* createInPortReplicable(Module* parent, const QString& name);
@@ -49,7 +52,6 @@ public:
 
     // Creation methods specific to the QtFactory
     CWire* createWire(QGraphicsScene*);
-    CPortWidget* createPortWidget(CVirtualPort*, QtFactory*);
 
 protected:
     // Convenient factory method

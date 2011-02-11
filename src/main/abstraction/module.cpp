@@ -2,6 +2,7 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
+#include "abstraction/port.h"
 #include "abstraction/synthpro.h"
 
 Module::Module(SynthPro* parent)
@@ -17,9 +18,10 @@ const QList<Module*> Module::requirements() const
 {
     m_requirements.clear();
 
-    foreach (InPort* port, inports()) {
-        foreach (VirtualPort* connected, port->connections()) {
-            m_requirements.append(connected->module());
+    foreach (InPort* in, inports()) {
+        foreach (Port* port, in->connections()) {
+            if (port->connection())
+            m_requirements.append(port->connection()->vPort()->module());
         }
     }
 

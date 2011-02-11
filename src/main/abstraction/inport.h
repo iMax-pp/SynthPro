@@ -5,7 +5,7 @@
 
 class InPort : public virtual VirtualPort {
 public:
-    InPort(Module* parent, const QString& name, bool replicable = false, bool gate = false);
+    InPort(Module* parent, const QString& name, SynthProFactory*, bool replicable = false, bool gate = false);
 
     /**
      * Fetch data from the connections.

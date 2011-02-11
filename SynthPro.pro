@@ -63,9 +63,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/cvca.h \
     src/main/presentation/pvca.h \
     src/main/abstraction/adsr.h \
-    src/main/presentation/portwidget.h \
+    src/main/presentation/pport.h \
     src/main/abstraction/filtersoftsaturation.h \
-    src/main/control/cportwidget.h \
+    src/main/control/cport.h \
     src/main/abstraction/lfo.h \
     src/main/presentation/plfo.h \
     src/main/control/clfo.h \
@@ -76,6 +76,7 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/control/cadsr.h \
     src/main/presentation/poscilloscopeview.h \
     src/main/presentation/pixmapwidget.h \
+    src/main/abstraction/port.h \
     src/main/abstraction/modulekeyboard.h \
     src/main/control/ckeyboard.h \
     src/main/presentation/pkeyboard.h \
@@ -141,9 +142,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/cvca.cpp \
     src/main/presentation/pvca.cpp \
     src/main/abstraction/adsr.cpp \
-    src/main/presentation/portwidget.cpp \
+    src/main/presentation/pport.cpp \
     src/main/abstraction/filtersoftsaturation.cpp \
-    src/main/control/cportwidget.cpp \
+    src/main/control/cport.cpp \
     src/main/abstraction/lfo.cpp \
     src/main/presentation/plfo.cpp \
     src/main/control/clfo.cpp \
@@ -154,6 +155,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/control/cadsr.cpp \
     src/main/presentation/poscilloscopeview.cpp \
     src/main/presentation/pixmapwidget.cpp \
+    src/main/abstraction/port.cpp \
     src/main/abstraction/modulekeyboard.cpp \
     src/main/control/ckeyboard.cpp \
     src/main/presentation/pkeyboard.cpp \

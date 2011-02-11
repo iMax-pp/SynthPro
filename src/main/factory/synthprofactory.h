@@ -14,6 +14,7 @@ class ModuleKeyboard;
 class ModuleOscilloscope;
 class ModuleOut;
 class OutPort;
+class Port;
 class PushButton;
 class Selector;
 class Sequencer;
@@ -21,10 +22,15 @@ class SynthPro;
 class VCA;
 class VCF;
 class VCO;
+class VCA;
+class VirtualPort;
+class ADSR;
 
 class SynthProFactory {
 public:
     virtual SynthPro* createSynthPro() = 0;
+
+    virtual Port* createPort(VirtualPort* vPort) = 0;
 
     virtual InPort* createInPort(Module* parent, const QString& name) = 0;
     virtual InPort* createInPortReplicable(Module* parent, const QString& name) = 0;
