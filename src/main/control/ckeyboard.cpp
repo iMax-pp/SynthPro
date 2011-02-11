@@ -23,17 +23,13 @@ void CKeyboard::initialize(SynthProFactory* factory)
                                                          outGate->presentation());
 }
 
-void CKeyboard::ownProcess()
-{
-}
-
 void CKeyboard::keyboardKeyPressed(int keyPressed)
 {
     m_keyPressedNumber = keyPressed;
     m_pressed = true;
 }
 
-void CKeyboard::keyboardKeyReleased(int keyPressed)
+void CKeyboard::keyboardKeyReleased(int)
 {
     m_pressed = false;
 }

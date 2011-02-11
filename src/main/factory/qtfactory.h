@@ -2,6 +2,7 @@
 #define QTFACTORY_H
 
 #include "control/cadsr.h"
+#include "control/cdelay.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
 #include "control/ckeyboard.h"
@@ -16,6 +17,7 @@
 #include "control/cvca.h"
 #include "control/cvcf.h"
 #include "control/cvco.h"
+#include "control/cwavrecorder.h"
 #include "factory/synthprofactory.h"
 
 class CPortWidget;
@@ -41,9 +43,9 @@ public:
     CVCF* createVCF(SynthPro*);
     CVCA* createVCA(SynthPro*);
     CADSR* createADSR(SynthPro*);
-    CDelay* createDelay(SynthPro *);
+    CDelay* createDelay(SynthPro*);
 
-    WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    CWavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     CKeyboard* createModuleKeyboard(SynthPro*);
     CSpeaker* createSpeaker(SynthPro*);
     COscilloscope* createOscilloscope(SynthPro*);

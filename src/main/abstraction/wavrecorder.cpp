@@ -11,6 +11,7 @@
 
 WavRecorder::WavRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
     : Module(parent)
+    , m_inPort(0)
     , m_fileName(fileName)
     , m_nbProcessingBeforeSaving(nbProcessingBeforeSaving)
     , m_nbProcessingSaved(0)
@@ -19,7 +20,6 @@ WavRecorder::WavRecorder(SynthPro* parent, QString fileName, int nbProcessingBef
     , m_waveDataSizePosition(0)
     , m_dataLength(0)
     , m_bufferForNumbers(0)
-    , m_inPort(0)
 {
     m_bufferForNumbers = new char(4); // The buffer is only used to write int32 or short (16 bits),
                                       // as requested by the WAV format.

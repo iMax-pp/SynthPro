@@ -29,6 +29,9 @@ public:
      */
     void ownProcess();
 
+protected:
+    InPort* m_inPort;
+
 private:
     static const int SIGNAL_OUT_SIGNED_INTENSITY = 32767;
 
@@ -41,8 +44,6 @@ private:
     int m_waveDataSizePosition;
     int m_dataLength;
     char* m_bufferForNumbers; // Little buffer used to write numbers to the file. NOT thread safe.
-
-    InPort* m_inPort;
 
     /**
       * Creates the WAV header of the output file, as well as setting up

@@ -3,7 +3,6 @@
 #include "control/cadsr.h"
 #include "presentation/pdimmer.h"
 #include "presentation/ppushbutton.h"
-#include "presentation/pselector.h"
 #include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
 

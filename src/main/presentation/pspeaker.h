@@ -8,7 +8,7 @@ class PVirtualPort;
 
 class PSpeaker : public PModule {
 public:
-    PSpeaker(CSpeaker*);
+    explicit PSpeaker(CSpeaker*);
 
     void initialize(PVirtualPort* in);
 };

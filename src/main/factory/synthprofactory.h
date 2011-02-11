@@ -5,27 +5,25 @@
 #include <QtGlobal>
 
 class ADSR;
+class Delay;
 class Dimmer;
 class InPort;
 class LFO;
 class Module;
-class WavRecorder;
 class ModuleKeyboard;
 class Oscilloscope;
-class Speaker;
 class OutPort;
 class Port;
 class PushButton;
 class Selector;
 class Sequencer;
+class Speaker;
 class SynthPro;
 class VCA;
 class VCF;
 class VCO;
-class VCA;
 class VirtualPort;
-class ADSR;
-class Delay;
+class WavRecorder;
 
 class SynthProFactory {
 public:
@@ -77,6 +75,7 @@ public:
         VCFId,
         VCAId,
         ADSRId,
+        DelayId,
         LFOId,
         AudioOuputId,
         FileOutputId,
