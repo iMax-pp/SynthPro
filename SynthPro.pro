@@ -40,7 +40,7 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/presentation/pwire.h \
     src/main/control/cwire.h \
     src/main/abstraction/audiodeviceprovider.h \
-    src/main/abstraction/modulebufferrecorder.h \
+    src/main/abstraction/wavrecorder.h \
     src/main/abstraction/selector.h \
     src/main/abstraction/wavegeneratorempty.h \
     src/main/control/modulelistmodel.h \
@@ -119,7 +119,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/pwire.cpp \
     src/main/control/cwire.cpp \
     src/main/abstraction/audiodeviceprovider.cpp \
-    src/main/abstraction/modulebufferrecorder.cpp \
+    src/main/abstraction/wavrecorder.cpp \
     src/main/abstraction/selector.cpp \
     src/main/abstraction/wavegeneratorempty.cpp \
     src/main/control/modulelistmodel.cpp \

@@ -2,12 +2,12 @@
 
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
-#include "abstraction/modulebufferrecorder.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratortriangle.h"
+#include "abstraction/wavrecorder.h"
 #include "factory/simplefactory.h"
 
 #include <QFile>
@@ -20,7 +20,7 @@ void TestWaveGeneratorTriangle::testWaveGeneratorTriangle()
     QString fileName = "testWaveGeneratorTriangle.wav";
 
     SimpleFactory factory;
-    ModuleBufferRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
+    WavRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
 
     VCO* vco = factory.createVCO(&synthPro);
     vco->setShape("Triangle");

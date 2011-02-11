@@ -18,7 +18,7 @@ public:
     VCA* createVCA(SynthPro*);
     ADSR* createADSR(SynthPro*);
     LFO* createLFO(SynthPro*);
-    ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(SynthPro*);
     ModuleKeyboard* createModuleKeyboard(SynthPro*);
     Dimmer* createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent);

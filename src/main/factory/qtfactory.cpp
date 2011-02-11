@@ -2,10 +2,10 @@
 
 #include "abstraction/adsr.h"
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleoscilloscope.h"
 #include "abstraction/port.h"
 #include "abstraction/sequencer.h"
+#include "abstraction/wavrecorder.h"
 #include "control/cwire.h"
 #include "presentation/padsr.h"
 #include "presentation/pkeyboard.h"
@@ -180,7 +180,7 @@ CADSR* QtFactory::createADSR(SynthPro* parent)
 
 }
 
-CDimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
+CDimmer* QtFactory::createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
@@ -194,7 +194,7 @@ CDimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefa
     return dimmer;
 }
 
-CSelector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent)
+CSelector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CSelector* selector = new CSelector(keys, defaultKey, cParent);
@@ -204,7 +204,7 @@ CSelector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QStr
     return selector;
 }
 
-CPushButton* QtFactory::createPushButton(QString name, Module* parent)
+CPushButton* QtFactory::createPushButton(const QString& name, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CPushButton* pushButton = new CPushButton(cParent);
@@ -214,9 +214,9 @@ CPushButton* QtFactory::createPushButton(QString name, Module* parent)
     return pushButton;
 }
 
-ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
+WavRecorder* QtFactory::createWavRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
 {
-    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(parent, fileName, nbProcessingBeforeSaving);
+    WavRecorder* mbr = new WavRecorder(parent, fileName, nbProcessingBeforeSaving);
     mbr->initialize(this);
     return mbr;
 }
