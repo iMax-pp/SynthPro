@@ -75,6 +75,7 @@ public:
         VCFId,
         VCAId,
         ADSRId,
+        DelayId,
         LFOId,
         AudioOuputId,
         FileOutputId,

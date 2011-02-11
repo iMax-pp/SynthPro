@@ -87,7 +87,9 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/presentation/pkeyboardview.h \
     src/main/presentation/pkeyboardkey.h \
     src/main/control/cwavrecorder.h \
-    src/main/presentation/pwavrecorder.h
+    src/main/presentation/pwavrecorder.h \
+    src/main/control/cdelay.h \
+    src/main/presentation/pdelay.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -169,7 +171,9 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/pkeyboardview.cpp \
     src/main/presentation/pkeyboardkey.cpp \
     src/main/control/cwavrecorder.cpp \
-    src/main/presentation/pwavrecorder.cpp
+    src/main/presentation/pwavrecorder.cpp \
+    src/main/control/cdelay.cpp \
+    src/main/presentation/pdelay.cpp
 
 INCLUDEPATH += src/main/
 

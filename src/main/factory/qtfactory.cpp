@@ -7,6 +7,7 @@
 #include "abstraction/sequencer.h"
 #include "control/cwire.h"
 #include "presentation/padsr.h"
+#include "presentation/pdelay.h"
 #include "presentation/pkeyboard.h"
 #include "presentation/plfo.h"
 #include "presentation/poscilloscope.h"
@@ -159,7 +160,6 @@ CVCA* QtFactory::createVCA(SynthPro* parent)
     // Initialize it (ports creation)
     vca->initialize(this);
 
-    // return vca;
     return vca;
 }
 
@@ -175,14 +175,22 @@ CADSR* QtFactory::createADSR(SynthPro* parent)
     // Initialize it (ports creation)
     adsr->initialize(this);
 
-    // return vca;
     return adsr;
-
 }
 
-CDelay* QtFactory::createDelay(SynthPro *)
+CDelay* QtFactory::createDelay(SynthPro* parent)
 {
+    // Create the Delay
+    CDelay* delay = new CDelay(parent);
 
+    // Create its presentation
+    PDelay* p = new PDelay(delay);
+    delay->setPresentation(p);
+
+    // Initialization
+    delay->initialize(this);
+
+    return delay;
 }
 
 

@@ -1,6 +1,7 @@
 #include "csynthpro.h"
 
 #include "control/cadsr.h"
+#include "control/cdelay.h"
 #include "control/cinport.h"
 #include "control/ckeyboard.h"
 #include "control/clfo.h"
@@ -85,6 +86,9 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
         break;
     case SynthProFactory::ADSRId:
         module = dynamic_cast<Module*>(m_factory->createADSR(this));
+        break;
+    case SynthProFactory::DelayId:
+        module = dynamic_cast<Module*>(m_factory->createDelay(this));
         break;
     case SynthProFactory::LFOId:
         module = dynamic_cast<Module*>(m_factory->createLFO(this));
