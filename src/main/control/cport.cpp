@@ -16,6 +16,13 @@ CPort::CPort(CVirtualPort* parent, QtFactory* factory)
 {
 }
 
+CPort::~CPort()
+{
+    if (m_presentation) {
+        delete m_presentation;
+    }
+}
+
 void CPort::setPresentation(PPort* presentation)
 {
     if (m_presentation) {
@@ -60,19 +67,13 @@ bool CPort::connect(Port* other)
 
 bool CPort::disconnect()
 {
-    if (Port::disconnect() && m_wire) {
-        delete m_wire;
+    if (Port::disconnect()) {
+        if (m_wire) {
+            delete m_wire;
+        }
+        return true;
     }
-}
-
-void CPort::_connect(Port* other)
-{
-    Port::_connect(other);
-}
-
-void CPort::_disconnect()
-{
-    Port::_disconnect();
+    return false;
 }
 
 void CPort::drag()

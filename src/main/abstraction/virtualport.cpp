@@ -70,5 +70,7 @@ void VirtualPort::disconnection(Port* own, Port* target)
 
 bool VirtualPort::removePort(Port* port)
 {
-    return m_connections.removeOne(port);
+    bool result = m_connections.removeOne(port);
+    delete port;
+    return result;
 }

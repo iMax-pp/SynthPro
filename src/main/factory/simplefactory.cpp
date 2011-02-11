@@ -5,8 +5,12 @@
 #include "abstraction/inport.h"
 #include "abstraction/lfo.h"
 #include "abstraction/modulebufferrecorder.h"
+#include "abstraction/modulekeyboard.h"
+#include "abstraction/moduleoscilloscope.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
+#include "abstraction/port.h"
+#include "abstraction/pushbutton.h"
 #include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
@@ -17,6 +21,11 @@
 SynthPro* SimpleFactory::createSynthPro()
 {
     return new SynthPro();
+}
+
+Port* SimpleFactory::createPort(VirtualPort* vPort)
+{
+    return new Port(vPort);
 }
 
 InPort* SimpleFactory::createInPort(Module* parent, const QString& name)
@@ -85,18 +94,18 @@ LFO* SimpleFactory::createLFO(SynthPro* parent)
     return lfo;
 }
 
-Dimmer* SimpleFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
+Dimmer* SimpleFactory::createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     return new Dimmer(min, max, kDefault, parent);
 }
 
-Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent)
+Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent)
 {
     return new Selector(keys, defaultKey, parent);
 }
 
 
-ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
+ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
 {
     ModuleBufferRecorder* mbr = new ModuleBufferRecorder(parent, fileName, nbProcessingBeforeSaving);
     mbr->initialize(this);
@@ -123,4 +132,17 @@ ModuleOut* SimpleFactory::createModuleOut(SynthPro* parent)
     return mo;
 }
 
-ModuleOscilloscope* SimpleFactory::createModuleOscilloscope(SynthPro*) {}
+ModuleOscilloscope* SimpleFactory::createModuleOscilloscope(SynthPro* synthPro)
+{
+    return new ModuleOscilloscope(synthPro);
+}
+
+ModuleKeyboard* SimpleFactory::createModuleKeyboard(SynthPro* synthpro)
+{
+    return new ModuleKeyboard(synthpro);
+}
+
+PushButton* SimpleFactory::createPushButton(const QString&, Module *parent)
+{
+    return new PushButton(parent);
+}

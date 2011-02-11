@@ -9,6 +9,10 @@ Port::Port(VirtualPort* vPort)
 {
 }
 
+Port::~Port()
+{
+}
+
 bool Port::connect(Port* other)
 {
     if (vPort()->connectable(other->vPort())) {
