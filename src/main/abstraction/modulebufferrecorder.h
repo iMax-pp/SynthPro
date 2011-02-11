@@ -13,7 +13,9 @@ class SynthProFactory;
   * If the first port is disconnected, pause the recording till it is connected again.
   * Close the file automatically after a fixed number of processing.
   */
-class ModuleBufferRecorder : public Module {
+class ModuleBufferRecorder : public virtual Module {
+    //Q_OBJECT
+
 public:
     ModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     virtual ~ModuleBufferRecorder();

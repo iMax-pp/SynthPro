@@ -3,6 +3,8 @@
 #include "control/coutport.h"
 #include "presentation/pkeyboard.h"
 
+#include <QDebug>
+
 CKeyboard::CKeyboard(SynthPro* parent)
     : Module(parent)
     , ModuleKeyboard(parent)
@@ -19,11 +21,19 @@ void CKeyboard::initialize(SynthProFactory* factory)
 
     dynamic_cast<PKeyboard*>(presentation())->initialize(outFrequency->presentation(),
                                                          outGate->presentation());
-
-    // dynamic_cast<POscilloscope*>(presentation())->setVisualizedBuffer(inports().at(0)->buffer());
 }
 
 void CKeyboard::ownProcess()
 {
-    // dynamic_cast<PKeyboard*>(presentation())->refreshOscilloscopeView();
+}
+
+void CKeyboard::keyboardKeyPressed(int keyPressed)
+{
+    m_keyPressedNumber = keyPressed;
+    m_pressed = true;
+}
+
+void CKeyboard::keyboardKeyReleased(int keyPressed)
+{
+    m_pressed = false;
 }
