@@ -2,7 +2,7 @@
 
 #include "abstraction/adsr.h"
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/moduleoscilloscope.h"
+#include "abstraction/oscilloscope.h"
 #include "abstraction/port.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/wavrecorder.h"
@@ -261,7 +261,7 @@ CSpeaker* QtFactory::createSpeaker(SynthPro* parent)
     return mo;
 }
 
-COscilloscope* QtFactory::createModuleOscilloscope(SynthPro* parent)
+COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)
 {
     // Create the Oscilloscope Controler
     COscilloscope* co = new COscilloscope(parent);

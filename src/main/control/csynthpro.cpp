@@ -94,7 +94,7 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
     case SynthProFactory::FileOutputId:
         break;
     case SynthProFactory::OscilloscopeId:
-        module = dynamic_cast<Module*>(m_factory->createModuleOscilloscope(this));
+        module = dynamic_cast<Module*>(m_factory->createOscilloscope(this));
         break;
     default:
         break;

@@ -6,14 +6,14 @@
 
 COscilloscope::COscilloscope(SynthPro* parent)
     : Module(parent)
-    , ModuleOscilloscope(parent)
+    , Oscilloscope(parent)
     , CModule(parent)
 {
 }
 
 void COscilloscope::initialize(SynthProFactory* factory)
 {
-    ModuleOscilloscope::initialize(factory);
+    Oscilloscope::initialize(factory);
 
     CInPort* in = dynamic_cast<CInPort*>(m_inPort);
 

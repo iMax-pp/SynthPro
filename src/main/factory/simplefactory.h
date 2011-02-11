@@ -23,7 +23,7 @@ public:
     ModuleKeyboard* createModuleKeyboard(SynthPro*);
     Dimmer* createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent);
-    ModuleOscilloscope* createModuleOscilloscope(SynthPro*);
+    Oscilloscope* createOscilloscope(SynthPro*);
     PushButton* createPushButton(const QString& name, Module* parent);
 
 };

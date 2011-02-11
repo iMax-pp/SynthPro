@@ -11,7 +11,7 @@ class LFO;
 class Module;
 class WavRecorder;
 class ModuleKeyboard;
-class ModuleOscilloscope;
+class Oscilloscope;
 class Speaker;
 class OutPort;
 class Port;
@@ -54,7 +54,7 @@ public:
       */
     virtual Speaker* createSpeaker(SynthPro*) = 0;
 
-    virtual ModuleOscilloscope* createModuleOscilloscope(SynthPro*) = 0;
+    virtual Oscilloscope* createOscilloscope(SynthPro*) = 0;
 
     /*
      * instantiate a dimmer's abstraction
