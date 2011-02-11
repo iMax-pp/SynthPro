@@ -3,7 +3,7 @@
 #include "abstraction/vco.h"
 #include <QPainter>
 
-POscilloscopeView::POscilloscopeView(QGraphicsItem *parent)
+POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
     : QGraphicsWidget(parent)
 {
     setMinimumSize(boundingRect().size());

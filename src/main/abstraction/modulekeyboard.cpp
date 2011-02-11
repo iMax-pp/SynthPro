@@ -1,7 +1,7 @@
 #include "modulekeyboard.h"
 
-#include "factory/synthprofactory.h"
 #include "abstraction/outport.h"
+#include "factory/synthprofactory.h"
 
 ModuleKeyboard::ModuleKeyboard(SynthPro* parent)
     : Module(parent)

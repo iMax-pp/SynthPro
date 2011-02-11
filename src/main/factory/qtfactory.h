@@ -8,6 +8,7 @@
 #include "control/cmoduleout.h"
 #include "control/coscilloscope.h"
 #include "control/coutport.h"
+#include "control/cpushbutton.h"
 #include "control/cselector.h"
 #include "control/csynthpro.h"
 #include "control/cvca.h"
@@ -42,6 +43,7 @@ public:
 
     CDimmer* createDimmer(QString name, qreal min, qreal max, qreal defaultValue, Module* parent);
     CSelector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
+    CPushButton* createPushButton(QString name, Module* parent);
 
     // Creation methods specific to the QtFactory
     CWire* createWire(QGraphicsScene*);

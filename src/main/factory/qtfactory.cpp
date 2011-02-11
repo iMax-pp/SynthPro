@@ -12,6 +12,7 @@
 #include "presentation/pmoduleout.h"
 #include "presentation/portwidget.h"
 #include "presentation/poscilloscope.h"
+#include "presentation/ppushbutton.h"
 #include "presentation/pvca.h"
 #include "presentation/pvcf.h"
 #include "presentation/pvco.h"
@@ -190,6 +191,16 @@ CSelector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QStr
     selector->setPresentation(presentation);
 
     return selector;
+}
+
+CPushButton* QtFactory::createPushButton(QString name, Module* parent)
+{
+    CModule* cParent = dynamic_cast<CModule*>(parent);
+    CPushButton* pushButton = new CPushButton(cParent);
+    PPushButton* presentation = new PPushButton(name, cParent->presentation());
+    pushButton->setPresentation(presentation);
+
+    return pushButton;
 }
 
 ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)

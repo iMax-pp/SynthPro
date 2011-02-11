@@ -20,10 +20,10 @@ void CKeyboard::initialize(SynthProFactory* factory)
     dynamic_cast<PKeyboard*>(presentation())->initialize(outFrequency->presentation(),
                                                          outGate->presentation());
 
-    //dynamic_cast<POscilloscope*>(presentation())->setVisualizedBuffer(inports().at(0)->buffer());
+    // dynamic_cast<POscilloscope*>(presentation())->setVisualizedBuffer(inports().at(0)->buffer());
 }
 
 void CKeyboard::ownProcess()
 {
-    //dynamic_cast<PKeyboard*>(presentation())->refreshOscilloscopeView();
+    // dynamic_cast<PKeyboard*>(presentation())->refreshOscilloscopeView();
 }
