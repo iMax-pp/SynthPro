@@ -32,6 +32,7 @@ public:
 
     Dimmer* createDimmer(QString name, qreal min, qreal max, qreal defaultValue, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
+    PushButton* createPushButton(QString name, Module* parent);
 
     // Creation methods specific to the QtFactory
     CWire* createWire(QGraphicsScene*);

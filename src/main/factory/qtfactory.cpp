@@ -14,6 +14,7 @@
 #include "control/coscilloscope.h"
 #include "control/coutport.h"
 #include "control/cportwidget.h"
+#include "control/cpushbutton.h"
 #include "control/cselector.h"
 #include "control/csynthpro.h"
 #include "control/cvca.h"
@@ -26,6 +27,7 @@
 #include "presentation/pmoduleout.h"
 #include "presentation/portwidget.h"
 #include "presentation/poscilloscope.h"
+#include "presentation/ppushbutton.h"
 #include "presentation/pvca.h"
 #include "presentation/pvcf.h"
 #include "presentation/pvco.h"
@@ -204,6 +206,16 @@ Selector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QStri
     selector->setPresentation(presentation);
 
     return selector;
+}
+
+PushButton* QtFactory::createPushButton(QString name, Module* parent)
+{
+    CModule* cParent = dynamic_cast<CModule*>(parent);
+    CPushButton* pushButton = new CPushButton(cParent);
+    PPushButton* presentation = new PPushButton(name, cParent->presentation());
+    pushButton->setPresentation(presentation);
+
+    return pushButton;
 }
 
 ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
