@@ -22,4 +22,7 @@ PPushButton* CPushButton::presentation() const
 void CPushButton::setPresentation(PPushButton* presentation)
 {
     m_presentation = presentation;
+
+    connect(m_presentation, SIGNAL(buttonPushed()), this, SLOT(push()));
+    connect(m_presentation, SIGNAL(buttonReleased()), this, SLOT(release()));
 }
