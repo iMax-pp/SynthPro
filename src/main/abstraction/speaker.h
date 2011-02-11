@@ -1,5 +1,5 @@
-#ifndef MODULEOUT_H
-#define MODULEOUT_H
+#ifndef SPEAKER_H
+#define SPEAKER_H
 
 #include "module.h"
 #include "vco.h"
@@ -20,13 +20,13 @@ class SynthProFactory;
   * buffer of the module can provide it, it does. Else, it calls the
   * Sequencer, and copy the input of the module into the generation buffer.
   */
-class ModuleOut : public virtual Module {
+class Speaker : public virtual Module {
     // Q_OBJECT
 public:
     static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 127;
 
-    ModuleOut(SynthPro*, QIODevice*, QAudioOutput*);
-    virtual ~ModuleOut();
+    Speaker(SynthPro*, QIODevice*, QAudioOutput*);
+    virtual ~Speaker();
 
     /**
       * Instanciate the ports. Used by the factory.
@@ -62,4 +62,4 @@ protected:
     // bool m_manageSound; // *** FIXME *** Not fond of it...
 };
 
-#endif // MODULEOUT_H
+#endif // SPEAKER_H

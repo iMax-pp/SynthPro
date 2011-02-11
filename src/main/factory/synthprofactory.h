@@ -12,7 +12,7 @@ class Module;
 class WavRecorder;
 class ModuleKeyboard;
 class ModuleOscilloscope;
-class ModuleOut;
+class Speaker;
 class OutPort;
 class Port;
 class PushButton;
@@ -49,10 +49,10 @@ public:
     virtual ModuleKeyboard* createModuleKeyboard(SynthPro*) = 0;
 
     /**
-      * Instanciate a ModuleOut, but ONLY if the audio device isn't already used by another instance.
-      * @return ModuleOut if instanciation successful, 0 if not.
+      * Instanciate a Speaker, but ONLY if the audio device isn't already used by another instance.
+      * @return Speaker if instanciation successful, 0 if not.
       */
-    virtual ModuleOut* createModuleOut(SynthPro*) = 0;
+    virtual Speaker* createSpeaker(SynthPro*) = 0;
 
     virtual ModuleOscilloscope* createModuleOscilloscope(SynthPro*) = 0;
 

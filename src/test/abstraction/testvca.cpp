@@ -2,9 +2,9 @@
 
 #include "abstraction/dimmer.h"
 #include "abstraction/mockserializerwell.h"
-#include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
+#include "abstraction/speaker.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
 #include "factory/simplefactory.h"

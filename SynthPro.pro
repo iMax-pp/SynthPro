@@ -48,14 +48,14 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/dimmer.h \
     src/main/control/cdimmer.h \
     src/main/presentation/pdimmer.h \
-    src/main/abstraction/moduleout.h \
+    src/main/abstraction/speaker.h \
     src/main/presentation/pvco.h \
     src/main/abstraction/clock.h \
     src/main/factory/wavegeneratorfactory.h \
     src/main/presentation/pselector.h \
     src/main/control/cselector.h \
-    src/main/presentation/pmoduleout.h \
-    src/main/control/cmoduleout.h \
+    src/main/presentation/pspeaker.h \
+    src/main/control/cspeaker.h \
     src/main/abstraction/vca.h \
     src/main/control/cvcf.h \
     src/main/presentation/pvcf.h \
@@ -127,14 +127,14 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/dimmer.cpp \
     src/main/control/cdimmer.cpp \
     src/main/presentation/pdimmer.cpp \
-    src/main/abstraction/moduleout.cpp \
+    src/main/abstraction/speaker.cpp \
     src/main/presentation/pvco.cpp \
     src/main/abstraction/clock.cpp \
     src/main/factory/wavegeneratorfactory.cpp \
     src/main/presentation/pselector.cpp \
     src/main/control/cselector.cpp \
-    src/main/presentation/pmoduleout.cpp \
-    src/main/control/cmoduleout.cpp \
+    src/main/presentation/pspeaker.cpp \
+    src/main/control/cspeaker.cpp \
     src/main/abstraction/vca.cpp \
     src/main/control/cvcf.cpp \
     src/main/presentation/pvcf.cpp \

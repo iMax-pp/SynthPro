@@ -1,4 +1,4 @@
-#include "moduleout.h"
+#include "speaker.h"
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/buffer.h"
@@ -10,7 +10,7 @@
 #include <QAudioOutput>
 #include <QDebug>
 
-ModuleOut::ModuleOut(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
+Speaker::Speaker(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
     : Module(parent)
     , m_device(device)
     , m_audioOutput(audioOutput)
@@ -22,12 +22,12 @@ ModuleOut::ModuleOut(SynthPro* parent, QIODevice* device, QAudioOutput* audioOut
 {
 }
 
-ModuleOut::~ModuleOut()
+Speaker::~Speaker()
 {
     delete[] m_generationBuffer;
 }
 
-void ModuleOut::initialize(SynthProFactory* factory)
+void Speaker::initialize(SynthProFactory* factory)
 {
     m_generationBuffer = new char[Buffer::DEFAULT_LENGTH];
 
@@ -46,12 +46,12 @@ void ModuleOut::initialize(SynthProFactory* factory)
     }
 }
 
-// void ModuleOut::setSoundManagement(bool state)
+// void Speaker::setSoundManagement(bool state)
 // {
 //     m_manageSound = state;
 // }
 
-void ModuleOut::timerExpired()
+void Speaker::timerExpired()
 {
     // if (!m_manageSound) {
     //     return;
@@ -116,6 +116,6 @@ void ModuleOut::timerExpired()
     */
 }
 
-void ModuleOut::ownProcess()
+void Speaker::ownProcess()
 {
 }
