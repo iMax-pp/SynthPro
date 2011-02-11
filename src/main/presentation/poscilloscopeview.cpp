@@ -8,10 +8,10 @@ POscilloscopeView::POscilloscopeView(QGraphicsItem *parent)
 {
     setMinimumSize(boundingRect().size());
 
-    m_inBuffer = new qreal[Buffer::DEFAULT_LENGTH]; // FIXME : Try.
-    for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
-        m_inBuffer[i] = 0;
-    }
+//    m_inBuffer = new qreal[Buffer::DEFAULT_LENGTH]; // FIXME : Try.
+//    for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
+//        m_inBuffer[i] = 0;
+//    }
 }
 
 void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
@@ -20,15 +20,24 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
 
     painter->setPen(QPen(QColor(255, 255, 255)));
 
-    m_ratioY = VCO::SIGNAL_INTENSITY / HEIGHT;
+    m_ratioY = ((HEIGHT / 2) / VCO::SIGNAL_INTENSITY) / 2;
 
     int indexBuffer = 0;
     int middleY = HEIGHT / 2;
 
-    for (int i = 0; i < WIDTH ; i++) {
-        painter->drawPoint(i, (int)(middleY + m_inBuffer[(int)indexBuffer] * m_ratioY));
-        indexBuffer += STEP;
+    if (m_inBuffer) {
+        qreal* data = m_inBuffer->data();
+        qreal step = (m_inBuffer->length() / WIDTH);
+
+        for (int i = 0; i < WIDTH ; i++) {
+            painter->drawPoint(i, (int)(middleY + data[(int)indexBuffer] * m_ratioY));
+            indexBuffer += step;
+        }
     }
+}
+
+void POscilloscopeView::setVisualizedBuffer(Buffer* buffer) {
+    m_inBuffer = buffer;
 }
 
 QRectF POscilloscopeView::boundingRect() const
