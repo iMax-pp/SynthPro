@@ -97,6 +97,8 @@ date :  semaine 6 (vendredi 11 - )
 
 Roadmap (todo)
 ---------
+- Oscillo stabilisé;
+- Molette Oscillo (zoom Y);
 - Fond d'écran (léger et subtil);
 - Icones dans Dockbars (et drag'n'drop d'icones);
 - Bouton on/off du synthé;
