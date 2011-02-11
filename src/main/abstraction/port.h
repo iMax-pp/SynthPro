@@ -10,8 +10,11 @@ class Port : public QObject {
 
 public:
     Port(VirtualPort*);
+    virtual ~Port();
 
     inline VirtualPort* vPort() const { return m_vPort; }
+
+    /// @invariant connection() != 0 => connection()->connection() == this
     inline Port* connection() const { return m_connection; }
 
     /**

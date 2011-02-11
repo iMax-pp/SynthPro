@@ -48,7 +48,6 @@ CPort* QtFactory::createPort(VirtualPort* vPort)
 CInPort* QtFactory::createInPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
-    qDebug() << "QtFactory::createInPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     CInPort* port = new CInPort(cParent, this, name, replicable, gate);
 
     PVirtualPort* p = new PVirtualPort(port, cParent->presentation());
@@ -77,7 +76,6 @@ CInPort* QtFactory::createInPortGate(Module* parent, const QString& name)
 COutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
-    qDebug() << "QtFactory::createOutPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     COutPort* port = new COutPort(cParent, this, name, replicable, gate);
 
     PVirtualPort* p = new PVirtualPort(port, cParent->presentation());
@@ -182,7 +180,7 @@ CADSR* QtFactory::createADSR(SynthPro* parent)
 
 }
 
-CDimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
+CDimmer* QtFactory::createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
@@ -196,7 +194,7 @@ CDimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefa
     return dimmer;
 }
 
-CSelector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent)
+CSelector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CSelector* selector = new CSelector(keys, defaultKey, cParent);
@@ -206,7 +204,7 @@ CSelector* QtFactory::createSelector(QList<int> keys, int defaultKey, QList<QStr
     return selector;
 }
 
-CPushButton* QtFactory::createPushButton(QString name, Module* parent)
+CPushButton* QtFactory::createPushButton(const QString& name, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CPushButton* pushButton = new CPushButton(cParent);
@@ -216,7 +214,7 @@ CPushButton* QtFactory::createPushButton(QString name, Module* parent)
     return pushButton;
 }
 
-ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
+ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
 {
     ModuleBufferRecorder* mbr = new ModuleBufferRecorder(parent, fileName, nbProcessingBeforeSaving);
     mbr->initialize(this);

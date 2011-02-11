@@ -73,8 +73,8 @@ protected:
     virtual Port* replicate();
 
 protected slots:
-    void connection(Port*, Port*);
-    void disconnection(Port*, Port*);
+    virtual void connection(Port*, Port*);
+    virtual void disconnection(Port*, Port*);
 
 protected:
     Module* m_module;

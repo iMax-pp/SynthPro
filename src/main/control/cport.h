@@ -10,8 +10,11 @@ class QPointF;
 class QtFactory;
 
 class CPort : public Port {
+    Q_OBJECT
+
 public:
     CPort(CVirtualPort* parent, QtFactory*);
+    ~CPort();
 
     void setPresentation(PPort*);
     inline PPort* presentation() const { return m_presentation; }
@@ -35,10 +38,9 @@ public:
     void showFeedback(bool compatible);
     void hideFeedback();
 
+private slots:
+    void wireDeleted();
 private:
-    void _connect(Port*);
-    void _disconnect();
-
     PPort* m_presentation;
     QtFactory* m_factory;
     CWire* m_wire;

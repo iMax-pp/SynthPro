@@ -45,7 +45,7 @@ public:
     virtual VCF* createVCF(SynthPro*) = 0;
     virtual VCA* createVCA(SynthPro*) = 0;
     virtual ADSR* createADSR(SynthPro*) = 0;
-    virtual ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
+    virtual ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
     virtual ModuleKeyboard* createModuleKeyboard(SynthPro*) = 0;
 
     /**
@@ -62,9 +62,9 @@ public:
      * @param max max value
      * @param default_value the value where the dimmer is positionned at creation
      */
-    virtual Dimmer* createDimmer(QString name, qreal min, qreal man, qreal defaultValue, Module* parent) = 0;
-    virtual Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent) = 0;
-    virtual PushButton* createPushButton(QString name, Module* parent) = 0;
+    virtual Dimmer* createDimmer(const QString& name, qreal min, qreal man, qreal defaultValue, Module* parent) = 0;
+    virtual Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent) = 0;
+    virtual PushButton* createPushButton(const QString& name, Module* parent) = 0;
 
     /*
      * Enumeration of module types.

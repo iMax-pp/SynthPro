@@ -6,6 +6,7 @@
 class SimpleFactory : public SynthProFactory {
 public:
     SynthPro* createSynthPro();
+    Port* createPort(VirtualPort *vPort);
     InPort* createInPort(Module* parent, const QString& name);
     InPort* createInPortReplicable(Module* parent, const QString& name);
     InPort* createInPortGate(Module* parent, const QString& name);
@@ -17,11 +18,13 @@ public:
     VCA* createVCA(SynthPro*);
     ADSR* createADSR(SynthPro*);
     LFO* createLFO(SynthPro*);
-    ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     ModuleOut* createModuleOut(SynthPro*);
-    Dimmer* createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent);
-    Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent);
+    ModuleKeyboard* createModuleKeyboard(SynthPro*);
+    Dimmer* createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent);
+    Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent);
     ModuleOscilloscope* createModuleOscilloscope(SynthPro*);
+    PushButton* createPushButton(const QString& name, Module* parent);
 
 };
 

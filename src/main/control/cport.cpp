@@ -16,6 +16,13 @@ CPort::CPort(CVirtualPort* parent, QtFactory* factory)
 {
 }
 
+CPort::~CPort()
+{
+    if (m_presentation) {
+        delete m_presentation;
+    }
+}
+
 void CPort::setPresentation(PPort* presentation)
 {
     if (m_presentation) {
@@ -27,12 +34,13 @@ void CPort::setPresentation(PPort* presentation)
 
 void CPort::setWire(CWire* wire)
 {
-    // If this port is already connected, disconnect it
-    if (connection()) {
-        disconnect();
-    }
-
     m_wire = wire;
+    QObject::connect(wire, SIGNAL(destroyed()), this, SLOT(wireDeleted()));
+}
+
+void CPort::wireDeleted()
+{
+    m_wire = 0;
 }
 
 bool CPort::connect(Port* other)
@@ -40,8 +48,9 @@ bool CPort::connect(Port* other)
     if (Port::connect(other)) {
         CPort* cOther = dynamic_cast<CPort*>(other);
         // Create their wire
-        m_wire = m_factory->createWire(presentation()->scene()); // HACK way to retrieve the scene, I think
-        cOther->setWire(m_wire);
+        CWire* wire = m_factory->createWire(presentation()->scene());
+        setWire(wire); // HACK way to retrieve the scene, I think
+        cOther->setWire(wire);
 
         if (vPort()->out()) {
             m_wire->setInPort(cOther);
@@ -58,21 +67,13 @@ bool CPort::connect(Port* other)
 
 bool CPort::disconnect()
 {
-    return Port::disconnect();
-}
-
-void CPort::_connect(Port* other)
-{
-    Port::_connect(other);
-}
-
-void CPort::_disconnect()
-{
-    Port::_disconnect();
-    if (m_wire) {
-        delete m_wire;
-        m_wire = 0;
+    if (Port::disconnect()) {
+        if (m_wire) {
+            delete m_wire;
+        }
+        return true;
     }
+    return false;
 }
 
 void CPort::drag()
