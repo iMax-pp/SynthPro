@@ -15,7 +15,6 @@ CWire::~CWire()
 {
     if (m_presentation) {
         delete m_presentation;
-        m_presentation = 0;
     }
 }
 

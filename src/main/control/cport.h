@@ -10,6 +10,8 @@ class QPointF;
 class QtFactory;
 
 class CPort : public Port {
+    Q_OBJECT
+
 public:
     CPort(CVirtualPort* parent, QtFactory*);
 
@@ -35,6 +37,8 @@ public:
     void showFeedback(bool compatible);
     void hideFeedback();
 
+private slots:
+    void wireDeleted();
 private:
     void _connect(Port*);
     void _disconnect();

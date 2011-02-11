@@ -15,7 +15,7 @@ bool Port::connect(Port* other)
         this->_connect(other);
         other->_connect(this);
 
-        qDebug(QString("VirtualPort::connect() %1 -> %2").arg(vPort()->name()).arg(other->vPort()->name()).toLatin1());
+        qDebug(QString("Port::connect() %1 -> %2").arg(vPort()->name()).arg(other->vPort()->name()).toLatin1());
 
         return true;
     }
@@ -33,8 +33,8 @@ void Port::_connect(Port* other)
 
 bool Port::disconnect()
 {
-    if (m_connection && m_connection->m_connection == m_connection) {
-        qDebug(QString("VirtualPort::disconnect() %1 - %2").arg(vPort()->name()).arg(m_connection->vPort()->name()).toLatin1());
+    if (connection()) {
+        qDebug(QString("Port::disconnect() %1 - %2").arg(vPort()->name()).arg(m_connection->vPort()->name()).toLatin1());
 
         m_connection->_disconnect();
         this->_disconnect();
