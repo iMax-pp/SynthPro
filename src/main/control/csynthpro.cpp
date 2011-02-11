@@ -5,9 +5,9 @@
 #include "control/ckeyboard.h"
 #include "control/clfo.h"
 #include "control/cmodule.h"
-#include "control/cmoduleout.h"
 #include "control/coscilloscope.h"
 #include "control/coutport.h"
+#include "control/cspeaker.h"
 #include "control/cvca.h"
 #include "control/cvcf.h"
 #include "control/cvco.h"
@@ -89,12 +89,12 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
         module = dynamic_cast<Module*>(m_factory->createLFO(this));
         break;
     case SynthProFactory::AudioOuputId:
-        module = dynamic_cast<Module*>(m_factory->createModuleOut(this));
+        module = dynamic_cast<Module*>(m_factory->createSpeaker(this));
         break;
     case SynthProFactory::FileOutputId:
         break;
     case SynthProFactory::OscilloscopeId:
-        module = dynamic_cast<Module*>(m_factory->createModuleOscilloscope(this));
+        module = dynamic_cast<Module*>(m_factory->createOscilloscope(this));
         break;
     default:
         break;

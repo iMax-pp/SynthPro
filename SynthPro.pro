@@ -48,14 +48,14 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/dimmer.h \
     src/main/control/cdimmer.h \
     src/main/presentation/pdimmer.h \
-    src/main/abstraction/moduleout.h \
+    src/main/abstraction/speaker.h \
     src/main/presentation/pvco.h \
     src/main/abstraction/clock.h \
     src/main/factory/wavegeneratorfactory.h \
     src/main/presentation/pselector.h \
     src/main/control/cselector.h \
-    src/main/presentation/pmoduleout.h \
-    src/main/control/cmoduleout.h \
+    src/main/presentation/pspeaker.h \
+    src/main/control/cspeaker.h \
     src/main/abstraction/vca.h \
     src/main/control/cvcf.h \
     src/main/presentation/pvcf.h \
@@ -69,7 +69,7 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/lfo.h \
     src/main/presentation/plfo.h \
     src/main/control/clfo.h \
-    src/main/abstraction/moduleoscilloscope.h \
+    src/main/abstraction/oscilloscope.h \
     src/main/presentation/poscilloscope.h \
     src/main/control/coscilloscope.h \
     src/main/presentation/padsr.h \
@@ -83,6 +83,7 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/abstraction/pushbutton.h \
     src/main/control/cpushbutton.h \
     src/main/presentation/ppushbutton.h \
+    src/main/abstraction/delay.h \
     src/main/presentation/pkeyboardview.h \
     src/main/presentation/pkeyboardkey.h
 
@@ -127,14 +128,14 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/dimmer.cpp \
     src/main/control/cdimmer.cpp \
     src/main/presentation/pdimmer.cpp \
-    src/main/abstraction/moduleout.cpp \
+    src/main/abstraction/speaker.cpp \
     src/main/presentation/pvco.cpp \
     src/main/abstraction/clock.cpp \
     src/main/factory/wavegeneratorfactory.cpp \
     src/main/presentation/pselector.cpp \
     src/main/control/cselector.cpp \
-    src/main/presentation/pmoduleout.cpp \
-    src/main/control/cmoduleout.cpp \
+    src/main/presentation/pspeaker.cpp \
+    src/main/control/cspeaker.cpp \
     src/main/abstraction/vca.cpp \
     src/main/control/cvcf.cpp \
     src/main/presentation/pvcf.cpp \
@@ -148,7 +149,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/lfo.cpp \
     src/main/presentation/plfo.cpp \
     src/main/control/clfo.cpp \
-    src/main/abstraction/moduleoscilloscope.cpp \
+    src/main/abstraction/oscilloscope.cpp \
     src/main/presentation/poscilloscope.cpp \
     src/main/control/coscilloscope.cpp \
     src/main/presentation/padsr.cpp \
@@ -162,6 +163,7 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/pushbutton.cpp \
     src/main/control/cpushbutton.cpp \
     src/main/presentation/ppushbutton.cpp \
+    src/main/abstraction/delay.cpp \
     src/main/presentation/pkeyboardview.cpp \
     src/main/presentation/pkeyboardkey.cpp
 

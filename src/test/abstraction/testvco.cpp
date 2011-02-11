@@ -3,6 +3,7 @@
 #include "abstraction/dimmer.h"
 #include "abstraction/mockserializerwell.h"
 #include "abstraction/outport.h"
+#include "abstraction/port.h"
 #include "abstraction/selector.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
@@ -16,14 +17,14 @@ void TestVCO::testVCO()
 {
     QString result;
     QTextStream stream(&result);
-
     SimpleFactory factory;
+
     SynthPro* synth = factory.createSynthPro();
 
     VCO* vco = factory.createVCO(synth);
-    MockSerializerWell output(0, stream);
+    MockSerializerWell output(0, stream, &factory);
 
-    vco->outports().first()->connectTo(&output.input);
+    vco->outports().first()->connections().first()->connect(output.input.connections().first());
 
     vco->setShape("Dummy");
     vco->process();
@@ -43,8 +44,8 @@ void TestVCO::testVCOwithDimmer()
 
     VCO* vco = factory.createVCO(synth);
     vco->setK(3);
-    MockSerializerWell output(0, stream);
-    vco->outports().first()->connectTo(&output.input);
+    MockSerializerWell output(0, stream, &factory);
+    vco->outports().first()->connections().first()->connect(output.input.connections().first());
     vco->setShape("Square");
     vco->process();
     output.process();
@@ -80,8 +81,8 @@ void TestVCO::testVCOWithSelector()
     VCO* vco = factory.createVCO(synth);
     QVERIFY(vco->shape() == "Saw");
 
-    MockSerializerWell output(0, stream);
-    vco->outports().first()->connectTo(&output.input);
+    MockSerializerWell output(0, stream, &factory);
+    vco->outports().first()->connections().first()->connect(output.input.connections().first());
     vco->setShape("Sinus");
     vco->process();
     output.process();

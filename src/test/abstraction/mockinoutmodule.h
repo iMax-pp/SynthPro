@@ -5,12 +5,14 @@
 #include "abstraction/mockmodule.h"
 #include "abstraction/outport.h"
 
+class SynthProFactory;
+
 /**
  * Mock Module with replicable input and output ports
  */
 class MockInOutModule : public MockModule {
 public:
-    MockInOutModule(SynthPro*, const QString& msg, QTextStream&);
+    MockInOutModule(SynthPro*, const QString& msg, QTextStream&, SynthProFactory*);
 
     InPort input;
     OutPort output;

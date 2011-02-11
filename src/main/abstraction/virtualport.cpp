@@ -61,7 +61,7 @@ void VirtualPort::connection(Port* own, Port* target)
 void VirtualPort::disconnection(Port* own, Port* target)
 {
     // Remove the connection
-    if (replicable() && m_connections.size() > 0) {
+    if (replicable() && m_connections.size() > 1) {
         removePort(own);
     }
 

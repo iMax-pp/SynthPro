@@ -2,7 +2,7 @@
 
 #include "abstraction/adsr.h"
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/moduleoscilloscope.h"
+#include "abstraction/oscilloscope.h"
 #include "abstraction/port.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/wavrecorder.h"
@@ -10,10 +10,10 @@
 #include "presentation/padsr.h"
 #include "presentation/pkeyboard.h"
 #include "presentation/plfo.h"
-#include "presentation/pmoduleout.h"
 #include "presentation/poscilloscope.h"
 #include "presentation/pport.h"
 #include "presentation/ppushbutton.h"
+#include "presentation/pspeaker.h"
 #include "presentation/pvca.h"
 #include "presentation/pvcf.h"
 #include "presentation/pvco.h"
@@ -180,6 +180,12 @@ CADSR* QtFactory::createADSR(SynthPro* parent)
 
 }
 
+CDelay* QtFactory::createDelay(SynthPro *)
+{
+
+}
+
+
 CDimmer* QtFactory::createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
@@ -236,9 +242,9 @@ CKeyboard* QtFactory::createModuleKeyboard(SynthPro* parent)
     return ck;
 }
 
-CModuleOut* QtFactory::createModuleOut(SynthPro* parent)
+CSpeaker* QtFactory::createSpeaker(SynthPro* parent)
 {
-    // Do not instanciate ModuleOut if no audio device can be accessed !
+    // Do not instanciate Speaker if no audio device can be accessed !
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();
 
     if (!adp.initializeAudioOutput()) {
@@ -251,9 +257,9 @@ CModuleOut* QtFactory::createModuleOut(SynthPro* parent)
         return 0;
     }
 
-    CModuleOut* mo = new CModuleOut(parent, device, adp.audioOutput());
+    CSpeaker* mo = new CSpeaker(parent, device, adp.audioOutput());
 
-    PModuleOut* p = new PModuleOut(mo);
+    PSpeaker* p = new PSpeaker(mo);
     mo->setPresentation(p);
 
     mo->initialize(this);
@@ -261,7 +267,7 @@ CModuleOut* QtFactory::createModuleOut(SynthPro* parent)
     return mo;
 }
 
-COscilloscope* QtFactory::createModuleOscilloscope(SynthPro* parent)
+COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)
 {
     // Create the Oscilloscope Controler
     COscilloscope* co = new COscilloscope(parent);

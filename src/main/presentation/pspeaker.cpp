@@ -1,6 +1,6 @@
-#include "pmoduleout.h"
+#include "pspeaker.h"
 
-#include "control/cmoduleout.h"
+#include "control/cspeaker.h"
 #include "presentation/pixmapwidget.h"
 #include "presentation/pvirtualport.h"
 #include "presentation/textwidget.h"
@@ -8,12 +8,12 @@
 #include <QFont>
 #include <QGraphicsAnchorLayout>
 
-PModuleOut::PModuleOut(CModuleOut* control)
+PSpeaker::PSpeaker(CSpeaker* control)
     : PModule(control)
 {
 }
 
-void PModuleOut::initialize(PVirtualPort* in)
+void PSpeaker::initialize(PVirtualPort* in)
 {
     TextWidget* title = new TextWidget("Out", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));

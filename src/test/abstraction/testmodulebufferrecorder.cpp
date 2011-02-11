@@ -3,6 +3,7 @@
 #include "abstraction/inport.h"
 #include "abstraction/module.h"
 #include "abstraction/outport.h"
+#include "abstraction/port.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratorempty.h"
 #include "abstraction/wavrecorder.h"
@@ -17,11 +18,11 @@ void TestModuleBufferRecorder::testModuleBufferRecorder()
     QString fileName = "testModuleBufferRecorder.wav";
 
     SimpleFactory factory;
-    WavRecorder* mbr = factory.createModuleBufferRecorder(0, fileName, NB_ITERATIONS);
+    WavRecorder* mbr = factory.createWavRecorder(0, fileName, NB_ITERATIONS);
 
     VCO* vco = factory.createVCO(0);
     vco->setShape("Empty");
-    vco->outports().at(0)->connectTo(mbr->inports().at(0));
+    vco->outports().first()->connections().first()->connect(mbr->inports().first()->connections().first());
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
         vco->process();

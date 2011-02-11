@@ -3,7 +3,7 @@
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/buffer.h"
 #include "abstraction/inport.h"
-#include "abstraction/moduleout.h"
+#include "abstraction/speaker.h"
 #include "factory/synthprofactory.h"
 
 #include <QDebug>

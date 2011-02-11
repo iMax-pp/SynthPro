@@ -2,8 +2,9 @@
 
 #include "abstraction/dimmer.h"
 #include "abstraction/mockserializerwell.h"
-#include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
+#include "abstraction/port.h"
+#include "abstraction/speaker.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
 #include "factory/simplefactory.h"
@@ -21,11 +22,11 @@ void TestVCA::testVCA()
     VCO* vco = factory.createVCO(synth);
     VCA* vca = factory.createVCA(synth);
     vca->setGain(2);
-    MockSerializerWell output(0, stream);
-    vco->outports().first()->connectTo(vca->inports().first());
+    MockSerializerWell output(0, stream, &factory);
+    vco->outports().first()->connections().first()->connect(vca->inports().first()->connections().first());
 
 
-    vca->outports().first()->connectTo(&output.input);
+    vca->outports().first()->connections().first()->connect(output.input.connections().first());
     vco->process();
     vca->process();
     output.process();

@@ -36,7 +36,7 @@ HEADERS += \
     src/main/factory/synthprofactory.h \
     src/main/factory/simplefactory.h \
     src/main/abstraction/wavrecorder.h \
-    src/main/abstraction/moduleout.h \
+    src/main/abstraction/speaker.h \
     src/test/abstraction/testmodulebufferrecorder.h \
     src/test/abstraction/testwavegeneratorempty.h \
     src/test/abstraction/testwavegeneratortriangle.h \
@@ -55,12 +55,17 @@ HEADERS += \
     src/main/abstraction/filtersoftsaturation.h \
     src/main/factory/filterfactory.h \
     src/main/abstraction/vca.h \
+    src/main/abstraction/delay.h \
     src/main/abstraction/adsr.h \
     src/test/abstraction/testvca.h \
     src/test/abstraction/testvcf.h \
     src/test/abstraction/testadsr.h \
-    src/main/abstraction/moduleoscilloscope.h \
-    src/test/abstraction/testlfo.h
+    src/test/abstraction/testdelay.h \
+    src/main/abstraction/oscilloscope.h \
+    src/main/abstraction/pushbutton.h \
+    src/main/abstraction/modulekeyboard.h \
+    src/main/abstraction/port.h \
+    src/test/abstraction/testlfo.h \
 
 
 SOURCES += src/test/test.cpp \
@@ -82,6 +87,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testvco.cpp \
     src/main/abstraction/lfo.cpp \
     src/main/abstraction/vco.cpp \
+    src/main/abstraction/delay.cpp \
     src/main/abstraction/wavegeneratordummy.cpp \
     src/main/abstraction/wavegeneratorempty.cpp \
     src/main/abstraction/wavegeneratortriangle.cpp \
@@ -92,7 +98,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/mockserializerwell.cpp \
     src/main/factory/simplefactory.cpp \
     src/main/abstraction/wavrecorder.cpp \
-    src/main/abstraction/moduleout.cpp \
+    src/main/abstraction/speaker.cpp \
     src/test/abstraction/testmodulebufferrecorder.cpp \
     src/test/abstraction/testwavegeneratorempty.cpp \
     src/test/abstraction/testwavegeneratortriangle.cpp \
@@ -114,7 +120,11 @@ SOURCES += src/test/test.cpp \
     src/main/factory/filterfactorydummy.cpp \
     src/test/abstraction/testvcf.cpp \
     src/test/abstraction/testadsr.cpp \
-    src/main/abstraction/moduleoscilloscope.cpp \
+    src/test/abstraction/testdelay.cpp \
+    src/main/abstraction/oscilloscope.cpp \
+    src/main/abstraction/pushbutton.cpp \
+    src/main/abstraction/modulekeyboard.cpp \
+    src/main/abstraction/port.cpp \
     src/test/abstraction/testlfo.cpp
 
 

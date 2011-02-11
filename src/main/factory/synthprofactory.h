@@ -11,8 +11,8 @@ class LFO;
 class Module;
 class WavRecorder;
 class ModuleKeyboard;
-class ModuleOscilloscope;
-class ModuleOut;
+class Oscilloscope;
+class Speaker;
 class OutPort;
 class Port;
 class PushButton;
@@ -25,6 +25,7 @@ class VCO;
 class VCA;
 class VirtualPort;
 class ADSR;
+class Delay;
 
 class SynthProFactory {
 public:
@@ -45,16 +46,17 @@ public:
     virtual VCF* createVCF(SynthPro*) = 0;
     virtual VCA* createVCA(SynthPro*) = 0;
     virtual ADSR* createADSR(SynthPro*) = 0;
+    virtual Delay* createDelay(SynthPro*) = 0;
     virtual WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
     virtual ModuleKeyboard* createModuleKeyboard(SynthPro*) = 0;
 
     /**
-      * Instanciate a ModuleOut, but ONLY if the audio device isn't already used by another instance.
-      * @return ModuleOut if instanciation successful, 0 if not.
+      * Instanciate a Speaker, but ONLY if the audio device isn't already used by another instance.
+      * @return Speaker if instanciation successful, 0 if not.
       */
-    virtual ModuleOut* createModuleOut(SynthPro*) = 0;
+    virtual Speaker* createSpeaker(SynthPro*) = 0;
 
-    virtual ModuleOscilloscope* createModuleOscilloscope(SynthPro*) = 0;
+    virtual Oscilloscope* createOscilloscope(SynthPro*) = 0;
 
     /*
      * instantiate a dimmer's abstraction

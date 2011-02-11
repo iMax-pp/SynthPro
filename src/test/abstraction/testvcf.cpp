@@ -2,8 +2,9 @@
 
 #include "abstraction/filterincrement.h"
 #include "abstraction/inport.h"
-#include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
+#include "abstraction/port.h"
+#include "abstraction/speaker.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vcf.h"
 #include "abstraction/vco.h"
@@ -25,7 +26,7 @@ void TestVCF::testVCF()
     VCF* vcf = factory.createVCF(synthPro);
     vcf->setFilter("Increment");
 
-    vco->outports().at(0)->connectTo(vcf->inports().at(0));
+    vco->outports().first()->connections().first()->connect(vcf->inports().first()->connections().first());
 
     vco->process();
     vcf->process();

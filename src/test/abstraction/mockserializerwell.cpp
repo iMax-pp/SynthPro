@@ -1,14 +1,16 @@
 #include "mockserializerwell.h"
 
 #include "abstraction/buffer.h"
+#include "factory/synthprofactory.h"
 
 #include <QTextStream>
 
-MockSerializerWell::MockSerializerWell(SynthPro* parent, QTextStream& output)
+MockSerializerWell::MockSerializerWell(SynthPro* parent, QTextStream& output, SynthProFactory* factory)
     : Module(parent)
-    , input(this, "input")
+    , input(this, "input", factory)
     , m_output(output)
 {
+    input.initialize();
     m_inports.append(&input);
 }
 
