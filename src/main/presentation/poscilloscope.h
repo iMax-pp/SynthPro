@@ -9,6 +9,7 @@ class POscilloscopeView;
 class PVirtualPort;
 
 class POscilloscope : public PModule {
+
 public:
     POscilloscope(COscilloscope*);
 

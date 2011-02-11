@@ -64,6 +64,7 @@ protected:
 
     AdsrState m_currentState;
     qreal m_gateValue;
+    qreal m_startRelease;
 };
 
 #endif // ADSR_H

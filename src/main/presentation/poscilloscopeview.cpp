@@ -7,11 +7,6 @@ POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
     : QGraphicsWidget(parent)
 {
     setMinimumSize(boundingRect().size());
-
-//    m_inBuffer = new qreal[Buffer::DEFAULT_LENGTH]; // FIXME : Try.
-//    for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
-//        m_inBuffer[i] = 0;
-//    }
 }
 
 void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
