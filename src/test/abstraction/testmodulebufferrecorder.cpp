@@ -4,6 +4,7 @@
 #include "abstraction/module.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/outport.h"
+#include "abstraction/port.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratorempty.h"
 #include "factory/simplefactory.h"
@@ -21,7 +22,7 @@ void TestModuleBufferRecorder::testModuleBufferRecorder()
 
     VCO* vco = factory.createVCO(0);
     vco->setShape("Empty");
-    vco->outports().at(0)->connectTo(mbr->inports().at(0));
+    vco->outports().first()->connections().first()->connect(mbr->inports().first()->connections().first());
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
         vco->process();

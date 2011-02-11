@@ -60,6 +60,9 @@ HEADERS += \
     src/test/abstraction/testvcf.h \
     src/test/abstraction/testadsr.h \
     src/main/abstraction/moduleoscilloscope.h \
+    src/main/abstraction/pushbutton.h \
+    src/main/abstraction/modulekeyboard.h \
+    src/main/abstraction/port.h \
     src/test/abstraction/testlfo.h
 
 
@@ -115,6 +118,9 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testvcf.cpp \
     src/test/abstraction/testadsr.cpp \
     src/main/abstraction/moduleoscilloscope.cpp \
+    src/main/abstraction/pushbutton.cpp \
+    src/main/abstraction/modulekeyboard.cpp \
+    src/main/abstraction/port.cpp \
     src/test/abstraction/testlfo.cpp
 
 
