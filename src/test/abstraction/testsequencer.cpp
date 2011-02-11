@@ -3,9 +3,11 @@
 #include "abstraction/mockinoutmodule.h"
 #include "abstraction/mockserializerwell.h"
 #include "abstraction/mockwell.h"
+#include "abstraction/port.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
+#include "abstraction/virtualport.h"
 #include "abstraction/wavegeneratordummy.h"
 #include "factory/simplefactory.h"
 
@@ -19,17 +21,18 @@ void TestSequencer::testSortTwoModules()
 {
     QString result;
     QTextStream stream(&result);
+    SimpleFactory factory;
 
     SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    MockInOutModule m1(&synthpro, "1", stream);
+    MockInOutModule m1(&synthpro, "1", stream, &factory);
     synthpro.add(&m1);
 
-    MockWell m2(&synthpro, "2", stream);
+    MockWell m2(&synthpro, "2", stream, &factory);
     synthpro.add(&m2);
 
-    m1.output.connectTo(&m2.input); // m1 −> m2
+    m1.output.connections().first()->connect(m2.input.connections().first()); // m1 −> m2
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();
@@ -45,22 +48,23 @@ void TestSequencer::testSortCyclingModules()
 {
     QString result;
     QTextStream stream(&result);
+    SimpleFactory factory;
 
     SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    MockInOutModule m1(&synthpro, "1", stream);
+    MockInOutModule m1(&synthpro, "1", stream, &factory);
     synthpro.add(&m1);
 
-    MockInOutModule m2(&synthpro, "2", stream);
+    MockInOutModule m2(&synthpro, "2", stream, &factory);
     synthpro.add(&m2);
 
-    MockWell m3(&synthpro, "3", stream);
+    MockWell m3(&synthpro, "3", stream, &factory);
     synthpro.add(&m3);
 
-    m1.output.connectTo(&m2.input); // m1 −> m2
-    m2.output.connectTo(&m3.input); // m2 −> m3
-    m2.output.connectTo(&m1.input); // m2 −> m1
+    m1.output.connections().first()->connect(m2.input.connections().first()); // m1 −> m2
+    m2.output.connections().first()->connect(m3.input.connections().first()); // m2 −> m3
+    m2.output.connections().first()->connect(m1.input.connections().first()); // m2 −> m1
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();
@@ -76,25 +80,26 @@ void TestSequencer::testSortTwoWells()
 {
     QString result;
     QTextStream stream(&result);
+    SimpleFactory factory;
 
     SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    MockInOutModule m1(&synthpro, "1", stream);
+    MockInOutModule m1(&synthpro, "1", stream, &factory);
     synthpro.add(&m1);
 
-    MockWell m2(&synthpro, "2", stream);
+    MockWell m2(&synthpro, "2", stream, &factory);
     synthpro.add(&m2);
 
-    MockInOutModule m3(&synthpro, "3", stream);
+    MockInOutModule m3(&synthpro, "3", stream, &factory);
     synthpro.add(&m3);
 
-    MockWell m4(&synthpro, "4", stream);
+    MockWell m4(&synthpro, "4", stream, &factory);
     synthpro.add(&m4);
 
-    m1.output.connectTo(&m2.input); // m1 −> m2
-    m1.output.connectTo(&m3.input); // m1 −> m3
-    m3.output.connectTo(&m4.input); // m3 −> m4
+    m1.output.connections().first()->connect(m2.input.connections().first()); // m1 −> m2
+    m1.output.connections().first()->connect(m3.input.connections().first()); // m1 −> m3
+    m3.output.connections().first()->connect(m4.input.connections().first()); // m3 −> m4
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();
@@ -112,17 +117,18 @@ void TestSequencer::testSortNoWell()
 {
     QString result;
     QTextStream stream(&result);
+    SimpleFactory factory;
 
     SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    MockInOutModule m1(&synthpro, "1", stream);
+    MockInOutModule m1(&synthpro, "1", stream, &factory);
     synthpro.add(&m1);
 
-    MockInOutModule m2(&synthpro, "2", stream);
+    MockInOutModule m2(&synthpro, "2", stream, &factory);
     synthpro.add(&m2);
 
-    m1.output.connectTo(&m2.input); // m1 −> m2
+    m1.output.connections().first()->connect(m2.input.connections().first()); // m1 −> m2
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();
@@ -138,21 +144,22 @@ void TestSequencer::testSortMixer()
 {
     QString result;
     QTextStream stream(&result);
+    SimpleFactory factory;
 
     SynthPro synthpro;
     Sequencer& sequencer = Sequencer::instance();
 
-    MockInOutModule m1(&synthpro, "1", stream);
+    MockInOutModule m1(&synthpro, "1", stream, &factory);
     synthpro.add(&m1);
 
-    MockInOutModule m2(&synthpro, "2", stream);
+    MockInOutModule m2(&synthpro, "2", stream, &factory);
     synthpro.add(&m2);
 
-    MockWell m3(&synthpro, "3", stream);
+    MockWell m3(&synthpro, "3", stream, &factory);
     synthpro.add(&m3);
 
-    m1.output.connectTo(&m3.input); // m1 −> m3
-    m2.output.connectTo(&m3.input); // m2 −> m3
+    m1.output.connections().first()->connect(m3.input.connections().first()); // m1 −> m3
+    m2.output.connections().first()->connect(m3.input.connections().first()); // m2 −> m3
 
     QVERIFY(m3.requirements().contains(&m1));
     QVERIFY(m3.requirements().contains(&m2));
@@ -180,10 +187,10 @@ void TestSequencer::testVCOAndSerializer()
     vco->setShape("Dummy");
     synthpro.add(vco);
 
-    MockSerializerWell output(&synthpro, stream);
+    MockSerializerWell output(&synthpro, stream, &factory);
     synthpro.add(&output);
 
-    vco->outports().first()->connectTo(&output.input);
+    vco->outports().first()->connections().first()->connect(output.input.connections().first());
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();

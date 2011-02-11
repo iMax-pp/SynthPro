@@ -30,32 +30,32 @@ Port* SimpleFactory::createPort(VirtualPort* vPort)
 
 InPort* SimpleFactory::createInPort(Module* parent, const QString& name)
 {
-    return new InPort(parent, name, false, false);
+    return new InPort(parent, name, this, false, false);
 }
 
 InPort* SimpleFactory::createInPortReplicable(Module* parent, const QString& name)
 {
-    return new InPort(parent, name, true, false);
+    return new InPort(parent, name, this, true, false);
 }
 
 InPort* SimpleFactory::createInPortGate(Module* parent, const QString& name)
 {
-    return new InPort(parent, name, false, true);
+    return new InPort(parent, name, this, false, true);
 }
 
 OutPort* SimpleFactory::createOutPort(Module* parent, const QString& name)
 {
-    return new OutPort(parent, name, false, false);
+    return new OutPort(parent, name, this, false, false);
 }
 
 OutPort* SimpleFactory::createOutPortReplicable(Module* parent, const QString& name)
 {
-    return new OutPort(parent, name, true, false);
+    return new OutPort(parent, name, this, true, false);
 }
 
 OutPort* SimpleFactory::createOutPortGate(Module* parent, const QString& name)
 {
-    return new OutPort(parent, name, false, true);
+    return new OutPort(parent, name, this, false, true);
 }
 
 VCO* SimpleFactory::createVCO(SynthPro* parent)

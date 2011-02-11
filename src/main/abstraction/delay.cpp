@@ -21,7 +21,7 @@ Delay::~Delay()
 
 void Delay::initialize(SynthProFactory* factory)
 {
-    m_delaySize_max = BUFFER_DURATION_MAX *  AudioDeviceProvider::OUTPUT_FREQUENCY  / Buffer::DEFAULT_LENGTH;
+    m_delaySizeMax = BUFFER_DURATION_MAX *  AudioDeviceProvider::OUTPUT_FREQUENCY  / Buffer::DEFAULT_LENGTH;
 
     m_buffer = new Buffer(BUFFER_DURATION_MAX);
 

@@ -5,6 +5,7 @@
 #include "abstraction/module.h"
 
 class QTextStream;
+class SynthProFactory;
 
 /**
  * This class mocks a well module, which process operation serializes the content
@@ -13,7 +14,7 @@ class QTextStream;
 class MockSerializerWell : public Module {
     Q_OBJECT
 public:
-    MockSerializerWell(SynthPro*, QTextStream& output);
+    MockSerializerWell(SynthPro*, QTextStream& output, SynthProFactory*);
 
     void ownProcess();
 

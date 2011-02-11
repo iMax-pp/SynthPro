@@ -1,10 +1,15 @@
 #include "testoutport.h"
 
 #include "abstraction/outport.h"
+#include "factory/simplefactory.h"
 
 void TestOutPort::testOut()
 {
-    OutPort outPort(0, "out");
-    QVERIFY(outPort.out());
-    QVERIFY(outPort.buffer()->length() == Buffer::DEFAULT_LENGTH);
+    SimpleFactory factory;
+    OutPort* outPort = factory.createOutPort(0, "out");
+
+    QVERIFY(outPort->out());
+    QVERIFY(outPort->buffer()->length() == Buffer::DEFAULT_LENGTH);
+
+    delete outPort;
 }
