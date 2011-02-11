@@ -13,16 +13,16 @@
 
 void TestVCF::testVCF()
 {
-    SynthPro synthPro(0);
-
     SimpleFactory factory;
 
+    SynthPro* synthPro = factory.createSynthPro();
+
     // VCO
-    VCO* vco = factory.createVCO(&synthPro);
+    VCO* vco = factory.createVCO(synthPro);
     vco->setShape("Empty");
 
     // VCF
-    VCF* vcf = factory.createVCF(&synthPro);
+    VCF* vcf = factory.createVCF(synthPro);
     vcf->setFilter("Increment");
 
     vco->outports().at(0)->connectTo(vcf->inports().at(0));
@@ -40,4 +40,6 @@ void TestVCF::testVCF()
     }
 
     QVERIFY(result);
+
+    delete synthPro;
 }

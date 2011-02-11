@@ -19,6 +19,7 @@ void TestVCO::testVCO()
 
     SimpleFactory factory;
     SynthPro* synth = factory.createSynthPro();
+
     VCO* vco = factory.createVCO(synth);
     MockSerializerWell output(0, stream);
 
@@ -39,6 +40,7 @@ void TestVCO::testVCOwithDimmer()
 
     SimpleFactory factory;
     SynthPro* synth = factory.createSynthPro();
+
     VCO* vco = factory.createVCO(synth);
     vco->setK(3);
     MockSerializerWell output(0, stream);
@@ -73,8 +75,8 @@ void TestVCO::testVCOWithSelector()
     QTextStream stream(&result);
 
     SimpleFactory factory;
-
     SynthPro* synth = factory.createSynthPro();
+
     VCO* vco = factory.createVCO(synth);
     QVERIFY(vco->shape() == "Saw");
 

@@ -2,11 +2,14 @@
 
 #include "abstraction/buffer.h"
 #include "abstraction/inport.h"
+#include "abstraction/mockserializerwell.h"
 #include "abstraction/outport.h"
 #include "abstraction/synthpro.h"
 #include "factory/simplefactory.h"
 
 #include <QDebug>
+#include <QTextStream>
+
 void TestADSR::testADSR()
 {
     SimpleFactory factory;
@@ -29,24 +32,30 @@ void TestADSR::testADSR()
     for (int i= inBuffer->length()*4 / 5 ; i< inBuffer->length() ; i++) {
         inBuffer->data()[i] = 0;
     }
-    //   adsr->ownProcess();
-
+    adsr->ownProcess();
 
 
     QVERIFY(true);
+
+    delete synth;
 }
 void TestADSR::testADSR2Buffers()
 {
+    QString result;
+    QTextStream stream(&result);
+
     SimpleFactory factory;
     SynthPro* synth = factory.createSynthPro();
     ADSR* adsr = factory.createADSR(synth);
 
-    adsr->setAttackValue(0.005);
-    adsr->setDecayValue(0.003);
-    adsr->setSustainValue(0.1);
-    adsr->setReleaseValue(0.003);
+    adsr->setAttackValue(0.015);
+    adsr->setDecayValue(0.008);
+    adsr->setSustainValue(0.71);
+    adsr->setReleaseValue(0.013);
 
     Buffer* inBuffer = adsr->inports().first()->buffer();
+
+    qDebug() << "start";
 
     for (int i = 0 ; i< inBuffer->length() / 2 ; i++) {
         inBuffer->data()[i] = 0;
@@ -58,9 +67,11 @@ void TestADSR::testADSR2Buffers()
         inBuffer->data()[i] = 1;
     }
     adsr->ownProcess();
+<<<<<<< HEAD
+
     // affichage
     for (int i= 0 ; i< inBuffer->length() ; i++) {
-        qDebug()  << adsr->outports().first()->buffer()->data()[i];
+        stream  << adsr->outports().first()->buffer()->data()[i]  << " " << inBuffer->data()[i] <<"\n";
     }
 
 
@@ -75,6 +86,13 @@ void TestADSR::testADSR2Buffers()
         inBuffer->data()[i] = 0;
     }
     adsr->ownProcess();
-
+    // affichage
+    stream << "buffer 2";
+    for (int i= 0 ; i< inBuffer->length() ; i++) {
+        stream  << adsr->outports().first()->buffer()->data()[i] << " " << inBuffer->data()[i] << "\n";
+    }
+    qDebug() << result;
     QVERIFY(true);
+
+    delete synth;
 }

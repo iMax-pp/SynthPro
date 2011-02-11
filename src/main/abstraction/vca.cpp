@@ -15,7 +15,7 @@ void VCA::initialize(SynthProFactory* factory)
     m_inPort = factory->createInPortReplicable(this, "in");
     m_inports.append(m_inPort);
 
-    m_controlInput = factory->createInPort(this, "controlInput");
+    m_controlInput = factory->createInPort(this, "control");
     m_inports.append(m_controlInput);
 
     m_outPort = factory->createOutPortReplicable(this, "out");
