@@ -6,13 +6,13 @@
 #include "abstraction/inport.h"
 #include "abstraction/lfo.h"
 #include "abstraction/modulekeyboard.h"
-#include "abstraction/moduleoscilloscope.h"
-#include "abstraction/moduleout.h"
+#include "abstraction/oscilloscope.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
 #include "abstraction/pushbutton.h"
 #include "abstraction/selector.h"
 #include "abstraction/sequencer.h"
+#include "abstraction/speaker.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vca.h"
 #include "abstraction/vcf.h"
@@ -26,37 +26,50 @@ SynthPro* SimpleFactory::createSynthPro()
 
 Port* SimpleFactory::createPort(VirtualPort* vPort)
 {
-    return new Port(vPort);
+    Port* port = new Port(vPort);
+    return port;
 }
 
 InPort* SimpleFactory::createInPort(Module* parent, const QString& name)
 {
-    return new InPort(parent, name, this, false, false);
+    InPort* port = new InPort(parent, name, this, false, false);
+    port->initialize();
+    return port;
 }
 
 InPort* SimpleFactory::createInPortReplicable(Module* parent, const QString& name)
 {
-    return new InPort(parent, name, this, true, false);
+    InPort* port = new InPort(parent, name, this, true, false);
+    port->initialize();
+    return port;
 }
 
 InPort* SimpleFactory::createInPortGate(Module* parent, const QString& name)
 {
-    return new InPort(parent, name, this, false, true);
+    InPort* port = new InPort(parent, name, this, false, true);
+    port->initialize();
+    return port;
 }
 
 OutPort* SimpleFactory::createOutPort(Module* parent, const QString& name)
 {
-    return new OutPort(parent, name, this, false, false);
+    OutPort* port = new OutPort(parent, name, this, false, false);
+    port->initialize();
+    return port;
 }
 
 OutPort* SimpleFactory::createOutPortReplicable(Module* parent, const QString& name)
 {
-    return new OutPort(parent, name, this, true, false);
+    OutPort* port = new OutPort(parent, name, this, true, false);
+    port->initialize();
+    return port;
 }
 
 OutPort* SimpleFactory::createOutPortGate(Module* parent, const QString& name)
 {
-    return new OutPort(parent, name, this, false, true);
+    OutPort* port = new OutPort(parent, name, this, false, true);
+    port->initialize();
+    return port;
 }
 
 VCO* SimpleFactory::createVCO(SynthPro* parent)
@@ -121,9 +134,9 @@ WavRecorder* SimpleFactory::createWavRecorder(SynthPro* parent, const QString& f
     return mbr;
 }
 
-ModuleOut* SimpleFactory::createModuleOut(SynthPro* parent)
+Speaker* SimpleFactory::createSpeaker(SynthPro* parent)
 {
-    // Do not instanciate ModuleOut if no audio device can be accessed !
+    // Do not instanciate Speaker if no audio device can be accessed !
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();
 
     if (!adp.initializeAudioOutput()) {
@@ -136,14 +149,14 @@ ModuleOut* SimpleFactory::createModuleOut(SynthPro* parent)
         return 0;
     }
 
-    ModuleOut* mo = new ModuleOut(parent, device, adp.audioOutput());
+    Speaker* mo = new Speaker(parent, device, adp.audioOutput());
     mo->initialize(this);
     return mo;
 }
 
-ModuleOscilloscope* SimpleFactory::createModuleOscilloscope(SynthPro* synthPro)
+Oscilloscope* SimpleFactory::createOscilloscope(SynthPro* synthPro)
 {
-    return new ModuleOscilloscope(synthPro);
+    return new Oscilloscope(synthPro);
 }
 
 ModuleKeyboard* SimpleFactory::createModuleKeyboard(SynthPro* synthpro)

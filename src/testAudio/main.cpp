@@ -1,6 +1,6 @@
 #include "abstraction/clock.h"
-#include "abstraction/moduleout.h"
 #include "abstraction/sequencer.h"
+#include "abstraction/speaker.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
 #include "abstraction/wavegeneratorsquare.h"
@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
     SynthProFactory* factory = new SimpleFactory();
     SynthPro* synthPro = factory->createSynthPro();
 
-    ModuleOut* mo = factory->createModuleOut(0);
+    Speaker* mo = factory->createSpeaker(0);
     VCO* vco = factory->createVCO();
     vco->setShape(WaveGeneratorFactory::SawWave);
 

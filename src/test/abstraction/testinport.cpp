@@ -84,8 +84,8 @@ void TestInPort::testConnectTo()
 
     in->connections().first()->connect(out->connections().first());
 
-    QVERIFY(in->connections().contains(out->connections().first()));
-    QVERIFY(out->connections().contains(in->connections().first()));
+    QVERIFY(in->connections().first()->connection() == out->connections().first());
+    QVERIFY(out->connections().first()->connection() ==  in->connections().first());
     QCOMPARE(m_count, 1);
 
     delete in;
@@ -105,8 +105,8 @@ void TestInPort::testDisconnectFrom()
     in->connections().first()->connect(out->connections().first());
     out->connections().first()->disconnect();
 
-    QVERIFY(!in->connections().contains(out->connections().first()));
-    QVERIFY(!out->connections().contains(in->connections().first()));
+    QVERIFY(!in->connections().first()->connection());
+    QVERIFY(!out->connections().first()->connection());
     QCOMPARE(m_count, 2); // Two calls: one for the connection, one for the disconnection
 
     m_count = 0;

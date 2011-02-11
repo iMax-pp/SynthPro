@@ -2,9 +2,9 @@
 
 #include "abstraction/filterincrement.h"
 #include "abstraction/inport.h"
-#include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
+#include "abstraction/speaker.h"
 #include "abstraction/synthpro.h"
 #include "abstraction/vcf.h"
 #include "abstraction/vco.h"

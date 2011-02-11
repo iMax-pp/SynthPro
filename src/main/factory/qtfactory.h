@@ -6,12 +6,12 @@
 #include "control/cinport.h"
 #include "control/ckeyboard.h"
 #include "control/clfo.h"
-#include "control/cmoduleout.h"
 #include "control/coscilloscope.h"
 #include "control/coutport.h"
 #include "control/cport.h"
 #include "control/cpushbutton.h"
 #include "control/cselector.h"
+#include "control/cspeaker.h"
 #include "control/csynthpro.h"
 #include "control/cvca.h"
 #include "control/cvcf.h"
@@ -45,8 +45,8 @@ public:
 
     WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
     CKeyboard* createModuleKeyboard(SynthPro*);
-    CModuleOut* createModuleOut(SynthPro*);
-    COscilloscope* createModuleOscilloscope(SynthPro*);
+    CSpeaker* createSpeaker(SynthPro*);
+    COscilloscope* createOscilloscope(SynthPro*);
 
     CDimmer* createDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent);
     CSelector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent);
