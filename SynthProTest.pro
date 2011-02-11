@@ -60,7 +60,8 @@ HEADERS += \
     src/test/abstraction/testvcf.h \
     src/test/abstraction/testadsr.h \
     src/main/abstraction/moduleoscilloscope.h \
-    src/test/abstraction/testlfo.h
+    src/test/abstraction/testlfo.h \
+    src/test/abstraction/testdelay.h
 
 
 SOURCES += src/test/test.cpp \
@@ -115,7 +116,8 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testvcf.cpp \
     src/test/abstraction/testadsr.cpp \
     src/main/abstraction/moduleoscilloscope.cpp \
-    src/test/abstraction/testlfo.cpp
+    src/test/abstraction/testlfo.cpp \
+    src/test/abstraction/testdelay.cpp
 
 
 INCLUDEPATH += src/main/ src/test/
