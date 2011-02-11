@@ -2,5 +2,6 @@
     <qresource prefix="/src/resources">
         <file>images/exit.png</file>
         <file>images/new.png</file>
+        <file>images/speaker-icon.png</file>
     </qresource>
 </RCC>

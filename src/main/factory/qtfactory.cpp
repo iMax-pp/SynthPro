@@ -1,25 +1,17 @@
 #include "qtfactory.h"
 
+#include "abstraction/adsr.h"
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/modulebufferrecorder.h"
+#include "abstraction/moduleoscilloscope.h"
 #include "abstraction/sequencer.h"
-#include "control/cdimmer.h"
-#include "control/cinport.h"
-#include "control/clfo.h"
-#include "control/cmodule.h"
-#include "control/cmoduleout.h"
-#include "control/coutport.h"
 #include "control/cportwidget.h"
-#include "control/cselector.h"
-#include "control/csynthpro.h"
-#include "control/cvca.h"
-#include "control/cvcf.h"
-#include "control/cvco.h"
-#include "control/cvirtualport.h"
 #include "control/cwire.h"
+#include "presentation/padsr.h"
 #include "presentation/plfo.h"
 #include "presentation/pmoduleout.h"
 #include "presentation/portwidget.h"
+#include "presentation/poscilloscope.h"
 #include "presentation/pvca.h"
 #include "presentation/pvcf.h"
 #include "presentation/pvco.h"
@@ -114,7 +106,7 @@ CVCO* QtFactory::createVCO(SynthPro* parent)
 
 CLFO* QtFactory::createLFO(SynthPro* parent)
 {
-    // Create the VCO
+    // Create the LFO
     CLFO* lfo = new CLFO(parent);
 
     // Create its presentation
@@ -145,7 +137,7 @@ CVCF* QtFactory::createVCF(SynthPro* parent)
 
 CVCA* QtFactory::createVCA(SynthPro* parent)
 {
-    // Create the VCO
+    // Create the VCA
     CVCA* vca = new CVCA(parent);
 
     // Create its presentation
@@ -158,6 +150,24 @@ CVCA* QtFactory::createVCA(SynthPro* parent)
     // return vca;
     return vca;
 }
+
+CADSR* QtFactory::createADSR(SynthPro* parent)
+{
+    // Create the ADSR
+    CADSR* adsr = new CADSR(parent);
+
+    // Create its presentation
+    PADSR* p = new PADSR(adsr);
+    adsr->setPresentation(p);
+
+    // Initialize it (ports creation)
+    adsr->initialize(this);
+
+    // return vca;
+    return adsr;
+
+}
+
 CDimmer* QtFactory::createDimmer(QString name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
@@ -212,6 +222,21 @@ CModuleOut* QtFactory::createModuleOut(SynthPro* parent)
     mo->initialize(this);
 
     return mo;
+}
+
+COscilloscope* QtFactory::createModuleOscilloscope(SynthPro* parent)
+{
+    // Create the Oscilloscope Controler
+    COscilloscope* co = new COscilloscope(parent);
+
+    // Create its presentation
+    POscilloscope* p = new POscilloscope(co);
+    co->setPresentation(p);
+
+    // Initialize it (ports creation)
+    co->initialize(this);
+
+    return co;
 }
 
 CWire* QtFactory::createWire(QGraphicsScene* scene)

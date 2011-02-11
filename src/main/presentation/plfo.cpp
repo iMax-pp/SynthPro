@@ -27,12 +27,12 @@ void PLFO::initialize(PVirtualPort* out, PDimmer* k, PDimmer* range,
 
     // Layout
     bottomArea()->addCornerAnchors(k, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
-    bottomArea()->addAnchor(k, Qt::AnchorRight, range, Qt::AnchorLeft);
-    bottomArea()->addAnchor(range, Qt::AnchorRight, offset, Qt::AnchorLeft);
+    bottomArea()->addAnchor(k, Qt::AnchorRight, offset, Qt::AnchorLeft);
+    bottomArea()->addAnchor(range, Qt::AnchorRight, selector, Qt::AnchorLeft);
     bottomArea()->addAnchor(offset, Qt::AnchorRight, selector, Qt::AnchorLeft);
     bottomArea()->addAnchor(selector, Qt::AnchorRight, bottomArea(), Qt::AnchorRight);
     bottomArea()->addAnchors(selector, bottomArea(), Qt::Vertical);
-    bottomArea()->addAnchor(range, Qt::AnchorBottom, bottomArea(), Qt::AnchorBottom);
+    bottomArea()->addAnchor(range, Qt::AnchorBottom, offset, Qt::AnchorTop);
     bottomArea()->addAnchor(offset, Qt::AnchorBottom, bottomArea(), Qt::AnchorBottom);
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());

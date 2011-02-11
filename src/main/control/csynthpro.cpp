@@ -1,9 +1,11 @@
 #include "csynthpro.h"
 
-#include "cinport.h"
+#include "control/cadsr.h"
+#include "control/cinport.h"
 #include "control/clfo.h"
 #include "control/cmodule.h"
 #include "control/cmoduleout.h"
+#include "control/coscilloscope.h"
 #include "control/coutport.h"
 #include "control/cvca.h"
 #include "control/cvcf.h"
@@ -79,6 +81,7 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
         module = dynamic_cast<Module*>(m_factory->createVCA(this));
         break;
     case SynthProFactory::ADSRId:
+        module = dynamic_cast<Module*>(m_factory->createADSR(this));
         break;
     case SynthProFactory::LFOId:
         module = dynamic_cast<Module*>(m_factory->createLFO(this));
@@ -87,6 +90,9 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
         module = dynamic_cast<Module*>(m_factory->createModuleOut(this));
         break;
     case SynthProFactory::FileOutputId:
+        break;
+    case SynthProFactory::OscilloscopeId:
+        module = dynamic_cast<Module*>(m_factory->createModuleOscilloscope(this));
         break;
     default:
         break;

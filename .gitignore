@@ -5,6 +5,7 @@
 *.pyc
 *.xcodeproj
 bin
+build
 Info.plist
 Makefile
 doc/conception/*.session

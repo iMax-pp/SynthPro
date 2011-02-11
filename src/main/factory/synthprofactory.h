@@ -9,6 +9,7 @@ class InPort;
 class LFO;
 class Module;
 class ModuleBufferRecorder;
+class ModuleOscilloscope;
 class ModuleOut;
 class OutPort;
 class Selector;
@@ -17,6 +18,7 @@ class SynthPro;
 class VCF;
 class VCO;
 class VCA;
+class ADSR;
 
 class SynthProFactory {
 public:
@@ -34,12 +36,16 @@ public:
     virtual LFO* createLFO(SynthPro*) = 0;
     virtual VCF* createVCF(SynthPro*) = 0;
     virtual VCA* createVCA(SynthPro*) = 0;
+    virtual ADSR* createADSR(SynthPro*) = 0;
     virtual ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
+
     /**
       * Instanciate a ModuleOut, but ONLY if the audio device isn't already used by another instance.
       * @return ModuleOut if instanciation successful, 0 if not.
       */
     virtual ModuleOut* createModuleOut(SynthPro*) = 0;
+
+    virtual ModuleOscilloscope* createModuleOscilloscope(SynthPro*) = 0;
 
     /*
      * instantiate a dimmer's abstraction
@@ -61,7 +67,8 @@ public:
         ADSRId,
         LFOId,
         AudioOuputId,
-        FileOutputId
+        FileOutputId,
+        OscilloscopeId
     };
 };
 

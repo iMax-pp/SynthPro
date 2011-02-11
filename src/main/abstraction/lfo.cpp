@@ -52,6 +52,9 @@ LFO::~LFO()
     if (m_waveGenerator) {
         delete m_waveGenerator;
     }
+
+    // FIXME, this leads to an infinite loop of bad desalloc.
+    // delete[] m_lfoBuffer;
 }
 
 void LFO::ownProcess()

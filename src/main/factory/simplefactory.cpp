@@ -1,5 +1,6 @@
 #include "simplefactory.h"
 
+#include "abstraction/adsr.h"
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
 #include "abstraction/lfo.h"
@@ -69,6 +70,14 @@ VCA* SimpleFactory::createVCA(SynthPro* parent)
     return vca;
 }
 
+
+ADSR* SimpleFactory::createADSR(SynthPro* parent)
+{
+    ADSR* adsr = new ADSR(parent);
+    adsr->initialize(this);
+    return adsr;
+}
+
 LFO* SimpleFactory::createLFO(SynthPro* parent)
 {
     LFO* lfo = new LFO(parent);
@@ -113,3 +122,5 @@ ModuleOut* SimpleFactory::createModuleOut(SynthPro* parent)
     mo->initialize(this);
     return mo;
 }
+
+ModuleOscilloscope* SimpleFactory::createModuleOscilloscope(SynthPro*) {}
