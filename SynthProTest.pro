@@ -55,13 +55,13 @@ HEADERS += \
     src/main/abstraction/filtersoftsaturation.h \
     src/main/factory/filterfactory.h \
     src/main/abstraction/vca.h \
+    src/main/abstraction/delay.h \
     src/main/abstraction/adsr.h \
     src/test/abstraction/testvca.h \
     src/test/abstraction/testvcf.h \
     src/test/abstraction/testadsr.h \
     src/main/abstraction/moduleoscilloscope.h \
-    src/test/abstraction/testlfo.h \
-    src/test/abstraction/testdelay.h
+    src/test/abstraction/testdelay.h \
     src/main/abstraction/pushbutton.h \
     src/main/abstraction/modulekeyboard.h \
     src/main/abstraction/port.h \
@@ -87,6 +87,7 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testvco.cpp \
     src/main/abstraction/lfo.cpp \
     src/main/abstraction/vco.cpp \
+    src/main/abstraction/delay.cpp \
     src/main/abstraction/wavegeneratordummy.cpp \
     src/main/abstraction/wavegeneratorempty.cpp \
     src/main/abstraction/wavegeneratortriangle.cpp \
@@ -120,7 +121,6 @@ SOURCES += src/test/test.cpp \
     src/test/abstraction/testvcf.cpp \
     src/test/abstraction/testadsr.cpp \
     src/main/abstraction/moduleoscilloscope.cpp \
-    src/test/abstraction/testlfo.cpp \
     src/test/abstraction/testdelay.cpp \
     src/main/abstraction/pushbutton.cpp \
     src/main/abstraction/modulekeyboard.cpp \
