@@ -2,6 +2,7 @@
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/buffer.h"
+#include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
 #include "factory/synthprofactory.h"
@@ -20,7 +21,7 @@ Delay::~Delay()
 
 void Delay::initialize(SynthProFactory* factory)
 {
-    m_delaySize = BUFFER_DURATION_MAX *  AudioDeviceProvider::OUTPUT_FREQUENCY  / Buffer::DEFAULT_LENGTH;
+    m_delaySize_max = BUFFER_DURATION_MAX *  AudioDeviceProvider::OUTPUT_FREQUENCY  / Buffer::DEFAULT_LENGTH;
 
     m_buffer = new Buffer(BUFFER_DURATION_MAX);
 
@@ -43,11 +44,12 @@ void Delay::initialize(SynthProFactory* factory)
 
 void Delay::ownProcess()
 {
-    if (m_readIndex == m_delaySize) {
-        m_readIndex = 0;
-    }
+    int delaySize = m_durationDimmer->value();
+    int decay = m_durationDimmer->value();
 
-    if (m_writeIndex == m_delaySize) {
+    m_readIndex = (m_readIndex == delaySize - 1) ? 0 : m_writeIndex + 1;
+
+    if (m_writeIndex == delaySize) {
         m_readIndex = 0;
     }
 
@@ -57,6 +59,6 @@ void Delay::ownProcess()
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
         m_buffer->data()[m_writeIndex + i] = m_inPort->buffer()->data()[i];
     }
-    m_readIndex++;
+
     m_writeIndex++;
 }

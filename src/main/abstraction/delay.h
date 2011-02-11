@@ -26,7 +26,8 @@ protected:
     Dimmer* m_durationDimmer;
     Dimmer* m_decayDimmer;
 
-    int m_delaySize; /// number of active buffers in the buffer
+
+    int m_delaySizeMax; /// max number  buffers in the buffer
     int m_readIndex, m_writeIndex;
 
 
