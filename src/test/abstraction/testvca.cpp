@@ -4,6 +4,7 @@
 #include "abstraction/mockserializerwell.h"
 #include "abstraction/moduleout.h"
 #include "abstraction/outport.h"
+#include "abstraction/synthpro.h"
 #include "abstraction/vco.h"
 #include "factory/simplefactory.h"
 
@@ -13,7 +14,6 @@ void TestVCA::testVCA()
 {
     QString result;
     QTextStream stream(&result);
-
 
     SimpleFactory factory;
     SynthPro* synth = factory.createSynthPro();
@@ -32,5 +32,4 @@ void TestVCA::testVCA()
     QVERIFY(result.startsWith("-0.118651"));
 
     delete synth;
-
 }

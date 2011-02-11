@@ -12,12 +12,12 @@
 
 void TestLFO::testLFO()
 {
-    SynthPro synthPro(0);
-
     SimpleFactory factory;
 
+    SynthPro* synthPro = factory.createSynthPro();
+
     // LFO
-    LFO* lfo = factory.createLFO(&synthPro);
+    LFO* lfo = factory.createLFO(synthPro);
     lfo->setShape("Square");
     lfo->setK(K);
     lfo->setRange(RANGE);
@@ -38,4 +38,5 @@ void TestLFO::testLFO()
 
     QVERIFY(result);
 
+    delete synthPro;
 }
