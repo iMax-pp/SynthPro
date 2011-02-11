@@ -2,6 +2,7 @@
 
 #include "control/cadsr.h"
 #include "control/cinport.h"
+#include "control/ckeyboard.h"
 #include "control/clfo.h"
 #include "control/cmodule.h"
 #include "control/cmoduleout.h"
@@ -70,6 +71,7 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
 
     switch (moduleType) {
     case SynthProFactory::KeyboardId:
+        module = dynamic_cast<Module*>(m_factory->createModuleKeyboard(this));
         break;
     case SynthProFactory::VCOId:
         module = dynamic_cast<Module*>(m_factory->createVCO(this));

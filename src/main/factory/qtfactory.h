@@ -4,6 +4,7 @@
 #include "control/cadsr.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
+#include "control/ckeyboard.h"
 #include "control/clfo.h"
 #include "control/cmoduleout.h"
 #include "control/coscilloscope.h"
@@ -38,6 +39,7 @@ public:
     CVCA* createVCA(SynthPro*);
     CADSR* createADSR(SynthPro*);
     ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    CKeyboard* createModuleKeyboard(SynthPro*);
     CModuleOut* createModuleOut(SynthPro*);
     COscilloscope* createModuleOscilloscope(SynthPro*);
 

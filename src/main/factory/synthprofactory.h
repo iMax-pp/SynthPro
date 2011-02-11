@@ -10,6 +10,7 @@ class InPort;
 class LFO;
 class Module;
 class ModuleBufferRecorder;
+class ModuleKeyboard;
 class ModuleOscilloscope;
 class ModuleOut;
 class OutPort;
@@ -39,6 +40,7 @@ public:
     virtual VCA* createVCA(SynthPro*) = 0;
     virtual ADSR* createADSR(SynthPro*) = 0;
     virtual ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
+    virtual ModuleKeyboard* createModuleKeyboard(SynthPro*) = 0;
 
     /**
       * Instanciate a ModuleOut, but ONLY if the audio device isn't already used by another instance.

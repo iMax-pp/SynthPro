@@ -8,6 +8,7 @@
 #include "control/cportwidget.h"
 #include "control/cwire.h"
 #include "presentation/padsr.h"
+#include "presentation/pkeyboard.h"
 #include "presentation/plfo.h"
 #include "presentation/pmoduleout.h"
 #include "presentation/portwidget.h"
@@ -208,6 +209,21 @@ ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(SynthPro* parent, QS
     ModuleBufferRecorder* mbr = new ModuleBufferRecorder(parent, fileName, nbProcessingBeforeSaving);
     mbr->initialize(this);
     return mbr;
+}
+
+CKeyboard* QtFactory::createModuleKeyboard(SynthPro* parent)
+{
+    // Create the Keyboard Controler
+    CKeyboard* ck = new CKeyboard(parent);
+
+    // Create its presentation
+    PKeyboard* p = new PKeyboard(ck);
+    ck->setPresentation(p);
+
+    // Initialize it (ports creation)
+    ck->initialize(this);
+
+    return ck;
 }
 
 CModuleOut* QtFactory::createModuleOut(SynthPro* parent)
