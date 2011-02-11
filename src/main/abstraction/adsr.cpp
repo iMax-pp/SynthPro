@@ -13,6 +13,7 @@ ADSR::ADSR(SynthPro* parent)
     , m_timeLine(0)
     , m_currentState(IDLE)
     , m_gateValue(0)
+    , m_startRelease(0)
 {
 }
 
@@ -39,7 +40,6 @@ void ADSR::ownProcess()
 
     qreal currentValue = 0;
     int bufferIndex = 0;
-    qreal startRelease = 0;
 
     while (bufferIndex < m_gate->buffer()->length()) {
         currentValue = m_gate->buffer()->data()[bufferIndex];
@@ -52,7 +52,7 @@ void ADSR::ownProcess()
         if (currentValue < m_gateValue) {
             // a gate "of" signal occurs
             m_currentState = RELEASE;
-            startRelease = m_timeLine;
+            m_startRelease = m_timeLine;
         }
         if (m_currentState == ATTACK && m_timeLine == attackInSample) {
             m_currentState = DECAY;
@@ -60,8 +60,10 @@ void ADSR::ownProcess()
         if (m_currentState == DECAY && m_timeLine == (attackInSample + decayInSample)) {
             m_currentState = SUSTAIN;
         }
-        if (m_currentState == RELEASE &&  m_timeLine == startRelease + releaseInSample) {
+        if (m_currentState == RELEASE &&  m_timeLine == m_startRelease + releaseInSample) {
             m_currentState = IDLE;
+            m_timeLine = 0;
+
         }
         switch (m_currentState) {
         case ATTACK :
@@ -87,19 +89,20 @@ void ADSR::ownProcess()
         case RELEASE :
             if (m_decayDimmer->value() != 0) {
                 outports().first()->buffer()->data()[bufferIndex] =
-                        m_sustainDimmer->value() - m_sustainDimmer->value()*(m_timeLine-startRelease) / releaseInSample;
+                        m_sustainDimmer->value() - m_sustainDimmer->value()*(m_timeLine-m_startRelease) / releaseInSample;
             } else {
                 outports().first()->buffer()->data()[bufferIndex] = 0;
             }
             break;
         case IDLE :
+            outports().first()->buffer()->data()[bufferIndex] = 0;
             break;
         }
 
         if (m_currentState != IDLE) {
             m_timeLine++;
         }
-
+        qDebug() << m_currentState;
         bufferIndex++;
         m_gateValue = currentValue;
     }

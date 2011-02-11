@@ -10,6 +10,8 @@
 #include <QDebug>
 #include <QTextStream>
 
+// #include <iostream>
+
 void TestADSR::testADSR()
 {
     SimpleFactory factory;
@@ -41,17 +43,20 @@ void TestADSR::testADSR()
 }
 void TestADSR::testADSR2Buffers()
 {
+    // FILE *outfile = fopen("adsr","w");
+
     QString result;
     QTextStream stream(&result);
+    // QTextStream stream(outfile);
 
     SimpleFactory factory;
     SynthPro* synth = factory.createSynthPro();
     ADSR* adsr = factory.createADSR(synth);
 
-    adsr->setAttackValue(0.015);
+    adsr->setAttackValue(0.005);
     adsr->setDecayValue(0.008);
     adsr->setSustainValue(0.71);
-    adsr->setReleaseValue(0.013);
+    adsr->setReleaseValue(0.008);
 
     Buffer* inBuffer = adsr->inports().first()->buffer();
 
@@ -60,18 +65,14 @@ void TestADSR::testADSR2Buffers()
     for (int i = 0 ; i< inBuffer->length() / 2 ; i++) {
         inBuffer->data()[i] = 0;
     }
-    for (int i= inBuffer->length() / 2 ; i< inBuffer->length()*4 / 5 ; i++) {
+    for (int i= inBuffer->length() / 2 ; i< inBuffer->length() ; i++) {
         inBuffer->data()[i] = 1;
     }
-    for (int i= inBuffer->length()*4 / 5 ; i< inBuffer->length() ; i++) {
-        inBuffer->data()[i] = 1;
-    }
-    adsr->ownProcess();
-<<<<<<< HEAD
 
-    // affichage
-    for (int i= 0 ; i< inBuffer->length() ; i++) {
-        stream  << adsr->outports().first()->buffer()->data()[i]  << " " << inBuffer->data()[i] <<"\n";
+    adsr->ownProcess();
+    for (int i = 0 ; i< inBuffer->length() ; i++) {
+        stream  << i << " " << adsr->outports().first()->buffer()->data()[i] << "\n";
+
     }
 
 
@@ -79,20 +80,19 @@ void TestADSR::testADSR2Buffers()
     for (int i = 0 ; i< inBuffer->length() / 4 ; i++) {
         inBuffer->data()[i] = 1;
     }
-    for (int i= inBuffer->length() / 4 ; i< inBuffer->length()*4 / 5 ; i++) {
-        inBuffer->data()[i] = 0;
-    }
-    for (int i= inBuffer->length()*4 / 5 ; i< inBuffer->length() ; i++) {
+    for (int i= inBuffer->length() / 4 ; i< inBuffer->length() ; i++) {
         inBuffer->data()[i] = 0;
     }
     adsr->ownProcess();
-    // affichage
-    stream << "buffer 2";
-    for (int i= 0 ; i< inBuffer->length() ; i++) {
-        stream  << adsr->outports().first()->buffer()->data()[i] << " " << inBuffer->data()[i] << "\n";
-    }
-    qDebug() << result;
-    QVERIFY(true);
 
+    for (int i = 0 ; i< inBuffer->length() ; i++) {
+        int index = i+900;
+        stream  << index << " " <<  adsr->outports().first()->buffer()->data()[i] << "\n";
+
+    }
+
+    // qDebug() << result;
+    QVERIFY(true);
+    // fclose(outfile);
     delete synth;
 }
