@@ -34,10 +34,9 @@ void PADSR::initialize(PVirtualPort* gate, PVirtualPort* out, PDimmer* attack, P
     bottomArea()->addCornerAnchors(attack, Qt::BottomRightCorner, release, Qt::TopLeftCorner);
     bottomArea()->addCornerAnchors(sustain, Qt::TopRightCorner, decay, Qt::BottomLeftCorner);
     leftArea()->addCornerAnchors(gate, Qt::TopLeftCorner, leftArea(), Qt::TopLeftCorner);
-    leftArea()->addCornerAnchors(manual, Qt::TopRightCorner, leftArea(), Qt::TopRightCorner);
-    leftArea()->addCornerAnchors(gate, Qt::BottomLeftCorner, leftArea(), Qt::BottomLeftCorner);
-    leftArea()->addCornerAnchors(manual, Qt::BottomRightCorner, leftArea(), Qt::BottomRightCorner);
-    leftArea()->addAnchor(gate, Qt::AnchorRight, manual, Qt::AnchorLeft);
+    leftArea()->addAnchor(manual, Qt::AnchorTop, gate, Qt::AnchorBottom);
+    leftArea()->addCornerAnchors(manual, Qt::BottomLeftCorner, leftArea(), Qt::BottomLeftCorner);
+    leftArea()->addAnchor(gate, Qt::AnchorRight, leftArea(), Qt::AnchorRight);
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
 }

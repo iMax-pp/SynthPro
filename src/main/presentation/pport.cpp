@@ -1,6 +1,6 @@
-#include "portwidget.h"
+#include "pport.h"
 
-#include "control/cportwidget.h"
+#include "control/cport.h"
 #include "presentation/pvirtualport.h"
 #include <QApplication>
 #include <QGraphicsScene>
@@ -8,7 +8,7 @@
 #include <QPainter>
 #include <QStyle>
 
-PortWidget::PortWidget(CPortWidget* control, PVirtualPort* parent)
+PPort::PPort(CPort* control, QGraphicsItem* parent)
     : QGraphicsWidget(parent)
     , m_control(control)
 {
@@ -18,14 +18,14 @@ PortWidget::PortWidget(CPortWidget* control, PVirtualPort* parent)
     hideFeedback(); // HACK to init port color.
 }
 
-void PortWidget::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
+void PPort::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 {
     painter->setPen(Qt::NoPen);
     painter->setBrush(palette().button());
     painter->drawEllipse(0, 0, PORT_SIZE, PORT_SIZE);
 }
 
-void PortWidget::showFeedback(bool compatible)
+void PPort::showFeedback(bool compatible)
 {
     QPalette palette(Qt::red);
 
@@ -37,7 +37,7 @@ void PortWidget::showFeedback(bool compatible)
     update();
 }
 
-void PortWidget::hideFeedback()
+void PPort::hideFeedback()
 {
     QPalette palette;
     palette.setBrush(QPalette::Button, QApplication::style()->standardPalette().brush(QPalette::Mid));
@@ -46,7 +46,7 @@ void PortWidget::hideFeedback()
     update();
 }
 
-void PortWidget::mousePressEvent(QGraphicsSceneMouseEvent* event)
+void PPort::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {
         event->accept();
@@ -54,7 +54,7 @@ void PortWidget::mousePressEvent(QGraphicsSceneMouseEvent* event)
     }
 }
 
-void PortWidget::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
+void PPort::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
     // While the wire isn't connected to another port, update it with the mouse position.
     control()->dragMove(event->scenePos());
@@ -62,17 +62,17 @@ void PortWidget::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 }
 
 
-void PortWidget::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
+void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 {
     // Retrieve a list of the items beneath the mouse.
     QPointF pos = event->scenePos();
     QList<QGraphicsItem*> items = scene()->items(pos);
 
     // Try to find the port within all the items...
-    PortWidget* target = 0;
+    PPort* target = 0;
     foreach (QGraphicsItem* item, items) {
         // ...by casting it.
-        if ((target = dynamic_cast<PortWidget*>(item))) {
+        if ((target = dynamic_cast<PPort*>(item))) {
             // If it's the port, then don't go further.
             break;
         }

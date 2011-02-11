@@ -10,9 +10,11 @@ class InPort;
 class LFO;
 class Module;
 class ModuleBufferRecorder;
+class ModuleKeyboard;
 class ModuleOscilloscope;
 class ModuleOut;
 class OutPort;
+class Port;
 class PushButton;
 class Selector;
 class Sequencer;
@@ -20,10 +22,15 @@ class SynthPro;
 class VCA;
 class VCF;
 class VCO;
+class VCA;
+class VirtualPort;
+class ADSR;
 
 class SynthProFactory {
 public:
     virtual SynthPro* createSynthPro() = 0;
+
+    virtual Port* createPort(VirtualPort* vPort) = 0;
 
     virtual InPort* createInPort(Module* parent, const QString& name) = 0;
     virtual InPort* createInPortReplicable(Module* parent, const QString& name) = 0;
@@ -38,7 +45,8 @@ public:
     virtual VCF* createVCF(SynthPro*) = 0;
     virtual VCA* createVCA(SynthPro*) = 0;
     virtual ADSR* createADSR(SynthPro*) = 0;
-    virtual ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
+    virtual ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
+    virtual ModuleKeyboard* createModuleKeyboard(SynthPro*) = 0;
 
     /**
       * Instanciate a ModuleOut, but ONLY if the audio device isn't already used by another instance.
@@ -54,9 +62,9 @@ public:
      * @param max max value
      * @param default_value the value where the dimmer is positionned at creation
      */
-    virtual Dimmer* createDimmer(QString name, qreal min, qreal man, qreal defaultValue, Module* parent) = 0;
-    virtual Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, QString name, Module* parent) = 0;
-    virtual PushButton* createPushButton(QString name, Module* parent) = 0;
+    virtual Dimmer* createDimmer(const QString& name, qreal min, qreal man, qreal defaultValue, Module* parent) = 0;
+    virtual Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent) = 0;
+    virtual PushButton* createPushButton(const QString& name, Module* parent) = 0;
 
     /*
      * Enumeration of module types.

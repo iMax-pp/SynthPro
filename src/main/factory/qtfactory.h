@@ -4,10 +4,12 @@
 #include "control/cadsr.h"
 #include "control/cdimmer.h"
 #include "control/cinport.h"
+#include "control/ckeyboard.h"
 #include "control/clfo.h"
 #include "control/cmoduleout.h"
 #include "control/coscilloscope.h"
 #include "control/coutport.h"
+#include "control/cport.h"
 #include "control/cpushbutton.h"
 #include "control/cselector.h"
 #include "control/csynthpro.h"
@@ -24,6 +26,8 @@ class QtFactory : public SynthProFactory {
 public:
     CSynthPro* createSynthPro();
 
+    CPort* createPort(VirtualPort* vPort);
+
     CInPort* createInPort(Module* parent, const QString& name);
     CInPort* createInPortReplicable(Module* parent, const QString& name);
     CInPort* createInPortGate(Module* parent, const QString& name);
@@ -38,6 +42,7 @@ public:
     CVCA* createVCA(SynthPro*);
     CADSR* createADSR(SynthPro*);
     ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    CKeyboard* createModuleKeyboard(SynthPro*);
     CModuleOut* createModuleOut(SynthPro*);
     COscilloscope* createModuleOscilloscope(SynthPro*);
 
@@ -47,7 +52,6 @@ public:
 
     // Creation methods specific to the QtFactory
     CWire* createWire(QGraphicsScene*);
-    CPortWidget* createPortWidget(CVirtualPort*, QtFactory*);
 
 protected:
     // Convenient factory method

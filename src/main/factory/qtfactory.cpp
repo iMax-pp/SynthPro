@@ -4,14 +4,15 @@
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/modulebufferrecorder.h"
 #include "abstraction/moduleoscilloscope.h"
+#include "abstraction/port.h"
 #include "abstraction/sequencer.h"
-#include "control/cportwidget.h"
 #include "control/cwire.h"
 #include "presentation/padsr.h"
+#include "presentation/pkeyboard.h"
 #include "presentation/plfo.h"
 #include "presentation/pmoduleout.h"
-#include "presentation/portwidget.h"
 #include "presentation/poscilloscope.h"
+#include "presentation/pport.h"
 #include "presentation/ppushbutton.h"
 #include "presentation/pvca.h"
 #include "presentation/pvcf.h"
@@ -32,10 +33,21 @@ CSynthPro* QtFactory::createSynthPro()
     return synthpro;
 }
 
+CPort* QtFactory::createPort(VirtualPort* vPort)
+{
+    CVirtualPort* cVPort = dynamic_cast<CVirtualPort*>(vPort);
+
+    CPort* port = new CPort(cVPort, this);
+
+    PPort* presentation = new PPort(port, cVPort->presentation());
+    port->setPresentation(presentation);
+
+    return port;
+}
+
 CInPort* QtFactory::createInPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
-    qDebug() << "QtFactory::createInPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     CInPort* port = new CInPort(cParent, this, name, replicable, gate);
 
     PVirtualPort* p = new PVirtualPort(port, cParent->presentation());
@@ -64,7 +76,6 @@ CInPort* QtFactory::createInPortGate(Module* parent, const QString& name)
 COutPort* QtFactory::createOutPort(Module* parent, const QString& name, bool replicable, bool gate)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
-    qDebug() << "QtFactory::createOutPort cParent =" << (long)cParent << ", parent =" << (long)parent;
     COutPort* port = new COutPort(cParent, this, name, replicable, gate);
 
     PVirtualPort* p = new PVirtualPort(port, cParent->presentation());
@@ -210,6 +221,21 @@ ModuleBufferRecorder* QtFactory::createModuleBufferRecorder(SynthPro* parent, QS
     return mbr;
 }
 
+CKeyboard* QtFactory::createModuleKeyboard(SynthPro* parent)
+{
+    // Create the Keyboard Controler
+    CKeyboard* ck = new CKeyboard(parent);
+
+    // Create its presentation
+    PKeyboard* p = new PKeyboard(ck);
+    ck->setPresentation(p);
+
+    // Initialize it (ports creation)
+    ck->initialize(this);
+
+    return ck;
+}
+
 CModuleOut* QtFactory::createModuleOut(SynthPro* parent)
 {
     // Do not instanciate ModuleOut if no audio device can be accessed !
@@ -258,14 +284,4 @@ CWire* QtFactory::createWire(QGraphicsScene* scene)
     wire->setPresentation(presentation);
 
     return wire;
-}
-
-CPortWidget* QtFactory::createPortWidget(CVirtualPort* parent, QtFactory* factory)
-{
-    CPortWidget* cPortWidget = new CPortWidget(parent, factory);
-
-    PortWidget* presentation = new PortWidget(cPortWidget, parent->presentation());
-    cPortWidget->setPresentation(presentation);
-
-    return cPortWidget;
 }

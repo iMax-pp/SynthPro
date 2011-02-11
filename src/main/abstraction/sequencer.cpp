@@ -20,7 +20,6 @@ Sequencer& Sequencer::instance()
 
 void Sequencer::process()
 {
-    // qDebug("Sequencer::process()");
     foreach (Module* module, m_sortedModules) {
         module->process();
     }

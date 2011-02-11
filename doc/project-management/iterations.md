@@ -92,7 +92,8 @@ date :  semaine 6 (vendredi 11 - )
      - Wire plus jolis.
 
 - Cyrille :
-     - 
+     - ADSR;
+     - Doc.
 
 Roadmap (todo)
 ---------

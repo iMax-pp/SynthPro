@@ -5,7 +5,7 @@
 
 class CVirtualPort;
 class TextWidget;
-class PortWidget;
+class PPort;
 class QGraphicsLinearLayout;
 
 class PVirtualPort : public QGraphicsWidget {
@@ -17,7 +17,7 @@ public:
 
     inline CVirtualPort* control() const { return m_control; }
 
-    void addReplication(PortWidget* replication);
+    void addReplication(PPort* replication);
 
 private:
     CVirtualPort* m_control;

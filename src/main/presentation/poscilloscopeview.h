@@ -5,6 +5,7 @@
 #include <QGraphicsWidget>
 
 class POscilloscopeView : public QGraphicsWidget {
+
 public:
     POscilloscopeView(QGraphicsItem* parent);
 

@@ -1,21 +1,21 @@
-#ifndef PORTWIDGET_H
-#define PORTWIDGET_H
+#ifndef PPORT_H
+#define PPORT_H
 
 #include <QGraphicsWidget>
 
-class CPortWidget;
+class CPort;
 class PVirtualPort;
 
 /**
  * Represents a single port in a PPort widget
  */
-class PortWidget : public QGraphicsWidget {
+class PPort : public QGraphicsWidget {
 public:
-    PortWidget(CPortWidget* control, PVirtualPort* parent);
+    PPort(CPort* control, QGraphicsItem* parent);
 
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
 
-    inline CPortWidget* control() const { return m_control; }
+    inline CPort* control() const { return m_control; }
 
     static const int PORT_SIZE = 15;
 
@@ -29,7 +29,7 @@ protected:
     void mouseReleaseEvent(QGraphicsSceneMouseEvent*);
 
 private:
-    CPortWidget* m_control;
+    CPort* m_control;
 };
 
-#endif // PORTWIDGET_H
+#endif // PPORT_H
