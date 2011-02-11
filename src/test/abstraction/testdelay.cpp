@@ -7,6 +7,8 @@ TestDelay::testDelay()
 {
     SimpleFactory factory;
     SynthPro* synth = factory.createSynthPro();
+    Delay* delay = factory.createDelay(synth);
+
 
 
 }
