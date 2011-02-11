@@ -35,7 +35,7 @@ HEADERS += \
     src/test/abstraction/mockserializerwell.h \
     src/main/factory/synthprofactory.h \
     src/main/factory/simplefactory.h \
-    src/main/abstraction/modulebufferrecorder.h \
+    src/main/abstraction/wavrecorder.h \
     src/main/abstraction/moduleout.h \
     src/test/abstraction/testmodulebufferrecorder.h \
     src/test/abstraction/testwavegeneratorempty.h \
@@ -91,7 +91,7 @@ SOURCES += src/test/test.cpp \
     src/main/abstraction/audiodeviceprovider.cpp \
     src/test/abstraction/mockserializerwell.cpp \
     src/main/factory/simplefactory.cpp \
-    src/main/abstraction/modulebufferrecorder.cpp \
+    src/main/abstraction/wavrecorder.cpp \
     src/main/abstraction/moduleout.cpp \
     src/test/abstraction/testmodulebufferrecorder.cpp \
     src/test/abstraction/testwavegeneratorempty.cpp \

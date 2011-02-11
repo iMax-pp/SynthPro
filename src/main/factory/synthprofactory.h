@@ -9,7 +9,7 @@ class Dimmer;
 class InPort;
 class LFO;
 class Module;
-class ModuleBufferRecorder;
+class WavRecorder;
 class ModuleKeyboard;
 class ModuleOscilloscope;
 class ModuleOut;
@@ -45,7 +45,7 @@ public:
     virtual VCF* createVCF(SynthPro*) = 0;
     virtual VCA* createVCA(SynthPro*) = 0;
     virtual ADSR* createADSR(SynthPro*) = 0;
-    virtual ModuleBufferRecorder* createModuleBufferRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
+    virtual WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
     virtual ModuleKeyboard* createModuleKeyboard(SynthPro*) = 0;
 
     /**

@@ -4,7 +4,6 @@
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
 #include "abstraction/lfo.h"
-#include "abstraction/modulebufferrecorder.h"
 #include "abstraction/modulekeyboard.h"
 #include "abstraction/moduleoscilloscope.h"
 #include "abstraction/moduleout.h"
@@ -17,6 +16,7 @@
 #include "abstraction/vca.h"
 #include "abstraction/vcf.h"
 #include "abstraction/vco.h"
+#include "abstraction/wavrecorder.h"
 
 SynthPro* SimpleFactory::createSynthPro()
 {
@@ -105,9 +105,9 @@ Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<Q
 }
 
 
-ModuleBufferRecorder* SimpleFactory::createModuleBufferRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
+WavRecorder* SimpleFactory::createWavRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
 {
-    ModuleBufferRecorder* mbr = new ModuleBufferRecorder(parent, fileName, nbProcessingBeforeSaving);
+    WavRecorder* mbr = new WavRecorder(parent, fileName, nbProcessingBeforeSaving);
     mbr->initialize(this);
     return mbr;
 }
