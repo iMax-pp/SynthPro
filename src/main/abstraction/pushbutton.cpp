@@ -22,9 +22,11 @@ Buffer* PushButton::buffer() const
 void PushButton::push()
 {
     m_buffer->add(1);
+    emit buttonPushed();
 }
 
 void PushButton::release()
 {
     m_buffer->clear();
+    emit buttonReleased();
 }
