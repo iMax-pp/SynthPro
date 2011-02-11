@@ -20,6 +20,10 @@ public:
     static const int WIDTH = 200;
     static const int HEIGHT = 150;
 
+    static const qreal RATIO_Y_MIN = 0.2;
+    static const qreal RATIO_Y_MAX = 2.0;
+    static const qreal RATIO_Y_DEFAULT = 0.5;
+
 private:
     Buffer* m_inBuffer;
     qreal m_ratioY;

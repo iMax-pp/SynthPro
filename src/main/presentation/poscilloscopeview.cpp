@@ -5,27 +5,31 @@
 
 POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
     : QGraphicsWidget(parent)
+    , m_ratioY(RATIO_Y_DEFAULT)
 {
     setMinimumSize(boundingRect().size());
+    setAutoFillBackground(false);
 }
 
 void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 {
     painter->fillRect(0, 0, WIDTH, HEIGHT, QBrush(Qt::SolidPattern));
-
     painter->setPen(QPen(QColor(255, 255, 255)));
 
-    m_ratioY = ((HEIGHT / 2) / VCO::SIGNAL_INTENSITY) / 2;
+    int currentRatioY = ((HEIGHT / 2) / VCO::SIGNAL_INTENSITY) * m_ratioY;
 
     int indexBuffer = 0;
     int middleY = HEIGHT / 2;
+    int previousY = middleY;
 
     if (m_inBuffer) {
         qreal* data = m_inBuffer->data();
         qreal step = (m_inBuffer->length() / WIDTH);
 
         for (int i = 0; i < WIDTH ; i++) {
-            painter->drawPoint(i, (int)(middleY + data[(int)indexBuffer] * m_ratioY));
+            int y = (int)(middleY + data[(int)indexBuffer] * currentRatioY);
+            painter->drawLine(i - 1, previousY, i, y);
+            previousY = y;
             indexBuffer += step;
         }
     }

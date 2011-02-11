@@ -60,7 +60,7 @@ private slots:
 
 private:
     static const int FAST_TIMER_DELAY = 5; // For fast operations (sound card output).
-    static const int INTERNAL_TIMER_DELAY = 20; // For non critical operations.
+    static const int INTERNAL_TIMER_DELAY = 30; // For non critical operations.
 
     bool m_started; // Indicates if the Timers are started or paused.
 
