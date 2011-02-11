@@ -75,7 +75,8 @@ HEADERS += src/main/abstraction/synthpro.h \
     src/main/presentation/padsr.h \
     src/main/control/cadsr.h \
     src/main/presentation/poscilloscopeview.h \
-    src/main/presentation/pixmapwidget.h
+    src/main/presentation/pixmapwidget.h \
+    src/main/abstraction/pushbutton.h
 
 SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/abstraction/module.cpp \
@@ -145,7 +146,8 @@ SOURCES += src/main/abstraction/synthpro.cpp \
     src/main/presentation/padsr.cpp \
     src/main/control/cadsr.cpp \
     src/main/presentation/poscilloscopeview.cpp \
-    src/main/presentation/pixmapwidget.cpp
+    src/main/presentation/pixmapwidget.cpp \
+    src/main/abstraction/pushbutton.cpp
 
 INCLUDEPATH += src/main/
 
