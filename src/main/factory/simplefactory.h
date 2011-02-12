@@ -19,7 +19,7 @@ public:
     ADSR* createADSR(SynthPro*);
     LFO* createLFO(SynthPro*);
     Delay* createDelay(SynthPro*);
-    WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    WavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 5);
     Speaker* createSpeaker(SynthPro*);
     Keyboard* createKeyboard(SynthPro*);
     Dimmer* createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent);
