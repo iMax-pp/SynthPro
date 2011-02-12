@@ -70,7 +70,7 @@ bool CPort::disconnect()
 
 void CPort::drag()
 {
-    if (connection()) {
+    if (connected()) {
         // TODO Change this behavior: in this case the current wire should be moved
         // When starting a new wire, begin by deleting the previous one.
         disconnect();

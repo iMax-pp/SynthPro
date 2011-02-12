@@ -105,16 +105,16 @@ void TestInPort::testDisconnectFrom()
     in->connections().first()->connect(out->connections().first());
     out->connections().first()->disconnect();
 
-    QVERIFY(!in->connections().first()->connection());
-    QVERIFY(!out->connections().first()->connection());
+    QVERIFY(!in->connections().first()->connected());
+    QVERIFY(!out->connections().first()->connected());
     QCOMPARE(m_count, 2); // Two calls: one for the connection, one for the disconnection
 
     m_count = 0;
     out->connections().first()->connect(out->connections().first()); // Try to connect a port to itself
     in->connections().first()->connect(in->connections().first());
 
-    QVERIFY(!in->connections().first()->connection());
-    QVERIFY(!out->connections().first()->connection());
+    QVERIFY(!in->connections().first()->connected());
+    QVERIFY(!out->connections().first()->connected());
     QCOMPARE(m_count, 0);
 
     in->connections().first()->disconnect(); // Try to disconnect in from out though they were not connected

@@ -17,7 +17,7 @@ void InPort::fetch()
 
     for (int i = 0; i < m_buffer.length(); i++) {
         foreach (Port* port, connections()) {
-            if (port->connection()) {
+            if (port->connected()) {
                 m_buffer.data()[i] += port->connection()->vPort()->buffer()->data()[i];
             }
         }
@@ -30,7 +30,7 @@ void InPort::fetch()
     int nbConnectionUsed = 0;
 
     for (int i = 0; i < nbConnectionTotal; i++) {
-        if (connections().at(i)->connection()) {
+        if (connections().at(i)->connected()) {
             nbConnectionUsed++;
         }
     }

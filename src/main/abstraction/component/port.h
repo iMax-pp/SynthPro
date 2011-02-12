@@ -14,8 +14,10 @@ public:
 
     inline VirtualPort* vPort() const { return m_vPort; }
 
-    /// @invariant connection() != 0 => connection()->connection() == this
+    /// @invariant connected() => connection()->connection() == this
     inline Port* connection() const { return m_connection; }
+
+    inline bool connected() const { return m_connection; }
 
     /**
      * Connect this port to another port.
