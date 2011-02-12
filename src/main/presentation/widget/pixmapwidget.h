@@ -7,16 +7,18 @@ class PixmapWidget : public QGraphicsWidget {
     Q_OBJECT
 
 public:
-    PixmapWidget(QString filename, QGraphicsItem* parent);
+    PixmapWidget(QString filename, bool showClickable, QGraphicsItem* parent);
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent*);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent*);
 
 signals:
     void clicked();
 
 private:
     QGraphicsPixmapItem m_pixmapItem;
+    bool m_showClickable;
 };
 
 #endif // PIXMAPWIDGET_H

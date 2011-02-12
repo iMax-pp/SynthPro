@@ -124,16 +124,18 @@ void WavRecorder::createWAVHeader(QFile* file)
 
 void WavRecorder::closeWAVFile()
 {
-    // Set the previously skipped size.
-    m_outputFile->seek(m_riffDataSizePosition);
-    addLittleEndianIntToFile(m_outputFile, m_outputFile->size() - 8); // The header doesn't count.
-    m_outputFile->seek(m_waveDataSizePosition);
-    addLittleEndianIntToFile(m_outputFile, m_dataLength);
+    if (m_outputFile) {
+        // Set the previously skipped size.
+        m_outputFile->seek(m_riffDataSizePosition);
+        addLittleEndianIntToFile(m_outputFile, m_outputFile->size() - 8); // The header doesn't count.
+        m_outputFile->seek(m_waveDataSizePosition);
+        addLittleEndianIntToFile(m_outputFile, m_dataLength);
 
-    m_outputFile->close();
-    m_outputFile = 0;
+        m_outputFile->close();
+        m_outputFile = 0;
 
-    qDebug() << "WavRecorder::closeWAVFile Done !";
+        qDebug() << "WavRecorder::closeWAVFile Done !";
+    }
 }
 
 void WavRecorder::addLittleEndianShortToFile(QFile* file, int nb)

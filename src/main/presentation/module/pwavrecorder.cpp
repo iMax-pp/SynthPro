@@ -19,10 +19,10 @@ void PWavRecorder::initialize(PVirtualPort* in)
     TextWidget* title = new TextWidget(tr("Wav"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    PixmapWidget* floppy = new PixmapWidget(":/src/resources/images/floppy-icon.png", this);
+    PixmapWidget* floppy = new PixmapWidget(":/src/resources/images/floppy-icon.png", false, this);
     connect(floppy, SIGNAL(clicked()), this, SIGNAL(askNewFile()));
 
-    PixmapWidget* stop = new PixmapWidget(":/src/resources/images/stop-icon.png", this);
+    PixmapWidget* stop = new PixmapWidget(":/src/resources/images/stop-icon.png", true, this);
     connect(stop, SIGNAL(clicked()), this, SIGNAL(stopRecording()));
 
     // Layout
