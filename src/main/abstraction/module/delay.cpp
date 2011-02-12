@@ -1,11 +1,15 @@
 #include "delay.h"
 
+
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/buffer.h"
 #include "abstraction/component/dimmer.h"
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
 #include "factory/synthprofactory.h"
+
+#include <QDebug>
+
 
 Delay::Delay(SynthPro* parent)
     : Module(parent)
@@ -21,9 +25,11 @@ Delay::~Delay()
 
 void Delay::initialize(SynthProFactory* factory)
 {
-    m_delaySizeMax = BUFFER_DURATION_MAX *  AudioDeviceProvider::OUTPUT_FREQUENCY  / Buffer::DEFAULT_LENGTH;
+    m_delaySizeMax = BUFFER_DURATION_MAX *  AudioDeviceProvider::OUTPUT_FREQUENCY;
 
-    m_buffer = new Buffer(BUFFER_DURATION_MAX);
+
+    m_buffer = new Buffer(m_delaySizeMax);
+
 
     for (int i = 0 ; i < BUFFER_DURATION_MAX ; i++) {
         m_buffer->data()[i] = 0;
@@ -44,21 +50,31 @@ void Delay::initialize(SynthProFactory* factory)
 
 void Delay::ownProcess()
 {
-    int delaySize = m_durationDimmer->value();
-    int decay = m_durationDimmer->value();
+    // qDebug() << "buffer "  << m_buffer->length();
+    int delaySize = m_durationDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY / Buffer::DEFAULT_LENGTH;
 
-    m_readIndex = (m_readIndex == delaySize - 1) ? 0 : m_writeIndex + 1;
-
-    if (m_writeIndex == delaySize) {
-        m_readIndex = 0;
+    m_readIndex = (m_readIndex > delaySize) ? 0 : m_readIndex;
+    if (m_writeIndex > delaySize) {
+        m_writeIndex = 0;
     }
+
+    // qDebug() << "index " << m_readIndex << " " << m_writeIndex;
+    // qDebug() << "delaySize"  << delaySize;
+    // qDebug() << m_writeIndex << " " << m_readIndex;
+
 
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-        m_outPort->buffer()->data()[i] = m_buffer->data()[m_readIndex + i];
+        m_buffer->data()[m_writeIndex*Buffer::DEFAULT_LENGTH + i] = (m_inPort->buffer()->data()[i])*m_decayDimmer->value();
     }
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-        m_buffer->data()[m_writeIndex + i] = m_inPort->buffer()->data()[i];
+        m_outPort->buffer()->data()[i] = m_buffer->data()[m_readIndex*Buffer::DEFAULT_LENGTH + i];
     }
-
     m_writeIndex++;
+    m_readIndex++;
 }
+
+Buffer* Delay::buffer()
+{
+    return m_buffer;
+}
+

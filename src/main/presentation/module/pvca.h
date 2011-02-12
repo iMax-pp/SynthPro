@@ -1,7 +1,7 @@
 #ifndef PVCA_H
 #define PVCA_H
 
-#include "pmodule.h"
+#include "src/main/presentation/pmodule.h"
 
 class CVCA;
 class PDimmer;

@@ -1,5 +1,6 @@
 #include "abstraction/testadsr.h"
 #include "abstraction/testaudiodeviceprovider.h"
+#include "abstraction/testdelay.h"
 #include "abstraction/testinport.h"
 #include "abstraction/testlfo.h"
 #include "abstraction/testmodulebufferrecorder.h"
@@ -60,4 +61,7 @@ int main()
 
     TestLFO testLFO;
     QTest::qExec(&testLFO);
+
+    TestDelay testDelay;
+    QTest::qExec(&testDelay);
 }

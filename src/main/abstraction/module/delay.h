@@ -18,6 +18,8 @@ public:
     virtual void initialize(SynthProFactory*);
     void ownProcess();
 
+    Buffer* buffer();
+
 protected:
 
     InPort* m_inPort;
@@ -35,7 +37,7 @@ protected:
 
     static const qreal DURATION_MIN = 0;
     static const qreal DURATION_MAX = 5;
-    static const qreal DURATION_DEFAULT = 2.5;
+    static const qreal DURATION_DEFAULT = 5;
 
     static const qreal DECAY_MIN = 0;
     static const qreal DECAY_MAX = 1;
