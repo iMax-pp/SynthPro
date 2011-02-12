@@ -10,6 +10,7 @@
 
 #include <QDebug>
 
+
 Delay::Delay(SynthPro* parent)
     : Module(parent)
     , m_readIndex(1)
@@ -24,9 +25,12 @@ Delay::~Delay()
 
 void Delay::initialize(SynthProFactory* factory)
 {
-    m_delaySizeMax = BUFFER_DURATION_MAX *  AudioDeviceProvider::OUTPUT_FREQUENCY  / Buffer::DEFAULT_LENGTH;
+    m_delaySizeMax = BUFFER_DURATION_MAX *  AudioDeviceProvider::OUTPUT_FREQUENCY;
 
-    m_buffer = new Buffer(BUFFER_DURATION_MAX);
+
+    m_buffer = new Buffer(m_delaySizeMax);
+
+     qDebug() << "buffer initialize "  << m_buffer->length();
 
     for (int i = 0 ; i < BUFFER_DURATION_MAX ; i++) {
         m_buffer->data()[i] = 0;
@@ -47,6 +51,7 @@ void Delay::initialize(SynthProFactory* factory)
 
 void Delay::ownProcess()
 {
+    qDebug() << "buffer "  << m_buffer->length();
     int delaySize = m_durationDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY / Buffer::DEFAULT_LENGTH;
 
     m_readIndex = (m_readIndex > delaySize) ? 0 : m_readIndex;
@@ -54,16 +59,23 @@ void Delay::ownProcess()
         m_writeIndex = 0;
     }
 
-    qDebug() << "index " << m_readIndex << " " << m_writeIndex;
-//    qDebug() << "delaySize"  << delaySize;
+    // qDebug() << "index " << m_readIndex << " " << m_writeIndex;
+    qDebug() << "delaySize"  << delaySize;
+    qDebug() << m_writeIndex << " " << m_readIndex;
+
 
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-        m_outPort->buffer()->data()[i] = m_buffer->data()[m_readIndex + i];
+        m_buffer->data()[m_writeIndex*Buffer::DEFAULT_LENGTH + i] = (m_inPort->buffer()->data()[i])*m_decayDimmer->value();
     }
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-       qDebug() << m_readIndex << " " << m_writeIndex;
-       m_buffer->data()[m_writeIndex + i] = m_inPort->buffer()->data()[i];
+        m_outPort->buffer()->data()[i] = m_buffer->data()[m_readIndex*Buffer::DEFAULT_LENGTH + i];
     }
     m_writeIndex++;
     m_readIndex++;
 }
+
+Buffer* Delay::buffer()
+{
+    return m_buffer;
+}
+
