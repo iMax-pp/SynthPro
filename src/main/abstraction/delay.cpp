@@ -1,11 +1,14 @@
 #include "delay.h"
 
+
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/buffer.h"
 #include "abstraction/dimmer.h"
 #include "abstraction/inport.h"
 #include "abstraction/outport.h"
 #include "factory/synthprofactory.h"
+
+#include <QDebug>
 
 Delay::Delay(SynthPro* parent)
     : Module(parent)
@@ -44,21 +47,23 @@ void Delay::initialize(SynthProFactory* factory)
 
 void Delay::ownProcess()
 {
-    int delaySize = m_durationDimmer->value();
-    int decay = m_durationDimmer->value();
+    int delaySize = m_durationDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY / Buffer::DEFAULT_LENGTH;
 
-    m_readIndex = (m_readIndex == delaySize - 1) ? 0 : m_writeIndex + 1;
-
-    if (m_writeIndex == delaySize) {
-        m_readIndex = 0;
+    m_readIndex = (m_readIndex > delaySize) ? 0 : m_readIndex;
+    if (m_writeIndex > delaySize) {
+        m_writeIndex = 0;
     }
+
+    qDebug() << "index " << m_readIndex << " " << m_writeIndex;
+//    qDebug() << "delaySize"  << delaySize;
 
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
         m_outPort->buffer()->data()[i] = m_buffer->data()[m_readIndex + i];
     }
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-        m_buffer->data()[m_writeIndex + i] = m_inPort->buffer()->data()[i];
+       qDebug() << m_readIndex << " " << m_writeIndex;
+       m_buffer->data()[m_writeIndex + i] = m_inPort->buffer()->data()[i];
     }
-
     m_writeIndex++;
+    m_readIndex++;
 }
