@@ -21,7 +21,8 @@ void TestWaveGeneratorSaw::testWaveGeneratorSaw()
     QString fileName = "testWaveGeneratorSaw.wav";
 
     SimpleFactory factory;
-    WavRecorder* mbr = factory.createWavRecorder(0, fileName, NB_ITERATIONS);
+    WavRecorder* mbr = factory.createWavRecorder(0, NB_ITERATIONS);
+    mbr->startNewFile(fileName);
 
     VCO* vco = factory.createVCO(&synthPro);
     vco->setShape("Saw");

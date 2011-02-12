@@ -127,9 +127,9 @@ Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<Q
 }
 
 
-WavRecorder* SimpleFactory::createWavRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
+WavRecorder* SimpleFactory::createWavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
 {
-    WavRecorder* mbr = new WavRecorder(parent, fileName, nbProcessingBeforeSaving);
+    WavRecorder* mbr = new WavRecorder(parent, nbProcessingBeforeSaving);
     mbr->initialize(this);
     return mbr;
 }

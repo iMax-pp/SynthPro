@@ -10,13 +10,13 @@
 #include <QDebug>
 #include <QFile>
 
-WavRecorder::WavRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
+WavRecorder::WavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
     : Module(parent)
     , m_inPort(0)
-    , m_fileName(fileName)
+    , m_fileName(QString())
+    , m_outputFile(0)
     , m_nbProcessingBeforeSaving(nbProcessingBeforeSaving)
     , m_nbProcessingSaved(0)
-    , m_outputFile(0)
     , m_riffDataSizePosition(0)
     , m_waveDataSizePosition(0)
     , m_dataLength(0)
@@ -24,19 +24,13 @@ WavRecorder::WavRecorder(SynthPro* parent, QString fileName, int nbProcessingBef
 {
     m_bufferForNumbers = new char(4); // The buffer is only used to write int32 or short (16 bits),
                                       // as requested by the WAV format.
-    // Open the output file.
-    m_outputFile = new QFile(fileName);
-
-    if (!m_outputFile->open(QIODevice::WriteOnly)) {
-        qWarning("Unable to create output file.");
-    } else {
-        createWAVHeader(m_outputFile);
-    }
 }
 
 WavRecorder::~WavRecorder()
 {
-    m_outputFile->close();
+    if (m_outputFile) {
+        closeWAVFile();
+    }
 }
 
 void WavRecorder::initialize(SynthProFactory* factory)
@@ -44,6 +38,30 @@ void WavRecorder::initialize(SynthProFactory* factory)
     // Creation of an Input.
     m_inPort = factory->createInPortReplicable(this, "in");
     m_inports.append(m_inPort);
+}
+
+void WavRecorder::startNewFile(const QString& fileName)
+{
+    if (m_outputFile) {
+        // Close the currently used file.
+        closeWAVFile();
+
+        // And reset the variables.
+        m_nbProcessingSaved = 0;
+        m_riffDataSizePosition = 0;
+        m_waveDataSizePosition = 0;
+        m_dataLength = 0;
+    }
+
+    // Create a new file.
+    m_fileName = fileName;
+    m_outputFile = new QFile(fileName);
+
+    if (!m_outputFile->open(QIODevice::WriteOnly)) {
+        qWarning("Unable to create output file.");
+    } else {
+        createWAVHeader(m_outputFile);
+    }
 }
 
 void WavRecorder::ownProcess()
@@ -72,11 +90,9 @@ void WavRecorder::ownProcess()
 
             if (++m_nbProcessingSaved >= m_nbProcessingBeforeSaving) {
                 // Close the file as we reached the number of processing wanted.
-                closeWAVFile(m_outputFile);
+                closeWAVFile();
             }
         }
-
-
     }
 }
 
@@ -106,17 +122,20 @@ void WavRecorder::createWAVHeader(QFile* file)
     addLittleEndianIntToFile(file, 0xffffffff); // Chunk Format Data Size. Use a fake size, for now.
 }
 
-void WavRecorder::closeWAVFile(QFile* file)
+void WavRecorder::closeWAVFile()
 {
-    // Set the previously skipped size.
-    file->seek(m_riffDataSizePosition);
-    addLittleEndianIntToFile(file, file->size() - 8); // The header doesn't count.
-    file->seek(m_waveDataSizePosition);
-    addLittleEndianIntToFile(file, m_dataLength);
+    if (m_outputFile) {
+        // Set the previously skipped size.
+        m_outputFile->seek(m_riffDataSizePosition);
+        addLittleEndianIntToFile(m_outputFile, m_outputFile->size() - 8); // The header doesn't count.
+        m_outputFile->seek(m_waveDataSizePosition);
+        addLittleEndianIntToFile(m_outputFile, m_dataLength);
 
-    file->close();
+        m_outputFile->close();
+        m_outputFile = 0;
 
-    qDebug() << "WavRecorder::closeWAVFile Done !";
+        qDebug() << "WavRecorder::closeWAVFile Done !";
+    }
 }
 
 void WavRecorder::addLittleEndianShortToFile(QFile* file, int nb)

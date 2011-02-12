@@ -5,10 +5,16 @@
 #include "control/cmodule.h"
 
 class CWavRecorder : public WavRecorder, public CModule {
+    Q_OBJECT
+
 public:
-    CWavRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    CWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10);
 
     void initialize(SynthProFactory*);
+
+public slots:
+    void startNewFile();
+    void stopRecording();
 };
 
 #endif // CWAVRECORDER_H

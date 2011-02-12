@@ -40,15 +40,16 @@ public:
 
     CVCO* createVCO(SynthPro*);
     CLFO* createLFO(SynthPro*);
+    CKeyboard* createKeyboard(SynthPro*);
+
     CVCF* createVCF(SynthPro*);
     CVCA* createVCA(SynthPro*);
     CADSR* createADSR(SynthPro*);
     CDelay* createDelay(SynthPro*);
 
-    CWavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
-    CKeyboard* createKeyboard(SynthPro*);
-    CSpeaker* createSpeaker(SynthPro*);
     COscilloscope* createOscilloscope(SynthPro*);
+    CWavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 5);
+    CSpeaker* createSpeaker(SynthPro*);
 
     CDimmer* createDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent);
     CSelector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent);
