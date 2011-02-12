@@ -1,9 +1,9 @@
 #include "testadsr.h"
 
 #include "abstraction/buffer.h"
-#include "abstraction/inport.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
 #include "abstraction/mockserializerwell.h"
-#include "abstraction/outport.h"
 #include "abstraction/synthpro.h"
 #include "factory/simplefactory.h"
 

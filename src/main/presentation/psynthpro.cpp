@@ -3,7 +3,7 @@
 #include "control/csynthpro.h"
 #include "control/modulelistmodel.h"
 #include "factory/qtfactory.h"
-#include "moduleview.h"
+#include "presentation/widget/moduleview.h"
 
 #include <QAction>
 #include <QApplication>
@@ -150,6 +150,7 @@ void PSynthPro::createModuleList()
     model->addModule("VCF", QtFactory::VCFId);
     model->addModule("VCA", QtFactory::VCAId);
     model->addModule("ADSR", QtFactory::ADSRId);
+    model->addModule("Delay", QtFactory::DelayId);
     moduleList->setModel(model);
 
     m_moduleDock->setWidget(moduleList);

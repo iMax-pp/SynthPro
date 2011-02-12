@@ -1,23 +1,23 @@
 #include "simplefactory.h"
 
-#include "abstraction/adsr.h"
-#include "abstraction/delay.h"
-#include "abstraction/dimmer.h"
-#include "abstraction/inport.h"
-#include "abstraction/lfo.h"
-#include "abstraction/modulekeyboard.h"
-#include "abstraction/oscilloscope.h"
-#include "abstraction/outport.h"
-#include "abstraction/port.h"
-#include "abstraction/pushbutton.h"
-#include "abstraction/selector.h"
+#include "abstraction/component/dimmer.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/port.h"
+#include "abstraction/component/pushbutton.h"
+#include "abstraction/component/selector.h"
+#include "abstraction/module/adsr.h"
+#include "abstraction/module/delay.h"
+#include "abstraction/module/keyboard.h"
+#include "abstraction/module/lfo.h"
+#include "abstraction/module/oscilloscope.h"
+#include "abstraction/module/speaker.h"
+#include "abstraction/module/vca.h"
+#include "abstraction/module/vcf.h"
+#include "abstraction/module/vco.h"
+#include "abstraction/module/wavrecorder.h"
 #include "abstraction/sequencer.h"
-#include "abstraction/speaker.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vca.h"
-#include "abstraction/vcf.h"
-#include "abstraction/vco.h"
-#include "abstraction/wavrecorder.h"
 
 SynthPro* SimpleFactory::createSynthPro()
 {
@@ -159,9 +159,9 @@ Oscilloscope* SimpleFactory::createOscilloscope(SynthPro* synthPro)
     return new Oscilloscope(synthPro);
 }
 
-ModuleKeyboard* SimpleFactory::createModuleKeyboard(SynthPro* synthpro)
+Keyboard* SimpleFactory::createKeyboard(SynthPro* synthpro)
 {
-    return new ModuleKeyboard(synthpro);
+    return new Keyboard(synthpro);
 }
 
 PushButton* SimpleFactory::createPushButton(const QString&, Module *parent)

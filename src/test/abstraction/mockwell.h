@@ -1,7 +1,7 @@
 #ifndef MOCKWELL_H
 #define MOCKWELL_H
 
-#include "abstraction/inport.h"
+#include "abstraction/component/inport.h"
 #include "abstraction/mockmodule.h"
 #include "factory/synthprofactory.h"
 

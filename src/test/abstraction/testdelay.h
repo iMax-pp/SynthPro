@@ -1,7 +1,7 @@
 #ifndef TESTDELAY_H
 #define TESTDELAY_H
 
-#include "abstraction/delay.h"
+#include "abstraction/module/delay.h"
 
 #include <QtTest/QTest>
 

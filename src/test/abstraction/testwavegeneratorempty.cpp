@@ -1,7 +1,7 @@
 #include "testwavegeneratorempty.h"
 
 #include "abstraction/buffer.h"
-#include "abstraction/wavegeneratorempty.h"
+#include "abstraction/wavegen/wavegeneratorempty.h"
 
 #include <QtTest/QTest>
 

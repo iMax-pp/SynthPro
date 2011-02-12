@@ -1,13 +1,13 @@
 #include "testvcf.h"
 
-#include "abstraction/filterincrement.h"
-#include "abstraction/inport.h"
-#include "abstraction/outport.h"
-#include "abstraction/port.h"
-#include "abstraction/speaker.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/port.h"
+#include "abstraction/filter/filterincrement.h"
+#include "abstraction/module/speaker.h"
+#include "abstraction/module/vcf.h"
+#include "abstraction/module/vco.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vcf.h"
-#include "abstraction/vco.h"
 #include "factory/simplefactory.h"
 
 #include <QDebug>

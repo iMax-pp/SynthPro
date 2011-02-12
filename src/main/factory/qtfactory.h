@@ -1,21 +1,23 @@
 #ifndef QTFACTORY_H
 #define QTFACTORY_H
 
-#include "control/cadsr.h"
-#include "control/cdimmer.h"
-#include "control/cinport.h"
-#include "control/ckeyboard.h"
-#include "control/clfo.h"
-#include "control/coscilloscope.h"
-#include "control/coutport.h"
-#include "control/cport.h"
-#include "control/cpushbutton.h"
-#include "control/cselector.h"
-#include "control/cspeaker.h"
+#include "control/component/cdimmer.h"
+#include "control/component/cinport.h"
+#include "control/component/coutport.h"
+#include "control/component/cport.h"
+#include "control/component/cpushbutton.h"
+#include "control/component/cselector.h"
 #include "control/csynthpro.h"
-#include "control/cvca.h"
-#include "control/cvcf.h"
-#include "control/cvco.h"
+#include "control/module/cadsr.h"
+#include "control/module/cdelay.h"
+#include "control/module/ckeyboard.h"
+#include "control/module/clfo.h"
+#include "control/module/coscilloscope.h"
+#include "control/module/cspeaker.h"
+#include "control/module/cvca.h"
+#include "control/module/cvcf.h"
+#include "control/module/cvco.h"
+#include "control/module/cwavrecorder.h"
 #include "factory/synthprofactory.h"
 
 class CPortWidget;
@@ -41,10 +43,10 @@ public:
     CVCF* createVCF(SynthPro*);
     CVCA* createVCA(SynthPro*);
     CADSR* createADSR(SynthPro*);
-    CDelay* createDelay(SynthPro *);
+    CDelay* createDelay(SynthPro*);
 
-    WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
-    CKeyboard* createModuleKeyboard(SynthPro*);
+    CWavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    CKeyboard* createKeyboard(SynthPro*);
     CSpeaker* createSpeaker(SynthPro*);
     COscilloscope* createOscilloscope(SynthPro*);
 

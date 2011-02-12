@@ -1,11 +1,11 @@
 #include "testlfo.h"
 
-#include "abstraction/dimmer.h"
-#include "abstraction/lfo.h"
-#include "abstraction/outport.h"
+#include "abstraction/component/dimmer.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/module/lfo.h"
+#include "abstraction/module/vco.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vco.h"
-#include "abstraction/wavegeneratorsquare.h"
+#include "abstraction/wavegen/wavegeneratorsquare.h"
 #include "factory/simplefactory.h"
 
 #include <QDebug>

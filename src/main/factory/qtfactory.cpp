@@ -1,25 +1,25 @@
 #include "qtfactory.h"
 
-#include "abstraction/adsr.h"
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/oscilloscope.h"
-#include "abstraction/port.h"
+#include "abstraction/component/port.h"
+#include "abstraction/module/adsr.h"
+#include "abstraction/module/oscilloscope.h"
 #include "abstraction/sequencer.h"
-#include "abstraction/wavrecorder.h"
-#include "control/cwire.h"
-#include "presentation/padsr.h"
-#include "presentation/pkeyboard.h"
-#include "presentation/plfo.h"
-#include "presentation/poscilloscope.h"
-#include "presentation/pport.h"
-#include "presentation/ppushbutton.h"
-#include "presentation/pspeaker.h"
-#include "presentation/pvca.h"
-#include "presentation/pvcf.h"
-#include "presentation/pvco.h"
-#include "presentation/pvirtualport.h"
+#include "control/component/cwire.h"
+#include "presentation/component/pport.h"
+#include "presentation/component/ppushbutton.h"
+#include "presentation/component/pvirtualport.h"
+#include "presentation/module/padsr.h"
+#include "presentation/module/pdelay.h"
+#include "presentation/module/pkeyboard.h"
+#include "presentation/module/plfo.h"
+#include "presentation/module/poscilloscope.h"
+#include "presentation/module/pspeaker.h"
+#include "presentation/module/pvca.h"
+#include "presentation/module/pvcf.h"
+#include "presentation/module/pvco.h"
+#include "presentation/module/pwavrecorder.h"
 
-#include <QDebug>
 #include <QIODevice>
 
 CSynthPro* QtFactory::createSynthPro()
@@ -159,7 +159,6 @@ CVCA* QtFactory::createVCA(SynthPro* parent)
     // Initialize it (ports creation)
     vca->initialize(this);
 
-    // return vca;
     return vca;
 }
 
@@ -175,14 +174,22 @@ CADSR* QtFactory::createADSR(SynthPro* parent)
     // Initialize it (ports creation)
     adsr->initialize(this);
 
-    // return vca;
     return adsr;
-
 }
 
-CDelay* QtFactory::createDelay(SynthPro *)
+CDelay* QtFactory::createDelay(SynthPro* parent)
 {
+    // Create the Delay
+    CDelay* delay = new CDelay(parent);
 
+    // Create its presentation
+    PDelay* p = new PDelay(delay);
+    delay->setPresentation(p);
+
+    // Initialization
+    delay->initialize(this);
+
+    return delay;
 }
 
 
@@ -220,14 +227,17 @@ CPushButton* QtFactory::createPushButton(const QString& name, Module* parent)
     return pushButton;
 }
 
-WavRecorder* QtFactory::createWavRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
+CWavRecorder* QtFactory::createWavRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
 {
-    WavRecorder* mbr = new WavRecorder(parent, fileName, nbProcessingBeforeSaving);
+    CWavRecorder* mbr = new CWavRecorder(parent, fileName, nbProcessingBeforeSaving);
+    PWavRecorder* presentation = new PWavRecorder(mbr);
+    mbr->setPresentation(presentation);
     mbr->initialize(this);
+
     return mbr;
 }
 
-CKeyboard* QtFactory::createModuleKeyboard(SynthPro* parent)
+CKeyboard* QtFactory::createKeyboard(SynthPro* parent)
 {
     // Create the Keyboard Controler
     CKeyboard* ck = new CKeyboard(parent);

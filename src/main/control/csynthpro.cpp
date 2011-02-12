@@ -1,17 +1,20 @@
 #include "csynthpro.h"
 
-#include "control/cadsr.h"
-#include "control/cinport.h"
-#include "control/ckeyboard.h"
-#include "control/clfo.h"
 #include "control/cmodule.h"
-#include "control/coscilloscope.h"
-#include "control/coutport.h"
-#include "control/cspeaker.h"
-#include "control/cvca.h"
-#include "control/cvcf.h"
-#include "control/cvco.h"
-#include "control/cvirtualport.h"
+#include "control/component/cinport.h"
+#include "control/component/coutport.h"
+#include "control/component/cvirtualport.h"
+#include "control/module/cadsr.h"
+#include "control/module/cdelay.h"
+#include "control/module/ckeyboard.h"
+#include "control/module/clfo.h"
+#include "control/module/coscilloscope.h"
+#include "control/module/cspeaker.h"
+#include "control/module/cvca.h"
+#include "control/module/cvcf.h"
+#include "control/module/cvco.h"
+#include "control/module/cwavrecorder.h"
+
 #include <QGraphicsScene>
 
 CSynthPro::CSynthPro(SynthProFactory* factory)
@@ -71,7 +74,7 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
 
     switch (moduleType) {
     case SynthProFactory::KeyboardId:
-        module = dynamic_cast<Module*>(m_factory->createModuleKeyboard(this));
+        module = dynamic_cast<Module*>(m_factory->createKeyboard(this));
         break;
     case SynthProFactory::VCOId:
         module = dynamic_cast<Module*>(m_factory->createVCO(this));
@@ -85,6 +88,9 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
     case SynthProFactory::ADSRId:
         module = dynamic_cast<Module*>(m_factory->createADSR(this));
         break;
+    case SynthProFactory::DelayId:
+        module = dynamic_cast<Module*>(m_factory->createDelay(this));
+        break;
     case SynthProFactory::LFOId:
         module = dynamic_cast<Module*>(m_factory->createLFO(this));
         break;
@@ -92,6 +98,7 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
         module = dynamic_cast<Module*>(m_factory->createSpeaker(this));
         break;
     case SynthProFactory::FileOutputId:
+        module = dynamic_cast<Module*>(m_factory->createWavRecorder(this, "output.wav", 480));
         break;
     case SynthProFactory::OscilloscopeId:
         module = dynamic_cast<Module*>(m_factory->createOscilloscope(this));

@@ -1,9 +1,9 @@
 #include "testinport.h"
 
 #include "abstraction/buffer.h"
-#include "abstraction/inport.h"
-#include "abstraction/outport.h"
-#include "abstraction/port.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/port.h"
 #include "factory/simplefactory.h"
 
 void TestInPort::testOut()
@@ -113,8 +113,8 @@ void TestInPort::testDisconnectFrom()
     out->connections().first()->connect(out->connections().first()); // Try to connect a port to itself
     in->connections().first()->connect(in->connections().first());
 
-    QCOMPARE(in->connections().size(), 0);
-    QCOMPARE(out->connections().size(), 0);
+    QVERIFY(!in->connections().first()->connection());
+    QVERIFY(!out->connections().first()->connection());
     QCOMPARE(m_count, 0);
 
     in->connections().first()->disconnect(); // Try to disconnect in from out though they were not connected

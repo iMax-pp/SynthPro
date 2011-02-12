@@ -4,12 +4,12 @@
 
 #include "abstraction/buffer.h"
 #include "abstraction/inport.h"
+#include "abstraction/module/vco.h"
 #include "abstraction/outport.h"
 #include "abstraction/port.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vco.h"
-
 #include "factory/simplefactory.h"
+
 
 void TestDelay::testDelay()
 {

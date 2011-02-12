@@ -5,27 +5,25 @@
 #include <QtGlobal>
 
 class ADSR;
+class Delay;
 class Dimmer;
 class InPort;
 class LFO;
 class Module;
-class WavRecorder;
-class ModuleKeyboard;
+class Keyboard;
 class Oscilloscope;
-class Speaker;
 class OutPort;
 class Port;
 class PushButton;
 class Selector;
 class Sequencer;
+class Speaker;
 class SynthPro;
 class VCA;
 class VCF;
 class VCO;
-class VCA;
 class VirtualPort;
-class ADSR;
-class Delay;
+class WavRecorder;
 
 class SynthProFactory {
 public:
@@ -48,7 +46,7 @@ public:
     virtual ADSR* createADSR(SynthPro*) = 0;
     virtual Delay* createDelay(SynthPro*) = 0;
     virtual WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
-    virtual ModuleKeyboard* createModuleKeyboard(SynthPro*) = 0;
+    virtual Keyboard* createKeyboard(SynthPro*) = 0;
 
     /**
       * Instanciate a Speaker, but ONLY if the audio device isn't already used by another instance.
@@ -77,6 +75,7 @@ public:
         VCFId,
         VCAId,
         ADSRId,
+        DelayId,
         LFOId,
         AudioOuputId,
         FileOutputId,

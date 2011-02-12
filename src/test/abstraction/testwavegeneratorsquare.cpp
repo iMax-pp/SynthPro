@@ -1,14 +1,14 @@
 #include "testwavegeneratorsquare.h"
 
-#include "abstraction/dimmer.h"
-#include "abstraction/inport.h"
+#include "abstraction/component/dimmer.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/port.h"
 #include "abstraction/module.h"
-#include "abstraction/outport.h"
-#include "abstraction/port.h"
+#include "abstraction/module/vco.h"
+#include "abstraction/module/wavrecorder.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vco.h"
-#include "abstraction/wavegeneratorsquare.h"
-#include "abstraction/wavrecorder.h"
+#include "abstraction/wavegen/wavegeneratorsquare.h"
 #include "factory/simplefactory.h"
 
 #include <QFile>

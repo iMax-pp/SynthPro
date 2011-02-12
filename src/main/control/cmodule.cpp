@@ -1,9 +1,9 @@
 #include "cmodule.h"
 
-#include "abstraction/inport.h"
-#include "abstraction/outport.h"
-#include "control/cvirtualport.h"
-#include "control/cwire.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "control/component/cvirtualport.h"
+#include "control/component/cwire.h"
 
 CModule::CModule(SynthPro* parent)
     : Module(parent)
