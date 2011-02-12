@@ -6,9 +6,12 @@
 
 class CWavRecorder : public WavRecorder, public CModule {
 public:
-    CWavRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    CWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10);
 
     void initialize(SynthProFactory*);
+
+public slots:
+    void startNewFile();
 };
 
 #endif // CWAVRECORDER_H

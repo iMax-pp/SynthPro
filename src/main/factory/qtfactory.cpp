@@ -131,6 +131,21 @@ CLFO* QtFactory::createLFO(SynthPro* parent)
     return lfo;
 }
 
+CKeyboard* QtFactory::createKeyboard(SynthPro* parent)
+{
+    // Create the Keyboard Controler
+    CKeyboard* ck = new CKeyboard(parent);
+
+    // Create its presentation
+    PKeyboard* p = new PKeyboard(ck);
+    ck->setPresentation(p);
+
+    // Initialize it (ports creation)
+    ck->initialize(this);
+
+    return ck;
+}
+
 CVCF* QtFactory::createVCF(SynthPro* parent)
 {
     // Create the VCF
@@ -192,6 +207,56 @@ CDelay* QtFactory::createDelay(SynthPro* parent)
     return delay;
 }
 
+COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)
+{
+    // Create the Oscilloscope Controler
+    COscilloscope* co = new COscilloscope(parent);
+
+    // Create its presentation
+    POscilloscope* p = new POscilloscope(co);
+    co->setPresentation(p);
+
+    // Initialize it (ports creation)
+    co->initialize(this);
+
+    return co;
+}
+
+CWavRecorder* QtFactory::createWavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
+{
+    CWavRecorder* mbr = new CWavRecorder(parent, nbProcessingBeforeSaving);
+    PWavRecorder* presentation = new PWavRecorder(mbr);
+
+    mbr->setPresentation(presentation);
+    mbr->initialize(this);
+
+    return mbr;
+}
+
+CSpeaker* QtFactory::createSpeaker(SynthPro* parent)
+{
+    // Do not instanciate Speaker if no audio device can be accessed !
+    AudioDeviceProvider& adp = AudioDeviceProvider::instance();
+
+    if (!adp.initializeAudioOutput()) {
+        return 0;
+    }
+
+    QIODevice* device = adp.device();
+
+    if (!device) {
+        return 0;
+    }
+
+    CSpeaker* mo = new CSpeaker(parent, device, adp.audioOutput());
+
+    PSpeaker* p = new PSpeaker(mo);
+    mo->setPresentation(p);
+
+    mo->initialize(this);
+
+    return mo;
+}
 
 CDimmer* QtFactory::createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
@@ -225,71 +290,6 @@ CPushButton* QtFactory::createPushButton(const QString& name, Module* parent)
     pushButton->setPresentation(presentation);
 
     return pushButton;
-}
-
-CWavRecorder* QtFactory::createWavRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
-{
-    CWavRecorder* mbr = new CWavRecorder(parent, fileName, nbProcessingBeforeSaving);
-    PWavRecorder* presentation = new PWavRecorder(mbr);
-    mbr->setPresentation(presentation);
-    mbr->initialize(this);
-
-    return mbr;
-}
-
-CKeyboard* QtFactory::createKeyboard(SynthPro* parent)
-{
-    // Create the Keyboard Controler
-    CKeyboard* ck = new CKeyboard(parent);
-
-    // Create its presentation
-    PKeyboard* p = new PKeyboard(ck);
-    ck->setPresentation(p);
-
-    // Initialize it (ports creation)
-    ck->initialize(this);
-
-    return ck;
-}
-
-CSpeaker* QtFactory::createSpeaker(SynthPro* parent)
-{
-    // Do not instanciate Speaker if no audio device can be accessed !
-    AudioDeviceProvider& adp = AudioDeviceProvider::instance();
-
-    if (!adp.initializeAudioOutput()) {
-        return 0;
-    }
-
-    QIODevice* device = adp.device();
-
-    if (!device) {
-        return 0;
-    }
-
-    CSpeaker* mo = new CSpeaker(parent, device, adp.audioOutput());
-
-    PSpeaker* p = new PSpeaker(mo);
-    mo->setPresentation(p);
-
-    mo->initialize(this);
-
-    return mo;
-}
-
-COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)
-{
-    // Create the Oscilloscope Controler
-    COscilloscope* co = new COscilloscope(parent);
-
-    // Create its presentation
-    POscilloscope* p = new POscilloscope(co);
-    co->setPresentation(p);
-
-    // Initialize it (ports creation)
-    co->initialize(this);
-
-    return co;
 }
 
 CWire* QtFactory::createWire(QGraphicsScene* scene)

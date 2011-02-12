@@ -16,13 +16,18 @@ class SynthProFactory;
 class WavRecorder : public virtual Module {
 
 public:
-    WavRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    WavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10);
     virtual ~WavRecorder();
 
     /**
       * Required method in order to instanciate the ports. Used by the factory.
       */
     void initialize(SynthProFactory*);
+
+    /**
+     * Ask for a fileName to save to.
+     */
+    void startNewFile(const QString&);
 
     /**
      * Save the first input port buffer into a file.
@@ -36,9 +41,9 @@ private:
     static const int SIGNAL_OUT_SIGNED_INTENSITY = 32767;
 
     QString m_fileName;
+    QFile* m_outputFile;
     const int m_nbProcessingBeforeSaving;
     int m_nbProcessingSaved;
-    QFile* m_outputFile;
 
     int m_riffDataSizePosition;
     int m_waveDataSizePosition;
@@ -56,7 +61,7 @@ private:
       * which position has been saved while writing the buffer(s).
       * Then close the file.
       */
-    void closeWAVFile(QFile*);
+    void closeWAVFile();
 
     /**
       * Helper method. Adds a little endian int32 to a given file.

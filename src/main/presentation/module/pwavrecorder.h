@@ -9,8 +9,10 @@ class PVirtualPort;
 class PWavRecorder : public PModule {
 public:
     explicit PWavRecorder(CWavRecorder*);
-    
+
     void initialize(PVirtualPort* in);
+
+    QString askForFileName();
 };
 
 #endif // PWAVRECORDER_H
