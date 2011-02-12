@@ -9,3 +9,8 @@ PixmapWidget::PixmapWidget(QString filename, QGraphicsItem* parent)
     setMinimumSize(childrenBoundingRect().size());
     setMaximumSize(childrenBoundingRect().size());
 }
+
+void PixmapWidget::mousePressEvent(QGraphicsSceneMouseEvent*)
+{
+    emit clicked();
+}
