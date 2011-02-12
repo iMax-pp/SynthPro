@@ -30,7 +30,6 @@ void Delay::initialize(SynthProFactory* factory)
 
     m_buffer = new Buffer(m_delaySizeMax);
 
-     qDebug() << "buffer initialize "  << m_buffer->length();
 
     for (int i = 0 ; i < BUFFER_DURATION_MAX ; i++) {
         m_buffer->data()[i] = 0;
@@ -51,7 +50,7 @@ void Delay::initialize(SynthProFactory* factory)
 
 void Delay::ownProcess()
 {
-    qDebug() << "buffer "  << m_buffer->length();
+    // qDebug() << "buffer "  << m_buffer->length();
     int delaySize = m_durationDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY / Buffer::DEFAULT_LENGTH;
 
     m_readIndex = (m_readIndex > delaySize) ? 0 : m_readIndex;
@@ -60,8 +59,8 @@ void Delay::ownProcess()
     }
 
     // qDebug() << "index " << m_readIndex << " " << m_writeIndex;
-    qDebug() << "delaySize"  << delaySize;
-    qDebug() << m_writeIndex << " " << m_readIndex;
+    // qDebug() << "delaySize"  << delaySize;
+    // qDebug() << m_writeIndex << " " << m_readIndex;
 
 
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {

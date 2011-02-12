@@ -15,10 +15,10 @@
 void TestDelay::testDelay()
 {
     QFile file("out.txt");
-        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-            return;
+       if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+          return;
 
-    QTextStream out(&file);
+    // QTextStream out(&file);
 
     SimpleFactory factory;
     SynthPro* synth = factory.createSynthPro();
@@ -27,17 +27,15 @@ void TestDelay::testDelay()
     vco->outports().first()->connections().first()->connect(delay->inports().first()->connections().first());
 
     vco->setShape("Sinus");
-    for (int i = 0 ; i < 50 ; i++) {
-
+    for (int i = 0 ; i < 11000 ; i++) {
+        if (i%10 == 0) {
+            qDebug() << "iteration " << i;
+        }
         vco->process();
         delay->process();
     }
-
-    for (int i = 0 ; i < delay->buffer()->length();i++) {
+   /* for (int i = 0 ; i < delay->buffer()->length();i++) {
         out << i << " " << delay->buffer()->data()[i] << "\n";
-    }
-
+    }*/
     file.close();
-
-
 }
