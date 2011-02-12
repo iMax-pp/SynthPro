@@ -14,6 +14,7 @@ public:
 
 public slots:
     void startNewFile();
+    void stopRecording();
 };
 
 #endif // CWAVRECORDER_H

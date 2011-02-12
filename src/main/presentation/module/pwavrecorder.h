@@ -16,7 +16,8 @@ public:
     QString askForFileName();
 
 signals:
-    void newFile();
+    void askNewFile();
+    void stopRecording();
 };
 
 #endif // PWAVRECORDER_H

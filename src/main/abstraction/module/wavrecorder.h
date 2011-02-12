@@ -37,6 +37,13 @@ public:
 protected:
     InPort* m_inPort;
 
+    /**
+     * Write the right size of the chunks and data,
+     * which position has been saved while writing the buffer(s).
+     * Then close the file.
+     */
+    void closeWAVFile();
+
 private:
     static const int SIGNAL_OUT_SIGNED_INTENSITY = 32767;
 
@@ -55,13 +62,6 @@ private:
       * the dynamic size pointers.
       */
     void createWAVHeader(QFile*);
-
-    /**
-      * Write the right size of the chunks and data,
-      * which position has been saved while writing the buffer(s).
-      * Then close the file.
-      */
-    void closeWAVFile();
 
     /**
       * Helper method. Adds a little endian int32 to a given file.
