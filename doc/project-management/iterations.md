@@ -94,18 +94,18 @@ Itération 6
 date :  semaine 7 (Lundi 14-)
 
 - Julien N. :
-    - Mappage clavier virtual/clavier réel.
+    - Mappage clavier virtual/clavier réel;
     - ?
 - Maxime :
-    - Feedback dimmer, interaction dimmer avec clavier (pour précision).
-    - WaveRecorder dans fichier selectionné.
-    - On/Off SynthPro.
+    - Feedback dimmer;
+    - WaveRecorder dans fichier selectionné;
+    - On/Off SynthPro;
 - Julien RF. :
     - Suppression des ports répliqués;
     - Feedback des ports (MouseHover);
     - Wire plus jolis;
 - Cyrille :
-    - Fixer VCA (multiplier In par somme du dimmer et control), en une passe !
+    - Fixer VCA (multiplier input par somme du dimmer et control), en une passe !
     - Delay;
     - Mixer;
 
@@ -116,12 +116,10 @@ Roadmap (todo)
 - Symétrie de l'audio engine.
 - Fond d'écran (léger et subtil);
 - Icones dans Dockbars (et drag'n'drop d'icones);
-- Bouton on/off du synthé;
 - Entrée MIDI;
 
 Tweaking
 ----------
-- **Refactoring noms et dossiers**;
 - Optimisation Filtres (multiplications, ou voir site);
 - Optimiser `InPort::fetch()` (en deux passes);
 - Penser à Normaliser le signal de la sortie Out, mais également le BufferRecorder.
