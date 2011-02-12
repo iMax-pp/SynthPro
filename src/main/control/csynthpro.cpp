@@ -98,7 +98,7 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
         module = dynamic_cast<Module*>(m_factory->createSpeaker(this));
         break;
     case SynthProFactory::FileOutputId:
-        module = dynamic_cast<Module*>(m_factory->createWavRecorder(this, 480));
+        module = dynamic_cast<Module*>(m_factory->createWavRecorder(this));
         break;
     case SynthProFactory::OscilloscopeId:
         module = dynamic_cast<Module*>(m_factory->createOscilloscope(this));

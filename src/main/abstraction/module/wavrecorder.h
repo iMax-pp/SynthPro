@@ -27,7 +27,10 @@ public:
     /**
      * Ask for a fileName to save to.
      */
-    void startNewFile(const QString&);
+    void newFile(const QString&);
+
+    void startRecording();
+    void stopRecording();
 
     /**
      * Save the first input port buffer into a file.
@@ -49,6 +52,7 @@ private:
 
     QString m_fileName;
     QFile* m_outputFile;
+    bool m_isRecording;
     const int m_nbProcessingBeforeSaving;
     int m_nbProcessingSaved;
 

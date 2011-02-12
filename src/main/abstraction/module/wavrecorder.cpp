@@ -15,6 +15,7 @@ WavRecorder::WavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
     , m_inPort(0)
     , m_fileName(QString())
     , m_outputFile(0)
+    , m_isRecording(false)
     , m_nbProcessingBeforeSaving(nbProcessingBeforeSaving)
     , m_nbProcessingSaved(0)
     , m_riffDataSizePosition(0)
@@ -40,7 +41,7 @@ void WavRecorder::initialize(SynthProFactory* factory)
     m_inports.append(m_inPort);
 }
 
-void WavRecorder::startNewFile(const QString& fileName)
+void WavRecorder::newFile(const QString& fileName)
 {
     if (m_outputFile) {
         // Close the currently used file.
@@ -51,6 +52,7 @@ void WavRecorder::startNewFile(const QString& fileName)
         m_riffDataSizePosition = 0;
         m_waveDataSizePosition = 0;
         m_dataLength = 0;
+        m_isRecording = false;
     }
 
     // Create a new file.
@@ -64,34 +66,42 @@ void WavRecorder::startNewFile(const QString& fileName)
     }
 }
 
+void WavRecorder::startRecording()
+{
+    m_isRecording = true;
+}
+
+void WavRecorder::stopRecording()
+{
+    m_isRecording = false;
+}
+
 void WavRecorder::ownProcess()
 {
-    if (m_outputFile) {
-        // Process as long as we have not reach the processing limit.
-        if (m_nbProcessingSaved < m_nbProcessingBeforeSaving) {
-            // Save the buffer from the first In Port found.
-            if (m_inports.count() > 0) {
-                InPort* port = m_inports.at(0);
+    if (m_outputFile && m_isRecording) {
+        // Save the buffer from the first In Port found.
+        if (m_inports.count() > 0) {
+            InPort* port = m_inports.at(0);
 
-                if (port) { // Useful ?
-                    qreal* data = port->buffer()->data();
+            if (port) { // Useful ?
+                qreal* data = port->buffer()->data();
 
-                    for (int i = 0, size = port->buffer()->length(); i < size; i++) {
-                        // For efficiency, this is the addLittleEndianShortToFile method copied here.
-                        // The stored value is 16 bits, signed, little endian, normalised.
-                        int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_SIGNED_INTENSITY);
-                        m_bufferForNumbers[0] = nb & 255;
-                        m_bufferForNumbers[1] = (nb / 256) & 255;
-                        m_outputFile->write(m_bufferForNumbers, 2);
-                        m_dataLength += 2;
-                    }
+                for (int i = 0, size = port->buffer()->length(); i < size; i++) {
+                    // For efficiency, this is the addLittleEndianShortToFile method copied here.
+                    // The stored value is 16 bits, signed, little endian, normalised.
+                    int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_SIGNED_INTENSITY);
+                    m_bufferForNumbers[0] = nb & 255;
+                    m_bufferForNumbers[1] = (nb / 256) & 255;
+                    m_outputFile->write(m_bufferForNumbers, 2);
+                    m_dataLength += 2;
                 }
             }
+        }
 
-            if (++m_nbProcessingSaved >= m_nbProcessingBeforeSaving) {
-                // Close the file as we reached the number of processing wanted.
-                closeWAVFile();
-            }
+        if (m_nbProcessingBeforeSaving != 0 && ++m_nbProcessingSaved >= m_nbProcessingBeforeSaving) {
+            // If a limit of processing is set,
+            // Close the file as we reached the number of processing wanted.
+            closeWAVFile();
         }
     }
 }
