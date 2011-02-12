@@ -8,7 +8,9 @@ POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
     , m_ratioY(RATIO_Y_DEFAULT)
 {
     setMinimumSize(boundingRect().size());
+#if QT_VERSION >= 0x040700
     setAutoFillBackground(false);
+#endif
 }
 
 void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
