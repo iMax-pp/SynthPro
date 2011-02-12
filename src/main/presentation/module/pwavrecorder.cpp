@@ -18,9 +18,10 @@ void PWavRecorder::initialize(PVirtualPort* in)
 {
     TextWidget* title = new TextWidget(tr("Wav"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
-    
+
     PixmapWidget* floppy = new PixmapWidget(":/src/resources/images/floppy-icon.png", this);
-    
+    connect(floppy, SIGNAL(clicked()), this, SIGNAL(newFile()));
+
     // Layout
     leftArea()->addAnchors(in, leftArea());
     centerArea()->addAnchors(title, centerArea());

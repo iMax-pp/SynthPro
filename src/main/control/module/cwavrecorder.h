@@ -5,6 +5,8 @@
 #include "control/cmodule.h"
 
 class CWavRecorder : public WavRecorder, public CModule {
+    Q_OBJECT
+
 public:
     CWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10);
 

@@ -45,6 +45,12 @@ void WavRecorder::startNewFile(const QString& fileName)
     if (m_outputFile) {
         // Close the currently used file.
         closeWAVFile();
+
+        // And reset the variables.
+        m_nbProcessingSaved = 0;
+        m_riffDataSizePosition = 0;
+        m_waveDataSizePosition = 0;
+        m_dataLength = 0;
     }
 
     // Create a new file.

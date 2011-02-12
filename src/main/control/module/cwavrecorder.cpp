@@ -13,10 +13,12 @@ CWavRecorder::CWavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
 void CWavRecorder::initialize(SynthProFactory* factory)
 {
     WavRecorder::initialize(factory);
-    
+
     CInPort* inPort = dynamic_cast<CInPort*>(m_inPort);
-    
-    dynamic_cast<PWavRecorder*>(presentation())->initialize(inPort->presentation());
+
+    PWavRecorder* pre = dynamic_cast<PWavRecorder*>(presentation());
+    pre->initialize(inPort->presentation());
+    connect(pre, SIGNAL(newFile()), this, SLOT(startNewFile()));
 
     startNewFile();
 }
