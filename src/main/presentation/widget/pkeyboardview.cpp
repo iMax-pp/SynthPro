@@ -12,8 +12,9 @@ PKeyboardView::PKeyboardView(QGraphicsItem* parent)
     int keyNumber = FIRST_KEY_NUMBER;
     for (int i = 0; i < NB_OCTAVES; i++) {
         for (int k = 0 ; k < NB_WHITE_KEYS_PER_OCTAVE; k++) {
+            bool assignKey = (i == 0);
             // Adding the white keys.
-            PKeyboardKey* whiteKey = new PKeyboardKey(this, keyNumber, true);
+            PKeyboardKey* whiteKey = new PKeyboardKey(this, keyNumber, true, assignKey);
             // Get the signal from the keys.
             connect(whiteKey, SIGNAL(keyboardKeyPressed(int)), this, SIGNAL(keyboardKeyPressed(int)));
             connect(whiteKey, SIGNAL(keyboardKeyReleased(int)), this, SIGNAL(keyboardKeyReleased(int)));
@@ -22,7 +23,7 @@ PKeyboardView::PKeyboardView(QGraphicsItem* parent)
 
             // Adding the black keys.
             if ((k != 2) && (k != 6)) {
-                PKeyboardKey* blackKey = new PKeyboardKey(this, keyNumber, false);
+                PKeyboardKey* blackKey = new PKeyboardKey(this, keyNumber, false, assignKey);
                 // Get the signal from the keys.
                 connect(blackKey, SIGNAL(keyboardKeyPressed(int)), this, SIGNAL(keyboardKeyPressed(int)));
                 connect(blackKey, SIGNAL(keyboardKeyReleased(int)), this, SIGNAL(keyboardKeyReleased(int)));

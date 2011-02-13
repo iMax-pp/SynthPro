@@ -1,5 +1,5 @@
-#ifndef TESTMODULEBUFFERRECORDER_H
-#define TESTMODULEBUFFERRECORDER_H
+#ifndef TESTWAVRECORDER_H
+#define TESTWAVRECORDER_H
 
 #include <QObject>
 
@@ -8,15 +8,15 @@
   * to the ModuleBufferRecorder. We then reload the file, skip the header, and
   * make sure the whole file is empty.
   */
-class TestModuleBufferRecorder : public QObject {
+class TestWavRecorder : public QObject {
     Q_OBJECT
 
 private slots:
-    void testModuleBufferRecorder();
+    void testWavRecorder();
 
 private:
     static const int NB_ITERATIONS = 50;
     static const int SKIP_HEADER_OFFSET = 64; // Not accurate, but no needs to be.
 };
 
-#endif // TESTMODULEBUFFERRECORDER_H
+#endif // TESTWAVRECORDER_H

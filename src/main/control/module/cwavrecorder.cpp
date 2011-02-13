@@ -19,9 +19,10 @@ void CWavRecorder::initialize(SynthProFactory* factory)
     PWavRecorder* pre = dynamic_cast<PWavRecorder*>(presentation());
     pre->initialize(inPort->presentation());
 
-    connect(pre, SIGNAL(askNewFile()), this, SLOT(newFile()));
-    connect(pre, SIGNAL(startRecording()), this, SLOT(startRecording()));
-    connect(pre, SIGNAL(stopRecording()), this, SLOT(stopRecording()));
+    connect(pre, SIGNAL(newFileClicked()), this, SLOT(newFile()));
+    connect(pre, SIGNAL(startRecordingClicked()), this, SLOT(startRecording()));
+    connect(pre, SIGNAL(stopRecordingClicked()), this, SLOT(stopRecording()));
+    connect(pre, SIGNAL(closeFileClicked()), this, SLOT(closeFile()));
 
     newFile();
 }
@@ -42,4 +43,9 @@ void CWavRecorder::startRecording()
 void CWavRecorder::stopRecording()
 {
     WavRecorder::stopRecording();
+}
+
+void CWavRecorder::closeFile()
+{
+    WavRecorder::closeFile();
 }

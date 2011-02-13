@@ -87,6 +87,7 @@ HEADERS += \
     src/main/presentation/pmodule.h \
     src/main/presentation/psynthpro.h \
     src/main/presentation/widget/moduleview.h \
+    src/main/presentation/widget/pixmapbuttonwidget.h \
     src/main/presentation/widget/pixmapwidget.h \
     src/main/presentation/widget/pkeyboardkey.h \
     src/main/presentation/widget/pkeyboardview.h \
@@ -173,6 +174,7 @@ SOURCES += \
     src/main/presentation/pmodule.cpp \
     src/main/presentation/psynthpro.cpp \
     src/main/presentation/widget/moduleview.cpp \
+    src/main/presentation/widget/pixmapbuttonwidget.cpp \
     src/main/presentation/widget/pixmapwidget.cpp \
     src/main/presentation/widget/pkeyboardkey.cpp \
     src/main/presentation/widget/pkeyboardview.cpp \
