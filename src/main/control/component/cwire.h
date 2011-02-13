@@ -31,6 +31,8 @@ public:
      */
     void updatePosition(const QPointF& = QPointF());
 
+    void midClick();
+
 private:
     PWire* m_presentation;
     CPort* m_inPort;

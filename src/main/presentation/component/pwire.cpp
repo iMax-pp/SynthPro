@@ -6,6 +6,7 @@
 #include "presentation/component/pvirtualport.h"
 
 #include <QApplication>
+#include <QGraphicsSceneMouseEvent>
 #include <QPen>
 #include <QStyle>
 
@@ -57,4 +58,13 @@ void PWire::updatePosition(const QPointF& point)
     // Draw a new line for our wire.
     QLineF line(in, out);
     setLine(line);
+}
+
+// TODO really track clicks instead of just press events
+void PWire::mousePressEvent(QGraphicsSceneMouseEvent* event)
+{
+    if (event->button() == Qt::MidButton) {
+        event->accept();
+        m_control->midClick();
+    }
 }

@@ -23,6 +23,8 @@ public:
     inline CWire* wire() const { return m_wire; }
     void setWire(CWire*);
 
+    void disconnect();
+
     /*
      * The presentation of this CPort should call
      * these operations when the user attempts to drag and

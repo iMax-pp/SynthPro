@@ -51,6 +51,7 @@ bool VirtualPort::disconnect(Connection* connection)
 {
     if (m_connections.contains(connection)) {
         delete connection;
+        emit connectionsChanged();
         return true;
     }
     return false;

@@ -68,6 +68,15 @@ CPort* CVirtualPort::createConnectionPort(Connection* connection)
     return port;
 }
 
+void CVirtualPort::disconnect(CPort* port)
+{
+    int idx = m_connectedPorts.key(port, -1);
+    if (idx >= 0) {
+        Connection* connection = m_connections.at(idx);
+        VirtualPort::disconnect(connection);
+    }
+}
+
 void CVirtualPort::setPresentation(PVirtualPort* presentation)
 {
     if (m_presentation) {

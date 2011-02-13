@@ -21,6 +21,7 @@ public:
     inline PVirtualPort* presentation() const { return m_presentation; }
 
     Connection* connect(VirtualPort* other);
+    void disconnect(CPort*);
     // bool disconnect(Connection*);
     // bool reconnect(Connection*, VirtualPort* other);
 

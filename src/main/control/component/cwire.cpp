@@ -2,6 +2,7 @@
 
 #include "control/component/cinport.h"
 #include "control/component/coutport.h"
+#include "control/component/cport.h"
 #include "presentation/component/pwire.h"
 
 CWire::CWire()
@@ -37,4 +38,9 @@ void CWire::setOutPort(CPort* outPort)
 void CWire::updatePosition(const QPointF& point)
 {
     m_presentation->updatePosition(point);
+}
+
+void CWire::midClick()
+{
+    m_inPort->disconnect();
 }

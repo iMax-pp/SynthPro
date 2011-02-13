@@ -39,6 +39,11 @@ void CPort::wireDeleted()
     m_wire = 0;
 }
 
+void CPort::disconnect()
+{
+    vPort()->disconnect(this);
+}
+
 void CPort::drag(const QPointF& pos)
 {
     /*if (connected()) {
@@ -87,13 +92,17 @@ void CPort::drop(CPort* target)
 {
     dynamic_cast<CSynthPro*>(vPort()->module()->synthPro())->hideFeedback();
     // Delete the temporary wire
-    if (m_tmpWire) { // This condition should always be true, but I’m a bit defensive today
+    if (m_tmpWire) {
         delete m_tmpWire;
         m_tmpWire = 0;
     }
     // If the user dropped on a target, try to connect to it
     if (target) {
-        vPort()->connect(target->vPort());
+        if (m_wire) { // This port is already connected, let’s reconnect it
+            // TODO
+        } else {
+            vPort()->connect(target->vPort());
+        }
     }
 }
 
