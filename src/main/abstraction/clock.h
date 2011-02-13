@@ -58,9 +58,17 @@ private slots:
       */
     void internalTimerExpired();
 
+    /**
+      * When a SoundCard Timer is expired, may call the Sequencer
+      * several times in order to feed the sound card enough.
+      */
+    void soundCardTimerExpired();
+
 private:
     static const int FAST_TIMER_DELAY = 5; // For fast operations (sound card output).
     static const int INTERNAL_TIMER_DELAY = 30; // For non critical operations.
+
+    static const int SOUNDCARD_MAX_ITERATIONS = 10;
 
     bool m_started; // Indicates if the Timers are started or paused.
 

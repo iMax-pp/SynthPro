@@ -2,7 +2,10 @@
 
 #include "abstraction/module.h"
 #include "abstraction/sequencer.h"
+#include "abstraction/audiodeviceprovider.h"
 
+#include <QAudioOutput>
+#include <QDebug>
 #include <QTimer>
 
 Clock::Clock(QObject* parent)
@@ -65,7 +68,8 @@ void Clock::registerFastClock(Module* module)
 
     QTimer* timer = new QTimer(this);
     m_fastTimers.insert(module, timer);
-    connect(timer, SIGNAL(timeout()), module, SLOT(timerExpired()));
+    connect(timer, SIGNAL(timeout()), this, SLOT(soundCardTimerExpired()));
+    //connect(timer, SIGNAL(timeout()), module, SLOT(timerExpired()));
 
     // Start the newly registered timer if the Clock is started.
     if (m_started) {
@@ -88,6 +92,30 @@ void Clock::unregister(Module* module)
 
 void Clock::internalTimerExpired()
 {
-    Sequencer& sequencer = Sequencer::instance();
-    sequencer.process();
+    Sequencer::instance().process();
+}
+
+void Clock::soundCardTimerExpired()
+{
+    // Test if the sound card need data.
+    AudioDeviceProvider& adp = AudioDeviceProvider::instance();
+
+    int iteration = 0;
+    int previousNbBytesNeededByOutput = -1;
+    int nbBytesNeededByOutput = adp.audioOutput()->bytesFree();
+    while (((iteration < SOUNDCARD_MAX_ITERATIONS) && (nbBytesNeededByOutput > 0))
+        && (previousNbBytesNeededByOutput != nbBytesNeededByOutput)) {
+        //qDebug() << "IT = " << iteration << "NEED : " << nbBytesNeededByOutput;
+        Sequencer::instance().process();
+
+        previousNbBytesNeededByOutput = nbBytesNeededByOutput;
+        nbBytesNeededByOutput = adp.audioOutput()->bytesFree();
+        iteration++;
+    }
+
+    // qDebug() << "IT FINI = " << iteration;
+
+    if (iteration >= SOUNDCARD_MAX_ITERATIONS) {
+        qWarning() << "Unable to feed the sound card enough !";
+    }
 }

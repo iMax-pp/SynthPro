@@ -11,6 +11,7 @@ AudioDeviceProvider::AudioDeviceProvider()
     , m_device(0)
     , m_audioOutput(0)
 {
+    initializeAudioOutput();
 }
 
 AudioDeviceProvider::AudioDeviceProvider(AudioDeviceProvider&)
@@ -19,6 +20,7 @@ AudioDeviceProvider::AudioDeviceProvider(AudioDeviceProvider&)
     , m_device(0)
     , m_audioOutput(0)
 {
+    initializeAudioOutput();
 }
 
 AudioDeviceProvider::~AudioDeviceProvider()
