@@ -4,7 +4,7 @@
 #include "presentation/pmodule.h"
 
 class CWavRecorder;
-class PixmapWidget;
+class PixmapButtonWidget;
 class PVirtualPort;
 
 class PWavRecorder : public PModule {
@@ -29,9 +29,9 @@ signals:
     void closeFileClicked();
 
 private:
-    PixmapWidget* m_record;
-    PixmapWidget* m_stop;
-    PixmapWidget* m_close;
+    PixmapButtonWidget* m_record;
+    PixmapButtonWidget* m_stop;
+    PixmapButtonWidget* m_close;
 };
 
 #endif // PWAVRECORDER_H

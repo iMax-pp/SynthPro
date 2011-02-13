@@ -2,6 +2,7 @@
 
 #include "control/module/cwavrecorder.h"
 #include "presentation/component/pvirtualport.h"
+#include "presentation/widget/pixmapbuttonwidget.h"
 #include "presentation/widget/pixmapwidget.h"
 #include "presentation/widget/textwidget.h"
 
@@ -19,20 +20,20 @@ void PWavRecorder::initialize(PVirtualPort* in)
     TextWidget* title = new TextWidget(tr("Wav"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    PixmapWidget* floppy = new PixmapWidget(":/src/resources/images/floppy-icon.png", false, this);
+    PixmapWidget* floppy = new PixmapWidget(":/src/resources/images/floppy-icon.png", this);
     connect(floppy, SIGNAL(clicked()), this, SLOT(floppyClicked()));
 
-    m_stop = new PixmapWidget(":/src/resources/images/stop-icon.png", true, this);
+    m_stop = new PixmapButtonWidget(":/src/resources/images/stop-icon.png", this);
     connect(m_stop, SIGNAL(clicked()), this, SLOT(stopClicked()));
-    m_stop->setOpacity(0.5);
+    m_stop->setActivated(false);
 
-    m_record = new PixmapWidget(":/src/resources/images/record-icon.png", true, this);
+    m_record = new PixmapButtonWidget(":/src/resources/images/record-icon.png", this);
     connect(m_record, SIGNAL(clicked()), this, SLOT(recordClicked()));
-    m_record->setOpacity(0.5);
+    m_record->setActivated(false);
 
-    m_close = new PixmapWidget(":/src/resources/images/close-icon.png", true, this);
+    m_close = new PixmapButtonWidget(":/src/resources/images/close-icon.png", this);
     connect(m_close, SIGNAL(clicked()), this, SLOT(closeClicked()));
-    m_close->setOpacity(0.5);
+    m_close->setActivated(false);
 
     // Layout
     leftArea()->addAnchors(in, leftArea());
@@ -53,9 +54,9 @@ QString PWavRecorder::askForFileName()
                                                     tr("Audio files (*.wav)"));
 
     if (!fileName.isNull()) {
-        m_record->setOpacity(1);
-        m_stop->setOpacity(0.5);
-        m_close->setOpacity(1);
+        m_record->setActivated(true);
+        m_stop->setActivated(false);
+        m_close->setActivated(true);
     }
 
     return fileName;
@@ -68,22 +69,25 @@ void PWavRecorder::floppyClicked()
 
 void PWavRecorder::recordClicked()
 {
-    m_record->setOpacity(0.5);
-    m_stop->setOpacity(1);
+    m_record->setActivated(false);
+    m_stop->setActivated(true);
+
     emit startRecordingClicked();
 }
 
 void PWavRecorder::stopClicked()
 {
-    m_record->setOpacity(1);
-    m_stop->setOpacity(0.5);
+    m_record->setActivated(true);
+    m_stop->setActivated(false);
+
     emit stopRecordingClicked();
 }
 
 void PWavRecorder::closeClicked()
 {
-    m_record->setOpacity(0.5);
-    m_stop->setOpacity(0.5);
-    m_close->setOpacity(0.5);
+    m_record->setActivated(false);
+    m_stop->setActivated(false);
+    m_close->setActivated(false);
+
     emit closeFileClicked();
 }
