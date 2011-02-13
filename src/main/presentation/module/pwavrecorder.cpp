@@ -32,13 +32,13 @@ void PWavRecorder::initialize(PVirtualPort* in)
 
     // Layout
     leftArea()->addAnchors(in, leftArea());
-    rightArea()->addAnchors(m_record, rightArea(), Qt::Horizontal);
-    rightArea()->addAnchors(m_stop, rightArea(), Qt::Horizontal);
-    rightArea()->addAnchor(m_record, Qt::AnchorTop, rightArea(), Qt::AnchorTop);
-    rightArea()->addAnchor(m_record, Qt::AnchorBottom, m_stop, Qt::AnchorTop);
-    rightArea()->addAnchor(m_stop, Qt::AnchorBottom, rightArea(), Qt::AnchorBottom);
     centerArea()->addAnchors(title, centerArea());
-    bottomArea()->addAnchors(floppy, bottomArea());
+    bottomArea()->addCornerAnchors(m_record, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);
+    bottomArea()->addCornerAnchors(m_stop, Qt::TopRightCorner, bottomArea(), Qt::TopRightCorner);
+    bottomArea()->addAnchor(m_record, Qt::AnchorBottom, floppy, Qt::AnchorTop);
+    bottomArea()->addAnchor(m_stop, Qt::AnchorBottom, floppy, Qt::AnchorTop);
+    bottomArea()->addCornerAnchors(floppy, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
+    bottomArea()->addCornerAnchors(floppy, Qt::BottomRightCorner, bottomArea(), Qt::BottomRightCorner);
 }
 
 QString PWavRecorder::askForFileName()
