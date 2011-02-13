@@ -21,7 +21,8 @@ void TestWaveGeneratorSinus::testWaveGeneratorSinus()
 
     SimpleFactory factory;
     WavRecorder* mbr = factory.createWavRecorder(0, NB_ITERATIONS);
-    mbr->startNewFile(fileName);
+    // modif
+    mbr->newFile(fileName);
 
     VCO* vco = factory.createVCO(&synthPro);
     vco->setShape("Sinus");

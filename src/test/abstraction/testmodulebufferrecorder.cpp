@@ -19,7 +19,9 @@ void TestModuleBufferRecorder::testModuleBufferRecorder()
 
     SimpleFactory factory;
     WavRecorder* mbr = factory.createWavRecorder(0, NB_ITERATIONS);
-    mbr->startNewFile(fileName);
+
+    // test en changeant le nom de la méthode
+    mbr->newFile(fileName);
 
     VCO* vco = factory.createVCO(0);
     vco->setShape("Empty");
