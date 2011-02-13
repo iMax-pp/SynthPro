@@ -1,10 +1,10 @@
 #include "adsr.h"
 
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/dimmer.h"
-#include "abstraction/inport.h"
-#include "abstraction/outport.h"
-#include "abstraction/pushbutton.h"
+#include "abstraction/component/dimmer.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/pushbutton.h"
 #include "factory/synthprofactory.h"
 
 ADSR::ADSR(SynthPro* parent)

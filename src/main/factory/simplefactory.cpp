@@ -1,23 +1,23 @@
 #include "simplefactory.h"
 
-#include "abstraction/adsr.h"
-#include "abstraction/delay.h"
-#include "abstraction/dimmer.h"
-#include "abstraction/inport.h"
-#include "abstraction/keyboard.h"
-#include "abstraction/lfo.h"
-#include "abstraction/oscilloscope.h"
-#include "abstraction/outport.h"
-#include "abstraction/port.h"
-#include "abstraction/pushbutton.h"
-#include "abstraction/selector.h"
+#include "abstraction/component/dimmer.h"
+#include "abstraction/component/inport.h"
+#include "abstraction/component/outport.h"
+#include "abstraction/component/port.h"
+#include "abstraction/component/pushbutton.h"
+#include "abstraction/component/selector.h"
+#include "abstraction/module/adsr.h"
+#include "abstraction/module/delay.h"
+#include "abstraction/module/keyboard.h"
+#include "abstraction/module/lfo.h"
+#include "abstraction/module/oscilloscope.h"
+#include "abstraction/module/speaker.h"
+#include "abstraction/module/vca.h"
+#include "abstraction/module/vcf.h"
+#include "abstraction/module/vco.h"
+#include "abstraction/module/wavrecorder.h"
 #include "abstraction/sequencer.h"
-#include "abstraction/speaker.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vca.h"
-#include "abstraction/vcf.h"
-#include "abstraction/vco.h"
-#include "abstraction/wavrecorder.h"
 
 SynthPro* SimpleFactory::createSynthPro()
 {
@@ -116,20 +116,20 @@ LFO* SimpleFactory::createLFO(SynthPro* parent)
     return lfo;
 }
 
-Dimmer* SimpleFactory::createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
+Dimmer* SimpleFactory::createDimmer(const QString& /*name*/, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     return new Dimmer(min, max, kDefault, parent);
 }
 
-Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent)
+Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> /*values*/, const QString& /*name*/, Module* parent)
 {
     return new Selector(keys, defaultKey, parent);
 }
 
 
-WavRecorder* SimpleFactory::createWavRecorder(SynthPro* parent, const QString& fileName, int nbProcessingBeforeSaving)
+WavRecorder* SimpleFactory::createWavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
 {
-    WavRecorder* mbr = new WavRecorder(parent, fileName, nbProcessingBeforeSaving);
+    WavRecorder* mbr = new WavRecorder(parent, nbProcessingBeforeSaving);
     mbr->initialize(this);
     return mbr;
 }

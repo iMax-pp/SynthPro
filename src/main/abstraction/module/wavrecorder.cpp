@@ -2,7 +2,7 @@
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/buffer.h"
-#include "abstraction/inport.h"
+#include "abstraction/component/inport.h"
 #include "abstraction/module/speaker.h"
 #include "abstraction/module/vco.h"
 #include "factory/synthprofactory.h"
@@ -10,13 +10,14 @@
 #include <QDebug>
 #include <QFile>
 
-WavRecorder::WavRecorder(SynthPro* parent, QString fileName, int nbProcessingBeforeSaving)
+WavRecorder::WavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
     : Module(parent)
     , m_inPort(0)
-    , m_fileName(fileName)
+    , m_fileName(QString())
+    , m_outputFile(0)
+    , m_isRecording(false)
     , m_nbProcessingBeforeSaving(nbProcessingBeforeSaving)
     , m_nbProcessingSaved(0)
-    , m_outputFile(0)
     , m_riffDataSizePosition(0)
     , m_waveDataSizePosition(0)
     , m_dataLength(0)
@@ -24,19 +25,13 @@ WavRecorder::WavRecorder(SynthPro* parent, QString fileName, int nbProcessingBef
 {
     m_bufferForNumbers = new char(4); // The buffer is only used to write int32 or short (16 bits),
                                       // as requested by the WAV format.
-    // Open the output file.
-    m_outputFile = new QFile(fileName);
-
-    if (!m_outputFile->open(QIODevice::WriteOnly)) {
-        qWarning("Unable to create output file.");
-    } else {
-        createWAVHeader(m_outputFile);
-    }
 }
 
 WavRecorder::~WavRecorder()
 {
-    m_outputFile->close();
+    if (m_outputFile) {
+        closeWAVFile();
+    }
 }
 
 void WavRecorder::initialize(SynthProFactory* factory)
@@ -46,37 +41,74 @@ void WavRecorder::initialize(SynthProFactory* factory)
     m_inports.append(m_inPort);
 }
 
-void WavRecorder::ownProcess()
+void WavRecorder::newFile(const QString& fileName)
 {
     if (m_outputFile) {
-        // Process as long as we have not reach the processing limit.
-        if (m_nbProcessingSaved < m_nbProcessingBeforeSaving) {
-            // Save the buffer from the first In Port found.
-            if (m_inports.count() > 0) {
-                InPort* port = m_inports.at(0);
+        // Close the currently used file.
+        closeWAVFile();
 
-                if (port) { // Useful ?
-                    qreal* data = port->buffer()->data();
+        // And reset the variables.
+        m_nbProcessingSaved = 0;
+        m_riffDataSizePosition = 0;
+        m_waveDataSizePosition = 0;
+        m_dataLength = 0;
+        m_isRecording = false;
+    }
 
-                    for (int i = 0, size = port->buffer()->length(); i < size; i++) {
-                        // For efficiency, this is the addLittleEndianShortToFile method copied here.
-                        // The stored value is 16 bits, signed, little endian, normalised.
-                        int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_SIGNED_INTENSITY);
-                        m_bufferForNumbers[0] = nb & 255;
-                        m_bufferForNumbers[1] = (nb / 256) & 255;
-                        m_outputFile->write(m_bufferForNumbers, 2);
-                        m_dataLength += 2;
-                    }
+    // Create a new file.
+    m_fileName = fileName;
+    m_outputFile = new QFile(fileName);
+
+    if (!m_outputFile->open(QIODevice::WriteOnly)) {
+        qWarning("Unable to create output file.");
+    } else {
+        createWAVHeader(m_outputFile);
+    }
+}
+
+void WavRecorder::startRecording()
+{
+    m_isRecording = true;
+}
+
+void WavRecorder::stopRecording()
+{
+    m_isRecording = false;
+}
+
+void WavRecorder::closeFile()
+{
+    stopRecording();
+    closeWAVFile();
+}
+
+void WavRecorder::ownProcess()
+{
+    if (m_outputFile && m_isRecording) {
+        // Save the buffer from the first In Port found.
+        if (m_inports.count() > 0) {
+            InPort* port = m_inports.at(0);
+
+            if (port) { // Useful ?
+                qreal* data = port->buffer()->data();
+
+                for (int i = 0, size = port->buffer()->length(); i < size; i++) {
+                    // For efficiency, this is the addLittleEndianShortToFile method copied here.
+                    // The stored value is 16 bits, signed, little endian, normalised.
+                    int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_SIGNED_INTENSITY);
+                    m_bufferForNumbers[0] = nb & 255;
+                    m_bufferForNumbers[1] = (nb / 256) & 255;
+                    m_outputFile->write(m_bufferForNumbers, 2);
+                    m_dataLength += 2;
                 }
-            }
-
-            if (++m_nbProcessingSaved >= m_nbProcessingBeforeSaving) {
-                // Close the file as we reached the number of processing wanted.
-                closeWAVFile(m_outputFile);
             }
         }
 
-
+        if (m_nbProcessingBeforeSaving != 0 && ++m_nbProcessingSaved >= m_nbProcessingBeforeSaving) {
+            // If a limit of processing is set,
+            // Close the file as we reached the number of processing wanted.
+            closeWAVFile();
+        }
     }
 }
 
@@ -106,17 +138,20 @@ void WavRecorder::createWAVHeader(QFile* file)
     addLittleEndianIntToFile(file, 0xffffffff); // Chunk Format Data Size. Use a fake size, for now.
 }
 
-void WavRecorder::closeWAVFile(QFile* file)
+void WavRecorder::closeWAVFile()
 {
-    // Set the previously skipped size.
-    file->seek(m_riffDataSizePosition);
-    addLittleEndianIntToFile(file, file->size() - 8); // The header doesn't count.
-    file->seek(m_waveDataSizePosition);
-    addLittleEndianIntToFile(file, m_dataLength);
+    if (m_outputFile) {
+        // Set the previously skipped size.
+        m_outputFile->seek(m_riffDataSizePosition);
+        addLittleEndianIntToFile(m_outputFile, m_outputFile->size() - 8); // The header doesn't count.
+        m_outputFile->seek(m_waveDataSizePosition);
+        addLittleEndianIntToFile(m_outputFile, m_dataLength);
 
-    file->close();
+        m_outputFile->close();
+        m_outputFile = 0;
 
-    qDebug() << "WavRecorder::closeWAVFile Done !";
+        qDebug() << "WavRecorder::closeWAVFile Done !";
+    }
 }
 
 void WavRecorder::addLittleEndianShortToFile(QFile* file, int nb)

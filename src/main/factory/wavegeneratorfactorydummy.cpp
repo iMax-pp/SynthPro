@@ -1,12 +1,12 @@
 #include "wavegeneratorfactory.h"
 
-#include "abstraction/wavegenerator.h"
-#include "abstraction/wavegeneratordummy.h"
-#include "abstraction/wavegeneratorempty.h"
-#include "abstraction/wavegeneratorsaw.h"
-#include "abstraction/wavegeneratorsinus.h"
-#include "abstraction/wavegeneratorsquare.h"
-#include "abstraction/wavegeneratortriangle.h"
+#include "abstraction/wavegen/wavegenerator.h"
+#include "abstraction/wavegen/wavegeneratordummy.h"
+#include "abstraction/wavegen/wavegeneratorempty.h"
+#include "abstraction/wavegen/wavegeneratorsaw.h"
+#include "abstraction/wavegen/wavegeneratorsinus.h"
+#include "abstraction/wavegen/wavegeneratorsquare.h"
+#include "abstraction/wavegen/wavegeneratortriangle.h"
 
 /**
   * Used for TESTS ONLY ! Allow to use EmptyWave.

@@ -3,13 +3,12 @@
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/buffer.h"
 #include "abstraction/clock.h"
-#include "abstraction/inport.h"
+#include "abstraction/component/inport.h"
 #include "abstraction/module/vco.h"
 #include "abstraction/sequencer.h"
 #include "factory/synthprofactory.h"
 
 #include <QAudioOutput>
-#include <QDebug>
 
 Speaker::Speaker(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
     : Module(parent)

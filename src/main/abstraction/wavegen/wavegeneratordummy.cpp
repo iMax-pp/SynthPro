@@ -2,8 +2,6 @@
 
 #include "abstraction/buffer.h"
 
-#include <QDebug>
-
 WaveGeneratorDummy::WaveGeneratorDummy()
     : m_intensity(SIGNAL_INTENSITY)
     , m_currentStep(0)

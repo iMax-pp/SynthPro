@@ -1,6 +1,6 @@
 #include "testoutport.h"
 
-#include "abstraction/outport.h"
+#include "abstraction/component/outport.h"
 #include "factory/simplefactory.h"
 
 void TestOutPort::testOut()

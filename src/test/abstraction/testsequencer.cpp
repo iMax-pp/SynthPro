@@ -1,14 +1,14 @@
 #include "abstraction/testsequencer.h"
 
-#include "abstraction/mockinoutmodule.h"
-#include "abstraction/mockserializerwell.h"
-#include "abstraction/mockwell.h"
-#include "abstraction/port.h"
+#include "abstraction/component/port.h"
+#include "abstraction/component/virtualport.h"
+#include "abstraction/mock/mockinoutmodule.h"
+#include "abstraction/mock/mockserializerwell.h"
+#include "abstraction/mock/mockwell.h"
+#include "abstraction/module/vco.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/vco.h"
-#include "abstraction/virtualport.h"
-#include "abstraction/wavegeneratordummy.h"
+#include "abstraction/wavegen/wavegeneratordummy.h"
 #include "factory/simplefactory.h"
 
 #include <QtTest>

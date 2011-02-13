@@ -1,9 +1,7 @@
 #include "keyboard.h"
 
-#include "abstraction/outport.h"
+#include "abstraction/component/outport.h"
 #include "factory/synthprofactory.h"
-
-#include <QDebug>
 
 Keyboard::Keyboard(SynthPro* parent)
     : Module(parent)

@@ -41,20 +41,21 @@ public:
 
     virtual VCO* createVCO(SynthPro*) = 0;
     virtual LFO* createLFO(SynthPro*) = 0;
+    virtual Keyboard* createKeyboard(SynthPro*) = 0;
+
     virtual VCF* createVCF(SynthPro*) = 0;
     virtual VCA* createVCA(SynthPro*) = 0;
     virtual ADSR* createADSR(SynthPro*) = 0;
     virtual Delay* createDelay(SynthPro*) = 0;
-    virtual WavRecorder* createWavRecorder(SynthPro*, const QString& fileName = "output.wav", int nbProcessingBeforeSaving = 5) = 0;
-    virtual Keyboard* createKeyboard(SynthPro*) = 0;
+
+    virtual Oscilloscope* createOscilloscope(SynthPro*) = 0;
+    virtual WavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10) = 0;
 
     /**
       * Instanciate a Speaker, but ONLY if the audio device isn't already used by another instance.
       * @return Speaker if instanciation successful, 0 if not.
       */
     virtual Speaker* createSpeaker(SynthPro*) = 0;
-
-    virtual Oscilloscope* createOscilloscope(SynthPro*) = 0;
 
     /*
      * instantiate a dimmer's abstraction

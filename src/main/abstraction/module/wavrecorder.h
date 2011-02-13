@@ -16,13 +16,35 @@ class SynthProFactory;
 class WavRecorder : public virtual Module {
 
 public:
-    WavRecorder(SynthPro*, QString fileName = "output.wav", int nbProcessingBeforeSaving = 5);
+    WavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10);
     virtual ~WavRecorder();
 
     /**
       * Required method in order to instanciate the ports. Used by the factory.
       */
     void initialize(SynthProFactory*);
+
+    /**
+     * Ask for a file name to save to.
+     */
+    void newFile(const QString&);
+
+    /**
+     * Start the recording into the current file.
+     */
+    void startRecording();
+
+    /**
+     * Stop the recording into the current file.
+     * @warning It doesn't close the file, just pause the recording.
+     */
+    void stopRecording();
+
+    /**
+     * This method can be called to manually close the currently processed file.
+     * Otherwise, the file is closed when a new one is created or when deleting the module.
+     */
+    void closeFile();
 
     /**
      * Save the first input port buffer into a file.
@@ -32,13 +54,21 @@ public:
 protected:
     InPort* m_inPort;
 
+    /**
+     * Write the right size of the chunks and data,
+     * which position has been saved while writing the buffer(s).
+     * Then close the file.
+     */
+    void closeWAVFile();
+
 private:
     static const int SIGNAL_OUT_SIGNED_INTENSITY = 32767;
 
     QString m_fileName;
+    QFile* m_outputFile;
+    bool m_isRecording;
     const int m_nbProcessingBeforeSaving;
     int m_nbProcessingSaved;
-    QFile* m_outputFile;
 
     int m_riffDataSizePosition;
     int m_waveDataSizePosition;
@@ -50,13 +80,6 @@ private:
       * the dynamic size pointers.
       */
     void createWAVHeader(QFile*);
-
-    /**
-      * Write the right size of the chunks and data,
-      * which position has been saved while writing the buffer(s).
-      * Then close the file.
-      */
-    void closeWAVFile(QFile*);
 
     /**
       * Helper method. Adds a little endian int32 to a given file.
