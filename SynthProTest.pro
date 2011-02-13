@@ -47,26 +47,26 @@ HEADERS += \
     src/main/factory/simplefactory.h \
     src/main/factory/synthprofactory.h \
     src/main/factory/wavegeneratorfactory.h \
-    src/test/abstraction/mockinoutmodule.h \
-    src/test/abstraction/mockmodule.h \
-    src/test/abstraction/mockserializerwell.h \
-    src/test/abstraction/mockwell.h \
-    src/test/abstraction/testadsr.h \
+    src/test/abstraction/mock/mockinoutmodule.h \
+    src/test/abstraction/mock/mockmodule.h \
+    src/test/abstraction/mock/mockserializerwell.h \
+    src/test/abstraction/mock/mockwell.h \
+    src/test/abstraction/module/testadsr.h \
+    src/test/abstraction/module/testdelay.h \
+    src/test/abstraction/module/testlfo.h \
+    src/test/abstraction/module/testvca.h \
+    src/test/abstraction/module/testvcf.h \
+    src/test/abstraction/module/testvco.h \
+    src/test/abstraction/module/testwavrecorder.h \
     src/test/abstraction/testaudiodeviceprovider.h \
-    src/test/abstraction/testdelay.h \
     src/test/abstraction/testinport.h \
-    src/test/abstraction/testlfo.h \
     src/test/abstraction/testoutport.h \
     src/test/abstraction/testsequencer.h \
-    src/test/abstraction/testvca.h \
-    src/test/abstraction/testvcf.h \
-    src/test/abstraction/testvco.h \
-    src/test/abstraction/testwavegeneratorempty.h \
-    src/test/abstraction/testwavegeneratorsaw.h \
-    src/test/abstraction/testwavegeneratorsinus.h \
-    src/test/abstraction/testwavegeneratorsquare.h \
-    src/test/abstraction/testwavegeneratortriangle.h \
-    src/test/abstraction/testwavrecorder.h
+    src/test/abstraction/wavegen/testwavegeneratorempty.h \
+    src/test/abstraction/wavegen/testwavegeneratorsaw.h \
+    src/test/abstraction/wavegen/testwavegeneratorsinus.h \
+    src/test/abstraction/wavegen/testwavegeneratorsquare.h \
+    src/test/abstraction/wavegen/testwavegeneratortriangle.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -106,26 +106,26 @@ SOURCES += \
     src/main/factory/filterfactorydummy.cpp \
     src/main/factory/simplefactory.cpp \
     src/main/factory/wavegeneratorfactorydummy.cpp \
-    src/test/abstraction/mockinoutmodule.cpp \
-    src/test/abstraction/mockmodule.cpp \
-    src/test/abstraction/mockserializerwell.cpp \
-    src/test/abstraction/mockwell.cpp \
-    src/test/abstraction/testadsr.cpp \
+    src/test/abstraction/mock/mockinoutmodule.cpp \
+    src/test/abstraction/mock/mockmodule.cpp \
+    src/test/abstraction/mock/mockserializerwell.cpp \
+    src/test/abstraction/mock/mockwell.cpp \
+    src/test/abstraction/module/testadsr.cpp \
+    src/test/abstraction/module/testdelay.cpp \
+    src/test/abstraction/module/testlfo.cpp \
+    src/test/abstraction/module/testvca.cpp \
+    src/test/abstraction/module/testvcf.cpp \
+    src/test/abstraction/module/testvco.cpp \
+    src/test/abstraction/module/testwavrecorder.cpp \
     src/test/abstraction/testaudiodeviceprovider.cpp \
-    src/test/abstraction/testdelay.cpp \
     src/test/abstraction/testinport.cpp \
-    src/test/abstraction/testlfo.cpp \
     src/test/abstraction/testoutport.cpp \
     src/test/abstraction/testsequencer.cpp \
-    src/test/abstraction/testvca.cpp \
-    src/test/abstraction/testvcf.cpp \
-    src/test/abstraction/testvco.cpp \
-    src/test/abstraction/testwavegeneratorempty.cpp \
-    src/test/abstraction/testwavegeneratorsaw.cpp \
-    src/test/abstraction/testwavegeneratorsinus.cpp \
-    src/test/abstraction/testwavegeneratorsquare.cpp \
-    src/test/abstraction/testwavegeneratortriangle.cpp \
-    src/test/abstraction/testwavrecorder.cpp \
+    src/test/abstraction/wavegen/testwavegeneratorempty.cpp \
+    src/test/abstraction/wavegen/testwavegeneratorsaw.cpp \
+    src/test/abstraction/wavegen/testwavegeneratorsinus.cpp \
+    src/test/abstraction/wavegen/testwavegeneratorsquare.cpp \
+    src/test/abstraction/wavegen/testwavegeneratortriangle.cpp \
     src/test/test.cpp
 
 

@@ -3,7 +3,7 @@
 
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
-#include "abstraction/mockmodule.h"
+#include "abstraction/mock/mockmodule.h"
 
 class SynthProFactory;
 
