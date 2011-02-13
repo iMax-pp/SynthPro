@@ -22,7 +22,7 @@ public:
 
     Connection* connect(VirtualPort* other);
     void disconnect(CPort*);
-    // bool disconnect(Connection*);
+    bool disconnect(Connection*);
     // bool reconnect(Connection*, VirtualPort* other);
 
     void updateWiresPositions();
@@ -42,6 +42,7 @@ public:
 
 protected:
     CPort* createConnectionPort(Connection*);
+    void deleteConnectionPort(int idx);
 
 private:
     PVirtualPort* m_presentation;

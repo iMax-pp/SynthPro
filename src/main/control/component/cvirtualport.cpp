@@ -7,7 +7,9 @@
 #include "control/component/cwire.h"
 #include "control/csynthpro.h"
 #include "factory/qtfactory.h"
+#include "presentation/component/pport.h"
 #include "presentation/component/pvirtualport.h"
+#include "presentation/component/pwire.h"
 
 CVirtualPort::CVirtualPort(Module* parent, QtFactory* factory, const QString& name, bool replicable, bool gate)
     : VirtualPort(parent, name, factory, replicable, gate)
@@ -73,8 +75,32 @@ void CVirtualPort::disconnect(CPort* port)
     int idx = m_connectedPorts.key(port, -1);
     if (idx >= 0) {
         Connection* connection = m_connections.at(idx);
-        VirtualPort::disconnect(connection);
+        disconnect(connection);
     }
+}
+
+bool CVirtualPort::disconnect(Connection* connection)
+{
+    CVirtualPort* other = dynamic_cast<CVirtualPort*>(connection->source()) == this
+                          ? dynamic_cast<CVirtualPort*>(connection->target())
+                          : dynamic_cast<CVirtualPort*>(connection->source());
+    int idx = m_connections.indexOf(connection);
+    if (VirtualPort::disconnect(connection)) {
+        delete m_connectedPorts.value(idx)->wire()->presentation();
+        deleteConnectionPort(idx);
+        other->deleteConnectionPort(idx);
+        return true;
+    }
+    return false;
+}
+
+void CVirtualPort::deleteConnectionPort(int idx)
+{
+    CPort* port = m_connectedPorts.value(idx);
+    m_connectedPorts.remove(idx);
+    presentation()->removeConnectionPort(port->presentation());
+    // delete port->presentation();
+    // delete port;
 }
 
 void CVirtualPort::setPresentation(PVirtualPort* presentation)
