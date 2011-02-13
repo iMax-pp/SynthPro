@@ -59,6 +59,9 @@ protected:
 
     Sequencer& m_sequencer;
     // bool m_manageSound; // *** FIXME *** Not fond of it...
+
+private:
+    qint64 sendToAudioOutput(int nbBytesNeededByOutput);
 };
 
 #endif // SPEAKER_H

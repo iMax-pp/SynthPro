@@ -21,7 +21,6 @@ void TestWavRecorder::testWavRecorder()
     WavRecorder* mbr = factory.createWavRecorder(0, NB_ITERATIONS);
     mbr->newFile(fileName);
     mbr->startRecording();
-
     VCO* vco = factory.createVCO(0);
     vco->setShape("Empty");
     vco->outports().first()->connections().first()->connect(mbr->inports().first()->connections().first());

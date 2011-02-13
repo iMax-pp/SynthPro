@@ -66,7 +66,7 @@ void PKeyboardKey::keyPressEvent(QKeyEvent*)
     qDebug() << "AAA";
 }
 
-void PKeyboardKey::grabKeyboardEvent(QEvent *event)
+void PKeyboardKey::grabKeyboardEvent(QEvent*)
 {
     qDebug() << "AAA";
 }

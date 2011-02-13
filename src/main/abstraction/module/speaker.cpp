@@ -24,6 +24,10 @@ Speaker::Speaker(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
 
 Speaker::~Speaker()
 {
+    // Unregister the module as a fast timer to the Clock.
+    Clock& clock = Clock::instance();
+    clock.unregister(this);
+
     delete[] m_generationBuffer;
 }
 
@@ -53,10 +57,8 @@ void Speaker::initialize(SynthProFactory* factory)
 
 void Speaker::timerExpired()
 {
-    // if (!m_manageSound) {
-    //     return;
-    // }
 
+    /*
     int fillCounter = 0;
     qint64 sizeWritten = 1;
     int nbBytesNeededByOutput = m_audioOutput->bytesFree();
@@ -102,6 +104,9 @@ void Speaker::timerExpired()
 
         fillCounter++;
     }
+    */
+
+
 
     /*
     if (fillCounter >= FILL_COUNTER_MAX) {
@@ -118,4 +123,47 @@ void Speaker::timerExpired()
 
 void Speaker::ownProcess()
 {
+    int nbBytesNeededByOutput = m_audioOutput->bytesFree();
+    if (nbBytesNeededByOutput > 0) {
+        if (m_nbGeneratedBytesRemaining > 0) {
+            sendToAudioOutput(nbBytesNeededByOutput);
+
+            nbBytesNeededByOutput = m_audioOutput->bytesFree();
+        } else {
+            // We don't have any bytes in our buffer.
+            // Now we copy our InPort to the generationBuffer. A conversion is needed.
+            qreal* data = m_inPort->buffer()->data();
+
+            for (int i = 0, size = m_inPort->buffer()->length(); i < size; i += 2) {
+                int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_UNSIGNED_INTENSITY);
+                // FIXME : Works, but can't understand why. The output seems to be 8 bits only.
+                m_generationBuffer[i] = 0; // nb / 256;
+                m_generationBuffer[i + 1] = nb; // nb & 255;
+            }
+
+            m_generationBufferIndex = 0;
+            m_nbGeneratedBytesRemaining = Buffer::DEFAULT_LENGTH;
+
+            sendToAudioOutput(nbBytesNeededByOutput);
+        }
+    }
+}
+
+qint64 Speaker::sendToAudioOutput(int nbBytesNeededByOutput) {
+    qint64 sizeWritten;
+    // We have some bytes left in our buffer. Is it enough ?
+    if (m_nbGeneratedBytesRemaining >= nbBytesNeededByOutput) {
+        // We have more than enough. We send only what is needed.
+        // qWarning() << "Trying to write : " << nbBytesNeededByOutput;
+        sizeWritten = m_device->write(m_generationBuffer + m_generationBufferIndex, nbBytesNeededByOutput);
+    } else {
+        // We don't have enough. We send what we have for now.
+        // qWarning() << "Trying to write : " << m_nbGeneratedBytesRemaining;
+        sizeWritten = m_device->write(m_generationBuffer + m_generationBufferIndex, m_nbGeneratedBytesRemaining);
+    }
+
+    m_generationBufferIndex += sizeWritten;
+    m_nbGeneratedBytesRemaining -= sizeWritten;
+
+    return sizeWritten;
 }

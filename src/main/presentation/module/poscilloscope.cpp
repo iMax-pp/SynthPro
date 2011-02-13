@@ -9,9 +9,12 @@
 #include <QFont>
 #include <QGraphicsAnchorLayout>
 #include <QGraphicsSimpleTextItem>
+#include <QTimer>
 
 POscilloscope::POscilloscope(COscilloscope* control)
     : PModule(control)
+    , m_refreshTimer(0)
+    , m_mustRefreshOscilloscopeView(false)
 {
 }
 
@@ -26,6 +29,12 @@ void POscilloscope::initialize(PVirtualPort* input)
     leftArea()->addAnchors(input, leftArea());
     bottomArea()->addAnchors(m_pOscilloscopeView, bottomArea());
     centerArea()->addAnchors(title, centerArea());
+
+    // Set up the refresh timer.
+    m_refreshTimer = new QTimer(this);
+    m_refreshTimer->start(REFRESH_RATE);
+    connect(m_refreshTimer, SIGNAL(timeout()), this, SLOT(refreshTimerExpired()));
+
 }
 
 void POscilloscope::setVisualizedBuffer(Buffer* buffer)
@@ -37,7 +46,13 @@ void POscilloscope::setVisualizedBuffer(Buffer* buffer)
 
 void POscilloscope::refreshOscilloscopeView()
 {
-    if  (m_pOscilloscopeView) {
+    if (m_mustRefreshOscilloscopeView && m_pOscilloscopeView) {
+        m_mustRefreshOscilloscopeView = false;
         m_pOscilloscopeView->update(0, 0, m_pOscilloscopeView->WIDTH, m_pOscilloscopeView->HEIGHT);
     }
+}
+
+void POscilloscope::refreshTimerExpired()
+{
+    m_mustRefreshOscilloscopeView = true;
 }

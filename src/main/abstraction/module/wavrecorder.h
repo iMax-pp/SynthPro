@@ -14,6 +14,7 @@ class SynthProFactory;
   * Close the file automatically after a fixed number of processing.
   */
 class WavRecorder : public virtual Module {
+    Q_OBJECT
 
 public:
     WavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10);

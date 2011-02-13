@@ -22,9 +22,9 @@ void TestWaveGeneratorSaw::testWaveGeneratorSaw()
 
     SimpleFactory factory;
     WavRecorder* mbr = factory.createWavRecorder(0, NB_ITERATIONS);
+
     mbr->newFile(fileName);
     mbr->startRecording();
-
     VCO* vco = factory.createVCO(&synthPro);
     vco->setShape("Saw");
     vco->outports().first()->connections().first()->connect(mbr->inports().first()->connections().first());

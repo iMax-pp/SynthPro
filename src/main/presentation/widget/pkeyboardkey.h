@@ -18,7 +18,7 @@ public:
     void mousePressEvent(QGraphicsSceneMouseEvent*);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent*);
     void keyPressEvent(QKeyEvent*); // FIXME : TESTS
-    void grabKeyboardEvent(QEvent *event); // FIXME : TESTS
+    void grabKeyboardEvent(QEvent*); // FIXME : TESTS
 
     static const int WHITE_KEY_WIDTH = 16;
     static const int WHITE_KEY_HEIGHT = 50;
@@ -37,7 +37,7 @@ private:
     bool m_pressed;
     QBrush* m_fillKeyBrush;
     QBrush* m_fillKeyBrushPressed;
-    //static QList<char> m_keys;
+    // static QList<char> m_keys;
 };
 
 #endif // PKEYBOARDKEY_H

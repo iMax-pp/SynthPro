@@ -10,6 +10,7 @@ class OutPort;
 class SynthPro;
 class SynthProFactory;
 
+
 class Delay : public virtual Module {
     Q_OBJECT
 public:
@@ -18,19 +19,21 @@ public:
     virtual void initialize(SynthProFactory*);
     void ownProcess();
 
-    Buffer* buffer();
+    // only for testing, will be delete after
+    Buffer* buffer1();
 
 protected:
 
     InPort* m_inPort;
     OutPort* m_outPort;
-    Buffer* m_buffer;
+    Buffer* m_buffer1;
+    Buffer* m_buffer2;
     Dimmer* m_durationDimmer;
     Dimmer* m_decayDimmer;
 
 
     int m_delaySizeMax; /// max number  buffers in the buffer
-    int m_readIndex, m_writeIndex;
+    int m_readIndex, m_writeIndex, m_readIndex2, m_writeIndex2;
 
 
     static const qreal BUFFER_DURATION_MAX = 5;
