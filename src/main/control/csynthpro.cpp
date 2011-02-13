@@ -1,5 +1,6 @@
 #include "csynthpro.h"
 
+#include "abstraction/clock.h"
 #include "control/cmodule.h"
 #include "control/component/cinport.h"
 #include "control/component/coutport.h"
@@ -48,6 +49,11 @@ void CSynthPro::setPresentation(PSynthPro* presentation)
 
     m_presentation = presentation;
     m_presentation->setGraphicsScene(m_graphicsScene);
+
+    if (Clock::instance().isStarted()) {
+        // By default the Play/Pause button is on Pause, so let's change this.
+        m_presentation->togglePlayPause();
+    }
 }
 
 PSynthPro* CSynthPro::presentation() const
@@ -134,5 +140,14 @@ void CSynthPro::hideFeedback()
         foreach (VirtualPort* port, module->outports()) {
             dynamic_cast<COutPort*>(port)->hideFeedback();
         }
+    }
+}
+
+void CSynthPro::play(bool resume)
+{
+    if (resume) {
+        Clock::instance().start();
+    } else {
+        Clock::instance().pause();
     }
 }

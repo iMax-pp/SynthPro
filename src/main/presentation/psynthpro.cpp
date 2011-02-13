@@ -15,7 +15,6 @@
 #include <QMessageBox>
 #include <QStatusBar>
 #include <QToolBar>
-#include <QToolButton>
 
 PSynthPro::PSynthPro(CSynthPro* control)
     : QMainWindow()
@@ -33,6 +32,11 @@ void PSynthPro::setGraphicsScene(QGraphicsScene* scene)
 CSynthPro* PSynthPro::control() const
 {
     return m_control;
+}
+
+void PSynthPro::togglePlayPause()
+{
+    m_playPauseAct->toggle();
 }
 
 void PSynthPro::promptNew()
@@ -76,29 +80,50 @@ void PSynthPro::initUI()
 
 void PSynthPro::createStaticActions()
 {
+    // Create "New" action.
     m_newAct = new QAction(QIcon(":/src/resources/images/new.png"), tr("&New"), this);
     m_newAct->setShortcuts(QKeySequence::New);
     m_newAct->setStatusTip(tr("Create a new file"));
     connect(m_newAct, SIGNAL(triggered()), this, SLOT(promptNew()));
 
+    // Create "Exit" action.
     m_exitAct = new QAction(QIcon(":/src/resources/images/exit.png"), tr("E&xit"), this);
     m_exitAct->setShortcut(tr("Ctrl+Q"));
     m_exitAct->setStatusTip(tr("Exit the application"));
     connect(m_exitAct, SIGNAL(triggered()), qApp, SLOT(quit()));
 
+    // Create "About" action.
     m_aboutAct = new QAction(tr("&About"), this);
     m_aboutAct->setStatusTip(tr("Show application's About box"));
     connect(m_aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
+    // Create "About Qt" action.
     m_aboutQtAct = new QAction(tr("About &Qt"), this);
     m_aboutQtAct->setStatusTip(tr("Show Qt library's About box"));
     connect(m_aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+
+    // Create "Play/Pause" icon.
+    QIcon switchIcon;
+    switchIcon.addPixmap(QPixmap(":src/resources/images/pause.png"),
+                         QIcon::Normal, QIcon::On);
+    switchIcon.addPixmap(QPixmap(":src/resources/images/play.png"),
+                         QIcon::Normal, QIcon::Off);
+
+    // Create "Play/Pause" action.
+    m_playPauseAct = new QAction(switchIcon, tr("&Play/Pause"), this);
+    m_playPauseAct->setCheckable(true);
+    m_playPauseAct->setShortcut(tr("Ctrl+P"));
+    m_playPauseAct->setStatusTip(tr("Play/Pause the application"));
+    connect(m_playPauseAct, SIGNAL(triggered(bool)), m_control, SLOT(play(bool)));
 }
 
 void PSynthPro::createMenus()
 {
     m_fileMenu = menuBar()->addMenu(tr("&File"));
     m_fileMenu->addAction(m_newAct);
+
+    m_fileMenu->addSeparator();
+    m_fileMenu->addAction(m_playPauseAct);
 
     m_fileMenu->addSeparator();
     m_fileMenu->addAction(m_exitAct);
@@ -118,19 +143,8 @@ void PSynthPro::createMainToolBar()
     m_toolBar->addAction(m_newAct);
     m_toolBar->addAction(m_exitAct);
 
-    QToolButton* switchButton = new QToolButton(this);
-    switchButton->setCheckable(true);
-    switchButton->setChecked(true);
-
-    QIcon switchIcon;
-    switchIcon.addPixmap(QPixmap(":src/resources/images/pause.png"),
-                         QIcon::Normal, QIcon::On);
-    switchIcon.addPixmap(QPixmap(":src/resources/images/play.png"),
-                         QIcon::Normal, QIcon::Off);
-    switchButton->setIcon(switchIcon);
-
     m_toolBar->addSeparator();
-    m_toolBar->addWidget(switchButton);
+    m_toolBar->addAction(m_playPauseAct);
 
     setUnifiedTitleAndToolBarOnMac(true);
 }

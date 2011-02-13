@@ -1,8 +1,8 @@
 #include "clock.h"
 
+#include "abstraction/audiodeviceprovider.h"
 #include "abstraction/module.h"
 #include "abstraction/sequencer.h"
-#include "abstraction/audiodeviceprovider.h"
 
 #include <QAudioOutput>
 #include <QDebug>
@@ -61,6 +61,11 @@ void Clock::pause()
     }
 }
 
+bool Clock::isStarted() const
+{
+    return m_started;
+}
+
 void Clock::registerFastClock(Module* module)
 {
     // First we stop the Internal Timer, as we use instead a Fast Timer.
@@ -69,7 +74,7 @@ void Clock::registerFastClock(Module* module)
     QTimer* timer = new QTimer(this);
     m_fastTimers.insert(module, timer);
     connect(timer, SIGNAL(timeout()), this, SLOT(soundCardTimerExpired()));
-    //connect(timer, SIGNAL(timeout()), module, SLOT(timerExpired()));
+    // connect(timer, SIGNAL(timeout()), module, SLOT(timerExpired()));
 
     // Start the newly registered timer if the Clock is started.
     if (m_started) {
