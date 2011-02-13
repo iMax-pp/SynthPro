@@ -12,6 +12,8 @@ Clock::Clock(QObject* parent)
     : QObject(parent)
     , m_started(false)
     , m_internalTimer(new QTimer(this))
+    , adp(AudioDeviceProvider::instance())
+    , sequencer(Sequencer::instance())
 {
     // Connect the Internal Timer to a Slot that will call the Sequencer.
     connect(m_internalTimer, SIGNAL(timeout()), this, SLOT(internalTimerExpired()));
@@ -19,6 +21,10 @@ Clock::Clock(QObject* parent)
 
 Clock::Clock(Clock& clock)
     : QObject(clock.parent())
+    , m_started(false)
+    , m_internalTimer(new QTimer(this))
+    , adp(AudioDeviceProvider::instance())
+    , sequencer(Sequencer::instance())
 {
 }
 
@@ -68,8 +74,8 @@ void Clock::registerFastClock(Module* module)
 
     QTimer* timer = new QTimer(this);
     m_fastTimers.insert(module, timer);
-    connect(timer, SIGNAL(timeout()), this, SLOT(soundCardTimerExpired()));
-    // connect(timer, SIGNAL(timeout()), module, SLOT(timerExpired()));
+    // connect(timer, SIGNAL(timeout()), this, SLOT(soundCardTimerExpired()));
+    connect(timer, SIGNAL(timeout()), module, SLOT(timerExpired()));
 
     // Start the newly registered timer if the Clock is started.
     if (m_started) {
@@ -95,10 +101,10 @@ void Clock::internalTimerExpired()
     Sequencer::instance().process();
 }
 
+/*
 void Clock::soundCardTimerExpired()
 {
     // Test if the sound card need data.
-    AudioDeviceProvider& adp = AudioDeviceProvider::instance();
 
     int iteration = 0;
     int previousNbBytesNeededByOutput = 60000;
@@ -106,7 +112,7 @@ void Clock::soundCardTimerExpired()
     while (((iteration < SOUNDCARD_MAX_ITERATIONS) && (nbBytesNeededByOutput > 0))
         && (previousNbBytesNeededByOutput != nbBytesNeededByOutput) ) {
         // qDebug() << "IT = " << iteration << "NEED : " << nbBytesNeededByOutput;
-        Sequencer::instance().process();
+        sequencer.process();
 
         previousNbBytesNeededByOutput = nbBytesNeededByOutput;
         nbBytesNeededByOutput = adp.audioOutput()->bytesFree();
@@ -119,3 +125,4 @@ void Clock::soundCardTimerExpired()
         qWarning() << "Unable to feed the sound card enough !";
     }
 }
+*/

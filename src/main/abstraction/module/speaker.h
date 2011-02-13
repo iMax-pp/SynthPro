@@ -20,7 +20,8 @@ class SynthProFactory;
   * Sequencer, and copy the input of the module into the generation buffer.
   */
 class Speaker : public virtual Module {
-    // Q_OBJECT
+    Q_OBJECT
+
 public:
     static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 127;
 
@@ -58,10 +59,9 @@ protected:
     int m_nbGeneratedBytesRemaining; // Indicates how many bytes of the generated buffer are still unused.
 
     Sequencer& m_sequencer;
-    // bool m_manageSound; // *** FIXME *** Not fond of it...
 
-private:
-    qint64 sendToAudioOutput(int nbBytesNeededByOutput);
+// private:
+//    qint64 sendToAudioOutput(int nbBytesNeededByOutput);
 };
 
 #endif // SPEAKER_H
