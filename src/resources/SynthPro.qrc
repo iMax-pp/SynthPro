@@ -2,6 +2,8 @@
     <qresource prefix="/src/resources">
         <file>images/exit.png</file>
         <file>images/new.png</file>
+        <file>images/play.png</file>
+        <file>images/pause.png</file>
         <file>images/speaker-icon.png</file>
         <file>images/floppy-icon.png</file>
         <file>images/stop-icon.png</file>

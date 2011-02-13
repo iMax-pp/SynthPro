@@ -15,6 +15,7 @@
 #include <QMessageBox>
 #include <QStatusBar>
 #include <QToolBar>
+#include <QToolButton>
 
 PSynthPro::PSynthPro(CSynthPro* control)
     : QMainWindow()
@@ -112,9 +113,24 @@ void PSynthPro::createMenus()
 void PSynthPro::createMainToolBar()
 {
     m_toolBar = addToolBar(tr("Main ToolBar"));
+    m_toolBar->setFloatable(false);
+
     m_toolBar->addAction(m_newAct);
     m_toolBar->addAction(m_exitAct);
-    m_toolBar->setFloatable(false);
+
+    QToolButton* switchButton = new QToolButton(this);
+    switchButton->setCheckable(true);
+    switchButton->setChecked(true);
+
+    QIcon switchIcon;
+    switchIcon.addPixmap(QPixmap(":src/resources/images/pause.png"),
+                         QIcon::Normal, QIcon::On);
+    switchIcon.addPixmap(QPixmap(":src/resources/images/play.png"),
+                         QIcon::Normal, QIcon::Off);
+    switchButton->setIcon(switchIcon);
+
+    m_toolBar->addSeparator();
+    m_toolBar->addWidget(switchButton);
 
     setUnifiedTitleAndToolBarOnMac(true);
 }
