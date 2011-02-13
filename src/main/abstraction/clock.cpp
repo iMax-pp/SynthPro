@@ -67,6 +67,11 @@ void Clock::pause()
     }
 }
 
+bool Clock::isStarted() const
+{
+    return m_started;
+}
+
 void Clock::registerFastClock(Module* module)
 {
     // First we stop the Internal Timer, as we use instead a Fast Timer.

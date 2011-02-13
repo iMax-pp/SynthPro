@@ -19,6 +19,8 @@ public:
     // Returns the associated control.
     CSynthPro* control() const;
 
+    void togglePlayPause();
+
 protected slots:
     // Ask if you REAAALLLYYY want to start a new project.
     void promptNew();
@@ -45,6 +47,7 @@ private:
     QAction* m_exitAct;
     QAction* m_aboutAct;
     QAction* m_aboutQtAct;
+    QAction* m_playPauseAct;
 
     // UI Components.
     QToolBar* m_toolBar;

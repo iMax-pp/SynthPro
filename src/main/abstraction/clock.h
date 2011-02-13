@@ -44,6 +44,11 @@ public:
     void pause();
 
     /**
+     * Returns the state of the clock.
+     */
+    bool isStarted() const;
+
+    /**
       * Register a Module to a Fast Clock. Will call its
       * timerExpired() slot when its timer is expired.
       */

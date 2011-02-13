@@ -9,6 +9,8 @@ class CVirtualPort;
 class QGraphicsScene;
 
 class CSynthPro : public SynthPro {
+    Q_OBJECT
+
 public:
     CSynthPro(SynthProFactory*);
     virtual ~CSynthPro();
@@ -21,6 +23,9 @@ public:
 
     void showFeedback(CVirtualPort*);
     void hideFeedback();
+
+private slots:
+    void play(bool);
 
 private:
     PSynthPro* m_presentation;
