@@ -3,7 +3,6 @@
 #include "abstraction/testdelay.h"
 #include "abstraction/testinport.h"
 #include "abstraction/testlfo.h"
-#include "abstraction/testmodulebufferrecorder.h"
 #include "abstraction/testoutport.h"
 #include "abstraction/testsequencer.h"
 #include "abstraction/testvca.h"
@@ -14,6 +13,7 @@
 #include "abstraction/testwavegeneratorsinus.h"
 #include "abstraction/testwavegeneratorsquare.h"
 #include "abstraction/testwavegeneratortriangle.h"
+#include "abstraction/testwavrecorder.h"
 
 int main()
 {
@@ -53,8 +53,8 @@ int main()
     TestAudioDeviceProvider testAudioDeviceProvider;
     QTest::qExec(&testAudioDeviceProvider);
 
-    TestModuleBufferRecorder testModuleBufferRecorder;
-    QTest::qExec(&testModuleBufferRecorder);
+    TestWavRecorder testWavRecorder;
+    QTest::qExec(&testWavRecorder);
 
     TestVCF testVCF;
     QTest::qExec(&testVCF);

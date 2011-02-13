@@ -56,7 +56,6 @@ HEADERS += \
     src/test/abstraction/testdelay.h \
     src/test/abstraction/testinport.h \
     src/test/abstraction/testlfo.h \
-    src/test/abstraction/testmodulebufferrecorder.h \
     src/test/abstraction/testoutport.h \
     src/test/abstraction/testsequencer.h \
     src/test/abstraction/testvca.h \
@@ -66,7 +65,8 @@ HEADERS += \
     src/test/abstraction/testwavegeneratorsaw.h \
     src/test/abstraction/testwavegeneratorsinus.h \
     src/test/abstraction/testwavegeneratorsquare.h \
-    src/test/abstraction/testwavegeneratortriangle.h
+    src/test/abstraction/testwavegeneratortriangle.h \
+    src/test/abstraction/testwavrecorder.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -115,7 +115,6 @@ SOURCES += \
     src/test/abstraction/testdelay.cpp \
     src/test/abstraction/testinport.cpp \
     src/test/abstraction/testlfo.cpp \
-    src/test/abstraction/testmodulebufferrecorder.cpp \
     src/test/abstraction/testoutport.cpp \
     src/test/abstraction/testsequencer.cpp \
     src/test/abstraction/testvca.cpp \
@@ -126,6 +125,7 @@ SOURCES += \
     src/test/abstraction/testwavegeneratorsinus.cpp \
     src/test/abstraction/testwavegeneratorsquare.cpp \
     src/test/abstraction/testwavegeneratortriangle.cpp \
+    src/test/abstraction/testwavrecorder.cpp \
     src/test/test.cpp
 
 
