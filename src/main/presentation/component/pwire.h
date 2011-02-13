@@ -13,6 +13,8 @@ public:
 
     void updatePosition(const QPointF&);
 
+    void mousePressEvent(QGraphicsSceneMouseEvent*);
+
 private:
     CWire* m_control;
 };

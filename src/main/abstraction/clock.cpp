@@ -101,10 +101,10 @@ void Clock::soundCardTimerExpired()
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();
 
     int iteration = 0;
-    int previousNbBytesNeededByOutput = -1;
+    int previousNbBytesNeededByOutput = 60000;
     int nbBytesNeededByOutput = adp.audioOutput()->bytesFree();
     while (((iteration < SOUNDCARD_MAX_ITERATIONS) && (nbBytesNeededByOutput > 0))
-        && (previousNbBytesNeededByOutput != nbBytesNeededByOutput)) {
+        && (previousNbBytesNeededByOutput != nbBytesNeededByOutput) ) {
         // qDebug() << "IT = " << iteration << "NEED : " << nbBytesNeededByOutput;
         Sequencer::instance().process();
 

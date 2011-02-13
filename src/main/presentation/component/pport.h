@@ -4,7 +4,6 @@
 #include <QGraphicsWidget>
 
 class CPort;
-class PVirtualPort;
 
 /**
  * Represents a single port in a PPort widget

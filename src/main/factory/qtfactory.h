@@ -28,7 +28,7 @@ class QtFactory : public SynthProFactory {
 public:
     CSynthPro* createSynthPro();
 
-    CPort* createPort(VirtualPort* vPort);
+    Connection* createConnection(OutPort* source, InPort* target);
 
     CInPort* createInPort(Module* parent, const QString& name);
     CInPort* createInPortReplicable(Module* parent, const QString& name);
@@ -56,6 +56,7 @@ public:
     CPushButton* createPushButton(const QString& name, Module* parent);
 
     // Creation methods specific to the QtFactory
+    CPort* createPort(VirtualPort* vPort);
     CWire* createWire(QGraphicsScene*);
 
 protected:
