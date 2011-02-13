@@ -46,11 +46,10 @@ void CPort::disconnect()
 
 void CPort::drag(const QPointF& pos)
 {
-    /*if (connected()) {
-        // TODO Change this behavior: in this case the current wire should be moved
-        // When starting a new wire, begin by deleting the previous one.
-        disconnect();
-    }*/
+    if (m_wire) {
+        // TODO reconnect the current wire
+        return;
+    }
 
     // Create a temporary wire
     m_tmpWire = m_factory->createWire(presentation()->scene());
