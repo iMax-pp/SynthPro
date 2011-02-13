@@ -1,8 +1,9 @@
 #include "pkeyboardkey.h"
 
+#include <QDebug>
 #include <QPainter>
 
-PKeyboardKey::PKeyboardKey(QGraphicsItem* parent, int keyNumber, bool whiteKey)
+PKeyboardKey::PKeyboardKey(QGraphicsItem* parent, int keyNumber, bool whiteKey, bool assignKey)
     : QGraphicsWidget(parent)
     , m_keyNumber(keyNumber)
     , m_width(0)
@@ -19,6 +20,11 @@ PKeyboardKey::PKeyboardKey(QGraphicsItem* parent, int keyNumber, bool whiteKey)
         m_width = BLACK_KEY_WIDTH;
         m_height = BLACK_KEY_HEIGHT;
         m_fillKeyBrush = new QBrush(Qt::lightGray);
+    }
+
+    // If AssignKey is true, a key of the keyboard (to type with) is assigned to (this).
+    if (assignKey) {
+
     }
 
     setMinimumSize(boundingRect().size());
@@ -52,4 +58,15 @@ void PKeyboardKey::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
     m_pressed = false;
     update();
     emit keyboardKeyReleased(m_keyNumber);
+}
+
+/// FIXME : TESTS
+void PKeyboardKey::keyPressEvent(QKeyEvent*)
+{
+    qDebug() << "AAA";
+}
+
+void PKeyboardKey::grabKeyboardEvent(QEvent *event)
+{
+    qDebug() << "AAA";
 }
