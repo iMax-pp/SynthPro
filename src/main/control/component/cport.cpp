@@ -9,7 +9,8 @@
 #include <QGraphicsScene>
 
 CPort::CPort(CVirtualPort* parent, QtFactory* factory)
-    : Port(parent)
+    : QObject(parent)
+    , m_vPort(parent)
     , m_presentation(0)
     , m_factory(factory)
     , m_wire(0)
@@ -38,43 +39,13 @@ void CPort::wireDeleted()
     m_wire = 0;
 }
 
-bool CPort::connect(Port* other)
+void CPort::drag(const QPointF& pos)
 {
-    if (Port::connect(other)) {
-        CPort* cOther = dynamic_cast<CPort*>(other);
-        // Create their wire
-        CWire* wire = m_factory->createWire(presentation()->scene()); // HACK way to retrieve the scene, I think
-        setWire(wire);
-        cOther->setWire(wire);
-
-        if (vPort()->out()) {
-            m_wire->setInPort(cOther);
-            m_wire->setOutPort(this);
-        } else {
-            m_wire->setInPort(this);
-            m_wire->setOutPort(cOther);
-        }
-        m_wire->updatePosition();
-        return true;
-    }
-    return false;
-}
-
-bool CPort::disconnect()
-{
-    if (m_wire) {
-        delete m_wire;
-    }
-    return Port::disconnect();
-}
-
-void CPort::drag()
-{
-    if (connected()) {
+    /*if (connected()) {
         // TODO Change this behavior: in this case the current wire should be moved
         // When starting a new wire, begin by deleting the previous one.
         disconnect();
-    }
+    }*/
 
     // Create a temporary wire
     m_tmpWire = m_factory->createWire(presentation()->scene());
@@ -85,9 +56,9 @@ void CPort::drag()
     } else {
         m_tmpWire->setInPort(this);
     }
+    m_tmpWire->updatePosition(pos);
 
-    CVirtualPort* cVPort = dynamic_cast<CVirtualPort*>(vPort());
-    dynamic_cast<CSynthPro*>(cVPort->module()->synthPro())->showFeedback(cVPort);
+    dynamic_cast<CSynthPro*>(vPort()->module()->synthPro())->showFeedback(vPort());
 }
 
 void CPort::dragMove(const QPointF& pos)
@@ -122,7 +93,7 @@ void CPort::drop(CPort* target)
     }
     // If the user dropped on a target, try to connect to it
     if (target) {
-        connect(target);
+        vPort()->connect(target->vPort());
     }
 }
 
@@ -144,4 +115,15 @@ void CPort::showFeedback(bool compatible)
 void CPort::hideFeedback()
 {
     presentation()->hideFeedback();
+}
+
+void CPort::showAvailableFeedback()
+{
+    presentation()->show();
+}
+
+
+void CPort::hideAvailableFeedback()
+{
+    presentation()->hide();
 }

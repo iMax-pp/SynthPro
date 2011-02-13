@@ -1,5 +1,6 @@
 #include "cvirtualport.h"
 
+#include "abstraction/component/connection.h"
 #include "control/component/cinport.h"
 #include "control/component/coutport.h"
 #include "control/component/cport.h"
@@ -12,26 +13,59 @@ CVirtualPort::CVirtualPort(Module* parent, QtFactory* factory, const QString& na
     : VirtualPort(parent, name, factory, replicable, gate)
     , m_presentation(0)
     , m_factory(factory)
+    , m_availablePort(0)
 {
 }
 
-Port* CVirtualPort::replicate()
+void CVirtualPort::initialize()
 {
-    CPort* cPort = dynamic_cast<CPort*>(VirtualPort::replicate());
-    presentation()->addReplication(cPort->presentation());
-    return cPort;
+    m_availablePort = m_factory->createPort(this);
+    presentation()->initialize(m_availablePort->presentation());
+
+    updateAvailableFeedback();
 }
 
-bool CVirtualPort::removePort(Port* port)
+void CVirtualPort::updateAvailableFeedback()
 {
-    CPort* cPort = dynamic_cast<CPort*>(port);
-    if (VirtualPort::removePort(cPort)) {
-        // TODO Remove replication
-        // presentation()->removeReplication(cPort->presentation());
-        // cPort->deleteLater();
-        return true;
+    if (available()) {
+        m_availablePort->showAvailableFeedback();
+    } else {
+        m_availablePort->hideAvailableFeedback();
     }
-    return false;
+}
+
+Connection* CVirtualPort::connect(VirtualPort* other)
+{
+    CVirtualPort* cOther = dynamic_cast<CVirtualPort*>(other);
+    Connection* connection = VirtualPort::connect(cOther);
+    if (connection) {
+        CPort* source = 0;
+        CPort* target = 0;
+        if (out()) {
+            source = createConnectionPort(connection);
+            target = cOther->createConnectionPort(connection);
+        } else {
+            source = cOther->createConnectionPort(connection);
+            target = createConnectionPort(connection);
+        }
+        CWire* wire = m_factory->createWire(presentation()->scene());
+        source->setWire(wire);
+        target->setWire(wire);
+        wire->setOutPort(source);
+        wire->setInPort(target);
+        wire->updatePosition();
+        updateAvailableFeedback();
+    }
+    return connection;
+}
+
+CPort* CVirtualPort::createConnectionPort(Connection* connection)
+{
+    int idx = m_connections.indexOf(connection);
+    CPort* port = m_factory->createPort(this);
+    presentation()->addReplication(port->presentation());
+    m_connectedPorts.insert(idx, port);
+    return port;
 }
 
 void CVirtualPort::setPresentation(PVirtualPort* presentation)
@@ -46,28 +80,28 @@ void CVirtualPort::setPresentation(PVirtualPort* presentation)
 
 void CVirtualPort::updateWiresPositions()
 {
-    foreach (Port* port, connections()) {
-        CPort* cPort = dynamic_cast<CPort*>(port);
-        if (cPort->wire()) {
-            cPort->wire()->updatePosition();
+    foreach (CPort* port, m_connectedPorts) {
+        if (port->wire()) {
+            port->wire()->updatePosition();
         }
     }
 }
 
 void CVirtualPort::showCompatibleFeedback(CVirtualPort* from)
 {
+    bool isCompatible = compatible(from);
     if (from != this) {
-        foreach (Port* port, connections()) {
-            CPort* cPort = dynamic_cast<CPort*>(port);
-            cPort->showFeedback(compatible(from));
+        m_availablePort->showFeedback(isCompatible);
+        foreach (CPort* port, m_connectedPorts) {
+            port->showFeedback(isCompatible);
         }
     }
 }
 
 void CVirtualPort::hideFeedback()
 {
-    foreach (Port* port, connections()) {
-        CPort* cPort = dynamic_cast<CPort*>(port);
-        cPort->hideFeedback();
+    m_availablePort->hideFeedback();
+    foreach (CPort* port, m_connectedPorts) {
+        port->hideFeedback();
     }
 }

@@ -11,6 +11,7 @@ class QGraphicsLinearLayout;
 class PVirtualPort : public QGraphicsWidget {
 public:
     PVirtualPort(CVirtualPort*, QGraphicsItem* parent);
+    void initialize(PPort* availablePort);
 
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
     QRectF boundingRect() const;
@@ -23,6 +24,7 @@ public:
 private:
     CVirtualPort* m_control;
     TextWidget* m_label;
+    QGraphicsLinearLayout* m_connectionsLayout;
     QGraphicsLinearLayout* m_portsLayout;
 };
 

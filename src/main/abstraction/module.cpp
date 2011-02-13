@@ -1,5 +1,6 @@
 #include "module.h"
 
+#include "abstraction/component/connection.h"
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
 #include "abstraction/component/port.h"
@@ -19,9 +20,8 @@ const QList<Module*> Module::requirements() const
     m_requirements.clear();
 
     foreach (InPort* in, inports()) {
-        foreach (Port* port, in->connections()) {
-            if (port->connected())
-            m_requirements.append(port->connection()->vPort()->module());
+        foreach (Connection* connection, in->connections()) {
+            m_requirements.append(connection->source()->module());
         }
     }
 

@@ -1,6 +1,7 @@
 #include "qtfactory.h"
 
 #include "abstraction/audiodeviceprovider.h"
+#include "abstraction/component/connection.h"
 #include "abstraction/component/port.h"
 #include "abstraction/module/adsr.h"
 #include "abstraction/module/oscilloscope.h"
@@ -9,6 +10,7 @@
 #include "presentation/component/pport.h"
 #include "presentation/component/ppushbutton.h"
 #include "presentation/component/pvirtualport.h"
+#include "presentation/component/pwire.h"
 #include "presentation/module/padsr.h"
 #include "presentation/module/pdelay.h"
 #include "presentation/module/pkeyboard.h"
@@ -43,6 +45,11 @@ CPort* QtFactory::createPort(VirtualPort* vPort)
     port->setPresentation(presentation);
 
     return port;
+}
+
+Connection* QtFactory::createConnection(OutPort *source, InPort *target)
+{
+    return new Connection(source, target);
 }
 
 CInPort* QtFactory::createInPort(Module* parent, const QString& name, bool replicable, bool gate)

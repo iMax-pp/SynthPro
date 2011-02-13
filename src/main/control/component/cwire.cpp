@@ -1,7 +1,8 @@
 #include "cwire.h"
 
-#include "cinport.h"
-#include "coutport.h"
+#include "control/component/cinport.h"
+#include "control/component/coutport.h"
+#include "presentation/component/pwire.h"
 
 CWire::CWire()
     : QObject(0)

@@ -1,11 +1,15 @@
 #ifndef CWIRE_H
 #define CWIRE_H
 
-#include "presentation/component/pwire.h"
+#include "abstraction/component/connection.h"
 
 #include <QObject>
+#include <QPointF>
 
+class CInPort;
+class COutPort;
 class CPort;
+class PWire;
 
 class CWire : public QObject {
 public:

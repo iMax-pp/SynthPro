@@ -78,16 +78,14 @@ void PPort::hideDropFeedback()
 void PPort::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {
-        event->accept();
-        control()->drag();
+        event->accept(); // TODO Lire la doc sur accept() et ignore() un de ces jours
+        control()->drag(event->scenePos());
     }
 }
 
 void PPort::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
-    // While the wire isn't connected to another port, update it with the mouse position.
     control()->dragMove(event->scenePos());
-    // m_control->wire()->updatePosition(event->scenePos());
 }
 
 
