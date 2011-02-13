@@ -51,13 +51,13 @@ QRectF PVirtualPort::boundingRect() const
     return childrenBoundingRect();
 }
 
-void PVirtualPort::addReplication(PPort* replication)
+void PVirtualPort::addConnectionPort(PPort* port)
 {
-    m_connectionsLayout->addItem(replication);
+    m_connectionsLayout->addItem(port);
 }
 
-void PVirtualPort::removeReplication(PPort* replication)
+void PVirtualPort::removeConnectionPort(PPort* port)
 {
-    m_connectionsLayout->removeItem(replication);
-    delete replication;
+    m_connectionsLayout->removeItem(port);
+    delete port;
 }

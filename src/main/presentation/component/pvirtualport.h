@@ -18,8 +18,8 @@ public:
 
     inline CVirtualPort* control() const { return m_control; }
 
-    void addReplication(PPort* replication);
-    void removeReplication(PPort* replication);
+    void addConnectionPort(PPort*);
+    void removeConnectionPort(PPort*);
 
 private:
     CVirtualPort* m_control;

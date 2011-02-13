@@ -63,7 +63,7 @@ CPort* CVirtualPort::createConnectionPort(Connection* connection)
 {
     int idx = m_connections.indexOf(connection);
     CPort* port = m_factory->createPort(this);
-    presentation()->addReplication(port->presentation());
+    presentation()->addConnectionPort(port->presentation());
     m_connectedPorts.insert(idx, port);
     return port;
 }
@@ -81,9 +81,7 @@ void CVirtualPort::setPresentation(PVirtualPort* presentation)
 void CVirtualPort::updateWiresPositions()
 {
     foreach (CPort* port, m_connectedPorts) {
-        if (port->wire()) {
-            port->wire()->updatePosition();
-        }
+        port->wire()->updatePosition();
     }
 }
 
