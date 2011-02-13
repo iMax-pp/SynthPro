@@ -14,24 +14,30 @@ PVirtualPort::PVirtualPort(CVirtualPort* control, QGraphicsItem* parent)
     : QGraphicsWidget(parent)
     , m_control(control)
     , m_label(0)
+    , m_connectionsLayout(0)
     , m_portsLayout(0)
 {
+}
+
+void PVirtualPort::initialize(PPort* availablePort)
+{
     // Create label for port.
-    m_label = new TextWidget(control->name(), this);
-    // m_label->setPen(Qt::NoPen);
-    // m_label->setBrush(style->standardPalette().brush(QPalette::ButtonText));
+    m_label = new TextWidget(control()->name(), this);
     m_label->setFont(QFont("Courier", 10, QFont::Normal));
 
     QGraphicsLinearLayout* layout = new QGraphicsLinearLayout(Qt::Horizontal, this);
     m_portsLayout = new QGraphicsLinearLayout(Qt::Vertical, layout);
+    m_connectionsLayout = new QGraphicsLinearLayout(Qt::Vertical, m_portsLayout);
 
-    if (control->out()) { // Oops some logic in the presentation! I’m so crappy.
+    if (control()->out()) {
         layout->addItem(m_label);
         layout->addItem(m_portsLayout);
     } else {
         layout->addItem(m_portsLayout);
         layout->addItem(m_label);
     }
+    m_portsLayout->addItem(m_connectionsLayout);
+    m_portsLayout->addItem(availablePort);
 
     setMinimumSize(boundingRect().size());
 }
@@ -45,13 +51,13 @@ QRectF PVirtualPort::boundingRect() const
     return childrenBoundingRect();
 }
 
-void PVirtualPort::addReplication(PPort* replication)
+void PVirtualPort::addConnectionPort(PPort* port)
 {
-    m_portsLayout->addItem(replication);
+    m_connectionsLayout->addItem(port);
 }
 
-void PVirtualPort::removeReplication(PPort* replication)
+void PVirtualPort::removeConnectionPort(PPort* port)
 {
-    m_portsLayout->removeItem(replication);
-    delete replication;
+    m_connectionsLayout->removeItem(port);
+    delete port;
 }

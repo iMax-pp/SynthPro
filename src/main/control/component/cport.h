@@ -1,7 +1,7 @@
 #ifndef CPORT_H
 #define CPORT_H
 
-#include "abstraction/component/port.h"
+#include <QObject>
 
 class CVirtualPort;
 class CWire;
@@ -9,11 +9,13 @@ class PPort;
 class QPointF;
 class QtFactory;
 
-class CPort : public Port {
+class CPort : public QObject {
     Q_OBJECT
 
 public:
     CPort(CVirtualPort* parent, QtFactory*);
+
+    inline CVirtualPort* vPort() const { return m_vPort; }
 
     void setPresentation(PPort*);
     inline PPort* presentation() const { return m_presentation; }
@@ -21,8 +23,7 @@ public:
     inline CWire* wire() const { return m_wire; }
     void setWire(CWire*);
 
-    bool connect(Port* other);
-    bool disconnect();
+    void disconnect();
 
     /*
      * The presentation of this CPort should call
@@ -30,7 +31,7 @@ public:
      * drop from a PortWidget
      * TODO make these functions protected slots
      */
-    void drag();
+    void drag(const QPointF&);
     void dragMove(const QPointF&);
     void drop(CPort* target);
 
@@ -40,9 +41,13 @@ public:
     void showFeedback(bool compatible);
     void hideFeedback();
 
+    void showAvailableFeedback();
+    void hideAvailableFeedback();
+
 private slots:
     void wireDeleted();
 private:
+    CVirtualPort* m_vPort;
     PPort* m_presentation;
     QtFactory* m_factory;
     CWire* m_wire;
