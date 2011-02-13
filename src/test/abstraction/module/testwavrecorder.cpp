@@ -1,4 +1,4 @@
-#include "testmodulebufferrecorder.h"
+#include "testwavrecorder.h"
 
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
@@ -13,16 +13,14 @@
 #include <QFile>
 #include <QtTest/QTest>
 
-void TestModuleBufferRecorder::testModuleBufferRecorder()
+void TestWavRecorder::testWavRecorder()
 {
-    QString fileName = "testModuleBufferRecorder.wav";
+    QString fileName = "testWavRecorder.wav";
 
     SimpleFactory factory;
     WavRecorder* mbr = factory.createWavRecorder(0, NB_ITERATIONS);
-
-    // test en changeant le nom de la méthode
     mbr->newFile(fileName);
-
+    mbr->startRecording();
     VCO* vco = factory.createVCO(0);
     vco->setShape("Empty");
     vco->outports().first()->connections().first()->connect(mbr->inports().first()->connections().first());

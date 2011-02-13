@@ -3,7 +3,7 @@
 #include "abstraction/component/dimmer.h"
 #include "abstraction/component/outport.h"
 #include "abstraction/component/port.h"
-#include "abstraction/mockserializerwell.h"
+#include "abstraction/mock/mockserializerwell.h"
 #include "abstraction/module/speaker.h"
 #include "abstraction/module/vco.h"
 #include "abstraction/synthpro.h"

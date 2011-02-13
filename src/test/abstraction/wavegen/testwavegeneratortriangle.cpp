@@ -1,4 +1,4 @@
-#include "testwavegeneratorsinus.h"
+#include "testwavegeneratortriangle.h"
 
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
@@ -7,25 +7,24 @@
 #include "abstraction/module/vco.h"
 #include "abstraction/module/wavrecorder.h"
 #include "abstraction/synthpro.h"
-#include "abstraction/wavegen/wavegeneratorsinus.h"
+#include "abstraction/wavegen/wavegeneratortriangle.h"
 #include "factory/simplefactory.h"
 
 #include <QFile>
 #include <QtTest/QTest>
 
-void TestWaveGeneratorSinus::testWaveGeneratorSinus()
+void TestWaveGeneratorTriangle::testWaveGeneratorTriangle()
 {
     SynthPro synthPro(0);
 
-    QString fileName = "testWaveGeneratorSinus.wav";
+    QString fileName = "testWaveGeneratorTriangle.wav";
 
     SimpleFactory factory;
     WavRecorder* mbr = factory.createWavRecorder(0, NB_ITERATIONS);
-    // modif
     mbr->newFile(fileName);
-
+    mbr->startRecording();
     VCO* vco = factory.createVCO(&synthPro);
-    vco->setShape("Sinus");
+    vco->setShape("Triangle");
     vco->outports().first()->connections().first()->connect(mbr->inports().first()->connections().first());
 
     for (int i = 0; i < NB_ITERATIONS; i++) {

@@ -3,7 +3,7 @@
 #include "abstraction/buffer.h"
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
-#include "abstraction/mockserializerwell.h"
+#include "abstraction/mock/mockserializerwell.h"
 #include "abstraction/synthpro.h"
 #include "factory/simplefactory.h"
 

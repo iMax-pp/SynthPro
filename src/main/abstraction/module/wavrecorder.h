@@ -25,12 +25,26 @@ public:
     void initialize(SynthProFactory*);
 
     /**
-     * Ask for a fileName to save to.
+     * Ask for a file name to save to.
      */
     void newFile(const QString&);
 
+    /**
+     * Start the recording into the current file.
+     */
     void startRecording();
+
+    /**
+     * Stop the recording into the current file.
+     * @warning It doesn't close the file, just pause the recording.
+     */
     void stopRecording();
+
+    /**
+     * This method can be called to manually close the currently processed file.
+     * Otherwise, the file is closed when a new one is created or when deleting the module.
+     */
+    void closeFile();
 
     /**
      * Save the first input port buffer into a file.

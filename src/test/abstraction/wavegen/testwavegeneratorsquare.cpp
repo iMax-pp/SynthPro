@@ -22,9 +22,8 @@ void TestWaveGeneratorSquare::testWaveGeneratorSquare()
 
     SimpleFactory factory;
     WavRecorder* mbr = factory.createWavRecorder(0, NB_ITERATIONS);
-    // modif
     mbr->newFile(fileName);
-
+    mbr->startRecording();
     VCO* vco = factory.createVCO(&synthPro);
     vco->setShape("Square");
     vco->outports().first()->connections().first()->connect(mbr->inports().first()->connections().first());

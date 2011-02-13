@@ -98,7 +98,7 @@ date :  semaine 7 (Lundi 14-)
     - ?
 - Maxime :
     - Feedback dimmer;
-    - WaveRecorder dans fichier selectionné;
+    - WavRecorder dans fichier sélectionné, possibilité de lancer/arrêter l'enregistrement;
     - On/Off SynthPro;
 - Julien RF. :
     - Suppression des ports répliqués;

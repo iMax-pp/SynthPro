@@ -116,12 +116,12 @@ LFO* SimpleFactory::createLFO(SynthPro* parent)
     return lfo;
 }
 
-Dimmer* SimpleFactory::createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
+Dimmer* SimpleFactory::createDimmer(const QString& /*name*/, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     return new Dimmer(min, max, kDefault, parent);
 }
 
-Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent)
+Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<QString> /*values*/, const QString& /*name*/, Module* parent)
 {
     return new Selector(keys, defaultKey, parent);
 }
