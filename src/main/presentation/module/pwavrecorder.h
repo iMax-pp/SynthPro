@@ -20,15 +20,18 @@ private slots:
     void floppyClicked();
     void recordClicked();
     void stopClicked();
+    void closeClicked();
 
 signals:
-    void askNewFile();
-    void startRecording();
-    void stopRecording();
+    void newFileClicked();
+    void startRecordingClicked();
+    void stopRecordingClicked();
+    void closeFileClicked();
 
 private:
     PixmapWidget* m_record;
     PixmapWidget* m_stop;
+    PixmapWidget* m_close;
 };
 
 #endif // PWAVRECORDER_H

@@ -76,6 +76,12 @@ void WavRecorder::stopRecording()
     m_isRecording = false;
 }
 
+void WavRecorder::closeFile()
+{
+    stopRecording();
+    closeWAVFile();
+}
+
 void WavRecorder::ownProcess()
 {
     if (m_outputFile && m_isRecording) {
