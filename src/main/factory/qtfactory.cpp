@@ -224,7 +224,8 @@ COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)
 
 CWavRecorder* QtFactory::createWavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
 {
-    CWavRecorder* mbr = new CWavRecorder(parent, nbProcessingBeforeSaving);
+    // FIXME Where we are ignoring nbProcessingBeforeSaving.
+    CWavRecorder* mbr = new CWavRecorder(parent, 0);
     PWavRecorder* presentation = new PWavRecorder(mbr);
 
     mbr->setPresentation(presentation);

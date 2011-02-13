@@ -32,7 +32,7 @@ Port* VirtualPort::replicate()
 
 bool VirtualPort::available() const
 {
-    return m_replicable || !m_connections.first()->connection();
+    return m_replicable || !m_connections.first()->connected();
 }
 
 bool VirtualPort::compatible(const VirtualPort* other) const
@@ -47,7 +47,7 @@ bool VirtualPort::connectable(const VirtualPort* other) const
 
 void VirtualPort::connection(Port* own, Port* target)
 {
-    if (m_connections.last()->connection() && replicable()) {
+    if (m_connections.last()->connected() && replicable()) {
         replicate();
     }
 
@@ -63,7 +63,7 @@ void VirtualPort::disconnection(Port* own, Port* target)
         removePort(own);
     }
 
-    if (!own->connection() && !target->connection()) {
+    if (!own->connected() && !target->connected()) {
         emit connectionsChanged();
     }
 }

@@ -18,21 +18,28 @@ void CWavRecorder::initialize(SynthProFactory* factory)
 
     PWavRecorder* pre = dynamic_cast<PWavRecorder*>(presentation());
     pre->initialize(inPort->presentation());
-    connect(pre, SIGNAL(askNewFile()), this, SLOT(startNewFile()));
+
+    connect(pre, SIGNAL(askNewFile()), this, SLOT(newFile()));
+    connect(pre, SIGNAL(startRecording()), this, SLOT(startRecording()));
     connect(pre, SIGNAL(stopRecording()), this, SLOT(stopRecording()));
 
-    startNewFile();
+    newFile();
 }
 
-void CWavRecorder::startNewFile()
+void CWavRecorder::newFile()
 {
     QString fileName = dynamic_cast<PWavRecorder*>(presentation())->askForFileName();
     if (!fileName.isNull()) {
-        WavRecorder::startNewFile(fileName);
+        WavRecorder::newFile(fileName);
     }
+}
+
+void CWavRecorder::startRecording()
+{
+    WavRecorder::startRecording();
 }
 
 void CWavRecorder::stopRecording()
 {
-    closeWAVFile();
+    WavRecorder::stopRecording();
 }

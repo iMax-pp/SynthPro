@@ -39,7 +39,7 @@ void Port::_connect(Port* other)
 
 bool Port::disconnect()
 {
-    if (connection()) {
+    if (connected()) {
         qDebug() << "Port::disconnect()" << vPort()->name() << "-" << m_connection->vPort()->name();
 
         m_connection->_disconnect();

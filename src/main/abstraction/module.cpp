@@ -20,7 +20,7 @@ const QList<Module*> Module::requirements() const
 
     foreach (InPort* in, inports()) {
         foreach (Port* port, in->connections()) {
-            if (port->connection())
+            if (port->connected())
             m_requirements.append(port->connection()->vPort()->module());
         }
     }

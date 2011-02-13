@@ -4,6 +4,7 @@
 #include "presentation/pmodule.h"
 
 class CWavRecorder;
+class PixmapWidget;
 class PVirtualPort;
 
 class PWavRecorder : public PModule {
@@ -15,9 +16,19 @@ public:
     void initialize(PVirtualPort* in);
     QString askForFileName();
 
+private slots:
+    void floppyClicked();
+    void recordClicked();
+    void stopClicked();
+
 signals:
     void askNewFile();
+    void startRecording();
     void stopRecording();
+
+private:
+    PixmapWidget* m_record;
+    PixmapWidget* m_stop;
 };
 
 #endif // PWAVRECORDER_H

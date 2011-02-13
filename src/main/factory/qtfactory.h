@@ -48,7 +48,7 @@ public:
     CDelay* createDelay(SynthPro*);
 
     COscilloscope* createOscilloscope(SynthPro*);
-    CWavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 5);
+    CWavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 0);
     CSpeaker* createSpeaker(SynthPro*);
 
     CDimmer* createDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent);
