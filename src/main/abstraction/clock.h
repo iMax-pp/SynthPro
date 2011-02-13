@@ -65,7 +65,7 @@ private slots:
     void soundCardTimerExpired();
 
 private:
-    static const int FAST_TIMER_DELAY = 5; // For fast operations (sound card output).
+    static const int FAST_TIMER_DELAY = 4; // For fast operations (sound card output).
     static const int INTERNAL_TIMER_DELAY = 30; // For non critical operations.
 
     static const int SOUNDCARD_MAX_ITERATIONS = 10;

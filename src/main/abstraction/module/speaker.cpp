@@ -124,11 +124,11 @@ void Speaker::timerExpired()
 void Speaker::ownProcess()
 {
     int nbBytesNeededByOutput = m_audioOutput->bytesFree();
-    if (nbBytesNeededByOutput > 0) {
+    int sizeWritten = 1;
+    //if (nbBytesNeededByOutput > 0) {
+    while ((nbBytesNeededByOutput > 0) && (sizeWritten > 0)) {
         if (m_nbGeneratedBytesRemaining > 0) {
-            sendToAudioOutput(nbBytesNeededByOutput);
-
-            nbBytesNeededByOutput = m_audioOutput->bytesFree();
+            sizeWritten = sendToAudioOutput(nbBytesNeededByOutput);
         } else {
             // We don't have any bytes in our buffer.
             // Now we copy our InPort to the generationBuffer. A conversion is needed.
@@ -144,8 +144,9 @@ void Speaker::ownProcess()
             m_generationBufferIndex = 0;
             m_nbGeneratedBytesRemaining = Buffer::DEFAULT_LENGTH;
 
-            sendToAudioOutput(nbBytesNeededByOutput);
+            sizeWritten = sendToAudioOutput(nbBytesNeededByOutput);
         }
+        nbBytesNeededByOutput = m_audioOutput->bytesFree();
     }
 }
 
