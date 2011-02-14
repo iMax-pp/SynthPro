@@ -5,11 +5,11 @@
 
 class CWire;
 
-class PWire : public QGraphicsLineItem {
+class PWire : public QGraphicsPathItem {
 public:
     PWire(CWire*, QGraphicsScene*);
 
-    QRectF boundingRect() const;
+//    QRectF boundingRect() const;
 
     void updatePosition(const QPointF&);
     void updatePosition();
