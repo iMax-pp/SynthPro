@@ -4,7 +4,6 @@
 #include "abstraction/component/connection.h"
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
-#include "abstraction/component/port.h"
 #include "abstraction/module/vco.h"
 #include "abstraction/synthpro.h"
 #include "factory/simplefactory.h"

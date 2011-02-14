@@ -3,7 +3,6 @@
 #include "abstraction/buffer.h"
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
-#include "abstraction/component/port.h"
 #include "factory/simplefactory.h"
 
 void TestInPort::testOut()
