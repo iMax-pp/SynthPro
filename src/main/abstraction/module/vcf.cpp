@@ -39,10 +39,10 @@ void VCF::initialize(SynthProFactory* factory)
     connect(m_filterSelector, SIGNAL(choiceChanged(int)), this, SLOT(filterChanged(int)));
 
     /// Creation of the Dimmer
-    m_rDimmer = factory->createDimmer("Resonance", R_MIN, R_MAX, R_DEFAULT, this);
+    m_rDimmer = factory->createDialDimmer("Resonance", R_MIN, R_MAX, R_DEFAULT, this);
 
     /// Creation of the CutOff Dimmer
-    m_cutOffDimmer = factory->createDimmer("CutOff", CUT_OFF_MIN, CUT_OFF_MAX, CUT_OFF_DEFAULT, this);
+    m_cutOffDimmer = factory->createDialDimmer("CutOff", CUT_OFF_MIN, CUT_OFF_MAX, CUT_OFF_DEFAULT, this);
 
     setFilter("FilterLP229");
 }

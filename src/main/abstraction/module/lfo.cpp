@@ -38,9 +38,9 @@ void LFO::initialize(SynthProFactory* factory)
     connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
 
     /// Creation of the Dimmers
-    m_kDimmer = factory->createDimmer("K", K_MIN, K_MAX, K_DEFAULT, this);
-    m_rangeDimmer = factory->createDimmer("Range", RANGE_MIN, RANGE_MAX, RANGE_DEFAULT, this);
-    m_offsetDimmer = factory->createDimmer("Offset", OFFSET_MIN, OFFSET_MAX, OFFSET_DEFAULT, this);
+    m_kDimmer = factory->createDialDimmer("K", K_MIN, K_MAX, K_DEFAULT, this);
+    m_rangeDimmer = factory->createDialDimmer("Range", RANGE_MIN, RANGE_MAX, RANGE_DEFAULT, this);
+    m_offsetDimmer = factory->createDialDimmer("Offset", OFFSET_MIN, OFFSET_MAX, OFFSET_DEFAULT, this);
 
     setShape(SHAPE_DEFAULT);
 }
