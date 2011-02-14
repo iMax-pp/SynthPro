@@ -6,8 +6,8 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
     QtFactory* factory = new QtFactory();
-    CSynthPro* synthpro = factory->createSynthPro();
 
+    CSynthPro* synthpro = factory->createSynthPro();
     CVCO* vco = factory->createVCO(synthpro);
     vco->presentation()->setPos(-300, 0);
     synthpro->add(vco);
@@ -33,9 +33,12 @@ int main(int argc, char* argv[])
     vca->outports().first()->connect(delay->inports().first()); // VCA -> DELAY
     delay->outports().first()->connect(oscillo->inports().first()); // DELAY -> OSCILLO
 
+    //WavLooper* wl = new WavLooper(0);
+    //wl->newFile("/home/julien/workspace/projet/SynthPro/drums.wav");
+
     int result = app.exec();
 
-    delete synthpro;
+    //delete synthpro;
 
     return result;
 }
