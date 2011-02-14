@@ -271,7 +271,8 @@ CDimmer* QtFactory::createDimmer(const QString& name, qreal min, qreal max, qrea
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
 
-    PDimmer* presentation = new PDimmer(name, dimmer->min() * CDimmer::DISCR,
+    PDimmer* presentation = new PDimmer(dimmer, name,
+                                        dimmer->min() * CDimmer::DISCR,
                                         dimmer->max() * CDimmer::DISCR,
                                         dimmer->value() * CDimmer::DISCR,
                                         cParent->presentation());

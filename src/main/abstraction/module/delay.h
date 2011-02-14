@@ -28,6 +28,7 @@ protected:
     OutPort* m_outPort;
     Buffer* m_buffer1;
     Buffer* m_buffer2;
+    Buffer* m_buffer3;
     Dimmer* m_durationDimmer;
     Dimmer* m_decayDimmer;
 

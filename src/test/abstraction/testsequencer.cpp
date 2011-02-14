@@ -32,7 +32,7 @@ void TestSequencer::testSortTwoModules()
     MockWell m2(&synthpro, "2", stream, &factory);
     synthpro.add(&m2);
 
-    m1.output.connections().first()->connect(m2.input.connections().first()); // m1 −> m2
+    m1.output.connect(&m2.input); // m1 −> m2
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();
@@ -62,9 +62,9 @@ void TestSequencer::testSortCyclingModules()
     MockWell m3(&synthpro, "3", stream, &factory);
     synthpro.add(&m3);
 
-    m1.output.connections().first()->connect(m2.input.connections().first()); // m1 −> m2
-    m2.output.connections().at(0)->connect(m3.input.connections().first()); // m2 −> m3
-    m2.output.connections().at(1)->connect(m1.input.connections().first()); // m2 −> m1
+    m1.output.connect(&m2.input); // m1 −> m2
+    m2.output.connect(&m3.input); // m2 −> m3
+    m2.output.connect(&m1.input); // m2 −> m1
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();
@@ -97,9 +97,9 @@ void TestSequencer::testSortTwoWells()
     MockWell m4(&synthpro, "4", stream, &factory);
     synthpro.add(&m4);
 
-    m1.output.connections().at(0)->connect(m2.input.connections().first()); // m1 −> m2
-    m1.output.connections().at(1)->connect(m3.input.connections().first()); // m1 −> m3
-    m3.output.connections().first()->connect(m4.input.connections().first()); // m3 −> m4
+    m1.output.connect(&m2.input); // m1 −> m2
+    m1.output.connect(&m3.input); // m1 −> m3
+    m3.output.connect(&m4.input); // m3 −> m4
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();
@@ -128,7 +128,7 @@ void TestSequencer::testSortNoWell()
     MockInOutModule m2(&synthpro, "2", stream, &factory);
     synthpro.add(&m2);
 
-    m1.output.connections().first()->connect(m2.input.connections().first()); // m1 −> m2
+    m1.output.connect(&m2.input); // m1 −> m2
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();
@@ -158,8 +158,8 @@ void TestSequencer::testSortMixer()
     MockWell m3(&synthpro, "3", stream, &factory);
     synthpro.add(&m3);
 
-    m1.output.connections().first()->connect(m3.input.connections().at(0)); // m1 −> m3
-    m2.output.connections().first()->connect(m3.input.connections().at(1)); // m2 −> m3
+    m1.output.connect(&m3.input); // m1 −> m3
+    m2.output.connect(&m3.input); // m2 −> m3
 
     QVERIFY(m3.requirements().contains(&m1));
     QVERIFY(m3.requirements().contains(&m2));
@@ -190,7 +190,7 @@ void TestSequencer::testVCOAndSerializer()
     MockSerializerWell output(&synthpro, stream, &factory);
     synthpro.add(&output);
 
-    vco->outports().first()->connections().first()->connect(output.input.connections().first());
+    vco->outports().first()->connect(&output.input);
 
     sequencer.scheduleModules(&synthpro);
     sequencer.process();

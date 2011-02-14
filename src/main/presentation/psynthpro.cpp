@@ -102,15 +102,8 @@ void PSynthPro::createStaticActions()
     m_aboutQtAct->setStatusTip(tr("Show Qt library's About box"));
     connect(m_aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
-    // Create "Play/Pause" icon.
-    QIcon switchIcon;
-    switchIcon.addPixmap(QPixmap(":src/resources/images/pause.png"),
-                         QIcon::Normal, QIcon::On);
-    switchIcon.addPixmap(QPixmap(":src/resources/images/play.png"),
-                         QIcon::Normal, QIcon::Off);
-
     // Create "Play/Pause" action.
-    m_playPauseAct = new QAction(switchIcon, tr("&Play/Pause"), this);
+    m_playPauseAct = new QAction(QIcon(":src/resources/images/play.png"), tr("&Play/Pause"), this);
     m_playPauseAct->setCheckable(true);
     m_playPauseAct->setShortcut(tr("Ctrl+P"));
     m_playPauseAct->setStatusTip(tr("Play/Pause the application"));

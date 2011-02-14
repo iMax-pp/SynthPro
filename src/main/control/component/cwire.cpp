@@ -40,6 +40,11 @@ void CWire::updatePosition(const QPointF& point)
     m_presentation->updatePosition(point);
 }
 
+void CWire::updatePosition()
+{
+    m_presentation->updatePosition();
+}
+
 void CWire::midClick()
 {
     m_inPort->disconnect();

@@ -1,5 +1,6 @@
 #include "testwavegeneratorsaw.h"
 
+#include "abstraction/component/connection.h"
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
 #include "abstraction/component/port.h"
@@ -27,7 +28,7 @@ void TestWaveGeneratorSaw::testWaveGeneratorSaw()
     mbr->startRecording();
     VCO* vco = factory.createVCO(&synthPro);
     vco->setShape("Saw");
-    vco->outports().first()->connections().first()->connect(mbr->inports().first()->connections().first());
+    vco->outports().first()->connect(mbr->inports().first());
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
         vco->process();
