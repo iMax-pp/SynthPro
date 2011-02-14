@@ -24,6 +24,7 @@ public:
     void setWire(CWire*);
 
     void disconnect();
+    void reconnect();
 
     /*
      * The presentation of this CPort should call

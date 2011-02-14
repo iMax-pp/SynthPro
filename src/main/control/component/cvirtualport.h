@@ -3,8 +3,6 @@
 
 #include "abstraction/component/virtualport.h"
 
-#include <QMap>
-
 class PVirtualPort;
 class CPort;
 class QtFactory;
@@ -47,7 +45,7 @@ protected:
 private:
     PVirtualPort* m_presentation;
     QtFactory* m_factory;
-    QMap<int, CPort*> m_connectedPorts;
+    QList<CPort*> m_connectedPorts;
     CPort* m_availablePort;
 };
 

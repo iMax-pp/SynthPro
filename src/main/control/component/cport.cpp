@@ -44,13 +44,16 @@ void CPort::disconnect()
     vPort()->disconnect(this);
 }
 
+void CPort::reconnect()
+{
+
+}
+
 void CPort::drag(const QPointF& pos)
 {
     if (m_wire) {
-        // TODO reconnect the current wire
-        return;
+        reconnect();
     }
-
     // Create a temporary wire
     m_tmpWire = m_factory->createWire(presentation()->scene());
 
