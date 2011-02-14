@@ -20,6 +20,7 @@
 #include "presentation/module/pvca.h"
 #include "presentation/module/pvcf.h"
 #include "presentation/module/pvco.h"
+#include "presentation/module/pwavlooper.h"
 #include "presentation/module/pwavrecorder.h"
 
 #include <QIODevice>
@@ -254,6 +255,17 @@ CWavRecorder* QtFactory::createWavRecorder(SynthPro* parent, int /*nbProcessingB
     mbr->initialize(this);
 
     return mbr;
+}
+
+CWavLooper* QtFactory::createWavLooper(SynthPro* parent)
+{
+    CWavLooper* wl = new CWavLooper(parent);
+    PWavLooper* presentation = new PWavLooper(wl);
+
+    wl->setPresentation(presentation);
+    wl->initialize(this);
+
+    return wl;
 }
 
 CSpeaker* QtFactory::createSpeaker(SynthPro* parent)

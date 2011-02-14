@@ -18,6 +18,7 @@
 #include "control/module/cvca.h"
 #include "control/module/cvcf.h"
 #include "control/module/cvco.h"
+#include "control/module/cwavlooper.h"
 #include "control/module/cwavrecorder.h"
 #include "factory/synthprofactory.h"
 
@@ -47,10 +48,11 @@ public:
     CVCA* createVCA(SynthPro*);
     CADSR* createADSR(SynthPro*);
     CDelay* createDelay(SynthPro*);
-    CMixer* createMixer(SynthPro *);
+    CMixer* createMixer(SynthPro*);
 
     COscilloscope* createOscilloscope(SynthPro*);
     CWavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 0);
+    CWavLooper* createWavLooper(SynthPro*);
     CSpeaker* createSpeaker(SynthPro*);
 
     CDimmer* createDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent);

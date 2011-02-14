@@ -64,6 +64,7 @@ HEADERS += \
     src/main/control/module/cvca.h \
     src/main/control/module/cvcf.h \
     src/main/control/module/cvco.h \
+    src/main/control/module/cwavlooper.h \
     src/main/control/module/cwavrecorder.h \
     src/main/control/modulelistmodel.h \
     src/main/factory/filterfactory.h \
@@ -86,6 +87,7 @@ HEADERS += \
     src/main/presentation/module/pvca.h \
     src/main/presentation/module/pvcf.h \
     src/main/presentation/module/pvco.h \
+    src/main/presentation/module/pwavlooper.h \
     src/main/presentation/module/pwavrecorder.h \
     src/main/presentation/pmodule.h \
     src/main/presentation/psynthpro.h \
@@ -154,6 +156,7 @@ SOURCES += \
     src/main/control/module/cvca.cpp \
     src/main/control/module/cvcf.cpp \
     src/main/control/module/cvco.cpp \
+    src/main/control/module/cwavlooper.cpp \
     src/main/control/module/cwavrecorder.cpp \
     src/main/control/modulelistmodel.cpp \
     src/main/factory/filterfactory.cpp \
@@ -176,6 +179,7 @@ SOURCES += \
     src/main/presentation/module/pvca.cpp \
     src/main/presentation/module/pvcf.cpp \
     src/main/presentation/module/pvco.cpp \
+    src/main/presentation/module/pwavlooper.cpp \
     src/main/presentation/module/pwavrecorder.cpp \
     src/main/presentation/pmodule.cpp \
     src/main/presentation/psynthpro.cpp \
