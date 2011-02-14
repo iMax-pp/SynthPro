@@ -35,5 +35,5 @@ PDimmer::PDimmer(const QString& name, int min, int max, int defaultValue, QGraph
 
 void PDimmer::changeTitle(int value)
 {
-    m_box->setTitle(m_name + " (" + QString::number(value / CDimmer::DISCR) + ")");
+    m_box->setTitle(m_name + " (" + QString::number(value / CDimmer::DISCR, 'g', 3) + ")");
 }
