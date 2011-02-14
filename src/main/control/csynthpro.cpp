@@ -117,6 +117,12 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
         add(module);
         dynamic_cast<CModule*>(module)->presentation()->setPos(pos);
     }
+
+    // Post initialisation. May be useful to some modules.
+    if (moduleType == SynthProFactory::KeyboardId) {
+        CKeyboard* keyb = dynamic_cast<CKeyboard*>(module);
+        keyb->postInitialize();
+    }
 }
 
 void CSynthPro::showFeedback(CVirtualPort* from)
