@@ -12,7 +12,7 @@ PDimmer::PDimmer(CDimmer* control, const QString& name, int min, int max, int de
     , m_name(name)
 {
     m_box = new QGroupBox;
-    m_box->setAlignment(Qt::AlignHCenter);
+    m_box->setAlignment(Qt::AlignLeft);
     m_box->setFlat(true);
 
     QVBoxLayout* vbox = new QVBoxLayout;
@@ -38,5 +38,5 @@ PDimmer::PDimmer(CDimmer* control, const QString& name, int min, int max, int de
 void PDimmer::changeTitle(int value)
 {
     qreal realVal = m_control->realValue(value / CDimmer::DISCR);
-    m_box->setTitle(m_name + " (" + QString::number(realVal, 'g', 3) + ")");
+    m_box->setTitle(m_name + ": " + QString::number(realVal, 'g', 3));
 }
