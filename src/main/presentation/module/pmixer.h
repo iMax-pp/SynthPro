@@ -15,7 +15,7 @@ class PMixer : public PModule {
 public:
     explicit PMixer(CMixer*);
 
-    void initialize(QMap<PVirtualPort*, PDimmer*>*, PVirtualPort*);
+    void initialize(QMap<PVirtualPort*, PDimmer*>&, PVirtualPort*);
 };
 
 #endif // PMIXER_H

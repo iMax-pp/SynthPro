@@ -9,11 +9,13 @@
 #include "control/module/cdelay.h"
 #include "control/module/ckeyboard.h"
 #include "control/module/clfo.h"
+#include "control/module/cmixer.h"
 #include "control/module/coscilloscope.h"
 #include "control/module/cspeaker.h"
 #include "control/module/cvca.h"
 #include "control/module/cvcf.h"
 #include "control/module/cvco.h"
+#include "control/module/cwavlooper.h"
 #include "control/module/cwavrecorder.h"
 
 #include <QGraphicsScene>
@@ -97,6 +99,9 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
     case SynthProFactory::DelayId:
         module = dynamic_cast<Module*>(m_factory->createDelay(this));
         break;
+    case SynthProFactory::MixerId:
+        module = dynamic_cast<Module*>(m_factory->createMixer(this));
+        break;
     case SynthProFactory::LFOId:
         module = dynamic_cast<Module*>(m_factory->createLFO(this));
         break;
@@ -109,6 +114,8 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
     case SynthProFactory::OscilloscopeId:
         module = dynamic_cast<Module*>(m_factory->createOscilloscope(this));
         break;
+    case SynthProFactory::WavLooperId:
+        module = dynamic_cast<Module*>(m_factory->createWavLooper(this));
     default:
         break;
     }

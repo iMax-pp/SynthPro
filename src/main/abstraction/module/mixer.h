@@ -21,7 +21,7 @@ public:
     static const int MIXER_SIZE = 4;
 
 protected:
-    QMap<InPort*, Dimmer*>* m_MixInPorts;
+    QMap<InPort*, Dimmer*>* m_mixInPorts;
     OutPort* m_outPort;
 
 
