@@ -18,6 +18,11 @@ public:
 
     void initialize(PVirtualPort* outputFrequency, PVirtualPort* outputGate);
 
+    /**
+      * Needed to be called after the addition in the scene, as grabKeyboard() needs it.
+      */
+    void postInitialize();
+
     void keyPressEvent(QKeyEvent*);
     void keyReleaseEvent(QKeyEvent*);
 

@@ -37,8 +37,6 @@ void PKeyboard::initialize(PVirtualPort *outputFrequency, PVirtualPort *outputGa
     setFlag(QGraphicsItem::ItemAcceptsInputMethod);
     setFocus();
 
-    grabKeyboard();
-
     // Keyboard management (trigger notes with the computer keyboard).
     int val = 0; // First key.
     m_mapKeyboard = new QMap<int, int>();
@@ -55,6 +53,11 @@ void PKeyboard::initialize(PVirtualPort *outputFrequency, PVirtualPort *outputGa
     m_mapKeyboard->insert(Qt::Key_U, val++);
     m_mapKeyboard->insert(Qt::Key_J, val++);
     m_mapKeyboard->insert(Qt::Key_K, val++);
+}
+
+void PKeyboard::postInitialize()
+{
+    grabKeyboard();
 }
 
 void PKeyboard::keyboardKeyPressed(int keyPressed)
