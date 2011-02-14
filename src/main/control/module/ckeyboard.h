@@ -11,6 +11,11 @@ public:
 
     void initialize(SynthProFactory*);
 
+    /**
+      * Useful to the Presentation of the module.
+      */
+    void postInitialize();
+
     void keyboardKeyPressed(int keyPressed);
     void keyboardKeyReleased(int keyPressed);
 };

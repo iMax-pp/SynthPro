@@ -5,16 +5,18 @@
 
 class CWire;
 
-class PWire : public QGraphicsLineItem {
+class PWire : public QGraphicsPathItem {
 public:
     PWire(CWire*, QGraphicsScene*);
 
-    QRectF boundingRect() const;
+//    QRectF boundingRect() const;
 
     void updatePosition(const QPointF&);
     void updatePosition();
 
     void mousePressEvent(QGraphicsSceneMouseEvent*);
+
+    void showMoveFeedback();
 
 private:
     CWire* m_control;

@@ -17,8 +17,6 @@ public:
 
     void mousePressEvent(QGraphicsSceneMouseEvent*);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent*);
-    void keyPressEvent(QKeyEvent*); // FIXME : TESTS
-    void grabKeyboardEvent(QEvent*); // FIXME : TESTS
 
     static const int WHITE_KEY_WIDTH = 16;
     static const int WHITE_KEY_HEIGHT = 50;

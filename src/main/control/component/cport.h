@@ -22,8 +22,12 @@ public:
 
     inline CWire* wire() const { return m_wire; }
     void setWire(CWire*);
+    void createTmpWire(CPort* from, const QPointF& to);
 
     void disconnect();
+    void reconnect(const QPointF&);
+
+    inline bool reconnecting() const { return m_reconnecting; }
 
     /*
      * The presentation of this CPort should call
@@ -53,6 +57,7 @@ private:
     CWire* m_wire;
     CWire* m_tmpWire;
     PPort* m_clickableFeedback;
+    CPort* m_reconnecting;
 };
 
 #endif // CPORT_H

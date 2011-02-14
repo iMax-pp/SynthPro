@@ -3,6 +3,7 @@
 
 #include "presentation/widget/pkeyboardkey.h"
 
+#include <QDebug>
 #include <QGraphicsWidget>
 
 class PKeyboardView : public QGraphicsWidget {

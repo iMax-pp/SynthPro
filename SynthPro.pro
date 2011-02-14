@@ -13,7 +13,6 @@ HEADERS += \
     src/main/abstraction/component/dimmer.h \
     src/main/abstraction/component/inport.h \
     src/main/abstraction/component/outport.h \
-    src/main/abstraction/component/port.h \
     src/main/abstraction/component/pushbutton.h \
     src/main/abstraction/component/selector.h \
     src/main/abstraction/component/virtualport.h \
@@ -105,7 +104,6 @@ SOURCES += \
     src/main/abstraction/component/dimmer.cpp \
     src/main/abstraction/component/inport.cpp \
     src/main/abstraction/component/outport.cpp \
-    src/main/abstraction/component/port.cpp \
     src/main/abstraction/component/pushbutton.cpp \
     src/main/abstraction/component/selector.cpp \
     src/main/abstraction/component/virtualport.cpp \

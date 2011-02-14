@@ -5,16 +5,22 @@ Dimmer::Dimmer(qreal min, qreal max, qreal defaultValue, QObject* parent)
     , m_min(min)
     , m_max(max)
     , m_value(defaultValue)
-
+    , m_offset(0)
+    , m_ratio(1)
 {
-}
-
-qreal Dimmer::value() const
-{
-    return m_value;
 }
 
 void Dimmer::setValue(qreal value)
 {
     m_value = value;
+}
+
+void Dimmer::setOffset(qreal offset)
+{
+    m_offset = offset;
+}
+
+void Dimmer::setRatio(qreal ratio)
+{
+    m_ratio = ratio;
 }

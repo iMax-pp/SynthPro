@@ -8,6 +8,7 @@ ModuleView::ModuleView(QWidget* parent, CSynthPro* cSynthPro)
     : QGraphicsView(parent)
     , m_cSynthPro(cSynthPro)
 {
+    setRenderHint(QPainter::Antialiasing, true);
     setDragMode(QGraphicsView::ScrollHandDrag);
     setAcceptDrops(true);
 }

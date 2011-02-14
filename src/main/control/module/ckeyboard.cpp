@@ -21,6 +21,11 @@ void CKeyboard::initialize(SynthProFactory* factory)
                                                          outGate->presentation());
 }
 
+void CKeyboard::postInitialize()
+{
+    dynamic_cast<PKeyboard*>(presentation())->postInitialize();
+}
+
 void CKeyboard::keyboardKeyPressed(int keyPressed)
 {
     m_keyPressedNumber = keyPressed;

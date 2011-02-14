@@ -3,8 +3,6 @@
 
 #include "abstraction/component/virtualport.h"
 
-#include <QMap>
-
 class PVirtualPort;
 class CPort;
 class QtFactory;
@@ -40,14 +38,19 @@ public:
      */
     void hideFeedback();
 
+    void removeConnectionPort(CPort*);
+
 protected:
     CPort* createConnectionPort(Connection*);
     void deleteConnectionPort(int idx);
 
+    CPort* connection2Port(Connection*) const;
+    Connection* port2Connection(CPort*) const;
+
 private:
     PVirtualPort* m_presentation;
     QtFactory* m_factory;
-    QMap<int, CPort*> m_connectedPorts;
+    QList<CPort*> m_connectedPorts;
     CPort* m_availablePort;
 };
 

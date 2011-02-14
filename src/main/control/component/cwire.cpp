@@ -49,3 +49,8 @@ void CWire::midClick()
 {
     m_inPort->disconnect();
 }
+
+void CWire::showMoveFeedback()
+{
+    m_presentation->showMoveFeedback();
+}

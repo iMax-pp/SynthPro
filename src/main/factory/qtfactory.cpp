@@ -2,7 +2,6 @@
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/component/connection.h"
-#include "abstraction/component/port.h"
 #include "abstraction/module/adsr.h"
 #include "abstraction/module/oscilloscope.h"
 #include "abstraction/sequencer.h"
@@ -275,6 +274,7 @@ CSpeaker* QtFactory::createSpeaker(SynthPro* parent)
     CSpeaker* mo = new CSpeaker(parent, device, adp.audioOutput());
 
     PSpeaker* p = new PSpeaker(mo);
+
     mo->setPresentation(p);
 
     mo->initialize(this);
@@ -287,7 +287,8 @@ CDimmer* QtFactory::createDimmer(const QString& name, qreal min, qreal max, qrea
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
 
-    PDimmer* presentation = new PDimmer(name, dimmer->min() * CDimmer::DISCR,
+    PDimmer* presentation = new PDimmer(dimmer, name,
+                                        dimmer->min() * CDimmer::DISCR,
                                         dimmer->max() * CDimmer::DISCR,
                                         dimmer->value() * CDimmer::DISCR,
                                         cParent->presentation());

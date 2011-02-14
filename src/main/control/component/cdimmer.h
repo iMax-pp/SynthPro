@@ -13,7 +13,13 @@ public:
     PDimmer* presentation() const;
     void setPresentation(PDimmer*);
 
-    // Discretization factor
+    /**
+     * @param The value to convert.
+     * @returns The "real life" value from the current value of the dimmer.
+     */
+    qreal realValue(qreal value) const;
+
+    /// Discretization factor
     static const qreal DISCR = 150;
 
 public slots:
