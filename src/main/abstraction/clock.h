@@ -4,8 +4,10 @@
 #include <QMap>
 #include <QObject>
 
+class AudioDeviceProvider;
 class Module;
 class QTimer;
+class Sequencer;
 
 /**
   * This class manages timers in order to trigger actions
@@ -67,10 +69,10 @@ private slots:
       * When a SoundCard Timer is expired, may call the Sequencer
       * several times in order to feed the sound card enough.
       */
-    void soundCardTimerExpired();
+    // void soundCardTimerExpired();
 
 private:
-    static const int FAST_TIMER_DELAY = 4; // For fast operations (sound card output).
+    static const int FAST_TIMER_DELAY = 5; // For fast operations (sound card output).
     static const int INTERNAL_TIMER_DELAY = 30; // For non critical operations.
 
     static const int SOUNDCARD_MAX_ITERATIONS = 10;
@@ -82,6 +84,8 @@ private:
 
     QMap<Module*, QTimer*> m_fastTimers;
     QTimer* m_internalTimer;
+    AudioDeviceProvider& adp;
+    Sequencer& sequencer;
 };
 
 #endif // CLOCK_H

@@ -5,7 +5,7 @@
 
 class Buffer {
 public:
-    static const int DEFAULT_LENGTH = 900; // 256;
+    static const int DEFAULT_LENGTH = 900;
 
     /**
      * Constructs a buffer of a given length, initializing its content to 0.
@@ -24,7 +24,6 @@ public:
     void add(const qreal);
 
     /// multiply all buffer's value by a real
-
     void mul(const qreal);
 
     /// Fill this buffer with 0

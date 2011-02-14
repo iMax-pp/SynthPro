@@ -9,6 +9,7 @@
 #include "factory/synthprofactory.h"
 
 #include <QAudioOutput>
+#include <QDebug>
 
 Speaker::Speaker(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
     : Module(parent)
@@ -18,7 +19,6 @@ Speaker::Speaker(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
     , m_generationBufferIndex(0)
     , m_nbGeneratedBytesRemaining(0)
     , m_sequencer(Sequencer::instance())
-    // , m_manageSound(false)
 {
 }
 
@@ -57,8 +57,6 @@ void Speaker::initialize(SynthProFactory* factory)
 
 void Speaker::timerExpired()
 {
-
-    /*
     int fillCounter = 0;
     qint64 sizeWritten = 1;
     int nbBytesNeededByOutput = m_audioOutput->bytesFree();
@@ -104,9 +102,6 @@ void Speaker::timerExpired()
 
         fillCounter++;
     }
-    */
-
-
 
     /*
     if (fillCounter >= FILL_COUNTER_MAX) {
@@ -123,6 +118,7 @@ void Speaker::timerExpired()
 
 void Speaker::ownProcess()
 {
+    /*
     int nbBytesNeededByOutput = m_audioOutput->bytesFree();
     int sizeWritten = 1;
     //if (nbBytesNeededByOutput > 0) {
@@ -148,8 +144,10 @@ void Speaker::ownProcess()
         }
         nbBytesNeededByOutput = m_audioOutput->bytesFree();
     }
+    */
 }
 
+/*
 qint64 Speaker::sendToAudioOutput(int nbBytesNeededByOutput) {
     qint64 sizeWritten;
     // We have some bytes left in our buffer. Is it enough ?
@@ -157,14 +155,18 @@ qint64 Speaker::sendToAudioOutput(int nbBytesNeededByOutput) {
         // We have more than enough. We send only what is needed.
         // qWarning() << "Trying to write : " << nbBytesNeededByOutput;
         sizeWritten = m_device->write(m_generationBuffer + m_generationBufferIndex, nbBytesNeededByOutput);
+        //qDebug() << "Needed = " << nbBytesNeededByOutput << "  Written = " << sizeWritten;
     } else {
         // We don't have enough. We send what we have for now.
         // qWarning() << "Trying to write : " << m_nbGeneratedBytesRemaining;
         sizeWritten = m_device->write(m_generationBuffer + m_generationBufferIndex, m_nbGeneratedBytesRemaining);
+        //qDebug() << "Needed = " << nbBytesNeededByOutput << "  No enough data. Written = " << sizeWritten << " out of " << m_nbGeneratedBytesRemaining;
     }
 
     m_generationBufferIndex += sizeWritten;
     m_nbGeneratedBytesRemaining -= sizeWritten;
 
+
     return sizeWritten;
 }
+*/
