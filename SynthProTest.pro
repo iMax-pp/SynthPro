@@ -35,6 +35,7 @@ HEADERS += \
     src/main/abstraction/module/vcf.h \
     src/main/abstraction/module/vco.h \
     src/main/abstraction/module/mixer.h \
+    src/main/abstraction/module/wavlooper.h \
     src/main/abstraction/module/wavrecorder.h \
     src/main/abstraction/sequencer.h \
     src/main/abstraction/synthpro.h \
@@ -98,6 +99,7 @@ SOURCES += \
     src/main/abstraction/module/vco.cpp \
     src/main/abstraction/module/mixer.cpp \
     src/test/abstraction/module/testmixer.cpp \
+    src/main/abstraction/module/wavlooper.cpp \
     src/main/abstraction/module/wavrecorder.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/abstraction/synthpro.cpp \
