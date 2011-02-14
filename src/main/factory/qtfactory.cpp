@@ -116,8 +116,6 @@ CVCO* QtFactory::createVCO(SynthPro* parent)
     PVCO* p = new PVCO(vco);
     vco->setPresentation(p);
 
-    parent->add(vco);
-
     // Initialize it (ports creation)
     vco->initialize(this);
 
@@ -132,8 +130,6 @@ CLFO* QtFactory::createLFO(SynthPro* parent)
     // Create its presentation
     PLFO* p = new PLFO(lfo);
     lfo->setPresentation(p);
-
-    parent->add(lfo);
 
     // Initialize it (ports creation)
     lfo->initialize(this);
@@ -150,8 +146,6 @@ CKeyboard* QtFactory::createKeyboard(SynthPro* parent)
     PKeyboard* p = new PKeyboard(ck);
     ck->setPresentation(p);
 
-    parent->add(ck);
-
     // Initialize it (ports creation)
     ck->initialize(this);
 
@@ -166,8 +160,6 @@ CVCF* QtFactory::createVCF(SynthPro* parent)
     // Create its presentation
     PVCF* p = new PVCF(vcf);
     vcf->setPresentation(p);
-
-    parent->add(vcf);
 
     // Initialize it (ports creation)
     vcf->initialize(this);
@@ -185,8 +177,6 @@ CVCA* QtFactory::createVCA(SynthPro* parent)
     PVCA* p = new PVCA(vca);
     vca->setPresentation(p);
 
-    parent->add(vca);
-
     // Initialize it (ports creation)
     vca->initialize(this);
 
@@ -201,8 +191,6 @@ CADSR* QtFactory::createADSR(SynthPro* parent)
     // Create its presentation
     PADSR* p = new PADSR(adsr);
     adsr->setPresentation(p);
-
-    parent->add(adsr);
 
     // Initialize it (ports creation)
     adsr->initialize(this);
@@ -219,8 +207,6 @@ CDelay* QtFactory::createDelay(SynthPro* parent)
     PDelay* p = new PDelay(delay);
     delay->setPresentation(p);
 
-    parent->add(delay);
-
     // Initialization
     delay->initialize(this);
 
@@ -236,8 +222,6 @@ COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)
     POscilloscope* p = new POscilloscope(co);
     co->setPresentation(p);
 
-    parent->add(co);
-
     // Initialize it (ports creation)
     co->initialize(this);
 
@@ -251,7 +235,6 @@ CWavRecorder* QtFactory::createWavRecorder(SynthPro* parent, int /*nbProcessingB
     PWavRecorder* presentation = new PWavRecorder(mbr);
 
     mbr->setPresentation(presentation);
-    parent->add(mbr);
     mbr->initialize(this);
 
     return mbr;
@@ -276,7 +259,6 @@ CSpeaker* QtFactory::createSpeaker(SynthPro* parent)
 
     PSpeaker* p = new PSpeaker(mo);
 
-    parent->add(mo);
     mo->setPresentation(p);
 
     mo->initialize(this);
