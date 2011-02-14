@@ -11,6 +11,7 @@ HEADERS += \
     src/main/abstraction/audiodeviceprovider.h \
     src/main/abstraction/buffer.h \
     src/main/abstraction/clock.h \
+    src/main/abstraction/component/connection.h \
     src/main/abstraction/component/dimmer.h \
     src/main/abstraction/component/inport.h \
     src/main/abstraction/component/outport.h \
@@ -72,6 +73,7 @@ SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
     src/main/abstraction/buffer.cpp \
     src/main/abstraction/clock.cpp \
+    src/main/abstraction/component/connection.cpp \
     src/main/abstraction/component/dimmer.cpp \
     src/main/abstraction/component/inport.cpp \
     src/main/abstraction/component/outport.cpp \

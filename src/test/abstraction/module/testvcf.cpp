@@ -26,7 +26,7 @@ void TestVCF::testVCF()
     VCF* vcf = factory.createVCF(synthPro);
     vcf->setFilter("Increment");
 
-    vco->outports().first()->connections().first()->connect(vcf->inports().first()->connections().first());
+    vco->outports().first()->connect(vcf->inports().first());
 
     vco->process();
     vcf->process();

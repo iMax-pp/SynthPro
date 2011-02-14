@@ -55,11 +55,7 @@ void CPort::drag(const QPointF& pos)
     m_tmpWire = m_factory->createWire(presentation()->scene());
 
     // Don't forget to register ourself as one of the port (the good one of course).
-    if (vPort()->out()) {
-        m_tmpWire->setOutPort(this);
-    } else {
-        m_tmpWire->setInPort(this);
-    }
+    m_tmpWire->setInPort(this);
     m_tmpWire->updatePosition(pos);
 
     dynamic_cast<CSynthPro*>(vPort()->module()->synthPro())->showFeedback(vPort());
