@@ -37,13 +37,23 @@ void Mixer::ownProcess()
     Buffer buffer = Buffer();
     int nbPortConnected = 0;
 
+    QMap<InPort*, Dimmer*>::iterator ite;
+
+    for (ite = m_mixInPorts->begin() ; ite != m_mixInPorts->end() ; ite++) {
+        if (ite.key()->connections().size() != 0) {
+            nbPortConnected++;
+            for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
+                buffer.data()[i] += ite.key()->buffer()->data()[i];
+            }
+        }
+    }
+
+
     for (int j = 0 ; j < inports().size() ;  j++) {
         if (inports().at(j)->connections().size() != 0)  {
             nbPortConnected++;
-            qDebug() << "port " << j << "connect " << inports().at(j)->buffer()->data()[0];
             for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
                 buffer.data()[i] += inports().at(j)->buffer()->data()[i];
-            //    qDebug() << inports().at(j)->buffer()->data()[i];
 
             }
         }
