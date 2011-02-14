@@ -44,7 +44,6 @@ public:
 
     virtual Connection* connect(VirtualPort* other);
     virtual bool disconnect(Connection*);
-    virtual bool reconnect(Connection*, VirtualPort* other);
 
     /// Indicate if this VirtualPort can be multiplexed or mixed
     inline bool replicable() const { return m_replicable; }
