@@ -27,6 +27,7 @@ void CModule::setPresentation(PModule* presentation)
     }
 
     m_presentation = presentation;
+    connect(presentation, SIGNAL(closeBtnClicked()), new Closer(this), SLOT(onCloseClicked()));
 }
 
 PModule* CModule::presentation() const
@@ -43,4 +44,26 @@ void CModule::move()
     foreach (OutPort* port, m_outports) {
         dynamic_cast<CVirtualPort*>(port)->updateWiresPositions();
     }
+}
+
+Closer::Closer(CModule* module)
+    : QObject(module)
+    , m_module(module)
+{
+
+}
+
+void Closer::onCloseClicked()
+{
+    foreach (InPort* port, m_module->inports()) {
+        while (port->connections().size() > 0) {
+            port->disconnect(port->connections().first());
+        }
+    }
+    foreach (OutPort* port, m_module->outports()) {
+        while (port->connections().size() > 0) {
+            port->disconnect(port->connections().first());
+        }
+    }
+    m_module->deleteLater();
 }

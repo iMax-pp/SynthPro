@@ -22,4 +22,14 @@ private:
     PModule* m_presentation;
 };
 
+class Closer : public QObject {
+    Q_OBJECT
+public:
+    Closer(CModule*);
+protected slots:
+    void onCloseClicked();
+private:
+    CModule* m_module;
+};
+
 #endif // CMODULE_H
