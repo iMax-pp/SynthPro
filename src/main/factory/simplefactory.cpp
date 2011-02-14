@@ -1,5 +1,6 @@
 #include "simplefactory.h"
 
+#include "abstraction/component/connection.h"
 #include "abstraction/component/dimmer.h"
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
@@ -30,45 +31,44 @@ Port* SimpleFactory::createPort(VirtualPort* vPort)
     return port;
 }
 
+Connection* SimpleFactory::createConnection(OutPort* source, InPort* target)
+{
+    return new Connection(source, target);
+}
+
 InPort* SimpleFactory::createInPort(Module* parent, const QString& name)
 {
     InPort* port = new InPort(parent, name, this, false, false);
-    port->initialize();
     return port;
 }
 
 InPort* SimpleFactory::createInPortReplicable(Module* parent, const QString& name)
 {
     InPort* port = new InPort(parent, name, this, true, false);
-    port->initialize();
     return port;
 }
 
 InPort* SimpleFactory::createInPortGate(Module* parent, const QString& name)
 {
     InPort* port = new InPort(parent, name, this, false, true);
-    port->initialize();
     return port;
 }
 
 OutPort* SimpleFactory::createOutPort(Module* parent, const QString& name)
 {
     OutPort* port = new OutPort(parent, name, this, false, false);
-    port->initialize();
     return port;
 }
 
 OutPort* SimpleFactory::createOutPortReplicable(Module* parent, const QString& name)
 {
     OutPort* port = new OutPort(parent, name, this, true, false);
-    port->initialize();
     return port;
 }
 
 OutPort* SimpleFactory::createOutPortGate(Module* parent, const QString& name)
 {
     OutPort* port = new OutPort(parent, name, this, false, true);
-    port->initialize();
     return port;
 }
 

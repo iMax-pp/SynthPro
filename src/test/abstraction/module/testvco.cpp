@@ -24,7 +24,7 @@ void TestVCO::testVCO()
     VCO* vco = factory.createVCO(synth);
     MockSerializerWell output(0, stream, &factory);
 
-    vco->outports().first()->connections().first()->connect(output.input.connections().first());
+    vco->outports().first()->connect(&output.input);
 
     vco->setShape("Dummy");
     vco->process();
@@ -45,7 +45,7 @@ void TestVCO::testVCOwithDimmer()
     VCO* vco = factory.createVCO(synth);
     vco->setK(3);
     MockSerializerWell output(0, stream, &factory);
-    vco->outports().first()->connections().first()->connect(output.input.connections().first());
+    vco->outports().first()->connect(&output.input);
     vco->setShape("Square");
     vco->process();
     output.process();
@@ -82,7 +82,7 @@ void TestVCO::testVCOWithSelector()
     QVERIFY(vco->shape() == "Saw");
 
     MockSerializerWell output(0, stream, &factory);
-    vco->outports().first()->connections().first()->connect(output.input.connections().first());
+    vco->outports().first()->connect(&output.input);
     vco->setShape("Sinus");
     vco->process();
     output.process();

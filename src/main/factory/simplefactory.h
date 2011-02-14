@@ -7,6 +7,7 @@ class SimpleFactory : public SynthProFactory {
 public:
     SynthPro* createSynthPro();
     Port* createPort(VirtualPort *vPort);
+    Connection* createConnection(OutPort* source, InPort* target);
     InPort* createInPort(Module* parent, const QString& name);
     InPort* createInPortReplicable(Module* parent, const QString& name);
     InPort* createInPortGate(Module* parent, const QString& name);

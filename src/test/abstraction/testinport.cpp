@@ -78,14 +78,16 @@ void TestInPort::testConnectTo()
     connect(in, SIGNAL(connectionsChanged()), SLOT(countVisit()));
     connect(out, SIGNAL(connectionsChanged()), SLOT(countVisit()));
 
-    QVERIFY(!in->connections().contains(out->connections().first()));
-    QVERIFY(!out->connections().contains(in->connections().first()));
+    QVERIFY(in->connections().size() == 0);
+    QVERIFY(out->connections().size() == 0);
     QCOMPARE(m_count, 0);
 
-    in->connections().first()->connect(out->connections().first());
+    Connection* c = in->connect(out);
 
-    QVERIFY(in->connections().first()->connection() == out->connections().first());
-    QVERIFY(out->connections().first()->connection() ==  in->connections().first());
+    QVERIFY(in->connections().size() == 1);
+    QVERIFY(out->connections().size() == 1);
+    QVERIFY(in->connections().first() == c);
+    QVERIFY(out->connections().first() == c);
     QCOMPARE(m_count, 1);
 
     delete in;
@@ -102,27 +104,27 @@ void TestInPort::testDisconnectFrom()
     connect(in, SIGNAL(connectionsChanged()), SLOT(countVisit()));
     connect(out, SIGNAL(connectionsChanged()), SLOT(countVisit()));
 
-    in->connections().first()->connect(out->connections().first());
-    out->connections().first()->disconnect();
+    Connection* c = in->connect(out);
+    out->disconnect(c);
 
-    QVERIFY(!in->connections().first()->connected());
-    QVERIFY(!out->connections().first()->connected());
+    QVERIFY(in->connections().size() == 0);
+    QVERIFY(out->connections().size() == 0);
     QCOMPARE(m_count, 2); // Two calls: one for the connection, one for the disconnection
 
     m_count = 0;
-    out->connections().first()->connect(out->connections().first()); // Try to connect a port to itself
-    in->connections().first()->connect(in->connections().first());
+    out->connect(out); // Try to connect a port to itself
+    in->connect(in);
 
-    QVERIFY(!in->connections().first()->connected());
-    QVERIFY(!out->connections().first()->connected());
+    QVERIFY(!in->connections().size());
+    QVERIFY(!out->connections().size());
     QCOMPARE(m_count, 0);
 
-    in->connections().first()->disconnect(); // Try to disconnect in from out though they were not connected
+    in->disconnect(0); // Try to disconnect in from out though they were not connected
 
     QCOMPARE(m_count, 0);
 
     OutPort* outGate = factory.createOutPortGate(0, "out gate"); // Create a gate
-    in->connections().first()->connect(outGate->connections().first()); // Try to connect to an incompatible port
+    in->connect(outGate); // Try to connect to an incompatible port
 
     QCOMPARE(m_count, 0);
 
@@ -145,7 +147,7 @@ void TestInPort::testFetch()
     QVERIFY(!memcmp(in->buffer()->data(), copyOfInitBuffer.data(), in->buffer()->length() * sizeof(*in->buffer()->data())));
 
     out->buffer()->data()[0] = 1;
-    in->connections().first()->connect(out->connections().first());
+    in->connect(out);
 
     // Out and in buffer are not identical
     QVERIFY(memcmp(out->buffer()->data(), in->buffer()->data(), in->buffer()->length() * sizeof(*in->buffer()->data())));

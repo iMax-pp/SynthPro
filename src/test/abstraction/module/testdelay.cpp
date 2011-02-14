@@ -1,6 +1,7 @@
 #include "testdelay.h"
 
 #include "abstraction/buffer.h"
+#include "abstraction/component/connection.h"
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
 #include "abstraction/component/port.h"
@@ -18,7 +19,7 @@ void TestDelay::testDelay()
     SynthPro* synth = factory.createSynthPro();
     Delay* delay = factory.createDelay(synth);
     VCO* vco = factory.createVCO(synth);
-    vco->outports().first()->connections().first()->connect(delay->inports().first()->connections().first());
+    vco->outports().first()->connect(delay->inports().first());
 
     vco->setShape("Sinus");
     for (int i = 0 ; i < 1000 ; i++) {

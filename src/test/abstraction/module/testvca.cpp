@@ -23,10 +23,10 @@ void TestVCA::testVCA()
     VCA* vca = factory.createVCA(synth);
     vca->setGain(2);
     MockSerializerWell output(0, stream, &factory);
-    vco->outports().first()->connections().first()->connect(vca->inports().first()->connections().first());
+    vco->outports().first()->connect(vca->inports().first());
 
 
-    vca->outports().first()->connections().first()->connect(output.input.connections().first());
+    vca->outports().first()->connect(&output.input);
     vco->process();
     vca->process();
     output.process();
