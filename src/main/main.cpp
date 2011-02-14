@@ -33,12 +33,12 @@ int main(int argc, char* argv[])
     vca->outports().first()->connect(delay->inports().first()); // VCA -> DELAY
     delay->outports().first()->connect(oscillo->inports().first()); // DELAY -> OSCILLO
 
-    //WavLooper* wl = new WavLooper(0);
-    //wl->newFile("/home/julien/workspace/projet/SynthPro/drums.wav");
+    // WavLooper* wl = new WavLooper(0);
+    // wl->newFile("/home/julien/workspace/projet/SynthPro/drums.wav");
 
     int result = app.exec();
 
-    //delete synthpro;
+    // delete synthpro;
 
     return result;
 }
