@@ -60,6 +60,7 @@ void CPort::createTmpWire(CPort* from, const QPointF& to)
 
     // Don't forget to register ourself as one of the port (the good one of course).
     m_tmpWire->setInPort(from);
+    m_tmpWire->showMoveFeedback();
     m_tmpWire->updatePosition(to);
 
     dynamic_cast<CSynthPro*>(vPort()->module()->synthPro())->showFeedback(from->vPort());
