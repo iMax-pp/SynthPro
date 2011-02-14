@@ -23,6 +23,7 @@ class SynthPro;
 class VCA;
 class VCF;
 class VCO;
+class Sampler;
 class VirtualPort;
 class WavLooper;
 class WavRecorder;
@@ -51,6 +52,7 @@ public:
     virtual ADSR* createADSR(SynthPro*) = 0;
     virtual Delay* createDelay(SynthPro*) = 0;
     virtual Mixer* createMixer(SynthPro*) = 0;
+    virtual Sampler* createSampler(SynthPro*) = 0;
 
     virtual Oscilloscope* createOscilloscope(SynthPro*) = 0;
     virtual WavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10) = 0;

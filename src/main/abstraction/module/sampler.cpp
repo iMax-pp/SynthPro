@@ -12,6 +12,7 @@
 Sampler::Sampler(SynthPro* synth) 
     : Module(synth)
     , m_bufferIndex(0)
+    , m_sampleSize(0)
 {
 
 }
@@ -32,7 +33,7 @@ void Sampler::initialize(SynthProFactory * factory)
     m_outPort = factory->createOutPort(this, "out");
     m_outports.append(m_outPort);
 
-    m_bpmDimmer = factory->createDimmer("bpm", MIN_BPM, MAX_BPM, DEFAULT_BPM, this);
+    m_bpmDimmer = factory->createDialDimmer("bpm", MIN_BPM, MAX_BPM, DEFAULT_BPM, this);
 
     m_buffer = new Buffer(SAMPLER_MAX_DURATION*AudioDeviceProvider::OUTPUT_FREQUENCY);
     for (int i = 0 ; i < SAMPLER_MAX_DURATION*AudioDeviceProvider::OUTPUT_FREQUENCY ; i++) {
@@ -54,16 +55,42 @@ void Sampler::ownProcess()
             m_state = RECORDING;
         }
     }
-    for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
+    if (m_state == EMPTY) {
+        if (m_record->pushed()) {
+            m_state = RECORDING;
+            initializeBuffer();
+        }
+    }
+    if (m_state == WAITING) {
+        if (m_play->pushed()) {
+            m_state = PLAYING;
+        }
+        if (m_record->pushed()) {
+            m_state = RECORDING;
+            initializeBuffer();
+        }
+    }
+    if (m_state == PLAYING) {
+        if (m_stop->pushed()) {
+            m_state = WAITING;
+        }
 
     }
 
+}
 
-    // Ananlysis of gate
-    int startIndex = -1;
-    for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-        if (m_gate->buffer()->data()[i] != 0) {
-            startIndex = i;
-        }
+void Sampler::initializeBuffer()
+{
+    m_bufferIndex = 0;
+    m_sampleSize = 0;
+}
+
+QString Sampler::state()
+{
+    switch (m_state) {
+    case WAITING : return "waiting";
+    case PLAYING : return "playing";
+    case RECORDING : return "recording";
+    case EMPTY : return "empty";
     }
 }

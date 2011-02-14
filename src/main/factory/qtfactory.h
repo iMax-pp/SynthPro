@@ -14,6 +14,7 @@
 #include "control/module/clfo.h"
 #include "control/module/cmixer.h"
 #include "control/module/coscilloscope.h"
+#include "control/module/csampler.h"
 #include "control/module/cspeaker.h"
 #include "control/module/cvca.h"
 #include "control/module/cvcf.h"
@@ -49,6 +50,7 @@ public:
     CADSR* createADSR(SynthPro*);
     CDelay* createDelay(SynthPro*);
     CMixer* createMixer(SynthPro*);
+    CSampler* createSampler(SynthPro*);
 
     COscilloscope* createOscilloscope(SynthPro*);
     CWavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 0);

@@ -11,7 +11,7 @@
 
 void TestMixer::testMixer()
 {
- /*   SimpleFactory factory;
+    SimpleFactory factory;
     SynthPro* synth = factory.createSynthPro();
     VCO* vco  = factory.createVCO(synth);
     Mixer* mixer = factory.createMixer(synth);
@@ -23,11 +23,11 @@ void TestMixer::testMixer()
     vco->outports().first()->connect(mixer->inports().first());
     qDebug() << mixer->inports().at(0)->connections().size();
 
-    mixer->ownProcess();
+    mixer->process();
     bool res = true;
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-        qDebug() << "mixer " << mixer->outports().first()->buffer()->data()[i] << " in " <<  mixer->inports().first()->buffer()->data()[i];
+        res &= mixer->outports().first()->buffer()->data()[i] == 2.5;
     }
     QVERIFY(res);
-    */
+
 }

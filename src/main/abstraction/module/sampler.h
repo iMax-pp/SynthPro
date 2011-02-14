@@ -10,6 +10,7 @@ class Dimmer;
 class PushButton;
 class SynthProFactory;
 
+/// TODO : implements gate and comment !
 class Sampler : public virtual Module {
     Q_OBJECT
 
@@ -20,6 +21,18 @@ public:
 
     /// Process its job(s) : record a sample, play a sample
     void ownProcess();
+
+
+    enum SamplerState {
+        EMPTY,
+        RECORDING,
+        PLAYING,
+        WAITING
+    };
+    /// Only for mise au point
+
+    QString state();
+
 protected:
     static const int SAMPLER_MAX_DURATION = 5;
 
@@ -32,19 +45,16 @@ protected:
     PushButton* m_play;
     Buffer* m_buffer;
     int m_bufferIndex;
+    int m_sampleSize;
 
-    enum SamplerState {
-        EMPTY,
-        RECORDING,
-        PLAYING,
-        WAITING
-    };
 
     SamplerState m_state;
 
     static const qreal MIN_BPM = 30;
     static const qreal MAX_BPM = 300;
     static const qreal DEFAULT_BPM = 80;
+
+    void initializeBuffer();
 };
 
 #endif // SAMPLER_H

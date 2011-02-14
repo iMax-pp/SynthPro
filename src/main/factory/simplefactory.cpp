@@ -12,6 +12,7 @@
 #include "abstraction/module/lfo.h"
 #include "abstraction/module/mixer.h"
 #include "abstraction/module/oscilloscope.h"
+#include "abstraction/module/sampler.h"
 #include "abstraction/module/speaker.h"
 #include "abstraction/module/vca.h"
 #include "abstraction/module/vcf.h"
@@ -117,6 +118,13 @@ LFO* SimpleFactory::createLFO(SynthPro* parent)
     LFO* lfo = new LFO(parent);
     lfo->initialize(this);
     return lfo;
+}
+
+Sampler* SimpleFactory::createSampler(SynthPro* parent)
+{
+    Sampler* sampler = new Sampler(parent);
+    sampler->initialize(this);
+    return sampler;
 }
 
 Dimmer* SimpleFactory::createDialDimmer(const QString& /*name*/, qreal min, qreal max, qreal kDefault, Module* parent)
