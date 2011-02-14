@@ -12,7 +12,7 @@
 WavLooper::WavLooper(SynthPro* parent)
     : Module(parent)
     , m_outPort(0)
-    , m_fileName("essai.wav")
+    , m_fileName("input.wav")
     , m_inputFile(0)
     , m_internalBuffer(0)
     , m_positionInInternalBuffer(0)
@@ -23,6 +23,10 @@ WavLooper::~WavLooper()
 {
     if (m_inputFile) {
         m_inputFile->close();
+    }
+
+    if (m_internalBuffer) {
+        delete[] m_internalBuffer;
     }
 }
 
@@ -56,7 +60,9 @@ void WavLooper::ownProcess()
     if (m_internalBuffer) {
         qreal* dataInPort = m_internalBuffer->data();
         qreal* dataOutPort = m_outPort->buffer()->data();
-        if ((m_internalBuffer->length() - m_positionInInternalBuffer) > Buffer::DEFAULT_LENGTH) {
+        int sizeRemaining = m_internalBuffer->length() - m_positionInInternalBuffer;
+
+        if (sizeRemaining > Buffer::DEFAULT_LENGTH) {
             // We have enough data in our internal buffer.
             for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
                 dataOutPort[i] = dataInPort[m_positionInInternalBuffer + i];
@@ -64,20 +70,19 @@ void WavLooper::ownProcess()
             m_positionInInternalBuffer += Buffer::DEFAULT_LENGTH;
         } else {
             // We don't have enough data. We copy what we can...
-            int sizeToCopy = m_internalBuffer->length() - m_positionInInternalBuffer;
             int i;
-            for (i = 0; i < sizeToCopy; i++) {
+            for (i = 0; i < sizeRemaining; i++) {
                 dataOutPort[i] = dataInPort[m_positionInInternalBuffer + i];
             }
 
-            m_positionInInternalBuffer += i;
-            int offset = i;
-            sizeToCopy = Buffer::DEFAULT_LENGTH - sizeToCopy;
-            // Then we copy the rest from the beginning of the internal buffer;
-            for (i = 0; i < sizeToCopy; i++) {
-                dataOutPort[offset] = dataInPort[m_positionInInternalBuffer + i];
-            }
             m_positionInInternalBuffer = 0;
+            int offset = i;
+            sizeRemaining = Buffer::DEFAULT_LENGTH - sizeRemaining;
+            // Then we copy the rest from the beginning of the internal buffer;
+            for (i = 0; i < sizeRemaining; i++) {
+                dataOutPort[offset + i] = dataInPort[i];
+            }
+            m_positionInInternalBuffer = i;
         }
     }
 }
@@ -126,12 +131,16 @@ bool WavLooper::readWavFile(QFile* file)
     file->read(4); // Skip data chunk size.
 
     // Copy the wave into the buffer.
-    int wavSize = (file->size() - file->pos()) / 2; // /2 because we stock only qreal, but read double char.
+    int wavSize = (file->size() - file->pos()); // / 2; // /2 because we stock only qreal, but read double char.
+    if (m_internalBuffer) {
+        delete[] m_internalBuffer;
+    }
     m_internalBuffer = new Buffer(wavSize);
 
-    for (int i = 0; i < wavSize; i++) {
+    for (int i = 0; i < wavSize; i += 2) {
         // Convert the 16 bits little endian signal into an amplitude.
         m_internalBuffer->data()[i] = readLittleEndianShort(file) / (65536 / 2 / VCO::SIGNAL_INTENSITY);
+        m_internalBuffer->data()[i + 1] = m_internalBuffer->data()[i];
     }
 
     return true;
