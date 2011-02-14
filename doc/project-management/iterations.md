@@ -100,10 +100,10 @@ date :  semaine 7 (Lundi 14-)
     - Feedback dimmer;
     - WavRecorder dans fichier sélectionné, possibilité de lancer/arrêter l'enregistrement;
     - On/Off SynthPro;
+    - Wire plus jolis;
 - Julien RF. :
     - Suppression des ports répliqués;
     - Feedback des ports (MouseHover);
-    - Wire plus jolis;
 - Cyrille :
     - Fixer VCA (multiplier input par somme du dimmer et control), en une passe !
     - Delay;
@@ -113,7 +113,7 @@ Roadmap (todo)
 ---------
 - Oscillo stabilisé;
 - Molette Oscillo (zoom Y);
-- Symétrie de l'audio engine.
+- Symétrie de l'audio engine;
 - Fond d'écran (léger et subtil);
 - Icones dans Dockbars (et drag'n'drop d'icones);
 - Entrée MIDI;
