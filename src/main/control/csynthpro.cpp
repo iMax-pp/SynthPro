@@ -114,7 +114,7 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
     }
 
     if (module) {
-        // add(module); // Now the factory does it.
+        add(module);
         dynamic_cast<CModule*>(module)->presentation()->setPos(pos);
     }
 }
