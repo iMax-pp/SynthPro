@@ -57,11 +57,6 @@ bool VirtualPort::disconnect(Connection* connection)
     return false;
 }
 
-bool VirtualPort::reconnect(Connection* connection, VirtualPort* other)
-{
-    return false; // TODO
-}
-
 void VirtualPort::addConnection(Connection* connection)
 {
     m_connections.append(connection);

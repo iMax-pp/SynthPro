@@ -71,10 +71,12 @@ HEADERS += \
     src/main/factory/qtfactory.h \
     src/main/factory/synthprofactory.h \
     src/main/factory/wavegeneratorfactory.h \
+    src/main/presentation/component/pdial.h \
     src/main/presentation/component/pdimmer.h \
     src/main/presentation/component/pport.h \
     src/main/presentation/component/ppushbutton.h \
     src/main/presentation/component/pselector.h \
+    src/main/presentation/component/pslider.h \
     src/main/presentation/component/pvirtualport.h \
     src/main/presentation/component/pwire.h \
     src/main/presentation/module/padsr.h \
@@ -163,10 +165,12 @@ SOURCES += \
     src/main/factory/qtfactory.cpp \
     src/main/factory/wavegeneratorfactory.cpp \
     src/main/main.cpp \
+    src/main/presentation/component/pdial.cpp \
     src/main/presentation/component/pdimmer.cpp \
     src/main/presentation/component/pport.cpp \
     src/main/presentation/component/ppushbutton.cpp \
     src/main/presentation/component/pselector.cpp \
+    src/main/presentation/component/pslider.cpp \
     src/main/presentation/component/pvirtualport.cpp \
     src/main/presentation/component/pwire.cpp \
     src/main/presentation/module/padsr.cpp \

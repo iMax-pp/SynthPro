@@ -57,10 +57,12 @@ QRectF PVirtualPort::boundingRect() const
 void PVirtualPort::addConnectionPort(PPort* port)
 {
     m_connectionsLayout->addItem(port);
+    layout()->activate();
 }
 
 void PVirtualPort::removeConnectionPort(PPort* port)
 {
     m_connectionsLayout->removeItem(port);
+    layout()->activate();
     delete port;
 }

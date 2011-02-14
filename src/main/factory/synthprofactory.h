@@ -68,7 +68,8 @@ public:
      * @param max max value
      * @param default_value the value where the dimmer is positionned at creation
      */
-    virtual Dimmer* createDimmer(const QString& name, qreal min, qreal man, qreal defaultValue, Module* parent) = 0;
+    virtual Dimmer* createDialDimmer(const QString& name, qreal min, qreal man, qreal defaultValue, Module* parent) = 0;
+    virtual Dimmer* createSliderDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent) = 0;
     virtual Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent) = 0;
     virtual PushButton* createPushButton(const QString& name, Module* parent) = 0;
 
