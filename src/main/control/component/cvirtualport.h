@@ -38,9 +38,14 @@ public:
      */
     void hideFeedback();
 
+    void removeConnectionPort(CPort*);
+
 protected:
     CPort* createConnectionPort(Connection*);
     void deleteConnectionPort(int idx);
+
+    CPort* connection2Port(Connection*) const;
+    Connection* port2Connection(CPort*) const;
 
 private:
     PVirtualPort* m_presentation;

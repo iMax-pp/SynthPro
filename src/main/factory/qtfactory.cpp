@@ -2,7 +2,6 @@
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/component/connection.h"
-#include "abstraction/component/port.h"
 #include "abstraction/module/adsr.h"
 #include "abstraction/module/oscilloscope.h"
 #include "abstraction/sequencer.h"
