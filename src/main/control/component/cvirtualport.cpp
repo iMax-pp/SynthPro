@@ -72,11 +72,7 @@ CPort* CVirtualPort::createConnectionPort(Connection* connection)
 
 void CVirtualPort::disconnect(CPort* port)
 {
-    int idx = m_connectedPorts.key(port, -1);
-    if (idx >= 0) {
-        Connection* connection = m_connections.at(idx);
-        disconnect(connection);
-    }
+    disconnect(port2Connection(port));
 }
 
 bool CVirtualPort::disconnect(Connection* connection)
@@ -86,10 +82,13 @@ bool CVirtualPort::disconnect(Connection* connection)
                           : dynamic_cast<CVirtualPort*>(connection->source());
     int idx = m_connections.indexOf(connection);
     if (VirtualPort::disconnect(connection)) {
-        delete m_connectedPorts.value(idx)->wire()->presentation();
+        CPort* port = m_connectedPorts.at(idx);
+        if (!port->reconnecting()) {
+            deleteConnectionPort(idx);
+            other->deleteConnectionPort(idx);
+        }
+        delete m_connectedPorts.at(idx)->wire()->presentation();
         // delete m_connectedPorts.value(idx)->wire();
-        deleteConnectionPort(idx);
-        other->deleteConnectionPort(idx);
         return true;
     }
     return false;
@@ -97,12 +96,36 @@ bool CVirtualPort::disconnect(Connection* connection)
 
 void CVirtualPort::deleteConnectionPort(int idx)
 {
-    CPort* port = m_connectedPorts.value(idx);
-    m_connectedPorts.remove(idx);
-    presentation()->removeConnectionPort(port->presentation());
+    CPort* port = m_connectedPorts.at(idx);
+    removeConnectionPort(port);
     // delete port->presentation();
     // delete port;
 }
+
+void CVirtualPort::removeConnectionPort(CPort* port)
+{
+    presentation()->removeConnectionPort(port->presentation());
+    m_connectedPorts.removeOne(port);
+}
+
+CPort* CVirtualPort::connection2Port(Connection* connection) const
+{
+    int i = m_connections.indexOf(connection);
+    if (i >= 0) {
+        return m_connectedPorts.at(i);
+    }
+    return 0;
+}
+
+Connection* CVirtualPort::port2Connection(CPort* port) const
+{
+    int i = m_connectedPorts.indexOf(port);
+    if (i >= 0) {
+        return m_connections.at(i);
+    }
+    return 0;
+}
+
 
 void CVirtualPort::setPresentation(PVirtualPort* presentation)
 {
