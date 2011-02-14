@@ -5,8 +5,10 @@
 #include <QGroupBox>
 #include <QVBoxLayout>
 
-PDimmer::PDimmer(const QString& name, int min, int max, int defaultValue, QGraphicsItem* parent)
+PDimmer::PDimmer(CDimmer* control, const QString& name, int min, int max, int defaultValue,
+                 QGraphicsItem* parent)
     : QGraphicsProxyWidget(parent)
+    , m_control(control)
     , m_name(name)
 {
     m_box = new QGroupBox;
@@ -35,5 +37,6 @@ PDimmer::PDimmer(const QString& name, int min, int max, int defaultValue, QGraph
 
 void PDimmer::changeTitle(int value)
 {
-    m_box->setTitle(m_name + " (" + QString::number(value / CDimmer::DISCR, 'g', 3) + ")");
+    qreal realVal = m_control->realValue(value / CDimmer::DISCR);
+    m_box->setTitle(m_name + " (" + QString::number(realVal, 'g', 3) + ")");
 }

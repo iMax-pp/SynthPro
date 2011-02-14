@@ -18,6 +18,11 @@ void CDimmer::setPresentation(PDimmer* presentation)
     connect(m_presentation, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));
 }
 
+qreal CDimmer::realValue(qreal value) const
+{
+    return value * ratio() + offset();
+}
+
 void CDimmer::valueChanged(int value)
 {
     setValue(value / m_discretization);
