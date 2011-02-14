@@ -20,16 +20,16 @@ void PVCF::initialize(PVirtualPort* in, PVirtualPort* cutOff, PVirtualPort* out,
     TextWidget* title = new TextWidget("VCF", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    cutOffDimmer->setSize(70, 70);
-    resonance->setSize(70, 70);
+    cutOffDimmer->setSize(80, 80);
+    resonance->setSize(80, 80);
     selector->setMaximumSize(120, 175);
 
     // Layout
     bottomArea()->addCornerAnchors(cutOff, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
-    bottomArea()->addCornerAnchors(cutOff, Qt::BottomRightCorner, cutOffDimmer, Qt::BottomLeftCorner);
-    bottomArea()->addCornerAnchors(cutOff, Qt::TopRightCorner, resonance, Qt::BottomLeftCorner);
-    bottomArea()->addCornerAnchors(resonance, Qt::BottomRightCorner, cutOffDimmer, Qt::TopRightCorner);
-    bottomArea()->addCornerAnchors(cutOffDimmer, Qt::BottomRightCorner, selector, Qt::BottomLeftCorner);
+    bottomArea()->addCornerAnchors(cutOff, Qt::TopLeftCorner, cutOffDimmer, Qt::BottomLeftCorner);
+    bottomArea()->addCornerAnchors(cutOffDimmer, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);
+    bottomArea()->addCornerAnchors(resonance, Qt::TopRightCorner, selector, Qt::TopLeftCorner);
+    bottomArea()->addCornerAnchors(cutOffDimmer, Qt::BottomRightCorner, resonance, Qt::BottomLeftCorner);
 
     bottomArea()->addCornerAnchors(selector, Qt::BottomRightCorner, bottomArea(), Qt::BottomRightCorner);
     bottomArea()->addCornerAnchors(selector, Qt::TopRightCorner, bottomArea(), Qt::TopRightCorner);
