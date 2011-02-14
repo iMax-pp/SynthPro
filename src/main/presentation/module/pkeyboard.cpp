@@ -37,23 +37,24 @@ void PKeyboard::initialize(PVirtualPort *outputFrequency, PVirtualPort *outputGa
     setFlag(QGraphicsItem::ItemAcceptsInputMethod);
     setFocus();
 
+    grabKeyboard();
 
     // Keyboard management (trigger notes with the computer keyboard).
     int val = 0; // First key.
     m_mapKeyboard = new QMap<int, int>();
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("q"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("z"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("s"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("e"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("d"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("f"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("t"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("g"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("y"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("h"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("u"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("j"))), val++);
-    m_mapKeyboard->insert(grabShortcut(QKeySequence(tr("k"))), val++);
+    m_mapKeyboard->insert(Qt::Key_Q, val++);
+    m_mapKeyboard->insert(Qt::Key_Z, val++);
+    m_mapKeyboard->insert(Qt::Key_S, val++);
+    m_mapKeyboard->insert(Qt::Key_E, val++);
+    m_mapKeyboard->insert(Qt::Key_D, val++);
+    m_mapKeyboard->insert(Qt::Key_F, val++);
+    m_mapKeyboard->insert(Qt::Key_T, val++);
+    m_mapKeyboard->insert(Qt::Key_G, val++);
+    m_mapKeyboard->insert(Qt::Key_Y, val++);
+    m_mapKeyboard->insert(Qt::Key_H, val++);
+    m_mapKeyboard->insert(Qt::Key_U, val++);
+    m_mapKeyboard->insert(Qt::Key_J, val++);
+    m_mapKeyboard->insert(Qt::Key_K, val++);
 }
 
 void PKeyboard::keyboardKeyPressed(int keyPressed)
@@ -68,18 +69,18 @@ void PKeyboard::keyboardKeyReleased(int keyPressed)
     control->keyboardKeyReleased(keyPressed);
 }
 
-bool PKeyboard::event(QEvent* event)
+void PKeyboard::keyPressEvent(QKeyEvent* event)
 {
-    PModule::event(event);
-
-    if (event->type() == QEvent::Shortcut) {
-        QShortcutEvent* shortCut = dynamic_cast<QShortcutEvent*>(event);
-        int shortCutId = shortCut->shortcutId();
-        if (m_mapKeyboard->contains(shortCutId)) {
-            CKeyboard* control = dynamic_cast<CKeyboard*>(m_control);
-            control->keyboardKeyPressed(m_mapKeyboard->value(shortCutId));
-            return true;
-        }
+    int key = event->key();
+    if (m_mapKeyboard->contains(key)) {
+        keyboardKeyPressed(m_mapKeyboard->value(key));
     }
-    return false;
+}
+
+void PKeyboard::keyReleaseEvent(QKeyEvent* event)
+{
+    int key = event->key();
+    if (m_mapKeyboard->contains(key)) {
+        keyboardKeyReleased(m_mapKeyboard->value(key));
+    }
 }

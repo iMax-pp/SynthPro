@@ -18,12 +18,12 @@ public:
 
     void initialize(PVirtualPort* outputFrequency, PVirtualPort* outputGate);
 
+    void keyPressEvent(QKeyEvent*);
+    void keyReleaseEvent(QKeyEvent*);
+
 private slots:
     void keyboardKeyPressed(int keyPressed);
     void keyboardKeyReleased(int keyPressed);
-
-protected:
-    virtual bool event(QEvent *event);
 
 private:
     PKeyboardView* m_pKeyboardView;
