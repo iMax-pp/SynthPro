@@ -17,18 +17,19 @@ Mixer::~Mixer()
 {
 }
 
-void Mixer::initialize(SynthProFactory * factory)
+void Mixer::initialize(SynthProFactory* factory)
 {
     m_outPort = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_outPort);
-    m_MixInPorts = new QMap<InPort*, Dimmer*>();
+
+    m_mixInPorts = new QMap<InPort*, Dimmer*>();
+
     for (int i = 0 ; i < MIXER_SIZE ; i++) {
-        InPort* in =  factory->createInPortReplicable(this, "in" + i);
+        InPort* in =  factory->createInPortReplicable(this, "in" + QString::number(i));
         m_inports.append(in);
-        m_MixInPorts->insert(in, factory->createDimmer("dimmer" + i, 0, 5, 2.5, this));
-
+        m_mixInPorts->insert(in, factory->createDimmer("dimmer" + QString::number(i),
+                                                       0, 5, 2.5, this));
     }
-
 }
 
 void Mixer::ownProcess()
@@ -48,6 +49,4 @@ void Mixer::ownProcess()
         buffer.data()[i] /= nbPortConnected;
         m_outPort->buffer()->data()[i] = buffer.data()[i];
     }
-
-
 }

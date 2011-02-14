@@ -174,6 +174,7 @@ void PSynthPro::createModuleList()
     model->addModule("VCA", QtFactory::VCAId);
     model->addModule("ADSR", QtFactory::ADSRId);
     model->addModule("Delay", QtFactory::DelayId);
+    model->addModule("Mixer", QtFactory::MixerId);
     moduleList->setModel(model);
 
     m_moduleDock->setWidget(moduleList);

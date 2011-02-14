@@ -7,7 +7,6 @@
 #include "presentation/component/pvirtualport.h"
 #include "presentation/module/pmixer.h"
 
-
 #include <QMap>
 
 CMixer::CMixer(SynthPro* parent)
@@ -17,17 +16,17 @@ CMixer::CMixer(SynthPro* parent)
 {
 }
 
-void CMixer::initialize(SynthProFactory* factory )
+void CMixer::initialize(SynthProFactory* factory)
 {
     Mixer::initialize(factory);
 
-    QMap<InPort*, Dimmer*>::iterator ite;
-    QMap<PVirtualPort*, PDimmer*>* pMixerMap = new QMap<PVirtualPort*, PDimmer*>();
+    QMap<InPort*, Dimmer*>::iterator it;
+    QMap<PVirtualPort*, PDimmer*> pMixerMap;
 
-    for (ite = m_MixInPorts->begin() ; ite != m_MixInPorts->end() ; ite++) {
-        pMixerMap->insert(
-                dynamic_cast<CInPort*>(ite.key())->presentation(),
-                dynamic_cast<CDimmer*>(ite.value())->presentation());
+    for (it = m_mixInPorts->begin(); it != m_mixInPorts->end(); it++) {
+        pMixerMap.insert(
+                dynamic_cast<CInPort*>(it.key())->presentation(),
+                dynamic_cast<CDimmer*>(it.value())->presentation());
     }
 
     COutPort* out = dynamic_cast<COutPort*>(m_outPort);

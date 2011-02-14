@@ -27,11 +27,13 @@ HEADERS += \
     src/main/abstraction/module/delay.h \
     src/main/abstraction/module/keyboard.h \
     src/main/abstraction/module/lfo.h \
+    src/main/abstraction/module/mixer.h \
     src/main/abstraction/module/oscilloscope.h \
     src/main/abstraction/module/speaker.h \
     src/main/abstraction/module/vca.h \
     src/main/abstraction/module/vcf.h \
     src/main/abstraction/module/vco.h \
+    src/main/abstraction/module/wavlooper.h \
     src/main/abstraction/module/wavrecorder.h \
     src/main/abstraction/sequencer.h \
     src/main/abstraction/synthpro.h \
@@ -56,11 +58,13 @@ HEADERS += \
     src/main/control/module/cdelay.h \
     src/main/control/module/ckeyboard.h \
     src/main/control/module/clfo.h \
+    src/main/control/module/cmixer.h \
     src/main/control/module/coscilloscope.h \
     src/main/control/module/cspeaker.h \
     src/main/control/module/cvca.h \
     src/main/control/module/cvcf.h \
     src/main/control/module/cvco.h \
+    src/main/control/module/cwavlooper.h \
     src/main/control/module/cwavrecorder.h \
     src/main/control/modulelistmodel.h \
     src/main/factory/filterfactory.h \
@@ -77,11 +81,13 @@ HEADERS += \
     src/main/presentation/module/pdelay.h \
     src/main/presentation/module/pkeyboard.h \
     src/main/presentation/module/plfo.h \
+    src/main/presentation/module/pmixer.h \
     src/main/presentation/module/poscilloscope.h \
     src/main/presentation/module/pspeaker.h \
     src/main/presentation/module/pvca.h \
     src/main/presentation/module/pvcf.h \
     src/main/presentation/module/pvco.h \
+    src/main/presentation/module/pwavlooper.h \
     src/main/presentation/module/pwavrecorder.h \
     src/main/presentation/pmodule.h \
     src/main/presentation/psynthpro.h \
@@ -91,13 +97,7 @@ HEADERS += \
     src/main/presentation/widget/pkeyboardkey.h \
     src/main/presentation/widget/pkeyboardview.h \
     src/main/presentation/widget/poscilloscopeview.h \
-    src/main/presentation/widget/textwidget.h \
-    src/main/abstraction/module/wavlooper.h \
-    src/main/abstraction/module/mixer.h \
-    src/main/control/module/cmixer.h \
-    src/main/presentation/module/pmixer.h \
-    src/main/control/module/cwavlooper.h \
-    src/main/presentation/module/pwavlooper.h
+    src/main/presentation/widget/textwidget.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -120,11 +120,13 @@ SOURCES += \
     src/main/abstraction/module/delay.cpp \
     src/main/abstraction/module/keyboard.cpp \
     src/main/abstraction/module/lfo.cpp \
+    src/main/abstraction/module/mixer.cpp \
     src/main/abstraction/module/oscilloscope.cpp \
     src/main/abstraction/module/speaker.cpp \
     src/main/abstraction/module/vca.cpp \
     src/main/abstraction/module/vcf.cpp \
     src/main/abstraction/module/vco.cpp \
+    src/main/abstraction/module/wavlooper.cpp \
     src/main/abstraction/module/wavrecorder.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/abstraction/synthpro.cpp \
@@ -148,11 +150,13 @@ SOURCES += \
     src/main/control/module/cdelay.cpp \
     src/main/control/module/ckeyboard.cpp \
     src/main/control/module/clfo.cpp \
+    src/main/control/module/cmixer.cpp \
     src/main/control/module/coscilloscope.cpp \
     src/main/control/module/cspeaker.cpp \
     src/main/control/module/cvca.cpp \
     src/main/control/module/cvcf.cpp \
     src/main/control/module/cvco.cpp \
+    src/main/control/module/cwavlooper.cpp \
     src/main/control/module/cwavrecorder.cpp \
     src/main/control/modulelistmodel.cpp \
     src/main/factory/filterfactory.cpp \
@@ -169,11 +173,13 @@ SOURCES += \
     src/main/presentation/module/pdelay.cpp \
     src/main/presentation/module/pkeyboard.cpp \
     src/main/presentation/module/plfo.cpp \
+    src/main/presentation/module/pmixer.cpp \
     src/main/presentation/module/poscilloscope.cpp \
     src/main/presentation/module/pspeaker.cpp \
     src/main/presentation/module/pvca.cpp \
     src/main/presentation/module/pvcf.cpp \
     src/main/presentation/module/pvco.cpp \
+    src/main/presentation/module/pwavlooper.cpp \
     src/main/presentation/module/pwavrecorder.cpp \
     src/main/presentation/pmodule.cpp \
     src/main/presentation/psynthpro.cpp \
@@ -183,13 +189,7 @@ SOURCES += \
     src/main/presentation/widget/pkeyboardkey.cpp \
     src/main/presentation/widget/pkeyboardview.cpp \
     src/main/presentation/widget/poscilloscopeview.cpp \
-    src/main/presentation/widget/textwidget.cpp \
-    src/main/abstraction/module/wavlooper.cpp \
-    src/main/abstraction/module/mixer.cpp \
-    src/main/control/module/cmixer.cpp \
-    src/main/presentation/module/pmixer.cpp \
-    src/main/control/module/cwavlooper.cpp \
-    src/main/presentation/module/pwavlooper.cpp
+    src/main/presentation/widget/textwidget.cpp
 
 INCLUDEPATH += src/main/
 
