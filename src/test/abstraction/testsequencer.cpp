@@ -1,6 +1,5 @@
 #include "abstraction/testsequencer.h"
 
-#include "abstraction/component/port.h"
 #include "abstraction/component/virtualport.h"
 #include "abstraction/mock/mockinoutmodule.h"
 #include "abstraction/mock/mockserializerwell.h"

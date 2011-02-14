@@ -101,7 +101,7 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
     case SynthProFactory::MixerId:
         module = dynamic_cast<Module*>(m_factory->createMixer(this));
         break;
-        case SynthProFactory::LFOId:
+    case SynthProFactory::LFOId:
         module = dynamic_cast<Module*>(m_factory->createLFO(this));
         break;
     case SynthProFactory::AudioOuputId:
