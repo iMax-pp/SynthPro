@@ -23,7 +23,7 @@ void TestWavRecorder::testWavRecorder()
     mbr->startRecording();
     VCO* vco = factory.createVCO(0);
     vco->setShape("Empty");
-    vco->outports().first()->connections().first()->connect(mbr->inports().first()->connections().first());
+    vco->outports().first()->connect(mbr->inports().first());
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
         vco->process();

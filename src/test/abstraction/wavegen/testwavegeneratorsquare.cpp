@@ -26,7 +26,7 @@ void TestWaveGeneratorSquare::testWaveGeneratorSquare()
     mbr->startRecording();
     VCO* vco = factory.createVCO(&synthPro);
     vco->setShape("Square");
-    vco->outports().first()->connections().first()->connect(mbr->inports().first()->connections().first());
+    vco->outports().first()->connect(mbr->inports().first());
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
         vco->process();
