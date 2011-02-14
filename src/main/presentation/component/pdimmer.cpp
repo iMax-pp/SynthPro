@@ -17,6 +17,12 @@ PDimmer::PDimmer(CDimmer* control, const QString& name, QGraphicsItem* parent)
     setWidget(m_box);
 }
 
+void PDimmer::setSize(qreal width, qreal height)
+{
+    setMinimumSize(width, height);
+    setMaximumSize(width, height);
+}
+
 void PDimmer::changeTitle(int value)
 {
     qreal realVal = m_control->realValue(value / CDimmer::DISCR);

@@ -12,6 +12,8 @@ class PDimmer : public QGraphicsProxyWidget {
 public:
     PDimmer(CDimmer*, const QString& name, QGraphicsItem* parent = 0);
 
+    void setSize(qreal width, qreal height);
+
 protected:
     QGroupBox* m_box;
 

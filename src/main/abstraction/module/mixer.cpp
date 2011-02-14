@@ -25,7 +25,7 @@ void Mixer::initialize(SynthProFactory* factory)
     m_mixInPorts = new QMap<InPort*, Dimmer*>();
 
     for (int i = 0 ; i < MIXER_SIZE ; i++) {
-        InPort* in =  factory->createInPortReplicable(this, "in" + QString::number(i));
+        InPort* in =  factory->createInPort(this, "in" + QString::number(i));
         m_inports.append(in);
         m_mixInPorts->insert(in, factory->createSliderDimmer("dimmer" + QString::number(i),
                                                              0, 5, 2.5, this));

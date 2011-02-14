@@ -23,6 +23,7 @@ void PMixer::initialize(QMap<PVirtualPort*, PDimmer*>& inports, PVirtualPort* ou
 
     foreach (PVirtualPort* in, inports.keys()) {
         PDimmer* dimmer = inports[in];
+        dimmer->setSize(100, 40);
 
         if (!previousIn) {
             bottomArea()->addAnchor(in, Qt::AnchorTop, bottomArea(), Qt::AnchorTop);
