@@ -14,6 +14,7 @@
 #include "presentation/module/pdelay.h"
 #include "presentation/module/pkeyboard.h"
 #include "presentation/module/plfo.h"
+#include "presentation/module/pmixer.h"
 #include "presentation/module/poscilloscope.h"
 #include "presentation/module/pspeaker.h"
 #include "presentation/module/pvca.h"
@@ -211,6 +212,21 @@ CDelay* QtFactory::createDelay(SynthPro* parent)
     delay->initialize(this);
 
     return delay;
+}
+
+CMixer* QtFactory::createMixer(SynthPro* parent)
+{
+    // create the Mixer Controller
+    CMixer* cmixer = new CMixer(parent);
+
+    // create its presentation
+    PMixer * pMixer = new PMixer(cmixer);
+    cmixer->setPresentation(pMixer);
+
+    // initialize it
+    cmixer->initialize(this);
+    return cmixer;
+
 }
 
 COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)

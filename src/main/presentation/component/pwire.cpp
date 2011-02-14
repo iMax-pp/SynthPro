@@ -20,11 +20,6 @@ PWire::PWire(CWire* control, QGraphicsScene* scene)
                 Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 }
 
-// QRectF PWire::boundingRect() const
-// {
-//     return path().boundingRect();
-// }
-
 void PWire::updatePosition(const QPointF& point)
 {
     QPointF in = mapFromItem(m_control->inPort()->presentation(),
@@ -54,4 +49,11 @@ void PWire::mousePressEvent(QGraphicsSceneMouseEvent* event)
         event->accept();
         m_control->midClick();
     }
+}
+
+void PWire::showMoveFeedback()
+{
+    QPen p = pen();
+    p.setColor(Qt::darkRed);
+    setPen(p);
 }

@@ -33,6 +33,7 @@ public:
     void updatePosition();
 
     void midClick();
+    void showMoveFeedback();
 
 private:
     PWire* m_presentation;

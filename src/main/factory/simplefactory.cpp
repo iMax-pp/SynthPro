@@ -11,6 +11,7 @@
 #include "abstraction/module/delay.h"
 #include "abstraction/module/keyboard.h"
 #include "abstraction/module/lfo.h"
+#include "abstraction/module/mixer.h"
 #include "abstraction/module/oscilloscope.h"
 #include "abstraction/module/speaker.h"
 #include "abstraction/module/vca.h"
@@ -19,6 +20,7 @@
 #include "abstraction/module/wavrecorder.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
+
 
 SynthPro* SimpleFactory::createSynthPro()
 {
@@ -108,6 +110,12 @@ Delay* SimpleFactory::createDelay(SynthPro* parent)
     return delay;
 }
 
+Mixer* SimpleFactory::createMixer(SynthPro* parent)
+{
+    Mixer* mixer = new Mixer(parent);
+    mixer->initialize(this);
+    return mixer;
+}
 
 LFO* SimpleFactory::createLFO(SynthPro* parent)
 {

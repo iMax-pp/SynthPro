@@ -16,6 +16,8 @@ public:
 
     void mousePressEvent(QGraphicsSceneMouseEvent*);
 
+    void showMoveFeedback();
+
 private:
     CWire* m_control;
 };

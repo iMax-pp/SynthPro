@@ -22,6 +22,7 @@ Delay::~Delay()
 {
     delete m_buffer1;
     delete m_buffer2;
+    delete m_buffer3;
 }
 
 void Delay::initialize(SynthProFactory* factory)
