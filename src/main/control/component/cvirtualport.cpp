@@ -11,6 +11,8 @@
 #include "presentation/component/pvirtualport.h"
 #include "presentation/component/pwire.h"
 
+#include <QGraphicsScene>
+
 CVirtualPort::CVirtualPort(Module* parent, QtFactory* factory, const QString& name, bool replicable, bool gate)
     : VirtualPort(parent, name, factory, replicable, gate)
     , m_presentation(0)
