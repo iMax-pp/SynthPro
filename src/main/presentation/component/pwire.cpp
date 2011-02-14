@@ -9,9 +9,10 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QPen>
 #include <QStyle>
+#include <algorithm>
 
 PWire::PWire(CWire* control, QGraphicsScene* scene)
-    : QGraphicsLineItem(0, scene)
+    : QGraphicsPathItem(0, scene)
     , m_control(control)
 {
     QStyle* style = QApplication::style();
@@ -19,34 +20,31 @@ PWire::PWire(CWire* control, QGraphicsScene* scene)
                 Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 }
 
-QRectF PWire::boundingRect() const
-{
-    // Thanks to http://doc.qt.nokia.com/latest/graphicsview-diagramscene-arrow-cpp.html
-    qreal extra = (pen().width() + 20) / 2.0;
-
-    return QRectF(line().p1(), QSizeF(line().p2().x() - line().p1().x(),
-                                      line().p2().y() - line().p1().y()))
-           .normalized().adjusted(-extra, -extra, extra, extra);
-}
+// QRectF PWire::boundingRect() const
+// {
+//     return path().boundingRect();
+// }
 
 void PWire::updatePosition(const QPointF& point)
 {
-    QPointF in = mapFromItem(m_control->inPort()->presentation(), PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
+    QPointF in = mapFromItem(m_control->inPort()->presentation(),
+                             PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
     QPointF out = point;
 
-    // Draw a new line for our wire.
-    QLineF line(in, out);
-    setLine(line);
+    QPainterPath path(in);
+    QPointF c1 = QPointF(in.x(), std::max(in.y(), out.y()));
+    QPointF c2 = QPointF(out.x(), std::max(in.y(), out.y()));
+
+    // Draw a new path for our wire.
+    path.cubicTo(c1, c2, out);
+    setPath(path);
 }
 
 void PWire::updatePosition()
 {
-    QPointF in = mapFromItem(m_control->inPort()->presentation(), PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
-    QPointF out = mapFromItem(m_control->outPort()->presentation(), PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
-
-    // Draw a new line for our wire.
-    QLineF line(in, out);
-    setLine(line);
+    // Use the outPort as endPoint for updatePosition.
+    updatePosition(mapFromItem(m_control->outPort()->presentation(),
+                               PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2));
 }
 
 // TODO really track clicks instead of just press events

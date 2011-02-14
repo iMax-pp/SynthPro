@@ -1,6 +1,5 @@
 #include "pkeyboardkey.h"
 
-#include <QDebug>
 #include <QPainter>
 
 PKeyboardKey::PKeyboardKey(QGraphicsItem* parent, int keyNumber, bool whiteKey, bool assignKey)
@@ -58,15 +57,4 @@ void PKeyboardKey::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
     m_pressed = false;
     update();
     emit keyboardKeyReleased(m_keyNumber);
-}
-
-/// FIXME : TESTS
-void PKeyboardKey::keyPressEvent(QKeyEvent*)
-{
-    qDebug() << "AAA";
-}
-
-void PKeyboardKey::grabKeyboardEvent(QEvent*)
-{
-    qDebug() << "AAA";
 }
