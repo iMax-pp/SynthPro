@@ -3,6 +3,8 @@
 
 #include "presentation/pmodule.h"
 
+#include <QMap>
+
 class Buffer;
 class CKeyboard;
 class PKeyboardView;
@@ -20,8 +22,12 @@ private slots:
     void keyboardKeyPressed(int keyPressed);
     void keyboardKeyReleased(int keyPressed);
 
+protected:
+    virtual bool event(QEvent *event);
+
 private:
     PKeyboardView* m_pKeyboardView;
+    QMap<int, int>* m_mapKeyboard;
 };
 
 #endif // PKEYBOARD_H
