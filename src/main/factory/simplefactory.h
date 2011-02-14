@@ -20,6 +20,7 @@ public:
     ADSR* createADSR(SynthPro*);
     LFO* createLFO(SynthPro*);
     Delay* createDelay(SynthPro*);
+    Mixer* createMixer(SynthPro *);
     WavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 5);
     Speaker* createSpeaker(SynthPro*);
     Keyboard* createKeyboard(SynthPro*);

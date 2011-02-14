@@ -12,6 +12,7 @@
 #include "control/module/cdelay.h"
 #include "control/module/ckeyboard.h"
 #include "control/module/clfo.h"
+#include "control/module/cmixer.h"
 #include "control/module/coscilloscope.h"
 #include "control/module/cspeaker.h"
 #include "control/module/cvca.h"
@@ -46,6 +47,7 @@ public:
     CVCA* createVCA(SynthPro*);
     CADSR* createADSR(SynthPro*);
     CDelay* createDelay(SynthPro*);
+    CMixer* createMixer(SynthPro *);
 
     COscilloscope* createOscilloscope(SynthPro*);
     CWavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 0);
