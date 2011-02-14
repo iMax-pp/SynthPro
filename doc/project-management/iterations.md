@@ -101,6 +101,7 @@ date :  semaine 7 (Lundi 14-)
     - WavRecorder dans fichier sélectionné, possibilité de lancer/arrêter l'enregistrement;
     - On/Off SynthPro;
     - Wire plus jolis;
+    - Fond d'écran (léger et subtil, beige…);
 - Julien RF. :
     - Suppression des ports répliqués;
     - Feedback des ports (MouseHover);
@@ -114,7 +115,6 @@ Roadmap (todo)
 - Oscillo stabilisé;
 - Molette Oscillo (zoom Y);
 - Symétrie de l'audio engine;
-- Fond d'écran (léger et subtil);
 - Icones dans Dockbars (et drag'n'drop d'icones);
 - Entrée MIDI;
 
