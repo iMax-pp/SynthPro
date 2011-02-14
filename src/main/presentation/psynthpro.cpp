@@ -189,6 +189,7 @@ void PSynthPro::createInputModuleList()
     model->addModule("Keyboard", QtFactory::KeyboardId);
     model->addModule("VCO", QtFactory::VCOId);
     model->addModule("LFO", QtFactory::LFOId);
+    model->addModule("WAV Looper", QtFactory::WavLooperId);
     inModuleList->setModel(model);
 
     m_inModuleDock->setWidget(inModuleList);

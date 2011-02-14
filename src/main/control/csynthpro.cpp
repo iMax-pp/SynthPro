@@ -14,6 +14,7 @@
 #include "control/module/cvca.h"
 #include "control/module/cvcf.h"
 #include "control/module/cvco.h"
+#include "control/module/cwavlooper.h"
 #include "control/module/cwavrecorder.h"
 
 #include <QGraphicsScene>
@@ -109,6 +110,8 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
     case SynthProFactory::OscilloscopeId:
         module = dynamic_cast<Module*>(m_factory->createOscilloscope(this));
         break;
+    case SynthProFactory::WavLooperId:
+        module = dynamic_cast<Module*>(m_factory->createWavLooper(this));
     default:
         break;
     }

@@ -24,6 +24,7 @@ class VCA;
 class VCF;
 class VCO;
 class VirtualPort;
+class WavLooper;
 class WavRecorder;
 class Mixer;
 
@@ -53,6 +54,7 @@ public:
 
     virtual Oscilloscope* createOscilloscope(SynthPro*) = 0;
     virtual WavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10) = 0;
+    virtual WavLooper* createWavLooper(SynthPro*) = 0;
 
     /**
       * Instanciate a Speaker, but ONLY if the audio device isn't already used by another instance.
@@ -83,7 +85,8 @@ public:
         LFOId,
         AudioOuputId,
         FileOutputId,
-        OscilloscopeId
+        OscilloscopeId,
+        WavLooperId
     };
 };
 

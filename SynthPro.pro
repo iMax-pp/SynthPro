@@ -95,7 +95,9 @@ HEADERS += \
     src/main/abstraction/module/wavlooper.h \
     src/main/abstraction/module/mixer.h \
     src/main/control/module/cmixer.h \
-    src/main/presentation/module/pmixer.h
+    src/main/presentation/module/pmixer.h \
+    src/main/control/module/cwavlooper.h \
+    src/main/presentation/module/pwavlooper.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -185,7 +187,9 @@ SOURCES += \
     src/main/abstraction/module/wavlooper.cpp \
     src/main/abstraction/module/mixer.cpp \
     src/main/control/module/cmixer.cpp \
-    src/main/presentation/module/pmixer.cpp
+    src/main/presentation/module/pmixer.cpp \
+    src/main/control/module/cwavlooper.cpp \
+    src/main/presentation/module/pwavlooper.cpp
 
 INCLUDEPATH += src/main/
 

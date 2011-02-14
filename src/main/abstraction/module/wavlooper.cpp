@@ -2,6 +2,7 @@
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/component/outport.h"
+#include "abstraction/module/vco.h"
 #include "abstraction/synthpro.h"
 #include "factory/synthprofactory.h"
 
@@ -125,11 +126,12 @@ bool WavLooper::readWavFile(QFile* file)
     file->read(4); // Skip data chunk size.
 
     // Copy the wave into the buffer.
-    int wavSize = (file->size() - file->pos());
+    int wavSize = (file->size() - file->pos()) / 2; // /2 because we stock only qreal, but read double char.
     m_internalBuffer = new Buffer(wavSize);
 
-    for (int i = 0; i < wavSize; i += 2) {
-        m_internalBuffer->data()[i] = readLittleEndianShort(file);
+    for (int i = 0; i < wavSize; i++) {
+        // Convert the 16 bits little endian signal into an amplitude.
+        m_internalBuffer->data()[i] = readLittleEndianShort(file) / (65536 / 2 / VCO::SIGNAL_INTENSITY);
     }
 
     return true;
