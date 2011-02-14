@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
     synthpro->add(vca);
 
     CADSR* adsr = factory->createADSR(synthpro);
-    adsr->presentation()->setPos(0, 200);
+    adsr->presentation()->setPos(-100, 300);
     synthpro->add(adsr);
 
     CDelay* delay = factory->createDelay(synthpro);
