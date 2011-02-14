@@ -26,8 +26,11 @@ void PVirtualPort::initialize(PPort* availablePort)
     m_label->setFont(QFont("Courier", 10, QFont::Normal));
 
     QGraphicsLinearLayout* layout = new QGraphicsLinearLayout(Qt::Horizontal, this);
+    layout->setSpacing(0);
     m_portsLayout = new QGraphicsLinearLayout(Qt::Vertical, layout);
+    m_portsLayout->setSpacing(4);
     m_connectionsLayout = new QGraphicsLinearLayout(Qt::Vertical, m_portsLayout);
+    m_connectionsLayout->setSpacing(4);
 
     if (control()->out()) {
         layout->addItem(m_label);

@@ -29,31 +29,20 @@ QRectF PWire::boundingRect() const
            .normalized().adjusted(-extra, -extra, extra, extra);
 }
 
-// TODO PWire should not depend on CPort
 void PWire::updatePosition(const QPointF& point)
 {
-    // At least one of the two ports will be defined when creating the wire,
-    // so it will always be connected to at least one port.
+    QPointF in = mapFromItem(m_control->inPort()->presentation(), PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
+    QPointF out = point;
 
-    QPointF in;
+    // Draw a new line for our wire.
+    QLineF line(in, out);
+    setLine(line);
+}
 
-    if (!m_control->inPort()) {
-        // Use point if no inPort.
-        in = point;
-    } else {
-        // Use inPort otherwise.
-        in = mapFromItem(m_control->inPort()->presentation(), PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
-    }
-
-    QPointF out;
-
-    if (!m_control->outPort()) {
-        // Use point if no outPoint
-        out = point;
-    } else {
-        // Use inPort otherwise.
-        out = mapFromItem(m_control->outPort()->presentation(), PPort::PORT_SIZE / 2, PPort::PORT_SIZE / 2);
-    }
+void PWire::updatePosition()
+{
+    QPointF in = mapFromItem(m_control->inPort()->presentation(), PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
+    QPointF out = mapFromItem(m_control->outPort()->presentation(), PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
 
     // Draw a new line for our wire.
     QLineF line(in, out);
