@@ -3,6 +3,7 @@
 
 #include "abstraction/component/dimmer.h"
 #include "presentation/component/pdimmer.h"
+#include "presentation/component/pslider.h"
 
 class CDimmer : public Dimmer {
     Q_OBJECT

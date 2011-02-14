@@ -1,6 +1,7 @@
 #include "wavlooper.h"
 
 #include "abstraction/audiodeviceprovider.h"
+#include "abstraction/component/dimmer.h"
 #include "abstraction/component/outport.h"
 #include "abstraction/module/vco.h"
 #include "abstraction/synthpro.h"
@@ -12,10 +13,12 @@
 WavLooper::WavLooper(SynthPro* parent)
     : Module(parent)
     , m_outPort(0)
+    , m_sDimmer(0)
     , m_fileName("input.wav")
     , m_inputFile(0)
     , m_internalBuffer(0)
     , m_positionInInternalBuffer(0)
+    , m_speed(0)
 {
 }
 
@@ -26,7 +29,7 @@ WavLooper::~WavLooper()
     }
 
     if (m_internalBuffer) {
-        delete[] m_internalBuffer;
+        delete[] m_internalBuffer->data();
     }
 }
 
@@ -34,6 +37,8 @@ void WavLooper::initialize(SynthProFactory* factory)
 {
     m_outPort = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_outPort);
+
+    m_sDimmer = factory->createDialDimmer("Speed", S_MIN, S_MAX, S_DEFAULT, this);
 }
 
 void WavLooper::newFile(const QString& filename)
@@ -57,32 +62,19 @@ void WavLooper::newFile(const QString& filename)
 
 void WavLooper::ownProcess()
 {
+    m_speed = m_sDimmer->value();
+
     if (m_internalBuffer) {
         qreal* dataInPort = m_internalBuffer->data();
         qreal* dataOutPort = m_outPort->buffer()->data();
-        int sizeRemaining = m_internalBuffer->length() - m_positionInInternalBuffer;
+        qreal sizeInternalBuffer = m_internalBuffer->length();
 
-        if (sizeRemaining > Buffer::DEFAULT_LENGTH) {
-            // We have enough data in our internal buffer.
-            for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
-                dataOutPort[i] = dataInPort[m_positionInInternalBuffer + i];
+        for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
+            dataOutPort[i] = dataInPort[(int)m_positionInInternalBuffer];
+            m_positionInInternalBuffer += m_speed;
+            if (m_positionInInternalBuffer >= sizeInternalBuffer) {
+                m_positionInInternalBuffer = 0;
             }
-            m_positionInInternalBuffer += Buffer::DEFAULT_LENGTH;
-        } else {
-            // We don't have enough data. We copy what we can...
-            int i;
-            for (i = 0; i < sizeRemaining; i++) {
-                dataOutPort[i] = dataInPort[m_positionInInternalBuffer + i];
-            }
-
-            m_positionInInternalBuffer = 0;
-            int offset = i;
-            sizeRemaining = Buffer::DEFAULT_LENGTH - sizeRemaining;
-            // Then we copy the rest from the beginning of the internal buffer;
-            for (i = 0; i < sizeRemaining; i++) {
-                dataOutPort[offset + i] = dataInPort[i];
-            }
-            m_positionInInternalBuffer = i;
         }
     }
 }

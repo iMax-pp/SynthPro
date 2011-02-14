@@ -6,8 +6,10 @@
 #include "abstraction/module/oscilloscope.h"
 #include "abstraction/sequencer.h"
 #include "control/component/cwire.h"
+#include "presentation/component/pdial.h"
 #include "presentation/component/pport.h"
 #include "presentation/component/ppushbutton.h"
+#include "presentation/component/pslider.h"
 #include "presentation/component/pvirtualport.h"
 #include "presentation/component/pwire.h"
 #include "presentation/module/padsr.h"
@@ -294,18 +296,33 @@ CSpeaker* QtFactory::createSpeaker(SynthPro* parent)
     return mo;
 }
 
-CDimmer* QtFactory::createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
+CDimmer* QtFactory::createDialDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     CModule* cParent = dynamic_cast<CModule*>(parent);
     CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
 
-    PDimmer* presentation = new PDimmer(dimmer, name,
+    PDimmer* presentation = new PDial(dimmer, name,
+                                     dimmer->min() * CDimmer::DISCR,
+                                     dimmer->max() * CDimmer::DISCR,
+                                     dimmer->value() * CDimmer::DISCR,
+                                     cParent->presentation());
+    dimmer->setPresentation(presentation);
+
+    return dimmer;
+}
+
+CDimmer* QtFactory::createSliderDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent)
+{
+    CModule* cParent = dynamic_cast<CModule*>(parent);
+    CDimmer* dimmer = new CDimmer(min, max, kDefault, CDimmer::DISCR, cParent);
+    
+    PDimmer* presentation = new PSlider(dimmer, name,
                                         dimmer->min() * CDimmer::DISCR,
                                         dimmer->max() * CDimmer::DISCR,
                                         dimmer->value() * CDimmer::DISCR,
                                         cParent->presentation());
     dimmer->setPresentation(presentation);
-
+    
     return dimmer;
 }
 

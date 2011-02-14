@@ -37,7 +37,7 @@ void VCO::initialize(SynthProFactory* factory)
     connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
 
     /// Creation of the Dimmer
-    m_kDimmer = factory->createDimmer("K", K_MIN, K_MAX, K_DEFAULT, this);
+    m_kDimmer = factory->createDialDimmer("K", K_MIN, K_MAX, K_DEFAULT, this);
 
     setShape(SHAPE_DEFAULT);
 }

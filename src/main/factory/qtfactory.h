@@ -55,7 +55,8 @@ public:
     CWavLooper* createWavLooper(SynthPro*);
     CSpeaker* createSpeaker(SynthPro*);
 
-    CDimmer* createDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent);
+    CDimmer* createDialDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent);
+    CDimmer* createSliderDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent);
     CSelector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent);
     CPushButton* createPushButton(const QString& name, Module* parent);
 
