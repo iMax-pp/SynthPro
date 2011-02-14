@@ -9,6 +9,7 @@
 #include "control/module/cdelay.h"
 #include "control/module/ckeyboard.h"
 #include "control/module/clfo.h"
+#include "control/module/cmixer.h"
 #include "control/module/coscilloscope.h"
 #include "control/module/cspeaker.h"
 #include "control/module/cvca.h"
@@ -97,7 +98,10 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
     case SynthProFactory::DelayId:
         module = dynamic_cast<Module*>(m_factory->createDelay(this));
         break;
-    case SynthProFactory::LFOId:
+    case SynthProFactory::MixerId:
+        module = dynamic_cast<Module*>(m_factory->createMixer(this));
+        break;
+        case SynthProFactory::LFOId:
         module = dynamic_cast<Module*>(m_factory->createLFO(this));
         break;
     case SynthProFactory::AudioOuputId:

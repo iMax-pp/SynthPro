@@ -27,11 +27,13 @@ HEADERS += \
     src/main/abstraction/module/delay.h \
     src/main/abstraction/module/keyboard.h \
     src/main/abstraction/module/lfo.h \
+    src/main/abstraction/module/mixer.h \
     src/main/abstraction/module/oscilloscope.h \
     src/main/abstraction/module/speaker.h \
     src/main/abstraction/module/vca.h \
     src/main/abstraction/module/vcf.h \
     src/main/abstraction/module/vco.h \
+    src/main/abstraction/module/wavlooper.h \
     src/main/abstraction/module/wavrecorder.h \
     src/main/abstraction/sequencer.h \
     src/main/abstraction/synthpro.h \
@@ -56,6 +58,7 @@ HEADERS += \
     src/main/control/module/cdelay.h \
     src/main/control/module/ckeyboard.h \
     src/main/control/module/clfo.h \
+    src/main/control/module/cmixer.h \
     src/main/control/module/coscilloscope.h \
     src/main/control/module/cspeaker.h \
     src/main/control/module/cvca.h \
@@ -77,6 +80,7 @@ HEADERS += \
     src/main/presentation/module/pdelay.h \
     src/main/presentation/module/pkeyboard.h \
     src/main/presentation/module/plfo.h \
+    src/main/presentation/module/pmixer.h \
     src/main/presentation/module/poscilloscope.h \
     src/main/presentation/module/pspeaker.h \
     src/main/presentation/module/pvca.h \
@@ -91,11 +95,7 @@ HEADERS += \
     src/main/presentation/widget/pkeyboardkey.h \
     src/main/presentation/widget/pkeyboardview.h \
     src/main/presentation/widget/poscilloscopeview.h \
-    src/main/presentation/widget/textwidget.h \
-    src/main/abstraction/module/wavlooper.h \
-    src/main/abstraction/module/mixer.h \
-    src/main/control/module/cmixer.h \
-    src/main/presentation/module/pmixer.h
+    src/main/presentation/widget/textwidget.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -118,11 +118,13 @@ SOURCES += \
     src/main/abstraction/module/delay.cpp \
     src/main/abstraction/module/keyboard.cpp \
     src/main/abstraction/module/lfo.cpp \
+    src/main/abstraction/module/mixer.cpp \
     src/main/abstraction/module/oscilloscope.cpp \
     src/main/abstraction/module/speaker.cpp \
     src/main/abstraction/module/vca.cpp \
     src/main/abstraction/module/vcf.cpp \
     src/main/abstraction/module/vco.cpp \
+    src/main/abstraction/module/wavlooper.cpp \
     src/main/abstraction/module/wavrecorder.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/abstraction/synthpro.cpp \
@@ -146,6 +148,7 @@ SOURCES += \
     src/main/control/module/cdelay.cpp \
     src/main/control/module/ckeyboard.cpp \
     src/main/control/module/clfo.cpp \
+    src/main/control/module/cmixer.cpp \
     src/main/control/module/coscilloscope.cpp \
     src/main/control/module/cspeaker.cpp \
     src/main/control/module/cvca.cpp \
@@ -167,6 +170,7 @@ SOURCES += \
     src/main/presentation/module/pdelay.cpp \
     src/main/presentation/module/pkeyboard.cpp \
     src/main/presentation/module/plfo.cpp \
+    src/main/presentation/module/pmixer.cpp \
     src/main/presentation/module/poscilloscope.cpp \
     src/main/presentation/module/pspeaker.cpp \
     src/main/presentation/module/pvca.cpp \
@@ -181,11 +185,7 @@ SOURCES += \
     src/main/presentation/widget/pkeyboardkey.cpp \
     src/main/presentation/widget/pkeyboardview.cpp \
     src/main/presentation/widget/poscilloscopeview.cpp \
-    src/main/presentation/widget/textwidget.cpp \
-    src/main/abstraction/module/wavlooper.cpp \
-    src/main/abstraction/module/mixer.cpp \
-    src/main/control/module/cmixer.cpp \
-    src/main/presentation/module/pmixer.cpp
+    src/main/presentation/widget/textwidget.cpp
 
 INCLUDEPATH += src/main/
 

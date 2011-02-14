@@ -80,6 +80,7 @@ public:
         VCAId,
         ADSRId,
         DelayId,
+        MixerId,
         LFOId,
         AudioOuputId,
         FileOutputId,
