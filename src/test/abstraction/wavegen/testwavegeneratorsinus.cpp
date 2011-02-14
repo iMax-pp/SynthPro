@@ -2,7 +2,6 @@
 
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
-#include "abstraction/component/port.h"
 #include "abstraction/module.h"
 #include "abstraction/module/vco.h"
 #include "abstraction/module/wavrecorder.h"

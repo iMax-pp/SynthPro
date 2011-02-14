@@ -2,7 +2,6 @@
 
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
-#include "abstraction/component/port.h"
 #include "abstraction/filter/filterincrement.h"
 #include "abstraction/module/speaker.h"
 #include "abstraction/module/vcf.h"

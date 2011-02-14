@@ -1,6 +1,7 @@
 #include "abstraction/module/testadsr.h"
 #include "abstraction/module/testdelay.h"
 #include "abstraction/module/testlfo.h"
+#include "abstraction/module/testmixer.h"
 #include "abstraction/module/testvca.h"
 #include "abstraction/module/testvcf.h"
 #include "abstraction/module/testvco.h"
@@ -64,4 +65,7 @@ int main()
 
     TestDelay testDelay;
     QTest::qExec(&testDelay);
+
+    TestMixer testMixer;
+    QTest::qExec(&testMixer);
 }

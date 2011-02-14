@@ -4,13 +4,13 @@
 #include "abstraction/component/dimmer.h"
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
-#include "abstraction/component/port.h"
 #include "abstraction/component/pushbutton.h"
 #include "abstraction/component/selector.h"
 #include "abstraction/module/adsr.h"
 #include "abstraction/module/delay.h"
 #include "abstraction/module/keyboard.h"
 #include "abstraction/module/lfo.h"
+#include "abstraction/module/mixer.h"
 #include "abstraction/module/oscilloscope.h"
 #include "abstraction/module/speaker.h"
 #include "abstraction/module/vca.h"
@@ -20,15 +20,10 @@
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
 
+
 SynthPro* SimpleFactory::createSynthPro()
 {
     return new SynthPro();
-}
-
-Port* SimpleFactory::createPort(VirtualPort* vPort)
-{
-    Port* port = new Port(vPort);
-    return port;
 }
 
 Connection* SimpleFactory::createConnection(OutPort* source, InPort* target)
@@ -108,6 +103,12 @@ Delay* SimpleFactory::createDelay(SynthPro* parent)
     return delay;
 }
 
+Mixer* SimpleFactory::createMixer(SynthPro* parent)
+{
+    Mixer* mixer = new Mixer(parent);
+    mixer->initialize(this);
+    return mixer;
+}
 
 LFO* SimpleFactory::createLFO(SynthPro* parent)
 {

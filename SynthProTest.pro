@@ -15,7 +15,6 @@ HEADERS += \
     src/main/abstraction/component/dimmer.h \
     src/main/abstraction/component/inport.h \
     src/main/abstraction/component/outport.h \
-    src/main/abstraction/component/port.h \
     src/main/abstraction/component/pushbutton.h \
     src/main/abstraction/component/selector.h \
     src/main/abstraction/component/virtualport.h \
@@ -35,6 +34,7 @@ HEADERS += \
     src/main/abstraction/module/vca.h \
     src/main/abstraction/module/vcf.h \
     src/main/abstraction/module/vco.h \
+    src/main/abstraction/module/mixer.h \
     src/main/abstraction/module/wavrecorder.h \
     src/main/abstraction/sequencer.h \
     src/main/abstraction/synthpro.h \
@@ -58,6 +58,7 @@ HEADERS += \
     src/test/abstraction/module/testvca.h \
     src/test/abstraction/module/testvcf.h \
     src/test/abstraction/module/testvco.h \
+    src/test/abstraction/module/testmixer.h \
     src/test/abstraction/module/testwavrecorder.h \
     src/test/abstraction/testaudiodeviceprovider.h \
     src/test/abstraction/testinport.h \
@@ -77,7 +78,6 @@ SOURCES += \
     src/main/abstraction/component/dimmer.cpp \
     src/main/abstraction/component/inport.cpp \
     src/main/abstraction/component/outport.cpp \
-    src/main/abstraction/component/port.cpp \
     src/main/abstraction/component/pushbutton.cpp \
     src/main/abstraction/component/selector.cpp \
     src/main/abstraction/component/virtualport.cpp \
@@ -96,6 +96,8 @@ SOURCES += \
     src/main/abstraction/module/vca.cpp \
     src/main/abstraction/module/vcf.cpp \
     src/main/abstraction/module/vco.cpp \
+    src/main/abstraction/module/mixer.cpp \
+    src/test/abstraction/module/testmixer.cpp \
     src/main/abstraction/module/wavrecorder.cpp \
     src/main/abstraction/sequencer.cpp \
     src/main/abstraction/synthpro.cpp \

@@ -174,6 +174,7 @@ void PSynthPro::createModuleList()
     model->addModule("VCA", QtFactory::VCAId);
     model->addModule("ADSR", QtFactory::ADSRId);
     model->addModule("Delay", QtFactory::DelayId);
+    model->addModule("Mixer", QtFactory::MixerId);
     moduleList->setModel(model);
 
     m_moduleDock->setWidget(moduleList);
@@ -189,6 +190,7 @@ void PSynthPro::createInputModuleList()
     model->addModule("Keyboard", QtFactory::KeyboardId);
     model->addModule("VCO", QtFactory::VCOId);
     model->addModule("LFO", QtFactory::LFOId);
+    model->addModule("WAV Looper", QtFactory::WavLooperId);
     inModuleList->setModel(model);
 
     m_inModuleDock->setWidget(inModuleList);

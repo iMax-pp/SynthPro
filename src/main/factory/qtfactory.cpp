@@ -14,11 +14,13 @@
 #include "presentation/module/pdelay.h"
 #include "presentation/module/pkeyboard.h"
 #include "presentation/module/plfo.h"
+#include "presentation/module/pmixer.h"
 #include "presentation/module/poscilloscope.h"
 #include "presentation/module/pspeaker.h"
 #include "presentation/module/pvca.h"
 #include "presentation/module/pvcf.h"
 #include "presentation/module/pvco.h"
+#include "presentation/module/pwavlooper.h"
 #include "presentation/module/pwavrecorder.h"
 
 #include <QIODevice>
@@ -213,6 +215,21 @@ CDelay* QtFactory::createDelay(SynthPro* parent)
     return delay;
 }
 
+CMixer* QtFactory::createMixer(SynthPro* parent)
+{
+    // create the Mixer Controller
+    CMixer* cmixer = new CMixer(parent);
+
+    // create its presentation
+    PMixer * pMixer = new PMixer(cmixer);
+    cmixer->setPresentation(pMixer);
+
+    // initialize it
+    cmixer->initialize(this);
+    return cmixer;
+
+}
+
 COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)
 {
     // Create the Oscilloscope Controler
@@ -238,6 +255,17 @@ CWavRecorder* QtFactory::createWavRecorder(SynthPro* parent, int /*nbProcessingB
     mbr->initialize(this);
 
     return mbr;
+}
+
+CWavLooper* QtFactory::createWavLooper(SynthPro* parent)
+{
+    CWavLooper* wl = new CWavLooper(parent);
+    PWavLooper* presentation = new PWavLooper(wl);
+
+    wl->setPresentation(presentation);
+    wl->initialize(this);
+
+    return wl;
 }
 
 CSpeaker* QtFactory::createSpeaker(SynthPro* parent)

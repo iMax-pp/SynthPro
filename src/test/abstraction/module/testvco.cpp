@@ -2,7 +2,6 @@
 
 #include "abstraction/component/dimmer.h"
 #include "abstraction/component/outport.h"
-#include "abstraction/component/port.h"
 #include "abstraction/component/selector.h"
 #include "abstraction/mock/mockserializerwell.h"
 #include "abstraction/module/vco.h"
