@@ -11,6 +11,8 @@ ModuleView::ModuleView(QWidget* parent, CSynthPro* cSynthPro)
     setRenderHint(QPainter::Antialiasing, true);
     setDragMode(QGraphicsView::ScrollHandDrag);
     setAcceptDrops(true);
+
+    setBackgroundBrush(QColor::fromRgb(245, 245, 220));
 }
 
 void ModuleView::dragEnterEvent(QDragEnterEvent* event)

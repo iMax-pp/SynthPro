@@ -92,6 +92,7 @@ HEADERS += \
     src/main/presentation/widget/pkeyboardview.h \
     src/main/presentation/widget/poscilloscopeview.h \
     src/main/presentation/widget/textwidget.h \
+    src/main/abstraction/module/wavlooper.h \
     src/main/abstraction/module/mixer.h \
     src/main/control/module/cmixer.h \
     src/main/presentation/module/pmixer.h
@@ -181,6 +182,7 @@ SOURCES += \
     src/main/presentation/widget/pkeyboardview.cpp \
     src/main/presentation/widget/poscilloscopeview.cpp \
     src/main/presentation/widget/textwidget.cpp \
+    src/main/abstraction/module/wavlooper.cpp \
     src/main/abstraction/module/mixer.cpp \
     src/main/control/module/cmixer.cpp \
     src/main/presentation/module/pmixer.cpp
