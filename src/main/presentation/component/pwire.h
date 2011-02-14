@@ -12,6 +12,7 @@ public:
     QRectF boundingRect() const;
 
     void updatePosition(const QPointF&);
+    void updatePosition();
 
     void mousePressEvent(QGraphicsSceneMouseEvent*);
 

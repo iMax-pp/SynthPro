@@ -87,6 +87,7 @@ bool CVirtualPort::disconnect(Connection* connection)
     int idx = m_connections.indexOf(connection);
     if (VirtualPort::disconnect(connection)) {
         delete m_connectedPorts.value(idx)->wire()->presentation();
+        // delete m_connectedPorts.value(idx)->wire();
         deleteConnectionPort(idx);
         other->deleteConnectionPort(idx);
         return true;
