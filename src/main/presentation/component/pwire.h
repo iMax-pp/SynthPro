@@ -9,8 +9,6 @@ class PWire : public QGraphicsPathItem {
 public:
     PWire(CWire*, QGraphicsScene*);
 
-//    QRectF boundingRect() const;
-
     void updatePosition(const QPointF&);
     void updatePosition();
 

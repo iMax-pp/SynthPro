@@ -18,8 +18,8 @@ void PDelay::initialize(PVirtualPort* in, PVirtualPort* out, PDimmer* duration, 
     TextWidget* title = new TextWidget("Delay", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    duration->setMaximumSize(90, 90);
-    decay->setMaximumSize(90, 90);
+    duration->setSize(80, 80);
+    decay->setSize(80, 80);
 
     // Layout
     bottomArea()->addCornerAnchors(duration, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);
@@ -27,6 +27,7 @@ void PDelay::initialize(PVirtualPort* in, PVirtualPort* out, PDimmer* duration, 
     bottomArea()->addCornerAnchors(duration, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
     bottomArea()->addCornerAnchors(decay, Qt::BottomRightCorner, bottomArea(), Qt::BottomRightCorner);
     bottomArea()->addAnchor(duration, Qt::AnchorRight, decay, Qt::AnchorLeft);
+
     leftArea()->addAnchors(in, leftArea());
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());

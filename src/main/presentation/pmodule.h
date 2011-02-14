@@ -7,10 +7,14 @@ class CModule;
 class QGraphicsAnchorLayout;
 
 class PModule : public QGraphicsWidget {
+    Q_OBJECT
 public:
     PModule(CModule*);
 
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+
+signals:
+    void closeBtnClicked();
 
 protected:
     /*
@@ -24,8 +28,6 @@ protected:
     inline QGraphicsAnchorLayout* rightArea() const { return m_rightArea; }
 
     CModule* m_control;
-    static const qreal DEFAULT_WIDTH = 150;
-    static const qreal DEFAULT_HEIGHT = 100;
 
 private:
     QGraphicsAnchorLayout* m_leftArea;

@@ -20,10 +20,10 @@ void PADSR::initialize(PVirtualPort* gate, PVirtualPort* out, PDimmer* attack, P
     TextWidget* title = new TextWidget("ADSR", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    attack->setMaximumSize(90, 90);
-    decay->setMaximumSize(90, 90);
-    sustain->setMaximumSize(90, 90);
-    release->setMaximumSize(90, 90);
+    attack->setSize(80, 80);
+    decay->setSize(80, 80);
+    sustain->setSize(80, 80);
+    release->setSize(80, 80);
 
     // Layout
     bottomArea()->addCornerAnchors(attack, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);
@@ -32,10 +32,12 @@ void PADSR::initialize(PVirtualPort* gate, PVirtualPort* out, PDimmer* attack, P
     bottomArea()->addCornerAnchors(release, Qt::BottomRightCorner, bottomArea(), Qt::BottomRightCorner);
     bottomArea()->addCornerAnchors(attack, Qt::BottomRightCorner, release, Qt::TopLeftCorner);
     bottomArea()->addCornerAnchors(sustain, Qt::TopRightCorner, decay, Qt::BottomLeftCorner);
+
     leftArea()->addCornerAnchors(gate, Qt::TopLeftCorner, leftArea(), Qt::TopLeftCorner);
     leftArea()->addAnchor(manual, Qt::AnchorTop, gate, Qt::AnchorBottom);
     leftArea()->addCornerAnchors(manual, Qt::BottomLeftCorner, leftArea(), Qt::BottomLeftCorner);
     leftArea()->addAnchor(gate, Qt::AnchorRight, leftArea(), Qt::AnchorRight);
+
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
 }

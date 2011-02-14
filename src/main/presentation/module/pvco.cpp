@@ -20,16 +20,18 @@ void PVCO::initialize(PVirtualPort* vfm, PVirtualPort* out, PSelector* selector,
     TextWidget* title = new TextWidget("VCO", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    k->setMaximumSize(90, 90);
+    k->setSize(80, 80);
     selector->setMaximumSize(120, 155);
 
     // Layout
     bottomArea()->addCornerAnchors(vfm, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
-    bottomArea()->addAnchor(vfm, Qt::AnchorRight, k, Qt::AnchorLeft);
-    bottomArea()->addAnchor(k, Qt::AnchorRight, selector, Qt::AnchorLeft);
-    bottomArea()->addAnchor(selector, Qt::AnchorRight, bottomArea(), Qt::AnchorRight);
-    bottomArea()->addAnchors(selector, bottomArea(), Qt::Vertical);
-    bottomArea()->addAnchor(k, Qt::AnchorBottom, bottomArea(), Qt::AnchorBottom);
+    bottomArea()->addCornerAnchors(k, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);
+    bottomArea()->addCornerAnchors(k, Qt::BottomRightCorner, vfm, Qt::TopRightCorner);
+    bottomArea()->addCornerAnchors(vfm, Qt::BottomRightCorner, selector, Qt::BottomLeftCorner);
+
+    bottomArea()->addCornerAnchors(selector, Qt::BottomRightCorner, bottomArea(), Qt::BottomRightCorner);
+    bottomArea()->addCornerAnchors(selector, Qt::TopRightCorner, bottomArea(), Qt::TopRightCorner);
+
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
 }

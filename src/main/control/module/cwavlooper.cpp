@@ -1,5 +1,6 @@
 #include "cwavlooper.h"
 
+#include "control/component/cdimmer.h"
 #include "control/component/coutport.h"
 #include "presentation/module/pwavlooper.h"
 
@@ -15,9 +16,9 @@ void CWavLooper::initialize(SynthProFactory* factory)
     WavLooper::initialize(factory);
 
     COutPort* outPort = dynamic_cast<COutPort*>(m_outPort);
-
+    CDimmer* speedDimmer = dynamic_cast<CDimmer*>(m_sDimmer);
     PWavLooper* pre = dynamic_cast<PWavLooper*>(presentation());
-    pre->initialize(outPort->presentation());
+    pre->initialize(outPort->presentation(), speedDimmer->presentation());
 
     connect(pre, SIGNAL(newFileClicked()), this, SLOT(newFile()));
 

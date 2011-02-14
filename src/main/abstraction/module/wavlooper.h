@@ -6,6 +6,7 @@
 #include <QObject>
 
 class Buffer;
+class Dimmer;
 class OutPort;
 class QFile;
 class SynthProFactory;
@@ -36,14 +37,20 @@ public:
      */
     void ownProcess();
 
+    static const qreal S_MIN = 0.4;
+    static const qreal S_MAX = 2;
+    static const qreal S_DEFAULT = 1;
+
 protected:
     OutPort* m_outPort;
+    Dimmer* m_sDimmer;
 
 private:
     QString m_fileName;
     QFile* m_inputFile;
     Buffer* m_internalBuffer; // Points on Raw data.
-    int m_positionInInternalBuffer;
+    qreal m_positionInInternalBuffer;
+    qreal m_speed;
 
     bool readWavFile(QFile*);
     int readLittleEndianInt(QFile*);

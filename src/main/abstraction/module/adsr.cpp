@@ -24,10 +24,10 @@ void ADSR::initialize(SynthProFactory* factory)
     m_outPort = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_outPort);
 
-    m_attackDimmer = factory->createDimmer("Attack", ATTACK_MIN, ATTACK_MAX, ATTACK_DEFAULT, this);
-    m_decayDimmer = factory->createDimmer("Decay", DECAY_MIN, DECAY_MAX, DECAY_DEFAULT, this);
-    m_sustainDimmer = factory->createDimmer("Sustain", SUSTAIN_MIN, SUSTAIN_MAX, SUSTAIN_DEFAULT, this);
-    m_releaseDimmer = factory->createDimmer("Release", RELEASE_MIN, RELEASE_MAX, RELEASE_DEFAULT, this);
+    m_attackDimmer = factory->createDialDimmer("Attack", ATTACK_MIN, ATTACK_MAX, ATTACK_DEFAULT, this);
+    m_decayDimmer = factory->createDialDimmer("Decay", DECAY_MIN, DECAY_MAX, DECAY_DEFAULT, this);
+    m_sustainDimmer = factory->createDialDimmer("Sustain", SUSTAIN_MIN, SUSTAIN_MAX, SUSTAIN_DEFAULT, this);
+    m_releaseDimmer = factory->createDialDimmer("Release", RELEASE_MIN, RELEASE_MAX, RELEASE_DEFAULT, this);
 
     m_manualControl = factory->createPushButton("Manual", this);
 }
