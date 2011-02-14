@@ -39,8 +39,11 @@ void Mixer::ownProcess()
     for (int j = 0 ; j < inports().size() ;  j++) {
         if (inports().at(j)->connections().size() != 0)  {
             nbPortConnected++;
+            qDebug() << "port " << j << "connect " << inports().at(j)->buffer()->data()[0];
             for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
                 buffer.data()[i] += inports().at(j)->buffer()->data()[i];
+            //    qDebug() << inports().at(j)->buffer()->data()[i];
+
             }
         }
     }
