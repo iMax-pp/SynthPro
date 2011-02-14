@@ -31,7 +31,7 @@ void ADSR::initialize(SynthProFactory* factory)
 
     m_manualControl = factory->createPushButton("Manual", this);
 }
-
+/// Comment !
 void ADSR::ownProcess()
 {
     int attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
@@ -41,7 +41,7 @@ void ADSR::ownProcess()
     int bufferIndex = 0;
     qreal currentValue = m_manualControl->pushed() ? 1 : 0;
 
-    while (bufferIndex < m_gate->buffer()->length()) {
+    while (bufferIndex < Buffer::DEFAULT_LENGTH) {
         if (currentValue == 0) {
             currentValue = m_gate->buffer()->data()[bufferIndex];
         }
