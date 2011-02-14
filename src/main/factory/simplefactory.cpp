@@ -4,7 +4,6 @@
 #include "abstraction/component/dimmer.h"
 #include "abstraction/component/inport.h"
 #include "abstraction/component/outport.h"
-#include "abstraction/component/port.h"
 #include "abstraction/component/pushbutton.h"
 #include "abstraction/component/selector.h"
 #include "abstraction/module/adsr.h"
@@ -25,12 +24,6 @@
 SynthPro* SimpleFactory::createSynthPro()
 {
     return new SynthPro();
-}
-
-Port* SimpleFactory::createPort(VirtualPort* vPort)
-{
-    Port* port = new Port(vPort);
-    return port;
 }
 
 Connection* SimpleFactory::createConnection(OutPort* source, InPort* target)
