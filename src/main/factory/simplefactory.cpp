@@ -16,10 +16,12 @@
 #include "abstraction/module/vca.h"
 #include "abstraction/module/vcf.h"
 #include "abstraction/module/vco.h"
+#include "abstraction/module/wavlooper.h"
 #include "abstraction/module/wavrecorder.h"
 #include "abstraction/sequencer.h"
 #include "abstraction/synthpro.h"
-
+#include "presentation/module/pwavlooper.h"
+#include "presentation/module/pwavrecorder.h"
 
 SynthPro* SimpleFactory::createSynthPro()
 {
@@ -133,6 +135,13 @@ WavRecorder* SimpleFactory::createWavRecorder(SynthPro* parent, int nbProcessing
     WavRecorder* mbr = new WavRecorder(parent, nbProcessingBeforeSaving);
     mbr->initialize(this);
     return mbr;
+}
+
+WavLooper* SimpleFactory::createWavLooper(SynthPro* parent)
+{
+    WavLooper* wl = new WavLooper(parent);
+    wl->initialize(this);
+    return wl;
 }
 
 Speaker* SimpleFactory::createSpeaker(SynthPro* parent)
