@@ -61,6 +61,8 @@ void CPort::createTmpWire(CPort* from, const QPointF& to)
     // Don't forget to register ourself as one of the port (the good one of course).
     m_tmpWire->setInPort(from);
     m_tmpWire->updatePosition(to);
+
+    dynamic_cast<CSynthPro*>(vPort()->module()->synthPro())->showFeedback(from->vPort());
 }
 
 void CPort::drag(const QPointF& pos)
@@ -70,7 +72,6 @@ void CPort::drag(const QPointF& pos)
     } else {
         createTmpWire(this, pos);
     }
-    dynamic_cast<CSynthPro*>(vPort()->module()->synthPro())->showFeedback(vPort());
 }
 
 void CPort::dragMove(const QPointF& pos)
@@ -103,16 +104,18 @@ void CPort::drop(CPort* target)
         delete m_tmpWire;
         m_tmpWire = 0;
     }
+    CPort* port = reconnecting() ? m_reconnecting : this;
     // If the user dropped on a target, try to connect to it
     if (target) {
-        if (m_wire) { // This port is already connected, let’s reconnect it
-            // TODO
-        } else {
-            vPort()->connect(target->vPort());
+        if (target->m_wire) { // The target port is already connected, first disconnect it
+            target->disconnect();
         }
-    } else if (reconnecting()) {
+        port->vPort()->connect(target->vPort());
+    }
+    if (reconnecting()) { // The reconnection is finished, remove the connection ports
         m_reconnecting->vPort()->removeConnectionPort(m_reconnecting);
         vPort()->removeConnectionPort(this);
+        m_reconnecting = 0;
     }
 }
 
