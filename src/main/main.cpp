@@ -20,18 +20,8 @@ int main(int argc, char* argv[])
     adsr->presentation()->setPos(-100, 300);
     synthpro->add(adsr);
 
-    CDelay* delay = factory->createDelay(synthpro);
-    delay->presentation()->setPos(250, 0);
-    synthpro->add(delay);
-
-    COscilloscope* oscillo = factory->createOscilloscope(synthpro);
-    oscillo->presentation()->setPos(450, 0);
-    synthpro->add(oscillo);
-
     vco->outports().first()->connect(vca->inports().first()); // VCO -> VCA
     adsr->outports().first()->connect(vca->inports().last()); // ADSR -> VCA
-    vca->outports().first()->connect(delay->inports().first()); // VCA -> DELAY
-    delay->outports().first()->connect(oscillo->inports().first()); // DELAY -> OSCILLO
 
     // WavLooper* wl = new WavLooper(0);
     // wl->newFile("/home/julien/workspace/projet/SynthPro/drums.wav");
