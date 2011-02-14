@@ -119,7 +119,12 @@ LFO* SimpleFactory::createLFO(SynthPro* parent)
     return lfo;
 }
 
-Dimmer* SimpleFactory::createDimmer(const QString& /*name*/, qreal min, qreal max, qreal kDefault, Module* parent)
+Dimmer* SimpleFactory::createDialDimmer(const QString& /*name*/, qreal min, qreal max, qreal kDefault, Module* parent)
+{
+    return new Dimmer(min, max, kDefault, parent);
+}
+
+Dimmer* SimpleFactory::createSliderDimmer(const QString& /*name*/, qreal min, qreal max, qreal kDefault, Module* parent)
 {
     return new Dimmer(min, max, kDefault, parent);
 }
