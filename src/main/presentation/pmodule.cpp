@@ -31,7 +31,7 @@ PModule::PModule(CModule* control)
     m_centerArea->setParentLayoutItem(layout);
     m_centerArea->setSpacing(0);
     m_bottomArea->setParentLayoutItem(layout);
-    m_bottomArea->setSpacing(0);
+    m_bottomArea->setSpacing(5);
     m_rightArea->setParentLayoutItem(layout);
     m_rightArea->setSpacing(0);
 
