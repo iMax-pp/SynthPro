@@ -4,6 +4,7 @@
 #include <QGraphicsWidget>
 
 class CModule;
+class PixmapButtonWidget;
 class QGraphicsAnchorLayout;
 
 class PModule : public QGraphicsWidget {
@@ -12,6 +13,7 @@ public:
     PModule(CModule*);
 
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+    QRectF boundingRect() const;
 
 signals:
     void closeBtnClicked();
@@ -34,6 +36,7 @@ private:
     QGraphicsAnchorLayout* m_bottomArea;
     QGraphicsAnchorLayout* m_centerArea;
     QGraphicsAnchorLayout* m_rightArea;
+    PixmapButtonWidget* m_closeBtn;
 };
 
 #endif // PMODULE_H

@@ -16,8 +16,11 @@ public:
 
     void showMoveFeedback();
 
+    QPainterPath shape() const;
+
 private:
     CWire* m_control;
+    QPointF m_endPoint;
 };
 
 #endif // PWIRE_H
