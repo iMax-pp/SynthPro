@@ -96,6 +96,10 @@ void WavRecorder::ownProcess()
                     // For efficiency, this is the addLittleEndianShortToFile method copied here.
                     // The stored value is 16 bits, signed, little endian, normalised.
                     int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_SIGNED_INTENSITY);
+                    // Limit tests.
+                    nb = (nb > SIGNAL_OUT_SIGNED_INTENSITY ? SIGNAL_OUT_SIGNED_INTENSITY : nb);
+                    nb = (nb < -SIGNAL_OUT_SIGNED_INTENSITY ? -SIGNAL_OUT_SIGNED_INTENSITY : nb);
+
                     m_bufferForNumbers[0] = nb & 255;
                     m_bufferForNumbers[1] = (nb / 256) & 255;
                     m_outputFile->write(m_bufferForNumbers, 2);
