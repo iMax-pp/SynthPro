@@ -27,3 +27,8 @@ void CDimmer::valueChanged(int value)
 {
     setValue(value / m_discretization);
 }
+
+void CDimmer::updatePresentationValue(const QString& formattedValue)
+{
+    m_presentation->updateTitle(formattedValue);
+}

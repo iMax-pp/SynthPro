@@ -18,10 +18,9 @@ PSlider::PSlider(CDimmer* control, const QString& name, int min, int max, int de
     vbox->addWidget(selector);
     
     m_box->setLayout(vbox);
-    changeTitle(selector->value());
+    // updateTitle(selector->value());
     setMaximumSize(140, 40);
 
-    connect(selector, SIGNAL(valueChanged(int)), this, SLOT(changeTitle(int)));
     connect(selector, SIGNAL(valueChanged(int)), this, SIGNAL(valueChanged(int)));
 
 }

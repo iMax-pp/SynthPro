@@ -12,7 +12,10 @@ Dimmer::Dimmer(qreal min, qreal max, qreal defaultValue, QObject* parent)
 
 void Dimmer::setValue(qreal value)
 {
-    m_value = value;
+    if (value != m_value) {
+        m_value = value;
+        emit valueChanged(m_value);
+    }
 }
 
 void Dimmer::setOffset(qreal offset)

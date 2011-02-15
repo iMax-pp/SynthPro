@@ -23,8 +23,7 @@ void PDimmer::setSize(qreal width, qreal height)
     setMaximumSize(width, height);
 }
 
-void PDimmer::changeTitle(int value)
+void PDimmer::updateTitle(const QString& formattedValue)
 {
-    qreal realVal = m_control->realValue(value / CDimmer::DISCR);
-    m_box->setTitle(m_name + ": " + QString::number(realVal, 'g', 4));
+    m_box->setTitle(m_name + ": " + formattedValue);
 }
