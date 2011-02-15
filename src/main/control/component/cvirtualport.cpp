@@ -99,8 +99,7 @@ void CVirtualPort::deleteConnectionPort(int idx)
 {
     CPort* port = m_connectedPorts.at(idx);
     removeConnectionPort(port);
-    // delete port->presentation();
-    // delete port;
+    port->deleteLater();
 }
 
 void CVirtualPort::removeConnectionPort(CPort* port)
