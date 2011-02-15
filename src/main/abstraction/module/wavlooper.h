@@ -28,9 +28,9 @@ public:
     void initialize(SynthProFactory*);
 
     /**
-     * Ask for a file name to save to.
+     * Ask for a file name to load.
      */
-    void newFile(const QString&);
+    bool newFile(const QString&);
 
     /**
      * Save the first input port buffer into a file.
@@ -55,6 +55,7 @@ private:
     bool readWavFile(QFile*);
     int readLittleEndianInt(QFile*);
     int readLittleEndianShort(QFile*);
+    int convertByteToUnsignedByte(int);
 
 
 };

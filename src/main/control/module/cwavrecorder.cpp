@@ -22,7 +22,6 @@ void CWavRecorder::initialize(SynthProFactory* factory)
     connect(pre, SIGNAL(newFileClicked()), this, SLOT(newFile()));
     connect(pre, SIGNAL(startRecordingClicked()), this, SLOT(startRecording()));
     connect(pre, SIGNAL(stopRecordingClicked()), this, SLOT(stopRecording()));
-    connect(pre, SIGNAL(closeFileClicked()), this, SLOT(closeFile()));
 
     newFile();
 }
@@ -43,9 +42,4 @@ void CWavRecorder::startRecording()
 void CWavRecorder::stopRecording()
 {
     WavRecorder::stopRecording();
-}
-
-void CWavRecorder::closeFile()
-{
-    WavRecorder::closeFile();
 }

@@ -74,7 +74,7 @@ date :  semaine 6 (mercredi 9 - jeudi 10)
 
 Itération 5
 -----------
-date :  semaine 6 (vendredi 11 - )
+date :  semaine 6 (vendredi 11)
 
 - Julien N. :
     - Oscillo;
@@ -91,19 +91,18 @@ date :  semaine 6 (vendredi 11 - )
 
 Itération 6
 -----------
-date :  semaine 7 (Lundi 14-)
+date :  semaine 7 (Lundi 14 - Mardi 15)
 
 - Julien N. :
     - Mappage clavier virtual/clavier réel;
     - WavLooper;
+    - Limiteur audio engine/wavrecorder;
 - Maxime :
     - Feedback dimmer;
     - WavRecorder dans fichier sélectionné, possibilité de lancer/arrêter l'enregistrement;
     - On/Off SynthPro;
-    - Wire plus jolis;
-    - Fond d'écran (léger et subtil, beige…);
+    - Wires plus jolis et fond d'écran (léger et subtil, beige…);
     - Action New;
-    - Icones dans box à gauche (+drag'n'drop icones);
 - Julien RF. :
     - Suppression des ports répliqués;
     - Feedback des ports (MouseHover);
@@ -120,14 +119,13 @@ date :  semaine 7 (Mercredi 16-)
 - Julien N. :
 - Maxime :
     - Save/Load;
-    - WavRecorder interface à retoucher (bouton stop).
+    - Icones dans box à gauche (+drag'n'drop icones);
 
 Roadmap (todo)
 ---------
 - Oscillo stabilisé;
 - Molette Oscillo (zoom Y);
 - Symétrie de l'audio engine;
-- Limiteur audio engine/wavrecorder;
 - Icones dans Dockbars (et drag'n'drop d'icones);
 - Entrée MIDI;
 

@@ -50,11 +50,6 @@ void Speaker::initialize(SynthProFactory* factory)
     }
 }
 
-// void Speaker::setSoundManagement(bool state)
-// {
-//     m_manageSound = state;
-// }
-
 void Speaker::timerExpired()
 {
     int fillCounter = 0;
@@ -91,6 +86,10 @@ void Speaker::timerExpired()
 
             for (int i = 0, size = m_inPort->buffer()->length(); i < size; i += 2) {
                 int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_UNSIGNED_INTENSITY);
+                // Limit tests.
+                nb = (nb > SIGNAL_OUT_UNSIGNED_INTENSITY ? SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
+                nb = (nb < -SIGNAL_OUT_UNSIGNED_INTENSITY ? -SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
+
                 // FIXME : Works, but can't understand why. The output seems to be 8 bits only.
                 m_generationBuffer[i] = 0; // nb / 256;
                 m_generationBuffer[i + 1] = nb; // nb & 255;

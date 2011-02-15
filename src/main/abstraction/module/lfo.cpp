@@ -52,7 +52,7 @@ LFO::~LFO()
     }
 
     // FIXME, this leads to an infinite loop of bad desalloc.
-    // delete[] m_lfoBuffer;
+    delete m_lfoBuffer;
 }
 
 void LFO::ownProcess()
