@@ -24,6 +24,8 @@ public:
     void showFeedback(CVirtualPort*);
     void hideFeedback();
 
+    void newScheme();
+
 private slots:
     void play(bool);
 
