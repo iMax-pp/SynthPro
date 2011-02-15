@@ -21,7 +21,8 @@ signals:
     void connectionsChanged(const SynthPro*);
 
 private slots:
-    void connectionsChanged(); // FIXME Maybe a signal mapper would work?
+    void connectionsChanged();
+    void remove(QObject*);
 private:
     QList<Module*> m_modules;
 };

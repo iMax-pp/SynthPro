@@ -6,6 +6,7 @@
 #include "abstraction/component/virtualport.h"
 #include "abstraction/module.h"
 #include "abstraction/sequencer.h"
+#include <QSignalMapper>
 
 SynthPro::SynthPro(QObject* parent)
     : QObject(parent)
@@ -29,6 +30,16 @@ void SynthPro::add(Module* module)
     foreach (VirtualPort* port, module->outports()) {
         connect(port, SIGNAL(connectionsChanged()), this, SLOT(connectionsChanged()));
     }
+
+    QSignalMapper* mapper = new QSignalMapper(this);
+    connect(module, SIGNAL(destroyed()), mapper, SLOT(map()));
+    mapper->setMapping(module, module);
+    connect(mapper, SIGNAL(mapped(QObject*)), SLOT(remove(QObject*)));
+}
+
+void SynthPro::remove(QObject* module)
+{
+    m_modules.removeOne(static_cast<Module*>(module));
 }
 
 void SynthPro::connectionsChanged()
