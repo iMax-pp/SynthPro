@@ -95,18 +95,22 @@ date :  semaine 7 (Lundi 14-)
 
 - Julien N. :
     - Mappage clavier virtual/clavier réel;
-    - ?
+    - WavLooper;
 - Maxime :
     - Feedback dimmer;
     - WavRecorder dans fichier sélectionné, possibilité de lancer/arrêter l'enregistrement;
     - On/Off SynthPro;
     - Wire plus jolis;
     - Fond d'écran (léger et subtil, beige…);
+    - Action New;
+    - Icones dans box à gauche (+drag'n'drop icones);
+    - Save/Load;
 - Julien RF. :
     - Suppression des ports répliqués;
     - Feedback des ports (MouseHover);
+    - Suppression des modules;
 - Cyrille :
-    - Fixer VCA (multiplier input par somme du dimmer et control), en une passe !
+    - Fixer VCA (multiplier input par somme du dimmer et control), en une passe;
     - Delay;
     - Mixer;
 
