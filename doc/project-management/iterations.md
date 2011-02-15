@@ -104,7 +104,6 @@ date :  semaine 7 (Lundi 14-)
     - Fond d'écran (léger et subtil, beige…);
     - Action New;
     - Icones dans box à gauche (+drag'n'drop icones);
-    - Save/Load;
 - Julien RF. :
     - Suppression des ports répliqués;
     - Feedback des ports (MouseHover);
@@ -113,6 +112,15 @@ date :  semaine 7 (Lundi 14-)
     - Fixer VCA (multiplier input par somme du dimmer et control), en une passe;
     - Delay;
     - Mixer;
+
+Itération 7
+-----------
+date :  semaine 7 (Mercredi 16-)
+
+- Julien N. :
+- Maxime :
+    - Save/Load;
+    - WavRecorder interface à retoucher (bouton stop).
 
 Roadmap (todo)
 ---------
