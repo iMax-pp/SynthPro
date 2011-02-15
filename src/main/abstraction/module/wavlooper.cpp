@@ -29,7 +29,7 @@ WavLooper::~WavLooper()
     }
 
     if (m_internalBuffer) {
-        delete[] m_internalBuffer;
+        delete m_internalBuffer;
     }
 }
 
@@ -45,13 +45,11 @@ bool WavLooper::newFile(const QString& filename)
 {
     bool result = true;
 
-    if (m_inputFile) {
-        m_inputFile->close();
-    }
-
     // Open a new file.
     m_fileName = filename;
     m_inputFile = new QFile(filename);
+
+
 
     if (!m_inputFile->open(QIODevice::ReadOnly)) {
         qWarning() << "Unable to open file. " << m_inputFile->fileName();
@@ -61,7 +59,20 @@ bool WavLooper::newFile(const QString& filename)
         result = false;
     }
 
-    m_inputFile->close();
+    if (m_inputFile) {
+        m_inputFile->close();
+        delete m_inputFile;
+        m_inputFile = 0;
+    }
+
+    if (!result) {
+        if (m_internalBuffer) {
+            delete[] m_internalBuffer;
+            m_internalBuffer = 0;
+        }
+    }
+
+    m_positionInInternalBuffer = 0;
 
     return result;
 }
@@ -127,7 +138,7 @@ bool WavLooper::readWavFile(QFile* file)
 
     // Delete the previous buffer, if any.
     if (m_internalBuffer) {
-        delete[] m_internalBuffer;
+        delete m_internalBuffer;
         m_internalBuffer = 0;
     }
 
