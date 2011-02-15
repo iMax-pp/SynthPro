@@ -56,9 +56,6 @@ VCF::~VCF()
 
 void VCF::ownProcess()
 {
-    // m_vfm->buffer()->add(m_rDimmer->value());
-    // m_out->swapBuffers();
-    // m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());
     m_filter->apply(m_inPort->buffer(), m_inCutOffPort->buffer(), m_cutOffDimmer->value(), m_rDimmer->value(), m_out->buffer());
 }
 

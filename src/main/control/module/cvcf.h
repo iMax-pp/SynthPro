@@ -9,6 +9,9 @@ public:
     explicit CVCF(SynthPro*);
 
     void initialize(SynthProFactory*);
+private:
+    static QString formatCutOff(qreal);
+    static QString formatResonance(qreal);
 };
 
 #endif // CVCF_H

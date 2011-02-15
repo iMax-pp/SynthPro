@@ -9,6 +9,8 @@ public:
     explicit CVCA(SynthPro*);
 
     void initialize(SynthProFactory*);
+private:
+    static QString formatGain(qreal);
 };
 
 #endif // CVCA_H

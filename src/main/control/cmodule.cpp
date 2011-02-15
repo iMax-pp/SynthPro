@@ -33,11 +33,6 @@ void CModule::setPresentation(PModule* presentation)
     QObject::connect(mapper, SIGNAL(mapped(QObject*)), synthPro(), SLOT(remove(QObject*)));
 }
 
-PModule* CModule::presentation() const
-{
-    return m_presentation;
-}
-
 void CModule::move()
 {
     foreach (InPort* port, m_inports) {

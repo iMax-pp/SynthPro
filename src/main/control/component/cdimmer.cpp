@@ -4,6 +4,7 @@ CDimmer::CDimmer(qreal min, qreal max, qreal defaultValue, qreal discretization,
     : Dimmer(min, max, defaultValue, parent)
     , m_presentation(0)
     , m_discretization(discretization)
+    , m_valueFormat(defaultFormat)
 {
 }
 
@@ -14,8 +15,33 @@ PDimmer* CDimmer::presentation() const
 
 void CDimmer::setPresentation(PDimmer* presentation)
 {
+    if (m_presentation) {
+        delete m_presentation;
+    }
     m_presentation = presentation;
     connect(m_presentation, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));
+}
+
+void CDimmer::setValueFormat(Format format)
+{
+    m_valueFormat = format;
+    publishValue();
+}
+
+void CDimmer::setValue(qreal newValue)
+{
+    qreal oldValue = value();
+    Dimmer::setValue(newValue);
+    if (oldValue != value()) {
+        publishValue();
+    }
+}
+
+void CDimmer::publishValue()
+{
+    if (presentation()) {
+        presentation()->updateTitle(m_valueFormat(value()));
+    }
 }
 
 qreal CDimmer::realValue(qreal value) const
@@ -28,7 +54,7 @@ void CDimmer::valueChanged(int value)
     setValue(value / m_discretization);
 }
 
-void CDimmer::updatePresentationValue(const QString& formattedValue)
+QString CDimmer::defaultFormat(qreal value)
 {
-    m_presentation->updateTitle(formattedValue);
+    return QString::number(value, 'g', 4);
 }

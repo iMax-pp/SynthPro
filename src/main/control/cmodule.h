@@ -12,7 +12,7 @@ public:
     virtual ~CModule();
 
     void setPresentation(PModule*);
-    PModule* presentation() const;
+    inline PModule* presentation() const { return m_presentation; }
 
     /*
      * When moving the module around (event intercepted by PModule), this method

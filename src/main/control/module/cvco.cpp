@@ -23,14 +23,13 @@ void CVCO::initialize(SynthProFactory* factory)
     CSelector* selector = dynamic_cast<CSelector*>(m_shapeSelector);
     CDimmer* k = dynamic_cast<CDimmer*>(m_kDimmer);
 
+    k->setValueFormat(formatK);
+
     dynamic_cast<PVCO*>(presentation())->initialize(vfm->presentation(), out->presentation(),
                                                     selector->presentation(), k->presentation());
-
-    connect(m_kDimmer, SIGNAL(valueChanged(qreal)), SLOT(kChanged(qreal)));
 }
 
-void CVCO::kChanged(qreal newValue)
+QString CVCO::formatK(qreal k)
 {
-    CDimmer* ck = dynamic_cast<CDimmer*>(m_kDimmer);
-    ck->updatePresentationValue(QString::number((long)(VCO::F0 * qPow(2, newValue))) + " Hz");
+    return QString::number((long)(VCO::F0 * qPow(2, k))) + " Hz";
 }

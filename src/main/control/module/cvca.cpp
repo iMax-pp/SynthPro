@@ -5,6 +5,7 @@
 #include "control/component/coutport.h"
 #include "control/component/cselector.h"
 #include "presentation/module/pvca.h"
+#include <qmath.h>
 
 CVCA::CVCA(SynthPro* parent)
     : Module(parent)
@@ -20,8 +21,15 @@ void CVCA::initialize(SynthProFactory* factory)
     CInPort* in = dynamic_cast<CInPort*>(m_inPort);
     COutPort* out = dynamic_cast<COutPort*>(m_outPort);
     CInPort* controlInput = dynamic_cast<CInPort*>(m_controlInput);
-    CDimmer* dimmer = dynamic_cast<CDimmer*>(m_gainDimmer);
+    CDimmer* gain = dynamic_cast<CDimmer*>(m_gainDimmer);
+
+    gain->setValueFormat(formatGain);
 
     dynamic_cast<PVCA*>(presentation())->initialize(in->presentation(), out->presentation(),
-                                                    controlInput->presentation(), dimmer->presentation());
+                                                    controlInput->presentation(), gain->presentation());
+}
+
+QString CVCA::formatGain(qreal gain)
+{
+    return QString::number(gain, 'g', 2) + " dB"; // FIXME
 }

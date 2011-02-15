@@ -5,6 +5,8 @@
 #include "presentation/component/pdimmer.h"
 #include "presentation/component/pslider.h"
 
+typedef QString (*Format)(qreal);
+
 class CDimmer : public Dimmer {
     Q_OBJECT
 
@@ -14,23 +16,34 @@ public:
     PDimmer* presentation() const;
     void setPresentation(PDimmer*);
 
+    /// Configure the formatting function used to display the value
+    void setValueFormat(Format);
+
+    /// Reimplements abstraction method to update the presentation
+    void setValue(qreal);
+
+    /// Synchronize the presentation’s value with the abstraction’s value, using the formatter
+    void publishValue();
+
     /**
      * @param The value to convert.
      * @returns The "real life" value from the current value of the dimmer.
      */
     qreal realValue(qreal value) const;
 
-    void updatePresentationValue(const QString&);
-
     /// Discretization factor
     static const qreal DISCR = 150;
 
-public slots:
+protected slots:
+    /// Forward the value change event from the presentation to the abstraction (converting it into a qreal using the discretization factor)
     void valueChanged(int value);
 
 private:
     PDimmer* m_presentation;
     qreal m_discretization;
+    Format m_valueFormat;
+
+    static QString defaultFormat(qreal);
 };
 
 #endif // CDIMMER_H
