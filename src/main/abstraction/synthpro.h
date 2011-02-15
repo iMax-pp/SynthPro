@@ -20,9 +20,12 @@ public:
 signals:
     void connectionsChanged(const SynthPro*);
 
+public slots:
+    void remove(QObject*);
+
 private slots:
     void connectionsChanged();
-    void remove(QObject*);
+
 private:
     QList<Module*> m_modules;
 };

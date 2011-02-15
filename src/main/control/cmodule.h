@@ -4,6 +4,8 @@
 #include "abstraction/module.h"
 #include "presentation/pmodule.h"
 
+#include <QObject>
+
 class CModule : public virtual Module {
 public:
     explicit CModule(SynthPro*);
@@ -20,16 +22,6 @@ public:
 
 private:
     PModule* m_presentation;
-};
-
-class Closer : public QObject {
-    Q_OBJECT
-public:
-    Closer(CModule*);
-protected slots:
-    void onCloseClicked();
-private:
-    CModule* m_module;
 };
 
 #endif // CMODULE_H

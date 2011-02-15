@@ -41,8 +41,15 @@ void PSynthPro::togglePlayPause()
 
 void PSynthPro::promptNew()
 {
-    // FIXME Needs implementation.
-    qDebug("[New Action] not implemented yet");
+    QMessageBox msgBox;
+    msgBox.setText(tr("Are you <b>sure</b> you want to <b>erase</b> this magnificient work?"));
+    msgBox.setInformativeText(tr("I mean, really, really ?"));
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+
+    if (msgBox.exec() == QMessageBox::Yes) {
+        m_control->newScheme();
+    }
 }
 
 void PSynthPro::about()
