@@ -31,19 +31,13 @@ void PWavRecorder::initialize(PVirtualPort* in)
     connect(m_record, SIGNAL(clicked()), this, SLOT(recordClicked()));
     m_record->setActivated(false);
 
-    m_close = new PixmapButtonWidget(":/src/resources/images/close-icon.png", this);
-    connect(m_close, SIGNAL(clicked()), this, SLOT(closeClicked()));
-    m_close->setActivated(false);
-
     // Layout
     leftArea()->addAnchors(in, leftArea());
     centerArea()->addAnchors(title, centerArea());
     bottomArea()->addCornerAnchors(m_record, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);
     bottomArea()->addAnchor(m_stop, Qt::AnchorLeft, m_record, Qt::AnchorRight);
-    bottomArea()->addCornerAnchors(m_close, Qt::TopRightCorner, bottomArea(), Qt::TopRightCorner);
     bottomArea()->addAnchor(m_record, Qt::AnchorBottom, floppy, Qt::AnchorTop);
     bottomArea()->addAnchor(m_stop, Qt::AnchorBottom, floppy, Qt::AnchorTop);
-    bottomArea()->addAnchor(m_close, Qt::AnchorBottom, floppy, Qt::AnchorTop);
     bottomArea()->addCornerAnchors(floppy, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
     bottomArea()->addCornerAnchors(floppy, Qt::BottomRightCorner, bottomArea(), Qt::BottomRightCorner);
 }
@@ -56,7 +50,6 @@ QString PWavRecorder::askForFileName()
     if (!fileName.isNull()) {
         m_record->setActivated(true);
         m_stop->setActivated(false);
-        m_close->setActivated(true);
     }
 
     return fileName;
@@ -77,17 +70,8 @@ void PWavRecorder::recordClicked()
 
 void PWavRecorder::stopClicked()
 {
-    m_record->setActivated(true);
+    m_record->setActivated(false);
     m_stop->setActivated(false);
 
     emit stopRecordingClicked();
-}
-
-void PWavRecorder::closeClicked()
-{
-    m_record->setActivated(false);
-    m_stop->setActivated(false);
-    m_close->setActivated(false);
-
-    emit closeFileClicked();
 }

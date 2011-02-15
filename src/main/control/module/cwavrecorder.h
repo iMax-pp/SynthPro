@@ -16,11 +16,10 @@ public:
 
     void initialize(SynthProFactory*);
 
-public slots:
+protected slots:
     void newFile();
     void startRecording();
     void stopRecording();
-    void closeFile();
 };
 
 #endif // CWAVRECORDER_H
