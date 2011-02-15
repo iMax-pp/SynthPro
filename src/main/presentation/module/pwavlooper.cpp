@@ -24,7 +24,7 @@ void PWavLooper::initialize(PVirtualPort* out, PDimmer* speedDimmer)
     PixmapWidget* floppy = new PixmapWidget(":/src/resources/images/floppy-icon.png", this);
     connect(floppy, SIGNAL(clicked()), this, SLOT(floppyClicked()));
 
-    speedDimmer->setMaximumSize(70,70);
+    speedDimmer->setMaximumSize(70, 70);
 
     // Layout
     leftArea()->addAnchors(speedDimmer, leftArea());
