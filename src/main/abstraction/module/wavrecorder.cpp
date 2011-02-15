@@ -74,11 +74,6 @@ void WavRecorder::startRecording()
 void WavRecorder::stopRecording()
 {
     m_isRecording = false;
-}
-
-void WavRecorder::closeFile()
-{
-    stopRecording();
     closeWAVFile();
 }
 
