@@ -29,7 +29,7 @@ WavLooper::~WavLooper()
     }
 
     if (m_internalBuffer) {
-        delete[] m_internalBuffer->data();
+        delete[] m_internalBuffer;
     }
 }
 
@@ -41,8 +41,10 @@ void WavLooper::initialize(SynthProFactory* factory)
     m_sDimmer = factory->createDialDimmer("Speed", S_MIN, S_MAX, S_DEFAULT, this);
 }
 
-void WavLooper::newFile(const QString& filename)
+bool WavLooper::newFile(const QString& filename)
 {
+    bool result = true;
+
     if (m_inputFile) {
         m_inputFile->close();
     }
@@ -53,18 +55,21 @@ void WavLooper::newFile(const QString& filename)
 
     if (!m_inputFile->open(QIODevice::ReadOnly)) {
         qWarning() << "Unable to open file. " << m_inputFile->fileName();
+        result = false;
     } else if (!readWavFile(m_inputFile)) {
         qWarning("Format of file read unknown.");
+        result = false;
     }
 
     m_inputFile->close();
+
+    return result;
 }
 
 void WavLooper::ownProcess()
 {
-    m_speed = m_sDimmer->value();
-
     if (m_internalBuffer) {
+        m_speed = m_sDimmer->value();
         qreal* dataInPort = m_internalBuffer->data();
         qreal* dataOutPort = m_outPort->buffer()->data();
         qreal sizeInternalBuffer = m_internalBuffer->length();
@@ -81,7 +86,7 @@ void WavLooper::ownProcess()
 
 bool WavLooper::readWavFile(QFile* file)
 {
-     // Check the WAV format.
+     // Check the WAV format. Only 44100hz, 16 bits, mono samples are accepted.
     if ((QString)(file->read(4)) != "RIFF") {
         return false;
     }
@@ -92,22 +97,20 @@ bool WavLooper::readWavFile(QFile* file)
     if (readLittleEndianInt(file) != AudioDeviceProvider::BIT_RATE) {
         return false;
     }
+    // Compression code.
     if (readLittleEndianShort(file) != 1) {
         return false;
-    } // Compression code.
+    }
     if (readLittleEndianShort(file) != AudioDeviceProvider::NB_CHANNELS) {
         return false;
     }
 
-    // FIXME
-    // if (readLittleEndianInt(file) != AudioDeviceProvider::OUTPUT_FREQUENCY) { return false; }
-    readLittleEndianInt(file);
+    if (readLittleEndianInt(file) != AudioDeviceProvider::OUTPUT_FREQUENCY) {
+        return false;
+    }
 
-    // FIXME too !!
     int blockAlign = AudioDeviceProvider::NB_CHANNELS * (AudioDeviceProvider::BIT_RATE / 8);
     readLittleEndianInt(file);
-    // qDebug() << nb;
-    // if (nb != (blockAlign * AudioDeviceProvider::OUTPUT_FREQUENCY)) { return false; }
 
     if (readLittleEndianShort(file) != blockAlign) {
         return false;
@@ -122,17 +125,19 @@ bool WavLooper::readWavFile(QFile* file)
     }
     file->read(4); // Skip data chunk size.
 
-    // Copy the wave into the buffer.
-    int wavSize = (file->size() - file->pos()); // / 2; // /2 because we stock only qreal, but read double char.
+    // Delete the previous buffer, if any.
     if (m_internalBuffer) {
         delete[] m_internalBuffer;
+        m_internalBuffer = 0;
     }
+
+    // Copy the wave into the buffer.
+    int wavSize = (file->size() - file->pos()) / 2; // /2 because we stock only qreal, but read double char.
     m_internalBuffer = new Buffer(wavSize);
 
-    for (int i = 0; i < wavSize; i += 2) {
+    for (int i = 0; i < wavSize; i++) {
         // Convert the 16 bits little endian signal into an amplitude.
         m_internalBuffer->data()[i] = readLittleEndianShort(file) / (65536 / 2 / VCO::SIGNAL_INTENSITY);
-        m_internalBuffer->data()[i + 1] = m_internalBuffer->data()[i];
     }
 
     return true;
@@ -142,10 +147,11 @@ int WavLooper::readLittleEndianInt(QFile* file)
 {
     char tab[4];
     file->read(tab, 4);
-    int nb = tab[3] * 0x1000000;
-    nb += tab[2] * 0x10000;
-    nb += tab[1] * 0x100;
-    nb += tab[0];
+    int nb = convertByteToUnsignedByte(tab[3]) * 0x1000000;
+    nb += convertByteToUnsignedByte(tab[2]) * 0x10000;
+    nb += convertByteToUnsignedByte(tab[1]) * 0x100;
+    nb += convertByteToUnsignedByte(tab[0]);
+
     return nb;
 }
 
@@ -155,5 +161,11 @@ int WavLooper::readLittleEndianShort(QFile* file)
     file->read(tab, 2);
     int nb = tab[1] * 0x100;
     nb += tab[0];
+
     return nb;
+}
+
+int WavLooper::convertByteToUnsignedByte(int nb)
+{
+    return (nb >= 0 ? nb : 256 + nb);
 }
