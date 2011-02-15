@@ -6,6 +6,7 @@
 #include "abstraction/module/testvca.h"
 #include "abstraction/module/testvcf.h"
 #include "abstraction/module/testvco.h"
+#include "abstraction/module/testwavlooper.h"
 #include "abstraction/module/testwavrecorder.h"
 #include "abstraction/testaudiodeviceprovider.h"
 #include "abstraction/testinport.h"
@@ -72,4 +73,7 @@ int main()
 
     TestSampler testSampler;
     QTest::qExec(&testSampler);
+
+    TestWavLooper testWavLooper;
+    QTest::qExec(&testWavLooper);
 }

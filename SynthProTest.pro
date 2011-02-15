@@ -71,7 +71,8 @@ HEADERS += \
     src/test/abstraction/wavegen/testwavegeneratorsinus.h \
     src/test/abstraction/wavegen/testwavegeneratorsquare.h \
     src/test/abstraction/wavegen/testwavegeneratortriangle.h \
-    src/test/abstraction/module/testsampler.h
+    src/test/abstraction/module/testsampler.h \
+    src/test/abstraction/module/testwavlooper.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -136,7 +137,11 @@ SOURCES += \
     src/test/abstraction/wavegen/testwavegeneratorsquare.cpp \
     src/test/abstraction/wavegen/testwavegeneratortriangle.cpp \
     src/test/test.cpp \
-    src/test/abstraction/module/testsampler.cpp
+    src/test/abstraction/module/testsampler.cpp \
+    src/test/abstraction/module/testwavlooper.cpp
 
 
 INCLUDEPATH += src/main/ src/test/
+
+RESOURCES += \
+    src/resources/SynthProTest.qrc
