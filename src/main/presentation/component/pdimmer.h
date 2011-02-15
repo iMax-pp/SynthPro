@@ -20,8 +20,8 @@ protected:
 signals:
     void valueChanged(int);
 
-protected slots:
-    void changeTitle(int);
+public:
+    void updateTitle(const QString&);
 
 private:
     CDimmer* m_control;

@@ -5,6 +5,7 @@
 #include "control/component/coutport.h"
 #include "control/component/cselector.h"
 #include "presentation/module/pvco.h"
+#include <qmath.h>
 
 CVCO::CVCO(SynthPro* parent)
     : Module(parent)
@@ -24,4 +25,12 @@ void CVCO::initialize(SynthProFactory* factory)
 
     dynamic_cast<PVCO*>(presentation())->initialize(vfm->presentation(), out->presentation(),
                                                     selector->presentation(), k->presentation());
+
+    connect(m_kDimmer, SIGNAL(valueChanged(qreal)), SLOT(kChanged(qreal)));
+}
+
+void CVCO::kChanged(qreal newValue)
+{
+    CDimmer* ck = dynamic_cast<CDimmer*>(m_kDimmer);
+    ck->updatePresentationValue(QString::number((long)(VCO::F0 * qPow(2, newValue))) + " Hz");
 }

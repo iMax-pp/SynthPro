@@ -20,6 +20,8 @@ public:
      */
     qreal realValue(qreal value) const;
 
+    void updatePresentationValue(const QString&);
+
     /// Discretization factor
     static const qreal DISCR = 150;
 
