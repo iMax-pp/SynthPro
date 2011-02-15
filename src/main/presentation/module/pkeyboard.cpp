@@ -13,7 +13,6 @@
 
 PKeyboard::PKeyboard(CKeyboard* control)
     : PModule(control)
-    , m_mapKeyboard(0)
 {
 }
 
@@ -36,28 +35,11 @@ void PKeyboard::initialize(PVirtualPort *outputFrequency, PVirtualPort *outputGa
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFlag(QGraphicsItem::ItemAcceptsInputMethod);
     setFocus();
-
-    // Keyboard management (trigger notes with the computer keyboard).
-    int val = 0; // First key.
-    m_mapKeyboard = new QMap<int, int>();
-    m_mapKeyboard->insert(Qt::Key_Q, val++);
-    m_mapKeyboard->insert(Qt::Key_Z, val++);
-    m_mapKeyboard->insert(Qt::Key_S, val++);
-    m_mapKeyboard->insert(Qt::Key_E, val++);
-    m_mapKeyboard->insert(Qt::Key_D, val++);
-    m_mapKeyboard->insert(Qt::Key_F, val++);
-    m_mapKeyboard->insert(Qt::Key_T, val++);
-    m_mapKeyboard->insert(Qt::Key_G, val++);
-    m_mapKeyboard->insert(Qt::Key_Y, val++);
-    m_mapKeyboard->insert(Qt::Key_H, val++);
-    m_mapKeyboard->insert(Qt::Key_U, val++);
-    m_mapKeyboard->insert(Qt::Key_J, val++);
-    m_mapKeyboard->insert(Qt::Key_K, val++);
 }
 
 void PKeyboard::postInitialize()
 {
-    grabKeyboard();
+    m_pKeyboardView->postInitialize();
 }
 
 void PKeyboard::keyboardKeyPressed(int keyPressed)
@@ -70,20 +52,4 @@ void PKeyboard::keyboardKeyReleased(int keyPressed)
 {
     CKeyboard* control = dynamic_cast<CKeyboard*>(m_control);
     control->keyboardKeyReleased(keyPressed);
-}
-
-void PKeyboard::keyPressEvent(QKeyEvent* event)
-{
-    int key = event->key();
-    if (m_mapKeyboard->contains(key)) {
-        keyboardKeyPressed(m_mapKeyboard->value(key));
-    }
-}
-
-void PKeyboard::keyReleaseEvent(QKeyEvent* event)
-{
-    int key = event->key();
-    if (m_mapKeyboard->contains(key)) {
-        keyboardKeyReleased(m_mapKeyboard->value(key));
-    }
 }

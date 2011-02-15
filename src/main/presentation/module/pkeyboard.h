@@ -23,16 +23,12 @@ public:
       */
     void postInitialize();
 
-    void keyPressEvent(QKeyEvent*);
-    void keyReleaseEvent(QKeyEvent*);
-
 private slots:
     void keyboardKeyPressed(int keyPressed);
     void keyboardKeyReleased(int keyPressed);
 
 private:
     PKeyboardView* m_pKeyboardView;
-    QMap<int, int>* m_mapKeyboard;
 };
 
 #endif // PKEYBOARD_H
