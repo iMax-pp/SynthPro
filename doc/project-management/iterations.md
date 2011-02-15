@@ -127,6 +127,7 @@ Roadmap (todo)
 - Oscillo stabilisé;
 - Molette Oscillo (zoom Y);
 - Symétrie de l'audio engine;
+- Limiteur audio engine/wavrecorder;
 - Icones dans Dockbars (et drag'n'drop d'icones);
 - Entrée MIDI;
 
