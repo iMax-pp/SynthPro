@@ -99,7 +99,9 @@ HEADERS += \
     src/main/presentation/widget/pkeyboardkey.h \
     src/main/presentation/widget/pkeyboardview.h \
     src/main/presentation/widget/poscilloscopeview.h \
-    src/main/presentation/widget/textwidget.h
+    src/main/presentation/widget/textwidget.h \
+    src/main/abstraction/module/sampler.h \
+    src/main/control/module/csampler.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -193,7 +195,9 @@ SOURCES += \
     src/main/presentation/widget/pkeyboardkey.cpp \
     src/main/presentation/widget/pkeyboardview.cpp \
     src/main/presentation/widget/poscilloscopeview.cpp \
-    src/main/presentation/widget/textwidget.cpp
+    src/main/presentation/widget/textwidget.cpp \
+    src/main/abstraction/module/sampler.cpp \
+    src/main/control/module/csampler.cpp
 
 INCLUDEPATH += src/main/
 

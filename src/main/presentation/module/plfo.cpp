@@ -20,9 +20,9 @@ void PLFO::initialize(PVirtualPort* out, PDimmer* k, PDimmer* range,
     TextWidget* title = new TextWidget("LFO", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    k->setSize(70, 70);
-    range->setSize(70, 70);
-    offset->setSize(70, 70);
+    k->setSize(80, 80);
+    range->setSize(80, 80);
+    offset->setSize(80, 80);
     selector->setMaximumSize(120, 155);
 
     // Layout

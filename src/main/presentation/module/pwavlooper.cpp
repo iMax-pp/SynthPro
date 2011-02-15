@@ -24,13 +24,16 @@ void PWavLooper::initialize(PVirtualPort* out, PDimmer* speedDimmer)
     PixmapWidget* floppy = new PixmapWidget(":/src/resources/images/floppy-icon.png", this);
     connect(floppy, SIGNAL(clicked()), this, SLOT(floppyClicked()));
 
-    speedDimmer->setMaximumSize(70, 70);
+    speedDimmer->setMaximumSize(80, 80);
 
     // Layout
-    leftArea()->addAnchors(speedDimmer, leftArea());
+    bottomArea()->addCornerAnchors(floppy, Qt::TopRightCorner, bottomArea(), Qt::TopRightCorner);
+    bottomArea()->addCornerAnchors(floppy, Qt::BottomRightCorner, bottomArea(), Qt::BottomRightCorner);
+    bottomArea()->addCornerAnchors(speedDimmer, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);
+    bottomArea()->addCornerAnchors(speedDimmer, Qt::TopRightCorner, floppy, Qt::TopLeftCorner);
+
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
-    bottomArea()->addAnchors(floppy, bottomArea());
 }
 
 QString PWavLooper::askForFileName()

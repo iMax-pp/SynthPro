@@ -18,8 +18,8 @@ void PDelay::initialize(PVirtualPort* in, PVirtualPort* out, PDimmer* duration, 
     TextWidget* title = new TextWidget("Delay", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    duration->setSize(70, 70);
-    decay->setSize(70, 70);
+    duration->setSize(80, 80);
+    decay->setSize(80, 80);
 
     // Layout
     bottomArea()->addCornerAnchors(duration, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);

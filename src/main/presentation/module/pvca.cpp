@@ -18,7 +18,7 @@ void PVCA::initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* control
     TextWidget* title = new TextWidget("VCA", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    gain->setSize(70, 70);
+    gain->setSize(80, 80);
 
     // Layout
     bottomArea()->addCornerAnchors(controlInput, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);

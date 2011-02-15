@@ -27,7 +27,7 @@ void Mixer::initialize(SynthProFactory* factory)
     for (int i = 0 ; i < MIXER_SIZE ; i++) {
         InPort* in =  factory->createInPort(this, "in" + QString::number(i));
         m_inports.append(in);
-        m_mixInPorts->insert(in, factory->createSliderDimmer("dimmer" + QString::number(i),
+        m_mixInPorts->insert(in, factory->createSliderDimmer("in" + QString::number(i),
                                                              0, 5, 2.5, this));
     }
 }
@@ -37,14 +37,28 @@ void Mixer::ownProcess()
     Buffer buffer = Buffer();
     int nbPortConnected = 0;
 
+    QMap<InPort*, Dimmer*>::iterator ite;
+
+    for (ite = m_mixInPorts->begin() ; ite != m_mixInPorts->end() ; ite++) {
+        if (ite.key()->connections().size() != 0) {
+            nbPortConnected++;
+            for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
+                buffer.data()[i] += ite.key()->buffer()->data()[i]*ite.value()->value();
+            }
+        }
+    }
+
+/*
     for (int j = 0 ; j < inports().size() ;  j++) {
         if (inports().at(j)->connections().size() != 0)  {
             nbPortConnected++;
             for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
                 buffer.data()[i] += inports().at(j)->buffer()->data()[i];
+
             }
         }
     }
+*/
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
         buffer.data()[i] /= nbPortConnected;
         m_outPort->buffer()->data()[i] = buffer.data()[i];

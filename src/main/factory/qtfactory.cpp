@@ -232,6 +232,11 @@ CMixer* QtFactory::createMixer(SynthPro* parent)
 
 }
 
+CSampler* QtFactory::createSampler(SynthPro*)
+{
+    // to be implemented
+}
+
 COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)
 {
     // Create the Oscilloscope Controler

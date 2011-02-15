@@ -1,6 +1,8 @@
 #include "pmodule.h"
 
 #include "control/cmodule.h"
+#include "presentation/widget/pixmapbuttonwidget.h"
+#include "presentation/widget/textwidget.h"
 #include <QApplication>
 #include <QBrush>
 #include <QGraphicsAnchorLayout>
@@ -49,6 +51,10 @@ PModule::PModule(CModule* control)
     shadow->setOffset(3);
     shadow->setBlurRadius(9);
     setGraphicsEffect(shadow);
+
+    PixmapButtonWidget* closeBtn = new PixmapButtonWidget(":/src/resources/images/close-icon.png", this);
+    closeBtn->setPos(-16, -16);
+    connect(closeBtn, SIGNAL(clicked()), SIGNAL(closeBtnClicked()));
 }
 
 void PModule::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)

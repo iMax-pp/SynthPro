@@ -35,6 +35,7 @@ HEADERS += \
     src/main/abstraction/module/vcf.h \
     src/main/abstraction/module/vco.h \
     src/main/abstraction/module/mixer.h \
+    src/main/abstraction/module/sampler.h \
     src/main/abstraction/module/wavlooper.h \
     src/main/abstraction/module/wavrecorder.h \
     src/main/abstraction/sequencer.h \
@@ -69,7 +70,8 @@ HEADERS += \
     src/test/abstraction/wavegen/testwavegeneratorsaw.h \
     src/test/abstraction/wavegen/testwavegeneratorsinus.h \
     src/test/abstraction/wavegen/testwavegeneratorsquare.h \
-    src/test/abstraction/wavegen/testwavegeneratortriangle.h
+    src/test/abstraction/wavegen/testwavegeneratortriangle.h \
+    src/test/abstraction/module/testsampler.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -98,6 +100,7 @@ SOURCES += \
     src/main/abstraction/module/vcf.cpp \
     src/main/abstraction/module/vco.cpp \
     src/main/abstraction/module/mixer.cpp \
+    src/main/abstraction/module/sampler.cpp \
     src/test/abstraction/module/testmixer.cpp \
     src/main/abstraction/module/wavlooper.cpp \
     src/main/abstraction/module/wavrecorder.cpp \
@@ -132,7 +135,8 @@ SOURCES += \
     src/test/abstraction/wavegen/testwavegeneratorsinus.cpp \
     src/test/abstraction/wavegen/testwavegeneratorsquare.cpp \
     src/test/abstraction/wavegen/testwavegeneratortriangle.cpp \
-    src/test/test.cpp
+    src/test/test.cpp \
+    src/test/abstraction/module/testsampler.cpp
 
 
 INCLUDEPATH += src/main/ src/test/

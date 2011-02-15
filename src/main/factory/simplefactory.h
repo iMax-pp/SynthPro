@@ -20,15 +20,19 @@ public:
     ADSR* createADSR(SynthPro*);
     LFO* createLFO(SynthPro*);
     Delay* createDelay(SynthPro*);
-    Mixer* createMixer(SynthPro *);
+    Mixer* createMixer(SynthPro*);
+    Sampler* createSampler(SynthPro*);
     WavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 5);
     WavLooper* createWavLooper(SynthPro* parent);
     Speaker* createSpeaker(SynthPro*);
     Keyboard* createKeyboard(SynthPro*);
-    Dimmer* createDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent);
+    Dimmer* createDialDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent);
+    Dimmer* createSliderDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent);
     Selector* createSelector(QList<int> keys, int defaultKey, QList<QString> values, const QString& name, Module* parent);
     Oscilloscope* createOscilloscope(SynthPro*);
     PushButton* createPushButton(const QString& name, Module* parent);
+
+
 
 };
 

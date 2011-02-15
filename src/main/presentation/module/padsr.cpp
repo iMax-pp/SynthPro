@@ -20,10 +20,10 @@ void PADSR::initialize(PVirtualPort* gate, PVirtualPort* out, PDimmer* attack, P
     TextWidget* title = new TextWidget("ADSR", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    attack->setSize(70, 70);
-    decay->setSize(70, 70);
-    sustain->setSize(70, 70);
-    release->setSize(70, 70);
+    attack->setSize(80, 80);
+    decay->setSize(80, 80);
+    sustain->setSize(80, 80);
+    release->setSize(80, 80);
 
     // Layout
     bottomArea()->addCornerAnchors(attack, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);

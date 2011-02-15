@@ -26,5 +26,5 @@ void PDimmer::setSize(qreal width, qreal height)
 void PDimmer::changeTitle(int value)
 {
     qreal realVal = m_control->realValue(value / CDimmer::DISCR);
-    m_box->setTitle(m_name + ": " + QString::number(realVal, 'g', 3));
+    m_box->setTitle(m_name + ": " + QString::number(realVal, 'g', 4));
 }

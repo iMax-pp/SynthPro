@@ -20,7 +20,7 @@ void PVCO::initialize(PVirtualPort* vfm, PVirtualPort* out, PSelector* selector,
     TextWidget* title = new TextWidget("VCO", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    k->setSize(70, 70);
+    k->setSize(80, 80);
     selector->setMaximumSize(120, 155);
 
     // Layout
