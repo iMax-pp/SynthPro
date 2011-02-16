@@ -67,6 +67,9 @@ protected:
 
     /// initialize or reinitialize the buffer for a new record.
     void initializeBuffer();
+
+    void purgeBuffer(Buffer*);
+    void saveBuffer(const QString&);
 };
 
 #endif // SAMPLER_H

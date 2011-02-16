@@ -42,6 +42,7 @@ void TestSampler::testSampler()
     }
     vco->process();
     sampler->process();
+    speaker->process();
 
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; ++i) {
         out << i << " " <<  sampler->inports().first()->buffer()->data()[i]   << " " << sampler->outports().first()->buffer()->data()[i] << "\n";
@@ -53,6 +54,7 @@ void TestSampler::testSampler()
     }
     vco->process();
     sampler->process();
+    speaker->process();
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; ++i) {
         out << i << " " <<  sampler->inports().first()->buffer()->data()[i]   << " " << sampler->outports().first()->buffer()->data()[i] << "\n";
     }
@@ -63,6 +65,7 @@ void TestSampler::testSampler()
     }
     vco->process();
     sampler->process();
+    speaker->process();
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; ++i) {
         out << i << " " <<  sampler->inports().first()->buffer()->data()[i]   << " " << sampler->outports().first()->buffer()->data()[i] << "\n";
     }
@@ -72,6 +75,7 @@ void TestSampler::testSampler()
     }
     vco->process();
     sampler->process();
+    speaker->process();
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; ++i) {
         out << i << " " <<  sampler->inports().first()->buffer()->data()[i]   << " " << sampler->outports().first()->buffer()->data()[i] << "\n";
     }
@@ -81,6 +85,7 @@ void TestSampler::testSampler()
     }
     vco->process();
     sampler->process();
+    speaker->process();
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; ++i) {
         out << i << " " <<  sampler->inports().first()->buffer()->data()[i]   << " " << sampler->outports().first()->buffer()->data()[i] << "\n";
     }
@@ -90,21 +95,24 @@ void TestSampler::testSampler()
     }
     vco->process();
     sampler->process();
+    speaker->process();
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; ++i) {
         // sampler->inports().at(1)->buffer()->data()[i] = 10;
         keyboard->outports().at(1)->buffer()->data()[i] = 10;
     }
     vco->process();
     sampler->process();
+    speaker->process();
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; ++i) {
         out << i << " " <<  sampler->inports().first()->buffer()->data()[i]   << " " << sampler->outports().first()->buffer()->data()[i] << "\n";
     }
 
     for (int i = 0 ; i < sampler->sampleBuffer()->length() ; i++) {
-        // bufferOut << i << " " << sampler->sampleBuffer()->data()[i] << "\n";
+         bufferOut << i << " " << sampler->sampleBuffer()->data()[i] << "\n";
     }
 
 
     file.close();
     bufferFile.close();
+    speaker->process();
 }
