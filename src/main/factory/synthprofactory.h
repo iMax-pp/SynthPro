@@ -86,6 +86,7 @@ public:
         ADSRId,
         DelayId,
         MixerId,
+        SamplerId,
         LFOId,
         AudioOuputId,
         FileOutputId,

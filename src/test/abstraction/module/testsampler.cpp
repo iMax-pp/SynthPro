@@ -21,33 +21,33 @@ void TestSampler::testSampler()
     keyboard->outports().at(1)->connect(sampler->inports().at(1));
 
     // initialization of the gate port
-    for (int i = 0 ; i < 10 ; ++i){
+    for (int i = 0 ; i < 10 ; ++i) {
       //  sampler->inports().at(1)->buffer()->data()[i] = 10;
         keyboard->outports().at(1)->buffer()->data()[i] = 0;
     }
 
-    for (int i = 10 ; i < 100 ; ++i){
+    for (int i = 10 ; i < 100 ; ++i) {
        // sampler->inports().at(1)->buffer()->data()[i] = 10;
         keyboard->outports().at(1)->buffer()->data()[i] = 10;
 
     }
-    for (int i = 100 ; i < 200 ; ++i){
+    for (int i = 100 ; i < 200 ; ++i) {
        // sampler->inports().at(1)->buffer()->data()[i] = 10;
         keyboard->outports().at(1)->buffer()->data()[i] = 0;
     }
-    for (int i = 200 ; i < 300 ; ++i){
+    for (int i = 200 ; i < 300 ; ++i) {
        // sampler->inports().at(1)->buffer()->data()[i] = 10;
         keyboard->outports().at(1)->buffer()->data()[i] = 10;
     }
-    for (int i = 300 ; i < 400 ; ++i){
+    for (int i = 300 ; i < 400 ; ++i) {
        // sampler->inports().at(1)->buffer()->data()[i] = 10;
         keyboard->outports().at(1)->buffer()->data()[i] = 0;
     }
-    for (int i = 400 ; i < 500 ; ++i){
+    for (int i = 400 ; i < 500 ; ++i) {
        // sampler->inports().at(1)->buffer()->data()[i] = 10;
         keyboard->outports().at(1)->buffer()->data()[i] = 0;
     }
-    for (int i = 500 ; i < 600 ; ++i){
+    for (int i = 500 ; i < 600 ; ++i) {
        // sampler->inports().at(1)->buffer()->data()[i] = 10;
         keyboard->outports().at(1)->buffer()->data()[i] = 10;
     }

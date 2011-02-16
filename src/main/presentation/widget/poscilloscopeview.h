@@ -17,6 +17,8 @@ public:
       */
     void setVisualizedBuffer(Buffer*);
 
+    void setStabilized(bool);
+
     static const int WIDTH = 200;
     static const int HEIGHT = 150;
 

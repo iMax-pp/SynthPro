@@ -4,6 +4,7 @@
 #include "abstraction/module.h"
 
 class InPort;
+class PushButton;
 class SynthPro;
 class SynthProFactory;
 
@@ -24,11 +25,18 @@ public:
       */
     virtual void ownProcess();
 
+    bool stabilized();
+
 public slots:
     virtual void timerExpired();
 
 protected:
     InPort* m_inPort;
+    PushButton* m_stabilizeControl;
+    bool m_stabilized;
+
+private slots:
+    void stabilizedPushed();
 };
 
 #endif // OSCILLOSCOPE_H

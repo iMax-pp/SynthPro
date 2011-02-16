@@ -2,6 +2,7 @@
 
 #include "abstraction/buffer.h"
 #include "control/module/coscilloscope.h"
+#include "presentation/component/ppushbutton.h"
 #include "presentation/component/pvirtualport.h"
 #include "presentation/widget/poscilloscopeview.h"
 #include "presentation/widget/textwidget.h"
@@ -18,7 +19,7 @@ POscilloscope::POscilloscope(COscilloscope* control)
 {
 }
 
-void POscilloscope::initialize(PVirtualPort* input)
+void POscilloscope::initialize(PVirtualPort* input, PPushButton* stabilizeButton)
 {
     TextWidget* title = new TextWidget("OSC", this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
@@ -27,6 +28,7 @@ void POscilloscope::initialize(PVirtualPort* input)
 
     // Layout
     leftArea()->addAnchors(input, leftArea());
+    rightArea()->addAnchors(stabilizeButton, rightArea());
     bottomArea()->addAnchors(m_pOscilloscopeView, bottomArea());
     centerArea()->addAnchors(title, centerArea());
 
@@ -48,6 +50,8 @@ void POscilloscope::refreshOscilloscopeView()
 {
     if (m_mustRefreshOscilloscopeView && m_pOscilloscopeView) {
         m_mustRefreshOscilloscopeView = false;
+
+        m_pOscilloscopeView->setStabilized((dynamic_cast<COscilloscope*>(m_control))->stabilized());
         m_pOscilloscopeView->update(0, 0, m_pOscilloscopeView->WIDTH, m_pOscilloscopeView->HEIGHT);
     }
 }

@@ -118,6 +118,8 @@ date :  semaine 7 (Mercredi 16-)
 
 - Julien N. :
     - Oscillo stabilisé;
+    - Bouton stabilized dans oscillo;
+    - Audio Engine avec bonne fréquence.
 - Maxime :
     - Contrôle et présentation de sampler;
     - Icones dans box à gauche (+drag'n'drop icones);
@@ -131,10 +133,5 @@ date :  semaine 7 (Mercredi 16-)
 
 Roadmap (todo)
 ---------
-- Molette Oscillo (zoom Y);
 - Symétrie de l'audio engine;
 - Entrée MIDI;
-
-Tweaking
-----------
-- Optimisation Filtres (multiplications, ou voir site);

@@ -125,6 +125,11 @@ void POscilloscopeView::setVisualizedBuffer(Buffer* buffer)
     m_inBuffer = buffer;
 }
 
+void POscilloscopeView::setStabilized(bool stabilized)
+{
+    m_stabilized = stabilized;
+}
+
 QRectF POscilloscopeView::boundingRect() const
 {
     return QRectF(-5, -5, WIDTH + 10, HEIGHT + 10);
