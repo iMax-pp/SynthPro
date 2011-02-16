@@ -12,6 +12,10 @@ Module::Module(SynthPro* parent)
 
 Module::~Module()
 {
+}
+
+void Module::prepareDestruction()
+{
     foreach (InPort* port, m_inports) {
         while (port->connections().size() > 0) {
             port->disconnect(port->connections().first());

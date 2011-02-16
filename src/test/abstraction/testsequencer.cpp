@@ -33,7 +33,6 @@ void TestSequencer::testSortTwoModules()
 
     m1.output.connect(&m2.input); // m1 −> m2
 
-    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QCOMPARE(result, QString("12"));

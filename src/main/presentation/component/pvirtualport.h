@@ -13,9 +13,6 @@ public:
     PVirtualPort(CVirtualPort*, QGraphicsItem* parent);
     void initialize(PPort* availablePort);
 
-    void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
-    QRectF boundingRect() const;
-
     inline CVirtualPort* control() const { return m_control; }
 
     void addConnectionPort(PPort*);
