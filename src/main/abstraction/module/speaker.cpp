@@ -95,13 +95,13 @@ void Speaker::timerExpired()
                 nb = (nb > SIGNAL_OUT_UNSIGNED_INTENSITY ? SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
                 nb = (nb < -SIGNAL_OUT_UNSIGNED_INTENSITY ? -SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
 
-                // FIXME : Works, but can't understand why. The output seems to be 8 bits only.
-                // Two channels are required ?
-                m_generationBuffer[iG] = 0; // nb / 256;
-                m_generationBuffer[iG + 1] = nb; // nb & 255;
-                m_generationBuffer[iG + 2] = 0;
-                m_generationBuffer[iG + 3] = nb;
-                iG += 4;
+                // Two channels are required, regardless of the actual sound channel used.
+                int nb1 = (nb / 256) & 255;
+                int nb2 = nb & 255;
+                m_generationBuffer[iG++] = nb2;
+                m_generationBuffer[iG++] = nb1;
+                m_generationBuffer[iG++] = nb2;
+                m_generationBuffer[iG++] = nb1;
             }
 
             m_generationBufferIndex = 0;

@@ -13,7 +13,6 @@ FilterLP229::FilterLP229()
     , m_valueOutM2(0)
     , m_a1(0)
     , m_a2(0)
-    , m_a3(0)
     , m_b1(0)
     , m_b2(0)
     , m_currentCutOffValue(-1000)
@@ -78,18 +77,18 @@ void FilterLP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBa
             }
 
             qreal c = 1.0 / tan(M_PI * f / VCO::REPLAY_FREQUENCY);
-            m_a1 = 1.0 / (1.0 + m_currentResonanceNormalized * c + c * c);
+            qreal cSquare = c * c;
+            m_a1 = 1.0 / (1.0 + m_currentResonanceNormalized * c + cSquare);
             m_a2 = 2 * m_a1;
-            m_a3 = m_a1;
-            m_b1 = 2.0 * (1.0 - c * c) * m_a1;
-            m_b2 = (1.0 - m_currentResonanceNormalized * c + c * c) * m_a1;
+            m_b1 = 2.0 * (1.0 - cSquare) * m_a1;
+            m_b2 = (1.0 - m_currentResonanceNormalized * c + cSquare) * m_a1;
 
             m_mustRecalculateFilter = false;
         }
 
         // Process the filter.
         qreal in = dataIn[i];
-        qreal out = m_a1 * in + m_a2 * m_valueInM1 + m_a3 * m_valueInM2 - m_b1 * m_valueOutM1 - m_b2 * m_valueOutM2;
+        qreal out = m_a1 * in + m_a2 * m_valueInM1 + m_a1 * m_valueInM2 - m_b1 * m_valueOutM1 - m_b2 * m_valueOutM2;
         dataOut[i] = out;
 
         m_valueInM2 = m_valueInM1;

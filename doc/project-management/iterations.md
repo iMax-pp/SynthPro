@@ -133,5 +133,4 @@ date :  semaine 7 (Mercredi 16-)
 
 Roadmap (todo)
 ---------
-- Symétrie de l'audio engine;
-- Entrée MIDI;
+- Symétrie de l'audio engine.
