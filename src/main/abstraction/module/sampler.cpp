@@ -7,6 +7,7 @@
 #include "abstraction/component/outport.h"
 #include "abstraction/component/pushbutton.h"
 #include "abstraction/synthpro.h"
+#include "control/component/cpushbutton.h"
 #include "factory/synthprofactory.h"
 
 #include <QDebug>
@@ -43,6 +44,18 @@ void Sampler::initialize(SynthProFactory* factory)
 
     m_bpmDimmer = factory->createDialDimmer(tr("bpm"), MIN_BPM, MAX_BPM, DEFAULT_BPM, this);
 
+    m_recordButton = factory->createPushButton(tr("record"), this);
+    m_stopButton = factory->createPushButton(tr("stop"), this);
+    m_playButton = factory->createPushButton(tr("play"), this);
+
+    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(true);
+    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(false);
+    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(false);
+
+    connect(m_recordButton, SIGNAL(buttonPushed()), this, SLOT(startRecording()));
+    connect(m_stopButton, SIGNAL(buttonPushed()), this, SLOT(stopRecording()));
+    connect(m_playButton, SIGNAL(buttonPushed()), this, SLOT(startPlaying()));
+
     int buffer_length = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
     m_buffer = new Buffer(buffer_length);
@@ -59,6 +72,9 @@ void Sampler::startRecording()
     m_state = RECORDING;
     initializeBuffer();
 
+    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(false);
+    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(true);
+    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(false);
 }
 
 void Sampler::stopRecording()
@@ -68,12 +84,20 @@ void Sampler::stopRecording()
     }
     purgeBuffer(m_outPort->buffer());
     m_state = WAITING;
+
+    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(true);
+    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(false);
+    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(true);
 }
 
 void Sampler::startPlaying()
 {
     m_state = PLAYING;
     m_bufferIndex = 0;
+
+    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(false);
+    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(true);
+    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(false);
 }
 void Sampler::saveBuffer(Buffer* buff)
 {

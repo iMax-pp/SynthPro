@@ -5,7 +5,7 @@
 
 class CSampler;
 class PDimmer;
-class PixmapButtonWidget;
+class PPushButton;
 class PVirtualPort;
 
 class PSampler : public PModule {
@@ -14,23 +14,11 @@ class PSampler : public PModule {
 public:
     explicit PSampler(CSampler*);
 
-    void initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* gate, PDimmer* bpm);
-
-private slots:
-    void recordClicked();
-    void stopClicked();
-    void playClicked();
+    void initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* gate, PDimmer* bpm,
+                    PPushButton* record, PPushButton* stop, PPushButton* play);
 
 signals:
-    void startRecordingClicked();
-    void stopRecordingClicked();
-    void startPlayingClicked();
     void valueChanged(int);
-
-private:
-    PixmapButtonWidget* m_record;
-    PixmapButtonWidget* m_stop;
-    PixmapButtonWidget* m_play;
 };
 
 #endif // PSAMPLER_H

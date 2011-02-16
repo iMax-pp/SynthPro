@@ -19,10 +19,6 @@ public:
     virtual ~Sampler();
     void initialize(SynthProFactory*);
 
-    void startRecording();
-    void stopRecording();
-    void startPlaying();
-
     /// Process its job(s): record a sample, play a sample
     void ownProcess();
 
@@ -39,6 +35,11 @@ public:
 
     static const int SAMPLER_MAX_DURATION = 250;
 
+protected slots:
+    void startRecording();
+    void stopRecording();
+    void startPlaying();
+
 signals:
     void valueChanged(int);
 
@@ -47,6 +48,9 @@ protected:
     InPort* m_gate;
     OutPort* m_outPort;
     Dimmer* m_bpmDimmer;
+    PushButton* m_recordButton;
+    PushButton* m_stopButton;
+    PushButton* m_playButton;
 
     /// buffer where is saved the sample. Its size is a number of buffers
     Buffer* m_buffer;
