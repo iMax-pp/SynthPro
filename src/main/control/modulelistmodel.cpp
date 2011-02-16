@@ -1,6 +1,7 @@
 #include "modulelistmodel.h"
 
 #include <QAbstractItemModel>
+#include <QDebug>
 #include <QMimeData>
 
 ModuleListModel::ModuleListModel(QObject* parent)
@@ -32,8 +33,12 @@ QVariant ModuleListModel::data(const QModelIndex& index, int role) const
         return QVariant();
     }
 
-    if (role == Qt::DisplayRole) {
-        return m_moduleNames.value(index.row());
+    if (role == Qt::ToolTipRole) {
+        return QString(tr("%1 Module")).arg(m_moduleNames.value(index.row()));
+    }
+
+    if (role == Qt::DecorationRole) {
+        return m_modulePixmaps.value(index.row());
     }
 
     if (role == Qt::UserRole) {
@@ -75,4 +80,11 @@ void ModuleListModel::addModule(const QString& moduleName, QtFactory::ModuleType
 {
     m_moduleNames.append(moduleName);
     m_moduleTypes.append(moduleType);
+
+    // Find the pixmap file to append it in the pixmaps list.
+    QString filename = moduleName;
+    filename = filename.replace(" ", "-").toLower();
+    filename += "-icon.png";
+
+    m_modulePixmaps.append(QPixmap(":/src/resources/images/module/" + filename));
 }
