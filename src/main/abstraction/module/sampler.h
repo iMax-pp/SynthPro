@@ -35,6 +35,7 @@ public:
 
     /// Only for mise au point
     QString state();
+    Buffer* sampleBuffer();
 
     static const int SAMPLER_MAX_DURATION = 250;
 
@@ -66,6 +67,9 @@ protected:
 
     /// initialize or reinitialize the buffer for a new record.
     void initializeBuffer();
+
+    void purgeBuffer(Buffer*);
+    void saveBuffer(const QString&);
 };
 
 #endif // SAMPLER_H
