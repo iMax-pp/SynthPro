@@ -83,14 +83,15 @@ bool CVirtualPort::disconnect(Connection* connection)
                           : dynamic_cast<CVirtualPort*>(connection->source());
     CPort* port = m_connectedPorts.key(connection);
     CPort* othersPort = other->m_connectedPorts.key(connection);
-    if (port && othersPort) {
+    if (port && othersPort && VirtualPort::disconnect(connection)) {
         port->wire()->deleteLater();
         if (!port->reconnecting()) {
             deleteConnectionPort(port);
             other->deleteConnectionPort(othersPort);
         }
+        return true;
     }
-    return VirtualPort::disconnect(connection);
+    return false;
 }
 
 void CVirtualPort::deleteConnectionPort(CPort* port)
