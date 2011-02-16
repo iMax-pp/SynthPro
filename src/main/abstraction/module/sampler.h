@@ -54,22 +54,22 @@ protected:
     /// current index read or write in the class buffer.
     int m_bufferIndex;
 
+
     /// size of the sample in sample
     int m_sampleSize;
     bool m_gateState;
     bool m_oldGateState;
     SamplerState m_state;
-
-    static const qreal MIN_BPM = 30;
-    static const qreal MAX_BPM = 300;
-    static const qreal DEFAULT_BPM = 80;
+    qreal m_positionInBuffer;
+    static const qreal MIN_BPM = 0;
+    static const qreal MAX_BPM = 2;
+    static const qreal DEFAULT_BPM = 1;
 
 
     /// initialize or reinitialize the buffer for a new record.
     void initializeBuffer();
 
     void purgeBuffer(Buffer*);
-    void saveBuffer(const QString&);
 };
 
 #endif // SAMPLER_H
