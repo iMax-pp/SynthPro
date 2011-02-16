@@ -22,7 +22,8 @@ public:
     static const int WIDTH = 200;
     static const int HEIGHT = 150;
 
-    static const int BUFFER_INVISIBLE = 0;
+    static const int SCANNED_WIDTH = 400;
+    static const int MAX_BUFFER_USED = Buffer::DEFAULT_LENGTH - SCANNED_WIDTH;
 
     static const qreal RATIO_Y_MIN = 0.2;
     static const qreal RATIO_Y_MAX = 2.0;

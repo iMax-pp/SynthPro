@@ -15,7 +15,7 @@ PSpeaker::PSpeaker(CSpeaker* control)
 
 void PSpeaker::initialize(PVirtualPort* in)
 {
-    TextWidget* title = new TextWidget("Out", this);
+    TextWidget* title = new TextWidget(tr("Out"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     PixmapWidget* speaker = new PixmapWidget(":/src/resources/images/speaker.png", this);

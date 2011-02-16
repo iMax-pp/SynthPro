@@ -23,7 +23,7 @@ class Speaker : public virtual Module {
     Q_OBJECT
 
 public:
-    static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 127;
+    static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 32000;
 
     Speaker(SynthPro*, QIODevice*, QAudioOutput*);
     virtual ~Speaker();
@@ -32,12 +32,6 @@ public:
       * Instanciate the ports. Used by the factory.
       */
     virtual void initialize(SynthProFactory*);
-
-    /**
-      * FIXME : not very good. Only to prevent triggering the Sequencer BEFORE
-      * we have time to add the module to the SynthPro.
-      */
-    // void setSoundManagement(bool);
 
     /**
       * Process the input signal.
@@ -60,8 +54,8 @@ protected:
 
     Sequencer& m_sequencer;
 
-// private:
-//    qint64 sendToAudioOutput(int nbBytesNeededByOutput);
+private:
+    // qint64 sendToAudioOutput(int nbBytesNeededByOutput);
 };
 
 #endif // SPEAKER_H

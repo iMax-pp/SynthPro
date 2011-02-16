@@ -35,10 +35,10 @@ WavLooper::~WavLooper()
 
 void WavLooper::initialize(SynthProFactory* factory)
 {
-    m_outPort = factory->createOutPortReplicable(this, "out");
+    m_outPort = factory->createOutPortReplicable(this, tr("out"));
     m_outports.append(m_outPort);
 
-    m_sDimmer = factory->createDialDimmer("Speed", S_MIN, S_MAX, S_DEFAULT, this);
+    m_sDimmer = factory->createDialDimmer(tr("Speed"), S_MIN, S_MAX, S_DEFAULT, this);
 }
 
 bool WavLooper::newFile(const QString& filename)

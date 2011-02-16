@@ -15,6 +15,10 @@ public:
     Filter* createFilter(const QString&);
     QHash<int, QString>& selectorConversionMap();
 
+    static const QString LowPass;
+    static const QString HighPass;
+    static const QString SoftSaturation;
+
 protected:
     QHash<int, QString> m_selectorConversionMap;
 };

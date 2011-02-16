@@ -110,7 +110,6 @@ void Clock::internalTimerExpired()
 void Clock::soundCardTimerExpired()
 {
     // Test if the sound card need data.
-
     int iteration = 0;
     int previousNbBytesNeededByOutput = 60000;
     int nbBytesNeededByOutput = adp.audioOutput()->bytesFree();

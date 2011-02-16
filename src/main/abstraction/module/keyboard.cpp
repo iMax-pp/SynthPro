@@ -18,11 +18,11 @@ void Keyboard::initialize(SynthProFactory* factory)
 {
     if (factory) {
         // Creation of the frequency output.
-        m_outPortFrequency = factory->createOutPortReplicable(this, "out");
+        m_outPortFrequency = factory->createOutPortReplicable(this, tr("out"));
         m_outports.append(m_outPortFrequency);
 
         // Creation of the gate output.
-        m_outPortGate = factory->createOutPortGate(this, "gate");
+        m_outPortGate = factory->createOutPortGate(this, tr("gate"));
         m_outports.append(m_outPortGate);
     }
 }

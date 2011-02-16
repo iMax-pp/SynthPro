@@ -1,10 +1,13 @@
 #include "cvcf.h"
 
+#include "abstraction/filter/filterhp229.h"
+#include "abstraction/filter/filterlp229.h"
 #include "abstraction/module/vco.h"
 #include "control/component/cdimmer.h"
 #include "control/component/cinport.h"
 #include "control/component/coutport.h"
 #include "control/component/cselector.h"
+#include "factory/filterfactory.h"
 #include "presentation/module/pvcf.h"
 #include <qmath.h>
 
@@ -26,7 +29,6 @@ void CVCF::initialize(SynthProFactory* factory)
     CDimmer* resonance = dynamic_cast<CDimmer*>(m_rDimmer);
     CDimmer* cutOffDimmer = dynamic_cast<CDimmer*>(m_cutOffDimmer);
 
-    cutOffDimmer->setValueFormat(formatCutOff);
     resonance->setValueFormat(formatResonance);
 
     dynamic_cast<PVCF*>(presentation())->initialize(in->presentation(), cutOff ->presentation(),
@@ -34,12 +36,43 @@ void CVCF::initialize(SynthProFactory* factory)
                                                     resonance->presentation(), cutOffDimmer->presentation());
 }
 
-QString CVCF::formatCutOff(qreal cutOff)
+void CVCF::filterChanged(int selectedValue)
 {
-    return QString::number((long)cutOff) + " Hz"; // FIXME
+    QString filterId = m_filterFactory->selectorConversionMap()[selectedValue];
+    CDimmer* cutOff = dynamic_cast<CDimmer*>(m_cutOffDimmer);
+    if (filterId == FilterFactory::LowPass) {
+        cutOff->setValueFormat(formatLPCutOff);
+    } else if (filterId == FilterFactory::HighPass) {
+        cutOff->setValueFormat(formatHPCutOff);
+    } else {
+        cutOff->setValueFormat(formatEmpty);
+    }
+}
+
+QString CVCF::formatHPCutOff(qreal cutOff)
+{
+    long f = (cutOff - CUT_OFF_MIN)
+             * (FilterHP229::MAX_FREQUENCY - FilterHP229::MIN_FREQUENCY)
+             / (CUT_OFF_MAX - CUT_OFF_MIN)
+             + FilterHP229::MIN_FREQUENCY;
+    return QString::number(f) + " Hz";
+}
+
+QString CVCF::formatLPCutOff(qreal cutOff)
+{
+    long f = (cutOff - CUT_OFF_MIN)
+             * (FilterLP229::MAX_FREQUENCY - FilterLP229::MIN_FREQUENCY)
+             / (CUT_OFF_MAX - CUT_OFF_MIN)
+             + FilterLP229::MIN_FREQUENCY;
+    return QString::number(f) + " Hz";
+}
+
+QString CVCF::formatEmpty(qreal)
+{
+    return QString();
 }
 
 QString CVCF::formatResonance(qreal res)
 {
-    return QString::number(res, 'g', 2) + " ?"; // FIXME
+    return QString::number(res, 'g', 2);
 }
