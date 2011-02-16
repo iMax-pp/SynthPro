@@ -25,7 +25,7 @@ void CLFO::initialize(SynthProFactory* factory)
     CDimmer* offset= dynamic_cast<CDimmer*>(m_offsetDimmer);
 
     k->setValueFormat(formatK);
-    range->setValueFormat(formatRange);
+    range->setValueFormat(CDimmer::percentageFormat);
     offset->setValueFormat(formatOffset);
 
     dynamic_cast<PLFO*>(presentation())->initialize(out->presentation(), k->presentation(),
@@ -35,15 +35,10 @@ void CLFO::initialize(SynthProFactory* factory)
 
 QString CLFO::formatK(qreal k)
 {
-    return QString::number(LFO::F0 * qPow(2, k)) + " Hz";
-}
-
-QString CLFO::formatRange(qreal range)
-{
-    return QString::number(range, 'g', 2); // FIXME Calculer en décibels ?
+    return QString::number(LFO::F0 * qPow(2, k), 'g', 2) + " Hz";
 }
 
 QString CLFO::formatOffset(qreal offset)
 {
-    return QString::number(offset, 'g', 2); // FIXME Quelle unité ? des millisecondes ?
+    return QString::number(offset, 'g', 2) + " V";
 }
