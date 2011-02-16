@@ -1,6 +1,7 @@
 #include "cwavrecorder.h"
 
 #include "control/component/cinport.h"
+#include "control/component/cpushbutton.h"
 #include "presentation/module/pwavrecorder.h"
 
 CWavRecorder::CWavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
@@ -15,13 +16,13 @@ void CWavRecorder::initialize(SynthProFactory* factory)
     WavRecorder::initialize(factory);
 
     CInPort* inPort = dynamic_cast<CInPort*>(m_inPort);
+    CPushButton* recordButton = dynamic_cast<CPushButton*>(m_recordButton);
+    CPushButton* stopButton = dynamic_cast<CPushButton*>(m_stopButton);
 
     PWavRecorder* pre = dynamic_cast<PWavRecorder*>(presentation());
-    pre->initialize(inPort->presentation());
+    pre->initialize(inPort->presentation(), recordButton->presentation(), stopButton->presentation());
 
     connect(pre, SIGNAL(newFileClicked()), this, SLOT(newFile()));
-    connect(pre, SIGNAL(startRecordingClicked()), this, SLOT(startRecording()));
-    connect(pre, SIGNAL(stopRecordingClicked()), this, SLOT(stopRecording()));
 
     newFile();
 }
@@ -32,14 +33,4 @@ void CWavRecorder::newFile()
     if (!fileName.isNull()) {
         WavRecorder::newFile(fileName);
     }
-}
-
-void CWavRecorder::startRecording()
-{
-    WavRecorder::startRecording();
-}
-
-void CWavRecorder::stopRecording()
-{
-    WavRecorder::stopRecording();
 }

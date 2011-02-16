@@ -4,7 +4,7 @@
 #include "presentation/pmodule.h"
 
 class CWavRecorder;
-class PixmapButtonWidget;
+class PPushButton;
 class PVirtualPort;
 
 class PWavRecorder : public PModule {
@@ -13,22 +13,14 @@ class PWavRecorder : public PModule {
 public:
     explicit PWavRecorder(CWavRecorder*);
 
-    void initialize(PVirtualPort* in);
+    void initialize(PVirtualPort* in, PPushButton* record, PPushButton* stop);
     QString askForFileName();
 
 private slots:
     void floppyClicked();
-    void recordClicked();
-    void stopClicked();
 
 signals:
     void newFileClicked();
-    void startRecordingClicked();
-    void stopRecordingClicked();
-
-private:
-    PixmapButtonWidget* m_record;
-    PixmapButtonWidget* m_stop;
 };
 
 #endif // PWAVRECORDER_H

@@ -4,6 +4,7 @@
 #include "abstraction/module.h"
 
 class InPort;
+class PushButton;
 class QFile;
 class SynthProFactory;
 
@@ -31,6 +32,12 @@ public:
     void newFile(const QString&);
 
     /**
+     * Save the first input port buffer into a file.
+     */
+    void ownProcess();
+
+protected slots:
+    /**
      * Start the recording into the current file.
      */
     void startRecording();
@@ -41,13 +48,10 @@ public:
      */
     void stopRecording();
 
-    /**
-     * Save the first input port buffer into a file.
-     */
-    void ownProcess();
-
 protected:
     InPort* m_inPort;
+    PushButton* m_recordButton;
+    PushButton* m_stopButton;
 
     /**
      * Write the right size of the chunks and data,

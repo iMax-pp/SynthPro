@@ -18,8 +18,6 @@ public:
 
 protected slots:
     void newFile();
-    void startRecording();
-    void stopRecording();
 };
 
 #endif // CWAVRECORDER_H

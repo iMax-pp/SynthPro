@@ -7,6 +7,7 @@
 #include "abstraction/component/outport.h"
 #include "abstraction/component/pushbutton.h"
 #include "abstraction/synthpro.h"
+#include "control/component/cpushbutton.h"
 #include "factory/synthprofactory.h"
 
 #include <QDebug>
@@ -22,7 +23,6 @@ Sampler::Sampler(SynthPro* synth)
     , m_oldGateState(false)
     , m_positionInBuffer(0)
 {
-
 }
 
 Sampler::~Sampler()
@@ -43,9 +43,22 @@ void Sampler::initialize(SynthProFactory* factory)
 
     m_bpmDimmer = factory->createDialDimmer(tr("bpm"), MIN_BPM, MAX_BPM, DEFAULT_BPM, this);
 
+    m_recordButton = factory->createPushButton(tr("record"), this);
+    m_stopButton = factory->createPushButton(tr("stop"), this);
+    m_playButton = factory->createPushButton(tr("play"), this);
+
+    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(true);
+    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(false);
+    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(false);
+
+    connect(m_recordButton, SIGNAL(buttonPushed()), this, SLOT(startRecording()));
+    connect(m_stopButton, SIGNAL(buttonPushed()), this, SLOT(stopRecording()));
+    connect(m_playButton, SIGNAL(buttonPushed()), this, SLOT(startPlaying()));
+
     int buffer_length = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
     m_buffer = new Buffer(buffer_length);
+
     for (int i = 0; i < buffer_length; i++) {
         m_buffer->data()[i] = 0;
     }
@@ -59,6 +72,9 @@ void Sampler::startRecording()
     m_state = RECORDING;
     initializeBuffer();
 
+    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(false);
+    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(true);
+    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(false);
 }
 
 void Sampler::stopRecording()
@@ -66,22 +82,28 @@ void Sampler::stopRecording()
     if (m_state == RECORDING) {
         // saveBuffer(m_buffer);
     }
+
     purgeBuffer(m_outPort->buffer());
     m_state = WAITING;
+
+    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(true);
+    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(false);
+    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(true);
 }
 
 void Sampler::startPlaying()
 {
     m_state = PLAYING;
     m_bufferIndex = 0;
+
+    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(false);
+    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(true);
+    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(false);
 }
 
 void Sampler::ownProcess()
 {
     qreal speed = m_bpmDimmer->value();
-
-
-
     int sampleMaxInByte = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
     for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
@@ -90,6 +112,7 @@ void Sampler::ownProcess()
         } else {
             m_gateState = false;
         }
+
         bool gateUp = m_gateState && !m_oldGateState;
 
         if (m_state == RECORDING && (gateUp || m_sampleSize == sampleMaxInByte)) {
@@ -119,7 +142,9 @@ void Sampler::ownProcess()
 
         switch (m_state) {
         case WAITING : break;
+
         case EMPTY : break;
+
         case PLAYING :
             m_positionInBuffer += speed;
             if (m_positionInBuffer >= m_sampleSize) {
@@ -134,23 +159,26 @@ void Sampler::ownProcess()
 //            if (m_bufferIndex >= m_sampleSize / Buffer::DEFAULT_LENGTH) {
 //                m_bufferIndex = 0;
 //            }
+
             break;
+
         case RECORDING :
             m_buffer->data()[Buffer::DEFAULT_LENGTH * m_bufferIndex + i] = m_inPort->buffer()->data()[i];
           //  qDebug() << "buffer << " << m_inPort->buffer()->data()[i];
             emit valueChanged(m_sampleSize);
+
             // if we still record at the end of the buffer : increment m_bufferIndex
             if (i == Buffer::DEFAULT_LENGTH - 1) {
                 m_bufferIndex++;
             }
             m_sampleSize++;
             break;
+
         default : break;
         } // switch
+
         m_oldGateState = m_gateState;
-    } // forQFile file("file.xxx");
-
-
+    } // for
 } // ownprocess()
 
 void Sampler::initializeBuffer()
@@ -169,14 +197,15 @@ QString Sampler::state()
     default: return "error";
     }
 }
+
 Buffer* Sampler::sampleBuffer()
 {
     return m_buffer;
 }
+
 void Sampler::purgeBuffer(Buffer* buf)
 {
-    for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
+    for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
         buf->data()[i] = 0;
     }
 }
-

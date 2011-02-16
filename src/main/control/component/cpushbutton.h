@@ -11,6 +11,8 @@ public:
     PPushButton* presentation() const;
     void setPresentation(PPushButton*);
 
+    void setEnabled(bool);
+
 private:
     PPushButton* m_presentation;
 };

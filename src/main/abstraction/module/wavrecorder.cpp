@@ -3,8 +3,10 @@
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/buffer.h"
 #include "abstraction/component/inport.h"
+#include "abstraction/component/pushbutton.h"
 #include "abstraction/module/speaker.h"
 #include "abstraction/module/vco.h"
+#include "control/component/cpushbutton.h"
 #include "factory/synthprofactory.h"
 
 #include <QDebug>
@@ -39,6 +41,12 @@ void WavRecorder::initialize(SynthProFactory* factory)
     // Creation of an Input.
     m_inPort = factory->createInPortReplicable(this, tr("in"));
     m_inports.append(m_inPort);
+
+    m_recordButton = factory->createPushButton(tr("record"), this);
+    m_stopButton = factory->createPushButton(tr("stop"), this);
+
+    connect(m_recordButton, SIGNAL(buttonPushed()), this, SLOT(startRecording()));
+    connect(m_stopButton, SIGNAL(buttonPushed()), this, SLOT(stopRecording()));
 }
 
 void WavRecorder::newFile(const QString& fileName)
@@ -63,17 +71,23 @@ void WavRecorder::newFile(const QString& fileName)
         qWarning("Unable to create output file.");
     } else {
         createWAVHeader(m_outputFile);
+        dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(true);
+        dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(false);
     }
 }
 
 void WavRecorder::startRecording()
 {
     m_isRecording = true;
+    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(false);
+    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(true);
 }
 
 void WavRecorder::stopRecording()
 {
     m_isRecording = false;
+    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(false);
+    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(false);
     closeWAVFile();
 }
 

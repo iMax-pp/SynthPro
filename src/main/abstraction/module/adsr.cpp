@@ -31,12 +31,13 @@ void ADSR::initialize(SynthProFactory* factory)
 
     m_manualControl = factory->createPushButton(tr("Manual"), this);
 }
+
 /// Comment !
 void ADSR::ownProcess()
 {
-    int attackInSample = m_attackDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    int decayInSample = m_decayDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
-    int releaseInSample = m_releaseDimmer->value()*AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int attackInSample = m_attackDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int decayInSample = m_decayDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int releaseInSample = m_releaseDimmer->value() * AudioDeviceProvider::OUTPUT_FREQUENCY;
 
     int bufferIndex = 0;
     qreal currentValue = m_manualControl->pushed() ? 1 : 0;
@@ -76,6 +77,7 @@ void ADSR::ownProcess()
                 outports().first()->buffer()->data()[bufferIndex] = 1;
             }
             break;
+
         case DECAY :
             if (m_decayDimmer->value() != 0) {
                 qreal attack = attackInSample;
@@ -86,9 +88,11 @@ void ADSR::ownProcess()
                 outports().first()->buffer()->data()[bufferIndex] = m_sustainDimmer->value();
             }
             break;
+
         case SUSTAIN :
             outports().first()->buffer()->data()[bufferIndex] = m_sustainDimmer->value();
             break;
+
         case RELEASE :
             if (m_decayDimmer->value() != 0) {
                 outports().first()->buffer()->data()[bufferIndex] =
@@ -97,8 +101,12 @@ void ADSR::ownProcess()
                 outports().first()->buffer()->data()[bufferIndex] = 0;
             }
             break;
+
         case IDLE :
             outports().first()->buffer()->data()[bufferIndex] = 0;
+            break;
+
+        default:
             break;
         }
 

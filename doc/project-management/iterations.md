@@ -123,7 +123,7 @@ date :  semaine 7 (Mercredi 16-)
 - Maxime :
     - Contrôle et présentation de sampler;
     - Icones dans box à gauche (+drag'n'drop icones);
-    - Save/Load;
+    - Remplacer les PixmapButtonWidget (interaction pas assez PAC), par des PushButton (PAC par excellence);
 - Julien RF. :
     - Tweaking de la présentation des dimmers (Hz, dB, %, s…);
     - Tweaking de la présentation des widgets;
