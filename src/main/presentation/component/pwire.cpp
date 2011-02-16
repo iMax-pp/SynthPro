@@ -29,8 +29,8 @@ void PWire::updatePosition(const QPointF& point)
                              PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
 
     QPainterPath path(in);
-    QPointF c1 = QPointF(in.x(), std::max(in.y(), m_endPoint.y()) + 10);
-    QPointF c2 = QPointF(m_endPoint.x(), std::max(in.y(), m_endPoint.y()) + 10);
+    QPointF c1 = QPointF(in.x(), std::max(in.y(), m_endPoint.y()) + 15);
+    QPointF c2 = QPointF(m_endPoint.x(), std::max(in.y(), m_endPoint.y()) + 15);
 
     // Draw a new path for our wire.
     path.cubicTo(c1, c2, m_endPoint);
