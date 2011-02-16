@@ -27,13 +27,6 @@ public:
     void ownProcess();
 
     /**
-     * Set the Filter to this VCF.
-     * The VCF will then take care of deleting it.
-     * @deprecated
-     */
-    void setFilter(Filter*);
-
-    /**
     * @return The current value of the dimmer
     */
     qreal resonance() const;
@@ -59,13 +52,13 @@ public:
 
     static const qreal CUT_OFF_MIN = -4000; // In order to reach easily low frequencies.
     static const qreal CUT_OFF_MAX = 4000;
-    static const qreal CUT_OFF_DEFAULT = 1000;
+    static const qreal CUT_OFF_DEFAULT = -4000;
 
-public slots :
+protected slots:
     /**
     * slot, connected to a signal emitted by the selector to inform his value changed.
     */
-    void filterChanged(int);
+    virtual void filterChanged(int);
 
 protected:
     Filter* m_filter;

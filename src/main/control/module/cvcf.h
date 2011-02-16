@@ -9,8 +9,14 @@ public:
     explicit CVCF(SynthPro*);
 
     void initialize(SynthProFactory*);
+
+protected:
+    void filterChanged(int selectedValue);
+
 private:
-    static QString formatCutOff(qreal);
+    static QString formatLPCutOff(qreal);
+    static QString formatHPCutOff(qreal);
+    static QString formatEmpty(qreal);
     static QString formatResonance(qreal);
 };
 

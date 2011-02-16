@@ -31,20 +31,20 @@ void VCF::initialize(SynthProFactory* factory)
     m_out = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_out);
 
-    /// Creation of the Selector
+    // Creation of the Selector
     m_filterSelector = factory->createSelector(m_filterFactory->selectorConversionMap().keys(), 0,
                                                m_filterFactory->selectorConversionMap().values(), "Filter Type", this);
 
-    /// Connection of the Selector
+    // Connection of the Selector
     connect(m_filterSelector, SIGNAL(choiceChanged(int)), this, SLOT(filterChanged(int)));
 
-    /// Creation of the Dimmer
+    // Creation of the Dimmer
     m_rDimmer = factory->createDialDimmer("Res", R_MIN, R_MAX, R_DEFAULT, this);
 
-    /// Creation of the CutOff Dimmer
+    // Creation of the CutOff Dimmer
     m_cutOffDimmer = factory->createDialDimmer("Cut", CUT_OFF_MIN, CUT_OFF_MAX, CUT_OFF_DEFAULT, this);
 
-    setFilter("FilterLP229");
+    setFilter(FilterFactory::LowPass);
 }
 
 VCF::~VCF()
@@ -57,18 +57,6 @@ VCF::~VCF()
 void VCF::ownProcess()
 {
     m_filter->apply(m_inPort->buffer(), m_inCutOffPort->buffer(), m_cutOffDimmer->value(), m_rDimmer->value(), m_out->buffer());
-}
-
-/*
- * DEPRECATED
- */
-void VCF::setFilter(Filter* filter)
-{
-    if (m_filter) {
-        delete m_filter;
-    }
-
-    m_filter = filter;
 }
 
 qreal VCF::resonance() const

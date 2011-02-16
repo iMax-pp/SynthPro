@@ -37,6 +37,7 @@ Connection* VirtualPort::connect(VirtualPort* other)
 {
     Connection* connection = 0;
     if (connectable(other)) {
+        // We don’t need to manually add the connection to our m_connections list because it automatically adds itself on creation
         if (out()) {
             connection = m_factory->createConnection(dynamic_cast<OutPort*>(this), dynamic_cast<InPort*>(other));
         } else {
@@ -50,6 +51,7 @@ Connection* VirtualPort::connect(VirtualPort* other)
 bool VirtualPort::disconnect(Connection* connection)
 {
     if (m_connections.contains(connection)) {
+        // We don’t need to manually remove the connection from our m_connections list because it automatically removes itself on destruction
         delete connection;
         emit connectionsChanged();
         return true;
