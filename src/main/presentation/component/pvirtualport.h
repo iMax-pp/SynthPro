@@ -15,7 +15,7 @@ public:
 
     inline CVirtualPort* control() const { return m_control; }
 
-    void addConnectionPort(PPort*);
+    void insertConnectionPort(int, PPort*);
     void removeConnectionPort(PPort*);
 
 private:

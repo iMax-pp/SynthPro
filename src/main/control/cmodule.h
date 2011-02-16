@@ -5,6 +5,7 @@
 #include "presentation/pmodule.h"
 
 #include <QObject>
+#include <QPointer>
 
 class CModule : public virtual Module {
 public:
@@ -21,7 +22,7 @@ public:
     void move();
 
 private:
-    PModule* m_presentation;
+    QPointer<PModule> m_presentation;
 };
 
 #endif // CMODULE_H

@@ -21,6 +21,7 @@ public:
 
 private:
     QList<QString> m_moduleNames;
+    QList<QPixmap> m_modulePixmaps;
     QList<QtFactory::ModuleType> m_moduleTypes;
 };
 

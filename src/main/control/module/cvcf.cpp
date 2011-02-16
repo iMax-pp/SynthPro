@@ -38,6 +38,7 @@ void CVCF::initialize(SynthProFactory* factory)
 
 void CVCF::filterChanged(int selectedValue)
 {
+    VCF::filterChanged(selectedValue);
     QString filterId = m_filterFactory->selectorConversionMap()[selectedValue];
     CDimmer* cutOff = dynamic_cast<CDimmer*>(m_cutOffDimmer);
     if (filterId == FilterFactory::LowPass) {

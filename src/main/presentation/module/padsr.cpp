@@ -17,7 +17,7 @@ PADSR::PADSR(CADSR* control)
 void PADSR::initialize(PVirtualPort* gate, PVirtualPort* out, PDimmer* attack, PDimmer* decay,
                        PDimmer* sustain, PDimmer* release, PPushButton* manual)
 {
-    TextWidget* title = new TextWidget("ADSR", this);
+    TextWidget* title = new TextWidget(tr("ADSR"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     attack->setSize(80, 80);

@@ -58,23 +58,22 @@ Connection* CVirtualPort::connect(VirtualPort* other)
         wire->setOutPort(source);
         wire->setInPort(target);
         wire->updatePosition();
-        updateAvailableFeedback();
     }
     return connection;
 }
 
 CPort* CVirtualPort::createConnectionPort(Connection* connection)
 {
-    int idx = m_connections.indexOf(connection);
     CPort* port = m_factory->createPort(this);
-    presentation()->addConnectionPort(port->presentation());
-    m_connectedPorts.insert(idx, port);
+    m_connectedPorts.insert(port, connection);
+    presentation()->insertConnectionPort(m_connections.indexOf(connection), port->presentation());
+    updateAvailableFeedback();
     return port;
 }
 
 void CVirtualPort::disconnect(CPort* port)
 {
-    disconnect(port2Connection(port));
+    disconnect(m_connectedPorts.value(port));
 }
 
 bool CVirtualPort::disconnect(Connection* connection)
@@ -82,22 +81,21 @@ bool CVirtualPort::disconnect(Connection* connection)
     CVirtualPort* other = dynamic_cast<CVirtualPort*>(connection->source()) == this
                           ? dynamic_cast<CVirtualPort*>(connection->target())
                           : dynamic_cast<CVirtualPort*>(connection->source());
-    int idx = m_connections.indexOf(connection);
-    if (VirtualPort::disconnect(connection)) {
-        CPort* port = m_connectedPorts.at(idx);
-        m_connectedPorts.value(idx)->wire()->deleteLater();
+    CPort* port = m_connectedPorts.key(connection);
+    CPort* othersPort = other->m_connectedPorts.key(connection);
+    if (port && othersPort && VirtualPort::disconnect(connection)) {
+        port->wire()->deleteLater();
         if (!port->reconnecting()) {
-            deleteConnectionPort(idx);
-            other->deleteConnectionPort(idx);
+            deleteConnectionPort(port);
+            other->deleteConnectionPort(othersPort);
         }
         return true;
     }
     return false;
 }
 
-void CVirtualPort::deleteConnectionPort(int idx)
+void CVirtualPort::deleteConnectionPort(CPort* port)
 {
-    CPort* port = m_connectedPorts.at(idx);
     removeConnectionPort(port);
     port->deleteLater();
 }
@@ -105,27 +103,9 @@ void CVirtualPort::deleteConnectionPort(int idx)
 void CVirtualPort::removeConnectionPort(CPort* port)
 {
     presentation()->removeConnectionPort(port->presentation());
-    m_connectedPorts.removeOne(port);
+    m_connectedPorts.remove(port);
+    updateAvailableFeedback();
 }
-
-CPort* CVirtualPort::connection2Port(Connection* connection) const
-{
-    int i = m_connections.indexOf(connection);
-    if (i >= 0) {
-        return m_connectedPorts.at(i);
-    }
-    return 0;
-}
-
-Connection* CVirtualPort::port2Connection(CPort* port) const
-{
-    int i = m_connectedPorts.indexOf(port);
-    if (i >= 0) {
-        return m_connections.at(i);
-    }
-    return 0;
-}
-
 
 void CVirtualPort::setPresentation(PVirtualPort* presentation)
 {
@@ -139,7 +119,7 @@ void CVirtualPort::setPresentation(PVirtualPort* presentation)
 
 void CVirtualPort::updateWiresPositions()
 {
-    foreach (CPort* port, m_connectedPorts) {
+    foreach (CPort* port, m_connectedPorts.keys()) {
         port->wire()->updatePosition();
     }
 }
@@ -149,7 +129,7 @@ void CVirtualPort::showCompatibleFeedback(CVirtualPort* from)
     bool isCompatible = compatible(from);
     if (from != this) {
         m_availablePort->showFeedback(isCompatible);
-        foreach (CPort* port, m_connectedPorts) {
+        foreach (CPort* port, m_connectedPorts.keys()) {
             port->showFeedback(isCompatible);
         }
     }
@@ -158,7 +138,7 @@ void CVirtualPort::showCompatibleFeedback(CVirtualPort* from)
 void CVirtualPort::hideFeedback()
 {
     m_availablePort->hideFeedback();
-    foreach (CPort* port, m_connectedPorts) {
+    foreach (CPort* port, m_connectedPorts.keys()) {
         port->hideFeedback();
     }
 }

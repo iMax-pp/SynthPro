@@ -15,7 +15,7 @@ PMixer::PMixer(CMixer* control)
 
 void PMixer::initialize(QMap<PVirtualPort*, PDimmer*>& inports, PVirtualPort* out)
 {
-    TextWidget* title = new TextWidget("Mixer", this);
+    TextWidget* title = new TextWidget(tr("Mixer"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     PVirtualPort* previousIn = 0;

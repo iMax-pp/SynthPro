@@ -42,14 +42,14 @@ void Delay::initialize(SynthProFactory* factory)
     }
 
 
-    m_inPort = factory->createInPortReplicable(this, "in");
+    m_inPort = factory->createInPortReplicable(this, tr("in"));
     m_inports.append(m_inPort);
 
-    m_outPort = factory->createOutPortReplicable(this, "out");
+    m_outPort = factory->createOutPortReplicable(this, tr("out"));
     m_outports.append(m_outPort);
 
-    m_decayDimmer = factory->createDialDimmer("Decay", DECAY_MIN, DECAY_MAX, DECAY_DEFAULT, this);
-    m_durationDimmer = factory->createDialDimmer("Duration", DURATION_MIN, DURATION_MAX, DURATION_DEFAULT, this);
+    m_decayDimmer = factory->createDialDimmer(tr("Decay"), DECAY_MIN, DECAY_MAX, DECAY_DEFAULT, this);
+    m_durationDimmer = factory->createDialDimmer(tr("Duration"), DURATION_MIN, DURATION_MAX, DURATION_DEFAULT, this);
 
 }
 

@@ -15,7 +15,7 @@ PVCA::PVCA(CVCA* control)
 
 void PVCA::initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* controlInput, PDimmer* gain)
 {
-    TextWidget* title = new TextWidget("VCA", this);
+    TextWidget* title = new TextWidget(tr("VCA"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     gain->setSize(80, 80);

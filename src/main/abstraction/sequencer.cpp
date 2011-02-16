@@ -37,7 +37,7 @@ void Sequencer::findWells(const SynthPro* synthpro)
 
 void Sequencer::scheduleModules(const SynthPro* synthpro)
 {
-    qDebug("Sequencer::scheduleModules()");
+    // qDebug("Sequencer::scheduleModules()");
     m_sortedModules.clear();
     m_visitedModules.clear();
     findWells(synthpro);

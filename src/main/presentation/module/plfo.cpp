@@ -17,7 +17,7 @@ PLFO::PLFO(CLFO* control)
 void PLFO::initialize(PVirtualPort* out, PDimmer* k, PDimmer* range,
                       PDimmer* offset, PSelector* selector)
 {
-    TextWidget* title = new TextWidget("LFO", this);
+    TextWidget* title = new TextWidget(tr("LFO"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     k->setSize(80, 80);
