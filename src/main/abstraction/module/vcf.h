@@ -52,7 +52,7 @@ public:
 
     static const qreal CUT_OFF_MIN = -4000; // In order to reach easily low frequencies.
     static const qreal CUT_OFF_MAX = 4000;
-    static const qreal CUT_OFF_DEFAULT = 1000;
+    static const qreal CUT_OFF_DEFAULT = -4000;
 
 protected slots:
     /**
