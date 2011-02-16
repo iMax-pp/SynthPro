@@ -17,7 +17,7 @@ PVCF::PVCF(CVCF* control)
 void PVCF::initialize(PVirtualPort* in, PVirtualPort* cutOff, PVirtualPort* out, PSelector* selector,
                       PDimmer* resonance, PDimmer* cutOffDimmer)
 {
-    TextWidget* title = new TextWidget("VCF", this);
+    TextWidget* title = new TextWidget(tr("VCF"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     cutOffDimmer->setSize(80, 80);

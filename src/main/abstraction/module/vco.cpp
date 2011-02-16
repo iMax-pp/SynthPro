@@ -8,7 +8,7 @@
 #include "factory/synthprofactory.h"
 #include "factory/wavegeneratorfactory.h"
 
-const QString VCO::SHAPE_DEFAULT = "Saw";
+const QString VCO::SHAPE_DEFAULT = WaveGeneratorFactory::Saw;
 
 VCO::VCO(SynthPro* parent)
     : Module(parent)
@@ -23,21 +23,21 @@ VCO::VCO(SynthPro* parent)
 
 void VCO::initialize(SynthProFactory* factory)
 {
-    m_vfm = factory->createInPortReplicable(this, "vfm");
+    m_vfm = factory->createInPortReplicable(this, tr("vfm"));
     m_inports.append(m_vfm);
 
-    m_out = factory->createOutPortReplicable(this, "out");
+    m_out = factory->createOutPortReplicable(this, tr("out"));
     m_outports.append(m_out);
 
     /// Creation of the Selector
     m_shapeSelector = factory->createSelector(m_waveGeneratorFactory->selectorConversionMap().keys(), 0,
-                                              m_waveGeneratorFactory->selectorConversionMap().values(), "Wave Type", this);
+                                              m_waveGeneratorFactory->selectorConversionMap().values(), tr("Wave Type"), this);
 
     /// Connection of the Selector
     connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
 
     /// Creation of the Dimmer
-    m_kDimmer = factory->createDialDimmer("K", K_MIN, K_MAX, K_DEFAULT, this);
+    m_kDimmer = factory->createDialDimmer(tr("K"), K_MIN, K_MAX, K_DEFAULT, this);
 
     setShape(SHAPE_DEFAULT);
 }

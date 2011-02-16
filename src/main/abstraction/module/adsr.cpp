@@ -18,18 +18,18 @@ ADSR::ADSR(SynthPro* parent)
 
 void ADSR::initialize(SynthProFactory* factory)
 {
-    m_gate = factory->createInPortGate(this, "gate");
+    m_gate = factory->createInPortGate(this, tr("gate"));
     m_inports.append(m_gate);
 
-    m_outPort = factory->createOutPortReplicable(this, "out");
+    m_outPort = factory->createOutPortReplicable(this, tr("out"));
     m_outports.append(m_outPort);
 
-    m_attackDimmer = factory->createDialDimmer("Attack", ATTACK_MIN, ATTACK_MAX, ATTACK_DEFAULT, this);
-    m_decayDimmer = factory->createDialDimmer("Decay", DECAY_MIN, DECAY_MAX, DECAY_DEFAULT, this);
-    m_sustainDimmer = factory->createDialDimmer("Sustain", SUSTAIN_MIN, SUSTAIN_MAX, SUSTAIN_DEFAULT, this);
-    m_releaseDimmer = factory->createDialDimmer("Release", RELEASE_MIN, RELEASE_MAX, RELEASE_DEFAULT, this);
+    m_attackDimmer = factory->createDialDimmer(tr("Attack"), ATTACK_MIN, ATTACK_MAX, ATTACK_DEFAULT, this);
+    m_decayDimmer = factory->createDialDimmer(tr("Decay"), DECAY_MIN, DECAY_MAX, DECAY_DEFAULT, this);
+    m_sustainDimmer = factory->createDialDimmer(tr("Sustain"), SUSTAIN_MIN, SUSTAIN_MAX, SUSTAIN_DEFAULT, this);
+    m_releaseDimmer = factory->createDialDimmer(tr("Release"), RELEASE_MIN, RELEASE_MAX, RELEASE_DEFAULT, this);
 
-    m_manualControl = factory->createPushButton("Manual", this);
+    m_manualControl = factory->createPushButton(tr("Manual"), this);
 }
 /// Comment !
 void ADSR::ownProcess()

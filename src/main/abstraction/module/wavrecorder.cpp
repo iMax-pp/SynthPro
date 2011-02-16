@@ -37,7 +37,7 @@ WavRecorder::~WavRecorder()
 void WavRecorder::initialize(SynthProFactory* factory)
 {
     // Creation of an Input.
-    m_inPort = factory->createInPortReplicable(this, "in");
+    m_inPort = factory->createInPortReplicable(this, tr("in"));
     m_inports.append(m_inPort);
 }
 

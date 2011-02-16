@@ -8,7 +8,7 @@
 #include "factory/synthprofactory.h"
 #include "factory/wavegeneratorfactory.h"
 
-const QString LFO::SHAPE_DEFAULT = "Saw";
+const QString LFO::SHAPE_DEFAULT = tr("Saw");
 
 LFO::LFO(SynthPro* parent)
     : Module(parent)

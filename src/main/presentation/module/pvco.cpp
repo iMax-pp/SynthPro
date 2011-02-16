@@ -17,7 +17,7 @@ PVCO::PVCO(CVCO* control)
 
 void PVCO::initialize(PVirtualPort* vfm, PVirtualPort* out, PSelector* selector, PDimmer* k)
 {
-    TextWidget* title = new TextWidget("VCO", this);
+    TextWidget* title = new TextWidget(tr("VCO"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     k->setSize(80, 80);

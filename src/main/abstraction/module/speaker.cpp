@@ -45,7 +45,7 @@ void Speaker::initialize(SynthProFactory* factory)
 
     if (factory) {
         // Creation of an Input.
-        m_inPort = factory->createInPortReplicable(this, "in");
+        m_inPort = factory->createInPortReplicable(this, tr("in"));
         m_inports.append(m_inPort);
 
         // Register to a fast timer to the Clock.

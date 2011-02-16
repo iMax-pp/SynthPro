@@ -28,16 +28,16 @@ Sampler::~Sampler()
 
 void Sampler::initialize(SynthProFactory* factory)
 {
-    m_inPort = factory->createInPort(this, "in");
+    m_inPort = factory->createInPort(this, tr("in"));
     m_inports.append(m_inPort);
 
-    m_outPort = factory->createOutPort(this, "out");
+    m_outPort = factory->createOutPort(this, tr("out"));
     m_outports.append(m_outPort);
 
-    m_gate = factory->createInPortGate(this, "gate");
+    m_gate = factory->createInPortGate(this, tr("gate"));
     m_inports.append(m_gate);
 
-    m_bpmDimmer = factory->createDialDimmer("bpm", MIN_BPM, MAX_BPM, DEFAULT_BPM, this);
+    m_bpmDimmer = factory->createDialDimmer(tr("bpm"), MIN_BPM, MAX_BPM, DEFAULT_BPM, this);
 
     int length = SAMPLER_MAX_DURATION * AudioDeviceProvider::OUTPUT_FREQUENCY;
 

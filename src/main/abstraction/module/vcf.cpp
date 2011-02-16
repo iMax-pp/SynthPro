@@ -22,13 +22,13 @@ VCF::VCF(SynthPro* parent)
 
 void VCF::initialize(SynthProFactory* factory)
 {
-    m_inPort = factory->createInPortReplicable(this, "in");
+    m_inPort = factory->createInPortReplicable(this, tr("in"));
     m_inports.append(m_inPort);
 
-    m_inCutOffPort = factory->createInPortReplicable(this, "in Cutoff");
+    m_inCutOffPort = factory->createInPortReplicable(this, tr("in Cutoff"));
     m_inports.append(m_inCutOffPort);
 
-    m_out = factory->createOutPortReplicable(this, "out");
+    m_out = factory->createOutPortReplicable(this, tr("out"));
     m_outports.append(m_out);
 
     // Creation of the Selector
@@ -39,10 +39,10 @@ void VCF::initialize(SynthProFactory* factory)
     connect(m_filterSelector, SIGNAL(choiceChanged(int)), this, SLOT(filterChanged(int)));
 
     // Creation of the Dimmer
-    m_rDimmer = factory->createDialDimmer("Res", R_MIN, R_MAX, R_DEFAULT, this);
+    m_rDimmer = factory->createDialDimmer(tr("Res"), R_MIN, R_MAX, R_DEFAULT, this);
 
     // Creation of the CutOff Dimmer
-    m_cutOffDimmer = factory->createDialDimmer("Cut", CUT_OFF_MIN, CUT_OFF_MAX, CUT_OFF_DEFAULT, this);
+    m_cutOffDimmer = factory->createDialDimmer(tr("Cut"), CUT_OFF_MIN, CUT_OFF_MAX, CUT_OFF_DEFAULT, this);
 
     setFilter(FilterFactory::LowPass);
 }

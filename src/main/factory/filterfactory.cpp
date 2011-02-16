@@ -5,9 +5,9 @@
 #include "abstraction/filter/filterlp229.h"
 #include "abstraction/filter/filtersoftsaturation.h"
 
-QString FilterFactory::LowPass = "Low Pass";
-QString FilterFactory::HighPass = "High Pass";
-QString FilterFactory::SoftSaturation = "Soft Saturation";
+const QString FilterFactory::LowPass = QObject::tr("Low Pass");
+const QString FilterFactory::HighPass = QObject::tr("High Pass");
+const QString FilterFactory::SoftSaturation = QObject::tr("Soft Saturation");
 
 FilterFactory::FilterFactory()
 {

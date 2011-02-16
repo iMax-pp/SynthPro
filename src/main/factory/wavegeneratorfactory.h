@@ -15,6 +15,10 @@ public:
     WaveGenerator* createWaveGenerator(const QString&);
     QHash<int, QString>& selectorConversionMap();
 
+    static const QString Saw;
+    static const QString Sinus;
+    static const QString Square;
+    static const QString Triangle;
 protected:
     QHash<int, QString> m_selectorConversionMap;
 };
