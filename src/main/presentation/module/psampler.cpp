@@ -35,14 +35,17 @@ void PSampler::initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* gat
     connect(m_play, SIGNAL(clicked()), this, SLOT(playClicked()));
     m_play->setActivated(false);    
 
-    // Layout
+    // TODO Put a ProgressBar instead of a TextWidget.
+    TextWidget* progressBar = new TextWidget("---------------", this);
 
+    // Layout
     bottomArea()->addCornerAnchors(m_record, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);
     bottomArea()->addCornerAnchors(m_record, Qt::TopRightCorner, m_stop, Qt::TopLeftCorner);
     bottomArea()->addCornerAnchors(m_stop, Qt::TopRightCorner, m_play, Qt::TopLeftCorner);
-    bottomArea()->addCornerAnchors(m_play, Qt::TopRightCorner, bpm, Qt::TopLeftCorner);
-    bottomArea()->addCornerAnchors(gate, Qt::TopLeftCorner, m_record, Qt::BottomLeftCorner);
-    bottomArea()->addCornerAnchors(gate, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
+    bottomArea()->addCornerAnchors(progressBar, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
+    bottomArea()->addCornerAnchors(progressBar, Qt::BottomRightCorner, gate, Qt::BottomLeftCorner);
+    bottomArea()->addCornerAnchors(gate, Qt::BottomRightCorner, bpm, Qt::BottomLeftCorner);
+
     bottomArea()->addCornerAnchors(bpm, Qt::TopRightCorner, bottomArea(), Qt::TopRightCorner);
     bottomArea()->addCornerAnchors(bpm, Qt::BottomRightCorner, bottomArea(), Qt::BottomRightCorner);
 
