@@ -9,9 +9,6 @@ public:
     explicit CADSR(SynthPro*);
 
     void initialize(SynthProFactory*);
-private:
-    static QString formatTime(qreal);
-    static QString formatSustain(qreal);
 };
 
 #endif // CADSR_H

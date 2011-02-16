@@ -24,9 +24,11 @@ void CMixer::initialize(SynthProFactory* factory)
     QMap<PVirtualPort*, PDimmer*> pMixerMap;
 
     for (it = m_mixInPorts->begin(); it != m_mixInPorts->end(); it++) {
+        CDimmer* dimmer = dynamic_cast<CDimmer*>(it.value());
+        dimmer->setValueFormat(CDimmer::percentageFormat);
         pMixerMap.insert(
                 dynamic_cast<CInPort*>(it.key())->presentation(),
-                dynamic_cast<CDimmer*>(it.value())->presentation());
+                dimmer->presentation());
     }
 
     COutPort* out = dynamic_cast<COutPort*>(m_outPort);

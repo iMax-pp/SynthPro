@@ -23,13 +23,8 @@ void CVCA::initialize(SynthProFactory* factory)
     CInPort* controlInput = dynamic_cast<CInPort*>(m_controlInput);
     CDimmer* gain = dynamic_cast<CDimmer*>(m_gainDimmer);
 
-    gain->setValueFormat(formatGain);
+    gain->setValueFormat(CDimmer::gainFormat);
 
     dynamic_cast<PVCA*>(presentation())->initialize(in->presentation(), out->presentation(),
                                                     controlInput->presentation(), gain->presentation());
-}
-
-QString CVCA::formatGain(qreal gain)
-{
-    return QString::number(gain, 'g', 2) + " dB"; // FIXME
 }

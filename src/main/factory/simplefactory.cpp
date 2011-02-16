@@ -184,7 +184,9 @@ Oscilloscope* SimpleFactory::createOscilloscope(SynthPro* synthPro)
 
 Keyboard* SimpleFactory::createKeyboard(SynthPro* synthpro)
 {
-    return new Keyboard(synthpro);
+    Keyboard* keyboard =  new Keyboard(synthpro);
+    keyboard->initialize(this);
+    return keyboard;
 }
 
 PushButton* SimpleFactory::createPushButton(const QString&, Module *parent)
