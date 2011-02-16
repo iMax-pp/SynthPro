@@ -32,7 +32,7 @@ void FilterHP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBa
 
     out(n) = a1 * in + a2 * in(n-1) + a3 * in(n-2) - b1*out(n-1) - b2*out(n-2)
 
-    Highpass :
+    Highpass. Base algorithm :
       c = tan(pi * f / sample_rate);
 
       a1 = 1.0 / ( 1.0 + r * c + c * c);
@@ -41,7 +41,7 @@ void FilterHP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBa
       b1 = 2.0 * ( c*c - 1.0) * a1;
       b2 = ( 1.0 - r * c + c * c) * a1;
 
-      Optimised :
+      Optimised (not used, doesn't sound as good) :
         c = tan(pi * f / sample_rate);
 
         c = ( c + r ) * c;
@@ -86,6 +86,7 @@ void FilterHP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBa
                 f = MAX_FREQUENCY;
             }
 
+            // Filter factors calculation.
             qreal c = tan(M_PI * f / VCO::REPLAY_FREQUENCY);
             m_a1 = 1.0 / (1.0 + m_currentResonanceNormalized * c + c * c);
             m_a2 = -2 * m_a1;
