@@ -69,7 +69,6 @@ protected:
     void initializeBuffer();
 
     void purgeBuffer(Buffer*);
-    void saveBuffer(const QString&);
 };
 
 #endif // SAMPLER_H
