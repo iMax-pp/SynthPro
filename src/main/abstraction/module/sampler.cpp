@@ -53,7 +53,7 @@ void Sampler::initialize(SynthProFactory * factory)
 void Sampler::ownProcess()
 {
     int sampleMaxInByte = SAMPLER_MAX_DURATION*Buffer::DEFAULT_LENGTH;
-    for (int i = 0 ; i < 10 ; ++i){
+ /*   for (int i = 0 ; i < 10 ; ++i){
         m_gate->buffer()->data()[i] = 0;
     }
     for (int i = 10 ; i < 100 ; ++i){
@@ -65,7 +65,7 @@ void Sampler::ownProcess()
     for (int i = 300 ; i < Buffer::DEFAULT_LENGTH ; ++i){
         m_gate->buffer()->data()[i] = 10;
     }
-
+*/
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
 
         if (m_gate->buffer()->data()[i] != 0) {
@@ -74,7 +74,9 @@ void Sampler::ownProcess()
             m_gateState = false;
         }
         bool gateUp = m_gateState && !m_oldGateState;
-        qDebug() <<  m_gate->buffer()->data()[i]  << state() << " " << gateUp;
+        //qDebug() <<  m_gate->buffer()->data()[i]  << state() << " " << gateUp << " " << m_gateState << " " << m_oldGateState;
+        //if (i == 300) {qDebug() << "*********300*************";}
+
 
         if (m_state == RECORDING) {
             if (m_stop->pushed() || gateUp || m_bufferIndex == sampleMaxInByte) {
@@ -92,6 +94,9 @@ void Sampler::ownProcess()
         }
         if (m_state == WAITING) {
             if (m_play->pushed() || gateUp) {
+                qDebug() << "start playing ";
+                // event gateUp has been used
+                gateUp = !gateUp;
                 m_state = PLAYING;
             }
             if (m_record->pushed()) {
