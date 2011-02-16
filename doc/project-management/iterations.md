@@ -135,7 +135,3 @@ Roadmap (todo)
 ---------
 - Symétrie de l'audio engine;
 - Entrée MIDI;
-
-Tweaking
-----------
-- Optimisation Filtres (multiplications, ou voir site);
