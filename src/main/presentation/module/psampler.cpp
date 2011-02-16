@@ -1,10 +1,13 @@
 #include "psampler.h"
 
+#include "abstraction/audiodeviceprovider.h"
+#include "abstraction/module/sampler.h"
 #include "control/module/csampler.h"
 #include "presentation/component/pdimmer.h"
 #include "presentation/component/pvirtualport.h"
 #include "presentation/widget/pixmapbuttonwidget.h"
 #include "presentation/widget/pixmapwidget.h"
+#include "presentation/widget/progressbarwidget.h"
 #include "presentation/widget/textwidget.h"
 
 #include <QFileDialog>
@@ -35,8 +38,8 @@ void PSampler::initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* gat
     connect(m_play, SIGNAL(clicked()), this, SLOT(playClicked()));
     m_play->setActivated(false);    
 
-    // TODO Put a ProgressBar instead of a TextWidget.
-    TextWidget* progressBar = new TextWidget("---------------", this);
+    ProgressBarWidget* progressBar = new ProgressBarWidget(0, Sampler::SAMPLER_MAX_DURATION * AudioDeviceProvider::OUTPUT_FREQUENCY, this);
+    connect(this, SIGNAL(valueChanged(int)), progressBar, SLOT(setValue(int)));
 
     // Layout
     bottomArea()->addCornerAnchors(m_record, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);

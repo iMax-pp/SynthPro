@@ -28,6 +28,7 @@ void CSampler::initialize(SynthProFactory* factory)
     connect(pre, SIGNAL(startRecordingClicked()), this, SLOT(startRecording()));
     connect(pre, SIGNAL(stopRecordingClicked()), this, SLOT(stopRecording()));
     connect(pre, SIGNAL(startPlayingClicked()), this, SLOT(startPlaying()));
+    connect(this, SIGNAL(valueChanged(int)), pre, SIGNAL(valueChanged(int)));
 }
 
 void CSampler::startRecording()
