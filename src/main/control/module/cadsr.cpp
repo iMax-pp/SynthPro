@@ -26,6 +26,11 @@ void CADSR::initialize(SynthProFactory* factory)
     CDimmer* release = dynamic_cast<CDimmer*>(m_releaseDimmer);
     CPushButton* manual = dynamic_cast<CPushButton*>(m_manualControl);
 
+    attack->setValueFormat(CDimmer::timeFormat);
+    decay->setValueFormat(CDimmer::timeFormat);
+    sustain->setValueFormat(CDimmer::percentageFormat);
+    release->setValueFormat(CDimmer::timeFormat);
+
     dynamic_cast<PADSR*>(presentation())->initialize(gate->presentation(), out->presentation(),
                                                      attack->presentation(), decay->presentation(),
                                                      sustain->presentation(), release->presentation(),

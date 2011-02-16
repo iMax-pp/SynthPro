@@ -4,13 +4,15 @@
 #include "abstraction/module.h"
 #include "presentation/pmodule.h"
 
+#include <QObject>
+
 class CModule : public virtual Module {
 public:
     explicit CModule(SynthPro*);
     virtual ~CModule();
 
     void setPresentation(PModule*);
-    PModule* presentation() const;
+    inline PModule* presentation() const { return m_presentation; }
 
     /*
      * When moving the module around (event intercepted by PModule), this method
@@ -20,16 +22,6 @@ public:
 
 private:
     PModule* m_presentation;
-};
-
-class Closer : public QObject {
-    Q_OBJECT
-public:
-    Closer(CModule*);
-protected slots:
-    void onCloseClicked();
-private:
-    CModule* m_module;
 };
 
 #endif // CMODULE_H

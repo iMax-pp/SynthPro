@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/src/resources">
+        <file>wav/testWavLooper.wav</file>
+    </qresource>
+</RCC>

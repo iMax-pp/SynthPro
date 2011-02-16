@@ -31,7 +31,7 @@ void TestVCO::testVCO()
 
     QVERIFY(result.startsWith(QString::number(VCO::SIGNAL_INTENSITY))); // TODO check that *all* the result is as expected (not only the first value)
 
-    delete synth;
+//    delete synth;
 }
 void TestVCO::testVCOwithDimmer()
 {
@@ -67,7 +67,7 @@ void TestVCO::testVCOwithDimmer()
 
     QVERIFY(nbFronts != 0);
 
-    delete synth;
+//    delete synth;
 }
 void TestVCO::testVCOWithSelector()
 {
@@ -88,5 +88,5 @@ void TestVCO::testVCOWithSelector()
 
     QVERIFY(vco->shape() == "Sinus");
 
-    delete synth;
+//    delete synth;
 }

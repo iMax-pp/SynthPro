@@ -22,16 +22,18 @@ PWire::PWire(CWire* control, QGraphicsScene* scene)
 
 void PWire::updatePosition(const QPointF& point)
 {
+    // Keep the endpoint to calculate the shape() thereafter.
+    m_endPoint = point;
+
     QPointF in = mapFromItem(m_control->inPort()->presentation(),
                              PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
-    QPointF out = point;
 
     QPainterPath path(in);
-    QPointF c1 = QPointF(in.x(), std::max(in.y(), out.y()) + 10);
-    QPointF c2 = QPointF(out.x(), std::max(in.y(), out.y()) + 10);
+    QPointF c1 = QPointF(in.x(), std::max(in.y(), m_endPoint.y()) + 10);
+    QPointF c2 = QPointF(m_endPoint.x(), std::max(in.y(), m_endPoint.y()) + 10);
 
     // Draw a new path for our wire.
-    path.cubicTo(c1, c2, out);
+    path.cubicTo(c1, c2, m_endPoint);
     setPath(path);
 }
 
@@ -56,4 +58,24 @@ void PWire::showMoveFeedback()
     QPen p = pen();
     p.setColor(Qt::darkRed);
     setPen(p);
+}
+
+QPainterPath PWire::shape() const
+{
+    QPointF in = mapFromItem(m_control->inPort()->presentation(),
+                             PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2);
+
+    // Calculate an inner path.
+    QPainterPath p1(in);
+    QPointF c1 = QPointF(in.x(), std::max(in.y(), m_endPoint.y()) + 5);
+    QPointF c2 = QPointF(m_endPoint.x(), std::max(in.y(), m_endPoint.y()) + 5);
+
+    p1.cubicTo(c1, c2, m_endPoint);
+
+    // And substract it to the real path.
+    QPainterPath p2 = path();
+    p2 -= p1;
+
+    // To obtain a path approximately that of the wire.
+    return p2;
 }

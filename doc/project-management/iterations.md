@@ -74,7 +74,7 @@ date :  semaine 6 (mercredi 9 - jeudi 10)
 
 Itération 5
 -----------
-date :  semaine 6 (vendredi 11 - )
+date :  semaine 6 (vendredi 11)
 
 - Julien N. :
     - Oscillo;
@@ -91,35 +91,50 @@ date :  semaine 6 (vendredi 11 - )
 
 Itération 6
 -----------
-date :  semaine 7 (Lundi 14-)
+date :  semaine 7 (Lundi 14 - Mardi 15)
 
 - Julien N. :
     - Mappage clavier virtual/clavier réel;
-    - ?
+    - WavLooper;
+    - Limiteur audio engine/wavrecorder;
+    - Optimiser `InPort::fetch()` (en deux passes);
 - Maxime :
     - Feedback dimmer;
     - WavRecorder dans fichier sélectionné, possibilité de lancer/arrêter l'enregistrement;
     - On/Off SynthPro;
-    - Wire plus jolis;
-    - Fond d'écran (léger et subtil, beige…);
+    - Wires plus jolis et fond d'écran (léger et subtil, beige…);
+    - Action New;
 - Julien RF. :
     - Suppression des ports répliqués;
     - Feedback des ports (MouseHover);
+    - Suppression des modules;
 - Cyrille :
-    - Fixer VCA (multiplier input par somme du dimmer et control), en une passe !
     - Delay;
     - Mixer;
 
+Itération 7
+-----------
+date :  semaine 7 (Mercredi 16-)
+
+- Julien N. :
+    - Oscillo stabilisé;
+- Maxime :
+    - Contrôle et présentation de sampler;
+    - Icones dans box à gauche (+drag'n'drop icones);
+    - Save/Load;
+- Julien RF. :
+    - Tweaking de la présentation des dimmers (Hz, dB, %, s…);
+    - Tweaking de la présentation des widgets;
+- Cyrille :
+    - Fixer VCA (multiplier input par somme du dimmer et control), en une passe;
+    - Sampler;
+
 Roadmap (todo)
 ---------
-- Oscillo stabilisé;
 - Molette Oscillo (zoom Y);
 - Symétrie de l'audio engine;
-- Icones dans Dockbars (et drag'n'drop d'icones);
 - Entrée MIDI;
 
 Tweaking
 ----------
 - Optimisation Filtres (multiplications, ou voir site);
-- Optimiser `InPort::fetch()` (en deux passes);
-- Penser à Normaliser le signal de la sortie Out, mais également le BufferRecorder.

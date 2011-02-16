@@ -31,7 +31,7 @@ PModule::PModule(CModule* control)
     m_centerArea->setParentLayoutItem(layout);
     m_centerArea->setSpacing(0);
     m_bottomArea->setParentLayoutItem(layout);
-    m_bottomArea->setSpacing(0);
+    m_bottomArea->setSpacing(5);
     m_rightArea->setParentLayoutItem(layout);
     m_rightArea->setSpacing(0);
 
@@ -52,9 +52,14 @@ PModule::PModule(CModule* control)
     shadow->setBlurRadius(9);
     setGraphicsEffect(shadow);
 
-    PixmapButtonWidget* closeBtn = new PixmapButtonWidget(":/src/resources/images/close-icon.png", this);
-    closeBtn->setPos(-16, -16);
-    connect(closeBtn, SIGNAL(clicked()), SIGNAL(closeBtnClicked()));
+    m_closeBtn = new PixmapButtonWidget(":/src/resources/images/close-icon.png", this);
+    m_closeBtn->setPos(-16, -16);
+    connect(m_closeBtn, SIGNAL(clicked()), SIGNAL(closeBtnClicked()));
+}
+
+QRectF PModule::boundingRect() const
+{
+    return rect() | mapFromItem(m_closeBtn, m_closeBtn->boundingRect()).boundingRect();
 }
 
 void PModule::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)

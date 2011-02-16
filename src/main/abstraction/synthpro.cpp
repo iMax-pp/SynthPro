@@ -31,6 +31,12 @@ void SynthPro::add(Module* module)
     }
 }
 
+void SynthPro::remove(QObject* module)
+{
+    m_modules.removeOne(static_cast<Module*>(module));
+    module->deleteLater();
+}
+
 void SynthPro::connectionsChanged()
 {
     emit connectionsChanged(this);

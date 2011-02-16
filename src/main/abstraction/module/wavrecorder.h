@@ -42,12 +42,6 @@ public:
     void stopRecording();
 
     /**
-     * This method can be called to manually close the currently processed file.
-     * Otherwise, the file is closed when a new one is created or when deleting the module.
-     */
-    void closeFile();
-
-    /**
      * Save the first input port buffer into a file.
      */
     void ownProcess();

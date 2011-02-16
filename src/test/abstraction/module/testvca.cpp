@@ -31,5 +31,5 @@ void TestVCA::testVCA()
     output.process();
     QVERIFY(result.startsWith("-0.118651"));
 
-    delete synth;
+//    delete synth;
 }

@@ -9,6 +9,8 @@ public:
     explicit CVCO(SynthPro*);
 
     void initialize(SynthProFactory*);
+private:
+    static QString formatK(qreal);
 };
 
 #endif // CVCO_H

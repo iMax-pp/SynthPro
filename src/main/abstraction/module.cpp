@@ -12,6 +12,16 @@ Module::Module(SynthPro* parent)
 
 Module::~Module()
 {
+    foreach (InPort* port, m_inports) {
+        while (port->connections().size() > 0) {
+            port->disconnect(port->connections().first());
+        }
+    }
+    foreach (OutPort* port, m_outports) {
+        while (port->connections().size() > 0) {
+            port->disconnect(port->connections().first());
+        }
+    }
 }
 
 const QList<Module*> Module::requirements() const

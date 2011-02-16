@@ -42,7 +42,7 @@ void VCF::initialize(SynthProFactory* factory)
     m_rDimmer = factory->createDialDimmer("Res", R_MIN, R_MAX, R_DEFAULT, this);
 
     /// Creation of the CutOff Dimmer
-    m_cutOffDimmer = factory->createDialDimmer("CutOff", CUT_OFF_MIN, CUT_OFF_MAX, CUT_OFF_DEFAULT, this);
+    m_cutOffDimmer = factory->createDialDimmer("Cut", CUT_OFF_MIN, CUT_OFF_MAX, CUT_OFF_DEFAULT, this);
 
     setFilter("FilterLP229");
 }
@@ -56,9 +56,6 @@ VCF::~VCF()
 
 void VCF::ownProcess()
 {
-    // m_vfm->buffer()->add(m_rDimmer->value());
-    // m_out->swapBuffers();
-    // m_waveGenerator->generate(m_vfm->buffer(), m_out->buffer());
     m_filter->apply(m_inPort->buffer(), m_inCutOffPort->buffer(), m_cutOffDimmer->value(), m_rDimmer->value(), m_out->buffer());
 }
 

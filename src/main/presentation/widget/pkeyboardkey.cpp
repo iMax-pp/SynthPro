@@ -2,7 +2,7 @@
 
 #include <QPainter>
 
-PKeyboardKey::PKeyboardKey(QGraphicsItem* parent, int keyNumber, bool whiteKey, bool assignKey)
+PKeyboardKey::PKeyboardKey(QGraphicsItem* parent, int keyNumber, bool whiteKey)
     : QGraphicsWidget(parent)
     , m_keyNumber(keyNumber)
     , m_width(0)
@@ -10,6 +10,8 @@ PKeyboardKey::PKeyboardKey(QGraphicsItem* parent, int keyNumber, bool whiteKey, 
     , m_pressed(false)
     , m_fillKeyBrushPressed(new QBrush(Qt::blue))
 {
+    setMinimumSize(boundingRect().size());
+
     if (whiteKey) {
         m_width = WHITE_KEY_WIDTH;
         m_height = WHITE_KEY_HEIGHT;
@@ -20,13 +22,6 @@ PKeyboardKey::PKeyboardKey(QGraphicsItem* parent, int keyNumber, bool whiteKey, 
         m_height = BLACK_KEY_HEIGHT;
         m_fillKeyBrush = new QBrush(Qt::lightGray);
     }
-
-    // If AssignKey is true, a key of the keyboard (to type with) is assigned to (this).
-    if (assignKey) {
-
-    }
-
-    setMinimumSize(boundingRect().size());
 }
 
 PKeyboardKey::~PKeyboardKey()
@@ -47,12 +42,22 @@ QRectF PKeyboardKey::boundingRect() const
 
 void PKeyboardKey::mousePressEvent(QGraphicsSceneMouseEvent*)
 {
+    PKeyboardKey::keyPressed();
+}
+
+void PKeyboardKey::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
+{
+    PKeyboardKey::keyReleased();
+}
+
+void PKeyboardKey::keyPressed()
+{
     m_pressed = true;
     update();
     emit keyboardKeyPressed(m_keyNumber);
 }
 
-void PKeyboardKey::mouseReleaseEvent(QGraphicsSceneMouseEvent*)
+void PKeyboardKey::keyReleased()
 {
     m_pressed = false;
     update();

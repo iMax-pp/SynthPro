@@ -156,6 +156,13 @@ void CSynthPro::hideFeedback()
     }
 }
 
+void CSynthPro::newScheme()
+{
+    foreach (Module* module, modules()) {
+        remove(dynamic_cast<Module*>(module));
+    }
+}
+
 void CSynthPro::play(bool resume)
 {
     if (resume) {
