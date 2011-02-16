@@ -8,7 +8,7 @@ class InPort;
 
 /**
  * This class holds a connection between two VirtualPorts.
- * It automatically adds itself to the VirtualPorts connections at creation
+ * It <strong>automatically</strong> adds itself to the VirtualPorts connections at creation
  * and removes itself from the VirtualPorts connections at destruction.
  */
 class Connection : public QObject {

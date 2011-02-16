@@ -68,7 +68,9 @@ protected:
      */
     bool compatible(const VirtualPort* other) const;
 
+    /// Called by the connection at creation
     virtual void addConnection(Connection*);
+    /// Called by the connection at destruction
     virtual void removeConnection(Connection*);
 
 protected:
