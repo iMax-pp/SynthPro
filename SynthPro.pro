@@ -29,6 +29,7 @@ HEADERS += \
     src/main/abstraction/module/lfo.h \
     src/main/abstraction/module/mixer.h \
     src/main/abstraction/module/oscilloscope.h \
+    src/main/abstraction/module/sampler.h \
     src/main/abstraction/module/speaker.h \
     src/main/abstraction/module/vca.h \
     src/main/abstraction/module/vcf.h \
@@ -60,6 +61,7 @@ HEADERS += \
     src/main/control/module/clfo.h \
     src/main/control/module/cmixer.h \
     src/main/control/module/coscilloscope.h \
+    src/main/control/module/csampler.h \
     src/main/control/module/cspeaker.h \
     src/main/control/module/cvca.h \
     src/main/control/module/cvcf.h \
@@ -85,6 +87,7 @@ HEADERS += \
     src/main/presentation/module/plfo.h \
     src/main/presentation/module/pmixer.h \
     src/main/presentation/module/poscilloscope.h \
+    src/main/presentation/module/psampler.h \
     src/main/presentation/module/pspeaker.h \
     src/main/presentation/module/pvca.h \
     src/main/presentation/module/pvcf.h \
@@ -99,9 +102,7 @@ HEADERS += \
     src/main/presentation/widget/pkeyboardkey.h \
     src/main/presentation/widget/pkeyboardview.h \
     src/main/presentation/widget/poscilloscopeview.h \
-    src/main/presentation/widget/textwidget.h \
-    src/main/abstraction/module/sampler.h \
-    src/main/control/module/csampler.h
+    src/main/presentation/widget/textwidget.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -126,6 +127,7 @@ SOURCES += \
     src/main/abstraction/module/lfo.cpp \
     src/main/abstraction/module/mixer.cpp \
     src/main/abstraction/module/oscilloscope.cpp \
+    src/main/abstraction/module/sampler.cpp \
     src/main/abstraction/module/speaker.cpp \
     src/main/abstraction/module/vca.cpp \
     src/main/abstraction/module/vcf.cpp \
@@ -156,6 +158,7 @@ SOURCES += \
     src/main/control/module/clfo.cpp \
     src/main/control/module/cmixer.cpp \
     src/main/control/module/coscilloscope.cpp \
+    src/main/control/module/csampler.cpp \
     src/main/control/module/cspeaker.cpp \
     src/main/control/module/cvca.cpp \
     src/main/control/module/cvcf.cpp \
@@ -181,6 +184,7 @@ SOURCES += \
     src/main/presentation/module/plfo.cpp \
     src/main/presentation/module/pmixer.cpp \
     src/main/presentation/module/poscilloscope.cpp \
+    src/main/presentation/module/psampler.cpp \
     src/main/presentation/module/pspeaker.cpp \
     src/main/presentation/module/pvca.cpp \
     src/main/presentation/module/pvcf.cpp \
@@ -195,9 +199,7 @@ SOURCES += \
     src/main/presentation/widget/pkeyboardkey.cpp \
     src/main/presentation/widget/pkeyboardview.cpp \
     src/main/presentation/widget/poscilloscopeview.cpp \
-    src/main/presentation/widget/textwidget.cpp \
-    src/main/abstraction/module/sampler.cpp \
-    src/main/control/module/csampler.cpp
+    src/main/presentation/widget/textwidget.cpp
 
 INCLUDEPATH += src/main/
 

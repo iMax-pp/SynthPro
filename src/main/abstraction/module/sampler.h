@@ -19,9 +19,12 @@ public:
     virtual ~Sampler();
     void initialize(SynthProFactory*);
 
-    /// Process its job(s) : record a sample, play a sample
-    void ownProcess();
+    void startRecording();
+    void stopRecording();
+    void startPlaying();
 
+    /// Process its job(s): record a sample, play a sample
+    void ownProcess();
 
     enum SamplerState {
         EMPTY,
@@ -29,8 +32,8 @@ public:
         PLAYING,
         WAITING
     };
-    /// Only for mise au point
 
+    /// Only for mise au point
     QString state();
 
 protected:
@@ -40,13 +43,9 @@ protected:
     InPort* m_gate;
     OutPort* m_outPort;
     Dimmer* m_bpmDimmer;
-    PushButton* m_record;
-    PushButton* m_stop;
-    PushButton* m_play;
     Buffer* m_buffer;
     int m_bufferIndex;
     int m_sampleSize;
-
 
     SamplerState m_state;
 

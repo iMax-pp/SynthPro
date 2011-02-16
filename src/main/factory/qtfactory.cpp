@@ -18,6 +18,7 @@
 #include "presentation/module/plfo.h"
 #include "presentation/module/pmixer.h"
 #include "presentation/module/poscilloscope.h"
+#include "presentation/module/psampler.h"
 #include "presentation/module/pspeaker.h"
 #include "presentation/module/pvca.h"
 #include "presentation/module/pvcf.h"
@@ -232,14 +233,24 @@ CMixer* QtFactory::createMixer(SynthPro* parent)
 
 }
 
-CSampler* QtFactory::createSampler(SynthPro*)
+CSampler* QtFactory::createSampler(SynthPro* parent)
 {
-    // to be implemented
+    // Create the Sampler
+    CSampler* sampler = new CSampler(parent);
+
+    // Create its presentation
+    PSampler* p = new PSampler(sampler);
+    sampler->setPresentation(p);
+
+    // Initialize it (ports creation)
+    sampler->initialize(this);
+
+    return sampler;    
 }
 
 COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)
 {
-    // Create the Oscilloscope Controler
+    // Create the Oscilloscope Controller
     COscilloscope* co = new COscilloscope(parent);
 
     // Create its presentation

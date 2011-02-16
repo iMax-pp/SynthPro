@@ -35,19 +35,35 @@ void Sampler::initialize(SynthProFactory * factory)
 
     m_bpmDimmer = factory->createDialDimmer("bpm", MIN_BPM, MAX_BPM, DEFAULT_BPM, this);
 
-    m_buffer = new Buffer(SAMPLER_MAX_DURATION*AudioDeviceProvider::OUTPUT_FREQUENCY);
-    for (int i = 0 ; i < SAMPLER_MAX_DURATION*AudioDeviceProvider::OUTPUT_FREQUENCY ; i++) {
+    int length = SAMPLER_MAX_DURATION * AudioDeviceProvider::OUTPUT_FREQUENCY;
+
+    m_buffer = new Buffer(length);
+    for (int i = 0; i < length; i++) {
         m_buffer->data()[i] = 0;
     }
-    m_record = factory->createPushButton("record", this);
-    m_stop = factory->createPushButton("stop", this);
-    m_play = factory->createPushButton("play", this);
 
     m_state = EMPTY;
 }
 
+void Sampler::startRecording()
+{
+    m_state = RECORDING;
+    initializeBuffer();
+}
+
+void Sampler::stopRecording()
+{
+    m_state = WAITING;
+}
+
+void Sampler::startPlaying()
+{
+    m_state = PLAYING;
+}
+
 void Sampler::ownProcess()
 {
+    /*
     if (m_state == RECORDING) {
         if (m_stop->pushed()) {
             m_state = WAITING;
@@ -74,9 +90,8 @@ void Sampler::ownProcess()
         if (m_stop->pushed()) {
             m_state = WAITING;
         }
-
     }
-
+    */
 }
 
 void Sampler::initializeBuffer()
@@ -92,5 +107,6 @@ QString Sampler::state()
     case PLAYING : return "playing";
     case RECORDING : return "recording";
     case EMPTY : return "empty";
+    default: return "error";
     }
 }
