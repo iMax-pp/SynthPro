@@ -18,14 +18,19 @@ public:
     void setPresentation(PVirtualPort*);
     inline PVirtualPort* presentation() const { return m_presentation; }
 
+    /**
+     * Override of the base implementation providing a GUI feedback.
+     * This method creates the CPorts (one for each side) and the CWire used by the new connection
+     */
     Connection* connect(VirtualPort* other);
+    /// Disconnect the connection using a given CPort (this method is used by CPort)
     void disconnect(CPort*);
+    /// Disconnect a given connection (and remove its presentation)
     bool disconnect(Connection*);
     // bool reconnect(Connection*, VirtualPort* other);
 
+    /// Call this method when this module moved and you want its connections wires to move accordingly
     void updateWiresPositions();
-
-    void updateAvailableFeedback();
 
     /**
      * Show feedback, called when drawing a wire from a port.
@@ -38,10 +43,16 @@ public:
      */
     void hideFeedback();
 
+    /// Remove a given CPort (without deleting it)
     void removeConnectionPort(CPort*);
 
 protected:
+    /// Call this method to hide or show the available port of this VirtualPort
+    void updateAvailableFeedback();
+
+    /// Internal method creating a CPort for a given Connection
     CPort* createConnectionPort(Connection*);
+    /// Internal method deleting a CPort for a given Connection
     void deleteConnectionPort(int idx);
 
     CPort* connection2Port(Connection*) const;
@@ -50,7 +61,11 @@ protected:
 private:
     PVirtualPort* m_presentation;
     QtFactory* m_factory;
+
+    /// Set of ports used by the connections of this VirtualPort
     QList<CPort*> m_connectedPorts;
+
+    /// The CPort representing the availableness of this VirtualPort
     CPort* m_availablePort;
 };
 

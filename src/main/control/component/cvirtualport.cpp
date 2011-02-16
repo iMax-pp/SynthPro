@@ -58,7 +58,6 @@ Connection* CVirtualPort::connect(VirtualPort* other)
         wire->setOutPort(source);
         wire->setInPort(target);
         wire->updatePosition();
-        updateAvailableFeedback();
     }
     return connection;
 }
@@ -69,6 +68,7 @@ CPort* CVirtualPort::createConnectionPort(Connection* connection)
     CPort* port = m_factory->createPort(this);
     presentation()->addConnectionPort(port->presentation());
     m_connectedPorts.insert(idx, port);
+    updateAvailableFeedback();
     return port;
 }
 
@@ -106,6 +106,7 @@ void CVirtualPort::removeConnectionPort(CPort* port)
 {
     presentation()->removeConnectionPort(port->presentation());
     m_connectedPorts.removeOne(port);
+    updateAvailableFeedback();
 }
 
 CPort* CVirtualPort::connection2Port(Connection* connection) const
