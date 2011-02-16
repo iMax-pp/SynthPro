@@ -8,7 +8,7 @@
 POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
     : QGraphicsWidget(parent)
     , m_ratioY(RATIO_Y_DEFAULT)
-    , m_stabilized(true)
+    , m_stabilized(false)
 {
     setMinimumSize(boundingRect().size());
 #if QT_VERSION >= 0x040700
@@ -27,7 +27,7 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
 
     int middleY = HEIGHT / 2;
     int previousY = middleY;
-    int usedBufferSize = m_inBuffer->length();
+    int usedBufferSize;
 
     if (m_inBuffer) {
         qreal* data = m_inBuffer->data();
@@ -35,19 +35,19 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
         int indexBuffer = 1;
 
         if (m_stabilized) {
-            int size = m_inBuffer->length() / 2; // We only test a part of the buffer.
+            int scannedSize = SCANNED_WIDTH; // We only test a part of the buffer.
 
-            // Find the first high-shelf in a specified interval.
+            // If a high-shelf is present at the start, no need to test it.
             bool found = false;
             qreal previousValue = data[0];
-            qreal currentValue = data[indexBuffer];
+            qreal currentValue = data[1];
             if (previousValue > currentValue) {
                 found = true;
                 previousValue = currentValue;
             }
 
             // First pass, find high-shelf
-            while (!found && (indexBuffer < size)) {
+            while (!found && (indexBuffer < scannedSize)) {
                 currentValue = data[indexBuffer];
                 if (previousValue < currentValue) {
                     indexBuffer++;
@@ -58,58 +58,32 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
             }
 
             // Second pass, find low-shelf.
-            // if (found) {
-                found = false;
-                while (!found && (indexBuffer < size)) {
-                    currentValue = data[indexBuffer];
-                    if (previousValue >= currentValue) {
-                        indexBuffer++;
-                        previousValue = currentValue;
-                    } else {
-                        found = true;
-                    }
-                }
-            // }
-
-            /*
-                    // Second inner pass.
-                    // foundInner = false;
-                    innerIndexBuffer = indexBuffer;
-                    qreal innerPreviousValue = previousValue;
-                    qreal innerCurrentValue;
-                    while (!found && (innerIndexBuffer < size)) {
-                        innerCurrentValue = data[innerIndexBuffer];
-                        if (innerPreviousValue > innerCurrentValue) {
-                            found = true;
-                        } else {
-                            innerIndexBuffer++;
-                        }
-                        innerPreviousValue = innerCurrentValue;
-                    }
-                    // found = true;
-                    // qDebug() << "FOUND !" << indexBuffer << "  Pre = " << previousValue << "  Current = " << currentValue;
-                } else {
+            found = false;
+            while (!found && (indexBuffer < scannedSize)) {
+                currentValue = data[indexBuffer];
+                if (previousValue >= currentValue) {
                     indexBuffer++;
+                    previousValue = currentValue;
+                } else {
+                    found = true;
                 }
-                previousValue = currentValue;
-                indexBuffer++;
-
-
-
             }
-
-            */
-
 
             if (!found) {
                 indexBuffer = 0;
-            } else {
-                // indexBuffer = innerIndexBuffer;
             }
         }
 
-        step = ((usedBufferSize - indexBuffer) / WIDTH);
+        if (m_stabilized) {
+            // If stabilized, we need to cut a bit of the signal in order to always display
+            // the same amount of data.
+            usedBufferSize = m_inBuffer->length() - indexBuffer;
+            usedBufferSize = usedBufferSize > MAX_BUFFER_USED ? MAX_BUFFER_USED : usedBufferSize;
+        } else {
+            usedBufferSize = m_inBuffer->length();
+        }
 
+        step = (usedBufferSize / WIDTH);
         for (int i = 0; i < WIDTH ; i++) {
             int y = (int)(middleY - data[(int)indexBuffer] * currentRatioY);
             painter->drawLine(i - 1, previousY, i, y);

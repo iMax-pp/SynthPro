@@ -15,7 +15,7 @@ PDelay::PDelay(CDelay* control)
 
 void PDelay::initialize(PVirtualPort* in, PVirtualPort* out, PDimmer* duration, PDimmer* decay)
 {
-    TextWidget* title = new TextWidget("Delay", this);
+    TextWidget* title = new TextWidget(tr("Delay"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     duration->setSize(80, 80);

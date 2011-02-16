@@ -12,16 +12,16 @@ VCA::VCA(SynthPro* parent)
 
 void VCA::initialize(SynthProFactory* factory)
 {
-    m_inPort = factory->createInPortReplicable(this, "in");
+    m_inPort = factory->createInPortReplicable(this, tr("in"));
     m_inports.append(m_inPort);
 
-    m_controlInput = factory->createInPort(this, "control");
+    m_controlInput = factory->createInPort(this, tr("control"));
     m_inports.append(m_controlInput);
 
-    m_outPort = factory->createOutPortReplicable(this, "out");
+    m_outPort = factory->createOutPortReplicable(this, tr("out"));
     m_outports.append(m_outPort);
 
-    m_gainDimmer = factory->createDialDimmer("Gain", GAIN_MIN, GAIN_MAX, GAIN_DEFAULT, this);
+    m_gainDimmer = factory->createDialDimmer(tr("Gain"), GAIN_MIN, GAIN_MAX, GAIN_DEFAULT, this);
 }
 
 void VCA::ownProcess()

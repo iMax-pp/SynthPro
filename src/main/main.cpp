@@ -9,7 +9,6 @@ int main(int argc, char* argv[])
 
     CSynthPro* synthpro = factory->createSynthPro();
     CVCO* vco = factory->createVCO(synthpro);
-    vco->presentation()->setPos(-300, 0);
     synthpro->add(vco);
 
     int result = app.exec();

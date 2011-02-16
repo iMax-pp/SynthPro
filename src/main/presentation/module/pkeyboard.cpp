@@ -18,7 +18,7 @@ PKeyboard::PKeyboard(CKeyboard* control)
 
 void PKeyboard::initialize(PVirtualPort *outputFrequency, PVirtualPort *outputGate)
 {
-    TextWidget* title = new TextWidget("Keys", this);
+    TextWidget* title = new TextWidget(tr("Keys"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
     m_pKeyboardView = new PKeyboardView(this);

@@ -17,10 +17,10 @@ void Oscilloscope::initialize(SynthProFactory* factory)
 {
     if (factory) {
         // Creation of an Input.
-        m_inPort = factory->createInPortReplicable(this, "in");
+        m_inPort = factory->createInPortReplicable(this, tr("in"));
         m_inports.append(m_inPort);
 
-        m_stabilizeControl = factory->createPushButton("Stabilize", this);
+        m_stabilizeControl = factory->createPushButton(tr("Stabilize"), this);
 
         connect(m_stabilizeControl, SIGNAL(buttonPushed()), this, SLOT(stabilizedPushed()));
     }
