@@ -53,19 +53,7 @@ void Sampler::initialize(SynthProFactory * factory)
 void Sampler::ownProcess()
 {
     int sampleMaxInByte = SAMPLER_MAX_DURATION*Buffer::DEFAULT_LENGTH;
- /*   for (int i = 0 ; i < 10 ; ++i){
-        m_gate->buffer()->data()[i] = 0;
-    }
-    for (int i = 10 ; i < 100 ; ++i){
-        m_gate->buffer()->data()[i] = 10;
-    }
-    for (int i = 100 ; i < 300 ; ++i){
-        m_gate->buffer()->data()[i] = 0;
-    }
-    for (int i = 300 ; i < Buffer::DEFAULT_LENGTH ; ++i){
-        m_gate->buffer()->data()[i] = 10;
-    }
-*/
+
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
 
         if (m_gate->buffer()->data()[i] != 0) {
@@ -79,10 +67,10 @@ void Sampler::ownProcess()
 
 
         if (m_state == RECORDING) {
-            if (m_stop->pushed() || gateUp || m_bufferIndex == sampleMaxInByte) {
+            if (m_stop->pushed() || gateUp || m_sampleSize == sampleMaxInByte) {
                 m_state = WAITING;
                 qDebug() << "stop record here ?" <<  m_bufferIndex <<" " << sampleMaxInByte;
-            }  else if (m_bufferIndex < sampleMaxInByte){
+            }  else if (m_sampleSize < sampleMaxInByte){
                 m_state = RECORDING;
             }
         }
@@ -107,7 +95,7 @@ void Sampler::ownProcess()
         if (m_state == PLAYING) {
             if (m_stop->pushed() || gateUp) {
                 m_state = WAITING;
-            } else if (m_bufferIndex == m_sampleSize) {
+            } else if (m_sampleSize == sampleMaxInByte) {
                 // if the buffer is entirely readed, restart the reading at begin of buffer
                 m_bufferIndex = 0;
             }
@@ -120,11 +108,16 @@ void Sampler::ownProcess()
         case EMPTY : break;
         case PLAYING :
             m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH + i];
-            m_bufferIndex+=1;
+           // m_bufferIndex+=1;
             break;
         case RECORDING :
             m_buffer->data()[Buffer::DEFAULT_LENGTH*m_bufferIndex +i] = m_inPort->buffer()->data()[i];
-            m_bufferIndex++;
+
+            // if we still record at the end of the buffer increment m_bufferIndex
+            if (i == Buffer::DEFAULT_LENGTH - 1) {
+                m_bufferIndex++;
+            }
+
             m_sampleSize++;
             break;
         default : break;
