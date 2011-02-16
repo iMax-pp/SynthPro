@@ -7,34 +7,34 @@
 #include "abstraction/filter/filterlp229.h"
 #include "abstraction/filter/filtersoftsaturation.h"
 
+const QString FilterFactory::LowPass = QObject::tr("Low Pass");
+const QString FilterFactory::HighPass = QObject::tr("High Pass");
+const QString FilterFactory::SoftSaturation = QObject::tr("Soft Saturation");
+
 FilterFactory::FilterFactory()
 {
     m_selectorConversionMap.insert(0, "Dummy");
     m_selectorConversionMap.insert(1, "Increment");
-    m_selectorConversionMap.insert(2, "Low Pass");
-    m_selectorConversionMap.insert(3, "High Pass");
-    m_selectorConversionMap.insert(4, "Soft Saturation");
+    m_selectorConversionMap.insert(2, LowPass);
+    m_selectorConversionMap.insert(3, HighPass);
+    m_selectorConversionMap.insert(4, SoftSaturation);
 }
 
 Filter* FilterFactory::createFilter(const QString& filterType)
 {
-    if (filterType == "Dummy") {
-        return new FilterDummy();
-    }
-
     if (filterType == "Increment") {
         return new FilterIncrement();
     }
 
-    if (filterType == "Low Pass") {
+    if (filterType == LowPass) {
         return new FilterLP229();
     }
 
-    if (filterType == "High Pass") {
+    if (filterType == HighPass) {
         return new FilterHP229();
     }
 
-    if (filterType == "Soft Saturation") {
+    if (filterType == SoftSaturation) {
         return new FilterSoftSaturation();
     }
 
