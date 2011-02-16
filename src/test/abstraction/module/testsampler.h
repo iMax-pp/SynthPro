@@ -10,6 +10,7 @@ class TestSampler : public QObject {
 
 private slots:
     void testSampler();
+
 };
 
 #endif // TESTSAMPLER_H

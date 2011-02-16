@@ -54,8 +54,8 @@ protected:
 
     Sequencer& m_sequencer;
 
-// private:
-//    qint64 sendToAudioOutput(int nbBytesNeededByOutput);
+private:
+    // qint64 sendToAudioOutput(int nbBytesNeededByOutput);
 };
 
 #endif // SPEAKER_H

@@ -10,6 +10,9 @@
 #include "factory/synthprofactory.h"
 
 #include <QDebug>
+#include <QFile>
+#include <QTextStream>
+
 
 Sampler::Sampler(SynthPro* synth) 
     : Module(synth)
@@ -39,10 +42,10 @@ void Sampler::initialize(SynthProFactory* factory)
 
     m_bpmDimmer = factory->createDialDimmer(tr("bpm"), MIN_BPM, MAX_BPM, DEFAULT_BPM, this);
 
-    int length = SAMPLER_MAX_DURATION * AudioDeviceProvider::OUTPUT_FREQUENCY;
+    int buffer_length = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
-    m_buffer = new Buffer(length);
-    for (int i = 0; i < length; i++) {
+    m_buffer = new Buffer(buffer_length);
+    for (int i = 0; i < buffer_length; i++) {
         m_buffer->data()[i] = 0;
     }
 
@@ -51,18 +54,23 @@ void Sampler::initialize(SynthProFactory* factory)
 
 void Sampler::startRecording()
 {
+    purgeBuffer(m_outPort->buffer());
     m_state = RECORDING;
     initializeBuffer();
+
 }
 
 void Sampler::stopRecording()
 {
+    saveBuffer("buffer.out");
+    purgeBuffer(m_outPort->buffer());
     m_state = WAITING;
 }
 
 void Sampler::startPlaying()
 {
     m_state = PLAYING;
+    m_bufferIndex = 0;
 }
 
 void Sampler::ownProcess()
@@ -75,14 +83,10 @@ void Sampler::ownProcess()
         } else {
             m_gateState = false;
         }
-
         bool gateUp = m_gateState && !m_oldGateState;
-        // qDebug() <<  m_gate->buffer()->data()[i]  << state() << " " << gateUp << " " << m_gateState << " " << m_oldGateState;
-        // if (i == 300) {qDebug() << "*********300*************";}
 
         if (m_state == RECORDING && (gateUp || m_sampleSize == sampleMaxInByte)) {
             m_state = WAITING;
-            qDebug() << "stop record here ?" <<  m_bufferIndex << " " << sampleMaxInByte;
         }
 
         if (m_state == EMPTY && gateUp) {
@@ -101,10 +105,10 @@ void Sampler::ownProcess()
                 m_state = WAITING;
             }
 
-            if (m_sampleSize == sampleMaxInByte) {
-                // if the buffer is entirely readed, restart the reading at begin of buffer
-                m_bufferIndex = 0;
-            }
+//            if (m_sampleSize == sampleMaxInByte) {
+//                // if the buffer is entirely readed, restart the reading at begin of buffer
+//                m_bufferIndex = 0;
+//            }
         }
 
         switch (m_state) {
@@ -112,24 +116,29 @@ void Sampler::ownProcess()
         case EMPTY : break;
         case PLAYING :
             m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH + i];
-            break;
-        case RECORDING :
-            m_buffer->data()[Buffer::DEFAULT_LENGTH * m_bufferIndex + i] = m_inPort->buffer()->data()[i];
-            emit valueChanged(m_sampleSize);
-
-            // if we still record at the end of the buffer increment m_bufferIndex
             if (i == Buffer::DEFAULT_LENGTH - 1) {
                 m_bufferIndex++;
             }
-
+            if (m_bufferIndex == m_sampleSize / Buffer::DEFAULT_LENGTH) {
+                m_bufferIndex = 0;
+            }
+            break;
+        case RECORDING :
+            m_buffer->data()[Buffer::DEFAULT_LENGTH * m_bufferIndex + i] = m_inPort->buffer()->data()[i];
+          //  qDebug() << "buffer << " << m_inPort->buffer()->data()[i];
+            emit valueChanged(m_sampleSize);
+            // if we still record at the end of the buffer : increment m_bufferIndex
+            if (i == Buffer::DEFAULT_LENGTH - 1) {
+                m_bufferIndex++;
+            }
             m_sampleSize++;
             break;
         default : break;
         } // switch
-
         m_oldGateState = m_gateState;
     } // for
 
+    qDebug() << "state "<< state() << m_bufferIndex;
 } // ownprocess()
 
 void Sampler::initializeBuffer()
@@ -147,4 +156,25 @@ QString Sampler::state()
     case EMPTY : return "empty";
     default: return "error";
     }
+}
+Buffer* Sampler::sampleBuffer()
+{
+    return m_buffer;
+}
+void Sampler::purgeBuffer(Buffer* buf)
+{
+    for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
+        buf->data()[i] = 0;
+    }
+}
+void Sampler::saveBuffer(const QString & fileName)
+{
+    QFile file(fileName);
+    file.open(QIODevice::WriteOnly);
+    QTextStream out(&file);
+    for (int i = 0 ; i < m_sampleSize ; i++) {
+        out << m_buffer->data()[i] << "\n";
+    }
+
+    file.close();
 }
