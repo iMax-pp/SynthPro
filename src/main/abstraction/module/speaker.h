@@ -1,6 +1,7 @@
 #ifndef SPEAKER_H
 #define SPEAKER_H
 
+#include "abstraction/buffer.h"
 #include "abstraction/module.h"
 
 class InPort;
@@ -44,18 +45,18 @@ public slots:
 protected:
     static const int FILL_COUNTER_MAX = 10;
 
+    // We make sure our buffer can handle more than one default buffer.
+    static const int GENERATION_BUFFER_SIZE = Buffer::DEFAULT_LENGTH * 2 * 2;
+
     QIODevice* m_device;
     InPort* m_inPort;
     QAudioOutput* m_audioOutput;
 
-    char* m_generationBuffer; // Fixed size (small), will feed the output buffer.
+    char* m_generationBuffer; // Buffer that will feed the output buffer. CIRCULAR.
     int m_generationBufferIndex; // Index inside the generation buffer.
     int m_nbGeneratedBytesRemaining; // Indicates how many bytes of the generated buffer are still unused.
-
+                                     // This value doesn't take account of the looping.
     Sequencer& m_sequencer;
-
-private:
-    // qint64 sendToAudioOutput(int nbBytesNeededByOutput);
 };
 
 #endif // SPEAKER_H

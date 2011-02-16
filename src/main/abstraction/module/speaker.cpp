@@ -32,15 +32,16 @@ Speaker::~Speaker()
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();
     adp.releaseDevice();
 
-    delete[] m_generationBuffer;
+    if (m_generationBuffer) {
+        delete[] m_generationBuffer;
+    }
 }
 
 void Speaker::initialize(SynthProFactory* factory)
 {
-    int size = Buffer::DEFAULT_LENGTH * 2;
-    m_generationBuffer = new char[size];
+    m_generationBuffer = new char[GENERATION_BUFFER_SIZE];
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < GENERATION_BUFFER_SIZE; i++) {
         m_generationBuffer[i] = 0;
     }
 
@@ -55,8 +56,10 @@ void Speaker::initialize(SynthProFactory* factory)
     }
 }
 
+
 void Speaker::timerExpired()
 {
+
     int fillCounter = 0;
     qint64 sizeWritten = 1;
     int nbBytesNeededByOutput = m_audioOutput->bytesFree();
@@ -95,11 +98,9 @@ void Speaker::timerExpired()
                 // Limit tests.
                 nb = (nb > SIGNAL_OUT_UNSIGNED_INTENSITY ? SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
                 nb = (nb < -SIGNAL_OUT_UNSIGNED_INTENSITY ? -SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
-
-                int nb1 = (nb / 256) & 255;
-                int nb2 = nb & 255;
-                m_generationBuffer[iG++] = nb2;
-                m_generationBuffer[iG++] = nb1;
+                // Fill the generation buffer with the data from the InPort.
+                m_generationBuffer[iG++] = nb & 255;
+                m_generationBuffer[iG++] = (nb / 256) & 255;
             }
 
             m_generationBufferIndex = 0;
@@ -124,59 +125,69 @@ void Speaker::timerExpired()
 
 void Speaker::ownProcess()
 {
-    /*
-    int nbBytesNeededByOutput = m_audioOutput->bytesFree();
-    int sizeWritten = 1;
-    //if (nbBytesNeededByOutput > 0) {
-    while ((nbBytesNeededByOutput > 0) && (sizeWritten > 0)) {
-        if (m_nbGeneratedBytesRemaining > 0) {
-            sizeWritten = sendToAudioOutput(nbBytesNeededByOutput);
-        } else {
-            // We don't have any bytes in our buffer.
-            // Now we copy our InPort to the generationBuffer. A conversion is needed.
-            qreal* data = m_inPort->buffer()->data();
+    // Part of the unsuccessful attempt to manage the soundcard
+    // output from the Clock.
+    // In order to test it, comment the code inside the timerExpired() method, and uncomment
+    // the marked sections in Clock.cpp.
 
-            int iG = 0;
-            for (int i = 0, size = m_inPort->buffer()->length(); i < size; i += 1) {
-                int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_UNSIGNED_INTENSITY);
-                // Two channels are required, regardless of the actual sound channel used.
-                int nb1 = (nb / 256) & 255;
-                int nb2 = nb & 255;
-                m_generationBuffer[iG++] = nb2;
-                m_generationBuffer[iG++] = nb1;
-                //m_generationBuffer[iG++] = nb2;
-                //m_generationBuffer[iG++] = nb1;
+    /*
+    // Adds the newly fetched Input buffer to our own, in a circular way.
+    qreal* dataIn = m_inPort->buffer()->data();
+    int generationBufferCurrentIndex = m_generationBufferIndex;
+    int sizeInPortBuffer = m_inPort->buffer()->length();
+    for (int i = 0; i < sizeInPortBuffer; i++) {
+        int nb = (int)(dataIn[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_UNSIGNED_INTENSITY);
+        // Limit tests.
+        nb = (nb > SIGNAL_OUT_UNSIGNED_INTENSITY ? SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
+        nb = (nb < -SIGNAL_OUT_UNSIGNED_INTENSITY ? -SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
+        // Fill the generation buffer with the data from the InPort.
+        m_generationBuffer[generationBufferCurrentIndex] = nb & 255;
+        generationBufferCurrentIndex = (generationBufferCurrentIndex + 1) % GENERATION_BUFFER_SIZE;
+        m_generationBuffer[generationBufferCurrentIndex] = (nb / 256) & 255;
+        generationBufferCurrentIndex = (generationBufferCurrentIndex + 1) % GENERATION_BUFFER_SIZE;
+    }
+    m_nbGeneratedBytesRemaining += sizeInPortBuffer * 2;
+
+    if (m_nbGeneratedBytesRemaining > GENERATION_BUFFER_SIZE) {
+        qWarning() << "Generation Buffer size exceeded !";
+    }
+
+    // Send the data to the soundcard, according to what it needs.
+    // We send all that is needed, unless we don't have enough of course.
+    int nbBytesNeededByOutput = m_audioOutput->bytesFree();
+    int bytesToSend = (m_nbGeneratedBytesRemaining < nbBytesNeededByOutput) ? m_nbGeneratedBytesRemaining : nbBytesNeededByOutput;
+
+    if (bytesToSend > 0) {
+        // Can we send everything is a row (because of the circular buffer) ?
+        if ((m_generationBufferIndex + bytesToSend) < GENERATION_BUFFER_SIZE) {
+            // Yes.
+            int actuallySent = m_device->write(m_generationBuffer + m_generationBufferIndex, bytesToSend);
+
+            m_generationBufferIndex += bytesToSend;
+            if (actuallySent != bytesToSend) {
+                qDebug() << "PASS ONE : NOT THE SAME AMOUNT WRITTEN !!";
+            }
+        } else {
+            // No. We do it in two passes. First the end of the buffer.
+            int firstPassNbBytesSent = GENERATION_BUFFER_SIZE - m_generationBufferIndex;
+            int actuallySent;
+            actuallySent = m_device->write(m_generationBuffer + m_generationBufferIndex, firstPassNbBytesSent);
+            if (actuallySent != firstPassNbBytesSent) {
+                qDebug() << "PASS TWO_1: NOT THE SAME AMOUNT WRITTEN !!";
             }
 
-            m_generationBufferIndex = 0;
-            m_nbGeneratedBytesRemaining = Buffer::DEFAULT_LENGTH * 2;
+            // Then the beginning of the buffer.
+            int secondPassNbBytesSent = bytesToSend - firstPassNbBytesSent;
+            if (secondPassNbBytesSent > 0) {
+                actuallySent = m_device->write(m_generationBuffer, secondPassNbBytesSent);
+                if (actuallySent != secondPassNbBytesSent) {
+                    qDebug() << "PASS TWO_2: NOT THE SAME AMOUNT WRITTEN !!";
+                }
+            }
 
-            sizeWritten = sendToAudioOutput(nbBytesNeededByOutput);
+            m_generationBufferIndex = bytesToSend - firstPassNbBytesSent;
         }
-        nbBytesNeededByOutput = m_audioOutput->bytesFree();
+        m_nbGeneratedBytesRemaining -= bytesToSend;
     }
     */
 }
-
-/*
-qint64 Speaker::sendToAudioOutput(int nbBytesNeededByOutput) {
-    qint64 sizeWritten;
-    // We have some bytes left in our buffer. Is it enough ?
-    if (m_nbGeneratedBytesRemaining >= nbBytesNeededByOutput) {
-        // We have more than enough. We send only what is needed.
-        // qWarning() << "Trying to write : " << nbBytesNeededByOutput;
-        sizeWritten = m_device->write(m_generationBuffer + m_generationBufferIndex, nbBytesNeededByOutput);
-        //qDebug() << "Needed = " << nbBytesNeededByOutput << "  Written = " << sizeWritten;
-    } else {
-        // We don't have enough. We send what we have for now.
-        // qWarning() << "Trying to write : " << m_nbGeneratedBytesRemaining;
-        sizeWritten = m_device->write(m_generationBuffer + m_generationBufferIndex, m_nbGeneratedBytesRemaining);
-        //qDebug() << "Needed = " << nbBytesNeededByOutput << "  No enough data. Written = " << sizeWritten << " out of " << m_nbGeneratedBytesRemaining;
-    }
-
-    m_generationBufferIndex += sizeWritten;
-    m_nbGeneratedBytesRemaining -= sizeWritten;
-
-    return sizeWritten;
-}
-*/

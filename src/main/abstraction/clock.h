@@ -68,6 +68,8 @@ private slots:
     /**
       * When a SoundCard Timer is expired, may call the Sequencer
       * several times in order to feed the sound card enough.
+      * Part of the unsuccessful attempt to manage the soundcard
+      * output from the Clock.
       */
     // void soundCardTimerExpired();
 

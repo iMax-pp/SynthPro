@@ -8,6 +8,7 @@ class POscilloscopeView : public QGraphicsWidget {
 
 public:
     POscilloscopeView(QGraphicsItem* parent);
+    virtual ~POscilloscopeView();
 
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
     QRectF boundingRect() const;

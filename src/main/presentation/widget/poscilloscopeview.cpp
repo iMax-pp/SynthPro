@@ -7,6 +7,7 @@
 
 POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
     : QGraphicsWidget(parent)
+    , m_inBuffer(0)
     , m_ratioY(RATIO_Y_DEFAULT)
     , m_stabilized(false)
 {
@@ -14,6 +15,11 @@ POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
 #if QT_VERSION >= 0x040700
     setAutoFillBackground(false);
 #endif
+}
+
+POscilloscopeView::~POscilloscopeView()
+{
+
 }
 
 void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
