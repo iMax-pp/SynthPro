@@ -62,15 +62,11 @@ void Sampler::ownProcess()
             m_gateState = false;
         }
         bool gateUp = m_gateState && !m_oldGateState;
-        //qDebug() <<  m_gate->buffer()->data()[i]  << state() << " " << gateUp << " " << m_gateState << " " << m_oldGateState;
-        //if (i == 300) {qDebug() << "*********300*************";}
-
 
         if (m_state == RECORDING) {
             if (m_stop->pushed() || gateUp || m_sampleSize == sampleMaxInByte) {
                 m_state = WAITING;
-                qDebug() << "stop record here ?" <<  m_bufferIndex <<" " << sampleMaxInByte;
-            }  else if (m_sampleSize < sampleMaxInByte){
+            }  else if (m_sampleSize < sampleMaxInByte) {
                 m_state = RECORDING;
             }
         }
@@ -82,7 +78,6 @@ void Sampler::ownProcess()
         }
         if (m_state == WAITING) {
             if (m_play->pushed() || gateUp) {
-                qDebug() << "start playing ";
                 // event gateUp has been used
                 gateUp = !gateUp;
                 m_state = PLAYING;
@@ -108,10 +103,12 @@ void Sampler::ownProcess()
         case EMPTY : break;
         case PLAYING :
             m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH + i];
+           // qDebug() << "playing " << m_outPort->buffer()->data()[i];
            // m_bufferIndex+=1;
             break;
         case RECORDING :
             m_buffer->data()[Buffer::DEFAULT_LENGTH*m_bufferIndex +i] = m_inPort->buffer()->data()[i];
+             qDebug() << "recording " << m_buffer->data()[i];
 
             // if we still record at the end of the buffer increment m_bufferIndex
             if (i == Buffer::DEFAULT_LENGTH - 1) {
@@ -121,7 +118,7 @@ void Sampler::ownProcess()
             m_sampleSize++;
             break;
         default : break;
-    } // switch
+        } // switch
         m_oldGateState = m_gateState;
 
 
@@ -144,4 +141,8 @@ QString Sampler::state()
     case RECORDING : return "recording";
     case EMPTY : return "empty";
     }
+}
+Buffer* Sampler::sampleBuffer()
+{
+    return m_buffer;
 }

@@ -32,6 +32,7 @@ public:
     /// Only for mise au point
 
     QString state();
+    Buffer* sampleBuffer();
 
 protected:
     static const int SAMPLER_MAX_DURATION = 250;
