@@ -37,9 +37,12 @@ public:
     QString state();
     Buffer* sampleBuffer();
 
-protected:
     static const int SAMPLER_MAX_DURATION = 250;
 
+signals:
+    void valueChanged(int);
+
+protected:
     InPort* m_inPort;
     InPort* m_gate;
     OutPort* m_outPort;

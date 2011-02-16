@@ -25,6 +25,7 @@ signals:
     void startRecordingClicked();
     void stopRecordingClicked();
     void startPlayingClicked();
+    void valueChanged(int);
 
 private:
     PixmapButtonWidget* m_record;

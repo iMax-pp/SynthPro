@@ -98,7 +98,7 @@ void Sampler::ownProcess()
                 m_state = WAITING;
             }
 
-            if (m_sampleSize == m_sampleSize) {
+            if (m_sampleSize == sampleMaxInByte) {
                 // if the buffer is entirely readed, restart the reading at begin of buffer
                 m_bufferIndex = 0;
             }
@@ -111,8 +111,8 @@ void Sampler::ownProcess()
             m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH + i];
             break;
         case RECORDING :
-            m_buffer->data()[Buffer::DEFAULT_LENGTH*m_bufferIndex +i] = m_inPort->buffer()->data()[i];
-             qDebug() << "recording " << m_buffer->data()[i];
+            m_buffer->data()[Buffer::DEFAULT_LENGTH * m_bufferIndex + i] = m_inPort->buffer()->data()[i];
+            emit valueChanged(m_sampleSize);
             // if we still record at the end of the buffer increment m_bufferIndex
             if (i == Buffer::DEFAULT_LENGTH - 1) {
                 m_bufferIndex++;

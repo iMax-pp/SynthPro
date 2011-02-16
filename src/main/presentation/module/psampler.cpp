@@ -1,10 +1,13 @@
 #include "psampler.h"
 
+#include "abstraction/audiodeviceprovider.h"
+#include "abstraction/module/sampler.h"
 #include "control/module/csampler.h"
 #include "presentation/component/pdimmer.h"
 #include "presentation/component/pvirtualport.h"
 #include "presentation/widget/pixmapbuttonwidget.h"
 #include "presentation/widget/pixmapwidget.h"
+#include "presentation/widget/progressbarwidget.h"
 #include "presentation/widget/textwidget.h"
 
 #include <QFileDialog>
@@ -35,14 +38,17 @@ void PSampler::initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* gat
     connect(m_play, SIGNAL(clicked()), this, SLOT(playClicked()));
     m_play->setActivated(false);    
 
-    // Layout
+    ProgressBarWidget* progressBar = new ProgressBarWidget(0, Sampler::SAMPLER_MAX_DURATION * AudioDeviceProvider::OUTPUT_FREQUENCY, this);
+    connect(this, SIGNAL(valueChanged(int)), progressBar, SLOT(setValue(int)));
 
+    // Layout
     bottomArea()->addCornerAnchors(m_record, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);
     bottomArea()->addCornerAnchors(m_record, Qt::TopRightCorner, m_stop, Qt::TopLeftCorner);
     bottomArea()->addCornerAnchors(m_stop, Qt::TopRightCorner, m_play, Qt::TopLeftCorner);
-    bottomArea()->addCornerAnchors(m_play, Qt::TopRightCorner, bpm, Qt::TopLeftCorner);
-    bottomArea()->addCornerAnchors(gate, Qt::TopLeftCorner, m_record, Qt::BottomLeftCorner);
-    bottomArea()->addCornerAnchors(gate, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
+    bottomArea()->addCornerAnchors(progressBar, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
+    bottomArea()->addCornerAnchors(progressBar, Qt::BottomRightCorner, gate, Qt::BottomLeftCorner);
+    bottomArea()->addCornerAnchors(gate, Qt::BottomRightCorner, bpm, Qt::BottomLeftCorner);
+
     bottomArea()->addCornerAnchors(bpm, Qt::TopRightCorner, bottomArea(), Qt::TopRightCorner);
     bottomArea()->addCornerAnchors(bpm, Qt::BottomRightCorner, bottomArea(), Qt::BottomRightCorner);
 

@@ -11,7 +11,7 @@ public:
     explicit CSampler(SynthPro*);
 
     void initialize(SynthProFactory*);
-    
+
 protected slots:
     void startRecording();
     void stopRecording();
