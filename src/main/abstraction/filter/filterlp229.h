@@ -29,7 +29,6 @@ private:
     // Values calculated by the filter and needing storage.
     qreal m_a1;
     qreal m_a2;
-    qreal m_a3;
     qreal m_b1;
     qreal m_b2;
 

@@ -23,7 +23,7 @@ class Speaker : public virtual Module {
     Q_OBJECT
 
 public:
-    static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 127;
+    static const int SIGNAL_OUT_UNSIGNED_INTENSITY = 32000;
 
     Speaker(SynthPro*, QIODevice*, QAudioOutput*);
     virtual ~Speaker();
