@@ -37,7 +37,7 @@ Speaker::~Speaker()
 
 void Speaker::initialize(SynthProFactory* factory)
 {
-    m_generationBuffer = new char[Buffer::DEFAULT_LENGTH];
+    m_generationBuffer = new char[Buffer::DEFAULT_LENGTH * 2];
 
     for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
         m_generationBuffer[i] = 0;
@@ -88,6 +88,7 @@ void Speaker::timerExpired()
             // Now we copy our InPort to the generationBuffer. A conversion is needed.
             qreal* data = m_inPort->buffer()->data();
 
+            int iG = 0;
             for (int i = 0, size = m_inPort->buffer()->length(); i < size; i += 2) {
                 int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_UNSIGNED_INTENSITY);
                 // Limit tests.
@@ -95,12 +96,16 @@ void Speaker::timerExpired()
                 nb = (nb < -SIGNAL_OUT_UNSIGNED_INTENSITY ? -SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
 
                 // FIXME : Works, but can't understand why. The output seems to be 8 bits only.
-                m_generationBuffer[i] = 0; // nb / 256;
-                m_generationBuffer[i + 1] = nb; // nb & 255;
+                // Two channels are required ?
+                m_generationBuffer[iG] = 0; // nb / 256;
+                m_generationBuffer[iG + 1] = nb; // nb & 255;
+                m_generationBuffer[iG + 2] = 0;
+                m_generationBuffer[iG + 3] = nb;
+                iG += 4;
             }
 
             m_generationBufferIndex = 0;
-            m_nbGeneratedBytesRemaining = Buffer::DEFAULT_LENGTH;
+            m_nbGeneratedBytesRemaining = Buffer::DEFAULT_LENGTH * 2;
         }
 
         fillCounter++;
