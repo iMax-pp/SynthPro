@@ -1,6 +1,6 @@
 #include "psampler.h"
 
-#include "abstraction/audiodeviceprovider.h"
+#include "abstraction/buffer.h"
 #include "abstraction/module/sampler.h"
 #include "control/module/csampler.h"
 #include "presentation/component/pdimmer.h"
@@ -38,7 +38,7 @@ void PSampler::initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* gat
     connect(m_play, SIGNAL(clicked()), this, SLOT(playClicked()));
     m_play->setActivated(false);    
 
-    ProgressBarWidget* progressBar = new ProgressBarWidget(0, Sampler::SAMPLER_MAX_DURATION * AudioDeviceProvider::OUTPUT_FREQUENCY, this);
+    ProgressBarWidget* progressBar = new ProgressBarWidget(0, Sampler::SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH, this);
     connect(this, SIGNAL(valueChanged(int)), progressBar, SLOT(setValue(int)));
 
     // Layout
@@ -68,7 +68,7 @@ void PSampler::recordClicked()
 
 void PSampler::stopClicked()
 {
-    m_record->setActivated(false);
+    m_record->setActivated(true);
     m_stop->setActivated(false);
     m_play->setActivated(true);
 
