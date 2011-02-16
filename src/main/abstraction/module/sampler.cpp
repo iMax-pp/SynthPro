@@ -75,18 +75,7 @@ void Sampler::startPlaying()
     m_state = PLAYING;
     m_bufferIndex = 0;
 }
-void Sampler::saveBuffer(Buffer* buff)
-{
-    QFile file("file.xxx");
-    file.open(QIODevice::WriteOnly);
-    QTextStream out(&file);
-    for (int i = 0 ; i < buff->length() ; i++) {
-        out << buff->data()[i] << "\n";
-    }
-    file.close();
 
-
-}
 void Sampler::ownProcess()
 {
     qreal speed = m_bpmDimmer->value();
@@ -136,15 +125,15 @@ void Sampler::ownProcess()
             if (m_positionInBuffer >= m_sampleSize) {
                 m_positionInBuffer = 0;
             }
-            qDebug() << m_positionInBuffer << " " << m_bufferIndex << " " << m_sampleSize;
+         //   qDebug() << m_positionInBuffer << " " << m_bufferIndex << " " << m_sampleSize;
 //            m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH + i];
-            m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH +(int)m_positionInBuffer];
-            if (i == Buffer::DEFAULT_LENGTH - 1) {
-                m_bufferIndex++;
-        }
-            if (m_bufferIndex >= m_sampleSize / Buffer::DEFAULT_LENGTH) {
-                m_bufferIndex = 0;
-            }
+            m_outPort->buffer()->data()[i] = m_buffer->data()[/*m_bufferIndex * Buffer::DEFAULT_LENGTH +*/(int)m_positionInBuffer];
+//            if (i == Buffer::DEFAULT_LENGTH - 1) {
+//                m_bufferIndex++;
+//        }
+//            if (m_bufferIndex >= m_sampleSize / Buffer::DEFAULT_LENGTH) {
+//                m_bufferIndex = 0;
+//            }
             break;
         case RECORDING :
             m_buffer->data()[Buffer::DEFAULT_LENGTH * m_bufferIndex + i] = m_inPort->buffer()->data()[i];
