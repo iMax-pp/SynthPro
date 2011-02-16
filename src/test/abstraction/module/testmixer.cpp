@@ -28,6 +28,6 @@ void TestMixer::testMixer()
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
         res &= mixer->outports().first()->buffer()->data()[i] == 2.5;
     }
-    QVERIFY(res);
 
+    QVERIFY(res);
 }

@@ -68,7 +68,7 @@ protected:
 
     /// initialize or reinitialize the buffer for a new record.
     void initializeBuffer();
-
+    void saveBuffer(Buffer*);
     void purgeBuffer(Buffer*);
 };
 
