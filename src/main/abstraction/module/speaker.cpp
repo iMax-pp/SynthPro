@@ -28,6 +28,10 @@ Speaker::~Speaker()
     Clock& clock = Clock::instance();
     clock.unregister(this);
 
+    // Release the device.
+    AudioDeviceProvider& adp = AudioDeviceProvider::instance();
+    adp.releaseDevice();
+
     delete[] m_generationBuffer;
 }
 

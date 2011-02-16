@@ -50,7 +50,7 @@ protected:
     /// current index read or write in the class buffer.
     int m_bufferIndex;
 
-    /// size of the sample in number of buffers
+    /// size of the sample in sample
     int m_sampleSize;
     bool m_gateState;
     bool m_oldGateState;
