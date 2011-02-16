@@ -16,9 +16,9 @@ CModule::CModule(SynthPro* parent)
 CModule::~CModule()
 {
     if (m_presentation) {
-        // FIXME Isn't this presentation already deleted when we enter here?
-        // It seems so, as it fails to delete it.
-        // delete m_presentation;
+        // FIXME We need to delete the presentation when we are simply closing the module.
+        // But it fails on this same deletion when closing the entire application…
+        delete m_presentation;
     }
 }
 
