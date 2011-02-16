@@ -8,8 +8,6 @@
 #include "factory/synthprofactory.h"
 #include "factory/wavegeneratorfactory.h"
 
-const QString VCO::SHAPE_DEFAULT = WaveGeneratorFactory::Saw;
-
 VCO::VCO(SynthPro* parent)
     : Module(parent)
     , m_waveGenerator(0)
@@ -39,7 +37,7 @@ void VCO::initialize(SynthProFactory* factory)
     /// Creation of the Dimmer
     m_kDimmer = factory->createDialDimmer(tr("K"), K_MIN, K_MAX, K_DEFAULT, this);
 
-    setShape(SHAPE_DEFAULT);
+    setShape(WaveGeneratorFactory::Saw);
 }
 
 VCO::~VCO()
