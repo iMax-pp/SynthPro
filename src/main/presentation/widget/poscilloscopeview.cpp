@@ -27,24 +27,66 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
 
     int middleY = HEIGHT / 2;
     int previousY = middleY;
-    int usedBufferSize = m_inBuffer->length() - BUFFER_INVISIBLE;
+    int usedBufferSize = m_inBuffer->length();
 
     if (m_inBuffer) {
         qreal* data = m_inBuffer->data();
         qreal step;
-        int indexBuffer = 0;
+        int indexBuffer = 1;
 
         if (m_stabilized) {
-            // Find the first high-shelf in a specified interval.
-            bool found = false;
-            qreal previousValue = 32000;
-            qreal currentValue;
             int size = m_inBuffer->length() / 2; // We only test a part of the buffer.
 
+            // Find the first high-shelf in a specified interval.
+            bool found = false;
+            qreal previousValue = data[0];
+            qreal currentValue = data[indexBuffer];
+            if (previousValue > currentValue) {
+                found = true;
+                previousValue = currentValue;
+            }
+
+            // First pass, find high-shelf
             while (!found && (indexBuffer < size)) {
                 currentValue = data[indexBuffer];
                 if (previousValue < currentValue) {
+                    indexBuffer++;
+                    previousValue = currentValue;
+                } else {
                     found = true;
+                }
+            }
+
+            // Second pass, find low-shelf.
+            // if (found) {
+                found = false;
+                while (!found && (indexBuffer < size)) {
+                    currentValue = data[indexBuffer];
+                    if (previousValue >= currentValue) {
+                        indexBuffer++;
+                        previousValue = currentValue;
+                    } else {
+                        found = true;
+                    }
+                }
+            // }
+
+            /*
+                    // Second inner pass.
+                    // foundInner = false;
+                    innerIndexBuffer = indexBuffer;
+                    qreal innerPreviousValue = previousValue;
+                    qreal innerCurrentValue;
+                    while (!found && (innerIndexBuffer < size)) {
+                        innerCurrentValue = data[innerIndexBuffer];
+                        if (innerPreviousValue > innerCurrentValue) {
+                            found = true;
+                        } else {
+                            innerIndexBuffer++;
+                        }
+                        innerPreviousValue = innerCurrentValue;
+                    }
+                    // found = true;
                     // qDebug() << "FOUND !" << indexBuffer << "  Pre = " << previousValue << "  Current = " << currentValue;
                 } else {
                     indexBuffer++;
@@ -52,9 +94,17 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
                 previousValue = currentValue;
                 indexBuffer++;
 
+
+
             }
+
+            */
+
+
             if (!found) {
                 indexBuffer = 0;
+            } else {
+                // indexBuffer = innerIndexBuffer;
             }
         }
 

@@ -21,7 +21,7 @@ void PWavLooper::initialize(PVirtualPort* out, PDimmer* speedDimmer)
     TextWidget* title = new TextWidget(tr("Looper"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
-    PixmapWidget* floppy = new PixmapWidget(":/src/resources/images/floppy-icon.png", this);
+    PixmapWidget* floppy = new PixmapWidget(":/src/resources/images/floppy.png", this);
     connect(floppy, SIGNAL(clicked()), this, SLOT(floppyClicked()));
 
     speedDimmer->setMaximumSize(80, 80);

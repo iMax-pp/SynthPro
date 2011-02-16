@@ -11,6 +11,7 @@
 #include "control/module/clfo.h"
 #include "control/module/cmixer.h"
 #include "control/module/coscilloscope.h"
+#include "control/module/csampler.h"
 #include "control/module/cspeaker.h"
 #include "control/module/cvca.h"
 #include "control/module/cvcf.h"
@@ -101,6 +102,9 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
         break;
     case SynthProFactory::MixerId:
         module = dynamic_cast<Module*>(m_factory->createMixer(this));
+        break;
+    case SynthProFactory::SamplerId:
+        module = dynamic_cast<Module*>(m_factory->createSampler(this));
         break;
     case SynthProFactory::LFOId:
         module = dynamic_cast<Module*>(m_factory->createLFO(this));

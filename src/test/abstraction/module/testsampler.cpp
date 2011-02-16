@@ -36,8 +36,8 @@ void TestSampler::testSampler()
     keyboard->outports().at(1)->connect(sampler->inports().at(1));
     sampler->outports().first()->connect(speaker->inports().first());
     // initialization of the gate port
-
-    for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; ++i) {
+    for (int i = 0 ; i < 10 ; ++i) {
+      //  sampler->inports().at(1)->buffer()->data()[i] = 10;
         keyboard->outports().at(1)->buffer()->data()[i] = 0;
     }
     vco->process();
@@ -90,9 +90,6 @@ void TestSampler::testSampler()
     }
     vco->process();
     sampler->process();
-    for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; ++i) {
-        out << i << " " <<  sampler->inports().first()->buffer()->data()[i]   << " " << sampler->outports().first()->buffer()->data()[i] << "\n";
-    }
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; ++i) {
         // sampler->inports().at(1)->buffer()->data()[i] = 10;
         keyboard->outports().at(1)->buffer()->data()[i] = 10;

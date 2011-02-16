@@ -3,10 +3,11 @@
         <file>images/exit.png</file>
         <file>images/new.png</file>
         <file>images/play.png</file>
-        <file>images/speaker-icon.png</file>
-        <file>images/floppy-icon.png</file>
+        <file>images/speaker.png</file>
+        <file>images/floppy.png</file>
         <file>images/stop-icon.png</file>
         <file>images/record-icon.png</file>
+        <file>images/play-icon.png</file>
         <file>images/close-icon.png</file>
     </qresource>
 </RCC>
