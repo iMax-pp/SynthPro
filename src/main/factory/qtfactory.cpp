@@ -239,10 +239,10 @@ CSampler* QtFactory::createSampler(SynthPro* parent)
     CSampler* sampler = new CSampler(parent);
 
     // Create its presentation
-    PSampler* p = new PSampler(sampler);
-    sampler->setPresentation(p);
+    PSampler* pre = new PSampler(sampler);
+    sampler->setPresentation(pre);
 
-    // Initialize it (ports creation)
+    // Initialize it
     sampler->initialize(this);
 
     return sampler;    

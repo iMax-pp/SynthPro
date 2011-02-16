@@ -31,6 +31,12 @@ public:
      */
     qreal realValue(qreal value) const;
 
+    /// Default formatting function
+    static QString defaultFormat(qreal);
+    static QString percentageFormat(qreal);
+    static QString timeFormat(qreal);
+    static QString gainFormat(qreal);
+
     /// Discretization factor
     static const qreal DISCR = 150;
 
@@ -42,8 +48,6 @@ private:
     PDimmer* m_presentation;
     qreal m_discretization;
     Format m_valueFormat;
-
-    static QString defaultFormat(qreal);
 };
 
 #endif // CDIMMER_H

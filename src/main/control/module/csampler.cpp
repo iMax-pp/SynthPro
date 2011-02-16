@@ -32,15 +32,15 @@ void CSampler::initialize(SynthProFactory* factory)
 
 void CSampler::startRecording()
 {
-    CSampler::startRecording();
+    Sampler::startRecording();
 }
 
 void CSampler::stopRecording()
 {
-    CSampler::stopRecording();
+    Sampler::stopRecording();
 }
 
 void CSampler::startPlaying()
 {
-    CSampler::startPlaying();
+    Sampler::startPlaying();
 }

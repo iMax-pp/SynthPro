@@ -1,5 +1,7 @@
 #include "cdimmer.h"
 
+#include "math.h"
+
 CDimmer::CDimmer(qreal min, qreal max, qreal defaultValue, qreal discretization, QObject* parent)
     : Dimmer(min, max, defaultValue, parent)
     , m_presentation(0)
@@ -57,4 +59,19 @@ void CDimmer::valueChanged(int value)
 QString CDimmer::defaultFormat(qreal value)
 {
     return QString::number(value, 'g', 4);
+}
+
+QString CDimmer::percentageFormat(qreal value)
+{
+    return QString::number((long)(value * 100)) + "%";
+}
+
+QString CDimmer::timeFormat(qreal value)
+{
+    return QString::number(value, 'g', 2) + "s";
+}
+
+QString CDimmer::gainFormat(qreal value)
+{
+    return QString::number((long)(20 * log10(value))) + " dB";
 }

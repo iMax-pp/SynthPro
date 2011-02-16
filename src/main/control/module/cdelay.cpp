@@ -21,6 +21,9 @@ void CDelay::initialize(SynthProFactory* factory)
     CDimmer* duration = dynamic_cast<CDimmer*>(m_durationDimmer);
     CDimmer* decay = dynamic_cast<CDimmer*>(m_decayDimmer);
 
+    duration->setValueFormat(CDimmer::timeFormat);
+    decay->setValueFormat(CDimmer::percentageFormat);
+
     dynamic_cast<PDelay*>(presentation())->initialize(in->presentation(), out->presentation(),
                                                       duration->presentation(), decay->presentation());
 }

@@ -9,10 +9,14 @@
 #include "abstraction/synthpro.h"
 #include "factory/synthprofactory.h"
 
+#include <QDebug>
+
 Sampler::Sampler(SynthPro* synth) 
     : Module(synth)
     , m_bufferIndex(0)
     , m_sampleSize(0)
+    , m_gateState(false)
+    , m_oldGateState(false)
 {
 
 }
@@ -22,16 +26,16 @@ Sampler::~Sampler()
     delete m_buffer;
 }
 
-void Sampler::initialize(SynthProFactory * factory)
+void Sampler::initialize(SynthProFactory* factory)
 {
-    m_inPort =  factory->createInPort(this, "in");
+    m_inPort = factory->createInPort(this, "in");
     m_inports.append(m_inPort);
-
-    m_gate = factory->createInPortGate(this, "gate");
-    m_inports.append(m_gate);
 
     m_outPort = factory->createOutPort(this, "out");
     m_outports.append(m_outPort);
+
+    m_gate = factory->createInPortGate(this, "gate");
+    m_inports.append(m_gate);
 
     m_bpmDimmer = factory->createDialDimmer("bpm", MIN_BPM, MAX_BPM, DEFAULT_BPM, this);
 
@@ -63,36 +67,65 @@ void Sampler::startPlaying()
 
 void Sampler::ownProcess()
 {
-    /*
-    if (m_state == RECORDING) {
-        if (m_stop->pushed()) {
+    int sampleMaxInByte = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
+
+    for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
+        if (m_gate->buffer()->data()[i] != 0) {
+            m_gateState = true;
+        } else {
+            m_gateState = false;
+        }
+
+        bool gateUp = m_gateState && !m_oldGateState;
+        // qDebug() <<  m_gate->buffer()->data()[i]  << state() << " " << gateUp << " " << m_gateState << " " << m_oldGateState;
+        // if (i == 300) {qDebug() << "*********300*************";}
+
+
+        if (m_state == RECORDING && (gateUp || m_bufferIndex == sampleMaxInByte)) {
             m_state = WAITING;
-        }  else {
-            m_state = RECORDING;
+            qDebug() << "stop record here ?" <<  m_bufferIndex << " " << sampleMaxInByte;
         }
-    }
-    if (m_state == EMPTY) {
-        if (m_record->pushed()) {
-            m_state = RECORDING;
-            initializeBuffer();
+        if (m_state == EMPTY && gateUp) {
+            startRecording();
         }
-    }
-    if (m_state == WAITING) {
-        if (m_play->pushed()) {
-            m_state = PLAYING;
+
+        if (m_state == WAITING && gateUp) {
+            qDebug() << "start playing ";
+            // event gateUp has been used
+            gateUp = !gateUp;
+            startPlaying();
         }
-        if (m_record->pushed()) {
-            m_state = RECORDING;
-            initializeBuffer();
+
+        if (m_state == PLAYING) {
+            if (gateUp) {
+                m_state = WAITING;
+            }
+
+            if (m_bufferIndex == m_sampleSize) {
+                // if the buffer is entirely readed, restart the reading at begin of buffer
+                m_bufferIndex = 0;
+            }
         }
-    }
-    if (m_state == PLAYING) {
-        if (m_stop->pushed()) {
-            m_state = WAITING;
-        }
-    }
-    */
-}
+
+        switch (m_state) {
+        case WAITING : break;
+        case EMPTY : break;
+        case PLAYING :
+            m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH + i];
+            m_bufferIndex += 1;
+            break;
+        case RECORDING :
+            m_buffer->data()[Buffer::DEFAULT_LENGTH * m_bufferIndex + i] = m_inPort->buffer()->data()[i];
+            m_bufferIndex++;
+            m_sampleSize++;
+            break;
+        default : break;
+        } // switch
+
+        m_oldGateState = m_gateState;
+    } // for
+
+} // ownprocess()
 
 void Sampler::initializeBuffer()
 {
