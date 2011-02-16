@@ -37,9 +37,10 @@ Speaker::~Speaker()
 
 void Speaker::initialize(SynthProFactory* factory)
 {
-    m_generationBuffer = new char[Buffer::DEFAULT_LENGTH * 2];
+    int size = Buffer::DEFAULT_LENGTH * 2;
+    m_generationBuffer = new char[size];
 
-    for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
+    for (int i = 0; i < size; i++) {
         m_generationBuffer[i] = 0;
     }
 
@@ -89,17 +90,14 @@ void Speaker::timerExpired()
             qreal* data = m_inPort->buffer()->data();
 
             int iG = 0;
-            for (int i = 0, size = m_inPort->buffer()->length(); i < size; i += 2) {
+            for (int i = 0, size = m_inPort->buffer()->length(); i < size; i++) {
                 int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_UNSIGNED_INTENSITY);
                 // Limit tests.
                 nb = (nb > SIGNAL_OUT_UNSIGNED_INTENSITY ? SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
                 nb = (nb < -SIGNAL_OUT_UNSIGNED_INTENSITY ? -SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
 
-                // Two channels are required, regardless of the actual sound channel used.
                 int nb1 = (nb / 256) & 255;
                 int nb2 = nb & 255;
-                m_generationBuffer[iG++] = nb2;
-                m_generationBuffer[iG++] = nb1;
                 m_generationBuffer[iG++] = nb2;
                 m_generationBuffer[iG++] = nb1;
             }
@@ -138,15 +136,20 @@ void Speaker::ownProcess()
             // Now we copy our InPort to the generationBuffer. A conversion is needed.
             qreal* data = m_inPort->buffer()->data();
 
-            for (int i = 0, size = m_inPort->buffer()->length(); i < size; i += 2) {
+            int iG = 0;
+            for (int i = 0, size = m_inPort->buffer()->length(); i < size; i += 1) {
                 int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_UNSIGNED_INTENSITY);
-                // FIXME : Works, but can't understand why. The output seems to be 8 bits only.
-                m_generationBuffer[i] = 0; // nb / 256;
-                m_generationBuffer[i + 1] = nb; // nb & 255;
+                // Two channels are required, regardless of the actual sound channel used.
+                int nb1 = (nb / 256) & 255;
+                int nb2 = nb & 255;
+                m_generationBuffer[iG++] = nb2;
+                m_generationBuffer[iG++] = nb1;
+                //m_generationBuffer[iG++] = nb2;
+                //m_generationBuffer[iG++] = nb1;
             }
 
             m_generationBufferIndex = 0;
-            m_nbGeneratedBytesRemaining = Buffer::DEFAULT_LENGTH;
+            m_nbGeneratedBytesRemaining = Buffer::DEFAULT_LENGTH * 2;
 
             sizeWritten = sendToAudioOutput(nbBytesNeededByOutput);
         }
@@ -173,7 +176,6 @@ qint64 Speaker::sendToAudioOutput(int nbBytesNeededByOutput) {
 
     m_generationBufferIndex += sizeWritten;
     m_nbGeneratedBytesRemaining -= sizeWritten;
-
 
     return sizeWritten;
 }
