@@ -15,7 +15,7 @@ CModule::CModule(SynthPro* parent)
 
 CModule::~CModule()
 {
-    if (m_presentation) {
+    if (!m_presentation.isNull()) {
         // FIXME We need to delete the presentation when we are simply closing the module.
         // But it fails on this same deletion when closing the entire application…
         delete m_presentation;
@@ -24,7 +24,7 @@ CModule::~CModule()
 
 void CModule::setPresentation(PModule* presentation)
 {
-    if (m_presentation) {
+    if (!m_presentation.isNull()) {
         delete m_presentation;
     }
 
