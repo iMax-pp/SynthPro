@@ -16,7 +16,9 @@ CModule::CModule(SynthPro* parent)
 CModule::~CModule()
 {
     if (m_presentation) {
-        delete m_presentation;
+        // FIXME Isn't this presentation already deleted when we enter here?
+        // It seems so, as it fails to delete it.
+        // delete m_presentation;
     }
 }
 

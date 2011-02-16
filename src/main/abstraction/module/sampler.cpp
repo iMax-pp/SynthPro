@@ -160,9 +160,9 @@ void Sampler::ownProcess()
         } // switch
         m_oldGateState = m_gateState;
     } // forQFile file("file.xxx");
-    file.open(QIODevice::WriteOnly);
-    QDataStream out(&file);
 
+//    file.open(QIODevice::WriteOnly);
+//    QDataStream out(&file);
 } // ownprocess()
 
 void Sampler::initializeBuffer()
