@@ -23,7 +23,6 @@ Sampler::Sampler(SynthPro* synth)
     , m_oldGateState(false)
     , m_positionInBuffer(0)
 {
-
 }
 
 Sampler::~Sampler()
@@ -59,6 +58,7 @@ void Sampler::initialize(SynthProFactory* factory)
     int buffer_length = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
     m_buffer = new Buffer(buffer_length);
+
     for (int i = 0; i < buffer_length; i++) {
         m_buffer->data()[i] = 0;
     }
@@ -82,6 +82,7 @@ void Sampler::stopRecording()
     if (m_state == RECORDING) {
         // saveBuffer(m_buffer);
     }
+
     purgeBuffer(m_outPort->buffer());
     m_state = WAITING;
 
@@ -104,19 +105,17 @@ void Sampler::saveBuffer(Buffer* buff)
     QFile file("file.xxx");
     file.open(QIODevice::WriteOnly);
     QTextStream out(&file);
+
     for (int i = 0 ; i < buff->length() ; i++) {
         out << buff->data()[i] << "\n";
     }
+
     file.close();
-
-
 }
+
 void Sampler::ownProcess()
 {
     qreal speed = m_bpmDimmer->value();
-
-
-
     int sampleMaxInByte = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
     for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
@@ -125,6 +124,7 @@ void Sampler::ownProcess()
         } else {
             m_gateState = false;
         }
+
         bool gateUp = m_gateState && !m_oldGateState;
 
         if (m_state == RECORDING && (gateUp || m_sampleSize == sampleMaxInByte)) {
@@ -154,36 +154,45 @@ void Sampler::ownProcess()
 
         switch (m_state) {
         case WAITING : break;
+
         case EMPTY : break;
+
         case PLAYING :
             m_positionInBuffer += speed;
             if (m_positionInBuffer >= m_sampleSize) {
                 m_positionInBuffer = 0;
             }
+
             qDebug() << m_positionInBuffer << " " << m_bufferIndex << " " << m_sampleSize;
 //            m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH + i];
             m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH +(int)m_positionInBuffer];
+
             if (i == Buffer::DEFAULT_LENGTH - 1) {
                 m_bufferIndex++;
-        }
+            }
+
             if (m_bufferIndex >= m_sampleSize / Buffer::DEFAULT_LENGTH) {
                 m_bufferIndex = 0;
             }
             break;
+
         case RECORDING :
             m_buffer->data()[Buffer::DEFAULT_LENGTH * m_bufferIndex + i] = m_inPort->buffer()->data()[i];
           //  qDebug() << "buffer << " << m_inPort->buffer()->data()[i];
             emit valueChanged(m_sampleSize);
+
             // if we still record at the end of the buffer : increment m_bufferIndex
             if (i == Buffer::DEFAULT_LENGTH - 1) {
                 m_bufferIndex++;
             }
             m_sampleSize++;
             break;
+
         default : break;
         } // switch
+
         m_oldGateState = m_gateState;
-    } // forQFile file("file.xxx");
+    } // for
 } // ownprocess()
 
 void Sampler::initializeBuffer()
@@ -202,14 +211,15 @@ QString Sampler::state()
     default: return "error";
     }
 }
+
 Buffer* Sampler::sampleBuffer()
 {
     return m_buffer;
 }
+
 void Sampler::purgeBuffer(Buffer* buf)
 {
-    for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
+    for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
         buf->data()[i] = 0;
     }
 }
-
