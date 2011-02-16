@@ -34,12 +34,6 @@ public:
     virtual void initialize(SynthProFactory*);
 
     /**
-      * FIXME : not very good. Only to prevent triggering the Sequencer BEFORE
-      * we have time to add the module to the SynthPro.
-      */
-    // void setSoundManagement(bool);
-
-    /**
       * Process the input signal.
       */
     void ownProcess();
