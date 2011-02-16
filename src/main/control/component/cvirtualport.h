@@ -2,6 +2,7 @@
 #define CVIRTUALPORT_H
 
 #include "abstraction/component/virtualport.h"
+#include <QHash>
 
 class PVirtualPort;
 class CPort;
@@ -47,23 +48,20 @@ public:
     void removeConnectionPort(CPort*);
 
 protected:
-    /// Call this method to hide or show the available port of this VirtualPort
+    /// Call this method to hide or show the available port of this VirtualPort (it matters if this VirtualPort is replicable or not)
     void updateAvailableFeedback();
 
     /// Internal method creating a CPort for a given Connection
     CPort* createConnectionPort(Connection*);
-    /// Internal method deleting a CPort for a given Connection
-    void deleteConnectionPort(int idx);
-
-    CPort* connection2Port(Connection*) const;
-    Connection* port2Connection(CPort*) const;
+    /// Internal method deleting a given CPort
+    void deleteConnectionPort(CPort*);
 
 private:
     PVirtualPort* m_presentation;
     QtFactory* m_factory;
 
     /// Set of ports used by the connections of this VirtualPort
-    QList<CPort*> m_connectedPorts;
+    QHash<CPort*, Connection*> m_connectedPorts;
 
     /// The CPort representing the availableness of this VirtualPort
     CPort* m_availablePort;

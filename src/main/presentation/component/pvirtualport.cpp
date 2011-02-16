@@ -46,9 +46,9 @@ void PVirtualPort::initialize(PPort* availablePort)
     layout->activate();
 }
 
-void PVirtualPort::addConnectionPort(PPort* port)
+void PVirtualPort::insertConnectionPort(int i, PPort* port)
 {
-    m_connectionsLayout->addItem(port);
+    m_connectionsLayout->insertItem(i, port);
     layout()->activate();
 }
 
