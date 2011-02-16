@@ -16,6 +16,7 @@ class Module : public QObject {
 public:
     explicit Module(SynthPro*);
     virtual ~Module();
+    void prepareDestruction();
 
     /// Get the list of output ports of this module
     inline const QList<OutPort*> outports() const { return m_outports; }

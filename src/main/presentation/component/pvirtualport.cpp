@@ -43,15 +43,7 @@ void PVirtualPort::initialize(PPort* availablePort)
     m_portsLayout->addItem(availablePort);
 
     setMinimumSize(boundingRect().size());
-}
-
-void PVirtualPort::paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)
-{
-}
-
-QRectF PVirtualPort::boundingRect() const
-{
-    return childrenBoundingRect();
+    layout->activate();
 }
 
 void PVirtualPort::addConnectionPort(PPort* port)
@@ -64,5 +56,5 @@ void PVirtualPort::removeConnectionPort(PPort* port)
 {
     m_connectionsLayout->removeItem(port);
     layout()->activate();
-    delete port;
+    port->deleteLater();
 }

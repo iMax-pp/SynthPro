@@ -14,6 +14,10 @@ SynthPro::SynthPro(QObject* parent)
     connect(this, SIGNAL(connectionsChanged(const SynthPro*)), &Sequencer::instance(), SLOT(scheduleModules(const SynthPro*)));
 }
 
+SynthPro::~SynthPro()
+{
+}
+
 const QList<Module*> SynthPro::modules() const
 {
     return m_modules;
@@ -31,9 +35,11 @@ void SynthPro::add(Module* module)
     }
 }
 
-void SynthPro::remove(QObject* module)
+void SynthPro::remove(QObject* object)
 {
-    m_modules.removeOne(static_cast<Module*>(module));
+    Module* module = static_cast<Module*>(object);
+    m_modules.removeOne(module);
+    module->prepareDestruction();
     module->deleteLater();
 }
 

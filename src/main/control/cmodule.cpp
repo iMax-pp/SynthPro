@@ -16,7 +16,7 @@ CModule::CModule(SynthPro* parent)
 CModule::~CModule()
 {
     if (m_presentation) {
-        m_presentation->deleteLater();
+        delete m_presentation;
     }
 }
 

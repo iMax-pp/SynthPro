@@ -24,7 +24,7 @@
 CSynthPro::CSynthPro(SynthProFactory* factory)
     : SynthPro()
     , m_presentation(0)
-    , m_graphicsScene(new QGraphicsScene)
+    , m_graphicsScene(new QGraphicsScene(this))
     , m_factory(factory)
 {
 }
@@ -34,14 +34,6 @@ CSynthPro::~CSynthPro()
     if (m_presentation) {
         delete m_presentation;
     }
-
-    // Delete each module.
-    foreach (Module* module, modules()) {
-        delete module;
-    }
-
-    // m_graphicsScene has no parent so we must destroy it ourselves.
-    delete m_graphicsScene;
 }
 
 void CSynthPro::setPresentation(PSynthPro* presentation)

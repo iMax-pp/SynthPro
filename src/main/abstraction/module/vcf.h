@@ -54,7 +54,7 @@ public:
     void setFilter(QString);
 
     static const qreal R_MIN = 0;
-    static const qreal R_MAX = 5;
+    static const qreal R_MAX = 1;
     static const qreal R_DEFAULT = 0;
 
     static const qreal CUT_OFF_MIN = -4000; // In order to reach easily low frequencies.

@@ -10,6 +10,7 @@ class SynthPro : public QObject {
 
 public:
     SynthPro(QObject* parent = 0);
+    virtual ~SynthPro();
 
     /// @return The list of modules contained by this SynthPro
     const QList<Module*> modules() const;
