@@ -64,7 +64,11 @@ protected:
     bool m_gateState;
     bool m_oldGateState;
     SamplerState m_state;
+
+    /// index readed in the buffer while playing
     qreal m_positionInBuffer;
+
+
     static const qreal MIN_BPM = 0;
     static const qreal MAX_BPM = 2;
     static const qreal DEFAULT_BPM = 1;
@@ -72,7 +76,8 @@ protected:
 
     /// initialize or reinitialize the buffer for a new record.
     void initializeBuffer();
-    void saveBuffer(Buffer*);
+
+    /// clean a buffer by setting all its value at 0.
     void purgeBuffer(Buffer*);
 };
 

@@ -79,10 +79,6 @@ void Sampler::startRecording()
 
 void Sampler::stopRecording()
 {
-    if (m_state == RECORDING) {
-        // saveBuffer(m_buffer);
-    }
-
     purgeBuffer(m_outPort->buffer());
     m_state = WAITING;
 
@@ -133,11 +129,6 @@ void Sampler::ownProcess()
             if (gateUp) {
                 m_state = WAITING;
             }
-
-//            if (m_sampleSize == sampleMaxInByte) {
-//                // if the buffer is entirely readed, restart the reading at begin of buffer
-//                m_bufferIndex = 0;
-//            }
         }
 
         switch (m_state) {
@@ -150,21 +141,14 @@ void Sampler::ownProcess()
             if (m_positionInBuffer >= m_sampleSize) {
                 m_positionInBuffer = 0;
             }
-         //   qDebug() << m_positionInBuffer << " " << m_bufferIndex << " " << m_sampleSize;
-//            m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH + i];
             m_outPort->buffer()->data()[i] = m_buffer->data()[/*m_bufferIndex * Buffer::DEFAULT_LENGTH +*/(int)m_positionInBuffer];
-//            if (i == Buffer::DEFAULT_LENGTH - 1) {
-//                m_bufferIndex++;
-//        }
-//            if (m_bufferIndex >= m_sampleSize / Buffer::DEFAULT_LENGTH) {
-//                m_bufferIndex = 0;
-//            }
 
             break;
 
         case RECORDING :
             m_buffer->data()[Buffer::DEFAULT_LENGTH * m_bufferIndex + i] = m_inPort->buffer()->data()[i];
-          //  qDebug() << "buffer << " << m_inPort->buffer()->data()[i];
+
+            // needed by the ui
             emit valueChanged(m_sampleSize);
 
             // if we still record at the end of the buffer : increment m_bufferIndex
