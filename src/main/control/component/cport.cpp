@@ -112,14 +112,17 @@ void CPort::drop(CPort* target)
     CPort* source = reconnecting() ? m_oldConnection : this;
     // If the user dropped on a target, try to connect to it
     if (target) {
-        source->vPort()->connect(source, target);
-        if (reconnecting()) { // It was a reconnection: this CPort may need to be removed
+        if (reconnecting()) {
+            m_oldConnection->vPort()->connect(m_oldConnection, target);
             if (target != this) {
                 vPort()->removeConnectionPort(this);
             } else {
                 // The drop was over this port
                 m_reconnecting = false;
             }
+            m_oldConnection->setReconnecting(false);
+        } else {
+            source->vPort()->connect(source, target);
         }
     } else if (reconnecting()) { // The reconnection is finished, remove the connection ports
         m_oldConnection->vPort()->removeConnectionPort(m_oldConnection);
