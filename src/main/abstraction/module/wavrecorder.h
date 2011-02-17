@@ -36,7 +36,7 @@ public:
      */
     void ownProcess();
 
-protected slots:
+/*protected*/ public slots:
     /**
      * Start the recording into the current file.
      */
