@@ -21,9 +21,10 @@ void TestSampler::testSampler()
     Keyboard* keyboard = factory.createKeyboard(synth);
     VCO* vco = factory.createVCO(synth);
     vco->outports().first()->connect(sampler->inports().first());
-    sampler->outports().first()->connect(speaker->inports().first());
-
-
+    keyboard->outports().at(1)->connect(sampler->inports().at(1));
+    // qreal inValue = 5 ;
+    bool res = true;
+    Buffer sampledBuffer;
     for (int j = 0 ; j < 7 ; j++) {
         for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
             if (j%2 == 0) {
@@ -31,13 +32,16 @@ void TestSampler::testSampler()
             } else {
                 keyboard->outports().at(1)->buffer()->data()[i] = 1;
             }
-            if (j < 5) {
-                vco->outports().first()->buffer()->data()[i] = 5;
+            if (j == 1) {
+                sampledBuffer.data()[i] = vco->outports().first()->buffer()->data()[i];
             }
+            vco->process();
             sampler->process();
-            if (j == 6) {
-                qDebug() << sampler->outports().first()->buffer()->data()[i];
+            if (j == 5) {
+
+                // qDebug() << sampler->outports().first()->buffer()->data()[i]<< "" << sampledBuffer.data()[i];
             }
         }
     }
+    QVERIFY(res);
 }
