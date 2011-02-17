@@ -30,7 +30,7 @@ bool VirtualPort::compatible(const VirtualPort* other) const
 
 bool VirtualPort::connectable(const VirtualPort* other) const
 {
-    return available() && compatible(other) && other->available();
+    return available() && other->out() != out() && other->available();
 }
 
 Connection* VirtualPort::connect(VirtualPort* other)

@@ -37,7 +37,7 @@ public:
 
     /**
      * Indicate if this port is connectable with a given port.
-     * @returns true if this port is available and other port is compatible.
+     * @returns true if this port is available and other port is available and they have different directions.
      * @see available, compatible
      */
     bool connectable(const VirtualPort*) const;
