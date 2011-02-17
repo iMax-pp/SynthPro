@@ -21,6 +21,7 @@ Sampler::Sampler(SynthPro* synth)
     , m_gateState(false)
     , m_oldGateState(false)
     , m_positionInBuffer(0)
+    , m_sampleStart(0)
 {
 }
 
@@ -71,6 +72,7 @@ void Sampler::initialize(SynthProFactory* factory)
 
 void Sampler::startRecording()
 {
+    qDebug() << "startRecord";
     purgeBuffer(m_outPort->buffer());
     m_state = RECORDING;
     initializeBuffer();
@@ -85,7 +87,13 @@ void Sampler::startRecording()
 
 void Sampler::stopRecording()
 {
+    qDebug() << "stop";
     purgeBuffer(m_outPort->buffer());
+    m_sampleStart = 0;
+    while (m_buffer->data() == 0) {
+        m_sampleStart++;
+    }
+    qDebug() << "passe ici";
     m_state = WAITING;
 
     m_recordButton->setEnabled(true);
@@ -95,9 +103,10 @@ void Sampler::stopRecording()
 
 void Sampler::startPlaying()
 {
+    qDebug() << "start playing";
     m_state = PLAYING;
     m_bufferIndex = 0;
-
+    m_positionInBuffer = m_sampleStart;
     m_recordButton->setEnabled(false);
     m_stopButton->setEnabled(true);
     m_playButton->setEnabled(false);
@@ -137,7 +146,9 @@ void Sampler::ownProcess()
 
         if (m_state == PLAYING) {
             if (gateUp) {
-                m_state = WAITING;
+                qDebug() << "PLAYING";
+                stopRecording();
+                // m_state = WAITING;
             }
         }
 
@@ -151,7 +162,7 @@ void Sampler::ownProcess()
             emit valueChanged(m_positionInBuffer);
 
             if (m_positionInBuffer >= m_sampleSize) {
-                m_positionInBuffer = 0;
+                m_positionInBuffer = m_sampleStart;
             }
             m_outPort->buffer()->data()[i] = m_buffer->data()[(int)m_positionInBuffer];
 
@@ -164,7 +175,7 @@ void Sampler::ownProcess()
             emit valueChanged(m_sampleSize);
 
             // if we still record at the end of the buffer : increment m_bufferIndex
-            if (i == Buffer::DEFAULT_LENGTH - 1) {
+            if (i == Buffer::DEFAULT_LENGTH) {
                 m_bufferIndex++;
             }
             m_sampleSize++;

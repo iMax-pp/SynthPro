@@ -11,6 +11,8 @@ class TestSampler : public QObject {
 private slots:
     void testSampler();
 
+private:
+    void setValue(Buffer*, qreal);
 };
 
 #endif // TESTSAMPLER_H
