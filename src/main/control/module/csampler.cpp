@@ -25,10 +25,17 @@ void CSampler::initialize(SynthProFactory* factory)
     CPushButton* stop = dynamic_cast<CPushButton*>(m_stopButton);
     CPushButton* play = dynamic_cast<CPushButton*>(m_playButton);
 
+    bpmDimmer->setValueFormat(formatSpeed);
+
     PSampler* pre = dynamic_cast<PSampler*>(presentation());
     pre->initialize(inPort->presentation(), outPort->presentation(),
                     gate->presentation(), bpmDimmer->presentation(),
                     record->presentation(), stop->presentation(), play->presentation());
 
     connect(this, SIGNAL(valueChanged(int)), pre, SIGNAL(valueChanged(int)));
+}
+
+QString CSampler::formatSpeed(qreal value)
+{
+    return QString::number(value, 'g', 2) + "x";
 }
