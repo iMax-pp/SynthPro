@@ -8,10 +8,11 @@ class ProgressBarWidget : public QGraphicsProxyWidget {
     Q_OBJECT
 
 public:
-    ProgressBarWidget(int minimum, int maximum, QGraphicsItem* parent);
+    ProgressBarWidget(QGraphicsItem* parent, int minimum = 0, int maximum = 100);
 
 public slots:
     void setValue(int);
+    void setMaximum(int);
 
 private:
     QProgressBar* m_progressBar;
