@@ -21,12 +21,11 @@ void TestMixer::testMixer()
         vco->outports().first()->buffer()->data()[i] = 1;
     }
     vco->outports().first()->connect(mixer->inports().first());
-    qDebug() << mixer->inports().at(0)->connections().size();
 
     mixer->process();
     bool res = true;
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-        res &= mixer->outports().first()->buffer()->data()[i] == 2.5;
+        res &= mixer->outports().first()->buffer()->data()[i] == 1;
     }
 
     QVERIFY(res);

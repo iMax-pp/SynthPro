@@ -28,7 +28,7 @@ void Mixer::initialize(SynthProFactory* factory)
         InPort* in =  factory->createInPort(this, tr("in") + QString::number(i));
         m_inports.append(in);
         m_mixInPorts->insert(in, factory->createSliderDimmer(tr("in%1").arg(QString::number(i)),
-                                                             0, 2, 1, this));
+                                                             SLIDER_MIN, SLIDER_MAX, SLIDER_DEFAULT, this));
     }
 }
 
