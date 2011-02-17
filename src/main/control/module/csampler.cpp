@@ -33,6 +33,7 @@ void CSampler::initialize(SynthProFactory* factory)
                     record->presentation(), stop->presentation(), play->presentation());
 
     connect(this, SIGNAL(valueChanged(int)), pre, SIGNAL(valueChanged(int)));
+    connect(this, SIGNAL(lengthChanged(int)), pre, SIGNAL(lengthChanged(int)));
 }
 
 QString CSampler::formatSpeed(qreal value)

@@ -2,10 +2,11 @@
 #define PWIRE_H
 
 #include <QGraphicsLineItem>
+#include <QObject>
 
 class CWire;
 
-class PWire : public QGraphicsPathItem {
+class PWire : public QGraphicsPathItem, public QObject {
 public:
     PWire(CWire*, QGraphicsScene*);
 

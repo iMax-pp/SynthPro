@@ -10,16 +10,19 @@ CDimmer::CDimmer(qreal min, qreal max, qreal defaultValue, qreal discretization,
 {
 }
 
-PDimmer* CDimmer::presentation() const
+CDimmer::~CDimmer()
 {
-    return m_presentation;
+    if (!m_presentation.isNull()) {
+        delete m_presentation;
+    }
 }
 
 void CDimmer::setPresentation(PDimmer* presentation)
 {
-    if (m_presentation) {
+    if (!m_presentation.isNull()) {
         delete m_presentation;
     }
+
     m_presentation = presentation;
     connect(m_presentation, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));
 }

@@ -2,8 +2,9 @@
 #define COUTPORT_H
 
 #include "abstraction/component/outport.h"
-#include "control/cmodule.h"
 #include "control/component/cvirtualport.h"
+
+class CModule;
 
 class COutPort : public OutPort, public CVirtualPort {
 public:

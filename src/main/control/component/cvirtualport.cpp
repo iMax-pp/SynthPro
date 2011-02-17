@@ -8,7 +8,6 @@
 #include "control/csynthpro.h"
 #include "factory/qtfactory.h"
 #include "presentation/component/pport.h"
-#include "presentation/component/pvirtualport.h"
 #include "presentation/component/pwire.h"
 
 #include <QGraphicsScene>
@@ -19,6 +18,13 @@ CVirtualPort::CVirtualPort(Module* parent, QtFactory* factory, const QString& na
     , m_factory(factory)
     , m_availablePort(0)
 {
+}
+
+CVirtualPort::~CVirtualPort()
+{
+    if (!m_presentation.isNull()) {
+        delete m_presentation;
+    }
 }
 
 void CVirtualPort::initialize()
@@ -109,9 +115,8 @@ void CVirtualPort::removeConnectionPort(CPort* port)
 
 void CVirtualPort::setPresentation(PVirtualPort* presentation)
 {
-    if (m_presentation) {
+    if (!m_presentation.isNull()) {
         delete m_presentation;
-        m_presentation = 0;
     }
 
     m_presentation = presentation;

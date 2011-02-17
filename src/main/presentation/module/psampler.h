@@ -19,6 +19,7 @@ public:
 
 signals:
     void valueChanged(int);
+    void lengthChanged(int);
 };
 
 #endif // PSAMPLER_H

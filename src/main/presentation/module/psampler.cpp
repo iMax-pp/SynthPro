@@ -1,7 +1,5 @@
 #include "psampler.h"
 
-#include "abstraction/buffer.h"
-#include "abstraction/module/sampler.h"
 #include "control/module/csampler.h"
 #include "presentation/component/pdimmer.h"
 #include "presentation/component/ppushbutton.h"
@@ -32,8 +30,9 @@ void PSampler::initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* gat
     stop->setIcon(QIcon(":/src/resources/images/stop-icon.png"));
     play->setIcon(QIcon(":/src/resources/images/play-icon.png"));
 
-    ProgressBarWidget* progressBar = new ProgressBarWidget(0, Sampler::SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH, this);
+    ProgressBarWidget* progressBar = new ProgressBarWidget(this);
     connect(this, SIGNAL(valueChanged(int)), progressBar, SLOT(setValue(int)));
+    connect(this, SIGNAL(lengthChanged(int)), progressBar, SLOT(setMaximum(int)));
 
     // Layout
     bottomArea()->addCornerAnchors(record, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);

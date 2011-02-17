@@ -9,6 +9,7 @@ public:
     explicit CSampler(SynthPro*);
 
     void initialize(SynthProFactory*);
+
 private:
     static QString formatSpeed(qreal);
 };

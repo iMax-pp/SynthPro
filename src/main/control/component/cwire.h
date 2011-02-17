@@ -2,22 +2,23 @@
 #define CWIRE_H
 
 #include "abstraction/component/connection.h"
+#include "presentation/component/pwire.h"
 
 #include <QObject>
-#include <QPointF>
+#include <QPointer>
 
 class CInPort;
 class COutPort;
 class CPort;
-class PWire;
+class QPointF;
 
 class CWire : public QObject {
 public:
     CWire();
     virtual ~CWire();
 
-    void setPresentation(PWire*);
     inline PWire* presentation() const { return m_presentation; }
+    void setPresentation(PWire*);
 
     inline CPort* inPort() const { return m_inPort; }
     inline CPort* outPort() const { return m_outPort; }
@@ -36,7 +37,7 @@ public:
     void showMoveFeedback();
 
 private:
-    PWire* m_presentation;
+    QPointer<PWire> m_presentation;
     CPort* m_inPort;
     CPort* m_outPort;
 };

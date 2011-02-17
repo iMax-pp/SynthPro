@@ -5,7 +5,6 @@
 #include "control/component/cwire.h"
 #include "control/csynthpro.h"
 #include "factory/qtfactory.h"
-#include "presentation/component/pport.h"
 #include <QGraphicsScene>
 
 CPort::CPort(CVirtualPort* parent, QtFactory* factory)
@@ -20,12 +19,19 @@ CPort::CPort(CVirtualPort* parent, QtFactory* factory)
 {
 }
 
+CPort::~CPort()
+{
+    if (!m_presentation.isNull()) {
+        delete m_presentation;
+    }
+}
+
 void CPort::setPresentation(PPort* presentation)
 {
-    if (m_presentation) {
+    if (!m_presentation.isNull()) {
         delete m_presentation;
-        m_presentation = 0;
     }
+
     m_presentation = presentation;
 }
 

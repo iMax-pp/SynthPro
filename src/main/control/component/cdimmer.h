@@ -3,7 +3,7 @@
 
 #include "abstraction/component/dimmer.h"
 #include "presentation/component/pdimmer.h"
-#include "presentation/component/pslider.h"
+#include <QPointer>
 
 typedef QString (*Format)(qreal);
 
@@ -12,8 +12,9 @@ class CDimmer : public Dimmer {
 
 public:
     CDimmer(qreal min, qreal max, qreal defaultValue, qreal discretization, QObject* parent = 0);
+    virtual ~CDimmer();
 
-    PDimmer* presentation() const;
+    inline PDimmer* presentation() const { return m_presentation; }
     void setPresentation(PDimmer*);
 
     /// Configure the formatting function used to display the value
@@ -45,7 +46,7 @@ protected slots:
     void valueChanged(int value);
 
 private:
-    PDimmer* m_presentation;
+    QPointer<PDimmer> m_presentation;
     qreal m_discretization;
     Format m_valueFormat;
 };

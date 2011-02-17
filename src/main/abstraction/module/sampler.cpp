@@ -7,7 +7,6 @@
 #include "abstraction/component/outport.h"
 #include "abstraction/component/pushbutton.h"
 #include "abstraction/synthpro.h"
-#include "control/component/cpushbutton.h"
 #include "factory/synthprofactory.h"
 
 #include <QDebug>
@@ -47,13 +46,17 @@ void Sampler::initialize(SynthProFactory* factory)
     m_stopButton = factory->createPushButton(tr("stop"), this);
     m_playButton = factory->createPushButton(tr("play"), this);
 
-    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(true);
-    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(false);
-    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(false);
+    m_recordButton->setEnabled(true);
+    m_stopButton->setEnabled(false);
+    m_playButton->setEnabled(false);
 
     connect(m_recordButton, SIGNAL(buttonPushed()), this, SLOT(startRecording()));
     connect(m_stopButton, SIGNAL(buttonPushed()), this, SLOT(stopRecording()));
     connect(m_playButton, SIGNAL(buttonPushed()), this, SLOT(startPlaying()));
+
+    // Emit starting value (0) and maximum recording length.
+    emit valueChanged(0);
+    emit lengthChanged(SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH - 1);
 
     int buffer_length = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
@@ -72,23 +75,22 @@ void Sampler::startRecording()
     m_state = RECORDING;
     initializeBuffer();
 
-    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(false);
-    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(true);
-    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(false);
+    m_recordButton->setEnabled(false);
+    m_stopButton->setEnabled(true);
+    m_playButton->setEnabled(false);
+
+    emit valueChanged(0);
+    emit lengthChanged(SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH - 1);
 }
 
 void Sampler::stopRecording()
 {
-    if (m_state == RECORDING) {
-        // saveBuffer(m_buffer);
-    }
-
     purgeBuffer(m_outPort->buffer());
     m_state = WAITING;
 
-    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(true);
-    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(false);
-    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(true);
+    m_recordButton->setEnabled(true);
+    m_stopButton->setEnabled(false);
+    m_playButton->setEnabled(true);
 }
 
 void Sampler::startPlaying()
@@ -96,9 +98,12 @@ void Sampler::startPlaying()
     m_state = PLAYING;
     m_bufferIndex = 0;
 
-    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(false);
-    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(true);
-    dynamic_cast<CPushButton*>(m_playButton)->setEnabled(false);
+    m_recordButton->setEnabled(false);
+    m_stopButton->setEnabled(true);
+    m_playButton->setEnabled(false);
+
+    emit valueChanged(0);
+    emit lengthChanged(m_sampleSize);
 }
 
 void Sampler::ownProcess()
@@ -117,6 +122,7 @@ void Sampler::ownProcess()
 
         if (m_state == RECORDING && (gateUp || m_sampleSize == sampleMaxInByte)) {
             m_state = WAITING;
+            stopRecording();
         }
 
         if (m_state == EMPTY && gateUp) {
@@ -133,11 +139,6 @@ void Sampler::ownProcess()
             if (gateUp) {
                 m_state = WAITING;
             }
-
-//            if (m_sampleSize == sampleMaxInByte) {
-//                // if the buffer is entirely readed, restart the reading at begin of buffer
-//                m_bufferIndex = 0;
-//            }
         }
 
         switch (m_state) {
@@ -147,24 +148,19 @@ void Sampler::ownProcess()
 
         case PLAYING :
             m_positionInBuffer += speed;
+            emit valueChanged(m_positionInBuffer);
+
             if (m_positionInBuffer >= m_sampleSize) {
                 m_positionInBuffer = 0;
             }
-         //   qDebug() << m_positionInBuffer << " " << m_bufferIndex << " " << m_sampleSize;
-//            m_outPort->buffer()->data()[i] = m_buffer->data()[m_bufferIndex * Buffer::DEFAULT_LENGTH + i];
-            m_outPort->buffer()->data()[i] = m_buffer->data()[/*m_bufferIndex * Buffer::DEFAULT_LENGTH +*/(int)m_positionInBuffer];
-//            if (i == Buffer::DEFAULT_LENGTH - 1) {
-//                m_bufferIndex++;
-//        }
-//            if (m_bufferIndex >= m_sampleSize / Buffer::DEFAULT_LENGTH) {
-//                m_bufferIndex = 0;
-//            }
+            m_outPort->buffer()->data()[i] = m_buffer->data()[(int)m_positionInBuffer];
 
             break;
 
         case RECORDING :
             m_buffer->data()[Buffer::DEFAULT_LENGTH * m_bufferIndex + i] = m_inPort->buffer()->data()[i];
-          //  qDebug() << "buffer << " << m_inPort->buffer()->data()[i];
+
+            // needed by the ui
             emit valueChanged(m_sampleSize);
 
             // if we still record at the end of the buffer : increment m_bufferIndex

@@ -3,18 +3,18 @@
 
 #include "abstraction/component/pushbutton.h"
 #include "presentation/component/ppushbutton.h"
+#include <QPointer>
 
 class CPushButton : public PushButton {
 public:
     CPushButton(QObject* parent = 0);
+    virtual ~CPushButton();
 
-    PPushButton* presentation() const;
+    inline PPushButton* presentation() const { return m_presentation; }
     void setPresentation(PPushButton*);
 
-    void setEnabled(bool);
-
 private:
-    PPushButton* m_presentation;
+    QPointer<PPushButton> m_presentation;
 };
 
 #endif // CPUSHBUTTON_H

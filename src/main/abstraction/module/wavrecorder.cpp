@@ -6,7 +6,6 @@
 #include "abstraction/component/pushbutton.h"
 #include "abstraction/module/speaker.h"
 #include "abstraction/module/vco.h"
-#include "control/component/cpushbutton.h"
 #include "factory/synthprofactory.h"
 
 #include <QDebug>
@@ -71,23 +70,23 @@ void WavRecorder::newFile(const QString& fileName)
         qWarning("Unable to create output file.");
     } else {
         createWAVHeader(m_outputFile);
-        dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(true);
-        dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(false);
+        m_recordButton->setEnabled(true);
+        m_stopButton->setEnabled(false);
     }
 }
 
 void WavRecorder::startRecording()
 {
     m_isRecording = true;
-    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(false);
-    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(true);
+    m_recordButton->setEnabled(false);
+    m_stopButton->setEnabled(true);
 }
 
 void WavRecorder::stopRecording()
 {
     m_isRecording = false;
-    dynamic_cast<CPushButton*>(m_recordButton)->setEnabled(false);
-    dynamic_cast<CPushButton*>(m_stopButton)->setEnabled(false);
+    m_recordButton->setEnabled(false);
+    m_stopButton->setEnabled(false);
     closeWAVFile();
 }
 

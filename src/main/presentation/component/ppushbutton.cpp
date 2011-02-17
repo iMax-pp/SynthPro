@@ -16,7 +16,12 @@ PPushButton::PPushButton(QString name, QGraphicsItem* parent)
 void PPushButton::setIcon(const QIcon& icon)
 {
     m_button->setText("");
+    m_button->setFixedSize(22, 22);
     m_button->setIcon(icon);
-    m_button->setFixedSize(20, 20);
     setMaximumSize(m_button->size());
+}
+
+void PPushButton::setEnabled(bool enabled)
+{
+    m_button->setEnabled(enabled);
 }
