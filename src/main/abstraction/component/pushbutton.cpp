@@ -39,6 +39,11 @@ void PushButton::setCheckable(bool checkable)
 
 void PushButton::setChecked(bool checked)
 {
+    if (!m_checkable) {
+        // Do nothing if the button isn't checkable.
+        return;
+    }
+
     if (checked != m_checked) {
         m_checked = checked;
         emit buttonChecked(checked);
