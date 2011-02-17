@@ -141,7 +141,7 @@ void Sampler::ownProcess()
             if (m_positionInBuffer >= m_sampleSize) {
                 m_positionInBuffer = 0;
             }
-            m_outPort->buffer()->data()[i] = m_buffer->data()[/*m_bufferIndex * Buffer::DEFAULT_LENGTH +*/(int)m_positionInBuffer];
+            m_outPort->buffer()->data()[i] = m_buffer->data()[(int)m_positionInBuffer];
 
             break;
 
