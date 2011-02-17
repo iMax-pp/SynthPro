@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 11
+  revision 12
   modified_by 2 "julien"
 
 
@@ -907,6 +907,139 @@ format 74
 	  b parent class_ref 142083 // OutPort
       end
     end
+
+    class 147714 "Clock"
+      visibility package stereotype "singleton"
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 149890 "start"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 150018 "pause"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 150146 "started"
+	public explicit_return_type "bool"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 150274 "registerFastClock"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "" type class_ref 141699 // Module
+	
+	
+	
+	
+	
+      end
+
+      operation 150402 "unregister"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "" type class_ref 141699 // Module
+	
+	
+	
+	
+	
+      end
+
+      operation 150530 "internalTimerExpired"
+	stereotype "slot"
+	private explicit_return_type ""
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 147842 "AudioDeviceProvider"
+      visibility package stereotype "singleton"
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 149250 "initializeAudioOutput"
+	public explicit_return_type "bool"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 149378 "device"
+	public explicit_return_type "QIODevice"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 149506 "releaseDevice"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 149634 "audioFormat"
+	public explicit_return_type "QAudioFormat"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 149762 "audioOutput"
+	public explicit_return_type "QAudioOutput"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
   end
 
   classview 147587 "pac"
@@ -1052,6 +1185,14 @@ format 74
 	    classrelation_ref 142339 // <generalisation>
 	  b parent class_ref 141699 // Module
       end
+
+      classrelation 155906 // presentation (<composition>)
+	relation 155650 *---
+	  a role_name "presentation" private
+	    classrelation_ref 155906 // presentation (<composition>)
+	  b role_name "control" private
+	    classrelation_ref 156034 // control (<composition>)
+      end
     end
 
     class 150531 "QGraphicsItem"
@@ -1080,9 +1221,13 @@ format 74
 	    classrelation_ref 142211 // <generalisation>
 	  b parent class_ref 150531 // QGraphicsItem
       end
+
+      classrelation 156034 // control (<composition>)
+	relation_ref 155650 // <composition>
+      end
     end
 
-    class 150787 "CCVO"
+    class 150787 "CVCO"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -1097,9 +1242,16 @@ format 74
 	    classrelation_ref 142979 // <generalisation>
 	  b parent class_ref 150403 // CModule
       end
+
+      classrelation 155650 // <generalisation>
+	relation 155394 ---|>
+	  a public
+	    classrelation_ref 155650 // <generalisation>
+	  b parent class_ref 142339 // VCO
+      end
     end
 
-    class 150915 "PCVO"
+    class 150915 "PVCO"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -1116,7 +1268,7 @@ format 74
       end
     end
 
-    class 151043 "PCVF"
+    class 151043 "PVCF"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -1133,7 +1285,7 @@ format 74
       end
     end
 
-    class 151171 "CCVF"
+    class 151171 "CVCF"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -1147,6 +1299,13 @@ format 74
 	  a public
 	    classrelation_ref 143363 // <generalisation>
 	  b parent class_ref 150403 // CModule
+      end
+
+      classrelation 155778 // <generalisation>
+	relation 155522 ---|>
+	  a public
+	    classrelation_ref 155778 // <generalisation>
+	  b parent class_ref 142467 // VCF
       end
     end
 
@@ -1247,6 +1406,11 @@ format 74
 	    classrelation_ref 142210 // <generalisation>
 	  b parent class_ref 151299 // CPort
       end
+    end
+
+    classdiagram 128002 "pacmodule"
+      draw_all_relations yes hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
     end
   end
 end
