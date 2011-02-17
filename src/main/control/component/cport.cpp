@@ -15,7 +15,8 @@ CPort::CPort(CVirtualPort* parent, QtFactory* factory)
     , m_wire(0)
     , m_tmpWire(0)
     , m_clickableFeedback(0)
-    , m_reconnecting(0)
+    , m_reconnecting(false)
+    , m_oldConnection(0)
 {
 }
 
@@ -38,12 +39,6 @@ void CPort::setPresentation(PPort* presentation)
 void CPort::setWire(CWire* wire)
 {
     m_wire = wire;
-    QObject::connect(wire, SIGNAL(destroyed()), this, SLOT(wireDeleted()));
-}
-
-void CPort::wireDeleted()
-{
-    m_wire = 0;
 }
 
 void CPort::disconnect()
@@ -54,7 +49,10 @@ void CPort::disconnect()
 void CPort::reconnect(const QPointF& pos)
 {
     CPort* other = m_wire->inPort() == this ? m_wire->outPort() : m_wire->inPort();
-    m_reconnecting = other;
+    m_reconnecting = true;
+    m_oldConnection = other;
+    other->m_reconnecting = true;
+    other->m_oldConnection = this;
     disconnect();
     createTmpWire(other, pos);
 }
@@ -64,7 +62,7 @@ void CPort::createTmpWire(CPort* from, const QPointF& to)
     // Create a temporary wire
     m_tmpWire = m_factory->createWire(presentation()->scene());
 
-    // Don't forget to register ourself as one of the port (the good one of course).
+    // Don't forget to register ourself as one of the port
     m_tmpWire->setInPort(from);
     m_tmpWire->showMoveFeedback();
     m_tmpWire->updatePosition(to);
@@ -84,7 +82,7 @@ void CPort::drag(const QPointF& pos)
 void CPort::dragMove(const QPointF& pos)
 {
     if (PPort* pport = dynamic_cast<PPort*>(presentation()->scene()->itemAt(pos))) {
-        if (!m_clickableFeedback) {
+        if (!m_clickableFeedback) { // TODO improve this code
             m_clickableFeedback = pport;
             if (vPort()->connectable(pport->control()->vPort())) {
                 pport->showDropFeedback();
@@ -111,18 +109,21 @@ void CPort::drop(CPort* target)
         delete m_tmpWire;
         m_tmpWire = 0;
     }
-    CPort* port = reconnecting() ? m_reconnecting : this;
+    CPort* source = reconnecting() ? m_oldConnection : this;
     // If the user dropped on a target, try to connect to it
     if (target) {
-        if (target->m_wire) { // The target port is already connected, first disconnect it
-            target->disconnect();
+        source->vPort()->connect(source, target);
+        if (reconnecting()) { // It was a reconnection: this CPort may need to be removed
+            if (target != this) {
+                vPort()->removeConnectionPort(this);
+            } else {
+                // The drop was over this port
+                m_reconnecting = false;
+            }
         }
-        port->vPort()->connect(target->vPort());
-    }
-    if (reconnecting()) { // The reconnection is finished, remove the connection ports
-        m_reconnecting->vPort()->removeConnectionPort(m_reconnecting);
+    } else if (reconnecting()) { // The reconnection is finished, remove the connection ports
+        m_oldConnection->vPort()->removeConnectionPort(m_oldConnection);
         vPort()->removeConnectionPort(this);
-        m_reconnecting = 0;
     }
 }
 

@@ -76,5 +76,9 @@ QString CDimmer::timeFormat(qreal value)
 
 QString CDimmer::gainFormat(qreal value)
 {
-    return QString::number((long)(20 * log10(value))) + " dB";
+    long gain = 20 * log10(value);
+    if (gain < -2000) {
+        return "-Inf dB";
+    }
+    return QString::number(gain) + " dB";
 }

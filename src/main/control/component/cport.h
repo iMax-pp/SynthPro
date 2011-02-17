@@ -1,12 +1,12 @@
 #ifndef CPORT_H
 #define CPORT_H
 
+#include "control/component/cwire.h"
 #include "presentation/component/pport.h"
 #include <QObject>
 #include <QPointer>
 
 class CVirtualPort;
-class CWire;
 class QPointF;
 class QtFactory;
 
@@ -30,6 +30,7 @@ public:
     void reconnect(const QPointF&);
 
     inline bool reconnecting() const { return m_reconnecting; }
+    inline void setReconnecting(bool r) { m_reconnecting = r; }
 
     /*
      * The presentation of this CPort should call
@@ -50,17 +51,24 @@ public:
     void showAvailableFeedback();
     void hideAvailableFeedback();
 
-private slots:
-    void wireDeleted();
-
 private:
+    /// The CVirtualPort owning this CPort
     CVirtualPort* m_vPort;
+
     QPointer<PPort> m_presentation;
+
     QtFactory* m_factory;
-    CWire* m_wire;
+
+    /// The wire representing the connection of this CPort
+    QPointer<CWire> m_wire;
+
+    /// A temporary wire used during drag
     CWire* m_tmpWire;
+    /// A temporary target port used to handle presentation feedback
     PPort* m_clickableFeedback;
-    CPort* m_reconnecting;
+
+    bool m_reconnecting;
+    CPort* m_oldConnection; // The CPort previously connected to this CPort (used internally to handle reconnections)
 };
 
 #endif // CPORT_H

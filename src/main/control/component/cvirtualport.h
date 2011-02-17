@@ -26,6 +26,14 @@ public:
      * This method creates the CPorts (one for each side) and the CWire used by the new connection
      */
     Connection* connect(VirtualPort* other);
+    /**
+     * Connect this VirtualPort’s CPort to a given target CPort
+     * This method should be called by CPort when it detects an attempt from the user to
+     * make a connection.
+     * @param own The CPort owned by this CVirtualPort
+     * @param target The target CPort
+     */
+    Connection* connect(CPort* own, CPort* target);
     /// Disconnect the connection using a given CPort (this method is used by CPort)
     void disconnect(CPort*);
     /// Disconnect a given connection (and remove its presentation)
@@ -46,7 +54,7 @@ public:
      */
     void hideFeedback();
 
-    /// Remove a given CPort (without deleting it)
+    /// Remove a given CPort
     void removeConnectionPort(CPort*);
 
 protected:
@@ -55,8 +63,12 @@ protected:
 
     /// Internal method creating a CPort for a given Connection
     CPort* createConnectionPort(Connection*);
-    /// Internal method deleting a given CPort
-    void deleteConnectionPort(CPort*);
+
+    /// Internal method associating a CPort to a given Connection
+    void setConnectionPort(Connection*, CPort*);
+
+    /// Internal method deleting a given CPort if it’s not reconnecting
+    void removeConnectionPortIfNeeded(CPort*);
 
 private:
     QPointer<PVirtualPort> m_presentation;
@@ -67,6 +79,10 @@ private:
 
     /// The CPort representing the availableness of this VirtualPort
     CPort* m_availablePort;
+
+    // Internally used variables to handle reconnections
+    CPort* m_useOwnPort;
+    CPort* m_useOthersPort;
 };
 
 #endif // CVIRTUALPORT_H
