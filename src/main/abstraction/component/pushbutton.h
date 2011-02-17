@@ -14,13 +14,16 @@ public:
 public slots:
     void push();
     void release();
+    void setEnabled(bool);
 
 signals:
     void buttonPushed();
     void buttonReleased();
+    void buttonEnabled(bool);
 
 private:
     bool m_pushed;
+    bool m_enabled;
 };
 
 #endif // PUSHBUTTON_H

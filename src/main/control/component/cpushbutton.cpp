@@ -17,9 +17,6 @@ void CPushButton::setPresentation(PPushButton* presentation)
 
     connect(m_presentation, SIGNAL(buttonPushed()), this, SLOT(push()));
     connect(m_presentation, SIGNAL(buttonReleased()), this, SLOT(release()));
-}
 
-void CPushButton::setEnabled(bool enabled)
-{
-    m_presentation->setEnabled(enabled);
+    connect(this, SIGNAL(buttonEnabled(bool)), m_presentation, SLOT(setEnabled(bool)));
 }

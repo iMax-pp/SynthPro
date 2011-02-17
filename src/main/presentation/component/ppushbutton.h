@@ -13,6 +13,9 @@ public:
 
     void setIcon(const QIcon&);
 
+protected slots:
+    void setEnabled(bool);
+
 signals:
     void buttonPushed();
     void buttonReleased();
