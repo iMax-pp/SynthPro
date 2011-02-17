@@ -6,14 +6,16 @@ CSelector::CSelector(QList<int> choices, int defaultChoice, QObject* parent)
 {
 }
 
-PSelector* CSelector::presentation() const
+CSelector::~CSelector()
 {
-    return m_presentation;
+    if (!m_presentation.isNull()) {
+        delete m_presentation;
+    }
 }
 
 void CSelector::setPresentation(PSelector* presentation)
 {
-    if (m_presentation) {
+    if (!m_presentation.isNull()) {
         delete m_presentation;
     }
 

@@ -5,6 +5,8 @@
 #include "factory/synthprofactory.h"
 #include "presentation/psynthpro.h"
 
+#include <QPointer>
+
 class CVirtualPort;
 class QGraphicsScene;
 
@@ -15,8 +17,8 @@ public:
     CSynthPro(SynthProFactory*);
     virtual ~CSynthPro();
 
+    inline PSynthPro* presentation() const { return m_presentation; }
     void setPresentation(PSynthPro*);
-    PSynthPro* presentation() const;
 
     void add(Module*);
     void addModule(SynthProFactory::ModuleType, const QPointF&);
@@ -30,7 +32,7 @@ private slots:
     void play(bool);
 
 private:
-    PSynthPro* m_presentation;
+    QPointer<PSynthPro> m_presentation;
     QGraphicsScene* m_graphicsScene;
     SynthProFactory* m_factory;
 };

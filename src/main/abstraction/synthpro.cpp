@@ -39,6 +39,9 @@ void SynthPro::remove(QObject* object)
 {
     Module* module = static_cast<Module*>(object);
     m_modules.removeOne(module);
+    
+    Sequencer::instance().scheduleModules(this);
+
     module->prepareDestruction();
     module->deleteLater();
 }

@@ -2,9 +2,10 @@
 #define CVIRTUALPORT_H
 
 #include "abstraction/component/virtualport.h"
+#include "presentation/component/pvirtualport.h"
 #include <QHash>
+#include <QPointer>
 
-class PVirtualPort;
 class CPort;
 class QtFactory;
 
@@ -13,11 +14,12 @@ class CVirtualPort : public virtual VirtualPort {
 
 public:
     CVirtualPort(Module* parent, QtFactory*, const QString& name, bool replicable = false, bool gate = false);
+    virtual ~CVirtualPort();
 
     void initialize();
 
-    void setPresentation(PVirtualPort*);
     inline PVirtualPort* presentation() const { return m_presentation; }
+    void setPresentation(PVirtualPort*);
 
     /**
      * Override of the base implementation providing a GUI feedback.
@@ -57,7 +59,7 @@ protected:
     void deleteConnectionPort(CPort*);
 
 private:
-    PVirtualPort* m_presentation;
+    QPointer<PVirtualPort> m_presentation;
     QtFactory* m_factory;
 
     /// Set of ports used by the connections of this VirtualPort

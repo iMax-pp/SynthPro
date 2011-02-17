@@ -1,5 +1,6 @@
 #include "cinport.h"
 
+#include "control/cmodule.h"
 #include "factory/qtfactory.h"
 
 CInPort::CInPort(CModule* parent, QtFactory* factory, const QString& name, bool replicable, bool gate)

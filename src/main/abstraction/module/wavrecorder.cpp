@@ -8,7 +8,6 @@
 #include "abstraction/module/vco.h"
 #include "factory/synthprofactory.h"
 
-#include <QDebug>
 #include <QFile>
 
 WavRecorder::WavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
@@ -161,8 +160,6 @@ void WavRecorder::closeWAVFile()
 
         m_outputFile->close();
         m_outputFile = 0;
-
-        qDebug() << "WavRecorder::closeWAVFile Done !";
     }
 }
 

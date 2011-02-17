@@ -37,6 +37,10 @@ QVariant ModuleListModel::data(const QModelIndex& index, int role) const
         return QString(tr("%1 Module")).arg(m_moduleNames.value(index.row()));
     }
 
+    if (role == Qt::DisplayRole) {
+        return m_moduleNames.value(index.row());
+    }
+
     if (role == Qt::DecorationRole) {
         return m_modulePixmaps.value(index.row());
     }
