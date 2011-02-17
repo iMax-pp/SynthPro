@@ -13,8 +13,6 @@
 
 void TestDelay::testDelay()
 {
-    qDebug() << "debut du test";
-
     SimpleFactory factory;
     SynthPro* synth = factory.createSynthPro();
     Delay* delay = factory.createDelay(synth);

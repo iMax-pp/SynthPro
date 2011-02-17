@@ -5,7 +5,6 @@
 #include "abstraction/sequencer.h"
 
 #include <QAudioOutput>
-#include <QDebug>
 #include <QTimer>
 
 Clock::Clock(QObject* parent)
@@ -40,8 +39,6 @@ Clock& Clock::instance()
 
 void Clock::start()
 {
-    qDebug("Clock::start");
-
     if (!m_started) {
         // If no Fast Timers are present, we only start the Internal one.
         if (m_fastTimers.count() == 0) {

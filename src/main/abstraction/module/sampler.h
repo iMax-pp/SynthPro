@@ -69,6 +69,8 @@ protected:
     /// index readed in the buffer while playing
     qreal m_positionInBuffer;
 
+    /// index when sample really start ie whenits value is not 0
+    int m_sampleStart;
 
     static const qreal MIN_BPM = 0;
     static const qreal MAX_BPM = 2;

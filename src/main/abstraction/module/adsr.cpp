@@ -13,6 +13,7 @@ ADSR::ADSR(SynthPro* parent)
     , m_currentState(IDLE)
     , m_gateValue(0)
     , m_startRelease(0)
+    , m_currentGain(0)
 {
 }
 
@@ -47,32 +48,39 @@ void ADSR::ownProcess()
             currentValue = m_gate->buffer()->data()[bufferIndex];
         }
 
-        if (currentValue > m_gateValue && m_currentState == IDLE) {
-            // a gate "on" signal occurs
+        //====================================================================
+        if (currentValue >m_gateValue) {
             m_timeLine = 0;
             m_currentState = ATTACK;
-        }
+        } else {
+            if (currentValue > m_gateValue && m_currentState == IDLE) {
+                // a gate "on" signal occurs
+                m_timeLine = 0;
+                m_currentState = ATTACK;
+            }
 
-        if (currentValue < m_gateValue) {
-            // a gate "of" signal occurs
-            m_currentState = RELEASE;
-            m_startRelease = m_timeLine;
-        }
-        if (m_currentState == ATTACK && m_timeLine == attackInSample) {
-            m_currentState = DECAY;
-        }
-        if (m_currentState == DECAY && m_timeLine == (attackInSample + decayInSample)) {
-            m_currentState = SUSTAIN;
-        }
-        if (m_currentState == RELEASE &&  m_timeLine == m_startRelease + releaseInSample) {
-            m_currentState = IDLE;
-            m_timeLine = 0;
+            if (currentValue < m_gateValue) {
+                // a gate "of" signal occurs
+                m_currentState = RELEASE;
+                m_startRelease = m_timeLine;
+            }
+            if (m_currentState == ATTACK && m_timeLine == attackInSample) {
+                m_currentState = DECAY;
+            }
+            if (m_currentState == DECAY && m_timeLine == (attackInSample + decayInSample)) {
+                m_currentState = SUSTAIN;
+            }
+            if (m_currentState == RELEASE &&  m_timeLine == m_startRelease + releaseInSample) {
+                m_currentState = IDLE;
+                m_timeLine = 0;
 
+            }
         }
+        //====================================================================
         switch (m_currentState) {
         case ATTACK :
             if (m_attackDimmer->value() != 0) {
-                outports().first()->buffer()->data()[bufferIndex] = (qreal)m_timeLine / (qreal)attackInSample;
+                outports().first()->buffer()->data()[bufferIndex] = m_currentGain + (qreal)m_timeLine / (qreal)attackInSample;
             } else {
                 outports().first()->buffer()->data()[bufferIndex] = 1;
             }
@@ -95,6 +103,8 @@ void ADSR::ownProcess()
 
         case RELEASE :
             if (m_decayDimmer->value() != 0) {
+                m_currentGain =  m_sustainDimmer->value() - m_sustainDimmer->value()*(m_timeLine-m_startRelease) / releaseInSample;
+
                 outports().first()->buffer()->data()[bufferIndex] =
                         m_sustainDimmer->value() - m_sustainDimmer->value()*(m_timeLine-m_startRelease) / releaseInSample;
             } else {

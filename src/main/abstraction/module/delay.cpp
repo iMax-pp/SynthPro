@@ -56,12 +56,8 @@ void Delay::initialize(SynthProFactory* factory)
 void Delay::ownProcess()
 {
     int delaySize = m_durationDimmer->value() * (AudioDeviceProvider::OUTPUT_FREQUENCY / Buffer::DEFAULT_LENGTH-1);
-
-    m_readIndex = (m_readIndex > delaySize) ? 0 : m_readIndex;
-
-    if (m_writeIndex > delaySize) {
-        m_writeIndex = 0;
-    }
+    m_readIndex = m_readIndex % delaySize;
+    m_writeIndex = m_writeIndex  % delaySize;
 
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
         qreal outdata = 0;
