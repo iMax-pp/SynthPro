@@ -12,8 +12,8 @@ public:
     explicit CModule(SynthPro*);
     virtual ~CModule();
 
-    void setPresentation(PModule*);
     inline PModule* presentation() const { return m_presentation; }
+    void setPresentation(PModule*);
 
     /*
      * When moving the module around (event intercepted by PModule), this method

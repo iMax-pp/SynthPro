@@ -1,11 +1,12 @@
 #ifndef CPORT_H
 #define CPORT_H
 
+#include "presentation/component/pport.h"
 #include <QObject>
+#include <QPointer>
 
 class CVirtualPort;
 class CWire;
-class PPort;
 class QPointF;
 class QtFactory;
 
@@ -14,11 +15,12 @@ class CPort : public QObject {
 
 public:
     CPort(CVirtualPort* parent, QtFactory*);
+    virtual ~CPort();
 
     inline CVirtualPort* vPort() const { return m_vPort; }
 
-    void setPresentation(PPort*);
     inline PPort* presentation() const { return m_presentation; }
+    void setPresentation(PPort*);
 
     inline CWire* wire() const { return m_wire; }
     void setWire(CWire*);
@@ -50,9 +52,10 @@ public:
 
 private slots:
     void wireDeleted();
+
 private:
     CVirtualPort* m_vPort;
-    PPort* m_presentation;
+    QPointer<PPort> m_presentation;
     QtFactory* m_factory;
     CWire* m_wire;
     CWire* m_tmpWire;

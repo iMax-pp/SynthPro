@@ -31,14 +31,14 @@ CSynthPro::CSynthPro(SynthProFactory* factory)
 
 CSynthPro::~CSynthPro()
 {
-    if (m_presentation) {
+    if (!m_presentation.isNull()) {
         delete m_presentation;
     }
 }
 
 void CSynthPro::setPresentation(PSynthPro* presentation)
 {
-    if (m_presentation) {
+    if (!m_presentation.isNull()) {
         delete m_presentation;
     }
 
@@ -49,11 +49,6 @@ void CSynthPro::setPresentation(PSynthPro* presentation)
         // By default the Play/Pause button is on Pause, so let's change this.
         m_presentation->togglePlayPause();
     }
-}
-
-PSynthPro* CSynthPro::presentation() const
-{
-    return m_presentation;
 }
 
 void CSynthPro::add(Module* module)

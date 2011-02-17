@@ -3,7 +3,6 @@
 #include "control/component/cinport.h"
 #include "control/component/coutport.h"
 #include "control/component/cport.h"
-#include "presentation/component/pwire.h"
 
 CWire::CWire()
     : QObject(0)
@@ -15,13 +14,17 @@ CWire::CWire()
 
 CWire::~CWire()
 {
-    if (m_presentation) {
+    if (!m_presentation.isNull()) {
         delete m_presentation;
     }
 }
 
 void CWire::setPresentation(PWire* presentation)
 {
+    if (!m_presentation.isNull()) {
+        delete m_presentation;
+    }
+
     m_presentation = presentation;
 }
 

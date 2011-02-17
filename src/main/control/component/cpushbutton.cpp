@@ -6,13 +6,19 @@ CPushButton::CPushButton(QObject* parent)
 {
 }
 
-PPushButton* CPushButton::presentation() const
+CPushButton::~CPushButton()
 {
-    return m_presentation;
+    if (!m_presentation.isNull()) {
+        delete m_presentation;
+    }
 }
 
 void CPushButton::setPresentation(PPushButton* presentation)
 {
+    if (!m_presentation.isNull()) {
+        delete m_presentation;
+    }
+
     m_presentation = presentation;
 
     connect(m_presentation, SIGNAL(buttonPushed()), this, SLOT(push()));
