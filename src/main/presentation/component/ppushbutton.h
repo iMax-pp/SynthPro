@@ -12,9 +12,12 @@ public:
     PPushButton(QString name, QGraphicsItem* parent = 0);
 
     void setIcon(const QIcon&);
+    void setFlat(bool);
 
 protected slots:
     void setEnabled(bool);
+    void setCheckable(bool);
+    void setChecked(bool);
 
 signals:
     void buttonPushed();

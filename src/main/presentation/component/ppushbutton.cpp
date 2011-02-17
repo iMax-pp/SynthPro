@@ -25,3 +25,18 @@ void PPushButton::setEnabled(bool enabled)
 {
     m_button->setEnabled(enabled);
 }
+
+void PPushButton::setCheckable(bool checkable)
+{
+    m_button->setCheckable(checkable);
+}
+
+void PPushButton::setChecked(bool checked)
+{
+    m_button->setChecked(checked);
+}
+
+void PPushButton::setFlat(bool flat)
+{
+    m_button->setFlat(flat);
+}
