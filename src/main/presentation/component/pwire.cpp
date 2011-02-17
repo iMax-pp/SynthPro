@@ -50,6 +50,8 @@ void PWire::mousePressEvent(QGraphicsSceneMouseEvent* event)
     if (event->button() == Qt::MidButton) {
         event->accept();
         m_control->midClick();
+    } else {
+        event->ignore();
     }
 }
 
