@@ -1,6 +1,6 @@
 #include "progressbarwidget.h"
 
-ProgressBarWidget::ProgressBarWidget(int minimum, int maximum, QGraphicsItem* parent)
+ProgressBarWidget::ProgressBarWidget(QGraphicsItem* parent, int minimum, int maximum)
     : QGraphicsProxyWidget(parent)
 {
     m_progressBar = new QProgressBar();
@@ -13,4 +13,9 @@ ProgressBarWidget::ProgressBarWidget(int minimum, int maximum, QGraphicsItem* pa
 void ProgressBarWidget::setValue(int value)
 {
     m_progressBar->setValue(value);
+}
+
+void ProgressBarWidget::setMaximum(int maximum)
+{
+    m_progressBar->setMaximum(maximum);
 }

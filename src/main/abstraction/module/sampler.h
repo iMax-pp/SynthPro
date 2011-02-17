@@ -42,6 +42,7 @@ protected slots:
 
 signals:
     void valueChanged(int);
+    void lengthChanged(int);
 
 protected:
     InPort* m_inPort;

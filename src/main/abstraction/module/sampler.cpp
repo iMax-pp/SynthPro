@@ -54,6 +54,10 @@ void Sampler::initialize(SynthProFactory* factory)
     connect(m_stopButton, SIGNAL(buttonPushed()), this, SLOT(stopRecording()));
     connect(m_playButton, SIGNAL(buttonPushed()), this, SLOT(startPlaying()));
 
+    // Emit starting value (0) and maximum recording length.
+    emit valueChanged(0);
+    emit lengthChanged(SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH - 1);
+
     int buffer_length = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
     m_buffer = new Buffer(buffer_length);
@@ -74,6 +78,9 @@ void Sampler::startRecording()
     m_recordButton->setEnabled(false);
     m_stopButton->setEnabled(true);
     m_playButton->setEnabled(false);
+
+    emit valueChanged(0);
+    emit lengthChanged(SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH - 1);
 }
 
 void Sampler::stopRecording()
@@ -98,6 +105,9 @@ void Sampler::startPlaying()
     m_recordButton->setEnabled(false);
     m_stopButton->setEnabled(true);
     m_playButton->setEnabled(false);
+
+    emit valueChanged(0);
+    emit lengthChanged(m_sampleSize);
 }
 
 void Sampler::ownProcess()
@@ -116,6 +126,7 @@ void Sampler::ownProcess()
 
         if (m_state == RECORDING && (gateUp || m_sampleSize == sampleMaxInByte)) {
             m_state = WAITING;
+            stopRecording();
         }
 
         if (m_state == EMPTY && gateUp) {
@@ -146,6 +157,8 @@ void Sampler::ownProcess()
 
         case PLAYING :
             m_positionInBuffer += speed;
+            emit valueChanged(m_positionInBuffer);
+
             if (m_positionInBuffer >= m_sampleSize) {
                 m_positionInBuffer = 0;
             }
