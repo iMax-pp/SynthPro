@@ -114,16 +114,16 @@ date :  semaine 7 (Lundi 14 - Mardi 15)
 
 Itération 7
 -----------
-date :  semaine 7 (Mercredi 16-jeudi 17)
+date :  semaine 7 (Mercredi 16-vendredi 18)
 
 - Julien N. :
     - Oscillo stabilisé;
-    - Bouton stabilized dans oscillo;
     - Audio Engine avec bonne fréquence (abandoned)
 - Maxime :
     - Contrôle et présentation de sampler;
     - Icones dans box à gauche (+drag'n'drop icones);
     - Remplacer les PixmapButtonWidget (interaction pas assez PAC), par des PushButton (PAC par excellence);
+    - Bouton stabilized dans oscillo;
 - Julien RF. :
     - Tweaking de la présentation des dimmers (Hz, dB, %, s…);
     - Tweaking de la présentation des widgets;
@@ -131,3 +131,8 @@ date :  semaine 7 (Mercredi 16-jeudi 17)
     - Fixer VCA (multiplier input par somme du dimmer et control), en une passe;
     - Sampler;
 
+Todo :
+--------
+- Oscillo stabilisation à améliorer.
+- Changer tous les Gate en Gate In/Gate Out
+- Bug Triangle
