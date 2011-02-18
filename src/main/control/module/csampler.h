@@ -4,8 +4,10 @@
 #include "abstraction/module/sampler.h"
 #include "control/cmodule.h"
 
+/**
+ * Sampler control class (PAC by inheritance).
+ */
 class CSampler : public Sampler, public CModule {
-
 public:
     explicit CSampler(SynthPro*);
 

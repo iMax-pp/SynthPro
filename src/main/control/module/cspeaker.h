@@ -4,8 +4,10 @@
 #include "abstraction/module/speaker.h"
 #include "control/cmodule.h"
 
+/**
+ * Speaker control class (PAC by inheritance).
+ */
 class CSpeaker : public Speaker, public CModule {
-
 public:
     explicit CSpeaker(SynthPro*, QIODevice*, QAudioOutput*);
 

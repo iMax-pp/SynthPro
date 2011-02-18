@@ -88,7 +88,7 @@ private:
 
     QMap<Module*, QTimer*> m_fastTimers;
     QTimer* m_internalTimer;
-    AudioDeviceProvider& adp;
+    // AudioDeviceProvider& adp; // Used for the unsuccesful attempt to manage the soundcard output from the Clock.
     Sequencer& sequencer;
 };
 

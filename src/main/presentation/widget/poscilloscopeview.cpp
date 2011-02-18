@@ -88,7 +88,7 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
             usedBufferSize = m_inBuffer->length() - indexBuffer;
             usedBufferSize = usedBufferSize > MAX_BUFFER_USED ? MAX_BUFFER_USED : usedBufferSize;
         } else {
-            usedBufferSize = m_inBuffer->length();
+            usedBufferSize = MAX_BUFFER_USED;
         }
 
         step = (usedBufferSize / WIDTH);
@@ -105,7 +105,6 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
             previousY = y;
             indexBuffer += step;
         }
-
     }
 }
 

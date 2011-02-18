@@ -133,4 +133,4 @@ date :  semaine 7 (Mercredi 16-vendredi 18)
 
 Todo :
 --------
-- Bug AudioDevicePovider trouvé par Maxime.
+- Triangle frequency pas super précise dans les aigues ?
