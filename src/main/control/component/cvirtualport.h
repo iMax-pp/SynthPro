@@ -78,6 +78,9 @@ protected:
      */
     void updateAvailableFeedback();
 
+    /// Call this method to show the “compatible” feedback of a port.
+    void showPortCompatibleFeedback(CPort*, bool isCompatible, bool isConnectable) const;
+
     /// Internal method creating a CPort for a given Connection.
     CPort* createConnectionPort(Connection*);
 

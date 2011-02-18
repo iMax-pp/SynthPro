@@ -54,6 +54,7 @@ PModule::PModule(CModule* control)
 
     m_closeBtn = new PixmapButtonWidget(":/src/resources/images/close-icon.png", this);
     m_closeBtn->setPos(-16, -16);
+    m_closeBtn->setCursor(Qt::PointingHandCursor);
     connect(m_closeBtn, SIGNAL(clicked()), SIGNAL(closeBtnClicked()));
 }
 
