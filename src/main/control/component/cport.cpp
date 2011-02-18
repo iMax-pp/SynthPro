@@ -99,7 +99,7 @@ void CPort::dragMove(const QPointF& pos)
         } else {
             // There’s no port under the cursor position
             if (m_dropablePort) {
-                m_dropablePort->showFeedback(source->vPort()->connectable(m_dropablePort->control()->vPort()));
+                m_dropablePort->hideDropFeedback();
                 m_dropablePort = 0;
             }
         }
@@ -111,6 +111,7 @@ void CPort::dragMove(const QPointF& pos)
 
 void CPort::drop(CPort* target)
 {
+    m_dropablePort = 0; // Clean-up
     dynamic_cast<CSynthPro*>(vPort()->module()->synthPro())->hideFeedback();
     // Delete the temporary wire
     if (m_tmpWire) {
@@ -148,9 +149,19 @@ void CPort::mouseLeave()
     presentation()->hideClickFeedback();
 }
 
-void CPort::showFeedback(bool compatible)
+void CPort::showCompatibleFeedback()
 {
-    presentation()->showFeedback(compatible);
+    presentation()->showCompatibleFeedback();
+}
+
+void CPort::showConnectableFeedback()
+{
+    presentation()->showConnectableFeedback();
+}
+
+void CPort::showUnconnectableFeedback()
+{
+    presentation()->showUnconnectableFeedback();
 }
 
 void CPort::hideFeedback()

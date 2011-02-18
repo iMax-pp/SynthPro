@@ -45,15 +45,10 @@ void PWire::updatePosition()
                                PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2));
 }
 
-// TODO really track clicks instead of just press events
-void PWire::mousePressEvent(QGraphicsSceneMouseEvent* event)
+void PWire::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 {
-    if (event->button() == Qt::MidButton) {
-        event->accept();
-        m_control->midClick();
-    } else {
-        event->ignore();
-    }
+    event->accept();
+    m_control->doubleClick();
 }
 
 void PWire::showMoveFeedback()

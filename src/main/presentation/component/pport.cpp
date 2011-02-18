@@ -30,14 +30,23 @@ void PPort::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
     painter->drawEllipse(0, 0, PORT_SIZE, PORT_SIZE);
 }
 
-void PPort::showFeedback(bool compatible)
+void PPort::showCompatibleFeedback()
+{
+    QPalette palette(Qt::darkGreen);
+    setPalette(palette);
+    update();
+}
+
+void PPort::showConnectableFeedback()
+{
+    QPalette palette(Qt::darkBlue);
+    setPalette(palette);
+    update();
+}
+
+void PPort::showUnconnectableFeedback()
 {
     QPalette palette(Qt::darkRed);
-
-    if (compatible) {
-        palette.setColor(QPalette::Button, Qt::darkGreen);
-    }
-
     setPalette(palette);
     update();
 }
@@ -66,18 +75,21 @@ void PPort::hideClickFeedback()
 
 void PPort::showDropFeedback()
 {
-    QPalette p;
-    p.resolve(palette());
-    p.setColor(QPalette::Button, Qt::green);
+    m_oldPalette = palette();
+    QPalette p(Qt::green);
     setPalette(p);
 }
 
 void PPort::showUnDropFeedback()
 {
-    QPalette p;
-    p.resolve(palette());
-    p.setColor(QPalette::Button, Qt::red);
+    m_oldPalette = palette();
+    QPalette p(Qt::red);
     setPalette(p);
+}
+
+void PPort::hideDropFeedback()
+{
+    setPalette(m_oldPalette);
 }
 
 void PPort::mousePressEvent(QGraphicsSceneMouseEvent* event)

@@ -176,11 +176,23 @@ void CVirtualPort::updateWiresPositions()
 void CVirtualPort::showCompatibleFeedback(CVirtualPort* from)
 {
     bool isCompatible = compatible(from);
+    bool isConnectable = connectable(from);
     if (from != this) {
-        m_availablePort->showFeedback(isCompatible);
+        showPortCompatibleFeedback(m_availablePort, isCompatible, isConnectable);
         foreach (CPort* port, m_connectedPorts.keys()) {
-            port->showFeedback(isCompatible);
+            showPortCompatibleFeedback(port, isCompatible, isConnectable);
         }
+    }
+}
+
+void CVirtualPort::showPortCompatibleFeedback(CPort* port, bool isCompatible, bool isConnectable) const
+{
+    if (isCompatible) {
+        port->showCompatibleFeedback();
+    } else if (isConnectable) {
+        port->showConnectableFeedback();
+    } else {
+        port->showUnconnectableFeedback();
     }
 }
 

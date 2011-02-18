@@ -10,6 +10,9 @@ class CVirtualPort;
 class QPointF;
 class QtFactory;
 
+/**
+ * Port control class.
+ */
 class CPort : public QObject {
     Q_OBJECT
 
@@ -45,7 +48,9 @@ public:
     void mouseEnter();
     void mouseLeave();
 
-    void showFeedback(bool compatible);
+    void showCompatibleFeedback();
+    void showConnectableFeedback();
+    void showUnconnectableFeedback();
     void hideFeedback();
 
     void showAvailableFeedback();
