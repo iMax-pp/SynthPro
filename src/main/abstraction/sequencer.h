@@ -8,32 +8,34 @@ class Module;
 
 /**
  * The Sequencer make all the module working together, taking care of cycles and
- * dependencies
+ * dependencies.
  */
 class Sequencer : public QObject {
     Q_OBJECT
 
 public:
-
+    /// @returns The instance the sequencer singleton.
     static Sequencer& instance();
 
-    /**
-     * Process each module in the order computed before.
-     */
+    /// Process each module in the order computed before.
     void process();
 
 public slots:
     /**
      * Sort the modules in the right order to be processed.
      * Must be called each time the module configuration change.
-     * @param synthpro The SynthPro to schedule modules
+     * @param synthpro The SynthPro to schedule modules.
      */
     void scheduleModules(const SynthPro*);
 
 protected:
+    /**
+     * Sort the modules in the right order to be processed.
+     * @param modules A Qlist of modules to schedule.
+     */
     void scheduleModules(QList<Module*> modules);
 
-    /// Find the wells modules owned by the synthpro
+    /// Find the wells modules owned by the SynthPro.
     void findWells(const SynthPro*);
 
 private:

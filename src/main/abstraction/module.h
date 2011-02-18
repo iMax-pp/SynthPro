@@ -16,12 +16,14 @@ class Module : public QObject {
 public:
     explicit Module(SynthPro*);
     virtual ~Module();
+
+    /// Prepare this module to be destroyed (conveniency method).
     void prepareDestruction();
 
-    /// Get the list of output ports of this module
+    /// @returns The list of output ports of this module.
     inline const QList<OutPort*> outports() const { return m_outports; }
 
-    /// Get the list of input ports of this module FIXME is it needed?
+    /// @returns The list of input ports of this module.
     inline const QList<InPort*> inports() const { return m_inports; }
 
     /**
@@ -30,13 +32,13 @@ public:
      */
     void process();
 
-    /// Subclasses have to implement here their own process
+    /// Subclasses have to implement here their own process.
     virtual void ownProcess() = 0;
 
-    /// Get the list of required modules for this module to perform its function
+    /// @returns The list of required modules for this module to perform its function.
     const QList<Module*> requirements() const;
 
-    /// Get the parent SynthPro.
+    /// @returns The parent SynthPro.
     SynthPro* synthPro() const;
 
 public slots:
