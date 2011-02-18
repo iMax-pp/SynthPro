@@ -117,23 +117,22 @@ void Sampler::ownProcess()
     qreal speed = m_bpmDimmer->value();
     int sampleMaxInByte = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
-    qDebug() << "state : " << state() << m_gateState;
 
     for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
-        if (m_gate->buffer()->data()[i] /*!=*/ > 0) {
-            m_gateState = true;
-        } else {
-            m_gateState = false;
-        }
 
 
-       // bool gateUp = m_gateState && !m_oldGateState;
-        bool gateUp = m_gateState;
+        m_gateState = m_gate->buffer()->data()[i] > 0;
 
+        bool gateUp = (m_gateState && !m_oldGateState) || (m_oldGateState && !m_gateState);
 
         if (m_state == RECORDING && (gateUp || m_sampleSize == sampleMaxInByte)) {
             m_state = WAITING;
             stopRecording();
+            gateUp = !gateUp;
+        }
+        if (m_state== RECORDING && m_sampleSize == sampleMaxInByte) {
+            startPlaying();
+            gateUp = !gateUp;
         }
 
         if (m_state == EMPTY && gateUp) {

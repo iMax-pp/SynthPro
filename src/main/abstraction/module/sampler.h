@@ -34,7 +34,7 @@ public:
     QString state();
     Buffer* sampleBuffer();
 
-    static const int SAMPLER_MAX_DURATION = 250;
+    static const int SAMPLER_MAX_DURATION = 500;
 
 protected slots:
     void startRecording();
