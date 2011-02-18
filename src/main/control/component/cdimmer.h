@@ -26,12 +26,6 @@ public:
     /// Synchronize the presentation’s value with the abstraction’s value, using the formatter
     void publishValue();
 
-    /**
-     * @param The value to convert.
-     * @returns The "real life" value from the current value of the dimmer.
-     */
-    qreal realValue(qreal value) const;
-
     /// Default formatting function
     static QString defaultFormat(qreal);
     static QString percentageFormat(qreal);
