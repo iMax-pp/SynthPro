@@ -17,6 +17,7 @@ class Sampler : public virtual Module {
 public:
     explicit Sampler(SynthPro*);
     virtual ~Sampler();
+
     void initialize(SynthProFactory*);
 
     /// Process its job(s): record a sample, play a sample

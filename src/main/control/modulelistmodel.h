@@ -15,7 +15,7 @@
  */
 class ModuleListModel : public QAbstractListModel {
 public:
-    ModuleListModel(QObject* parent = 0);
+    explicit ModuleListModel(QObject* parent = 0);
 
     /// Overrides QAbstractListModel::rowCount.
     int rowCount(const QModelIndex& parent = QModelIndex()) const;
