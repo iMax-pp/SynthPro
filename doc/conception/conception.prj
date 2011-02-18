@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 13
+  revision 14
   modified_by 2 "julien"
 
 
@@ -1570,6 +1570,49 @@ format 74
     end
 
     class 155138 "CWire"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    sequencediagram 141058 "drag"
+      show_full_operations_definition yes write_horizontally default class_drawing_mode default drawing_language uml draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
+    end
+
+    sequencediagram 141186 "drop"
+      show_full_operations_definition yes write_horizontally yes class_drawing_mode default drawing_language uml draw_all_relations yes shadow yes show_stereotype_properties yes show_class_context_mode uml show_msg_context_mode uml
+      overlapping_bars size A4-Landscape
+    end
+
+    class 161666 "User"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 161794 "CVirtualPort"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 162050 "PWire"
       visibility package 
       cpp_decl ""
       java_decl ""
