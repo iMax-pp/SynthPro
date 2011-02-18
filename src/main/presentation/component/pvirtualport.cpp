@@ -6,6 +6,7 @@
 #include "presentation/widget/textwidget.h"
 
 #include <QFont>
+#include <QGraphicsGridLayout>
 #include <QGraphicsLinearLayout>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
@@ -15,7 +16,6 @@ PVirtualPort::PVirtualPort(CVirtualPort* control, QGraphicsItem* parent)
     , m_control(control)
     , m_label(0)
     , m_connectionsLayout(0)
-    , m_portsLayout(0)
 {
 }
 
@@ -25,36 +25,43 @@ void PVirtualPort::initialize(PPort* availablePort)
     m_label = new TextWidget(control()->name(), this);
     m_label->setFont(QFont("Courier", 10, QFont::Normal));
 
-    QGraphicsLinearLayout* layout = new QGraphicsLinearLayout(Qt::Horizontal, this);
+    QGraphicsGridLayout* layout = new QGraphicsGridLayout(this);
     layout->setSpacing(0);
-    m_portsLayout = new QGraphicsLinearLayout(Qt::Vertical, layout);
-    m_portsLayout->setSpacing(4);
-    m_connectionsLayout = new QGraphicsLinearLayout(Qt::Vertical, m_portsLayout);
+
+    m_connectionsLayout = new QGraphicsLinearLayout(Qt::Vertical, layout);
+    m_connectionsLayout->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
     m_connectionsLayout->setSpacing(4);
 
     if (control()->out()) {
-        layout->addItem(m_label);
-        layout->addItem(m_portsLayout);
+        layout->addItem(m_label, 0, 0);
+        layout->addItem(m_connectionsLayout, 0, 1);
+        layout->setColumnMaximumWidth(0, m_label->size().width());
     } else {
-        layout->addItem(m_portsLayout);
-        layout->addItem(m_label);
+        layout->addItem(m_connectionsLayout, 0, 0);
+        layout->addItem(m_label, 0, 1);
+        layout->setColumnMaximumWidth(1, m_label->size().width());
     }
-    m_portsLayout->addItem(m_connectionsLayout);
-    m_portsLayout->addItem(availablePort);
 
-    setMinimumSize(boundingRect().size());
+    m_connectionsLayout->addItem(availablePort);
+
+    m_connectionsLayout->activate();
     layout->activate();
 }
 
 void PVirtualPort::insertConnectionPort(int i, PPort* port)
 {
     m_connectionsLayout->insertItem(i, port);
+
+    m_connectionsLayout->activate();
     layout()->activate();
 }
 
 void PVirtualPort::removeConnectionPort(PPort* port)
 {
     m_connectionsLayout->removeItem(port);
+
+    m_connectionsLayout->activate();
     layout()->activate();
+
     port->deleteLater();
 }

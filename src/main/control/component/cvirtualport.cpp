@@ -50,6 +50,7 @@ Connection* CVirtualPort::connect(VirtualPort* other)
 {
     CVirtualPort* cOther = dynamic_cast<CVirtualPort*>(other);
     Connection* connection = VirtualPort::connect(cOther);
+
     if (connection) {
         CPort* source = 0;
         CPort* target = 0;
@@ -64,6 +65,7 @@ Connection* CVirtualPort::connect(VirtualPort* other)
             target = m_useOwnPort ? m_useOwnPort : createConnectionPort(connection);
             setConnectionPort(connection, target);
         }
+
         CWire* wire = m_factory->createWire(presentation()->scene());
         source->setWire(wire);
         target->setWire(wire);

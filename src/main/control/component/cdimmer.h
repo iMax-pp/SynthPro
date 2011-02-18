@@ -39,7 +39,7 @@ public:
     static QString gainFormat(qreal);
 
     /// Discretization factor
-    static const qreal DISCR = 150;
+    static const qreal DISCR = 1000;
 
 protected slots:
     /// Forward the value change event from the presentation to the abstraction (converting it into a qreal using the discretization factor)

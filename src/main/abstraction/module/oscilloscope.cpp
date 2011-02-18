@@ -21,6 +21,7 @@ void Oscilloscope::initialize(SynthProFactory* factory)
         m_inports.append(m_inPort);
 
         m_stabilizeControl = factory->createPushButton(tr("Stabilize"), this);
+        m_stabilizeControl->setCheckable(true);
 
         connect(m_stabilizeControl, SIGNAL(buttonPushed()), this, SLOT(stabilizedPushed()));
     }
@@ -42,4 +43,5 @@ bool Oscilloscope::stabilized()
 void Oscilloscope::stabilizedPushed()
 {
     m_stabilized = !m_stabilized;
+    m_stabilizeControl->setChecked(!m_stabilized);
 }

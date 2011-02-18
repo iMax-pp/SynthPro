@@ -54,10 +54,10 @@ void TestInPort::testConnectable()
 
     QVERIFY(inGate->connectable(outGate));
     QVERIFY(outGate->connectable(inGate));
-    QVERIFY(!inGate->connectable(out));
-    QVERIFY(!out->connectable(inGate));
-    QVERIFY(!outGate->connectable(in));
-    QVERIFY(!in->connectable(outGate));
+    QVERIFY(inGate->connectable(out));
+    QVERIFY(out->connectable(inGate));
+    QVERIFY(outGate->connectable(in));
+    QVERIFY(in->connectable(outGate));
 
     delete in;
     delete out;
@@ -123,9 +123,9 @@ void TestInPort::testDisconnectFrom()
     QCOMPARE(m_count, 0);
 
     OutPort* outGate = factory.createOutPortGate(0, "out gate"); // Create a gate
-    in->connect(outGate); // Try to connect to an incompatible port
+    in->connect(outGate); // Try to connect to an compatible port
 
-    QCOMPARE(m_count, 0);
+    QCOMPARE(m_count, 1);
 
     delete in;
     delete out;

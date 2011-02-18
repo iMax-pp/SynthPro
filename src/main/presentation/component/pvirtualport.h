@@ -22,7 +22,6 @@ private:
     CVirtualPort* m_control;
     TextWidget* m_label;
     QGraphicsLinearLayout* m_connectionsLayout;
-    QGraphicsLinearLayout* m_portsLayout;
 };
 
 #endif // PVIRTUALPORT_H
