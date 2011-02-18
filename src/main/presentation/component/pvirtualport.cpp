@@ -24,7 +24,7 @@ void PVirtualPort::initialize(PPort* availablePort)
 {
     // Create label for port.
     m_label = new TextWidget(control()->name(), this);
-    m_label->setFont(QFont("Courier", 10, QFont::Normal));
+    m_label->setFont(QFont("Courier", 8, QFont::Normal));
 
     QGraphicsGridLayout* layout = new QGraphicsGridLayout(this);
     layout->setSpacing(0);
@@ -72,7 +72,6 @@ void PVirtualPort::notifyThatYouCantDropOnARedPort()
     QMessageBox msgBox;
     msgBox.setText(tr("Well, actually this port was shown in red as an hint that you can’t connect your wire on it. An input port can only be connected to an output port and <em>vice versa</em>."));
     msgBox.setStandardButtons(QMessageBox::Ok);
-    // msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.exec();
 }
 
@@ -81,6 +80,5 @@ void PVirtualPort::notifyThatYouStillCantDropOnARedPort()
     QMessageBox msgBox;
     msgBox.setText(tr("Have you read the previous message?"));
     msgBox.setStandardButtons(QMessageBox::Ok);
-    // msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.exec();
 }

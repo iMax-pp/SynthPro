@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 14
+  revision 15
   modified_by 2 "julien"
 
 
@@ -232,6 +232,10 @@ format 74
 	
 	
 	
+      end
+
+      classrelation 128263 // <association>
+	relation_ref 128135 // <association>
       end
     end
 
@@ -979,6 +983,36 @@ format 74
 	
 	
       end
+
+      classrelation 128007 // <generalisation>
+	relation 128007 ---|>
+	  a public
+	    classrelation_ref 128007 // <generalisation>
+	  b parent class_ref 141699 // Module
+      end
+
+      classrelation 128135 // fastTimers (<association>)
+	relation 128135 ----
+	  stereotype "map"
+	  a role_name "fastTimers" multiplicity "*" private
+	    classrelation_ref 128135 // fastTimers (<association>)
+	  b role_name "" private
+	    classrelation_ref 128263 // <association>
+      end
+
+      classrelation 128903 // sequencer (<unidirectional association>)
+	relation 128647 --->
+	  a role_name "sequencer" multiplicity "1" private
+	    classrelation_ref 128903 // sequencer (<unidirectional association>)
+	  b parent class_ref 142211 // Sequencer
+      end
+
+      classrelation 135431 // adp (<unidirectional association>)
+	relation 135175 --->
+	  a role_name "adp" multiplicity "1" private
+	    classrelation_ref 135431 // adp (<unidirectional association>)
+	  b parent class_ref 147842 // AudioDeviceProvider
+      end
     end
 
     class 147842 "AudioDeviceProvider"
@@ -1039,6 +1073,54 @@ format 74
 	
 	
       end
+    end
+
+    classdiagram 128007 "PSM-CurrentAudioEngine"
+      draw_all_relations default hide_attributes default hide_operations yes hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 128007 "AudioOutput"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128391 // <generalisation>
+	relation 128263 ---|>
+	  a public
+	    classrelation_ref 128391 // <generalisation>
+	  b parent class_ref 141699 // Module
+      end
+
+      classrelation 128519 // sequencer (<unidirectional association>)
+	relation 128391 --->
+	  a role_name "sequencer" multiplicity "1" private
+	    classrelation_ref 128519 // sequencer (<unidirectional association>)
+	  b parent class_ref 142211 // Sequencer
+      end
+
+      classrelation 128775 // adp (<unidirectional association>)
+	relation 128519 --->
+	  a role_name "adp" private
+	    classrelation_ref 128775 // adp (<unidirectional association>)
+	  b parent class_ref 147842 // AudioDeviceProvider
+      end
+
+      classrelation 135559 // audioDeviceProvider (<unidirectional association>)
+	relation 135303 --->
+	  a role_name "audioDeviceProvider" multiplicity "1" private
+	    classrelation_ref 135559 // audioDeviceProvider (<unidirectional association>)
+	  b parent class_ref 147842 // AudioDeviceProvider
+      end
+    end
+
+    classdiagram 134535 "PSM-UnusedAudioEngine"
+      draw_all_relations no hide_attributes default hide_operations yes hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
     end
   end
 
@@ -1412,6 +1494,8 @@ format 74
       draw_all_relations yes hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4
     end
+<<<<<<< HEAD
+=======
 
     classdiagram 134530 "pacdimmer"
       draw_all_relations yes hide_attributes no hide_operations no hide_getset_operations default show_members_full_definition yes show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir no show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language uml show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
@@ -1587,7 +1671,7 @@ format 74
 
     sequencediagram 141186 "drop"
       show_full_operations_definition yes write_horizontally yes class_drawing_mode default drawing_language uml draw_all_relations yes shadow yes show_stereotype_properties yes show_class_context_mode uml show_msg_context_mode uml
-      overlapping_bars size A4-Landscape
+      overlapping_bars size A4
     end
 
     class 161666 "User"
@@ -1622,5 +1706,6 @@ format 74
       explicit_switch_type ""
       
     end
+>>>>>>> 1af82c39c570a23b60cfe0a3188a6b7ab3683218
   end
 end
