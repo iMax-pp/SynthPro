@@ -134,4 +134,3 @@ date :  semaine 7 (Mercredi 16-vendredi 18)
 Todo :
 --------
 - Oscillo stabilisation à améliorer;
-- Bug Triangle.
