@@ -30,14 +30,14 @@ void LFO::initialize(SynthProFactory* factory)
     m_out = factory->createOutPortReplicable(this, "out");
     m_outports.append(m_out);
 
-    /// Creation of the Selector
+    // Creation of the Selector
     m_shapeSelector = factory->createSelector(m_waveGeneratorFactory->selectorConversionMap().keys(), 0,
                                               m_waveGeneratorFactory->selectorConversionMap().values(), "Wave Type", this);
 
-    /// Connection of the Selector
+    // Connection of the Selector
     connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
 
-    /// Creation of the Dimmers
+    // Creation of the Dimmers
     m_kDimmer = factory->createDialDimmer("K", K_MIN, K_MAX, K_DEFAULT, this);
     m_rangeDimmer = factory->createDialDimmer("Range", RANGE_MIN, RANGE_MAX, RANGE_DEFAULT, this);
     m_offsetDimmer = factory->createDialDimmer("Offset", OFFSET_MIN, OFFSET_MAX, OFFSET_DEFAULT, this);
@@ -51,7 +51,6 @@ LFO::~LFO()
         delete m_waveGenerator;
     }
 
-    // FIXME, this leads to an infinite loop of bad desalloc.
     delete m_lfoBuffer;
 }
 
@@ -114,7 +113,6 @@ void LFO::waveShapeChanged(int selectedValue)
 
 QString LFO::shape()
 {
-
     return m_waveGeneratorFactory->selectorConversionMap()[m_shapeSelector->choice()];
 }
 

@@ -8,7 +8,7 @@
 WaveGeneratorSaw::WaveGeneratorSaw()
     : m_slope(0)
     , m_intensity(0)
-    , m_currentSignalTension(-1000)
+    , m_currentSignalTension(-1000) // Unreachable value.
     , m_minimumIntensity(VCO::SIGNAL_INTENSITY * -1)
 {
 }

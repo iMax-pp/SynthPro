@@ -5,6 +5,7 @@
 #include "control/cmodule.h"
 
 class CVCO : public VCO, public CModule {
+
 public:
     explicit CVCO(SynthPro*);
 

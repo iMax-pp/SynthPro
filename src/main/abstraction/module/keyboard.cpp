@@ -27,10 +27,6 @@ void Keyboard::initialize(SynthProFactory* factory)
     }
 }
 
-void Keyboard::timerExpired()
-{
-}
-
 void Keyboard::ownProcess()
 {
     int valueGate;

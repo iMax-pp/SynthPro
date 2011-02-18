@@ -33,7 +33,7 @@ public:
     void updatePosition(const QPointF&);
     void updatePosition();
 
-    void midClick();
+    void doubleClick();
     void showMoveFeedback();
 
 private:

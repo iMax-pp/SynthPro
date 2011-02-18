@@ -23,6 +23,8 @@ protected:
      * Intercept mouse moving to update the hooked wires accordingly.
      */
     void mouseMoveEvent(QGraphicsSceneMouseEvent*);
+    void mousePressEvent(QGraphicsSceneMouseEvent*);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent*);
 
     inline QGraphicsAnchorLayout* leftArea() const { return m_leftArea; }
     inline QGraphicsAnchorLayout* bottomArea() const { return m_bottomArea; }

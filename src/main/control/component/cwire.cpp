@@ -48,7 +48,7 @@ void CWire::updatePosition()
     m_presentation->updatePosition();
 }
 
-void CWire::midClick()
+void CWire::doubleClick()
 {
     m_inPort->disconnect();
 }

@@ -12,11 +12,18 @@ public:
     void initialize(SynthProFactory*);
 
     /**
-      * Useful to the Presentation of the module.
-      */
+     * Useful to the Presentation of the module.
+     */
     void postInitialize();
 
+    /**
+     * Called by the Presentation to indicates a key has been pressed.
+     */
     void keyboardKeyPressed(int keyPressed);
+
+    /**
+     * Called by the Presentation to indicates a key has been released.
+     */
     void keyboardKeyReleased(int keyPressed);
 };
 

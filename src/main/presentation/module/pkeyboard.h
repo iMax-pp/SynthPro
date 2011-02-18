@@ -19,12 +19,19 @@ public:
     void initialize(PVirtualPort* outputFrequency, PVirtualPort* outputGate);
 
     /**
-      * Needed to be called after the addition in the scene, as grabKeyboard() needs it.
-      */
+     * Needed to be called after the addition in the scene, as grabKeyboard() needs it.
+     */
     void postInitialize();
 
 private slots:
+    /**
+     * Indicate to the Controller a key has been pressed.
+     */
     void keyboardKeyPressed(int keyPressed);
+
+    /**
+     * Indicate to the Controller a key has been released.
+     */
     void keyboardKeyReleased(int keyPressed);
 
 private:

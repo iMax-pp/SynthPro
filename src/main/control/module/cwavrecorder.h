@@ -17,6 +17,9 @@ public:
     void initialize(SynthProFactory*);
 
 protected slots:
+    /**
+     * Ask the Presentation to prompt the user to select a File, and give the abstraction the filename.
+     */
     void newFile();
 };
 

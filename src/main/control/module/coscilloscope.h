@@ -12,8 +12,8 @@ public:
     void initialize(SynthProFactory*);
 
     /**
-      * Process the input signal.
-      */
+     * Order the Presentation it has to refresh itself.
+     */
     virtual void ownProcess();
 };
 
