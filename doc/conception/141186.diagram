@@ -1,108 +1,158 @@
 format 74
 
 classinstance 128002 class_ref 151427 // PPort
-  name "pp1"   xyz 101 4 2000 life_line_z 2000
+  name "pp1"   xyz 62 4 2000 life_line_z 2000
 classinstance 128130 class_ref 151299 // CPort
-  name "cp1"   xyz 229 4 2000 life_line_z 2000
+  name "cp1"   xyz 172 4 2000 life_line_z 2000
 classinstance 128642 class_ref 151427 // PPort
-  name "pp2"   xyz 541 4 2000 life_line_z 2000
+  name "pp2"   xyz 397 4 2000 life_line_z 2000
 classinstance 128770 class_ref 151299 // CPort
-  name "cp2"   xyz 613 4 2000 life_line_z 2000
+  name "cp2"   xyz 466 4 2000 life_line_z 2000
 classinstance 128898 class_ref 161666 // User
-  drawing_mode actor  name ""   xyz 24 4 2005 life_line_z 2000
+  drawing_mode actor  name ""   xyz 7 4 2005 life_line_z 2000
 classinstance 130434 class_ref 155138 // CWire
-  name "tmp"   mortal  xyz 884 4 2000 life_line_z 2000
+  name "tmp"   mortal  xyz 645 4 2000 life_line_z 2000
 classinstance 130818 class_ref 161794 // CVirtualPort
   name ""   xyz -275 4 2005 life_line_z 2000
 classinstance 130946 class_ref 161794 // CVirtualPort
-  name "cvp1"   xyz 328 4 2000 life_line_z 2000
+  name "cvp1"   xyz 263 4 2000 life_line_z 2000
 classinstance 131330 class_ref 161794 // CVirtualPort
-  name "cvp2"   xyz 685 4 2000 life_line_z 2000
+  name "cvp2"   xyz 532 4 2000 life_line_z 2000
 note 131714 "Implémentation de l'abstraction"
-  xyzwh 434 43 2000 105 55
+  xyzwh 159 216 2000 105 55
 classinstance 132098 class_ref 141186 // Connection
-  name ""   xyz 948 114 2000 life_line_z 2000
+  name "c"   xyz 661 167 2000 life_line_z 2000
 classinstance 132738 class_ref 155138 // CWire
-  name ""   xyz 1022 208 2000 life_line_z 2000
+  name ""   xyz 716 278 2000 life_line_z 2000
 classinstance 132866 class_ref 162050 // PWire
-  name ""   xyz 1074 221 2005 life_line_z 2000
+  name ""   xyz 768 292 2005 life_line_z 2000
 note 133762 "Création d'un fil seulement si l'appel à l'implémentation de l'abstraction a réussi"
-  xyzwh 423 293 2000 129 101
+  xyzwh 134 312 2000 129 101
 durationcanvas 129794 classinstance_ref 128898 // :User
-  xyzwh 35 66 2010 11 40
+  xyzwh 18 66 2010 11 40
 end
 durationcanvas 129922 classinstance_ref 128002 // pp1:PPort
-  xyzwh 128 66 2010 11 32
+  xyzwh 89 66 2010 11 32
 end
 durationcanvas 130178 classinstance_ref 128130 // cp1:CPort
-  xyzwh 256 86 2010 11 54
+  xyzwh 199 86 2010 11 101
 end
 durationcanvas 130562 classinstance_ref 130434 // tmp:CWire
-  xyzwh 913 104 2010 11 25
+  xyzwh 674 104 2010 11 25
 end
 durationcanvas 131074 classinstance_ref 130946 // cvp1:CVirtualPort
-  xyzwh 376 121 2010 11 161
+  xyzwh 311 132 2010 11 312
   overlappingdurationcanvas 131458
-    xyzwh 382 145 2020 11 30
+    xyzwh 317 212 2020 11 107
+    overlappingdurationcanvas 135810
+      xyzwh 323 286 2030 11 25
+    end
   end
 end
-durationcanvas 132226 classinstance_ref 132098 // :Connection
-  xyzwh 981 164 2010 11 25
+durationcanvas 132226 classinstance_ref 132098 // c:Connection
+  xyzwh 697 217 2010 11 83
 end
 durationcanvas 133250 classinstance_ref 132738 // :CWire
-  xyzwh 1041 258 2010 11 25
+  xyzwh 735 328 2010 11 25
 end
 durationcanvas 133506 classinstance_ref 132866 // :PWire
-  xyzwh 1093 271 2010 11 25
+  xyzwh 787 342 2010 11 25
+end
+durationcanvas 134530 classinstance_ref 128770 // cp2:CPort
+  xyzwh 493 148 2010 11 34
+end
+durationcanvas 135298 classinstance_ref 131330 // cvp2:CVirtualPort
+  xyzwh 580 251 2010 11 25
+end
+durationcanvas 136706 classinstance_ref 132738 // :CWire
+  xyzwh 735 387 2010 11 25
+end
+durationcanvas 136962 classinstance_ref 132738 // :CWire
+  xyzwh 735 420 2010 11 25
 end
 msg 130050 synchronous
   from durationcanvas_ref 129794
   to durationcanvas_ref 129922
-  yz 66 2015 explicitmsg "dropEvent"
+  yz 66 2015 explicitmsg "dropEvent()"
   show_full_operations_definition yes drawing_language default show_context_mode default
-  label_xy 59 50
+  label_xy 28 52
 msg 130306 synchronous
   from durationcanvas_ref 129922
   to durationcanvas_ref 130178
   yz 87 2015 explicitmsg "drop(target=pp2)"
   show_full_operations_definition yes drawing_language uml show_context_mode uml
   args "target = pp2"
-  label_xy 158 71
+  label_xy 101 75
 msg 130690 synchronous
   from durationcanvas_ref 130178
   to durationcanvas_ref 130562
   yz 105 2020 explicitmsg "delete"
   show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 314 95
+  label_xy 257 95
 msg 131202 synchronous
   from durationcanvas_ref 130178
   to durationcanvas_ref 131074
-  yz 128 2025 explicitmsg "connect(cp1, cp2)"
+  yz 132 2025 explicitmsg "connect(cp1, cp2)"
   show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 276 116
+  label_xy 211 121
 reflexivemsg 131586 synchronous
   to durationcanvas_ref 131458
-  yz 145 2025 explicitmsg "connect(cvp2)"
+  yz 212 2025 explicitmsg "connect(cvp2)"
   show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 390 130
+  label_xy 325 197
 msg 132354 synchronous
   from durationcanvas_ref 131458
   to durationcanvas_ref 132226
-  yz 164 2030 unspecifiedmsg
+  yz 231 2030 unspecifiedmsg
   show_full_operations_definition default drawing_language default show_context_mode default
 msg 133378 synchronous
   from durationcanvas_ref 131074
   to durationcanvas_ref 133250
-  yz 258 2015 unspecifiedmsg
+  yz 338 2015 unspecifiedmsg
   show_full_operations_definition default drawing_language default show_context_mode default
 msg 133634 synchronous
   from durationcanvas_ref 131074
   to durationcanvas_ref 133506
-  yz 271 2020 unspecifiedmsg
+  yz 355 2020 unspecifiedmsg
   show_full_operations_definition default drawing_language default show_context_mode default
-line 131842 -_-_
-  from ref 131714 z 3006 to point 400 129
-  line 131970 z 3006 to ref 131714
-line 133890 -_-_ decenter_end 913
+msg 134658 synchronous
+  from durationcanvas_ref 131074
+  to durationcanvas_ref 134530
+  yz 149 2015 explicitmsg "getVirtualPort()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 340 138
+msg 134786 return
+  from durationcanvas_ref 134530
+  to durationcanvas_ref 131074
+  yz 171 3005 explicitmsg "cvp2"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 383 161
+msg 135426 synchronous
+  from durationcanvas_ref 132226
+  to durationcanvas_ref 135298
+  yz 252 2035 explicitmsg "addConnection(c)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 598 240
+msg 135938 synchronous
+  from durationcanvas_ref 132226
+  to durationcanvas_ref 135810
+  yz 286 2035 explicitmsg "addConnection(c)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 435 274
+msg 136834 synchronous
+  from durationcanvas_ref 131074
+  to durationcanvas_ref 136706
+  yz 387 2015 explicitmsg "setInPort(cp1)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 504 375
+msg 137090 synchronous
+  from durationcanvas_ref 131074
+  to durationcanvas_ref 136962
+  yz 420 2015 explicitmsg "setOutPort(cp2)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 500 407
+line 134018 -_-_ decenter_begin 436 decenter_end 266
+  from ref 131714 z 2011 to ref 131074
+line 136578 -_-_ decenter_begin 623 decenter_end 685
   from ref 133762 z 2011 to ref 131074
 end
