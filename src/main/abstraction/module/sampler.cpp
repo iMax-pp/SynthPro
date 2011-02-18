@@ -72,7 +72,6 @@ void Sampler::initialize(SynthProFactory* factory)
 
 void Sampler::startRecording()
 {
-    qDebug() << "startRecord";
     purgeBuffer(m_outPort->buffer());
     m_state = RECORDING;
     initializeBuffer();
@@ -87,13 +86,12 @@ void Sampler::startRecording()
 
 void Sampler::stopRecording()
 {
-    qDebug() << "stop";
     purgeBuffer(m_outPort->buffer());
     m_sampleStart = 0;
-    while (m_buffer->data() == 0) {
+    int i = 0;
+    while (m_buffer->data()[i++] == 0) {
         m_sampleStart++;
     }
-    qDebug() << "passe ici";
     m_state = WAITING;
 
     m_recordButton->setEnabled(true);
@@ -103,10 +101,9 @@ void Sampler::stopRecording()
 
 void Sampler::startPlaying()
 {
-    qDebug() << "start playing";
     m_state = PLAYING;
     m_bufferIndex = 0;
-    m_positionInBuffer = m_sampleStart;
+    m_positionInBuffer =  m_sampleStart;
     m_recordButton->setEnabled(false);
     m_stopButton->setEnabled(true);
     m_playButton->setEnabled(false);
@@ -146,7 +143,6 @@ void Sampler::ownProcess()
 
         if (m_state == PLAYING) {
             if (gateUp) {
-                qDebug() << "PLAYING";
                 stopRecording();
                 // m_state = WAITING;
             }
@@ -165,7 +161,6 @@ void Sampler::ownProcess()
                 m_positionInBuffer = m_sampleStart;
             }
             m_outPort->buffer()->data()[i] = m_buffer->data()[(int)m_positionInBuffer];
-
             break;
 
         case RECORDING :
@@ -175,7 +170,7 @@ void Sampler::ownProcess()
             emit valueChanged(m_sampleSize);
 
             // if we still record at the end of the buffer : increment m_bufferIndex
-            if (i == Buffer::DEFAULT_LENGTH) {
+            if (i == Buffer::DEFAULT_LENGTH - 1) {
                 m_bufferIndex++;
             }
             m_sampleSize++;
