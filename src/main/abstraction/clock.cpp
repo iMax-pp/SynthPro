@@ -11,7 +11,7 @@ Clock::Clock(QObject* parent)
     : QObject(parent)
     , m_started(false)
     , m_internalTimer(new QTimer(this))
-    , adp(AudioDeviceProvider::instance())
+    // , adp(AudioDeviceProvider::instance()) // Used for the unsuccesful attempt to manage the soundcard output from the Clock.
     , sequencer(Sequencer::instance())
 {
     // Connect the Internal Timer to a Slot that will call the Sequencer.
@@ -22,7 +22,7 @@ Clock::Clock(Clock& clock)
     : QObject(clock.parent())
     , m_started(false)
     , m_internalTimer(new QTimer(this))
-    , adp(AudioDeviceProvider::instance())
+    // , adp(AudioDeviceProvider::instance()) // Used for the unsuccesful attempt to manage the soundcard output from the Clock.
     , sequencer(Sequencer::instance())
 {
 }
@@ -112,6 +112,8 @@ void Clock::internalTimerExpired()
 /*
 void Clock::soundCardTimerExpired()
 {
+    // Part of the unsuccessful attempt to manage the soundcard output from the Clock.
+
     // Test if the sound card need data.
     int iteration = 0;
     int previousNbBytesNeededByOutput = 0;
