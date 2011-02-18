@@ -111,6 +111,7 @@ void CPort::dragMove(const QPointF& pos)
 
 void CPort::drop(CPort* target)
 {
+    m_dropablePort = 0; // Clean-up
     dynamic_cast<CSynthPro*>(vPort()->module()->synthPro())->hideFeedback();
     // Delete the temporary wire
     if (m_tmpWire) {
