@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 14
+  revision 15
   modified_by 2 "julien"
 
 
@@ -1587,7 +1587,7 @@ format 74
 
     sequencediagram 141186 "drop"
       show_full_operations_definition yes write_horizontally yes class_drawing_mode default drawing_language uml draw_all_relations yes shadow yes show_stereotype_properties yes show_class_context_mode uml show_msg_context_mode uml
-      overlapping_bars size A4-Landscape
+      overlapping_bars size A4
     end
 
     class 161666 "User"
