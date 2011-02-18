@@ -2,7 +2,6 @@
 
 #include "abstraction/module/vco.h"
 
-#include <QDebug>
 #include <QPainter>
 
 POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
@@ -19,7 +18,6 @@ POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
 
 POscilloscopeView::~POscilloscopeView()
 {
-
 }
 
 void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
@@ -28,6 +26,10 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
     painter->setPen(QPen(QColor(255, 255, 255)));
     painter->setClipping(true);
     painter->setClipRect(0, 0, WIDTH, HEIGHT, Qt::ReplaceClip);
+
+    if (!m_inBuffer) {
+        return;
+    }
 
     int currentRatioY = ((HEIGHT / 2) / VCO::SIGNAL_INTENSITY) * m_ratioY;
 
@@ -91,7 +93,14 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
 
         step = (usedBufferSize / WIDTH);
         for (int i = 0; i < WIDTH ; i++) {
-            int y = (int)(middleY - data[(int)indexBuffer] * currentRatioY);
+            int y = (int)(data[(int)indexBuffer] * currentRatioY);
+            // Limit test.
+            if (y > LIMIT_Y) {
+                y = LIMIT_Y;
+            } else if (y < -LIMIT_Y) {
+                y = -LIMIT_Y;
+            }
+            y += middleY;
             painter->drawLine(i - 1, previousY, i, y);
             previousY = y;
             indexBuffer += step;

@@ -17,9 +17,15 @@ public:
     QString askForFileName();
 
 private slots:
+    /**
+     * Slot used when the Floppy drawing is clicked.
+     */
     void floppyClicked();
 
 signals:
+    /**
+     * Signal indicating the Floppy drawing has been clicked.
+     */
     void newFileClicked();
 };
 

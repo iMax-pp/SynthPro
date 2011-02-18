@@ -9,9 +9,11 @@ PKeyboardView::PKeyboardView(QGraphicsItem* parent)
     setMinimumSize(boundingRect().size()); 
 }
 
-// This method is post-initialized because it requires to use "grabKeyboard()" in order
-// to use the keyboard shortcuts. But it can only be done after its parent has been
-// added to its scene.
+/**
+ * This method is post-initialized because it requires to use "grabKeyboard()" in order
+ * to use the keyboard shortcuts. But it can only be done after its parent has been
+ * added to its scene.
+ */
 void PKeyboardView::postInitialize()
 {
     grabKeyboard();
@@ -82,6 +84,7 @@ QRectF PKeyboardView::boundingRect() const
 void PKeyboardView::keyPressEvent(QKeyEvent* event)
 {
     int key = event->key();
+    // Test if the pressed key is related to a computer keyboard key. If yes, trigger the key pressed.
     if (m_mapKeyToKeyPointer.contains(key)) {
         PKeyboardKey* keyboardKey = m_mapKeyToKeyPointer.value(key);
         keyboardKey->keyPressed();
@@ -91,6 +94,7 @@ void PKeyboardView::keyPressEvent(QKeyEvent* event)
 void PKeyboardView::keyReleaseEvent(QKeyEvent* event)
 {
     int key = event->key();
+    // Test if the released key is related to a computer keyboard key. If yes, trigger the key released.
     if (m_mapKeyToKeyPointer.contains(key)) {
         PKeyboardKey* keyboardKey = m_mapKeyToKeyPointer.value(key);
         keyboardKey->keyReleased();

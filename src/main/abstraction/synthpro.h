@@ -5,6 +5,10 @@
 
 class Module;
 
+/**
+ * Main class of the application.
+ * Holds the list of instanciated Module.
+ */
 class SynthPro : public QObject {
     Q_OBJECT
 
@@ -12,20 +16,23 @@ public:
     SynthPro(QObject* parent = 0);
     virtual ~SynthPro();
 
-    /// @return The list of modules contained by this SynthPro
+    /// @returns The QList of modules contained by this SynthPro.
     const QList<Module*> modules() const;
 
-    /// Add a module to this SynthPro
+    /// @param module to add to this SynthPro.
     virtual void add(Module*);
 
-signals:
-    void connectionsChanged(const SynthPro*);
-
 public slots:
+    /// @param module to remove from this SynthPro.
     void remove(QObject*);
 
-private slots:
+protected slots:
+    // Slot called when a connection to a VirtualPort is changed in a Module.
     void connectionsChanged();
+
+signals:
+    // Signal triggered when the slot connectionsChanged is called.
+    void connectionsChanged(const SynthPro*);
 
 private:
     QList<Module*> m_modules;

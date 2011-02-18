@@ -13,7 +13,7 @@ public:
     void updatePosition(const QPointF&);
     void updatePosition();
 
-    void mousePressEvent(QGraphicsSceneMouseEvent*);
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent*);
 
     void showMoveFeedback();
 

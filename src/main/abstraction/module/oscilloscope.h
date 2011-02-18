@@ -8,6 +8,9 @@ class PushButton;
 class SynthPro;
 class SynthProFactory;
 
+/**
+ * Class used to show an Oscilloscope from the Input Buffer.
+ */
 class Oscilloscope : public virtual Module {
     Q_OBJECT
 
@@ -16,19 +19,16 @@ public:
     virtual ~Oscilloscope();
 
     /**
-      * Instanciate the ports. Used by the factory.
-      */
+     * Instanciate the ports. Used by the factory.
+     */
     virtual void initialize(SynthProFactory*);
 
     /**
-      * Process the input signal.
-      */
+     * Process the input signal.
+     */
     virtual void ownProcess();
 
     bool stabilized();
-
-public slots:
-    virtual void timerExpired();
 
 protected:
     InPort* m_inPort;

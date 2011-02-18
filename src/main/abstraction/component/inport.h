@@ -13,7 +13,7 @@ public:
      */
     void fetch();
 
-    // Overriden methods of Module
+    /// Overriden methods of VirtualPort.
     inline bool out() const { return false; }
 };
 

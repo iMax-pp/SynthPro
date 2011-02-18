@@ -22,13 +22,9 @@ void Keyboard::initialize(SynthProFactory* factory)
         m_outports.append(m_outPortFrequency);
 
         // Creation of the gate output.
-        m_outPortGate = factory->createOutPortGate(this, tr("gate"));
+        m_outPortGate = factory->createOutPortGate(this, tr("gate out"));
         m_outports.append(m_outPortGate);
     }
-}
-
-void Keyboard::timerExpired()
-{
 }
 
 void Keyboard::ownProcess()

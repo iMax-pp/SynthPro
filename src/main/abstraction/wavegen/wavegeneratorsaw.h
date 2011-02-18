@@ -6,8 +6,8 @@
 #include <QtGlobal>
 
 /**
-  * Triangle Wave Generator, produces a saw sound.
-  */
+ * Saw Wave Generator, produces a saw sound.
+ */
 class WaveGeneratorSaw : public WaveGenerator {
 public:
     WaveGeneratorSaw();
@@ -18,6 +18,8 @@ public:
     virtual void generate(const Buffer* bufferIn, Buffer* bufferOut);
 
 private:
+    static const int INTENSITY_LIMIT = 5.5; // Safety, especially useful with looping modules.
+
     qreal m_slope; // Slope of the saw.
     qreal m_intensity; // Current intensity of our calculated signal.
     qreal m_currentSignalTension; // Changes over time according to what is read in the bufferIn.

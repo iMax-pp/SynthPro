@@ -6,6 +6,9 @@
 
 class CModule;
 
+/**
+ * OutPort control class (PAC by inheritance).
+ */
 class COutPort : public OutPort, public CVirtualPort {
 public:
     COutPort(CModule* parent, QtFactory*, const QString& name, bool replicable = false, bool gate = false);

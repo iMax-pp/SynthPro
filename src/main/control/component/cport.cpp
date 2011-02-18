@@ -14,7 +14,7 @@ CPort::CPort(CVirtualPort* parent, QtFactory* factory)
     , m_factory(factory)
     , m_wire(0)
     , m_tmpWire(0)
-    , m_clickableFeedback(0)
+    , m_dropablePort(0)
     , m_reconnecting(false)
     , m_oldConnection(0)
 {
@@ -81,19 +81,27 @@ void CPort::drag(const QPointF& pos)
 
 void CPort::dragMove(const QPointF& pos)
 {
-    if (PPort* pport = dynamic_cast<PPort*>(presentation()->scene()->itemAt(pos))) {
-        if (!m_clickableFeedback) { // TODO improve this code
-            m_clickableFeedback = pport;
-            if (vPort()->connectable(pport->control()->vPort())) {
-                pport->showDropFeedback();
-            } else {
-                // pport->showUnDropFeedback();
+    CPort* source = m_oldConnection ? m_oldConnection : this;
+    PPort* pport  = dynamic_cast<PPort*>(presentation()->scene()->itemAt(pos));
+    if (pport != this->presentation()) {
+        if (pport) {
+            // There’s a port under the cursor position
+
+            if (!m_dropablePort) {
+                // We just entered in the port
+                m_dropablePort = pport;
+                if (source->vPort()->connectable(pport->control()->vPort())) {
+                    pport->showDropFeedback();
+                } else {
+                    pport->showUnDropFeedback();
+                }
             }
-        }
-    } else {
-        if (m_clickableFeedback) {
-            m_clickableFeedback->hideDropFeedback();
-            m_clickableFeedback = 0;
+        } else {
+            // There’s no port under the cursor position
+            if (m_dropablePort) {
+                m_dropablePort->hideDropFeedback();
+                m_dropablePort = 0;
+            }
         }
     }
     if (m_tmpWire) {
@@ -103,6 +111,7 @@ void CPort::dragMove(const QPointF& pos)
 
 void CPort::drop(CPort* target)
 {
+    m_dropablePort = 0; // Clean-up
     dynamic_cast<CSynthPro*>(vPort()->module()->synthPro())->hideFeedback();
     // Delete the temporary wire
     if (m_tmpWire) {
@@ -140,9 +149,19 @@ void CPort::mouseLeave()
     presentation()->hideClickFeedback();
 }
 
-void CPort::showFeedback(bool compatible)
+void CPort::showCompatibleFeedback()
 {
-    presentation()->showFeedback(compatible);
+    presentation()->showCompatibleFeedback();
+}
+
+void CPort::showConnectableFeedback()
+{
+    presentation()->showConnectableFeedback();
+}
+
+void CPort::showUnconnectableFeedback()
+{
+    presentation()->showUnconnectableFeedback();
 }
 
 void CPort::hideFeedback()

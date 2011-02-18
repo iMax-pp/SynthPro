@@ -2,17 +2,24 @@
 #define SELECTOR_H
 
 #include <QObject>
-/*
-* A selector allow to choose in a list of values an algorithm or a config value in a module
-*/
+
+/**
+ * A selector allow to choose in a list of values an algorithm or a config value in a module.
+ */
 class Selector : public QObject {
     Q_OBJECT
+
 public:
+    /// Constructs a Selector from a QList of choices and a defaultChoice.
     Selector(QList<int> choices, int defaultChoice, QObject* parent = 0);
-    int choice() const;
+
+    /// @returns The current choice.
+    inline int choice() const { return m_choice; }
+    /// @param choice to set the selector to.
     void setChoice(int);
 
 signals :
+    /// Signal trigerred when choice is changed.
     void choiceChanged(int choice);
 
 private:

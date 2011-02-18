@@ -6,6 +6,9 @@
 
 class CModule;
 
+/**
+ * InPort control class (PAC by inheritance).
+ */
 class CInPort : public InPort, public CVirtualPort {
 public:
     CInPort(CModule* parent, QtFactory*, const QString& name, bool replicable = false, bool gate = false);

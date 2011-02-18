@@ -6,8 +6,8 @@
 #include <QtCore>
 
 /**
-  * Soft saturation, from http://www.musicdsp.org/showArchiveComment.php?ArchiveID=42
-  */
+ * Soft saturation, from http://www.musicdsp.org/showArchiveComment.php?ArchiveID=42
+ */
 class FilterSoftSaturation : public Filter {
 public:
     FilterSoftSaturation();

@@ -18,13 +18,16 @@ public:
 
     static const int PORT_SIZE = 15;
 
-    void showFeedback(bool compatible);
+    void showCompatibleFeedback();
+    void showConnectableFeedback();
+    void showUnconnectableFeedback();
     void hideFeedback();
 
     void showClickFeedback();
     void hideClickFeedback();
 
     void showDropFeedback();
+    void showUnDropFeedback();
     void hideDropFeedback();
 
 protected:
@@ -37,6 +40,7 @@ protected:
 
 private:
     CPort* m_control;
+    QPalette m_oldPalette;
 };
 
 #endif // PPORT_H

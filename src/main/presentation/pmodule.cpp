@@ -54,6 +54,7 @@ PModule::PModule(CModule* control)
 
     m_closeBtn = new PixmapButtonWidget(":/src/resources/images/close-icon.png", this);
     m_closeBtn->setPos(-16, -16);
+    m_closeBtn->setCursor(Qt::PointingHandCursor);
     connect(m_closeBtn, SIGNAL(clicked()), SIGNAL(closeBtnClicked()));
 }
 
@@ -73,6 +74,18 @@ void PModule::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*
 
 void PModule::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
-    QGraphicsItem::mouseMoveEvent(event);
+    QGraphicsWidget::mouseMoveEvent(event);
     m_control->move();
+}
+
+void PModule::mousePressEvent(QGraphicsSceneMouseEvent* event)
+{
+    setCursor(Qt::ClosedHandCursor);
+    QGraphicsWidget::mousePressEvent(event);
+}
+
+void PModule::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
+{
+    setCursor(Qt::OpenHandCursor);
+    QGraphicsWidget::mouseReleaseEvent(event);
 }

@@ -38,7 +38,7 @@ void Sampler::initialize(SynthProFactory* factory)
     m_outPort = factory->createOutPort(this, tr("out"));
     m_outports.append(m_outPort);
 
-    m_gate = factory->createInPortGate(this, tr("gate"));
+    m_gate = factory->createInPortGate(this, tr("gate in"));
     m_inports.append(m_gate);
 
     m_bpmDimmer = factory->createDialDimmer(tr("Speed"), MIN_BPM, MAX_BPM, DEFAULT_BPM, this);
@@ -103,7 +103,7 @@ void Sampler::startPlaying()
 {
     m_state = PLAYING;
     m_bufferIndex = 0;
-    m_positionInBuffer =  m_sampleStart;
+    m_positionInBuffer = m_sampleStart;
     m_recordButton->setEnabled(false);
     m_stopButton->setEnabled(true);
     m_playButton->setEnabled(false);

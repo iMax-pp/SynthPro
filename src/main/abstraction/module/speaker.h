@@ -11,15 +11,18 @@ class Sequencer;
 class SynthProFactory;
 
 /**
-  * Module that send its In buffer to the audio sound card.
-  * At the instanciation, it requests a device to the AudioDeviceProvider.
-  * It will fail if the device is used by another module.
-  *
-  * It must also register to a Clock, which will call the timerExpired Slot.
-  * This will ask the sound card how many bytes it requires. If the internal
-  * buffer of the module can provide it, it does. Else, it calls the
-  * Sequencer, and copy the input of the module into the generation buffer.
-  */
+ * Module that send its In buffer to the audio sound card.
+ * At the instanciation, it requests a device to the AudioDeviceProvider.
+ * It will fail if the device is used by another module.
+ *
+ * It must also register to a Clock, which will call the timerExpired Slot.
+ * This will ask the sound card how many bytes it requires. If the internal
+ * buffer of the module can provide it, it does. Else, it calls the
+ * Sequencer, and copy the input of the module into the generation buffer.
+ *
+ * This class also contains the code for unsuccessful attempt to manage the soundcard
+ * output from the Clock (see the commented code of ownProcess()).
+ */
 class Speaker : public virtual Module {
     Q_OBJECT
 
@@ -30,13 +33,13 @@ public:
     virtual ~Speaker();
 
     /**
-      * Instanciate the ports. Used by the factory.
-      */
+     * Instanciate the ports. Used by the factory.
+     */
     virtual void initialize(SynthProFactory*);
 
     /**
-      * Process the input signal.
-      */
+     * Process the input signal.
+     */
     void ownProcess();
 
 public slots:
@@ -52,7 +55,7 @@ protected:
     InPort* m_inPort;
     QAudioOutput* m_audioOutput;
 
-    char* m_generationBuffer; // Buffer that will feed the output buffer. CIRCULAR.
+    char* m_generationBuffer; // Buffer that will feed the output buffer. If used by ownProcess(), managed as circular.
     int m_generationBufferIndex; // Index inside the generation buffer.
     int m_nbGeneratedBytesRemaining; // Indicates how many bytes of the generated buffer are still unused.
                                      // This value doesn't take account of the looping.

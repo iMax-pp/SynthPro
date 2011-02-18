@@ -7,6 +7,7 @@ class OutPort : public virtual VirtualPort {
 public:
     OutPort(Module* parent, const QString& name, SynthProFactory*, bool replicable = false, bool gate = false);
 
+    /// Overriden methods of VirtualPort.
     inline bool out() const { return true; }
 };
 

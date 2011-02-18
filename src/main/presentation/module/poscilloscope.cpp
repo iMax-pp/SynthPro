@@ -52,6 +52,7 @@ void POscilloscope::setVisualizedBuffer(Buffer* buffer)
 
 void POscilloscope::refreshOscilloscopeView()
 {
+    // Only refresh the Oscilloscope View if the timer has expired.
     if (m_mustRefreshOscilloscopeView && m_pOscilloscopeView) {
         m_mustRefreshOscilloscopeView = false;
 

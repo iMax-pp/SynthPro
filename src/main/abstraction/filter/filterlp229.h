@@ -6,8 +6,8 @@
 #include <QtCore>
 
 /**
-  * LP Filter, from http://www.musicdsp.org/archive.php?classid=3#229.
-  */
+ * LP Filter, from http://www.musicdsp.org/archive.php?classid=3#229.
+ */
 class FilterLP229 : public Filter {
 public:
     FilterLP229();

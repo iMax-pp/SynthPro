@@ -18,6 +18,8 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
 
     setAcceptHoverEvents(true);
 
+    setCursor(Qt::PointingHandCursor);
+
     hideFeedback(); // HACK to init port color.
 }
 
@@ -28,14 +30,23 @@ void PPort::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
     painter->drawEllipse(0, 0, PORT_SIZE, PORT_SIZE);
 }
 
-void PPort::showFeedback(bool compatible)
+void PPort::showCompatibleFeedback()
 {
-    QPalette palette(Qt::red);
+    QPalette palette(Qt::darkGreen);
+    setPalette(palette);
+    update();
+}
 
-    if (compatible) {
-        palette.setColor(QPalette::Button, Qt::darkGreen);
-    }
+void PPort::showConnectableFeedback()
+{
+    QPalette palette(Qt::darkBlue);
+    setPalette(palette);
+    update();
+}
 
+void PPort::showUnconnectableFeedback()
+{
+    QPalette palette(Qt::darkRed);
     setPalette(palette);
     update();
 }
@@ -64,21 +75,27 @@ void PPort::hideClickFeedback()
 
 void PPort::showDropFeedback()
 {
-    QPalette p;
-    p.resolve(palette());
-    p.setColor(QPalette::Button, Qt::green);
+    m_oldPalette = palette();
+    QPalette p(Qt::green);
+    setPalette(p);
+}
+
+void PPort::showUnDropFeedback()
+{
+    m_oldPalette = palette();
+    QPalette p(Qt::red);
     setPalette(p);
 }
 
 void PPort::hideDropFeedback()
 {
-    hideFeedback();
+    setPalette(m_oldPalette);
 }
 
 void PPort::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {
-        event->accept(); // TODO Lire la doc sur accept() et ignore() un de ces jours
+        event->accept();
         control()->drag(event->scenePos());
     }
 }
@@ -113,14 +130,12 @@ void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
     }
 }
 
-void PPort::hoverEnterEvent(QGraphicsSceneHoverEvent* event)
+void PPort::hoverEnterEvent(QGraphicsSceneHoverEvent*)
 {
     control()->mouseEnter();
-    QGraphicsWidget::hoverEnterEvent(event);
 }
 
-void PPort::hoverLeaveEvent(QGraphicsSceneHoverEvent* event)
+void PPort::hoverLeaveEvent(QGraphicsSceneHoverEvent*)
 {
     control()->mouseLeave();
-    QGraphicsWidget::hoverLeaveEvent(event);
 }

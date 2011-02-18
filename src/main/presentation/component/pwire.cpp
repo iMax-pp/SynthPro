@@ -18,6 +18,7 @@ PWire::PWire(CWire* control, QGraphicsScene* scene)
     QStyle* style = QApplication::style();
     setPen(QPen(style->standardPalette().brush(QPalette::Shadow), 3,
                 Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    setZValue(1);
 }
 
 void PWire::updatePosition(const QPointF& point)
@@ -44,15 +45,10 @@ void PWire::updatePosition()
                                PPort::PORT_SIZE / 2,  PPort::PORT_SIZE / 2));
 }
 
-// TODO really track clicks instead of just press events
-void PWire::mousePressEvent(QGraphicsSceneMouseEvent* event)
+void PWire::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 {
-    if (event->button() == Qt::MidButton) {
-        event->accept();
-        m_control->midClick();
-    } else {
-        event->ignore();
-    }
+    event->accept();
+    m_control->doubleClick();
 }
 
 void PWire::showMoveFeedback()

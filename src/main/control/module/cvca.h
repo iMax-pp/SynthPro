@@ -5,6 +5,7 @@
 #include "control/cmodule.h"
 
 class CVCA : public VCA, public CModule {
+
 public:
     explicit CVCA(SynthPro*);
 

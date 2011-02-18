@@ -6,15 +6,15 @@
 #include <QtGlobal>
 
 /**
-  * Square Wave Generator, produces a square sound.
-  */
+ * Square Wave Generator, produces a square sound.
+ */
 class WaveGeneratorSquare : public WaveGenerator {
 public:
     WaveGeneratorSquare();
 
     /**
-      * Generate a square wave.
-      */
+     * Generate a square wave.
+     */
     virtual void generate(const Buffer* bufferIn, Buffer* bufferOut);
 
 private:

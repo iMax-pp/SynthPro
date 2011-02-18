@@ -23,27 +23,27 @@ public:
     virtual void initialize(SynthProFactory*);
 
     /**
-     * Process its job : put a buffer in its outPort
+     * Process its job : fill the BufferOut.
      */
     void ownProcess();
 
     /**
-    * @return The current value of the dimmer
-    */
+     * @return The current value of the dimmer.
+     */
     qreal k() const;
 
     /**
-    * set the value of the dimmer
-    */
+     * Set the value of the dimmer.
+     */
     void setK(qreal value);
 
     /**
-     * @return The current wave shape selected, by its value on the selector himself
+     * @return The current wave shape selected, by its value on the selector himself.
      */
     QString shape();
 
     /**
-     * set the value of the selector indirectly : setting this value on the selector himself
+     * Set the value of the selector indirectly : setting this value on the selector himself.
      */
     void setShape(QString);
 
@@ -54,7 +54,7 @@ public:
 
 public slots :
     /**
-    * slot, connected to a signal emitted by the selector to inform his value changed.
+    * Slot connected to a signal emitted by the selector to inform its value has changed.
     */
     void waveShapeChanged(int);
 
