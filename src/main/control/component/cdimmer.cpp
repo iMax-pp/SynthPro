@@ -49,11 +49,6 @@ void CDimmer::publishValue()
     }
 }
 
-qreal CDimmer::realValue(qreal value) const
-{
-    return value * ratio() + offset();
-}
-
 void CDimmer::valueChanged(int value)
 {
     setValue(value / m_discretization);

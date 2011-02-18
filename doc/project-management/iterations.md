@@ -114,12 +114,12 @@ date :  semaine 7 (Lundi 14 - Mardi 15)
 
 Itération 7
 -----------
-date :  semaine 7 (Mercredi 16-)
+date :  semaine 7 (Mercredi 16-jeudi 17)
 
 - Julien N. :
     - Oscillo stabilisé;
     - Bouton stabilized dans oscillo;
-    - Audio Engine avec bonne fréquence.
+    - Audio Engine avec bonne fréquence (abandoned)
 - Maxime :
     - Contrôle et présentation de sampler;
     - Icones dans box à gauche (+drag'n'drop icones);
@@ -131,6 +131,3 @@ date :  semaine 7 (Mercredi 16-)
     - Fixer VCA (multiplier input par somme du dimmer et control), en une passe;
     - Sampler;
 
-Roadmap (todo)
----------
-- Symétrie de l'audio engine.

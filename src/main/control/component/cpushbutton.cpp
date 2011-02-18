@@ -25,4 +25,6 @@ void CPushButton::setPresentation(PPushButton* presentation)
     connect(m_presentation, SIGNAL(buttonReleased()), this, SLOT(release()));
 
     connect(this, SIGNAL(buttonEnabled(bool)), m_presentation, SLOT(setEnabled(bool)));
+    connect(this, SIGNAL(buttonCheckable(bool)), m_presentation, SLOT(setCheckable(bool)));
+    connect(this, SIGNAL(buttonChecked(bool)), m_presentation, SLOT(setChecked(bool)));
 }

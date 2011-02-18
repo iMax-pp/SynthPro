@@ -24,6 +24,8 @@ void POscilloscope::initialize(PVirtualPort* input, PPushButton* stabilizeButton
     TextWidget* title = new TextWidget(tr("OSC"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
+    stabilizeButton->setFlat(true);
+
     m_pOscilloscopeView = new POscilloscopeView(this);
 
     // Layout

@@ -29,13 +29,13 @@ HEADERS += \
     src/main/abstraction/module/delay.h \
     src/main/abstraction/module/keyboard.h \
     src/main/abstraction/module/lfo.h \
+    src/main/abstraction/module/mixer.h \
     src/main/abstraction/module/oscilloscope.h \
+    src/main/abstraction/module/sampler.h \
     src/main/abstraction/module/speaker.h \
     src/main/abstraction/module/vca.h \
     src/main/abstraction/module/vcf.h \
     src/main/abstraction/module/vco.h \
-    src/main/abstraction/module/mixer.h \
-    src/main/abstraction/module/sampler.h \
     src/main/abstraction/module/wavlooper.h \
     src/main/abstraction/module/wavrecorder.h \
     src/main/abstraction/sequencer.h \
@@ -57,10 +57,12 @@ HEADERS += \
     src/test/abstraction/module/testadsr.h \
     src/test/abstraction/module/testdelay.h \
     src/test/abstraction/module/testlfo.h \
+    src/test/abstraction/module/testmixer.h \
+    src/test/abstraction/module/testsampler.h \
     src/test/abstraction/module/testvca.h \
     src/test/abstraction/module/testvcf.h \
     src/test/abstraction/module/testvco.h \
-    src/test/abstraction/module/testmixer.h \
+    src/test/abstraction/module/testwavlooper.h \
     src/test/abstraction/module/testwavrecorder.h \
     src/test/abstraction/testaudiodeviceprovider.h \
     src/test/abstraction/testinport.h \
@@ -70,9 +72,7 @@ HEADERS += \
     src/test/abstraction/wavegen/testwavegeneratorsaw.h \
     src/test/abstraction/wavegen/testwavegeneratorsinus.h \
     src/test/abstraction/wavegen/testwavegeneratorsquare.h \
-    src/test/abstraction/wavegen/testwavegeneratortriangle.h \
-    src/test/abstraction/module/testsampler.h \
-    src/test/abstraction/module/testwavlooper.h
+    src/test/abstraction/wavegen/testwavegeneratortriangle.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -95,14 +95,13 @@ SOURCES += \
     src/main/abstraction/module/delay.cpp \
     src/main/abstraction/module/keyboard.cpp \
     src/main/abstraction/module/lfo.cpp \
+    src/main/abstraction/module/mixer.cpp \
     src/main/abstraction/module/oscilloscope.cpp \
+    src/main/abstraction/module/sampler.cpp \
     src/main/abstraction/module/speaker.cpp \
     src/main/abstraction/module/vca.cpp \
     src/main/abstraction/module/vcf.cpp \
     src/main/abstraction/module/vco.cpp \
-    src/main/abstraction/module/mixer.cpp \
-    src/main/abstraction/module/sampler.cpp \
-    src/test/abstraction/module/testmixer.cpp \
     src/main/abstraction/module/wavlooper.cpp \
     src/main/abstraction/module/wavrecorder.cpp \
     src/main/abstraction/sequencer.cpp \
@@ -123,9 +122,12 @@ SOURCES += \
     src/test/abstraction/module/testadsr.cpp \
     src/test/abstraction/module/testdelay.cpp \
     src/test/abstraction/module/testlfo.cpp \
+    src/test/abstraction/module/testmixer.cpp \
+    src/test/abstraction/module/testsampler.cpp \
     src/test/abstraction/module/testvca.cpp \
     src/test/abstraction/module/testvcf.cpp \
     src/test/abstraction/module/testvco.cpp \
+    src/test/abstraction/module/testwavlooper.cpp \
     src/test/abstraction/module/testwavrecorder.cpp \
     src/test/abstraction/testaudiodeviceprovider.cpp \
     src/test/abstraction/testinport.cpp \
@@ -136,9 +138,7 @@ SOURCES += \
     src/test/abstraction/wavegen/testwavegeneratorsinus.cpp \
     src/test/abstraction/wavegen/testwavegeneratorsquare.cpp \
     src/test/abstraction/wavegen/testwavegeneratortriangle.cpp \
-    src/test/test.cpp \
-    src/test/abstraction/module/testsampler.cpp \
-    src/test/abstraction/module/testwavlooper.cpp
+    src/test/test.cpp
 
 
 INCLUDEPATH += src/main/ src/test/
