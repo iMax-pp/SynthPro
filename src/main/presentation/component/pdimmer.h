@@ -6,21 +6,27 @@
 class CDimmer;
 class QGroupBox;
 
+/**
+ * Abstract presentation of Dimmer.
+ */
 class PDimmer : public QGraphicsProxyWidget {
     Q_OBJECT
 
 public:
     PDimmer(CDimmer*, const QString& name, QGraphicsItem* parent = 0);
 
+    /// Define a fixed size for the item.
     void setSize(qreal width, qreal height);
 
 protected:
     QGroupBox* m_box;
 
 signals:
+    /// Triggered when current value changed.
     void valueChanged(int);
 
 public:
+    /// Called by module when updating the dimmer title.
     void updateTitle(const QString&);
 
 private:

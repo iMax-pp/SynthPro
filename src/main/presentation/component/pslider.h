@@ -3,6 +3,10 @@
 
 #include "presentation/component/pdimmer.h"
 
+/**
+ * Concrete presentation of a PDimmer.
+ * Represents a slider.
+ */
 class PSlider : public PDimmer {
 public:
     PSlider(CDimmer*, const QString& name, int min, int max, int defaultValue,
