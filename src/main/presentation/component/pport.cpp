@@ -18,6 +18,8 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
 
     setAcceptHoverEvents(true);
 
+    setCursor(Qt::PointingHandCursor);
+
     hideFeedback(); // HACK to init port color.
 }
 
