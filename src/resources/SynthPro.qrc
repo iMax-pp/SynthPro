@@ -22,5 +22,6 @@
         <file>images/module/oscilloscope-icon.png</file>
         <file>images/module/audio-output-icon.png</file>
         <file>images/module/file-output-icon.png</file>
+        <file>wav/bonhamLoopMono.wav</file>
     </qresource>
 </RCC>
