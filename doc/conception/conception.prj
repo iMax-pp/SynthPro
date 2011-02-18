@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 12
+  revision 13
   modified_by 2 "julien"
 
 
@@ -1411,6 +1411,173 @@ format 74
     classdiagram 128002 "pacmodule"
       draw_all_relations yes hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4
+    end
+
+    classdiagram 134530 "pacdimmer"
+      draw_all_relations yes hide_attributes no hide_operations no hide_getset_operations default show_members_full_definition yes show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir no show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language uml show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 154370 "CDimmer"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 162562 // <generalisation>
+	relation 162178 ---|>
+	  a public
+	    classrelation_ref 162562 // <generalisation>
+	  b parent class_ref 142723 // Dimmer
+      end
+
+      classrelation 162690 // presentation (<composition>)
+	relation 162306 *---
+	  a role_name "presentation" private
+	    classrelation_ref 162690 // presentation (<composition>)
+	  b role_name "control" private
+	    classrelation_ref 162818 // control (<composition>)
+      end
+    end
+
+    class 154498 "PDimmer"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 162818 // control (<composition>)
+	relation_ref 162306 // <composition>
+      end
+
+      classrelation 162946 // valueFormat (<unidirectional association>)
+	relation 162434 --->
+	  a role_name "valueFormat" private
+	    classrelation_ref 162946 // valueFormat (<unidirectional association>)
+	  b parent class_ref 154626 // ValueFormat
+      end
+    end
+
+    class 154626 "ValueFormat"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 157058 "format"
+	abstract cpp_virtual public explicit_return_type "string"
+	nparams 1
+	  param in name "" explicit_type "real"
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 154754 "GainFormat"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 163074 // <generalisation>
+	relation 162562 ---|>
+	  a public
+	    classrelation_ref 163074 // <generalisation>
+	  b parent class_ref 154626 // ValueFormat
+      end
+
+      operation 157186 "format"
+	public explicit_return_type "string"
+	nparams 1
+	  param in name "" explicit_type "real"
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 154882 "TimeFormat"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 163202 // <generalisation>
+	relation 162690 ---|>
+	  a public
+	    classrelation_ref 163202 // <generalisation>
+	  b parent class_ref 154626 // ValueFormat
+      end
+
+      operation 157314 "format"
+	public explicit_return_type "string"
+	nparams 1
+	  param in name "" explicit_type "real"
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 155010 "PercentageFormat"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 163330 // <generalisation>
+	relation 162818 ---|>
+	  a public
+	    classrelation_ref 163330 // <generalisation>
+	  b parent class_ref 154626 // ValueFormat
+      end
+
+      operation 157442 "format"
+	public explicit_return_type "string"
+	nparams 1
+	  param in name "" explicit_type "real"
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 155138 "CWire"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
     end
   end
 end
