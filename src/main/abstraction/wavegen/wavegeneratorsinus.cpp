@@ -6,7 +6,7 @@
 #include <QtCore/qmath.h>
 
 WaveGeneratorSinus::WaveGeneratorSinus()
-    : m_currentSignalTension(-1000)
+    : m_currentSignalTension(-1000) // Unreachable value.
     , m_frequency(VCO::F0)
     , m_sampleIndex(0)
 {
@@ -34,7 +34,7 @@ void WaveGeneratorSinus::generate(const Buffer* bufferIn, Buffer* bufferOut)
         intensity *= VCO::SIGNAL_INTENSITY;
 
         m_sampleIndex++; // The looping of this value may produce a small click,
-                         // but it should happen very rarely.
+                         // but it should happen very, very rarely.
 
         dataOut[i] = intensity;
     }

@@ -4,15 +4,15 @@
 #include "abstraction/wavegen/wavegenerator.h"
 
 /**
-  * Wave Generator that only produces an empty buffer.
-  */
+ * Wave Generator that only produces an empty buffer.
+ */
 class WaveGeneratorEmpty : public WaveGenerator {
 public:
     WaveGeneratorEmpty();
 
     /**
-      * Generate an empty buffer. The bufferIn is ignored.
-      */
+     * Generate an empty buffer. The bufferIn is ignored.
+     */
     virtual void generate(const Buffer*, Buffer* bufferOut);
 };
 

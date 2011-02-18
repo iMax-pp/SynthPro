@@ -14,12 +14,12 @@ class Dimmer;
 class Selector;
 
 /**
-  * A LFO is a Low Frequency Oscillator.
-  * It needs three parameters (dimmers) :
-  * - k (low frequency).
-  * - range (maximum intensity).
-  * - offset (offset added to the range).
-  */
+ * A LFO is a Low Frequency Oscillator.
+ * It needs three parameters (dimmers) :
+ * - k (low frequency).
+ * - range (maximum intensity).
+ * - offset (offset added to the range).
+ */
 class LFO : public virtual Module {
     Q_OBJECT
 
@@ -31,38 +31,38 @@ public:
     virtual void initialize(SynthProFactory*);
 
     /**
-     * Process its job : put a buffer in its outPort
+     * Fill the outPort
      */
     void ownProcess();
 
     /**
-    * @return The current value of the k dimmer
-    */
+     * @return The current value of the k dimmer
+     */
     qreal k() const;
 
     /**
-    * set the value of the k dimmer
-    */
+     * Set the value of the k dimmer
+     */
     void setK(qreal value);
 
     /**
-    * @return The current value of the Range dimmer
-    */
+     * @return The current value of the Range dimmer
+     */
     qreal range() const;
 
     /**
-    * set the value of the Range dimmer
-    */
+     * Set the value of the Range dimmer
+     */
     void setRange(qreal value);
 
     /**
-    * @return The current value of the Offset dimmer
-    */
+     * @return The current value of the Offset dimmer
+     */
     qreal offset() const;
 
     /**
-    * set the value of the Offset dimmer
-    */
+     * set the value of the Offset dimmer
+     */
     void setOffset(qreal value);
 
     /**
@@ -71,10 +71,9 @@ public:
     QString shape();
 
     /**
-     * set the value of the selector indirectly : setting this value on the selector himself
+     * Set the value of the selector indirectly : setting this value on the selector himself
      */
     void setShape(QString);
-
 
     static const qreal SIGNAL_INTENSITY = 5;
     static const qreal F0 = 261.626; // Frequency of the C4.
@@ -82,8 +81,8 @@ public:
 
 public slots :
     /**
-    * slot, connected to a signal emitted by the selector to inform his value changed.
-    */
+     * Slot, connected to a signal emitted by the selector to inform its value has changed.
+     */
     void waveShapeChanged(int);
 
 protected:

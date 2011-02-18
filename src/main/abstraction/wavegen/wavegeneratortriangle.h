@@ -6,15 +6,15 @@
 #include <QtGlobal>
 
 /**
-  * Triangle Wave Generator, produces a triangle sound.
-  */
+ * Triangle Wave Generator, produces a triangle sound.
+ */
 class WaveGeneratorTriangle : public WaveGenerator {
 public:
     WaveGeneratorTriangle();
 
     /**
-      * Generate a triangle wave.
-      */
+     * Generate a triangle wave.
+     */
     virtual void generate(const Buffer* bufferIn, Buffer* bufferOut);
 
 private:

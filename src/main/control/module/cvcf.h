@@ -5,6 +5,7 @@
 #include "control/cmodule.h"
 
 class CVCF : public VCF, public CModule {
+
 public:
     explicit CVCF(SynthPro*);
 

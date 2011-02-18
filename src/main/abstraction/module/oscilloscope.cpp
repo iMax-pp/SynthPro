@@ -27,10 +27,6 @@ void Oscilloscope::initialize(SynthProFactory* factory)
     }
 }
 
-void Oscilloscope::timerExpired()
-{
-}
-
 void Oscilloscope::ownProcess()
 {
 }

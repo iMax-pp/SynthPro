@@ -5,8 +5,9 @@
 #include "control/cmodule.h"
 
 class CSpeaker : public Speaker, public CModule {
+
 public:
-    CSpeaker(SynthPro*, QIODevice*, QAudioOutput*);
+    explicit CSpeaker(SynthPro*, QIODevice*, QAudioOutput*);
 
     void initialize(SynthProFactory*);
 };

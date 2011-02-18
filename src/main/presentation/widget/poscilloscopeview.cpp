@@ -19,7 +19,6 @@ POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
 
 POscilloscopeView::~POscilloscopeView()
 {
-
 }
 
 void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
@@ -28,6 +27,10 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
     painter->setPen(QPen(QColor(255, 255, 255)));
     painter->setClipping(true);
     painter->setClipRect(0, 0, WIDTH, HEIGHT, Qt::ReplaceClip);
+
+    if (!m_inBuffer) {
+        return;
+    }
 
     int currentRatioY = ((HEIGHT / 2) / VCO::SIGNAL_INTENSITY) * m_ratioY;
 

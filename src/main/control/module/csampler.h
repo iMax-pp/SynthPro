@@ -5,6 +5,7 @@
 #include "control/cmodule.h"
 
 class CSampler : public Sampler, public CModule {
+
 public:
     explicit CSampler(SynthPro*);
 

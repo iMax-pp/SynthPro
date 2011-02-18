@@ -27,14 +27,14 @@ void VCO::initialize(SynthProFactory* factory)
     m_out = factory->createOutPortReplicable(this, tr("out"));
     m_outports.append(m_out);
 
-    /// Creation of the Selector
+    // Creation of the Selector
     m_shapeSelector = factory->createSelector(m_waveGeneratorFactory->selectorConversionMap().keys(), 0,
                                               m_waveGeneratorFactory->selectorConversionMap().values(), tr("Wave Type"), this);
 
-    /// Connection of the Selector
+    // Connection of the Selector
     connect(m_shapeSelector, SIGNAL(choiceChanged(int)), this, SLOT(waveShapeChanged(int)));
 
-    /// Creation of the Dimmer
+    // Creation of the Dimmer
     m_kDimmer = factory->createDialDimmer(tr("K"), K_MIN, K_MAX, K_DEFAULT, this);
 
     setShape(WaveGeneratorFactory::Saw);
@@ -75,7 +75,6 @@ void VCO::waveShapeChanged(int selectedValue)
 
 QString VCO::shape()
 {
-
     return m_waveGeneratorFactory->selectorConversionMap()[m_shapeSelector->choice()];
 }
 

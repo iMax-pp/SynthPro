@@ -17,10 +17,21 @@ public:
     POscilloscope(COscilloscope*);
 
     void initialize(PVirtualPort* input, PPushButton* stabilizeButton);
+
+    /**
+     * Give the Oscilloscope View the buffer to display.
+     */
     void setVisualizedBuffer(Buffer*);
+
+    /**
+     * Refresh the Oscilloscope View, but only if the Refresh Timer has allowed it.
+     */
     void refreshOscilloscopeView();
 
 private slots:
+    /**
+     * Slot used when the timer of the view has expired, meaning the view must be refreshed.
+     */
     void refreshTimerExpired();
 
 private:

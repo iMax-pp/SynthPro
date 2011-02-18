@@ -8,21 +8,21 @@ class QAudioOutput;
 class QIODevice;
 
 /**
-  * Provides a device, linked to an audio output, in which
-  * can be sent data to be played by the output, in a
-  * Push mode.
-  *
-  * Only one device can be given at the same time. If a second
-  * request is made for the device, it receives a 0.
-  * Once a device is not used anymore, the user should release
-  * it.
-  *
-  * This class implements the Singleton design pattern. An
-  * instance can be given through the instance() method.
-  *
-  * For this project, we only consider one audio format, and
-  * only support the one we use.
-  */
+ * Provides a device, linked to an audio output, in which
+ * can be sent data to be played by the output, in a
+ * Push mode.
+ *
+ * Only one device can be given at the same time. If a second
+ * request is made for the device, it receives a 0.
+ * Once a device is not used anymore, the user should release
+ * it.
+ *
+ * This class implements the Singleton design pattern. An
+ * instance can be given through the instance() method.
+ *
+ * For this project, we only consider one audio format, and
+ * only support the one we use.
+ */
 class AudioDeviceProvider {
 
 public:
@@ -31,36 +31,36 @@ public:
     static AudioDeviceProvider& instance();
 
     /**
-      * Finds an audio output, indicate if a valid one has been
-      * found, initialize it if yes.
-      */
+     * Finds an audio output, indicate if a valid one has been
+     * found, initialize it if yes.
+     */
     bool initializeAudioOutput();
 
     /**
-      * Return the device through the audio output in Push
-      * mode. If initializeAudioOutput() wasn't called, it does it.
-      * If the device has already been given, 0 is also returned.
-      */
+     * Return the device through the audio output in Push
+     * mode. If initializeAudioOutput() wasn't called, it does it.
+     * If the device has already been given, 0 is also returned.
+     */
     QIODevice* device();
 
     /**
-      * Release the device, so that it can be used again by another entity.
-      */
+     * Release the device, so that it can be used again by another entity.
+     */
     void releaseDevice();
 
     /**
-      * Stop the audio output.
-      */
+     * Stop the audio output.
+     */
     void stop();
 
     /**
-      * Return the audio format.
-      */
+     * Return the audio format.
+     */
     QAudioFormat* audioFormat();
 
     /**
-      * Return the audio output.
-      */
+     * Return the audio output.
+     */
     QAudioOutput* audioOutput();
 
     static const int OUTPUT_FREQUENCY = 44100;
