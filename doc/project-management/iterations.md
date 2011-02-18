@@ -118,7 +118,7 @@ date :  semaine 7 (Mercredi 16-vendredi 18)
 
 - Julien N. :
     - Oscillo stabilisé;
-    - Audio Engine avec bonne fréquence (abandoned)
+    - Audio Engine avec bonne fréquence;
 - Maxime :
     - Contrôle et présentation de sampler;
     - Icones dans box à gauche (+drag'n'drop icones);
@@ -133,4 +133,4 @@ date :  semaine 7 (Mercredi 16-vendredi 18)
 
 Todo :
 --------
-- Oscillo stabilisation à améliorer;
+- Oscillo stabilisation à améliorer.
