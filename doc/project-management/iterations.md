@@ -133,6 +133,5 @@ date :  semaine 7 (Mercredi 16-vendredi 18)
 
 Todo :
 --------
-- Oscillo stabilisation à améliorer.
-- Changer tous les Gate en Gate In/Gate Out
-- Bug Triangle
+- Oscillo stabilisation à améliorer;
+- Bug Triangle.
