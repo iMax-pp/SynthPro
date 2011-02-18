@@ -5,28 +5,28 @@
 
 class Buffer {
 public:
+    /// Default length of a Buffer.
     static const int DEFAULT_LENGTH = 900;
 
-    /**
-     * Constructs a buffer of a given length, initializing its content to 0.
-     */
+    /// Constructs a buffer of a given length, initializing its content to 0.
     Buffer(int length = DEFAULT_LENGTH);
+    /// Copy constructor.
     Buffer(const Buffer& source);
     ~Buffer();
 
-    /// Direct access to the raw data of this Buffer
+    /// Direct access to the raw data of this Buffer.
     inline qreal* data() const { return m_data; }
 
-    /// @returns The length of this buffer
+    /// @returns The length of this Buffer.
     inline int length() const { return m_length; }
 
-    /// add a float to all buffer's values
+    /// add a float to all Buffer's values.
     void add(const qreal);
 
-    /// multiply all buffer's value by a real
+    /// multiply all Buffer's value by a real.
     void mul(const qreal);
 
-    /// Fill this buffer with 0
+    /// Fill the Buffer with 0.
     void clear();
 
 protected:
