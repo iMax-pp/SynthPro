@@ -103,7 +103,7 @@ void Sampler::startPlaying()
 {
     m_state = PLAYING;
     m_bufferIndex = 0;
-    m_positionInBuffer =  m_sampleStart;
+    m_positionInBuffer = m_sampleStart;
     m_recordButton->setEnabled(false);
     m_stopButton->setEnabled(true);
     m_playButton->setEnabled(false);
