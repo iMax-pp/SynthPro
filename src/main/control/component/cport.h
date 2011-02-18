@@ -45,7 +45,9 @@ public:
     void mouseEnter();
     void mouseLeave();
 
-    void showFeedback(bool compatible);
+    void showCompatibleFeedback();
+    void showConnectableFeedback();
+    void showUnconnectableFeedback();
     void hideFeedback();
 
     void showAvailableFeedback();
