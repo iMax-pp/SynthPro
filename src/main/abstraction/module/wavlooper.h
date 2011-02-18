@@ -12,9 +12,9 @@ class QFile;
 class SynthProFactory;
 
 /**
-  * Module that loads a WAV file (44100hz, 16bits, mono only)
-  * and plays it in loop endlessly.
-  */
+ * Module that loads a WAV file (44100hz, 16bits, mono only)
+ * and plays it endlessly in loop.
+ */
 class WavLooper : public virtual Module {
     Q_OBJECT
 
@@ -23,8 +23,8 @@ public:
     virtual ~WavLooper();
 
     /**
-      * Required method in order to instanciate the ports. Used by the factory.
-      */
+     * Required method in order to instanciate the ports. Used by the factory.
+     */
     void initialize(SynthProFactory*);
 
     /**
@@ -52,9 +52,23 @@ private:
     qreal m_positionInInternalBuffer;
     qreal m_speed;
 
+    /**
+     * Read the given file (must be already open), check if the format is correct, and fill the
+     * internal Buffer with the WAV data.
+     */
     bool readWavFile(QFile*);
+    /**
+     * Read an int (32 bits) encoded in little endian from the given file.
+     */
     int readLittleEndianInt(QFile*);
+    /**
+     * Read an short (16 bits) encoded in little endian from the given file.
+     */
     int readLittleEndianShort(QFile*);
+
+    /**
+     * Convert a signed byte (8 bits) to an unsigned byte.
+     */
     int convertByteToUnsignedByte(int);
 
 

@@ -4,18 +4,16 @@
 #include "abstraction/wavegen/wavegenerator.h"
 
 /**
-  * Dummy Wave Generator, produces a simple square sound with a fixed frequency.
-  * This is useful to test the modules.
-  */
+ * Dummy Wave Generator, produces a simple square sound with a fixed frequency.
+ * This is useful to test the modules.
+ */
 class WaveGeneratorDummy : public WaveGenerator {
 public:
-    static const int SIGNAL_INTENSITY = 5;
-
     WaveGeneratorDummy();
 
     /**
-      * Generate a square wave, with a fixed frequency. The bufferIn is ignored.
-      */
+     * Generate a square wave, with a fixed frequency. The bufferIn is ignored.
+     */
     virtual void generate(const Buffer* bufferIn, Buffer* bufferOut);
 
 private:

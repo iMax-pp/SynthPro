@@ -9,11 +9,11 @@ class QFile;
 class SynthProFactory;
 
 /**
-  * Module that saves into a WAV file what is sent in his input port.
-  * If more than one in port are given, take the first one only.
-  * If the first port is disconnected, pause the recording till it is connected again.
-  * Close the file automatically after a fixed number of processing.
-  */
+ * Module that saves into a WAV file what is sent in its input port.
+ * If the port is disconnected, pause the recording till it is connected again.
+ * Close the file automatically after a fixed number of processing (if this feature is used),
+ * or if stopRecording() is called.
+ */
 class WavRecorder : public virtual Module {
     Q_OBJECT
 
@@ -22,8 +22,8 @@ public:
     virtual ~WavRecorder();
 
     /**
-      * Required method in order to instanciate the ports. Used by the factory.
-      */
+     * Required method in order to instanciate the ports. Used by the factory.
+     */
     void initialize(SynthProFactory*);
 
     /**
@@ -36,7 +36,7 @@ public:
      */
     void ownProcess();
 
-/*protected*/ public slots:
+public slots:
     /**
      * Start the recording into the current file.
      */
@@ -75,19 +75,19 @@ private:
     char* m_bufferForNumbers; // Little buffer used to write numbers to the file. NOT thread safe.
 
     /**
-      * Creates the WAV header of the output file, as well as setting up
-      * the dynamic size pointers.
-      */
+     * Create the WAV header of the output file, as well as setting up
+     * the dynamic size pointers.
+     */
     void createWAVHeader(QFile*);
 
     /**
-      * Helper method. Adds a little endian int32 to a given file.
-      */
+     * Helper method. Add a little endian int32 to a given file.
+     */
     void addLittleEndianIntToFile(QFile*, int nb);
 
     /**
-      * Helper method. Adds a little endian short (16 bits) to a given file.
-      */
+     * Helper method. Add a little endian short (16 bits) to a given file.
+     */
     void addLittleEndianShortToFile(QFile*, int nb);
 };
 

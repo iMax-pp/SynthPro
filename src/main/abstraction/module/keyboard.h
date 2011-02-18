@@ -15,17 +15,14 @@ public:
     virtual ~Keyboard();
 
     /**
-      * Instanciate the ports. Used by the factory.
-      */
+     * Instanciate the ports. Used by the factory.
+     */
     virtual void initialize(SynthProFactory*);
 
     /**
-      * Process the input signal.
-      */
+     * Process the input signal.
+     */
     virtual void ownProcess();
-
-public slots:
-    virtual void timerExpired();
 
 protected:
     static const int VALUE_GATE_ON = 1;

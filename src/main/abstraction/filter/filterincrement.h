@@ -4,10 +4,10 @@
 #include "abstraction/filter/filter.h"
 
 /**
-  * Dummy Filter that increments every value of the input buffer if >0,
-  * decrements if <0, and copy them to the output buffer.
-  * Especially used as a test.
-  */
+ * Dummy Filter that increments every value of the input buffer if >=0,
+ * decrements if <0, and copy them to the output buffer.
+ * Especially used for testing.
+ */
 class FilterIncrement : public Filter {
 public:
     FilterIncrement();

@@ -18,31 +18,31 @@ public:
     explicit VCF(SynthPro*);
     virtual ~VCF();
 
-    // Initialize the VCO (creates its ports using the factory)
+    /// Initialize the VCO (creates its ports using the factory).
     virtual void initialize(SynthProFactory*);
 
     /**
-     * Process its job : put a buffer in its outPort
+     * Process its job : process in BufferIn and fill the BufferOut.
      */
     void ownProcess();
 
     /**
-    * @return The current value of the dimmer
-    */
+     * @return The current value of the dimmer.
+     */
     qreal resonance() const;
 
     /**
-    * set the value of the dimmer
-    */
+     * Set the value of the dimmer.
+     */
     void setResonance(qreal value);
 
     /**
-     * @return The current filter selected, by its value on the selector himself
+     * @return The current filter selected, by its value on the selector himself.
      */
     QString filter();
 
     /**
-     * Set the value of the selector indirectly : setting this value on the selector himself
+     * Set the value of the selector indirectly : setting this value on the selector himself.
      */
     void setFilter(QString);
 
@@ -56,7 +56,7 @@ public:
 
 protected slots:
     /**
-    * slot, connected to a signal emitted by the selector to inform his value changed.
+    * Slot connected to a signal emitted by the selector to inform its value has changed.
     */
     virtual void filterChanged(int);
 

@@ -1,9 +1,10 @@
 #include "wavegeneratordummy.h"
 
 #include "abstraction/buffer.h"
+#include "abstraction/module/vco.h"
 
 WaveGeneratorDummy::WaveGeneratorDummy()
-    : m_intensity(SIGNAL_INTENSITY)
+    : m_intensity(VCO::SIGNAL_INTENSITY)
     , m_currentStep(0)
 {
 }

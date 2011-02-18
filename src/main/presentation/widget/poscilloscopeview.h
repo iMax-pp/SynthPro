@@ -4,6 +4,11 @@
 #include "abstraction/buffer.h"
 #include <QGraphicsWidget>
 
+/**
+ * The POscilloscopeView take care of displaying the Oscilloscope.
+ * It manages only the square that needs to be refreshed, not the
+ * possible buttons of the Oscilloscope.
+ */
 class POscilloscopeView : public QGraphicsWidget {
 
 public:
@@ -14,10 +19,13 @@ public:
     QRectF boundingRect() const;
 
     /**
-      * Define the buffer to be visualized.
-      */
+     * Define the buffer to be visualized.
+     */
     void setVisualizedBuffer(Buffer*);
 
+    /**
+     * Indicates if the Oscilloscope is stabilized or not.
+     */
     void setStabilized(bool);
 
     static const int WIDTH = 200;

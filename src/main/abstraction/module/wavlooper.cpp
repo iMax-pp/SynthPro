@@ -49,8 +49,6 @@ bool WavLooper::newFile(const QString& filename)
     m_fileName = filename;
     m_inputFile = new QFile(filename);
 
-
-
     if (!m_inputFile->open(QIODevice::ReadOnly)) {
         qWarning() << "Unable to open file. " << m_inputFile->fileName();
         result = false;

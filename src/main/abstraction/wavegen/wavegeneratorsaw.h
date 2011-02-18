@@ -6,8 +6,8 @@
 #include <QtGlobal>
 
 /**
-  * Triangle Wave Generator, produces a saw sound.
-  */
+ * Saw Wave Generator, produces a saw sound.
+ */
 class WaveGeneratorSaw : public WaveGenerator {
 public:
     WaveGeneratorSaw();

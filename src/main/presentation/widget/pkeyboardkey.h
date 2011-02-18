@@ -24,7 +24,6 @@ public:
       */
     void keyPressed();
 
-
     /**
       * Behaviour to perform when the key is released.
       * Triggered by the mouse event, but also by the View (through the computer keyboard).
@@ -38,11 +37,17 @@ public:
     static const int BLACK_KEY_HEIGHT = 30;
 
 signals:
+    /**
+     * Signal emitted when a Keyboard Key is pressed.
+     */
     void keyboardKeyPressed(int keyPressed);
+
+    /**
+     * Signal emitted when a Keyboard Key is released.
+     */
     void keyboardKeyReleased(int keyPressed);
 
 private:
-
     int m_keyNumber; // Relative to the C4.
     int m_width;
     int m_height;

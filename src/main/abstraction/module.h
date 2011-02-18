@@ -42,6 +42,7 @@ public:
     SynthPro* synthPro() const;
 
 public slots:
+    /// Slot used by the Clock only for time-critical operations (like Audio Output).
     virtual void timerExpired();
 
 protected:

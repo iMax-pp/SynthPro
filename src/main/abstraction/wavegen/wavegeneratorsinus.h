@@ -6,15 +6,15 @@
 #include <QtGlobal>
 
 /**
-  * Sinus Wave Generator, produces a sinus sound.
-  */
+ * Sinus Wave Generator, produces a sinus sound.
+ */
 class WaveGeneratorSinus : public WaveGenerator {
 public:
     WaveGeneratorSinus();
 
     /**
-      * Generate a saw wave.
-      */
+     * Generate a saw wave.
+     */
     virtual void generate(const Buffer* bufferIn, Buffer* bufferOut);
 
 private:

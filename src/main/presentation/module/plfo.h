@@ -9,11 +9,11 @@ class PVirtualPort;
 class PSelector;
 
 class PLFO : public PModule {
+
 public:
     PLFO(CLFO*);
 
     void initialize(PVirtualPort* out, PDimmer* k, PDimmer* range, PDimmer* offset, PSelector*);
-
 };
 
 #endif // PLFO_H
