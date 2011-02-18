@@ -3,6 +3,9 @@
 
 #include <QGraphicsWidget>
 
+/**
+ * Widget only class (no PAC involved), for a Pixmap.
+ */
 class PixmapWidget : public QGraphicsWidget {
     Q_OBJECT
 

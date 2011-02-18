@@ -5,6 +5,9 @@
 
 class CSynthPro;
 
+/**
+ * Widget only class (no PAC involved), for the Scene View.
+ */
 class ModuleView : public QGraphicsView {
 public:
     ModuleView(QWidget* parent = 0, CSynthPro* = 0);
