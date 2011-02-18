@@ -65,7 +65,7 @@ private:
     /// A temporary wire used during drag
     CWire* m_tmpWire;
     /// A temporary target port used to handle presentation feedback
-    PPort* m_clickableFeedback;
+    PPort* m_dropablePort;
 
     bool m_reconnecting;
     CPort* m_oldConnection; // The CPort previously connected to this CPort (used internally to handle reconnections)

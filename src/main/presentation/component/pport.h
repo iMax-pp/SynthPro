@@ -25,7 +25,7 @@ public:
     void hideClickFeedback();
 
     void showDropFeedback();
-    void hideDropFeedback();
+    void showUnDropFeedback();
 
 protected:
     // Handle drag & drop events
