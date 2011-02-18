@@ -105,7 +105,6 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
             previousY = y;
             indexBuffer += step;
         }
-
     }
 }
 
