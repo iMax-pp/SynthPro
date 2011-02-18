@@ -24,10 +24,6 @@ void WaveGeneratorSinus::generate(const Buffer* bufferIn, Buffer* bufferOut)
         qreal val = dataIn[i];
 
         if (m_currentSignalTension != val) {
-            // Limit test
-            val = val > INTENSITY_LIMIT ? INTENSITY_LIMIT : val;
-            val = val < -INTENSITY_LIMIT ? -INTENSITY_LIMIT : val;
-
             m_currentSignalTension = val;
             // Convert a tension into a frequency.
             m_frequency = VCO::F0 * qPow(2, val);
@@ -36,6 +32,10 @@ void WaveGeneratorSinus::generate(const Buffer* bufferIn, Buffer* bufferOut)
         // Calculate the sinus itself.
         qreal intensity = qSin(2 * M_PI * m_frequency * m_sampleIndex / VCO::REPLAY_FREQUENCY);
         intensity *= VCO::SIGNAL_INTENSITY;
+
+        // Limit test
+        intensity = intensity > INTENSITY_LIMIT ? INTENSITY_LIMIT : intensity;
+        intensity = intensity < -INTENSITY_LIMIT ? -INTENSITY_LIMIT : intensity;
 
         m_sampleIndex++; // The looping of this value may produce a small click,
                          // but it should happen very, very rarely.

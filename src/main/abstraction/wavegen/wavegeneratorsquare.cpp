@@ -25,10 +25,6 @@ void WaveGeneratorSquare::generate(const Buffer* bufferIn, Buffer* bufferOut)
         qreal val = dataIn[i];
 
         if (m_currentSignalTension != val) {
-            // Limit test
-            val = val > INTENSITY_LIMIT ? INTENSITY_LIMIT : val;
-            val = val < -INTENSITY_LIMIT ? -INTENSITY_LIMIT : val;
-
             m_currentSignalTension = val;
             // Convert a tension into a frequency.
             qreal frequency = VCO::F0 * qPow(2, val);
@@ -44,6 +40,10 @@ void WaveGeneratorSquare::generate(const Buffer* bufferIn, Buffer* bufferOut)
             m_currentStep -= m_maximumStep;
             m_intensity = -m_intensity;
         }
+
+        // Limit test
+        m_intensity = m_intensity > INTENSITY_LIMIT ? INTENSITY_LIMIT : m_intensity;
+        m_intensity = m_intensity < -INTENSITY_LIMIT ? -INTENSITY_LIMIT : m_intensity;
 
         dataOut[i] = m_intensity;
     }
