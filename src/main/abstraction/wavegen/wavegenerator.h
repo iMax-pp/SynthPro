@@ -15,6 +15,9 @@ public:
      * Generate the waveform, from a BufferIn, to a Bufferout.
      */
     virtual void generate(const Buffer* bufferIn, Buffer* bufferOut) = 0;
+
+protected:
+    static const int INTENSITY_LIMIT = 5.5; // Safety, especially useful with looping modules.
 };
 
 
