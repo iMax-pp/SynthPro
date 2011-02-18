@@ -8,6 +8,9 @@ class PDimmer;
 class PVirtualPort;
 class PSelector;
 
+/**
+ * Presentation of VCO.
+ */
 class PVCO : public PModule {
 public:
     explicit PVCO(CVCO*);

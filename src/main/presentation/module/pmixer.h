@@ -10,7 +10,9 @@ class PDimmer;
 class PVirtualPort;
 class PPort;
 
-
+/**
+ * Presentation of Mixer.
+ */
 class PMixer : public PModule {
 public:
     explicit PMixer(CMixer*);

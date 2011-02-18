@@ -6,6 +6,9 @@
 class CSpeaker;
 class PVirtualPort;
 
+/**
+ * Presentation of Speaker.
+ */
 class PSpeaker : public PModule {
 public:
     explicit PSpeaker(CSpeaker*);

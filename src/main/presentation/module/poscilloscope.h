@@ -10,6 +10,9 @@ class PPushButton;
 class PVirtualPort;
 class QTimer;
 
+/**
+ * Presentation of Oscilloscope.
+ */
 class POscilloscope : public PModule {
     Q_OBJECT
 

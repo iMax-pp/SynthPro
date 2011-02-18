@@ -8,6 +8,9 @@ class PDimmer;
 class PVirtualPort;
 class PSelector;
 
+/**
+ * Presentation of LFO.
+ */
 class PLFO : public PModule {
 
 public:

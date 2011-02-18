@@ -8,6 +8,9 @@ class PDimmer;
 class PPushButton;
 class PVirtualPort;
 
+/**
+ * Presentation of ADSR.
+ */
 class PADSR : public PModule {
 public:
     explicit PADSR(CADSR*);

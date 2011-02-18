@@ -7,6 +7,9 @@ class CVCA;
 class PDimmer;
 class PVirtualPort;
 
+/**
+ * Presentation of VCA.
+ */
 class PVCA : public PModule {
 public:
     explicit PVCA(CVCA*);

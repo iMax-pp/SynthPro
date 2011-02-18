@@ -8,6 +8,9 @@ class PDimmer;
 class PVirtualPort;
 class PSelector;
 
+/**
+ * Presentation of VCF.
+ */
 class PVCF : public PModule {
 public:
     explicit PVCF(CVCF*);

@@ -7,6 +7,9 @@ class CWavRecorder;
 class PPushButton;
 class PVirtualPort;
 
+/**
+ * Presentation of WavRecorder.
+ */
 class PWavRecorder : public PModule {
     Q_OBJECT
 
@@ -14,6 +17,8 @@ public:
     explicit PWavRecorder(CWavRecorder*);
 
     void initialize(PVirtualPort* in, PPushButton* record, PPushButton* stop);
+
+    /// Open a dialog box asking for a file to save in.
     QString askForFileName();
 
 private slots:
