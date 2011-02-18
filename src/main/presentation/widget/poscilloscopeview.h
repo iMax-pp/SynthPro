@@ -31,6 +31,8 @@ public:
     static const int WIDTH = 200;
     static const int HEIGHT = 150;
 
+    static const int LIMIT_Y = HEIGHT * 2; // Limit of the Y, in case of overflow.
+
     static const int SCANNED_WIDTH = 400;
     static const int MAX_BUFFER_USED = Buffer::DEFAULT_LENGTH - SCANNED_WIDTH;
 

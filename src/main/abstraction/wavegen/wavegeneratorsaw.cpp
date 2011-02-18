@@ -25,10 +25,13 @@ void WaveGeneratorSaw::generate(const Buffer* bufferIn, Buffer* bufferOut)
         qreal val = dataIn[i];
 
         if (m_currentSignalTension != val) {
+            // Limit test
+            val = val > INTENSITY_LIMIT ? INTENSITY_LIMIT : val;
+            val = val < -INTENSITY_LIMIT ? -INTENSITY_LIMIT : val;
+
             m_currentSignalTension = val;
             // Convert a tension into a frequency.
             qreal frequency = VCO::F0 * qPow(2, val);
-
             // Calculate the step of the frequency. *2 because we need
             // to find a period that incorporates two periods
             // (below and above the 0).

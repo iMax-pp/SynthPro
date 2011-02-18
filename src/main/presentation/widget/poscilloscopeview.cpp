@@ -2,7 +2,6 @@
 
 #include "abstraction/module/vco.h"
 
-#include <QDebug>
 #include <QPainter>
 
 POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
@@ -94,7 +93,14 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
 
         step = (usedBufferSize / WIDTH);
         for (int i = 0; i < WIDTH ; i++) {
-            int y = (int)(middleY - data[(int)indexBuffer] * currentRatioY);
+            int y = (int)(data[(int)indexBuffer] * currentRatioY);
+            // Limit test.
+            if (y > LIMIT_Y) {
+                y = LIMIT_Y;
+            } else if (y < -LIMIT_Y) {
+                y = -LIMIT_Y;
+            }
+            y += middleY;
             painter->drawLine(i - 1, previousY, i, y);
             previousY = y;
             indexBuffer += step;
