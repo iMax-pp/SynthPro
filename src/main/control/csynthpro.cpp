@@ -27,6 +27,7 @@ CSynthPro::CSynthPro(SynthProFactory* factory)
     , m_graphicsScene(new QGraphicsScene(this))
     , m_factory(factory)
 {
+    dropAttemptsCount = 0;
 }
 
 CSynthPro::~CSynthPro()
@@ -162,3 +163,5 @@ void CSynthPro::play(bool resume)
         Clock::instance().pause();
     }
 }
+
+int CSynthPro::dropAttemptsCount = 0;

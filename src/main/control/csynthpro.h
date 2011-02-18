@@ -51,6 +51,9 @@ private slots:
     /// Slot called when Play/Pause button is clicked.
     void play(bool);
 
+public:
+    static int dropAttemptsCount;
+
 private:
     QPointer<PSynthPro> m_presentation;
     QGraphicsScene* m_graphicsScene;

@@ -10,6 +10,7 @@
 #include <QGraphicsLinearLayout>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
+#include <QMessageBox>
 
 PVirtualPort::PVirtualPort(CVirtualPort* control, QGraphicsItem* parent)
     : QGraphicsWidget(parent)
@@ -64,4 +65,22 @@ void PVirtualPort::removeConnectionPort(PPort* port)
     layout()->activate();
 
     port->deleteLater();
+}
+
+void PVirtualPort::notifyThatYouCantDropOnARedPort()
+{
+    QMessageBox msgBox;
+    msgBox.setText(tr("Well, actually this port was shown in red as an hint that you can’t connect your wire on it. An input port can only be connected to an output port and <em>vice versa</em>."));
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    // msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.exec();
+}
+
+void PVirtualPort::notifyThatYouStillCantDropOnARedPort()
+{
+    QMessageBox msgBox;
+    msgBox.setText(tr("Have you read the previous message?"));
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    // msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.exec();
 }

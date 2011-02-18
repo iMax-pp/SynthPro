@@ -18,6 +18,9 @@ public:
     void insertConnectionPort(int, PPort*);
     void removeConnectionPort(PPort*);
 
+    void notifyThatYouCantDropOnARedPort();
+    void notifyThatYouStillCantDropOnARedPort();
+
 private:
     CVirtualPort* m_control;
     TextWidget* m_label;
