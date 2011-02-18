@@ -73,6 +73,18 @@ void PModule::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*
 
 void PModule::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
-    QGraphicsItem::mouseMoveEvent(event);
+    QGraphicsWidget::mouseMoveEvent(event);
     m_control->move();
+}
+
+void PModule::mousePressEvent(QGraphicsSceneMouseEvent* event)
+{
+    setCursor(Qt::ClosedHandCursor);
+    QGraphicsWidget::mousePressEvent(event);
+}
+
+void PModule::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
+{
+    setCursor(Qt::OpenHandCursor);
+    QGraphicsWidget::mouseReleaseEvent(event);
 }
