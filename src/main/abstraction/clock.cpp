@@ -1,4 +1,4 @@
-#include "clock.h"
+    #include "clock.h"
 
 #include "abstraction/audiodeviceprovider.h"
 #include "abstraction/module.h"
