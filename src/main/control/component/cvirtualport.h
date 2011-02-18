@@ -3,44 +3,60 @@
 
 #include "abstraction/component/virtualport.h"
 #include "presentation/component/pvirtualport.h"
+
 #include <QHash>
 #include <QPointer>
 
 class CPort;
 class QtFactory;
 
+/**
+ * VirtualPort control class (PAC by inheritance).
+ */
 class CVirtualPort : public virtual VirtualPort {
     Q_OBJECT
 
 public:
-    CVirtualPort(Module* parent, QtFactory*, const QString& name, bool replicable = false, bool gate = false);
+    CVirtualPort(Module* parent, QtFactory*, const QString& name,
+                 bool replicable = false, bool gate = false);
     virtual ~CVirtualPort();
 
+    /// Initialize the VirtualPort by creating an available port.
     void initialize();
 
+    /// @returns the associated PVirtualPort presentation.
     inline PVirtualPort* presentation() const { return m_presentation; }
+
+    /// @param presentation of type PVirtualPort to associate with this CVirtualPort.
     void setPresentation(PVirtualPort*);
 
     /**
      * Override of the base implementation providing a GUI feedback.
-     * This method creates the CPorts (one for each side) and the CWire used by the new connection
+     * This method creates the CPorts (one for each side) and the CWire used by
+     * the new connection.
      */
     Connection* connect(VirtualPort* other);
+
     /**
-     * Connect this VirtualPort’s CPort to a given target CPort
-     * This method should be called by CPort when it detects an attempt from the user to
-     * make a connection.
+     * Connect this VirtualPort’s CPort to a given target CPort.
+     * This method should be called by CPort when it detects an attempt from the
+     * user to make a connection.
      * @param own The CPort owned by this CVirtualPort
      * @param target The target CPort
      */
     Connection* connect(CPort* own, CPort* target);
-    /// Disconnect the connection using a given CPort (this method is used by CPort)
+
+    /// Disconnect the connection using a given CPort (this method is used by CPort).
     void disconnect(CPort*);
-    /// Disconnect a given connection (and remove its presentation)
+
+    /// Disconnect a given connection (and remove its presentation).
     bool disconnect(Connection*);
     // bool reconnect(Connection*, VirtualPort* other);
 
-    /// Call this method when this module moved and you want its connections wires to move accordingly
+    /**
+     * Call this method when this module moved and you want its connections wires
+     * to move accordingly.
+     */
     void updateWiresPositions();
 
     /**
@@ -49,25 +65,26 @@ public:
      */
     void showCompatibleFeedback(CVirtualPort* from);
 
-    /**
-     * Hide feedback, called when dropping a dragged wire.
-     */
+    /// Hide feedback, called when dropping a dragged wire.
     void hideFeedback();
 
     /// Remove a given CPort
     void removeConnectionPort(CPort*);
 
 protected:
-    /// Call this method to hide or show the available port of this VirtualPort (it matters if this VirtualPort is replicable or not)
+    /**
+     * Call this method to hide or show the available port of this VirtualPort
+     * (it matters if this VirtualPort is replicable or not).
+     */
     void updateAvailableFeedback();
 
-    /// Internal method creating a CPort for a given Connection
+    /// Internal method creating a CPort for a given Connection.
     CPort* createConnectionPort(Connection*);
 
-    /// Internal method associating a CPort to a given Connection
+    /// Internal method associating a CPort to a given Connection.
     void setConnectionPort(Connection*, CPort*);
 
-    /// Internal method deleting a given CPort if it’s not reconnecting
+    /// Internal method deleting a given CPort if it’s not reconnecting.
     void removeConnectionPortIfNeeded(CPort*);
 
 private:

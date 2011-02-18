@@ -10,6 +10,9 @@ class CVirtualPort;
 class QPointF;
 class QtFactory;
 
+/**
+ * Port control class.
+ */
 class CPort : public QObject {
     Q_OBJECT
 
