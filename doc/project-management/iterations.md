@@ -133,5 +133,4 @@ date :  semaine 7 (Mercredi 16-vendredi 18)
 
 Todo :
 --------
-- Oscillo stabilisation à améliorer;
-- Frequence Filter pas correcte ?
+- Oscillo stabilisation à améliorer.
