@@ -24,7 +24,7 @@ void PVirtualPort::initialize(PPort* availablePort)
 {
     // Create label for port.
     m_label = new TextWidget(control()->name(), this);
-    m_label->setFont(QFont("Courier", 10, QFont::Normal));
+    m_label->setFont(QFont("Courier", 8, QFont::Normal));
 
     QGraphicsGridLayout* layout = new QGraphicsGridLayout(this);
     layout->setSpacing(0);
