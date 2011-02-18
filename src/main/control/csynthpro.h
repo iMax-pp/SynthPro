@@ -17,7 +17,7 @@ class CSynthPro : public SynthPro {
     Q_OBJECT
 
 public:
-    CSynthPro(SynthProFactory*);
+    explicit CSynthPro(SynthProFactory*);
     virtual ~CSynthPro();
 
     /// @returns the associated PSynthPro presentation.
@@ -50,6 +50,9 @@ public:
 private slots:
     /// Slot called when Play/Pause button is clicked.
     void play(bool);
+
+public:
+    static int dropAttemptsCount;
 
 private:
     QPointer<PSynthPro> m_presentation;

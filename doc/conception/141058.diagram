@@ -1,0 +1,31 @@
+format 74
+
+classinstance 128002 class_ref 151427 // PPort
+  name ""   xyz 34 4 2000 life_line_z 2000
+classinstance 128130 class_ref 151299 // CPort
+  name "cp"   xyz 130 4 2000 life_line_z 2000
+classinstance 128898 class_ref 155138 // CWire
+  name ""   xyz 284 43 2000 life_line_z 2000
+durationcanvas 128258 classinstance_ref 128002 // :PPort
+  xyzwh 53 69 2010 11 40
+end
+durationcanvas 128386 classinstance_ref 128130 // cp:CPort
+  xyzwh 153 69 2010 11 49
+end
+durationcanvas 129026 classinstance_ref 128898 // :CWire
+  xyzwh 303 95 2010 11 25
+end
+msg 128514 synchronous
+  from durationcanvas_ref 128258
+  to durationcanvas_ref 128386
+  yz 70 2015 explicitmsg "drag"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 95 54
+msg 129154 synchronous
+  from durationcanvas_ref 128386
+  to durationcanvas_ref 129026
+  yz 96 2015 explicitmsg "setInPort"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  args "cp"
+  label_xy 209 80
+end

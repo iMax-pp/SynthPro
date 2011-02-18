@@ -9,7 +9,7 @@ class PVirtualPort;
 
 class PVCA : public PModule {
 public:
-    PVCA(CVCA*);
+    explicit PVCA(CVCA*);
 
     void initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* controlIn, PDimmer*);
 };

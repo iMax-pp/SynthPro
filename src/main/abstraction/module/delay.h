@@ -16,6 +16,7 @@ class Delay : public virtual Module {
 public:
     explicit Delay(SynthPro*);
     virtual ~Delay();
+
     virtual void initialize(SynthProFactory*);
     void ownProcess();
 

@@ -4,6 +4,9 @@
 #include "abstraction/module/mixer.h"
 #include "control/cmodule.h"
 
+/**
+ * CMixer control class (PAC by inheritance).
+ */
 class CMixer : public Mixer, public CModule {
 public:
     explicit CMixer(SynthPro*);

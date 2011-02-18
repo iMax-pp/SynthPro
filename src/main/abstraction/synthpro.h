@@ -13,7 +13,7 @@ class SynthPro : public QObject {
     Q_OBJECT
 
 public:
-    SynthPro(QObject* parent = 0);
+    explicit SynthPro(QObject* parent = 0);
     virtual ~SynthPro();
 
     /// @returns The QList of modules contained by this SynthPro.

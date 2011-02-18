@@ -4,8 +4,10 @@
 #include "abstraction/module/vcf.h"
 #include "control/cmodule.h"
 
+/**
+ * VCF control class (PAC by inheritance).
+ */
 class CVCF : public VCF, public CModule {
-
 public:
     explicit CVCF(SynthPro*);
 

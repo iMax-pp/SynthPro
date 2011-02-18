@@ -11,7 +11,7 @@ class PSelector;
 class PLFO : public PModule {
 
 public:
-    PLFO(CLFO*);
+    explicit PLFO(CLFO*);
 
     void initialize(PVirtualPort* out, PDimmer* k, PDimmer* range, PDimmer* offset, PSelector*);
 };

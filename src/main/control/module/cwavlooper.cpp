@@ -20,6 +20,8 @@ void CWavLooper::initialize(SynthProFactory* factory)
     PWavLooper* pre = dynamic_cast<PWavLooper*>(presentation());
     pre->initialize(outPort->presentation(), speedDimmer->presentation());
 
+    speedDimmer->setValueFormat(formatSpeed);
+
     connect(pre, SIGNAL(newFileClicked()), this, SLOT(newFile()));
 
     newFile();
@@ -31,4 +33,9 @@ void CWavLooper::newFile()
     if (!fileName.isNull()) {
         WavLooper::newFile(fileName);
     }
+}
+
+QString CWavLooper::formatSpeed(qreal val)
+{
+    return QString::number(val, 'g', 2) + "x";
 }

@@ -10,7 +10,7 @@ class PSelector;
 
 class PVCF : public PModule {
 public:
-    PVCF(CVCF*);
+    explicit PVCF(CVCF*);
 
     void initialize(PVirtualPort* in, PVirtualPort* cutOff, PVirtualPort* out, PSelector*,
                     PDimmer* resonance, PDimmer* cutOffDimmer);

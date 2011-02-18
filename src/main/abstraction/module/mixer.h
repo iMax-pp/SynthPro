@@ -16,8 +16,10 @@ class Mixer : public virtual Module {
 public:
     explicit Mixer(SynthPro*);
     virtual ~Mixer();
+
     virtual void initialize(SynthProFactory*);
     void ownProcess();
+
     static const int MIXER_SIZE = 4;
 
 protected:

@@ -4,8 +4,10 @@
 #include "abstraction/module/keyboard.h"
 #include "control/cmodule.h"
 
+/**
+ * Keyboard control class (PAC by inheritance).
+ */
 class CKeyboard : public Keyboard, public CModule {
-
 public:
     explicit CKeyboard(SynthPro*);
 

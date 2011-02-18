@@ -4,6 +4,9 @@
 #include "abstraction/module/delay.h"
 #include "control/cmodule.h"
 
+/**
+ * Delay control class (PAC by inheritance).
+ */
 class CDelay : public Delay, public CModule {
 public:
     explicit CDelay(SynthPro*);

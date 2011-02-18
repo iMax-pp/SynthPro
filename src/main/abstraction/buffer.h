@@ -9,7 +9,7 @@ public:
     static const int DEFAULT_LENGTH = 900;
 
     /// Constructs a buffer of a given length, initializing its content to 0.
-    Buffer(int length = DEFAULT_LENGTH);
+    explicit Buffer(int length = DEFAULT_LENGTH);
     /// Copy constructor.
     Buffer(const Buffer& source);
     ~Buffer();

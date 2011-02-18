@@ -8,6 +8,7 @@ class OutPort;
 class Dimmer;
 class PushButton;
 class SynthProFactory;
+
 /// A state pattern ?
 class ADSR : public virtual Module {
     Q_OBJECT

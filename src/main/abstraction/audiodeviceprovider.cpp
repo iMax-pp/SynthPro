@@ -40,9 +40,12 @@ AudioDeviceProvider& AudioDeviceProvider::instance()
 
 bool AudioDeviceProvider::initializeAudioOutput()
 {
+#ifndef __APPLE__
+    // On OS X we need to reinitialize the audio output, so skip the following test.
     if (m_initialized) {
         return true;
     }
+#endif
 
     // Create the desired output format.
 #if QT_VERSION < 0x40700

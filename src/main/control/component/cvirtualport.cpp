@@ -102,6 +102,17 @@ Connection* CVirtualPort::connect(CPort* own, CPort* other)
     // Perform the connection
     Connection* connection = connect(other->vPort());
 
+    if (!connection) {
+        CSynthPro::dropAttemptsCount += 1;
+        if (CSynthPro::dropAttemptsCount >= 4) {
+            presentation()->notifyThatYouStillCantDropOnARedPort();
+        } else if (CSynthPro::dropAttemptsCount >= 3) {
+            presentation()->notifyThatYouCantDropOnARedPort();
+        }
+    } else {
+        CSynthPro::dropAttemptsCount = 0;
+    }
+
     m_useOwnPort = 0; // clean-up
     m_useOthersPort = 0; // clean-up
 

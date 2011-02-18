@@ -17,6 +17,7 @@ class Sampler : public virtual Module {
 public:
     explicit Sampler(SynthPro*);
     virtual ~Sampler();
+
     void initialize(SynthProFactory*);
 
     /// Process its job(s): record a sample, play a sample
@@ -72,7 +73,7 @@ protected:
     /// index when sample really start ie whenits value is not 0
     int m_sampleStart;
 
-    static const qreal MIN_BPM = 0;
+    static const qreal MIN_BPM = 0.4;
     static const qreal MAX_BPM = 2;
     static const qreal DEFAULT_BPM = 1;
 

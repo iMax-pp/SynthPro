@@ -12,6 +12,9 @@ class COutPort;
 class CPort;
 class QPointF;
 
+/**
+ * Wire control class (PAC by inheritance).
+ */
 class CWire : public QObject {
 public:
     CWire();
