@@ -14,7 +14,7 @@ CPort::CPort(CVirtualPort* parent, QtFactory* factory)
     , m_factory(factory)
     , m_wire(0)
     , m_tmpWire(0)
-    , m_clickableFeedback(0)
+    , m_dropablePort(0)
     , m_reconnecting(false)
     , m_oldConnection(0)
 {
@@ -81,19 +81,27 @@ void CPort::drag(const QPointF& pos)
 
 void CPort::dragMove(const QPointF& pos)
 {
-    if (PPort* pport = dynamic_cast<PPort*>(presentation()->scene()->itemAt(pos))) {
-        if (!m_clickableFeedback) { // TODO improve this code
-            m_clickableFeedback = pport;
-            if (vPort()->connectable(pport->control()->vPort())) {
-                pport->showDropFeedback();
-            } else {
-                // pport->showUnDropFeedback();
+    CPort* source = m_oldConnection ? m_oldConnection : this;
+    PPort* pport  = dynamic_cast<PPort*>(presentation()->scene()->itemAt(pos));
+    if (pport != this->presentation()) {
+        if (pport) {
+            // There’s a port under the cursor position
+
+            if (!m_dropablePort) {
+                // We just entered in the port
+                m_dropablePort = pport;
+                if (source->vPort()->connectable(pport->control()->vPort())) {
+                    pport->showDropFeedback();
+                } else {
+                    pport->showUnDropFeedback();
+                }
             }
-        }
-    } else {
-        if (m_clickableFeedback) {
-            m_clickableFeedback->hideDropFeedback();
-            m_clickableFeedback = 0;
+        } else {
+            // There’s no port under the cursor position
+            if (m_dropablePort) {
+                m_dropablePort->showFeedback(source->vPort()->connectable(m_dropablePort->control()->vPort()));
+                m_dropablePort = 0;
+            }
         }
     }
     if (m_tmpWire) {

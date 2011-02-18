@@ -4,31 +4,29 @@
 #include <QObject>
 
 /**
- * A dimmer allow changing a float parameter of a module
+ * A dimmer allows changing a float parameter of a module.
  */
 class Dimmer : public QObject {
     Q_OBJECT
+
 public:
+    /// Constructs a Dimmer from a min, max and defaultValue.
     Dimmer(qreal min, qreal max, qreal defaultValue, QObject* parent = 0);
 
+    /// @returns the current value.
     inline qreal value() const { return m_value; }
+    /// @param value to set this Dimmer to.
     virtual void setValue(qreal);
 
+    /// @returns the min value.
     inline qreal min() const { return m_min; }
+    /// @returns the max value.
     inline qreal max() const { return m_max; }
-
-    inline qreal offset() const { return m_offset; }
-    void setOffset(qreal);
-
-    inline qreal ratio() const { return m_ratio; }
-    void setRatio(qreal);
 
 private :
     qreal m_min;
     qreal m_max;
     qreal m_value;
-    qreal m_offset;
-    qreal m_ratio;
 };
 
 #endif // DIMMER_H

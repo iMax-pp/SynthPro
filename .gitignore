@@ -10,3 +10,4 @@ Info.plist
 Makefile
 doc/conception/*.session
 doc/sources
+*.log

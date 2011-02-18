@@ -18,6 +18,8 @@ PPort::PPort(CPort* control, QGraphicsItem* parent)
 
     setAcceptHoverEvents(true);
 
+    setCursor(Qt::PointingHandCursor);
+
     hideFeedback(); // HACK to init port color.
 }
 
@@ -30,7 +32,7 @@ void PPort::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 
 void PPort::showFeedback(bool compatible)
 {
-    QPalette palette(Qt::red);
+    QPalette palette(Qt::darkRed);
 
     if (compatible) {
         palette.setColor(QPalette::Button, Qt::darkGreen);
@@ -70,15 +72,18 @@ void PPort::showDropFeedback()
     setPalette(p);
 }
 
-void PPort::hideDropFeedback()
+void PPort::showUnDropFeedback()
 {
-    hideFeedback();
+    QPalette p;
+    p.resolve(palette());
+    p.setColor(QPalette::Button, Qt::red);
+    setPalette(p);
 }
 
 void PPort::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {
-        event->accept(); // TODO Lire la doc sur accept() et ignore() un de ces jours
+        event->accept();
         control()->drag(event->scenePos());
     }
 }
@@ -113,14 +118,12 @@ void PPort::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
     }
 }
 
-void PPort::hoverEnterEvent(QGraphicsSceneHoverEvent* event)
+void PPort::hoverEnterEvent(QGraphicsSceneHoverEvent*)
 {
     control()->mouseEnter();
-    QGraphicsWidget::hoverEnterEvent(event);
 }
 
-void PPort::hoverLeaveEvent(QGraphicsSceneHoverEvent* event)
+void PPort::hoverLeaveEvent(QGraphicsSceneHoverEvent*)
 {
     control()->mouseLeave();
-    QGraphicsWidget::hoverLeaveEvent(event);
 }
