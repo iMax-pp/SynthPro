@@ -4,6 +4,9 @@
 #include "abstraction/module/adsr.h"
 #include "control/cmodule.h"
 
+/**
+ * ADSR control class (PAC by inheritance).
+ */
 class CADSR : public ADSR, public CModule {
 public:
     explicit CADSR(SynthPro*);

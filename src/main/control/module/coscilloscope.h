@@ -4,8 +4,10 @@
 #include "abstraction/module/oscilloscope.h"
 #include "control/cmodule.h"
 
+/**
+ * Oscilloscope control class (PAC by inheritance).
+ */
 class COscilloscope : public Oscilloscope, public CModule {
-
 public:
     explicit COscilloscope(SynthPro*);
 

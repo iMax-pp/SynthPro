@@ -4,8 +4,10 @@
 #include "abstraction/module/vco.h"
 #include "control/cmodule.h"
 
+/**
+ * VCO control class (PAC by inheritance).
+ */
 class CVCO : public VCO, public CModule {
-
 public:
     explicit CVCO(SynthPro*);
 
