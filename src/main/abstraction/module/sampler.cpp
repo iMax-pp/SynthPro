@@ -38,7 +38,7 @@ void Sampler::initialize(SynthProFactory* factory)
     m_outPort = factory->createOutPort(this, tr("out"));
     m_outports.append(m_outPort);
 
-    m_gate = factory->createInPortGate(this, tr("gate"));
+    m_gate = factory->createInPortGate(this, tr("gate in"));
     m_inports.append(m_gate);
 
     m_bpmDimmer = factory->createDialDimmer(tr("Speed"), MIN_BPM, MAX_BPM, DEFAULT_BPM, this);

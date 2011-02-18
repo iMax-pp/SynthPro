@@ -19,7 +19,7 @@ ADSR::ADSR(SynthPro* parent)
 
 void ADSR::initialize(SynthProFactory* factory)
 {
-    m_gate = factory->createInPortGate(this, tr("gate"));
+    m_gate = factory->createInPortGate(this, tr("gate\nin"));
     m_inports.append(m_gate);
 
     m_outPort = factory->createOutPortReplicable(this, tr("out"));
