@@ -15,7 +15,7 @@ class Oscilloscope : public virtual Module {
     Q_OBJECT
 
 public:
-    Oscilloscope(SynthPro*);
+    explicit Oscilloscope(SynthPro*);
     virtual ~Oscilloscope();
 
     /**

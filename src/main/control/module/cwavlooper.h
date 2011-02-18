@@ -8,7 +8,7 @@ class CWavLooper : public WavLooper, public CModule {
     Q_OBJECT
 
 public:
-    CWavLooper(SynthPro*);
+    explicit CWavLooper(SynthPro*);
 
     void initialize(SynthProFactory*);
 

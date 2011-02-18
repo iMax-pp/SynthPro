@@ -9,8 +9,9 @@ class QGraphicsAnchorLayout;
 
 class PModule : public QGraphicsWidget {
     Q_OBJECT
+
 public:
-    PModule(CModule*);
+    explicit PModule(CModule*);
 
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
     QRectF boundingRect() const;

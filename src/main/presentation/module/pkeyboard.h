@@ -14,7 +14,7 @@ class PKeyboard : public PModule {
     Q_OBJECT
 
 public:
-    PKeyboard(CKeyboard*);
+    explicit PKeyboard(CKeyboard*);
 
     void initialize(PVirtualPort* outputFrequency, PVirtualPort* outputGate);
 

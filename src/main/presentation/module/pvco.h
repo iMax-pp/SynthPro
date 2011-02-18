@@ -10,7 +10,7 @@ class PSelector;
 
 class PVCO : public PModule {
 public:
-    PVCO(CVCO*);
+    explicit PVCO(CVCO*);
 
     void initialize(PVirtualPort* vfm, PVirtualPort* out, PSelector*, PDimmer*);
 };

@@ -11,7 +11,7 @@ class PSynthPro : public QMainWindow {
     Q_OBJECT
 
 public:
-    PSynthPro(CSynthPro*);
+    explicit PSynthPro(CSynthPro*);
 
     // Set the graphics scene for the module view.
     void setGraphicsScene(QGraphicsScene*);

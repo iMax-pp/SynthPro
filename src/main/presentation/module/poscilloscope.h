@@ -14,7 +14,7 @@ class POscilloscope : public PModule {
     Q_OBJECT
 
 public:
-    POscilloscope(COscilloscope*);
+    explicit POscilloscope(COscilloscope*);
 
     void initialize(PVirtualPort* input, PPushButton* stabilizeButton);
 

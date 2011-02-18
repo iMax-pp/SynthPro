@@ -13,7 +13,8 @@ class PKeyboardView : public QGraphicsWidget {
     Q_OBJECT
 
 public:
-    PKeyboardView(QGraphicsItem* parent);
+    explicit PKeyboardView(QGraphicsItem* parent);
+
     void postInitialize();
 
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);

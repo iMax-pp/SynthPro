@@ -17,7 +17,7 @@ class CSynthPro : public SynthPro {
     Q_OBJECT
 
 public:
-    CSynthPro(SynthProFactory*);
+    explicit CSynthPro(SynthProFactory*);
     virtual ~CSynthPro();
 
     /// @returns the associated PSynthPro presentation.
