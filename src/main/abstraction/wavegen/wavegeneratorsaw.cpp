@@ -41,7 +41,7 @@ void WaveGeneratorSaw::generate(const Buffer* bufferIn, Buffer* bufferOut)
 
         // Check if our intensity is below the minimum intensity.
         // If yes, set the intensity to its maximum.
-        if (m_intensity < m_minimumIntensity) {
+        if (m_intensity <= m_minimumIntensity) {
             m_intensity = VCO::SIGNAL_INTENSITY;
         }
 
