@@ -41,13 +41,13 @@ void WaveGeneratorTriangle::generate(const Buffer* bufferIn, Buffer* bufferOut)
             m_slope = (m_slope < 0 ? -newSlope : newSlope);
         }
 
+        m_intensity += m_slope;
+
         // Check if our intensity is above/below the maximum intensity.
         // If yes, invert the slope.
-        if (qAbs(m_intensity + m_slope) > VCO::SIGNAL_INTENSITY) {
+        if (qAbs(m_intensity + m_slope) >= VCO::SIGNAL_INTENSITY) {
             m_slope = -m_slope;
         }
-
-        m_intensity += m_slope;
 
         // Limit test
         m_intensity = m_intensity > INTENSITY_LIMIT ? INTENSITY_LIMIT : m_intensity;
