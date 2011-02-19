@@ -135,13 +135,13 @@ Itération 8
 -----------
 date :  semaine 8 (lundi 21-jeudi 24)
 
-Julien N. :
-- Modif Audio Output données par Julien RF.
+- Julien N. :
+    - Modif Audio Output données par Julien RF.
 
-Julien RF :
-- Bug quand on deconnecte 1ere sortie alors 2e utilisée, lors de destruction du module lié. Doit bouger module pour activer raffraichissement visuel.
+- Julien RF :
+    - Bug quand on deconnecte 1ere sortie alors 2e utilisée, lors de destruction du module lié. Doit bouger module pour activer raffraichissement visuel.
 
-Todo :
-- Doc
-- Slides présentation
-- Demo à préparer.
+- Todo :
+    - Doc
+    - Slides présentation
+    - Demo à préparer.
