@@ -131,6 +131,14 @@ date :  semaine 7 (Mercredi 16-vendredi 18)
     - Fixer VCA (multiplier input par somme du dimmer et control), en une passe;
     - Sampler;
 
+Itération 8
+-----------
+date :  semaine 8 (lundi 21-jeudi 24)
+
+- Debuggage final
+    - Bug quand on deconnecte 1ere sortie alors 2e utilisée, lors de destruction du module lié. Doit bouger module pour activer raffraichissement visuel.
+- Doc
+- Slides présentation
+- Demo à préparer.
 Todo :
 --------
-- Triangle frequency pas super précise dans les aigues ?
