@@ -186,12 +186,53 @@ void CSynthPro::loadFrom(const QString& filename)
 
         // Then start a new scheme.
         newScheme();
+        line = stream.readLine();
 
-        // By loading every single module.
-        do {
+        // Retrieve the count of modules.
+        int nbModules = line.toInt();
+
+        // And recreate each one.
+        for (int i = 0; i < nbModules && !line.isNull(); i++) {
             line = stream.readLine();
+            QStringList elements = line.split(QRegExp("\\s+"), QString::SkipEmptyParts);
+
+            // Retrieve module name (Remove the number at name start).
+            QString name = elements[0].remove(QRegExp("[0-9]{1,2}"));
+            // Retrieve module position.
+            QPointF pos(elements[1].toInt(), elements[2].toInt());
+
+            if (name == "CKeyboard") {
+                addModule(SynthProFactory::KeyboardId, pos);
+            } else if (name == "CVCO") {
+                addModule(SynthProFactory::VCOId, pos);
+            } else if (name == "CVCF") {
+                addModule(SynthProFactory::VCFId, pos);
+            } else if (name == "CVCA") {
+                addModule(SynthProFactory::VCAId, pos);
+            } else if (name == "CADSR") {
+                addModule(SynthProFactory::ADSRId, pos);
+            } else if (name == "CDelay") {
+                addModule(SynthProFactory::DelayId, pos);
+            } else if (name == "CMixer") {
+                addModule(SynthProFactory::MixerId, pos);
+            } else if (name == "CSampler") {
+                addModule(SynthProFactory::SamplerId, pos);
+            } else if (name == "CLFO") {
+                addModule(SynthProFactory::LFOId, pos);
+            } else if (name == "CSpeaker") {
+                addModule(SynthProFactory::AudioOuputId, pos);
+            } else if (name == "CWavRecorder") {
+                addModule(SynthProFactory::FileOutputId, pos);
+            } else if (name == "COscilloscope") {
+                addModule(SynthProFactory::OscilloscopeId, pos);
+            } else if (name == "CWavLooper") {
+                addModule(SynthProFactory::WavLooperId, pos);
+            } else {
+                m_presentation->errorLoading(tr("Error loading an unexpected module."));
+            }
+
             // TODO
-        } while (!line.isNull());
+        }
     }
 }
 
