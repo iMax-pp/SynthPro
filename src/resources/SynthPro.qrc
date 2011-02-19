@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/src/resources">
         <file>images/new.png</file>
+        <file>images/open.png</file>
         <file>images/save.png</file>
         <file>images/exit.png</file>
         <file>images/play.png</file>

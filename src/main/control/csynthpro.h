@@ -50,6 +50,9 @@ public:
     /// Save the current scheme in the given filename.
     void saveTo(const QString& filename);
 
+    /// Load a scheme from the given filename.
+    void loadFrom(const QString& filename);
+
 private slots:
     /// Slot called when Play/Pause button is clicked.
     void play(bool);

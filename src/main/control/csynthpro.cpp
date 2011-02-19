@@ -160,9 +160,38 @@ void CSynthPro::newScheme()
 void CSynthPro::saveTo(const QString& filename)
 {
     QFile file(filename);
+
     if (file.open(QFile::WriteOnly | QFile::Truncate)) {
         QTextStream out(&file);
+        // Add a simple header.
+        out << "synthpro 1.0" << endl;
+        // And the whole content of the scheme.
         out << *this;
+    }
+}
+
+void CSynthPro::loadFrom(const QString& filename)
+{
+    QFile file(filename);
+
+    if (file.open(QFile::ReadOnly)) {
+        QTextStream stream(&file);
+        QString line = stream.readLine();
+
+        // Check if the header is present.
+        if (line != "synthpro 1.0") {
+            m_presentation->errorLoading(tr("Error loading scheme file of non-compatible format."));
+            return;
+        }
+
+        // Then start a new scheme.
+        newScheme();
+
+        // By loading every single module.
+        do {
+            line = stream.readLine();
+            // TODO
+        } while (!line.isNull());
     }
 }
 
