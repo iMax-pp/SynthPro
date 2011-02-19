@@ -1,7 +1,8 @@
 <RCC>
     <qresource prefix="/src/resources">
-        <file>images/exit.png</file>
         <file>images/new.png</file>
+        <file>images/save.png</file>
+        <file>images/exit.png</file>
         <file>images/play.png</file>
         <file>images/speaker.png</file>
         <file>images/floppy.png</file>

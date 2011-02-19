@@ -47,6 +47,9 @@ public:
     /// Create a new scheme (delete every module).
     void newScheme();
 
+    /// Save the current scheme in the given filename.
+    void saveTo(const QString& filename);
+
 private slots:
     /// Slot called when Play/Pause button is clicked.
     void play(bool);

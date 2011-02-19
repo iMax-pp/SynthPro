@@ -8,6 +8,7 @@
 #include <QAction>
 #include <QApplication>
 #include <QDockWidget>
+#include <QFileDialog>
 #include <QGraphicsScene>
 #include <QListView>
 #include <QMenu>
@@ -52,6 +53,14 @@ void PSynthPro::promptNew()
     }
 }
 
+void PSynthPro::promptSave()
+{
+    QString filename = QFileDialog::getSaveFileName(0, tr("Save File As"), "newScheme.synth",
+                                                    tr("Synthetizer Scheme (*.synth)"));
+
+    m_control->saveTo(filename);
+}
+
 void PSynthPro::about()
 {
     QMessageBox::about(this, tr("About SynthPro"),
@@ -93,6 +102,12 @@ void PSynthPro::createStaticActions()
     m_newAct->setStatusTip(tr("Create a new file"));
     connect(m_newAct, SIGNAL(triggered()), this, SLOT(promptNew()));
 
+    // Create "Save" action.
+    m_saveAct = new QAction(QIcon(":/src/resources/images/save.png"), tr("&Save"), this);
+    m_saveAct->setShortcuts(QKeySequence::Save);
+    m_saveAct->setStatusTip(tr("Save the current scheme"));
+    connect(m_saveAct, SIGNAL(triggered()), this, SLOT(promptSave()));
+
     // Create "Exit" action.
     m_exitAct = new QAction(QIcon(":/src/resources/images/exit.png"), tr("E&xit"), this);
     m_exitAct->setShortcut(tr("Ctrl+Q"));
@@ -121,6 +136,7 @@ void PSynthPro::createMenus()
 {
     m_fileMenu = menuBar()->addMenu(tr("&File"));
     m_fileMenu->addAction(m_newAct);
+    m_fileMenu->addAction(m_saveAct);
 
     m_fileMenu->addSeparator();
     m_fileMenu->addAction(m_playPauseAct);
@@ -141,6 +157,7 @@ void PSynthPro::createMainToolBar()
     m_toolBar->setFloatable(false);
 
     m_toolBar->addAction(m_newAct);
+    m_toolBar->addAction(m_saveAct);
     m_toolBar->addAction(m_exitAct);
 
     m_toolBar->addSeparator();

@@ -18,7 +18,9 @@
 #include "control/module/cvco.h"
 #include "control/module/cwavlooper.h"
 #include "control/module/cwavrecorder.h"
+#include "control/serializer.h"
 
+#include <QFile>
 #include <QGraphicsScene>
 
 CSynthPro::CSynthPro(SynthProFactory* factory)
@@ -152,6 +154,15 @@ void CSynthPro::newScheme()
 {
     foreach (Module* module, modules()) {
         remove(dynamic_cast<Module*>(module));
+    }
+}
+
+void CSynthPro::saveTo(const QString& filename)
+{
+    QFile file(filename);
+    if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+        QTextStream out(&file);
+        out << *this;
     }
 }
 

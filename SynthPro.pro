@@ -69,6 +69,7 @@ HEADERS += \
     src/main/control/module/cwavlooper.h \
     src/main/control/module/cwavrecorder.h \
     src/main/control/modulelistmodel.h \
+    src/main/control/serializer.h \
     src/main/factory/filterfactory.h \
     src/main/factory/qtfactory.h \
     src/main/factory/synthprofactory.h \
@@ -167,6 +168,7 @@ SOURCES += \
     src/main/control/module/cwavlooper.cpp \
     src/main/control/module/cwavrecorder.cpp \
     src/main/control/modulelistmodel.cpp \
+    src/main/control/serializer.cpp \
     src/main/factory/filterfactory.cpp \
     src/main/factory/qtfactory.cpp \
     src/main/factory/wavegeneratorfactory.cpp \
