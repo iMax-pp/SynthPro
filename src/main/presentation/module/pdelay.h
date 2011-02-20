@@ -7,6 +7,9 @@ class CDelay;
 class PDimmer;
 class PVirtualPort;
 
+/**
+ * Presentation of Delay.
+ */
 class PDelay : public PModule {
 public:
     explicit PDelay(CDelay*);

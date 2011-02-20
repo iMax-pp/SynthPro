@@ -103,7 +103,8 @@ HEADERS += \
     src/main/presentation/widget/pkeyboardview.h \
     src/main/presentation/widget/poscilloscopeview.h \
     src/main/presentation/widget/progressbarwidget.h \
-    src/main/presentation/widget/textwidget.h
+    src/main/presentation/widget/textwidget.h \
+    src/main/abstraction/module/timecriticalmodule.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -201,7 +202,8 @@ SOURCES += \
     src/main/presentation/widget/pkeyboardview.cpp \
     src/main/presentation/widget/poscilloscopeview.cpp \
     src/main/presentation/widget/progressbarwidget.cpp \
-    src/main/presentation/widget/textwidget.cpp
+    src/main/presentation/widget/textwidget.cpp \
+    src/main/abstraction/module/timecriticalmodule.cpp
 
 INCLUDEPATH += src/main/
 

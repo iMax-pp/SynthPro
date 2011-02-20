@@ -3,6 +3,10 @@
 
 #include "presentation/component/pdimmer.h"
 
+/**
+ * Concrete presentation of a PDimmer.
+ * Represents a dial.
+ */
 class PDial : public PDimmer {
 public:
     PDial(CDimmer*, const QString& name, int min, int max, int defaultValue,

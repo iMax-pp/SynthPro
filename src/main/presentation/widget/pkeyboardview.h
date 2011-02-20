@@ -9,6 +9,9 @@
 
 class PKeyboardKey;
 
+/**
+ * Widget only class (no PAC involved), representing a Keyboard.
+ */
 class PKeyboardView : public QGraphicsWidget {
     Q_OBJECT
 
@@ -19,9 +22,6 @@ public:
 
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
     QRectF boundingRect() const;
-
-    void keyPressEvent(QKeyEvent*);
-    void keyReleaseEvent(QKeyEvent*);
 
     static const int NB_OCTAVES = 3;
     static const int NB_WHITE_KEYS_PER_OCTAVE = 7;
@@ -34,6 +34,10 @@ public:
 signals:
     void keyboardKeyPressed(int keyPressed);
     void keyboardKeyReleased(int keyPressed);
+
+protected:
+    void keyPressEvent(QKeyEvent*);
+    void keyReleaseEvent(QKeyEvent*);
 
 private:
     QMap<int, PKeyboardKey*> m_mapKeyToKeyPointer;

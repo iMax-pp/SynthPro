@@ -5,6 +5,9 @@ class QBrush;
 
 #include <QGraphicsWidget>
 
+/**
+ * Widget only class (no PAC involved), representing a key on the Keyboard.
+ */
 class PKeyboardKey : public QGraphicsWidget {
     Q_OBJECT
 
@@ -12,11 +15,10 @@ public:
     PKeyboardKey(QGraphicsItem* parent, int keyNumber, bool whiteKey /*, int keyAssigned = 0*/);
     virtual ~PKeyboardKey();
 
+    /// Overriden method to draw the Key.
     void paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*);
+    /// Overriden method returning the shape of the Key.
     QRectF boundingRect() const;
-
-    void mousePressEvent(QGraphicsSceneMouseEvent*);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent*);
 
     /**
       * Behaviour to perform when the key is pressed.
@@ -46,6 +48,10 @@ signals:
      * Signal emitted when a Keyboard Key is released.
      */
     void keyboardKeyReleased(int keyPressed);
+
+protected:
+    void mousePressEvent(QGraphicsSceneMouseEvent*);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent*);
 
 private:
     int m_keyNumber; // Relative to the C4.

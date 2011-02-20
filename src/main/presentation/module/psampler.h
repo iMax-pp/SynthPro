@@ -8,6 +8,9 @@ class PDimmer;
 class PPushButton;
 class PVirtualPort;
 
+/**
+ * Presentation of Sampler.
+ */
 class PSampler : public PModule {
     Q_OBJECT
 

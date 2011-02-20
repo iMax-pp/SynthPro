@@ -9,7 +9,7 @@
  */
 class CSpeaker : public Speaker, public CModule {
 public:
-    explicit CSpeaker(SynthPro*, QIODevice*, QAudioOutput*);
+    CSpeaker(SynthPro*, QIODevice*, QAudioOutput*);
 
     void initialize(SynthProFactory*);
 };

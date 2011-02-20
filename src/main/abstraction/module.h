@@ -41,10 +41,6 @@ public:
     /// @returns The parent SynthPro.
     SynthPro* synthPro() const;
 
-public slots:
-    /// Slot used by the Clock only for time-critical operations (like Audio Output).
-    virtual void timerExpired();
-
 protected:
     /// Fetch input from all this Module input Ports (call this operation should be the first thing to do in a “process” implementation)
     void fetchInput();

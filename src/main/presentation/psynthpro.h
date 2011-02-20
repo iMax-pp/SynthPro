@@ -7,24 +7,28 @@ class CSynthPro;
 class ModuleView;
 class QGraphicsScene;
 
+/**
+ * Presentation of SynthPro.
+ */
 class PSynthPro : public QMainWindow {
     Q_OBJECT
 
 public:
     explicit PSynthPro(CSynthPro*);
 
-    // Set the graphics scene for the module view.
+    /// Set the graphics scene for the module view.
     void setGraphicsScene(QGraphicsScene*);
 
-    // Returns the associated control.
+    /// @returns the associated control.
     CSynthPro* control() const;
 
+    /// Toggle Play/Pause button.
     void togglePlayPause();
 
 protected slots:
-    // Ask if you REAAALLLYYY want to start a new project.
+    /// Ask if you <strong>REAAALLLYYY</strong> want to start a new project.
     void promptNew();
-    // Display About Dialog.
+    /// Display About Dialog.
     void about();
 
 private:

@@ -10,6 +10,9 @@ class CKeyboard;
 class PKeyboardView;
 class PVirtualPort;
 
+/**
+ * Presentation of Keyboard.
+ */
 class PKeyboard : public PModule {
     Q_OBJECT
 
