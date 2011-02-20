@@ -54,7 +54,8 @@ QString CModule::inputConnections() const
     stream << inports().size() << endl;
 
     foreach (InPort* port, inports()) {
-        stream << (port->gate() ? 1 : 0) << " ";
+        stream << inports().indexOf(port) << " ";
+        stream << port->connections().size() << " ";
 
         foreach (Connection* connection, port->connections()) {
             OutPort* sourcePort = connection->source();

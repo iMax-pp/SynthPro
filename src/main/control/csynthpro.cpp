@@ -193,6 +193,9 @@ void CSynthPro::loadFrom(const QString& filename)
         // Retrieve the count of modules.
         int nbModules = line.toInt();
 
+        QHash<QString, Module*> modules;
+        QMultiHash<InPort*, QString> connections;
+
         // Recreate each one.
         for (int i = 0; i < nbModules && !line.isNull(); i++) {
             line = stream.readLine();
@@ -201,8 +204,6 @@ void CSynthPro::loadFrom(const QString& filename)
             // Retrieve module name (Remove the number at name start).
             QString name = elements[0].remove(QRegExp("[0-9]{1,2}"));
             QString id = elements[1];
-
-            QHash<QString, Module*> modules;
 
             // Retrieve module position.
             QPointF pos(elements[2].toInt(), elements[3].toInt());
@@ -242,8 +243,28 @@ void CSynthPro::loadFrom(const QString& filename)
             line = stream.readLine();
             dynamic_cast<CModule*>(modules[id])->setUpSettings(line);
 
-            // TODO Rebind connections.
+            // Retrieve connections.
+            line = stream.readLine();
+            // First the number of inports of this module.
+            int nbInports = line.toInt();
+
+            for (int i = 0; i < nbInports && !line.isNull(); i++) {
+                // Then for each inport.
+                line = stream.readLine();
+                QStringList list = line.split(QRegExp("\\s+"), QString::SkipEmptyParts);
+                InPort* inport = modules[id]->inports()[list[0].toInt()];
+
+                // Its count of connections.
+                int nbConnections = list[1].toInt();
+
+                // And the connections.
+                for (int j = 0; j < nbConnections * 2; j += 2) {
+                    connections.insert(inport, QString(list[j + 2] + " " + list[j + 3]));
+                }
+            }
         }
+
+        // TODO Rebind connections.
     }
 }
 
