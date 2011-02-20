@@ -15,6 +15,8 @@ public:
 
     /// @returns The current choice.
     inline int choice() const { return m_choice; }
+
+public slots:
     /// @param choice to set the selector to.
     void setChoice(int);
 

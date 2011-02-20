@@ -207,6 +207,7 @@ void CSynthPro::loadFrom(const QString& filename)
             // Retrieve module position.
             QPointF pos(elements[2].toInt(), elements[3].toInt());
 
+            // Create module from given name and position.
             if (name == "CKeyboard") {
                 modules[id] = addModule(SynthProFactory::KeyboardId, pos);
             } else if (name == "CVCO") {
@@ -237,6 +238,9 @@ void CSynthPro::loadFrom(const QString& filename)
                 m_presentation->errorLoading(tr("Error loading an unexpected module."));
             }
 
+            // Read settings.
+            line = stream.readLine();
+            dynamic_cast<CModule*>(modules[id])->setUpSettings(line);
             // TODO
         }
     }

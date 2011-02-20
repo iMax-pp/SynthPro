@@ -37,6 +37,7 @@ void CDimmer::setValue(qreal newValue)
 {
     qreal oldValue = value();
     Dimmer::setValue(newValue);
+
     if (oldValue != value()) {
         publishValue();
     }

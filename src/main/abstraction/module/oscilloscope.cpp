@@ -38,6 +38,5 @@ bool Oscilloscope::stabilized()
 
 void Oscilloscope::stabilizedPushed()
 {
-    m_stabilized = !m_stabilized;
-    m_stabilizeControl->setChecked(!m_stabilized);
+    m_stabilized = m_stabilizeControl->isChecked();
 }

@@ -20,7 +20,7 @@ public:
     /// Shape it flat (or not).
     void setFlat(bool);
 
-protected slots:
+public slots:
     /// Called to visually enable or disable the PushButton.
     void setEnabled(bool);
     /// Called to visually make checkable (or not) the PushButton.

@@ -27,6 +27,12 @@ public:
      */
     void move();
 
+    /// @returns a QString containing the different settings of this Module.
+    virtual QString settings() const;
+
+    /// @param settings to set up this Module with.
+    virtual void setUpSettings(const QString&);
+
 private:
     QPointer<PModule> m_presentation;
 };

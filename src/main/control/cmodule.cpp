@@ -44,3 +44,14 @@ void CModule::move()
         dynamic_cast<CVirtualPort*>(port)->updateWiresPositions();
     }
 }
+
+QString CModule::settings() const
+{
+    // Default implementation returns an empty string.
+    return "";
+}
+
+void CModule::setUpSettings(const QString&)
+{
+    // Default implementation do nothing (no settings to set up).
+}

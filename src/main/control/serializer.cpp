@@ -17,10 +17,14 @@ void operator<<(QTextStream& stream, const CSynthPro& synthPro)
 
 void operator<<(QTextStream& stream, const CModule& module)
 {
-     // Serialize Module real type.
+    // Serialize Module real type.
     stream << typeid(module).name() << " ";
     // Serialize Module id.
     stream << &module << " ";
     // Serialize Module position.
     stream << module.presentation()->pos().rx() << " " << module.presentation()->pos().ry();
+    // Newline before settings.
+    stream << endl;
+    // Serialize Module settings.
+    stream << module.settings();
 }
