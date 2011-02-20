@@ -58,7 +58,3 @@ void Module::fetchInput()
         input->fetch();
     }
 }
-
-void Module::timerExpired()
-{
-}
