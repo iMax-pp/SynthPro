@@ -5,7 +5,9 @@
 #include "abstraction/synthpro.h"
 #include "control/component/cvirtualport.h"
 #include "control/component/cwire.h"
+
 #include <QSignalMapper>
+#include <QTextStream>
 
 CModule::CModule(SynthPro* parent)
     : Module(parent)
@@ -43,4 +45,25 @@ void CModule::move()
     foreach (OutPort* port, m_outports) {
         dynamic_cast<CVirtualPort*>(port)->updateWiresPositions();
     }
+}
+
+QString CModule::inputConnections() const
+{
+    QString result;
+    QTextStream stream(&result);
+    stream << inports().size() << endl;
+
+    foreach (InPort* port, inports()) {
+        stream << (port->gate() ? 1 : 0) << " ";
+
+        foreach (Connection* connection, port->connections()) {
+            OutPort* sourcePort = connection->source();
+            CModule* sourceModule = dynamic_cast<CModule*>(sourcePort->module());
+            stream << sourceModule << " " << sourceModule->outports().indexOf(sourcePort) << " ";
+        }
+
+        stream << endl;
+    }
+
+    return result;
 }

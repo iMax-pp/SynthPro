@@ -33,6 +33,9 @@ public:
     /// @param settings to set up this Module with.
     virtual void setUpSettings(const QString&) = 0;
 
+    /// @returns a QString containing the different inputs of this Module.
+    virtual QString inputConnections() const;
+
 private:
     QPointer<PModule> m_presentation;
 };

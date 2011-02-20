@@ -11,7 +11,6 @@ void operator<<(QTextStream& stream, const CSynthPro& synthPro)
     foreach (Module* module, synthPro.modules()) {
         CModule* cmodule = dynamic_cast<CModule*>(module);
         stream << *cmodule;
-        stream << endl;
     }
 }
 
@@ -23,8 +22,14 @@ void operator<<(QTextStream& stream, const CModule& module)
     stream << &module << " ";
     // Serialize Module position.
     stream << module.presentation()->pos().rx() << " " << module.presentation()->pos().ry();
+
     // Newline before settings.
     stream << endl;
     // Serialize Module settings.
     stream << module.settings();
+
+    // Newline before input connections.
+    stream << endl;
+    // Serialize Module input connections.
+    stream << module.inputConnections();
 }
