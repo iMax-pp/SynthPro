@@ -7,7 +7,7 @@
 bin
 build
 Info.plist
-./Makefile
+Makefile
 doc/conception/*.session
 doc/sources
 *.log

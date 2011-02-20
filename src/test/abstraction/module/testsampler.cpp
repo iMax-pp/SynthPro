@@ -31,57 +31,36 @@ void TestSampler::testSampler()
     bool res = true;
     Buffer sampledBuffer;
 
-    int i = 0;
-    while (i < 50) {
-        keyboard->outports().at(1)->buffer()->data()[i] = 0;
-        i++;
+    for (int k = 0 ; k < 10 ; k++) {
+        int i = 0;
+        while (i++ < Buffer::DEFAULT_LENGTH) {
+            keyboard->outports().at(1)->buffer()->data()[i] = k%3;
+
+        }
+        for (int j = 0 ; j < Buffer::DEFAULT_LENGTH ; j++) {
+            vco->outports().first()->buffer()->data()[j] = 10000 + j;
+        }
+        qDebug() << sampler->state();
+        sampler->process();
+        output.process();
+        //        for (int l = 0 ; l< Buffer::DEFAULT_LENGTH ; l++){
+        //            if (sampler->outports().first()->buffer()->data()[l] != 0) {
+        //                qDebug() << "k " << k << "not null";
+        //            }
+        //        }
+        QString resul;
+        QTextStream flux(&resul);
+        qreal value;
+        for (int i = 0 ; i < sampler->sampleBuffer()->length() ; i++) {
+            if ((value = sampler->sampleBuffer()->data()[i]) != 0) {
+            flux <<   value << " ";
+        }
+        }
+        qDebug() << resul;
     }
 
-    while (i < 100) {
-        keyboard->outports().at(1)->buffer()->data()[i] = 1;
-        i++;
-    }
 
-    while (i < 150) {
-        keyboard->outports().at(1)->buffer()->data()[i] = 0;
-        i++;
-    }
 
-    while (i < 200) {
-        keyboard->outports().at(1)->buffer()->data()[i] = 1;
-        i++;
-    }
-
-    while (i < 250) {
-        keyboard->outports().at(1)->buffer()->data()[i] = 0;
-        i++;
-    }
-
-    while (i < 300) {
-        keyboard->outports().at(1)->buffer()->data()[i] = 1;
-        i++;
-    }
-
-    while (i < 350) {
-        keyboard->outports().at(1)->buffer()->data()[i] = 0;
-        i++;
-    }
-
-    while (i < 400) {
-        keyboard->outports().at(1)->buffer()->data()[i] = 1;
-        i++;
-    }
-    while (i < Buffer::DEFAULT_LENGTH) {
-        keyboard->outports().at(1)->buffer()->data()[i] = 1;
-        i++;
-    }
-
-    for (int j = 0 ; j < Buffer::DEFAULT_LENGTH ; j++) {
-        vco->outports().first()->buffer()->data()[j] = j;
-    }
-
-    sampler->process();
-    output.process();
 
 
 
