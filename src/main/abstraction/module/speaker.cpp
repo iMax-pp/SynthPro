@@ -27,7 +27,7 @@ Speaker::~Speaker()
 {
     // Unregister the module as a fast timer to the Clock.
     Clock& clock = Clock::instance();
-    clock.unregister(this);
+    clock.unregisterFastTimer(this);
 
     // Release the device.
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();
@@ -53,12 +53,12 @@ void Speaker::initialize(SynthProFactory* factory)
 
         // Register to a fast timer to the Clock.
         Clock& clock = Clock::instance();
-        clock.registerFastClock(this);
+        clock.registerFastTimer(this);
     }
 }
 
 
-void Speaker::timerExpired()
+void Speaker::fastTimerExpired()
 {
     int fillCounter = 0;
     qint64 sizeWritten = 1;
