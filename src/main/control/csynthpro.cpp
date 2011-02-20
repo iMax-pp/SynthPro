@@ -245,16 +245,16 @@ void CSynthPro::loadFrom(const QString& filename)
 
             // Retrieve connections.
             line = stream.readLine();
-            // First the number of inports of this module.
+            // First the number of inports of this module,
             int nbInports = line.toInt();
 
             for (int i = 0; i < nbInports && !line.isNull(); i++) {
-                // Then for each inport.
+                // Then for each inport,
                 line = stream.readLine();
                 QStringList list = line.split(QRegExp("\\s+"), QString::SkipEmptyParts);
                 InPort* inport = modules[id]->inports()[list[0].toInt()];
 
-                // Its count of connections.
+                // Its count of connections,
                 int nbConnections = list[1].toInt();
 
                 // And the connections.
@@ -264,7 +264,15 @@ void CSynthPro::loadFrom(const QString& filename)
             }
         }
 
-        // TODO Rebind connections.
+        // Rebind the connections.
+        foreach (InPort* inport, connections.keys()) {
+            QList<QString> moduleList = connections.values(inport);
+
+            foreach (QString module, moduleList) {
+                QStringList list = module.split(QRegExp("\\s+"), QString::SkipEmptyParts);
+                modules[list[0]]->outports()[list[1].toInt()]->connect(inport);
+            }
+        }
     }
 }
 
