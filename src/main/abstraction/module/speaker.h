@@ -2,7 +2,7 @@
 #define SPEAKER_H
 
 #include "abstraction/buffer.h"
-#include "abstraction/module.h"
+#include "abstraction/module/timecriticalmodule.h"
 
 class InPort;
 class QAudioOutput;
@@ -23,7 +23,7 @@ class SynthProFactory;
  * This class also contains the code for unsuccessful attempt to manage the soundcard
  * output from the Clock (see the commented code of ownProcess()).
  */
-class Speaker : public virtual Module {
+class Speaker : public TimeCriticalModule {
     Q_OBJECT
 
 public:

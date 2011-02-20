@@ -13,6 +13,7 @@
 
 Speaker::Speaker(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
     : Module(parent)
+    , TimeCriticalModule(parent)
     , m_device(device)
     , m_audioOutput(audioOutput)
     , m_generationBuffer(0)

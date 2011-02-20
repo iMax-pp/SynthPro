@@ -5,7 +5,7 @@
 #include <QObject>
 
 class AudioDeviceProvider;
-class Module;
+class TimeCriticalModule;
 class QTimer;
 class Sequencer;
 
@@ -52,12 +52,12 @@ public:
      * Register a Module to a Fast Clock. Will call its
      * timerExpired() slot when its timer is expired.
      */
-    void registerFastClock(Module*);
+    void registerFastClock(TimeCriticalModule*);
 
     /**
      * Unregister a module, stop the timer it was related to.
      */
-    void unregister(Module*);
+    void unregister(TimeCriticalModule*);
 
 private slots:
     /**
@@ -86,7 +86,7 @@ private:
     explicit Clock(QObject* parent = 0);
     Clock(Clock&);
 
-    QMap<Module*, QTimer*> m_fastTimers;
+    QMap<TimeCriticalModule*, QTimer*> m_fastTimers;
     QTimer* m_internalTimer;
     // AudioDeviceProvider& adp; // Used for the unsuccesful attempt to manage the soundcard output from the Clock.
     Sequencer& sequencer;

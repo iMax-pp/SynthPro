@@ -1,7 +1,7 @@
 #include "clock.h"
 
 #include "abstraction/audiodeviceprovider.h"
-#include "abstraction/module.h"
+#include "abstraction/module/timecriticalmodule.h"
 #include "abstraction/sequencer.h"
 
 #include <QAudioOutput>
@@ -73,7 +73,7 @@ bool Clock::isStarted() const
     return m_started;
 }
 
-void Clock::registerFastClock(Module* module)
+void Clock::registerFastClock(TimeCriticalModule* module)
 {
     // First we stop the Internal Timer, as we use instead a Fast Timer.
     m_internalTimer->stop();
@@ -91,7 +91,7 @@ void Clock::registerFastClock(Module* module)
     }
 }
 
-void Clock::unregister(Module* module)
+void Clock::unregister(TimeCriticalModule* module)
 {
     if (m_fastTimers.contains(module)) {
         m_fastTimers.value(module)->stop();
