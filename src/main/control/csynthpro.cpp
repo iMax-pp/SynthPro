@@ -241,6 +241,8 @@ void CSynthPro::loadFrom(const QString& filename)
 
             // Read and Set up settings.
             line = stream.readLine();
+
+            // FIXME Sometimes the program crashes on the following line.
             dynamic_cast<CModule*>(modules[id])->setUpSettings(line);
 
             // Retrieve connections.
@@ -269,6 +271,7 @@ void CSynthPro::loadFrom(const QString& filename)
             QList<QString> moduleList = connections.values(inport);
 
             foreach (QString module, moduleList) {
+                // Take each associated module of the inport and connect it to the given outport.
                 QStringList list = module.split(QRegExp("\\s+"), QString::SkipEmptyParts);
                 modules[list[0]]->outports()[list[1].toInt()]->connect(inport);
             }
