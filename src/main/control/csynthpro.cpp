@@ -193,7 +193,7 @@ void CSynthPro::loadFrom(const QString& filename)
         // Retrieve the count of modules.
         int nbModules = line.toInt();
 
-        // And recreate each one.
+        // Recreate each one.
         for (int i = 0; i < nbModules && !line.isNull(); i++) {
             line = stream.readLine();
             QStringList elements = line.split(QRegExp("\\s+"), QString::SkipEmptyParts);
@@ -238,10 +238,11 @@ void CSynthPro::loadFrom(const QString& filename)
                 m_presentation->errorLoading(tr("Error loading an unexpected module."));
             }
 
-            // Read settings.
+            // Read and Set up settings.
             line = stream.readLine();
             dynamic_cast<CModule*>(modules[id])->setUpSettings(line);
-            // TODO
+
+            // TODO Rebind connections.
         }
     }
 }
