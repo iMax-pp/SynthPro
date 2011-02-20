@@ -67,7 +67,7 @@ void CSynthPro::add(Module* module)
     }
 }
 
-void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF& pos)
+Module* CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF& pos)
 {
     Module* module = 0;
 
@@ -124,6 +124,8 @@ void CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF&
         CKeyboard* keyb = dynamic_cast<CKeyboard*>(module);
         keyb->postInitialize();
     }
+
+    return module;
 }
 
 void CSynthPro::showFeedback(CVirtualPort* from)
@@ -198,35 +200,39 @@ void CSynthPro::loadFrom(const QString& filename)
 
             // Retrieve module name (Remove the number at name start).
             QString name = elements[0].remove(QRegExp("[0-9]{1,2}"));
+            QString id = elements[1];
+
+            QHash<QString, Module*> modules;
+
             // Retrieve module position.
-            QPointF pos(elements[1].toInt(), elements[2].toInt());
+            QPointF pos(elements[2].toInt(), elements[3].toInt());
 
             if (name == "CKeyboard") {
-                addModule(SynthProFactory::KeyboardId, pos);
+                modules[id] = addModule(SynthProFactory::KeyboardId, pos);
             } else if (name == "CVCO") {
-                addModule(SynthProFactory::VCOId, pos);
+                modules[id] = addModule(SynthProFactory::VCOId, pos);
             } else if (name == "CVCF") {
-                addModule(SynthProFactory::VCFId, pos);
+                modules[id] = addModule(SynthProFactory::VCFId, pos);
             } else if (name == "CVCA") {
-                addModule(SynthProFactory::VCAId, pos);
+                modules[id] = addModule(SynthProFactory::VCAId, pos);
             } else if (name == "CADSR") {
-                addModule(SynthProFactory::ADSRId, pos);
+                modules[id] = addModule(SynthProFactory::ADSRId, pos);
             } else if (name == "CDelay") {
-                addModule(SynthProFactory::DelayId, pos);
+                modules[id] = addModule(SynthProFactory::DelayId, pos);
             } else if (name == "CMixer") {
-                addModule(SynthProFactory::MixerId, pos);
+                modules[id] = addModule(SynthProFactory::MixerId, pos);
             } else if (name == "CSampler") {
-                addModule(SynthProFactory::SamplerId, pos);
+                modules[id] = addModule(SynthProFactory::SamplerId, pos);
             } else if (name == "CLFO") {
-                addModule(SynthProFactory::LFOId, pos);
+                modules[id] = addModule(SynthProFactory::LFOId, pos);
             } else if (name == "CSpeaker") {
-                addModule(SynthProFactory::AudioOuputId, pos);
+                modules[id] = addModule(SynthProFactory::AudioOuputId, pos);
             } else if (name == "CWavRecorder") {
-                addModule(SynthProFactory::FileOutputId, pos);
+                modules[id] = addModule(SynthProFactory::FileOutputId, pos);
             } else if (name == "COscilloscope") {
-                addModule(SynthProFactory::OscilloscopeId, pos);
+                modules[id] = addModule(SynthProFactory::OscilloscopeId, pos);
             } else if (name == "CWavLooper") {
-                addModule(SynthProFactory::WavLooperId, pos);
+                modules[id] = addModule(SynthProFactory::WavLooperId, pos);
             } else {
                 m_presentation->errorLoading(tr("Error loading an unexpected module."));
             }

@@ -29,8 +29,11 @@ public:
     /// Override SynthPro::add to add the presentation when Module is successfully added.
     void add(Module*);
 
-    /// Create a new Module with the given ModuleType and at the given QPointF.
-    void addModule(SynthProFactory::ModuleType, const QPointF&);
+    /**
+     * Create a new Module with the given ModuleType and at the given QPointF.
+     * @returns the created Module (conveniency for deserialization).
+     */
+    Module* addModule(SynthProFactory::ModuleType, const QPointF&);
 
     /**
      * Show drag&drop feedback from given CVirtualPort to every single port.
