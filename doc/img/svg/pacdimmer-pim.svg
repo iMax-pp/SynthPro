@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Bouml (http://bouml.free.fr/) -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="611" height="446" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="206" y="376" width="3" height="47" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="70" y="420" width="139" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="66" y="372" width="140" height="48" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="136" y="383">GainFormat</text>
+	<line stroke="black" stroke-opacity="1" x1="66" y1="392" x2="206" y2="392" />
+	<line stroke="black" stroke-opacity="1" x1="66" y1="400" x2="206" y2="400" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="70" y="411">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="84" y="411">format( : Real) : String</text>
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="516" y="368" width="3" height="47" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="380" y="412" width="139" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="376" y="364" width="140" height="48" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="446" y="375">PercentageFormat</text>
+	<line stroke="black" stroke-opacity="1" x1="376" y1="384" x2="516" y2="384" />
+	<line stroke="black" stroke-opacity="1" x1="376" y1="392" x2="516" y2="392" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="380" y="403">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="394" y="403">format( : Real) : String</text>
+</g>
+<g>
+	<polygon fill="#c0ffff" stroke="black" stroke-opacity="1" points="59,155 181,155 181,165 191,165 191,207 59,207 59,155" />
+	<line stroke="black" stroke-opacity="1" x1="181" y1="155" x2="191" y2="165" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="69" y="181">Dimmer::setValue(v)</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="69" y="198">publishValue()</text>
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="363" y="386" width="3" height="47" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="227" y="430" width="139" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="223" y="382" width="140" height="48" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="293" y="393">TimeFormat</text>
+	<line stroke="black" stroke-opacity="1" x1="223" y1="402" x2="363" y2="402" />
+	<line stroke="black" stroke-opacity="1" x1="223" y1="410" x2="363" y2="410" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="227" y="421">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="241" y="421">format( : Real) : String</text>
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="364" y="286" width="3" height="47" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="228" y="330" width="139" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="224" y="282" width="140" height="48" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" font-style="italic" text-anchor="middle" x="294" y="293">ValueFormat</text>
+	<line stroke="black" stroke-opacity="1" x1="224" y1="302" x2="364" y2="302" />
+	<line stroke="black" stroke-opacity="1" x1="224" y1="310" x2="364" y2="310" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="228" y="321">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-style="italic" x="242" y="321">format( : Real) : String</text>
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="595" y="193" width="3" height="35" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="537" y="225" width="61" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="533" y="189" width="62" height="36" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="564" y="200">PDimmer</text>
+	<line stroke="black" stroke-opacity="1" x1="533" y1="209" x2="595" y2="209" />
+	<line stroke="black" stroke-opacity="1" x1="533" y1="217" x2="595" y2="217" />
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="354" y="177" width="3" height="65" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="240" y="239" width="117" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="236" y="173" width="118" height="66" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="295" y="184">CDimmer</text>
+	<line stroke="black" stroke-opacity="1" x1="236" y1="193" x2="354" y2="193" />
+	<line stroke="black" stroke-opacity="1" x1="236" y1="201" x2="354" y2="201" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="240" y="212">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="254" y="212">setValue(v : Real)</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="240" y="230">#</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="254" y="230">publishValue()</text>
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="358" y="43" width="3" height="95" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="244" y="135" width="117" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="240" y="39" width="118" height="96" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="299" y="50">Dimmer</text>
+	<line stroke="black" stroke-opacity="1" x1="240" y1="59" x2="358" y2="59" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="244" y="70">-</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="258" y="70">min : Real</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="244" y="88">-</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="258" y="88">max : Real</text>
+	<line stroke="black" stroke-opacity="1" x1="240" y1="97" x2="358" y2="97" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="244" y="108">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="258" y="108">value() : Real</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="244" y="126">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="258" y="126">setValue(v : Real)</text>
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="182" y1="371" x2="240" y2="337" />
+	<line stroke="black" stroke-opacity="1" x1="246" y1="334" x2="237" y2="331" />
+	<line stroke="black" stroke-opacity="1" x1="246" y1="334" x2="243" y2="342" />
+	<line stroke="black" stroke-opacity="1" x1="237" y1="331" x2="243" y2="342" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="358" y1="208" x2="532" y2="208" />
+	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="358,208 364,202 370,208 364,214" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="295" y1="381" x2="295" y2="340" />
+	<line stroke="black" stroke-opacity="1" x1="295" y1="334" x2="289" y2="340" />
+	<line stroke="black" stroke-opacity="1" x1="295" y1="334" x2="301" y2="340" />
+	<line stroke="black" stroke-opacity="1" x1="289" y1="340" x2="301" y2="340" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="296" y1="281" x2="302" y2="275" />
+	<line stroke="black" stroke-opacity="1" x1="296" y1="281" x2="290" y2="275" />
+	<line stroke="black" stroke-opacity="1" x1="296" y1="243" x2="296" y2="281" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="399" y1="363" x2="351" y2="336" />
+	<line stroke="black" stroke-opacity="1" x1="346" y1="334" x2="348" y2="342" />
+	<line stroke="black" stroke-opacity="1" x1="346" y1="334" x2="354" y2="331" />
+	<line stroke="black" stroke-opacity="1" x1="348" y1="342" x2="354" y2="331" />
+</g>
+<g>
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="191" y1="190" x2="235" y2="208" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="298" y1="172" x2="298" y2="145" />
+	<line stroke="black" stroke-opacity="1" x1="298" y1="139" x2="292" y2="145" />
+	<line stroke="black" stroke-opacity="1" x1="298" y1="139" x2="304" y2="145" />
+	<line stroke="black" stroke-opacity="1" x1="292" y1="145" x2="304" y2="145" />
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="454" y="196">presentation</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="368" y="196">control</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="279" y="269">1</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="306" y="269">valueFormat</text>
+</g>
+</svg>

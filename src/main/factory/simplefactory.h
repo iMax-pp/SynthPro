@@ -22,8 +22,8 @@ public:
     Delay* createDelay(SynthPro*);
     Mixer* createMixer(SynthPro*);
     Sampler* createSampler(SynthPro*);
-    WavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 5);
-    WavLooper* createWavLooper(SynthPro* parent);
+    WavRecorder* createWavRecorder(SynthPro*, bool loadFile = false, int nbProcessingBeforeSaving = 5);
+    WavLooper* createWavLooper(SynthPro* parent, bool loadFile = false);
     Speaker* createSpeaker(SynthPro*);
     Keyboard* createKeyboard(SynthPro*);
     Dimmer* createDialDimmer(const QString& name, qreal min, qreal max, qreal kDefault, Module* parent);

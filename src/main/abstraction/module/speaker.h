@@ -43,7 +43,7 @@ public:
     void ownProcess();
 
 public slots:
-    virtual void timerExpired();
+    virtual void fastTimerExpired();
 
 protected:
     static const int FILL_COUNTER_MAX = 10;

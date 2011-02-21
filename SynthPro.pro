@@ -31,6 +31,7 @@ HEADERS += \
     src/main/abstraction/module/oscilloscope.h \
     src/main/abstraction/module/sampler.h \
     src/main/abstraction/module/speaker.h \
+    src/main/abstraction/module/timecriticalmodule.h \
     src/main/abstraction/module/vca.h \
     src/main/abstraction/module/vcf.h \
     src/main/abstraction/module/vco.h \
@@ -69,6 +70,7 @@ HEADERS += \
     src/main/control/module/cwavlooper.h \
     src/main/control/module/cwavrecorder.h \
     src/main/control/modulelistmodel.h \
+    src/main/control/serializer.h \
     src/main/factory/filterfactory.h \
     src/main/factory/qtfactory.h \
     src/main/factory/synthprofactory.h \
@@ -103,8 +105,7 @@ HEADERS += \
     src/main/presentation/widget/pkeyboardview.h \
     src/main/presentation/widget/poscilloscopeview.h \
     src/main/presentation/widget/progressbarwidget.h \
-    src/main/presentation/widget/textwidget.h \
-    src/main/abstraction/module/timecriticalmodule.h
+    src/main/presentation/widget/textwidget.h
 
 SOURCES += \
     src/main/abstraction/audiodeviceprovider.cpp \
@@ -131,6 +132,7 @@ SOURCES += \
     src/main/abstraction/module/oscilloscope.cpp \
     src/main/abstraction/module/sampler.cpp \
     src/main/abstraction/module/speaker.cpp \
+    src/main/abstraction/module/timecriticalmodule.cpp \
     src/main/abstraction/module/vca.cpp \
     src/main/abstraction/module/vcf.cpp \
     src/main/abstraction/module/vco.cpp \
@@ -168,6 +170,7 @@ SOURCES += \
     src/main/control/module/cwavlooper.cpp \
     src/main/control/module/cwavrecorder.cpp \
     src/main/control/modulelistmodel.cpp \
+    src/main/control/serializer.cpp \
     src/main/factory/filterfactory.cpp \
     src/main/factory/qtfactory.cpp \
     src/main/factory/wavegeneratorfactory.cpp \
@@ -202,8 +205,7 @@ SOURCES += \
     src/main/presentation/widget/pkeyboardview.cpp \
     src/main/presentation/widget/poscilloscopeview.cpp \
     src/main/presentation/widget/progressbarwidget.cpp \
-    src/main/presentation/widget/textwidget.cpp \
-    src/main/abstraction/module/timecriticalmodule.cpp
+    src/main/presentation/widget/textwidget.cpp
 
 INCLUDEPATH += src/main/
 

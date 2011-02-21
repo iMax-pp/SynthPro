@@ -8,6 +8,7 @@
 #include "presentation/module/pmixer.h"
 
 #include <QMap>
+#include <QTextStream>
 
 CMixer::CMixer(SynthPro* parent)
     : Module(parent)
@@ -34,4 +35,29 @@ void CMixer::initialize(SynthProFactory* factory)
     COutPort* out = dynamic_cast<COutPort*>(m_outPort);
 
     dynamic_cast<PMixer*>(presentation())->initialize(pMixerMap, out->presentation());
+}
+
+QString CMixer::settings() const
+{
+    QString result;
+    QTextStream stream(&result);
+    QMap<InPort*, Dimmer*>::iterator it;
+
+    for (it = m_mixInPorts->begin(); it != m_mixInPorts->end(); it++) {
+        stream << it.value()->value() << " ";
+    }
+
+    return result;
+}
+
+void CMixer::setUpSettings(const QString& settings)
+{
+    QStringList list = settings.split(" ", QString::SkipEmptyParts);
+    QMap<InPort*, Dimmer*>::iterator it;
+
+    int i = 0;
+    for (it = m_mixInPorts->begin(); it != m_mixInPorts->end(); it++) {
+        it.value()->setValue(list[i].toFloat());
+        i++;
+    }
 }

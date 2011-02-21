@@ -44,9 +44,9 @@ public:
 protected:
     OutPort* m_outPort;
     Dimmer* m_sDimmer;
+    QString m_fileName;
 
 private:
-    QString m_fileName;
     QFile* m_inputFile;
     Buffer* m_internalBuffer; // Points on Raw data.
     qreal m_positionInInternalBuffer;

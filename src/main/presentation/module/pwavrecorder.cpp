@@ -37,6 +37,9 @@ void PWavRecorder::initialize(PVirtualPort* in, PPushButton* record, PPushButton
 
     leftArea()->addAnchors(in, leftArea());
     centerArea()->addAnchors(title, centerArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }
 
 QString PWavRecorder::askForFileName()

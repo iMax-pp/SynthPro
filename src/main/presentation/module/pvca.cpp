@@ -29,4 +29,7 @@ void PVCA::initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* control
     leftArea()->addAnchors(in, leftArea());
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }

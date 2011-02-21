@@ -1,0 +1,15 @@
+window_sizes 1280 782 178 1096 615 91
+diagrams
+  classdiagram_ref 134658 // pacdimmer
+    873 489 100 4 0 0
+  active  classdiagram_ref 128130 // pim
+    1096 615 100 18 0 0
+end
+show_stereotypes
+selected classview_ref 128130 // pim
+open
+  class_ref 156034 // GainFormat
+  class_ref 156162 // TimeFormat
+  class_ref 156290 // PercentageFormat
+end
+end

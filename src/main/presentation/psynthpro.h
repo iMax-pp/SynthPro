@@ -25,9 +25,16 @@ public:
     /// Toggle Play/Pause button.
     void togglePlayPause();
 
+    /// Display a given error when loading failed.
+    void errorLoading(const QString& error);
+
 protected slots:
     /// Ask if you <strong>REAAALLLYYY</strong> want to start a new project.
     void promptNew();
+    /// Ask for a filename of scheme to open.
+    void promptOpen();
+    /// Ask for a filename to save the current scheme in.
+    void promptSave();
     /// Display About Dialog.
     void about();
 
@@ -48,6 +55,8 @@ private:
 
     // UI Actions.
     QAction* m_newAct;
+    QAction* m_openAct;
+    QAction* m_saveAct;
     QAction* m_exitAct;
     QAction* m_aboutAct;
     QAction* m_aboutQtAct;

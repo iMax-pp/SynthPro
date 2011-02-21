@@ -4,7 +4,7 @@
 #include <QMap>
 #include <QObject>
 
-class AudioDeviceProvider;
+// class AudioDeviceProvider; // Used for the unsuccesful attempt to manage the soundcard output from the Clock.
 class TimeCriticalModule;
 class QTimer;
 class Sequencer;
@@ -15,12 +15,12 @@ class Sequencer;
  *
  * The principle is that is it possible to register to a Fast Timer,
  * which should be only used by one entity at the same time (like the
- * ModuleOut). This delegates the call to the Sequencer to the entity.
+ * Speaker). This delegates the call to the Sequencer to the entity.
  *
  * However, if no Fast Timer is used, it means that we don't need
  * any Fast Timer, and the Internal Timer is used, a little slower,
  * that will call the Sequencer. This is useful to trigger the
- * module chain if there's no AudioOutput, like the Oscilloscope
+ * module chain if there's no Speaker, like the Oscilloscope
  * or a WAVRecorder.
  *
  * This class implements the Singleton design pattern. An
@@ -49,15 +49,15 @@ public:
     bool isStarted() const;
 
     /**
-     * Register a Module to a Fast Clock. Will call its
-     * timerExpired() slot when its timer is expired.
+     * Register a Time Critical Module to a Fast Timer. Will call its
+     * fastTimerExpired() slot when its timer is expired.
      */
-    void registerFastClock(TimeCriticalModule*);
+    void registerFastTimer(TimeCriticalModule*);
 
     /**
-     * Unregister a module, stop the timer it was related to.
+     * Unregister a Time Critical Module, stop the timer it was related to.
      */
-    void unregister(TimeCriticalModule*);
+    void unregisterFastTimer(TimeCriticalModule*);
 
 private slots:
     /**

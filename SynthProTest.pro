@@ -33,6 +33,7 @@ HEADERS += \
     src/main/abstraction/module/oscilloscope.h \
     src/main/abstraction/module/sampler.h \
     src/main/abstraction/module/speaker.h \
+    src/main/abstraction/module/timecriticalmodule.h \
     src/main/abstraction/module/vca.h \
     src/main/abstraction/module/vcf.h \
     src/main/abstraction/module/vco.h \
@@ -99,6 +100,7 @@ SOURCES += \
     src/main/abstraction/module/oscilloscope.cpp \
     src/main/abstraction/module/sampler.cpp \
     src/main/abstraction/module/speaker.cpp \
+    src/main/abstraction/module/timecriticalmodule.cpp \
     src/main/abstraction/module/vca.cpp \
     src/main/abstraction/module/vcf.cpp \
     src/main/abstraction/module/vco.cpp \

@@ -37,4 +37,7 @@ void PLFO::initialize(PVirtualPort* out, PDimmer* k, PDimmer* range,
 
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }

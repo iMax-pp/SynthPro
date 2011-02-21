@@ -27,6 +27,12 @@ public:
      * Called by the Presentation to indicates a key has been released.
      */
     void keyboardKeyReleased(int keyPressed);
+
+    /// @returns a QString containing the different settings of this Module.
+    virtual QString settings() const;
+
+    /// @param settings to set up this Module with.
+    virtual void setUpSettings(const QString&);
 };
 
 #endif // CKEYBOARD_H

@@ -5,6 +5,8 @@
 #include "control/component/coutport.h"
 #include "presentation/module/pdelay.h"
 
+#include <QTextStream>
+
 CDelay::CDelay(SynthPro* parent)
     : Module(parent)
     , Delay(parent)
@@ -26,4 +28,21 @@ void CDelay::initialize(SynthProFactory* factory)
 
     dynamic_cast<PDelay*>(presentation())->initialize(in->presentation(), out->presentation(),
                                                       duration->presentation(), decay->presentation());
+}
+
+QString CDelay::settings() const
+{
+    QString result;
+    QTextStream(&result) << m_durationDimmer->value() << " "
+                         << m_decayDimmer->value();
+
+    return result;
+}
+
+void CDelay::setUpSettings(const QString& settings)
+{
+    QStringList list = settings.split(" ", QString::SkipEmptyParts);
+
+    m_durationDimmer->setValue(list[0].toFloat());
+    m_decayDimmer->setValue(list[1].toFloat());
 }
