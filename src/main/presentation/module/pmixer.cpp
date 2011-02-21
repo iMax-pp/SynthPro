@@ -47,4 +47,7 @@ void PMixer::initialize(QMap<PVirtualPort*, PDimmer*>& inports, PVirtualPort* ou
 
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }

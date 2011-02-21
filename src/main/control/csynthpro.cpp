@@ -193,7 +193,7 @@ void CSynthPro::loadFrom(const QString& filename)
         // Retrieve the count of modules.
         int nbModules = line.toInt();
 
-        QHash<QString, Module*> modules;
+        QHash<QString, Module*> modulesList;
         QMultiHash<InPort*, QString> connections;
 
         // Recreate each one.
@@ -210,38 +210,38 @@ void CSynthPro::loadFrom(const QString& filename)
 
             // Create module from given name and position.
             if (name == "CKeyboard") {
-                modules[id] = addModule(SynthProFactory::KeyboardId, pos);
+                modulesList[id] = addModule(SynthProFactory::KeyboardId, pos);
             } else if (name == "CVCO") {
-                modules[id] = addModule(SynthProFactory::VCOId, pos);
+                modulesList[id] = addModule(SynthProFactory::VCOId, pos);
             } else if (name == "CVCF") {
-                modules[id] = addModule(SynthProFactory::VCFId, pos);
+                modulesList[id] = addModule(SynthProFactory::VCFId, pos);
             } else if (name == "CVCA") {
-                modules[id] = addModule(SynthProFactory::VCAId, pos);
+                modulesList[id] = addModule(SynthProFactory::VCAId, pos);
             } else if (name == "CADSR") {
-                modules[id] = addModule(SynthProFactory::ADSRId, pos);
+                modulesList[id] = addModule(SynthProFactory::ADSRId, pos);
             } else if (name == "CDelay") {
-                modules[id] = addModule(SynthProFactory::DelayId, pos);
+                modulesList[id] = addModule(SynthProFactory::DelayId, pos);
             } else if (name == "CMixer") {
-                modules[id] = addModule(SynthProFactory::MixerId, pos);
+                modulesList[id] = addModule(SynthProFactory::MixerId, pos);
             } else if (name == "CSampler") {
-                modules[id] = addModule(SynthProFactory::SamplerId, pos);
+                modulesList[id] = addModule(SynthProFactory::SamplerId, pos);
             } else if (name == "CLFO") {
-                modules[id] = addModule(SynthProFactory::LFOId, pos);
+                modulesList[id] = addModule(SynthProFactory::LFOId, pos);
             } else if (name == "CSpeaker") {
-                modules[id] = addModule(SynthProFactory::AudioOuputId, pos);
+                modulesList[id] = addModule(SynthProFactory::AudioOuputId, pos);
             } else if (name == "CWavRecorder") {
-                modules[id] = addModule(SynthProFactory::FileOutputId, pos);
+                modulesList[id] = addModule(SynthProFactory::FileOutputId, pos);
             } else if (name == "COscilloscope") {
-                modules[id] = addModule(SynthProFactory::OscilloscopeId, pos);
+                modulesList[id] = addModule(SynthProFactory::OscilloscopeId, pos);
             } else if (name == "CWavLooper") {
-                modules[id] = addModule(SynthProFactory::WavLooperId, pos);
+                modulesList[id] = addModule(SynthProFactory::WavLooperId, pos);
             } else {
                 m_presentation->errorLoading(tr("Error loading an unexpected module."));
             }
 
             // Read and Set up settings.
             line = stream.readLine();
-            dynamic_cast<CModule*>(modules[id])->setUpSettings(line);
+            dynamic_cast<CModule*>(modulesList[id])->setUpSettings(line);
 
             // Retrieve connections.
             line = stream.readLine();
@@ -252,7 +252,7 @@ void CSynthPro::loadFrom(const QString& filename)
                 // Then for each inport,
                 line = stream.readLine();
                 QStringList list = line.split(QRegExp("\\s+"), QString::SkipEmptyParts);
-                InPort* inport = modules[id]->inports()[list[0].toInt()];
+                InPort* inport = modulesList[id]->inports()[list[0].toInt()];
 
                 // Its count of connections,
                 int nbConnections = list[1].toInt();
@@ -271,7 +271,7 @@ void CSynthPro::loadFrom(const QString& filename)
             foreach (QString module, moduleList) {
                 // Take each associated module of the inport and connect it to the given outport.
                 QStringList list = module.split(QRegExp("\\s+"), QString::SkipEmptyParts);
-                modules[list[0]]->outports()[list[1].toInt()]->connect(inport);
+                modulesList[list[0]]->outports()[list[1].toInt()]->connect(inport);
             }
         }
     }

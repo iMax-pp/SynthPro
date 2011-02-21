@@ -58,11 +58,6 @@ PModule::PModule(CModule* control)
     connect(m_closeBtn, SIGNAL(clicked()), SIGNAL(closeBtnClicked()));
 }
 
-QRectF PModule::boundingRect() const
-{
-    return rect() | mapFromItem(m_closeBtn, m_closeBtn->boundingRect()).boundingRect();
-}
-
 void PModule::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 {
     QStyle* style = QApplication::style();
@@ -70,6 +65,11 @@ void PModule::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*
     painter->setBrush(style->standardPalette().brush(QPalette::Window));
 
     painter->drawRect(rect());
+}
+
+QRectF PModule::boundingRect() const
+{
+    return rect() | mapFromItem(m_closeBtn, m_closeBtn->boundingRect()).boundingRect();
 }
 
 void PModule::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
