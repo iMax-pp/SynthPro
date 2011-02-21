@@ -1,7 +1,7 @@
 format 74
 "conception"
-  revision 22
-  modified_by 7 "julien"
+  revision 23
+  modified_by 2 "julien"
 
 
   
@@ -233,7 +233,6 @@ format 74
 	
 	
       end
-
     end
 
     class 141827 "VirtualPort"
@@ -1463,12 +1462,7 @@ format 74
     end
 
     classdiagram 128002 "pacmodule"
-      draw_all_relations yes hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-      size A4
-    end
-
-    classdiagram 134530 "pacdimmer"
-      draw_all_relations yes hide_attributes no hide_operations no hide_getset_operations default show_members_full_definition yes show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir no show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language uml show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      draw_all_relations yes hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition yes show_members_visibility yes show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language uml show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4
     end
 
@@ -1510,12 +1504,6 @@ format 74
 	relation_ref 162306 // <composition>
       end
 
-      classrelation 162946 // valueFormat (<unidirectional association>)
-	relation 162434 --->
-	  a role_name "valueFormat" private
-	    classrelation_ref 162946 // valueFormat (<unidirectional association>)
-	  b parent class_ref 154626 // ValueFormat
-      end
     end
 
     class 154626 "ValueFormat"

@@ -202,7 +202,7 @@ relationcanvas 133251 relation_ref 130947 // <composition>
 end
 relationcanvas 133507 relation_ref 131075 // <composition>
   from ref 130307 z 2001 to ref 133379
-  role_a_pos 172 461 3000 no_role_b
+  role_a_pos 171 461 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 133635 relation_ref 131203 // <composition>
