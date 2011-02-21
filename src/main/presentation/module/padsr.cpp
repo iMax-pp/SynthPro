@@ -40,4 +40,7 @@ void PADSR::initialize(PVirtualPort* gate, PVirtualPort* out, PDimmer* attack, P
 
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }

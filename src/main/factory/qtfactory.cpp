@@ -263,25 +263,25 @@ COscilloscope* QtFactory::createOscilloscope(SynthPro* parent)
     return co;
 }
 
-CWavRecorder* QtFactory::createWavRecorder(SynthPro* parent, int /*nbProcessingBeforeSaving*/)
+CWavRecorder* QtFactory::createWavRecorder(SynthPro* parent, bool loadFile, int /*nbProcessingBeforeSaving*/)
 {
     // FIXME Where we are ignoring nbProcessingBeforeSaving.
     CWavRecorder* mbr = new CWavRecorder(parent, 0);
     PWavRecorder* presentation = new PWavRecorder(mbr);
 
     mbr->setPresentation(presentation);
-    mbr->initialize(this);
+    mbr->initialize(this, loadFile);
 
     return mbr;
 }
 
-CWavLooper* QtFactory::createWavLooper(SynthPro* parent)
+CWavLooper* QtFactory::createWavLooper(SynthPro* parent, bool loadFile)
 {
     CWavLooper* wl = new CWavLooper(parent);
     PWavLooper* presentation = new PWavLooper(wl);
 
     wl->setPresentation(presentation);
-    wl->initialize(this);
+    wl->initialize(this, loadFile);
 
     return wl;
 }

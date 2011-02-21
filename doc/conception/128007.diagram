@@ -6,69 +6,70 @@ classcanvas 128135 class_ref 147842 // AudioDeviceProvider
 end
 classcanvas 128263 class_ref 147714 // Clock
   draw_all_relations default hide_attributes default hide_operations yes hide_getset_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 213 6 2000
+  xyz 97 7 2000
 end
 classcanvas 128391 class_ref 141699 // Module
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 235 143 2000
+  xyz 271 140 2000
 end
 classcanvas 128519 class_ref 142211 // Sequencer
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 457 134 2006
+  xyz 456 132 2006
 end
-classcanvas 129287 class_ref 128007 // AudioOutput
+classcanvas 129287 class_ref 128007 // Speaker
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 220 233 2000
+  xyz 217 322 2000
 end
+classcanvas 130311 class_ref 134535 // TimeCriticalModule
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 201 228 2012
+end
+note 131847 "En réalité, le speaker possède une référence au QAudioOutput et QIODevice, fournis par AudioDeviceProvider au moment de l'instanciation de Speaker."
+  xyzwh 2 236 2000 197 119
 relationcanvas 128647 relation_ref 148866 // <unidirectional association>
+  decenter_begin 474
   from ref 128519 z 2007 to ref 128391
-  role_a_pos 297 142 3000 no_role_b
-  multiplicity_a_pos 297 171 3000 no_multiplicity_b
-end
-relationcanvas 129031 relation_ref 128135 // <association>
-  decenter_begin 493
-  decenter_end 432
-  from ref 128263 z 2001 stereotype "<<map>>" xyz 232 101 3000 to ref 128391
-  role_a_pos 267 121 3000 no_role_b
-  multiplicity_a_pos 242 121 3000 no_multiplicity_b
-end
-relationcanvas 129159 relation_ref 128007 // <generalisation>
-  decenter_begin 493
-  decenter_end 451
-  from ref 128263 z 2001 to ref 128391
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
-relationcanvas 129415 relation_ref 128263 // <generalisation>
-  from ref 129287 z 2001 to ref 128391
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
+  role_a_pos 333 139 3000 no_role_b
+  multiplicity_a_pos 333 168 3000 no_multiplicity_b
 end
 relationcanvas 129543 relation_ref 128391 // <unidirectional association>
-  from ref 129287 z 2007 to ref 128519
-  role_a_pos 388 154 3000 no_role_b
-  multiplicity_a_pos 439 183 3000 no_multiplicity_b
-end
-relationcanvas 129671 relation_ref 128519 // <unidirectional association>
-  from ref 129287 z 2001 to ref 128135
-  role_a_pos 170 176 3000 no_role_b
+  from ref 129287 z 2007 to point 498 339
+  line 131591 z 2007 to ref 128519
+  role_a_pos 510 200 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129799 relation_ref 128647 // <unidirectional association>
   from ref 128263 z 2007 to point 499 34
   line 130055 z 2007 to ref 128519
-  role_a_pos 511 112 3000 no_role_b
-  multiplicity_a_pos 484 112 3000 no_multiplicity_b
-end
-relationcanvas 129927 relation_ref 135175 // <unidirectional association>
-  decenter_end 584
-  from ref 128263 z 2001 to ref 128135
-  role_a_pos 129 104 3000 no_role_b
-  multiplicity_a_pos 129 133 3000 no_multiplicity_b
+  role_a_pos 511 110 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 130183 relation_ref 135303 // <unidirectional association>
-  from ref 129287 z 2001 to ref 128135
-  role_a_pos 170 176 3000 no_role_b
-  multiplicity_a_pos 170 205 3000 no_multiplicity_b
+  from ref 129287 z 2001 to point 106 340
+  line 130951 z 2001 to ref 128135
+  role_a_pos 118 200 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130695 relation_ref 141959 // <generalisation>
+  decenter_begin 523
+  decenter_end 398
+  from ref 129287 z 2013 to ref 130311
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131207 relation_ref 142087 // <unidirectional association>
+  decenter_begin 901
+  decenter_end 259
+  from ref 128263 z 2013 to point 230 59
+  line 131719 z 2013 stereotype "<<map>>" xyz 209 179 3000 to ref 130311
+  role_a_pos 242 206 3000 no_role_b
+  multiplicity_a_pos 217 206 3000 no_multiplicity_b
+end
+relationcanvas 131463 relation_ref 142215 // <generalisation>
+  decenter_begin 869
+  decenter_end 698
+  from ref 130311 z 2013 to ref 128391
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
 end
 end

@@ -12,15 +12,20 @@ PSlider::PSlider(CDimmer* control, const QString& name, int min, int max, int de
     vbox->setMargin(0);
     
     // Create a Selector.
-    QSlider* selector = new QSlider(Qt::Horizontal);
-    selector->setRange(min, max);
-    selector->setValue(defaultValue);
-    vbox->addWidget(selector);
-    
+    m_selector = new QSlider(Qt::Horizontal);
+    m_selector->setRange(min, max);
+    m_selector->setValue(defaultValue);
+    vbox->addWidget(m_selector);
+
     m_box->setLayout(vbox);
-    // updateTitle(selector->value());
     setMaximumSize(140, 40);
 
-    connect(selector, SIGNAL(valueChanged(int)), this, SIGNAL(valueChanged(int)));
+    connect(m_selector, SIGNAL(valueChanged(int)), this, SIGNAL(valueChanged(int)));
 
+}
+
+void PSlider::setValue(int value)
+{
+    m_selector->setValue(value);
+    update();
 }

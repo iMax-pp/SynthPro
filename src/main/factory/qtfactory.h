@@ -53,8 +53,8 @@ public:
     CSampler* createSampler(SynthPro*);
 
     COscilloscope* createOscilloscope(SynthPro*);
-    CWavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 0);
-    CWavLooper* createWavLooper(SynthPro*);
+    CWavRecorder* createWavRecorder(SynthPro*, bool loadFile = false, int nbProcessingBeforeSaving = 0);
+    CWavLooper* createWavLooper(SynthPro*, bool loadFile = false);
     CSpeaker* createSpeaker(SynthPro*);
 
     CDimmer* createDialDimmer(const QString& name, qreal min, qreal max, qreal defaultValue, Module* parent);

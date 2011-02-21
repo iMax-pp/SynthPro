@@ -48,4 +48,7 @@ void PSampler::initialize(PVirtualPort* in, PVirtualPort* out, PVirtualPort* gat
     leftArea()->addAnchors(in, leftArea());
     centerArea()->addAnchors(title, centerArea());
     rightArea()->addAnchors(out, rightArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }

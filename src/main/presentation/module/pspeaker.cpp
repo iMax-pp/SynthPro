@@ -24,4 +24,7 @@ void PSpeaker::initialize(PVirtualPort* in)
     leftArea()->addAnchors(in, leftArea());
     centerArea()->addAnchors(title, centerArea());
     bottomArea()->addAnchors(speaker, bottomArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }

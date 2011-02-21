@@ -29,8 +29,11 @@ public:
     /// Override SynthPro::add to add the presentation when Module is successfully added.
     void add(Module*);
 
-    /// Create a new Module with the given ModuleType and at the given QPointF.
-    void addModule(SynthProFactory::ModuleType, const QPointF&);
+    /**
+     * Create a new Module with the given ModuleType and at the given QPointF.
+     * @returns the created Module (conveniency for deserialization).
+     */
+    Module* addModule(SynthProFactory::ModuleType, const QPointF&, bool loadFile = false);
 
     /**
      * Show drag&drop feedback from given CVirtualPort to every single port.
@@ -46,6 +49,12 @@ public:
 
     /// Create a new scheme (delete every module).
     void newScheme();
+
+    /// Save the current scheme in the given filename.
+    void saveTo(const QString& filename);
+
+    /// Load a scheme from the given filename.
+    void loadFrom(const QString& filename);
 
 private slots:
     /// Slot called when Play/Pause button is clicked.

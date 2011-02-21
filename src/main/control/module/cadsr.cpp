@@ -7,6 +7,8 @@
 #include "control/component/cselector.h"
 #include "presentation/module/padsr.h"
 
+#include <QTextStream>
+
 CADSR::CADSR(SynthPro* parent)
     : Module(parent)
     , ADSR(parent)
@@ -35,4 +37,25 @@ void CADSR::initialize(SynthProFactory* factory)
                                                      attack->presentation(), decay->presentation(),
                                                      sustain->presentation(), release->presentation(),
                                                      manual->presentation());
+}
+
+QString CADSR::settings() const
+{
+    QString result;
+    QTextStream(&result) << m_attackDimmer->value() << " "
+                         << m_decayDimmer->value() << " "
+                         << m_sustainDimmer->value() << " "
+                         << m_releaseDimmer->value();
+
+    return result;
+}
+
+void CADSR::setUpSettings(const QString& settings)
+{
+    QStringList list = settings.split(" ", QString::SkipEmptyParts);
+
+    m_attackDimmer->setValue(list[0].toFloat());
+    m_decayDimmer->setValue(list[1].toFloat());
+    m_sustainDimmer->setValue(list[2].toFloat());
+    m_releaseDimmer->setValue(list[3].toFloat());
 }

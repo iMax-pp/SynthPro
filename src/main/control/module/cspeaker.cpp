@@ -18,3 +18,14 @@ void CSpeaker::initialize(SynthProFactory* factory)
 
     dynamic_cast<PSpeaker*>(presentation())->initialize(in->presentation());
 }
+
+QString CSpeaker::settings() const
+{
+    // Default implementation returns an empty string.
+    return "";
+}
+
+void CSpeaker::setUpSettings(const QString&)
+{
+    // Default implementation do nothing (no settings to set up).
+}

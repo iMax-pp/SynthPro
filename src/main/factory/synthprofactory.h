@@ -55,8 +55,8 @@ public:
     virtual Sampler* createSampler(SynthPro*) = 0;
 
     virtual Oscilloscope* createOscilloscope(SynthPro*) = 0;
-    virtual WavRecorder* createWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10) = 0;
-    virtual WavLooper* createWavLooper(SynthPro*) = 0;
+    virtual WavRecorder* createWavRecorder(SynthPro*, bool loadFile = false, int nbProcessingBeforeSaving = 10) = 0;
+    virtual WavLooper* createWavLooper(SynthPro*, bool loadFile = false) = 0;
 
     /**
       * Instanciate a Speaker, but ONLY if the audio device isn't already used by another instance.

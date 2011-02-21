@@ -35,6 +35,9 @@ void PKeyboard::initialize(PVirtualPort *outputFrequency, PVirtualPort *outputGa
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFlag(QGraphicsItem::ItemAcceptsInputMethod);
     setFocus();
+
+    bottomArea()->activate();
+    layout()->activate();
 }
 
 void PKeyboard::postInitialize()

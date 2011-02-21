@@ -24,7 +24,7 @@ void PVCO::initialize(PVirtualPort* vfm, PVirtualPort* out, PSelector* selector,
     selector->setMaximumSize(120, 155);
 
     // Layout
-    bottomArea()->addCornerAnchors(vfm, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
+    bottomArea()->addAnchor(vfm, Qt::AnchorLeft, bottomArea(), Qt::AnchorLeft);
     bottomArea()->addCornerAnchors(k, Qt::TopLeftCorner, bottomArea(), Qt::TopLeftCorner);
     bottomArea()->addCornerAnchors(k, Qt::BottomLeftCorner, vfm, Qt::TopLeftCorner);
     bottomArea()->addCornerAnchors(k, Qt::TopRightCorner, selector, Qt::TopLeftCorner);
@@ -34,4 +34,7 @@ void PVCO::initialize(PVirtualPort* vfm, PVirtualPort* out, PSelector* selector,
 
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }

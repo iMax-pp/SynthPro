@@ -41,6 +41,9 @@ void POscilloscope::initialize(PVirtualPort* input, PPushButton* stabilizeButton
     m_refreshTimer = new QTimer(this);
     m_refreshTimer->start(REFRESH_RATE);
     connect(m_refreshTimer, SIGNAL(timeout()), this, SLOT(refreshTimerExpired()));
+
+    bottomArea()->activate();
+    layout()->activate();
 }
 
 void POscilloscope::setVisualizedBuffer(Buffer* buffer)

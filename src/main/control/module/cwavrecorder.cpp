@@ -11,7 +11,7 @@ CWavRecorder::CWavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
 {
 }
 
-void CWavRecorder::initialize(SynthProFactory* factory)
+void CWavRecorder::initialize(SynthProFactory* factory, bool loadFile)
 {
     WavRecorder::initialize(factory);
 
@@ -24,7 +24,9 @@ void CWavRecorder::initialize(SynthProFactory* factory)
 
     connect(pre, SIGNAL(newFileClicked()), this, SLOT(newFile()));
 
-    newFile();
+    if (loadFile) {
+        newFile();
+    }
 }
 
 void CWavRecorder::newFile()
@@ -33,4 +35,16 @@ void CWavRecorder::newFile()
     if (!fileName.isNull()) {
         WavRecorder::newFile(fileName);
     }
+}
+
+QString CWavRecorder::settings() const
+{
+    return m_fileName;
+}
+
+void CWavRecorder::setUpSettings(const QString& settings)
+{
+    QStringList list = settings.split(" ", QString::SkipEmptyParts);
+
+    WavRecorder::newFile(list[0]);
 }

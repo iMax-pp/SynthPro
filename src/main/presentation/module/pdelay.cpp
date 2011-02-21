@@ -31,4 +31,7 @@ void PDelay::initialize(PVirtualPort* in, PVirtualPort* out, PDimmer* duration, 
     leftArea()->addAnchors(in, leftArea());
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }

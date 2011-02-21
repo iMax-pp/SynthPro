@@ -106,7 +106,6 @@ void WavRecorder::ownProcess()
                     // Limit tests.
                     nb = (nb > SIGNAL_OUT_SIGNED_INTENSITY ? SIGNAL_OUT_SIGNED_INTENSITY : nb);
                     nb = (nb < -SIGNAL_OUT_SIGNED_INTENSITY ? -SIGNAL_OUT_SIGNED_INTENSITY : nb);
-
                     m_bufferForNumbers[0] = nb & 255;
                     m_bufferForNumbers[1] = (nb / 256) & 255;
                     m_outputFile->write(m_bufferForNumbers, 2);

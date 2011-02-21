@@ -29,9 +29,6 @@ public:
     /// Reimplements abstraction method to update the presentation.
     void setValue(qreal);
 
-    /// Synchronize the presentation value with the abstraction value, using the formatter.
-    void publishValue();
-
     /// Default formatting function.
     static QString defaultFormat(qreal);
     /// Percentage formatting function.
@@ -50,6 +47,11 @@ protected slots:
      * (converting it into a qreal using the discretization factor).
      */
     void valueChanged(int value);
+
+protected:
+    /// Synchronize the presentation value with the abstraction value, using the formatter.
+    void publishValue();
+
 
 private:
     QPointer<PDimmer> m_presentation;

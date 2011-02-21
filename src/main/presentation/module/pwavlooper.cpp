@@ -34,6 +34,9 @@ void PWavLooper::initialize(PVirtualPort* out, PDimmer* speedDimmer)
 
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }
 
 QString PWavLooper::askForFileName()
