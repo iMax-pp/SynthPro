@@ -156,7 +156,7 @@ relationcanvas 132098 relation_ref 149250 // <directional composition>
   decenter_begin 770
   decenter_end 542
   from ref 128258 z 2006 to ref 128642
-  role_a_pos 528 431 3000 no_role_b
+  role_a_pos 534 445 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 132482 relation_ref 149378 // <directional composition>
