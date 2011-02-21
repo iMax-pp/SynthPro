@@ -18,6 +18,8 @@ class WavRecorder : public virtual Module {
     Q_OBJECT
 
 public:
+    static const int SIGNAL_OUT_SIGNED_INTENSITY = 32767;
+
     WavRecorder(SynthPro*, int nbProcessingBeforeSaving = 10);
     virtual ~WavRecorder();
 
@@ -61,8 +63,6 @@ protected:
     void closeWAVFile();
 
 private:
-    static const int SIGNAL_OUT_SIGNED_INTENSITY = 32767;
-
     QString m_fileName;
     QFile* m_outputFile;
     bool m_isRecording;
