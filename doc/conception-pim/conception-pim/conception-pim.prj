@@ -201,12 +201,12 @@ ${inlines}
 	  b parent class_ref 135938 // WaveGenarator
       end
 
-      classrelation 149634 // vfm (<directional composition>)
+      classrelation 149634 // k (<directional composition>)
 	relation 149250 *-->
-	  a role_name "vfm" private
+	  a role_name "k" private
 	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
 "
-	    classrelation_ref 149634 // vfm (<directional composition>)
+	    classrelation_ref 149634 // k (<directional composition>)
 	  b parent class_ref 128770 // Dimmer
       end
 
@@ -785,12 +785,12 @@ ${inlines}
 	    classrelation_ref 156802 // control (<composition>)
       end
 
-      classrelation 157058 // <unidirectional association>
+      classrelation 157058 // valueFormat (<unidirectional association>)
 	relation 156546 --->
-	  a role_name "" private
+	  a role_name "valueFormat" multiplicity "1" private
 	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
 "
-	    classrelation_ref 157058 // <unidirectional association>
+	    classrelation_ref 157058 // valueFormat (<unidirectional association>)
 	  b parent class_ref 155906 // ValueFormat
       end
 
