@@ -1,6 +1,6 @@
 #include "clock.h"
 
-#include "abstraction/audiodeviceprovider.h"
+// #include "abstraction/audiodeviceprovider.h" // Used for the unsuccesful attempt to manage the soundcard output from the Clock.
 #include "abstraction/module/timecriticalmodule.h"
 #include "abstraction/sequencer.h"
 

@@ -36,3 +36,14 @@ void CKeyboard::keyboardKeyReleased(int)
 {
     m_pressed = false;
 }
+
+QString CKeyboard::settings() const
+{
+    // Default implementation returns an empty string.
+    return "";
+}
+
+void CKeyboard::setUpSettings(const QString&)
+{
+    // Default implementation do nothing (no settings to set up).
+}

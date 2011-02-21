@@ -6,6 +6,8 @@
 #include "control/component/cpushbutton.h"
 #include "presentation/module/psampler.h"
 
+#include <QTextStream>
+
 CSampler::CSampler(SynthPro* parent)
     : Module(parent)
     , Sampler(parent)
@@ -39,4 +41,19 @@ void CSampler::initialize(SynthProFactory* factory)
 QString CSampler::formatSpeed(qreal value)
 {
     return QString::number(value, 'g', 2) + "x";
+}
+
+QString CSampler::settings() const
+{
+    QString result;
+    QTextStream(&result) << m_bpmDimmer->value();
+
+    return result;
+}
+
+void CSampler::setUpSettings(const QString& settings)
+{
+    QStringList list = settings.split(" ", QString::SkipEmptyParts);
+
+    m_bpmDimmer->setValue(list[0].toFloat());
 }

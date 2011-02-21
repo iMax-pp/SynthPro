@@ -34,3 +34,14 @@ void CWavRecorder::newFile()
         WavRecorder::newFile(fileName);
     }
 }
+
+QString CWavRecorder::settings() const
+{
+    // Default implementation returns an empty string.
+    return "";
+}
+
+void CWavRecorder::setUpSettings(const QString&)
+{
+    // Default implementation do nothing (no settings to set up).
+}

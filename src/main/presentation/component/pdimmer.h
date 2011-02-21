@@ -18,6 +18,8 @@ public:
     /// Define a fixed size for the item.
     void setSize(qreal width, qreal height);
 
+    virtual void setValue(int) = 0;
+
 protected:
     QGroupBox* m_box;
 

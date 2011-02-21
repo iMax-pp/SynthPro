@@ -4,6 +4,8 @@
 #include "control/component/coutport.h"
 #include "presentation/module/pwavlooper.h"
 
+#include <QTextStream>
+
 CWavLooper::CWavLooper(SynthPro* parent)
     : Module(parent)
     , WavLooper(parent)
@@ -25,6 +27,21 @@ void CWavLooper::initialize(SynthProFactory* factory)
     connect(pre, SIGNAL(newFileClicked()), this, SLOT(newFile()));
 
     newFile();
+}
+
+QString CWavLooper::settings() const
+{
+    QString result;
+    QTextStream(&result) << m_sDimmer->value();
+
+    return result;
+}
+
+void CWavLooper::setUpSettings(const QString& settings)
+{
+    QStringList list = settings.split(" ", QString::SkipEmptyParts);
+
+    m_sDimmer->setValue(list[0].toFloat());
 }
 
 void CWavLooper::newFile()

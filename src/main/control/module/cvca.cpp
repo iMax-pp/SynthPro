@@ -5,6 +5,8 @@
 #include "control/component/coutport.h"
 #include "control/component/cselector.h"
 #include "presentation/module/pvca.h"
+
+#include <QTextStream>
 #include <qmath.h>
 
 CVCA::CVCA(SynthPro* parent)
@@ -27,4 +29,19 @@ void CVCA::initialize(SynthProFactory* factory)
 
     dynamic_cast<PVCA*>(presentation())->initialize(in->presentation(), out->presentation(),
                                                     controlInput->presentation(), gain->presentation());
+}
+
+QString CVCA::settings() const
+{
+    QString result;
+    QTextStream(&result) << m_gainDimmer->value();
+
+    return result;
+}
+
+void CVCA::setUpSettings(const QString& settings)
+{
+    QStringList list = settings.split(" ", QString::SkipEmptyParts);
+
+    m_gainDimmer->setValue(list[0].toFloat());
 }

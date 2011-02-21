@@ -5,6 +5,8 @@
 #include "control/component/cpushbutton.h"
 #include "presentation/module/poscilloscope.h"
 
+#include <QTextStream>
+
 COscilloscope::COscilloscope(SynthPro* parent)
     : Module(parent)
     , Oscilloscope(parent)
@@ -27,4 +29,19 @@ void COscilloscope::initialize(SynthProFactory* factory)
 void COscilloscope::ownProcess()
 {
     dynamic_cast<POscilloscope*>(presentation())->refreshOscilloscopeView();
+}
+
+QString COscilloscope::settings() const
+{
+    QString result;
+    QTextStream(&result) << (m_stabilizeControl->isChecked() ? 1 : 0);
+    return result;    
+}
+
+void COscilloscope::setUpSettings(const QString& settings)
+{
+    QStringList list = settings.split(" ", QString::SkipEmptyParts);
+
+    m_stabilizeControl->setChecked(list[0].toInt());
+    stabilizedPushed();
 }

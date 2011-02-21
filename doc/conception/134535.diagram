@@ -37,13 +37,6 @@ relationcanvas 129287 relation_ref 148866 // <unidirectional association>
   role_a_pos 204 163 3000 no_role_b
   multiplicity_a_pos 204 192 3000 no_multiplicity_b
 end
-relationcanvas 129543 relation_ref 135175 // <unidirectional association>
-  decenter_begin 245
-  decenter_end 490
-  from ref 128391 z 2001 to ref 128007
-  role_a_pos 263 24 3000 no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
 relationcanvas 129671 relation_ref 135303 // <unidirectional association>
   decenter_end 768
   from ref 128519 z 2001 to point 396 343

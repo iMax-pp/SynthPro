@@ -36,6 +36,25 @@ void CVCF::initialize(SynthProFactory* factory)
                                                     resonance->presentation(), cutOffDimmer->presentation());
 }
 
+QString CVCF::settings() const
+{
+    QString result;
+    QTextStream(&result) << m_filterSelector->choice() << " "
+                         << m_rDimmer->value() << " "
+                         << m_cutOffDimmer->value();
+
+    return result;
+}
+
+void CVCF::setUpSettings(const QString& settings)
+{
+    QStringList list = settings.split(" ", QString::SkipEmptyParts);
+
+    m_filterSelector->setChoice(list[0].toInt());
+    m_rDimmer->setValue(list[1].toFloat());
+    m_cutOffDimmer->setValue(list[2].toFloat());
+}
+
 void CVCF::filterChanged(int selectedValue)
 {
     VCF::filterChanged(selectedValue);

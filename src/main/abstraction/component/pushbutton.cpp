@@ -12,6 +12,10 @@ PushButton::PushButton(QObject* parent)
 void PushButton::push()
 {
     m_pushed = true;
+    if (m_checkable) {
+        setChecked(!m_checked);
+    }
+
     emit buttonPushed();
 }
 
@@ -46,6 +50,6 @@ void PushButton::setChecked(bool checked)
 
     if (checked != m_checked) {
         m_checked = checked;
-        emit buttonChecked(checked);
+        emit buttonChecked(m_checked);
     }
 }

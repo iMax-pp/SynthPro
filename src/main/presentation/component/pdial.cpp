@@ -12,15 +12,20 @@ PDial::PDial(CDimmer* control, const QString& name, int min, int max, int defaul
     vbox->setMargin(0);
 
     // Create a Selector.
-    QDial* selector = new QDial;
-    selector->setNotchesVisible(true);
-    selector->setRange(min, max);
-    selector->setValue(defaultValue);
-    vbox->addWidget(selector);
+    m_selector = new QDial;
+    m_selector->setNotchesVisible(true);
+    m_selector->setRange(min, max);
+    m_selector->setValue(defaultValue);
+    vbox->addWidget(m_selector);
 
     m_box->setLayout(vbox);
-    // updateTitle(selector->value());
     setMaximumSize(80, 80);
 
-    connect(selector, SIGNAL(valueChanged(int)), this, SIGNAL(valueChanged(int)));    
+    connect(m_selector, SIGNAL(valueChanged(int)), this, SIGNAL(valueChanged(int)));
+}
+
+void PDial::setValue(int value)
+{
+    m_selector->setValue(value);
+    update();
 }

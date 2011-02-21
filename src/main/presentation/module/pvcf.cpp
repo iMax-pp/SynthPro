@@ -37,4 +37,7 @@ void PVCF::initialize(PVirtualPort* in, PVirtualPort* cutOff, PVirtualPort* out,
     leftArea()->addAnchors(in, leftArea());
     rightArea()->addAnchors(out, rightArea());
     centerArea()->addAnchors(title, centerArea());
+
+    bottomArea()->activate();
+    layout()->activate();
 }

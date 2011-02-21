@@ -4,7 +4,7 @@
 #include <QMap>
 #include <QObject>
 
-class AudioDeviceProvider;
+// class AudioDeviceProvider; // Used for the unsuccesful attempt to manage the soundcard output from the Clock.
 class TimeCriticalModule;
 class QTimer;
 class Sequencer;

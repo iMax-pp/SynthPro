@@ -35,7 +35,7 @@ protected:
     PushButton* m_stabilizeControl;
     bool m_stabilized;
 
-private slots:
+protected slots:
     void stabilizedPushed();
 };
 
