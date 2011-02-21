@@ -54,6 +54,7 @@ protected:
     InPort* m_inPort;
     PushButton* m_recordButton;
     PushButton* m_stopButton;
+    QString m_fileName;
 
     /**
      * Write the right size of the chunks and data,
@@ -63,7 +64,6 @@ protected:
     void closeWAVFile();
 
 private:
-    QString m_fileName;
     QFile* m_outputFile;
     bool m_isRecording;
     const int m_nbProcessingBeforeSaving;
