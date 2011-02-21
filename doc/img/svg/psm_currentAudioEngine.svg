@@ -33,9 +33,14 @@
 	<line stroke="black" stroke-opacity="1" x1="217" y1="342" x2="273" y2="342" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="133" y1="131" x2="139" y2="125" />
-	<line stroke="black" stroke-opacity="1" x1="133" y1="131" x2="127" y2="125" />
-	<line stroke="black" stroke-opacity="1" x1="133" y1="67" x2="133" y2="131" />
+	<polygon fill="#c0ffff" stroke="black" stroke-opacity="1" points="2,236 188,236 188,246 198,246 198,354 2,354 2,236" />
+	<line stroke="black" stroke-opacity="1" x1="188" y1="236" x2="198" y2="246" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="12" y="262">En réalité, le speaker possède</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="12" y="279">une référence au QAudioOutput</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="12" y="296">et QIODevice, fournis par</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="12" y="313">AudioDeviceProvider au</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="12" y="330">moment de l'instanciation de</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="12" y="347">Speaker.</text>
 </g>
 <g>
 	<line stroke="black" stroke-opacity="1" x1="216" y1="342" x2="108" y2="342" />
@@ -62,6 +67,11 @@
 	<line stroke="black" stroke-opacity="1" x1="277" y1="341" x2="500" y2="341" />
 </g>
 <g>
+	<line stroke="black" stroke-opacity="1" x1="500" y1="192" x2="494" y2="198" />
+	<line stroke="black" stroke-opacity="1" x1="500" y1="192" x2="506" y2="198" />
+	<line stroke="black" stroke-opacity="1" x1="500" y1="341" x2="500" y2="192" />
+</g>
+<g>
 	<line stroke="black" stroke-opacity="1" x1="187" y1="36" x2="501" y2="36" />
 </g>
 <g>
@@ -70,36 +80,31 @@
 	<line stroke="black" stroke-opacity="1" x1="501" y1="36" x2="501" y2="131" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="500" y1="192" x2="494" y2="198" />
-	<line stroke="black" stroke-opacity="1" x1="500" y1="192" x2="506" y2="198" />
-	<line stroke="black" stroke-opacity="1" x1="500" y1="341" x2="500" y2="192" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="319" y="232" width="3" height="35" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="205" y="264" width="117" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="201" y="228" width="118" height="36" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" font-style="italic" text-anchor="middle" x="260" y="239">TimeCriticalModule</text>
+	<line stroke="black" stroke-opacity="1" x1="201" y1="248" x2="319" y2="248" />
 </g>
 <g>
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="307" y="228" width="3" height="35" />
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="193" y="260" width="117" height="3" />
-	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="189" y="224" width="118" height="36" />
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="248" y="235">TimeCriticalModule</text>
-	<line stroke="black" stroke-opacity="1" x1="189" y1="244" x2="307" y2="244" />
+	<line stroke="black" stroke-opacity="1" x1="248" y1="321" x2="248" y2="273" />
+	<line stroke="black" stroke-opacity="1" x1="249" y1="268" x2="242" y2="273" />
+	<line stroke="black" stroke-opacity="1" x1="249" y1="268" x2="254" y2="274" />
+	<line stroke="black" stroke-opacity="1" x1="242" y1="273" x2="254" y2="274" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="248" y1="321" x2="248" y2="269" />
-	<line stroke="black" stroke-opacity="1" x1="249" y1="264" x2="242" y2="269" />
-	<line stroke="black" stroke-opacity="1" x1="249" y1="264" x2="254" y2="270" />
-	<line stroke="black" stroke-opacity="1" x1="242" y1="269" x2="254" y2="270" />
+	<line stroke="black" stroke-opacity="1" x1="187" y1="61" x2="232" y2="61" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="187" y1="61" x2="220" y2="61" />
+	<line stroke="black" stroke-opacity="1" x1="232" y1="227" x2="238" y2="221" />
+	<line stroke="black" stroke-opacity="1" x1="232" y1="227" x2="226" y2="221" />
+	<line stroke="black" stroke-opacity="1" x1="232" y1="61" x2="232" y2="227" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="295" y1="223" x2="295" y2="185" />
-	<line stroke="black" stroke-opacity="1" x1="296" y1="180" x2="289" y2="185" />
-	<line stroke="black" stroke-opacity="1" x1="296" y1="180" x2="301" y2="186" />
-	<line stroke="black" stroke-opacity="1" x1="289" y1="185" x2="301" y2="186" />
-</g>
-<g>
-	<line stroke="black" stroke-opacity="1" x1="220" y1="223" x2="226" y2="217" />
-	<line stroke="black" stroke-opacity="1" x1="220" y1="223" x2="214" y2="217" />
-	<line stroke="black" stroke-opacity="1" x1="220" y1="61" x2="220" y2="223" />
+	<line stroke="black" stroke-opacity="1" x1="307" y1="227" x2="307" y2="186" />
+	<line stroke="black" stroke-opacity="1" x1="307" y1="180" x2="301" y2="186" />
+	<line stroke="black" stroke-opacity="1" x1="307" y1="180" x2="313" y2="186" />
+	<line stroke="black" stroke-opacity="1" x1="301" y1="186" x2="313" y2="186" />
 </g>
 <g>
 	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="333" y="148">sortedModules</text>
@@ -108,24 +113,21 @@
 	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="333" y="177">*</text>
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="511" y="119">sequencer</text>
-</g>
-<g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="143" y="119">adp</text>
-</g>
-<g>
 	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="510" y="209">sequencer</text>
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="197" y="186">&lt;&lt;map&gt;&gt;</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="511" y="119">sequencer</text>
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="53" y="216">audioDeviceProvider</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="118" y="209">audioDeviceProvider</text>
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="205" y="211">*</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="209" y="188">&lt;&lt;map&gt;&gt;</text>
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="230" y="211">fastTimers</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="242" y="215">fastTimers</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="217" y="215">*</text>
 </g>
 </svg>

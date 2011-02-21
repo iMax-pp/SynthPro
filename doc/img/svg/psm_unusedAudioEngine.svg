@@ -36,19 +36,8 @@
 	<rect fill="#808080" stroke="none" stroke-opacity="1" x="205" y="249" width="3" height="35" />
 	<rect fill="#808080" stroke="none" stroke-opacity="1" x="91" y="281" width="117" height="3" />
 	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="87" y="245" width="118" height="36" />
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="146" y="256">TimeCriticalModule</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" font-style="italic" text-anchor="middle" x="146" y="256">TimeCriticalModule</text>
 	<line stroke="black" stroke-opacity="1" x1="87" y1="265" x2="205" y2="265" />
-</g>
-<g>
-	<line stroke="black" stroke-opacity="1" x1="138" y1="324" x2="138" y2="291" />
-	<line stroke="black" stroke-opacity="1" x1="138" y1="285" x2="132" y2="291" />
-	<line stroke="black" stroke-opacity="1" x1="138" y1="285" x2="144" y2="291" />
-	<line stroke="black" stroke-opacity="1" x1="132" y1="291" x2="144" y2="291" />
-</g>
-<g>
-	<line stroke="black" stroke-opacity="1" x1="294" y1="45" x2="288" y2="39" />
-	<line stroke="black" stroke-opacity="1" x1="294" y1="45" x2="288" y2="51" />
-	<line stroke="black" stroke-opacity="1" x1="145" y1="45" x2="294" y2="45" />
 </g>
 <g>
 	<line stroke="black" stroke-opacity="1" x1="170" y1="345" x2="398" y2="345" />
@@ -59,15 +48,21 @@
 	<line stroke="black" stroke-opacity="1" x1="398" y1="345" x2="398" y2="76" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="98" y1="244" x2="104" y2="238" />
-	<line stroke="black" stroke-opacity="1" x1="98" y1="244" x2="92" y2="238" />
-	<line stroke="black" stroke-opacity="1" x1="98" y1="91" x2="98" y2="244" />
-</g>
-<g>
 	<line stroke="black" stroke-opacity="1" x1="167" y1="244" x2="167" y2="210" />
 	<line stroke="black" stroke-opacity="1" x1="167" y1="204" x2="161" y2="210" />
 	<line stroke="black" stroke-opacity="1" x1="167" y1="204" x2="173" y2="210" />
 	<line stroke="black" stroke-opacity="1" x1="161" y1="210" x2="173" y2="210" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="138" y1="324" x2="138" y2="291" />
+	<line stroke="black" stroke-opacity="1" x1="138" y1="285" x2="132" y2="291" />
+	<line stroke="black" stroke-opacity="1" x1="138" y1="285" x2="144" y2="291" />
+	<line stroke="black" stroke-opacity="1" x1="132" y1="291" x2="144" y2="291" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="98" y1="244" x2="104" y2="238" />
+	<line stroke="black" stroke-opacity="1" x1="98" y1="244" x2="92" y2="238" />
+	<line stroke="black" stroke-opacity="1" x1="98" y1="91" x2="98" y2="244" />
 </g>
 <g>
 	<rect fill="#808080" stroke="none" stroke-opacity="1" x="383" y="159" width="3" height="55" />
@@ -81,20 +76,17 @@
 	<line stroke="black" stroke-opacity="1" x1="145" y1="81" x2="305" y2="81" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="194" y1="184" x2="200" y2="190" />
-	<line stroke="black" stroke-opacity="1" x1="194" y1="184" x2="200" y2="178" />
-	<line stroke="black" stroke-opacity="1" x1="296" y1="184" x2="194" y2="184" />
-</g>
-<g>
 	<line stroke="black" stroke-opacity="1" x1="305" y1="154" x2="311" y2="148" />
 	<line stroke="black" stroke-opacity="1" x1="305" y1="154" x2="299" y2="148" />
 	<line stroke="black" stroke-opacity="1" x1="305" y1="81" x2="305" y2="154" />
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="69" y="220">&lt;&lt;map&gt;&gt;</text>
+	<line stroke="black" stroke-opacity="1" x1="194" y1="184" x2="200" y2="190" />
+	<line stroke="black" stroke-opacity="1" x1="194" y1="184" x2="200" y2="178" />
+	<line stroke="black" stroke-opacity="1" x1="296" y1="184" x2="194" y2="184" />
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="108" y="232">fastTimers</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="315" y="142">sequencer</text>
 </g>
 <g>
 	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="204" y="172">sortedModules</text>
@@ -103,13 +95,13 @@
 	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="204" y="201">*</text>
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="263" y="33">adp</text>
-</g>
-<g>
 	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="408" y="93">audioDeviceProvider</text>
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="315" y="142">sequencer</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="69" y="220">&lt;&lt;map&gt;&gt;</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="108" y="232">fastTimers</text>
 </g>
 <g>
 	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="83" y="232">*</text>
