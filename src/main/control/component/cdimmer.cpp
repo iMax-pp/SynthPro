@@ -40,6 +40,7 @@ void CDimmer::setValue(qreal newValue)
 
     if (oldValue != value()) {
         publishValue();
+        m_presentation->setValue(value() * m_discretization);
     }
 }
 
