@@ -6,7 +6,7 @@
 #include <QtTest/QTest>
 
 /**
-  * Test the VCF. To to that, creates a VCO that produces
+  * Test the VCF. To do that, creates a VCO that produces
   * an empty wave, use a Incremental filter, and check the result
   * is conform (bufferOut values == FilterIncrement::INCREMENT_VALUE).
   */

@@ -21,7 +21,7 @@ void TestWavRecorder::testWavRecorder()
     mbr->newFile(fileName);
     mbr->startRecording();
     VCO* vco = factory.createVCO(0);
-    vco->setShape("Empty");
+    vco->setShape("Square");
     vco->outports().first()->connect(mbr->inports().first());
 
     for (int i = 0; i < NB_ITERATIONS; i++) {
@@ -42,9 +42,13 @@ void TestWavRecorder::testWavRecorder()
     bool result;
     result = file.seek(SKIP_HEADER_OFFSET);
 
+    qreal nbCompare = VCO::SIGNAL_INTENSITY / VCO::SIGNAL_INTENSITY * WavRecorder::SIGNAL_OUT_SIGNED_INTENSITY;
+
     while (result && !file.atEnd()) {
-        QByteArray data = file.read(1);
-        result = (data.at(0) == 0);
+        QByteArray data = file.read(2);
+        qreal nb = (int)((data.at(0)) + data.at(1) * 256);
+        // qDebug() << "YOUPIIIIIIIIIII " << nb << " --- " << nbCompare;
+        result = (nb == qAbs(nbCompare));
     }
 
     QVERIFY(result);
