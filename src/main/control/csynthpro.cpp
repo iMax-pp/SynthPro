@@ -241,8 +241,6 @@ void CSynthPro::loadFrom(const QString& filename)
 
             // Read and Set up settings.
             line = stream.readLine();
-
-            // FIXME Sometimes the program crashes on the following line.
             dynamic_cast<CModule*>(modules[id])->setUpSettings(line);
 
             // Retrieve connections.
@@ -267,7 +265,7 @@ void CSynthPro::loadFrom(const QString& filename)
         }
 
         // Rebind the connections.
-        foreach (InPort* inport, connections.keys()) {
+        foreach (InPort* inport, connections.uniqueKeys()) {
             QList<QString> moduleList = connections.values(inport);
 
             foreach (QString module, moduleList) {

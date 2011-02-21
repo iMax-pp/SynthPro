@@ -43,7 +43,7 @@ void SynthPro::remove(QObject* object)
     Sequencer::instance().scheduleModules(this);
 
     module->prepareDestruction();
-    module->deleteLater();
+    delete module;
 }
 
 void SynthPro::connectionsChanged()
