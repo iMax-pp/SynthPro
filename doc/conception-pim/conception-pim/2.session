@@ -1,0 +1,12 @@
+window_sizes 1280 782 178 1096 609 91
+diagrams
+  active  classdiagram_ref 128130 // pim
+    1096 609 100 18 0 0
+end
+show_stereotypes
+selected 
+  package_ref 134786 // module
+open
+  classview_ref 128130 // pim
+end
+end
