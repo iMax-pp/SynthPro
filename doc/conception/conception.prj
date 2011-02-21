@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 22
+  revision 24
   modified_by 7 "julien"
 
 
@@ -233,7 +233,6 @@ format 74
 	
 	
       end
-
     end
 
     class 141827 "VirtualPort"
@@ -961,13 +960,6 @@ format 74
 	  b parent class_ref 142211 // Sequencer
       end
 
-      classrelation 135431 // adp (<unidirectional association>)
-	relation 135175 --->
-	  a role_name "adp" private
-	    classrelation_ref 135431 // adp (<unidirectional association>)
-	  b parent class_ref 147842 // AudioDeviceProvider
-      end
-
       classrelation 142343 // fastTimers (<unidirectional association>)
 	relation 142087 --->
 	  stereotype "map"
@@ -1079,7 +1071,7 @@ format 74
     end
 
     class 134535 "TimeCriticalModule"
-      visibility package 
+      abstract visibility package 
       cpp_decl ""
       java_decl ""
       php_decl ""
@@ -1092,6 +1084,62 @@ format 74
 	  a public
 	    classrelation_ref 142471 // <generalisation>
 	  b parent class_ref 141699 // Module
+      end
+
+      operation 128007 "fastTimerExpired"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    sequencediagram 141063 "PSM-CurrentAudioEngine-Sequence"
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
+    end
+
+    class 141063 "QAudioOutput"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 128135 "bytesFree"
+	public explicit_return_type "int"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 141191 "QIODevice"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 128263 "write"
+	public explicit_return_type "int"
+	nparams 1
+	  param in name "" explicit_type "QByteArray"
+	
+	
+	
+	
+	
       end
     end
   end

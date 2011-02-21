@@ -1,0 +1,175 @@
+format 74
+
+classinstance 128007 class_ref 147714 // Clock
+  name ""   xyz 1 4 2000 life_line_z 2000
+classinstance 128263 class_ref 142211 // Sequencer
+  name ""   xyz 144 4 2000 life_line_z 2000
+classinstance 128391 class_ref 128007 // Speaker
+  name ""   xyz 274 153 2000 life_line_z 2000
+note 128519 "Il n'y aucun TimeCriticalModule d'instancié pour le moment."
+  xyzwh 220 4 2000 197 53
+classinstance 132999 class_ref 141063 // QAudioOutput
+  name ""   xyz 419 4 2005 life_line_z 2000
+classinstance 134407 class_ref 141191 // QIODevice
+  name ""   xyz 514 4 2010 life_line_z 2000
+note 135687 "Des références à QAudioOutput et QIODevice sont données à Speaker par la QtFactory lors de l'instanciation de Speaker."
+  xyzwh 353 130 2000 199 85
+durationcanvas 128647 classinstance_ref 128007 // :Clock
+  xyzwh 20 62 2010 11 543
+  overlappingdurationcanvas 129671
+    xyzwh 26 265 2020 11 200
+  end
+  overlappingdurationcanvas 130695
+    xyzwh 26 76 2020 11 40
+  end
+  overlappingdurationcanvas 131207
+    xyzwh 26 141 2020 11 36
+  end
+  overlappingdurationcanvas 131719
+    xyzwh 26 197 2020 11 29
+  end
+end
+durationcanvas 128775 classinstance_ref 128263 // :Sequencer
+  xyzwh 176 56 2010 11 551
+  overlappingdurationcanvas 130951
+    xyzwh 182 92 2020 11 32
+  end
+  overlappingdurationcanvas 131463
+    xyzwh 182 156 2020 11 25
+  end
+  overlappingdurationcanvas 131975
+    xyzwh 182 215 2020 11 25
+  end
+  overlappingdurationcanvas 134791
+    xyzwh 182 491 2020 11 25
+  end
+end
+durationcanvas 129543 classinstance_ref 128391 // :Speaker
+  xyzwh 299 235 2010 11 377
+  overlappingdurationcanvas 132231
+    xyzwh 305 291 2020 11 64
+  end
+  overlappingdurationcanvas 133767
+    xyzwh 305 382 2020 11 217
+    overlappingdurationcanvas 134535
+      xyzwh 311 462 2030 11 76
+    end
+  end
+end
+durationcanvas 133127 classinstance_ref 132999 // :QAudioOutput
+  xyzwh 459 301 2010 11 305
+  overlappingdurationcanvas 134023
+    xyzwh 465 403 2020 11 42
+  end
+  overlappingdurationcanvas 135303
+    xyzwh 465 551 2020 11 44
+  end
+end
+durationcanvas 135047 classinstance_ref 134407 // :QIODevice
+  xyzwh 545 511 2010 11 25
+end
+msg 129799 synchronous
+  from durationcanvas_ref 129543
+  to durationcanvas_ref 129671
+  yz 265 2025 explicitmsg "registerFastClock(this)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 107 254
+reflexivemsg 130823 synchronous
+  to durationcanvas_ref 130695
+  yz 76 2025 msg operation_ref 150530 // "internalTimerExpired()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 37 59
+msg 131079 synchronous
+  from durationcanvas_ref 130695
+  to durationcanvas_ref 130951
+  yz 96 2025 msg operation_ref 128771 // "process()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 79 85
+reflexivemsg 131335 synchronous
+  to durationcanvas_ref 131207
+  yz 141 2025 msg operation_ref 150530 // "internalTimerExpired()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 38 126
+msg 131591 synchronous
+  from durationcanvas_ref 131207
+  to durationcanvas_ref 131463
+  yz 163 2030 msg operation_ref 128771 // "process()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 80 153
+reflexivemsg 131847 synchronous
+  to durationcanvas_ref 131719
+  yz 197 2025 msg operation_ref 150530 // "internalTimerExpired()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 41 181
+msg 132103 synchronous
+  from durationcanvas_ref 131719
+  to durationcanvas_ref 131975
+  yz 215 2030 msg operation_ref 128771 // "process()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 82 204
+msg 132359 synchronous
+  from durationcanvas_ref 129671
+  to durationcanvas_ref 132231
+  yz 292 2025 msg operation_ref 128007 // "fastTimerExpired() : void"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 117 282
+msg 133255 synchronous
+  from durationcanvas_ref 132231
+  to durationcanvas_ref 133127
+  yz 302 2025 msg operation_ref 128135 // "bytesFree() : int"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 355 286
+msg 133383 return
+  from durationcanvas_ref 133127
+  to durationcanvas_ref 132231
+  yz 331 2030 explicitmsg "0"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 382 319
+msg 133895 synchronous
+  from durationcanvas_ref 129671
+  to durationcanvas_ref 133767
+  yz 382 2025 msg operation_ref 128007 // "fastTimerExpired() : void"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 120 366
+msg 134151 synchronous
+  from durationcanvas_ref 133767
+  to durationcanvas_ref 134023
+  yz 404 2025 msg operation_ref 128135 // "bytesFree() : int"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 358 388
+msg 134279 return
+  from durationcanvas_ref 134023
+  to durationcanvas_ref 133767
+  yz 428 2030 explicitmsg "700"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 376 417
+reflexivemsg 134663 synchronous
+  to durationcanvas_ref 134535
+  yz 462 2035 explicitmsg "(nbGeneratedBytesRemaining >= 700) == false"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 319 448
+msg 134919 synchronous
+  from durationcanvas_ref 134535
+  to durationcanvas_ref 134791
+  yz 492 2035 msg operation_ref 128771 // "process()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 225 476
+msg 135175 synchronous
+  from durationcanvas_ref 134535
+  to durationcanvas_ref 135047
+  yz 511 2035 msg operation_ref 128263 // "write(in  : QByteArray) : int"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 416 499
+msg 135431 synchronous
+  from durationcanvas_ref 133767
+  to durationcanvas_ref 135303
+  yz 551 2025 msg operation_ref 128135 // "bytesFree() : int"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 358 540
+msg 135559 return
+  from durationcanvas_ref 135303
+  to durationcanvas_ref 133767
+  yz 574 2030 explicitmsg "0"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 384 563
+end
