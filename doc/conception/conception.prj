@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 16
+  revision 21
   modified_by 2 "julien"
 
 
@@ -260,7 +260,7 @@ format 74
       end
 
       operation 128386 "connect"
-	public explicit_return_type ""
+	public return_type class_ref 141186 // Connection
 	nparams 1
 	  param in name "port" type class_ref 141827 // VirtualPort
 	
@@ -273,7 +273,7 @@ format 74
       operation 128514 "disconnect"
 	public explicit_return_type ""
 	nparams 1
-	  param in name "other" type class_ref 141827 // VirtualPort
+	  param in name "" type class_ref 141186 // Connection
 	
 	
 	
@@ -282,7 +282,7 @@ format 74
       end
 
       operation 128002 "buffer"
-	abstract cpp_virtual public return_type class_ref 128002 // Buffer
+	cpp_virtual public return_type class_ref 128002 // Buffer
 	nparams 0
 	
 	
@@ -345,6 +345,13 @@ format 74
 	    classrelation_ref 148738 // connections (<unidirectional association>)
 	  b parent class_ref 141186 // Connection
       end
+
+      classrelation 169858 // buffer (<directional composition>)
+	relation 169346 *-->
+	  a role_name "buffer" multiplicity "1" private
+	    classrelation_ref 169858 // buffer (<directional composition>)
+	  b parent class_ref 128002 // Buffer
+      end
     end
 
     class 141955 "InPort"
@@ -385,16 +392,6 @@ format 74
 	
       end
 
-      operation 129410 "buffer"
-	cpp_virtual public return_type class_ref 128002 // Buffer
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
       operation 136194 "fetch"
 	public explicit_return_type ""
 	nparams 0
@@ -403,13 +400,6 @@ format 74
 	
 	
 	
-      end
-
-      classrelation 135298 // buffer (<directional composition>)
-	relation 135042 *-->
-	  a role_name "buffer" private
-	    classrelation_ref 135298 // buffer (<directional composition>)
-	  b parent class_ref 128002 // Buffer
       end
     end
 
@@ -447,22 +437,6 @@ format 74
 	
       end
 
-      operation 129282 "buffer"
-	cpp_virtual public return_type class_ref 128002 // Buffer
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      classrelation 135042 // buffer (<directional composition>)
-	relation 134914 *-->
-	  a role_name "buffer" private
-	    classrelation_ref 135042 // buffer (<directional composition>)
-	  b parent class_ref 128002 // Buffer
-      end
     end
 
     class 142211 "Sequencer"
@@ -1705,5 +1679,4 @@ format 74
       
     end
   end
-
 end
