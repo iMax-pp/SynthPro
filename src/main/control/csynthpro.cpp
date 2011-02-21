@@ -67,7 +67,7 @@ void CSynthPro::add(Module* module)
     }
 }
 
-Module* CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF& pos)
+Module* CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPointF& pos, bool loadFile)
 {
     Module* module = 0;
 
@@ -103,13 +103,13 @@ Module* CSynthPro::addModule(SynthProFactory::ModuleType moduleType, const QPoin
         module = dynamic_cast<Module*>(m_factory->createSpeaker(this));
         break;
     case SynthProFactory::FileOutputId:
-        module = dynamic_cast<Module*>(m_factory->createWavRecorder(this));
+        module = dynamic_cast<Module*>(m_factory->createWavRecorder(this, loadFile));
         break;
     case SynthProFactory::OscilloscopeId:
         module = dynamic_cast<Module*>(m_factory->createOscilloscope(this));
         break;
     case SynthProFactory::WavLooperId:
-        module = dynamic_cast<Module*>(m_factory->createWavLooper(this));
+        module = dynamic_cast<Module*>(m_factory->createWavLooper(this, loadFile));
     default:
         break;
     }

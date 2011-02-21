@@ -28,7 +28,13 @@ void ModuleView::dropEvent(QDropEvent* event)
 {
     if (m_cSynthPro && event->mimeData()->hasFormat("application/x-synthpro")) {
         QtFactory::ModuleType moduleType = static_cast<QtFactory::ModuleType>(event->mimeData()->data("application/x-synthpro").toInt());
-        m_cSynthPro->addModule(moduleType, mapToScene(event->pos()));
+
+        if (moduleType == QtFactory::WavLooperId || moduleType == QtFactory::FileOutputId) {
+            m_cSynthPro->addModule(moduleType, mapToScene(event->pos()), true);
+        } else {
+            m_cSynthPro->addModule(moduleType, mapToScene(event->pos()));
+        }
+
         event->accept();
     } else {
         event->ignore();

@@ -17,7 +17,7 @@ public:
      */
     CWavRecorder(SynthPro*, int nbProcessingBeforeSaving = 0);
 
-    void initialize(SynthProFactory*);
+    void initialize(SynthProFactory*, bool loadFile);
 
     /// @returns a QString containing the different settings of this Module.
     virtual QString settings() const;

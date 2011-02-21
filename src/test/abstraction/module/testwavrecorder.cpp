@@ -17,7 +17,7 @@ void TestWavRecorder::testWavRecorder()
     QString fileName = "testWavRecorder.wav";
 
     SimpleFactory factory;
-    WavRecorder* mbr = factory.createWavRecorder(0, NB_ITERATIONS);
+    WavRecorder* mbr = factory.createWavRecorder(0, false, NB_ITERATIONS);
     mbr->newFile(fileName);
     mbr->startRecording();
     VCO* vco = factory.createVCO(0);

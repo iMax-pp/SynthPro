@@ -33,7 +33,7 @@ public:
      * Create a new Module with the given ModuleType and at the given QPointF.
      * @returns the created Module (conveniency for deserialization).
      */
-    Module* addModule(SynthProFactory::ModuleType, const QPointF&);
+    Module* addModule(SynthProFactory::ModuleType, const QPointF&, bool loadFile = false);
 
     /**
      * Show drag&drop feedback from given CVirtualPort to every single port.

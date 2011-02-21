@@ -143,14 +143,14 @@ Selector* SimpleFactory::createSelector(QList<int> keys, int defaultKey, QList<Q
 }
 
 
-WavRecorder* SimpleFactory::createWavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
+WavRecorder* SimpleFactory::createWavRecorder(SynthPro* parent, bool /*loadFile*/, int nbProcessingBeforeSaving)
 {
     WavRecorder* mbr = new WavRecorder(parent, nbProcessingBeforeSaving);
     mbr->initialize(this);
     return mbr;
 }
 
-WavLooper* SimpleFactory::createWavLooper(SynthPro* parent)
+WavLooper* SimpleFactory::createWavLooper(SynthPro* parent, bool /*loadFile*/)
 {
     WavLooper* wl = new WavLooper(parent);
     wl->initialize(this);
