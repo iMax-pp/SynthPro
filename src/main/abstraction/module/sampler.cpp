@@ -9,10 +9,8 @@
 #include "abstraction/synthpro.h"
 #include "factory/synthprofactory.h"
 
-#include <QDebug>
 #include <QFile>
 #include <QTextStream>
-
 
 Sampler::Sampler(SynthPro* synth) 
     : Module(synth)
@@ -100,7 +98,7 @@ void Sampler::stopRecording()
         m_sampleStart++;
 
     }
-    // qDebug() <<"##########################" << m_sampleStart;
+
     m_state = WAITING;
 
     m_recordButton->setEnabled(true);
@@ -124,12 +122,11 @@ void Sampler::startPlaying()
 void Sampler::ownProcess()
 {
     qreal speed = m_bpmDimmer->value();
-    // qDebug() << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " << speed;
+
     int sampleMaxInByte = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
     // do a loop in the buffer, test the state of the gate (and his evolution) and do the reading or writing necessary.
     for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
-
 
         m_gateState = m_gate->buffer()->data()[i] > 0;
 
@@ -169,8 +166,11 @@ void Sampler::ownProcess()
 
         case PLAYING :
             m_positionInBuffer += speed;
-            emit valueChanged(m_positionInBuffer);
-         //   qDebug() << "pos" << m_positionInBuffer << m_sampleStart;
+
+            if ((i % NB_VALUES_CHANGED_BEFORE_EMIT_VALUECHANGED) == 0) {
+                emit valueChanged(m_positionInBuffer);
+            }
+
             if (m_positionInBuffer > m_sampleSize && speed > 0) {
                 m_positionInBuffer = m_sampleStart;
             }
@@ -178,18 +178,18 @@ void Sampler::ownProcess()
                 m_positionInBuffer = m_sampleSize - 1;
             }
 
-
-
             m_outPort->buffer()->data()[i] = m_buffer->data()[(int)m_positionInBuffer];
             break;
 
         case RECORDING :
             m_buffer->data()[Buffer::DEFAULT_LENGTH * m_bufferIndex + i] = m_inPort->buffer()->data()[i];
 
-            // needed by the ui
-            emit valueChanged(m_sampleSize);
+            // Needed to update the UI, but no need to over-update it with signals !
+            if ((i % NB_VALUES_CHANGED_BEFORE_EMIT_VALUECHANGED) == 0) {
+                emit valueChanged(m_sampleSize);
+            }
 
-            // if we still record at the end of the buffer : increment m_bufferIndex
+            // If we still record at the end of the buffer : increment m_bufferIndex
             if (i == Buffer::DEFAULT_LENGTH - 1) {
                 m_bufferIndex++;
             }
