@@ -46,6 +46,8 @@ signals:
     void lengthChanged(int);
 
 protected:
+    static const int NB_VALUES_CHANGED_BEFORE_EMIT_VALUECHANGED = 2000; // Allow to limit sending to the UI.
+
     InPort* m_inPort;
     InPort* m_gate;
     OutPort* m_outPort;
@@ -59,7 +61,6 @@ protected:
 
     /// current index read or write in the class buffer.
     int m_bufferIndex;
-
 
     /// size of the sample in sample
     int m_sampleSize;
@@ -80,7 +81,6 @@ protected:
     static const qreal MIN_BPM = -2;
     static const qreal MAX_BPM = 2;
     static const qreal DEFAULT_BPM = 1;
-
 
     /// initialize or reinitialize the buffer for a new record.
     void initializeBuffer();

@@ -66,26 +66,37 @@ void Delay::ownProcess()
     m_readIndex = m_readIndex % delaySize;
     m_writeIndex = m_writeIndex  % delaySize;
 
+    int m_writeIndexMul = m_writeIndex*Buffer::DEFAULT_LENGTH;
+    int m_readIndexMul = m_readIndex*Buffer::DEFAULT_LENGTH;
+    qreal* ptBuffer1 = m_buffer1->data();
+    qreal* ptBuffer2 = m_buffer2->data();
+    qreal* ptBuffer3 = m_buffer3->data();
+
+    qreal* ptOutBuffer = m_outPort->buffer()->data();
+    qreal* ptInBuffer = m_inPort->buffer()->data();
+
+    qreal decayDimmerValue = m_decayDimmer->value();
+
     for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
         qreal outdata = 0;
 
+        outdata += ptBuffer1[m_readIndexMul + i];
 
-        outdata += m_buffer1->data()[m_readIndex*Buffer::DEFAULT_LENGTH + i];
         // set the buffer1 data on the buffer2 after multiply by decay
-        m_buffer2->data()[m_writeIndex*Buffer::DEFAULT_LENGTH + i] = outdata*m_decayDimmer->value();
-        m_buffer3->data()[m_writeIndex*Buffer::DEFAULT_LENGTH + i] =
-                m_buffer2->data()[m_readIndex*Buffer::DEFAULT_LENGTH + i]*m_decayDimmer->value();
+        ptBuffer2[m_writeIndexMul + i] = outdata * decayDimmerValue;
+        ptBuffer3[m_writeIndexMul + i] = ptBuffer2[m_readIndexMul + i] * decayDimmerValue;
+
         // add the buffer2 data to the output
-        outdata += m_buffer2->data()[m_readIndex*Buffer::DEFAULT_LENGTH + i];
-        outdata += m_buffer3->data()[m_readIndex*Buffer::DEFAULT_LENGTH + i];
+        outdata += ptBuffer2[m_readIndexMul + i];
+        outdata += ptBuffer3[m_readIndexMul + i];
 
-        outdata += m_inPort->buffer()->data()[i];
+        outdata += ptInBuffer[i];
+
         // write the output data in out buffer
-        m_outPort->buffer()->data()[i] = outdata;
-
+        ptOutBuffer[i] = outdata;
 
         // write on buffer1 the inport data
-        m_buffer1->data()[m_writeIndex*Buffer::DEFAULT_LENGTH + i] = (m_inPort->buffer()->data()[i])*m_decayDimmer->value();
+        ptBuffer1[m_writeIndexMul + i] = ptInBuffer[i] * decayDimmerValue;
     }
 
     m_writeIndex++;
