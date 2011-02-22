@@ -1,5 +1,5 @@
 \documentclass[frenchb]{beamer}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{babel}
 \usepackage{listings}
@@ -23,9 +23,9 @@ stringstyle=\ttfamily,
 showstringspaces=false}
 % no special string spaces
 	
-%\usetheme{CambridgeUS}
+\usetheme{CambridgeUS}
 %\usetheme{Hannover}
-\usetheme{Singapore}	
+%\usetheme{Singapore}	
 	
 \title[M2GL-VET]{Simulateur de synthétiseur de son analogique}
 \author{Maxime Simon, Julien Richard-Foy, Julien Névo \& Cyrille Folliot}
@@ -40,6 +40,8 @@ showstringspaces=false}
 \begin{frame}{Plan de l'intervention}
     \tableofcontents
 \end{frame}
+\section{introduction}
+
 
 \begin{frame}{Présentation du projet}
 \end{frame}
@@ -50,28 +52,57 @@ showstringspaces=false}
     \end{figure}
 \end{frame}
 \begin{frame}{Une équipe}
-    \begin{figure}
-        \includegraphics[width=8cm ]{../img/png/back.jpg}
-    \end{figure}
+    \begin{columns}
+        \begin{column}[l]{7cm}
+            \begin{figure}
+                \includegraphics[width=6cm ]{../img/png/back.jpg}
+            \end{figure}
+        \end{column}
+    \begin{column}[l]{9cm}
+    \begin{itemize}  
+        \item Julien Névo\\\tiny{Responsable projet}\normalsize
+        \item Julien Richard-Foy\\\tiny{Responsable conception}\normalsize
+        \item Maxime Simon\\\tiny{Responsable tests}\normalsize
+        \item Cyrille Folliot\\\tiny{Responsable documentation}\normalsize
+    \end{itemize}
+    \end{column}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{L'équipe}
-\begin{itemize}    \item Julien Névo~: Responsable projet
-    \item Julien Richard-Foy~: Responsable conception
-    \item Maxime Simon~: Responsable tests
-    \item Cyrille Folliot~: Responsable documentation
-\end{itemize}
-\end{frame}
 
 \begin{frame}{Organisation du travail}
-Le projet comportant deux parties que nous avons distingué lors de l'étude de conception~:
+L'organisation du travail a suivi le modèle PAC
+ \begin{columns}[t]
+  \begin{column}{5cm}
+  \begin{block}{Code métier~: Julien \& Cyrille}
+             \begin{itemize}
+                \item Moteur audio
+                \item Modules du synthétiseur
+            \end{itemize}    
+  \end{block} 
+  \end{column}
+  
+  \begin{column}{5cm}
+  \begin{block}{IHM~: Maxime \& Julien}
+            \begin{itemize}
+                \item Controlleurs PAC
+                \item Presentations PAC
+            \end{itemize}
+  \end{block}   
+  \end{column}
+ \end{columns}  
+\begin{block}{Le choix d'un développement itératif}
+Trois grandes étapes~:
 \begin{itemize}
-    \item La partie métier (Moteur audio et module du synthétiseur)~: Julien \& Cyrille
-    \item L'interface homme-machine~: Maxime \& Julien   
+    \item Construction du modèle de l'application : PIM \& PSM
+    \item Développement itératif, chaque itération aboutissant à un programme fonctionnel
+    \item Debuggage et optimisation
 \end{itemize}
+\end{block}
 \end{frame}
 
-\begin{frame}{Conception - PIM -- Abstraction}
+\section{conception}
+\begin{frame}{Conception -- PIM -- Abstraction}
 L'architecture de l'abstraction, c'est à dire de la couche métier :
     \begin{figure}
         \includegraphics[width=11cm ]{../img/ps/pim-abstraction.pdf}
@@ -79,6 +110,9 @@ L'architecture de l'abstraction, c'est à dire de la couche métier :
 
 
 \end{frame}
+
+\section{brouillon}
+\begin{frame}{Brouillon}
 Présentation du projet (JN)
 Membres de l'équipe
 Partage des tâches
@@ -87,6 +121,6 @@ Tests (C)
 Demo (M)
 Conclusion (JN)
 Retour de l'expérience
-
+\end{frame}
 
 \end{document}
