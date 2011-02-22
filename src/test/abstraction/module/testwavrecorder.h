@@ -1,6 +1,8 @@
 #ifndef TESTWAVRECORDER_H
 #define TESTWAVRECORDER_H
 
+class QFile;
+
 #include <QObject>
 
 /**
@@ -10,6 +12,28 @@
   */
 class TestWavRecorder : public QObject {
     Q_OBJECT
+
+private:
+    /**
+     * Read the given file (must be already open), and check if the format is correct.
+     * Returns the size of the actual data to read.
+     */
+    int checkWAVFileHeader(QFile*);
+
+    /**
+     * Read an int (32 bits) encoded in little endian from the given file.
+     */
+    int readLittleEndianInt(QFile*);
+
+    /**
+     * Read an short (16 bits) encoded in little endian from the given file.
+     */
+    int readLittleEndianShort(QFile*);
+
+    /**
+     * Convert a signed byte (8 bits) to an unsigned byte.
+     */
+    int convertByteToUnsignedByte(int);
 
 private slots:
     void testWavRecorder();

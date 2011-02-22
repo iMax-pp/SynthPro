@@ -21,8 +21,8 @@
 int main()
 {
 
-    TestSampler testSampler;
-    QTest::qExec(&testSampler);
+    //TestSampler testSampler;
+    //QTest::qExec(&testSampler);
 
 
     TestInPort testInPort;
@@ -61,8 +61,7 @@ int main()
     TestAudioDeviceProvider testAudioDeviceProvider;
     QTest::qExec(&testAudioDeviceProvider);
 
-    TestWavRecorder testWavRecorder;
-    QTest::qExec(&testWavRecorder);
+
 
     TestVCF testVCF;
     QTest::qExec(&testVCF);
@@ -79,4 +78,7 @@ int main()
 
     TestWavLooper testWavLooper;
     QTest::qExec(&testWavLooper);
+
+    TestWavRecorder testWavRecorder;
+    QTest::qExec(&testWavRecorder);
 }
