@@ -19,9 +19,13 @@ After the compilation of the application (into a `.app` bundle), use the tool pr
 
     $ macdeployqt bin/SynthPro.app
 
+You can use the `-dmg` flag to create a `.dmg` archive containing the bundle.
+
 ### On X11 platforms (GNU/Linux, BSDs…)
 
-TODO
+After the compilation (32-bit, as the libraries in `lib/` are 32-bit), create an archive (`.tar.gz` for instance) containing `bin/`, `lib/` and `SynthPro.sh`.
+
+It is recommended to add a README file to explain to users that the launching file is `SynthPro.sh` (and not directly `bin/SynthPro`).
 
 ### On Windows
 
