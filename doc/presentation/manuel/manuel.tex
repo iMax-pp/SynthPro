@@ -3,6 +3,7 @@
 \usepackage[mathletters]{ucs}
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
+\usepackage[francais]{babel}
 
 \usepackage{graphicx}
 % We will generate all images so they have a width \maxwidth. This means
@@ -10,7 +11,7 @@
 % are scaled down if they would overflow the margins.
 \usepackage[breaklinks=true,unicode=true,pdfborder={0 0 0}]{hyperref}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\parskip}{4pt plus 2pt minus 1pt}
 \setcounter{secnumdepth}{0}
 \usepackage{fullpage}
 
@@ -54,39 +55,40 @@ Lorsque vous lancez le logiciel, vous verrez apparaitre son interface :
 \end{itemize}
 \subsubsection{Les menus}
 
-Ils sont composés de deux options : File et Help, chacun possédant des
+Ils sont composés de deux options : \emph{File} et \emph{Help}, chacun possédant des
 sous-menus.
 
 \paragraph{File}
 
-\begin{itemize}
-\item
-  New : Vous permet de recommencer un nouveau montage, après
+\begin{description}
+\item[\emph{New}]
+  Vous permet de recommencer un nouveau montage, après
   confirmation de votre part d'effacer le montage courant.
-\item
-  Open : Vous permet de charger un montage que vous auriez au préalable
+\item[\emph{Open}]
+  Vous permet de charger un montage que vous auriez au préalable
   sauvegardé.
-\item
-  Save : Utilisez cette option pour sauvegarder votre montage dans le
+\item[\emph{Save}]
+  Utilisez cette option pour sauvegarder votre montage dans le
   fichier désiré. Vous pourrez ainsi le relire plus tard devant vos
   amis, épatés.
-\item
-  Play/Pause : Permet de stopper ou de rétablir la lecture du montage.
+\item[\emph{Play/Pause}]
+  Permet de stopper ou de rétablir la lecture du montage.
   Stopper la lecture revient à couper le son et stopper toute la gestion
   des modules en temps-réel.
-\item
-  Exit : Provoque la sortie de l'application.
-\end{itemize}
+\item[\emph{Exit}]
+  Provoque la sortie de l'application.
+\end{description}
+
 \paragraph{Help}
 
-\begin{itemize}
-\item
-  About : Donne des informations relatives au logiciel et ses
+\begin{description}
+\item[\emph{About}]
+  Donne des informations relatives au logiciel et ses
   développeurs.
-\item
-  About Qt : Donne des informations relatives au framework utilisé pour
+\item[\emph{About Qt}]
+  Donne des informations relatives au framework utilisé pour
   le développement de ce logiciel.
-\end{itemize}
+\end{description}
 \subsubsection{La barre d'outil}
 
 Les cinq actions disponibles dans la barre d'outils sont identiques à ce
@@ -666,10 +668,6 @@ terminé.
 
 Si vous souhaitez créer un nouvel enregistrement, cliquez de nouveau sur
 la disquette et vous pourrez choisir un nouveau fichier de destination.
-
-\subsection{Quelques montages type}
-
-TODO
 
 \subsection{Conclusion}
 
