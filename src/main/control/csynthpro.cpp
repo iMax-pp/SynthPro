@@ -268,7 +268,7 @@ void CSynthPro::loadFrom(const QString& filename)
         foreach (InPort* inport, connections.uniqueKeys()) {
             QList<QString> moduleList = connections.values(inport);
 
-            foreach (QString module, moduleList) {
+            foreach (const QString& module, moduleList) {
                 // Take each associated module of the inport and connect it to the given outport.
                 QStringList list = module.split(QRegExp("\\s+"), QString::SkipEmptyParts);
                 modulesList[list[0]]->outports()[list[1].toInt()]->connect(inport);

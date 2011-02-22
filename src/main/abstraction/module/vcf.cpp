@@ -17,6 +17,7 @@ VCF::VCF(SynthPro* parent)
     , m_out(0)
     , m_filterSelector(0)
     , m_rDimmer(0)
+    , m_cutOffDimmer(0)
 {
 }
 
@@ -49,9 +50,7 @@ void VCF::initialize(SynthProFactory* factory)
 
 VCF::~VCF()
 {
-    if (m_filter) {
-        delete m_filter;
-    }
+    delete m_filter;
 }
 
 void VCF::ownProcess()
@@ -71,9 +70,8 @@ void VCF::setResonance(qreal value)
 
 void VCF::filterChanged(int selectedValue)
 {
-    if (m_filter) {
-        delete m_filter;
-    }
+    delete m_filter;
+    m_filter = 0;
 
     QString filterType = m_filterFactory->selectorConversionMap()[selectedValue];
     m_filter = m_filterFactory->createFilter(filterType);

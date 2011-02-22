@@ -5,6 +5,8 @@
 
 Oscilloscope::Oscilloscope(SynthPro* parent)
     : Module(parent)
+    , m_inPort(0)
+    , m_stabilizeControl(0)
     , m_stabilized(false)
 {
 }

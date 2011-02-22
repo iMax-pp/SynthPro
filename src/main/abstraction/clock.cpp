@@ -31,8 +31,9 @@ Clock::~Clock()
 {
     if (m_internalTimer) {
         m_internalTimer->stop();
-        delete m_internalTimer;
     }
+
+    delete m_internalTimer;
 }
 
 Clock& Clock::instance()

@@ -16,10 +16,19 @@
 
 Sampler::Sampler(SynthPro* synth) 
     : Module(synth)
+    , m_inPort(0)
+    , m_gate(0)
+    , m_outPort(0)
+    , m_bpmDimmer(0)
+    , m_recordButton(0)
+    , m_stopButton(0)
+    , m_playButton(0)
+    , m_buffer(0)
     , m_bufferIndex(0)
     , m_sampleSize(0)
     , m_gateState(false)
     , m_oldGateState(false)
+    , m_state(EMPTY)
     , m_positionInBuffer(0)
     , m_sampleStart(0)
 {
@@ -66,8 +75,6 @@ void Sampler::initialize(SynthProFactory* factory)
     for (int i = 0; i < buffer_length; i++) {
         m_buffer->data()[i] = 0;
     }
-
-    m_state = EMPTY;
 }
 
 void Sampler::startRecording()

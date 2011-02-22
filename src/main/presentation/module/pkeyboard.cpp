@@ -13,6 +13,7 @@
 
 PKeyboard::PKeyboard(CKeyboard* control)
     : PModule(control)
+    , m_pKeyboardView(0)
 {
 }
 

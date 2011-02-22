@@ -13,8 +13,18 @@
 
 Delay::Delay(SynthPro* parent)
     : Module(parent)
+    , m_inPort(0)
+    , m_outPort(0)
+    , m_buffer1(0)
+    , m_buffer2(0)
+    , m_buffer3(0)
+    , m_durationDimmer(0)
+    , m_decayDimmer(0)
+    , m_delaySizeMax(BUFFER_DURATION_MAX * AudioDeviceProvider::OUTPUT_FREQUENCY)
     , m_readIndex(1)
     , m_writeIndex(0)
+    , m_readIndex2(1)
+    , m_writeIndex2(0)
 {
 }
 
@@ -27,9 +37,6 @@ Delay::~Delay()
 
 void Delay::initialize(SynthProFactory* factory)
 {
-    m_delaySizeMax = BUFFER_DURATION_MAX *  AudioDeviceProvider::OUTPUT_FREQUENCY;
-
-
     m_buffer1 = new Buffer(m_delaySizeMax);
     m_buffer2 = new Buffer(m_delaySizeMax);
     m_buffer3 = new Buffer(m_delaySizeMax);

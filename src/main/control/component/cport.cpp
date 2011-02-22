@@ -113,11 +113,11 @@ void CPort::drop(CPort* target)
 {
     m_dropablePort = 0; // Clean-up
     dynamic_cast<CSynthPro*>(vPort()->module()->synthPro())->hideFeedback();
+
     // Delete the temporary wire
-    if (m_tmpWire) {
-        delete m_tmpWire;
-        m_tmpWire = 0;
-    }
+    delete m_tmpWire;
+    m_tmpWire = 0;
+
     CPort* source = reconnecting() ? m_oldConnection : this;
     // If the user dropped on a target, try to connect to it
     if (target) {

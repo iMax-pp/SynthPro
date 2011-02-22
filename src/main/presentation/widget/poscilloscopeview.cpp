@@ -35,7 +35,6 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
 
     int middleY = HEIGHT / 2;
     int previousY = middleY;
-    int usedBufferSize;
 
     if (m_inBuffer) {
         qreal* data = m_inBuffer->data();
@@ -81,6 +80,8 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
                 indexBuffer = 0;
             }
         }
+
+        int usedBufferSize;
 
         if (m_stabilized) {
             // If stabilized, we need to cut a bit of the signal in order to always display
