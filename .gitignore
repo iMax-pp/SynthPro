@@ -11,4 +11,4 @@ Info.plist
 Makefile
 doc/conception/*.session
 doc/sources
-!doc/conception/Makefile
+!doc/presentation/Makefile
