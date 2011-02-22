@@ -1,6 +1,6 @@
 format 74
 "conception-pim"
-  revision 9
+  revision 10
   modified_by 2 "julien"
 
 
@@ -590,7 +590,7 @@ ${inlines}
     end
 
     class 135810 "Sequencer"
-      visibility package 
+      visibility package stereotype "singleton"
       cpp_decl "${comment}${template}class ${name}${inherit} {
 ${members}};
 ${inlines}
@@ -839,7 +839,6 @@ ${inlines}
       classrelation 156802 // control (<composition>)
 	relation_ref 156290 // <composition>
       end
-
     end
 
     class 155906 "ValueFormat"
