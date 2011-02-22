@@ -3,6 +3,7 @@
 #include "abstraction/module.h"
 #include "control/cmodule.h"
 #include "control/csynthpro.h"
+#include <typeinfo>
 
 void operator<<(QTextStream& stream, const CSynthPro& synthPro)
 {
