@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 26
+  revision 27
   modified_by 2 "julien"
 
 
@@ -161,7 +161,6 @@ format 74
 	  b role_name "" private
 	    classrelation_ref 129539 // <composition>
       end
-
     end
 
     class 141699 "Module"
