@@ -1,9 +1,12 @@
 .DS_Store
 *~
+*.aux
 *.log
 *.o
+*.out
 *.pro.user*
 *.pyc
+*.session
 *.xcodeproj
 bin
 build
@@ -12,4 +15,3 @@ Makefile
 doc/conception/*.session
 doc/sources
 !doc/presentation/Makefile
-*.session
