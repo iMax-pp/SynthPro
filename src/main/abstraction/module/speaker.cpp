@@ -15,6 +15,7 @@ Speaker::Speaker(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
     : Module(parent)
     , TimeCriticalModule(parent)
     , m_device(device)
+    , m_inPort(0)
     , m_audioOutput(audioOutput)
     , m_generationBuffer(0)
     , m_generationBufferIndex(0)
@@ -33,9 +34,7 @@ Speaker::~Speaker()
     AudioDeviceProvider& adp = AudioDeviceProvider::instance();
     adp.releaseDevice();
 
-    if (m_generationBuffer) {
-        delete[] m_generationBuffer;
-    }
+    delete[] m_generationBuffer;
 }
 
 void Speaker::initialize(SynthProFactory* factory)

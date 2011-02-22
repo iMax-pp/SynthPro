@@ -9,6 +9,13 @@
 
 ADSR::ADSR(SynthPro* parent)
     : Module(parent)
+    , m_gate(0)
+    , m_outPort(0)
+    , m_attackDimmer(0)
+    , m_decayDimmer(0)
+    , m_sustainDimmer(0)
+    , m_releaseDimmer(0)
+    , m_manualControl(0)
     , m_timeLine(0)
     , m_currentState(IDLE)
     , m_gateValue(0)

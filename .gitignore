@@ -1,5 +1,6 @@
 .DS_Store
 *~
+*.log
 *.o
 *.pro.user*
 *.pyc
@@ -10,4 +11,4 @@ Info.plist
 Makefile
 doc/conception/*.session
 doc/sources
-*.log
+!doc/presentation/Makefile

@@ -27,9 +27,8 @@ AudioDeviceProvider::~AudioDeviceProvider()
 {
     releaseDevice();
     stop();
-    if (m_audioOutput) {
-        delete m_audioOutput;
-    }
+
+    delete m_audioOutput;
 }
 
 AudioDeviceProvider& AudioDeviceProvider::instance()

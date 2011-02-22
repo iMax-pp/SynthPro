@@ -7,6 +7,10 @@
 
 VCA::VCA(SynthPro* parent)
     : Module(parent)
+    , m_inPort(0)
+    , m_controlInput(0)
+    , m_outPort(0)
+    , m_gainDimmer(0)
 {
 }
 

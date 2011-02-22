@@ -47,10 +47,7 @@ void LFO::initialize(SynthProFactory* factory)
 
 LFO::~LFO()
 {
-    if (m_waveGenerator) {
-        delete m_waveGenerator;
-    }
-
+    delete m_waveGenerator;
     delete m_lfoBuffer;
 }
 
@@ -103,9 +100,8 @@ void LFO::setOffset(qreal value)
 
 void LFO::waveShapeChanged(int selectedValue)
 {
-    if (m_waveGenerator) {
-        delete m_waveGenerator;
-    }
+    delete m_waveGenerator;
+    m_waveGenerator = 0;
 
     QString waveType = m_waveGeneratorFactory->selectorConversionMap()[selectedValue];
     m_waveGenerator = m_waveGeneratorFactory->createWaveGenerator(waveType);

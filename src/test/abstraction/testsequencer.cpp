@@ -64,7 +64,6 @@ void TestSequencer::testSortCyclingModules()
     m2.output.connect(&m3.input); // m2 −> m3
     m2.output.connect(&m1.input); // m2 −> m1
 
-    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QCOMPARE(result, QString("123"));
@@ -99,7 +98,6 @@ void TestSequencer::testSortTwoWells()
     m1.output.connect(&m3.input); // m1 −> m3
     m3.output.connect(&m4.input); // m3 −> m4
 
-    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QVERIFY(result.startsWith('1'));
@@ -128,7 +126,6 @@ void TestSequencer::testSortNoWell()
 
     m1.output.connect(&m2.input); // m1 −> m2
 
-    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QCOMPARE(result, QString("")); // No processing at all since theres no well!
@@ -162,7 +159,6 @@ void TestSequencer::testSortMixer()
     QVERIFY(m3.requirements().contains(&m1));
     QVERIFY(m3.requirements().contains(&m2));
 
-    sequencer.scheduleModules(&synthpro);
     sequencer.process();
 
     QVERIFY(result.endsWith('3'));
@@ -190,10 +186,7 @@ void TestSequencer::testVCOAndSerializer()
 
     vco->outports().first()->connect(&output.input);
 
-    sequencer.scheduleModules(synthpro);
     sequencer.process();
 
     QVERIFY(result.startsWith(QString::number(VCO::SIGNAL_INTENSITY)));
-
-//    delete synthpro;
 }

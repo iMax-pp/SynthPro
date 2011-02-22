@@ -44,6 +44,7 @@ void SynthPro::remove(QObject* object)
 
     module->prepareDestruction();
     delete module;
+    module = 0;
 }
 
 void SynthPro::connectionsChanged()

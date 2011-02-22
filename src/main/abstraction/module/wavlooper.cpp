@@ -28,9 +28,7 @@ WavLooper::~WavLooper()
         m_inputFile->close();
     }
 
-    if (m_internalBuffer) {
-        delete m_internalBuffer;
-    }
+    delete m_internalBuffer;
 }
 
 void WavLooper::initialize(SynthProFactory* factory)
@@ -64,10 +62,8 @@ bool WavLooper::newFile(const QString& filename)
     }
 
     if (!result) {
-        if (m_internalBuffer) {
-            delete[] m_internalBuffer;
-            m_internalBuffer = 0;
-        }
+        delete[] m_internalBuffer;
+        m_internalBuffer = 0;
     }
 
     m_positionInInternalBuffer = 0;
@@ -135,10 +131,8 @@ bool WavLooper::readWavFile(QFile* file)
     file->read(4); // Skip data chunk size.
 
     // Delete the previous buffer, if any.
-    if (m_internalBuffer) {
-        delete m_internalBuffer;
-        m_internalBuffer = 0;
-    }
+    delete m_internalBuffer;
+    m_internalBuffer = 0;
 
     // Copy the wave into the buffer.
     int wavSize = (file->size() - file->pos()) / 2; // /2 because we stock only qreal, but read double char.

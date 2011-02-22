@@ -5,6 +5,8 @@
 
 Keyboard::Keyboard(SynthPro* parent)
     : Module(parent)
+    , m_outPortFrequency(0)
+    , m_outPortGate(0)
     , m_keyPressedNumber(0)
     , m_pressed(false)
 {
