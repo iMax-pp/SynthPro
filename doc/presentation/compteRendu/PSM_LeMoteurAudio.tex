@@ -77,8 +77,11 @@ arbitraire de 10 itérations). Lors de l'appel au séquenceur,
 celui-ci appelle la fonction \verb!process()! du module
 \verb!Speaker!.
 
-\textbf{TODO : ajouter diagramme de classe}
-
+\begin{figure}[htb]
+\centering
+\includegraphics[width=17cm]{../img/ps/psm_unusedAudioEngine.pdf}
+\caption{Diagramme de séquence du moteur audio inutilisé car non fonctionnel}
+\end{figure}
 Celui-ci dispose d'un buffer circulaire qui contient des données
 formatées pour être envoyées à la carte son (format char, little
 endian). L'appel à \verb!process()! ayant au préalable mis à jour
@@ -131,7 +134,17 @@ conséquence, les méthodes \verb!registerFastTimer! et
 
 L'avantage de cette méthode est indéniable : elle fonctionne en
 pratique. La latence est très faible et le son stable.
+\begin{figure}[htb]
+\centering
+\includegraphics[width=17cm]{../img/ps/psm_currentAudioEngine.pdf}
+\caption{Moteur Audio utilisé par l'application}
+\end{figure}
 
-\textbf{TODO : Ajout de PSM\_currentAudioEngine.svg}
-\textbf{TODO : Ajout de psm\_currentAudioEngine\_Sequence.svg}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=17cm]{../img/ps/psm_currentAudioEngine_Sequence.pdf}
+\caption{Diagramme de séquence du moteur audio utilisé}
+\end{figure}
+
+
 
