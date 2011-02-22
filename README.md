@@ -7,8 +7,25 @@ SynthPro is a modular anolgic synthesizer simulator.
 
 ## UML Diagrams
 
-[PicasaWeb](http://picasaweb.google.com/simon.maxime/SynthPro?authkey=Gv1sRgCND6ouPy7s6rvAE)
+[PicasaWeb](http://picasaweb.google.com/simon.maxime/SynthPro?authkey=Gv1sRgCND6ouPy7s6rvAE) **(outdated)**
 
+## Deployment
+
+Here is a quick guide to deploy a standalone version of SynthPro for each platform.
+
+### On OS X
+
+After the compilation of the application (into a `.app` bundle), use the tool provided with Qt, `macdeployqt`, to make it a standalone bundle (it will integrate Qt binaries in your bundle).
+
+    $ macdeployqt bin/SynthPro.app
+
+### On X11 platforms (GNU/Linux, BSDs…)
+
+TODO
+
+### On Windows
+
+TODO *(maybe)*
 
 ## Tests
 
