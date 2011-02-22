@@ -1,27 +1,26 @@
-\documentclass{article}
+\documentclass[plain]{article}
 \usepackage{amssymb,amsmath}
 \usepackage[mathletters]{ucs}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[francais]{babel}
+
 \usepackage{graphicx}
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
 % are scaled down if they would overflow the margins.
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
-\else\Gin@nat@width\fi}
-\makeatother
-\let\Oldincludegraphics\includegraphics
-\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 \usepackage[breaklinks=true,unicode=true,pdfborder={0 0 0}]{hyperref}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\parskip}{4pt plus 2pt minus 1pt}
 \setcounter{secnumdepth}{0}
+\usepackage{fullpage}
 
+\title{Manuel utilisateur}
+\author{The BackSynth Boys}
 
 \begin{document}
 
-\section{Manuel utilisateur}
+\maketitle
 
 \subsection{Introduction}
 
@@ -56,39 +55,40 @@ Lorsque vous lancez le logiciel, vous verrez apparaitre son interface :
 \end{itemize}
 \subsubsection{Les menus}
 
-Ils sont composés de deux options : File et Help, chacun possédant des
+Ils sont composés de deux options : \emph{File} et \emph{Help}, chacun possédant des
 sous-menus.
 
 \paragraph{File}
 
-\begin{itemize}
-\item
-  New : Vous permet de recommencer un nouveau montage, après
+\begin{description}
+\item[\emph{New}]
+  Vous permet de recommencer un nouveau montage, après
   confirmation de votre part d'effacer le montage courant.
-\item
-  Open : Vous permet de charger un montage que vous auriez au préalable
+\item[\emph{Open}]
+  Vous permet de charger un montage que vous auriez au préalable
   sauvegardé.
-\item
-  Save : Utilisez cette option pour sauvegarder votre montage dans le
+\item[\emph{Save}]
+  Utilisez cette option pour sauvegarder votre montage dans le
   fichier désiré. Vous pourrez ainsi le relire plus tard devant vos
   amis, épatés.
-\item
-  Play/Pause : Permet de stopper ou de rétablir la lecture du montage.
+\item[\emph{Play/Pause}]
+  Permet de stopper ou de rétablir la lecture du montage.
   Stopper la lecture revient à couper le son et stopper toute la gestion
   des modules en temps-réel.
-\item
-  Exit : Provoque la sortie de l'application.
-\end{itemize}
+\item[\emph{Exit}]
+  Provoque la sortie de l'application.
+\end{description}
+
 \paragraph{Help}
 
-\begin{itemize}
-\item
-  About : Donne des informations relatives au logiciel et ses
+\begin{description}
+\item[\emph{About}]
+  Donne des informations relatives au logiciel et ses
   développeurs.
-\item
-  About Qt : Donne des informations relatives au framework utilisé pour
+\item[\emph{About Qt}]
+  Donne des informations relatives au framework utilisé pour
   le développement de ce logiciel.
-\end{itemize}
+\end{description}
 \subsubsection{La barre d'outil}
 
 Les cinq actions disponibles dans la barre d'outils sont identiques à ce
@@ -229,9 +229,9 @@ pourrez utiliser.
 
 \subsubsection{VCO}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/vco.png}
+\includegraphics[scale=0.5]{../img/png/vco.png}
 \caption{VCO}
 \end{figure}
 
@@ -265,9 +265,9 @@ signal, il faut alors connecter le VCO à un VCA.
 
 \subsubsection{VCA}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/vca.png}
+\includegraphics[scale=0.5]{../img/png/vca.png}
 \caption{VCA}
 \end{figure}
 
@@ -283,9 +283,9 @@ additionée avec le \verb!Gain! donné par le potentiomètre.
 
 \subsubsection{VCF}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/vcf.png}
+\includegraphics[scale=0.5]{../img/png/vcf.png}
 \caption{VCF}
 \end{figure}
 
@@ -339,9 +339,9 @@ de saturation pour le filtre de saturation douce.
 
 \subsubsection{ADSR}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/adsr.png}
+\includegraphics[scale=0.5]{../img/png/adsr.png}
 \caption{ADSR}
 \end{figure}
 
@@ -404,9 +404,9 @@ dans sa phase \verb!Release!.
 
 \subsubsection{LFO}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/lfo.png}
+\includegraphics[scale=0.5]{../img/png/lfo.png}
 \caption{LFO}
 \end{figure}
 
@@ -452,9 +452,9 @@ fréquence choisie, par exemple.
 
 \subsubsection{Delay}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/delay.png}
+\includegraphics[scale=0.5]{../img/png/delay.png}
 \caption{Delay}
 \end{figure}
 
@@ -479,9 +479,9 @@ dans l'entrée \verb!In!.
 
 \subsubsection{Mixer}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/mixer.png}
+\includegraphics[scale=0.5]{../img/png/mixer.png}
 \caption{Mixer}
 \end{figure}
 
@@ -494,9 +494,9 @@ sortie audio, la rendant désagréable à écouter.
 
 \subsubsection{Sampler}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/sampler.png}
+\includegraphics[scale=0.5]{../img/png/sampler.png}
 \caption{Sampler}
 \end{figure}
 
@@ -540,9 +540,9 @@ lecture.
 
 \subsubsection{Oscilloscope}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/oscilloscope.png}
+\includegraphics[scale=0.5]{../img/png/oscilloscope.png}
 \caption{Oscilloscope}
 \end{figure}
 
@@ -561,9 +561,9 @@ désactivée.
 
 \subsubsection{Keyboard}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/keyboard.png}
+\includegraphics[scale=0.5]{../img/png/keyboard.png}
 \caption{Keyboard}
 \end{figure}
 
@@ -604,9 +604,9 @@ relâchée.
 
 \subsubsection{Speaker}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/speaker.png}
+\includegraphics[scale=0.5]{../img/png/speaker.png}
 \caption{Speaker}
 \end{figure}
 
@@ -624,9 +624,9 @@ rapports que vous entretenez avec vos voisins.
 
 \subsubsection{WAV Looper}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/wavlooper.png}
+\includegraphics[scale=0.5]{../img/png/wavlooper.png}
 \caption{WAV Looper}
 \end{figure}
 
@@ -652,9 +652,9 @@ plus lente.
 
 \subsubsection{File Output}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics{../img/png/wavrecorder.png}
+\includegraphics[scale=0.5]{../img/png/wavrecorder.png}
 \caption{File Output}
 \end{figure}
 
@@ -668,10 +668,6 @@ terminé.
 
 Si vous souhaitez créer un nouvel enregistrement, cliquez de nouveau sur
 la disquette et vous pourrez choisir un nouveau fichier de destination.
-
-\subsection{Quelques montages type}
-
-TODO
 
 \subsection{Conclusion}
 
