@@ -1,8 +1,8 @@
 all : slides manual cr
 
 
-slides :
-	pdflatex slides.tex
+slides: slides/slides.tex
+	pdflatex -output-directory="slides" slides/slides.tex
 
 manual :
 	pdflatex manuel/manuel.tex

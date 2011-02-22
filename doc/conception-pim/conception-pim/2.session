@@ -1,15 +1,7 @@
-window_sizes 1280 782 178 1096 609 91
-diagrams
-  active  classdiagram_ref 134658 // pacdimmer
-    1096 609 100 4 0 0
-  classdiagram_ref 128130 // pim
-    1096 615 100 18 0 0
-end
+window_sizes 1200 700 300 894 448 176
 show_stereotypes
-selected classdiagram_ref 134658 // pacdimmer
+selected 
+package_ref 129 // conception-pim
 open
-  class_ref 156034 // GainFormat
-  class_ref 156162 // TimeFormat
-  class_ref 156290 // PercentageFormat
 end
 end

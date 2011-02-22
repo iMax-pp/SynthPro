@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Bouml (http://bouml.free.fr/) -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="632" height="344" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<g>
+	<rect fill="none" stroke="black" stroke-width="1" stroke-opacity="1" x="4" y="6" width="245" height="19" />
+	<rect fill="none" stroke="black" stroke-width="1" stroke-opacity="1" x="4" y="25" width="616" height="307" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" text-anchor="middle" x="312" y="37">component</text>
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="367" y1="200" x2="363" y2="192" />
+	<line stroke="black" stroke-opacity="1" x1="367" y1="200" x2="359" y2="203" />
+	<line stroke="black" stroke-opacity="1" x1="278" y1="173" x2="367" y2="200" />
+	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="278,173 285,169 289,176 281,180" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="126" y1="280" x2="133" y2="284" />
+	<line stroke="black" stroke-opacity="1" x1="126" y1="280" x2="130" y2="272" />
+	<line stroke="black" stroke-opacity="1" x1="367" y1="221" x2="126" y2="280" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="345" y1="284" x2="353" y2="283" />
+	<line stroke="black" stroke-opacity="1" x1="345" y1="284" x2="344" y2="275" />
+	<line stroke="black" stroke-opacity="1" x1="388" y1="233" x2="345" y2="284" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="104" y1="262" x2="116" y2="227" />
+	<line stroke="black" stroke-opacity="1" x1="118" y1="222" x2="110" y2="225" />
+	<line stroke="black" stroke-opacity="1" x1="118" y1="222" x2="121" y2="229" />
+	<line stroke="black" stroke-opacity="1" x1="110" y1="225" x2="121" y2="229" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="309" y1="284" x2="248" y2="226" />
+	<line stroke="black" stroke-opacity="1" x1="244" y1="222" x2="244" y2="230" />
+	<line stroke="black" stroke-opacity="1" x1="244" y1="222" x2="252" y2="221" />
+	<line stroke="black" stroke-opacity="1" x1="244" y1="230" x2="252" y2="221" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="346" y1="118" x2="339" y2="112" />
+	<line stroke="black" stroke-opacity="1" x1="346" y1="118" x2="340" y2="124" />
+	<line stroke="black" stroke-opacity="1" x1="278" y1="124" x2="346" y2="118" />
+	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="278,124 283,117 289,122 284,129" />
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="355" y="289" width="3" height="35" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="307" y="321" width="51" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="303" y="285" width="52" height="36" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="329" y="296">OutPort</text>
+	<line stroke="black" stroke-opacity="1" x1="303" y1="305" x2="355" y2="305" />
+	<line stroke="black" stroke-opacity="1" x1="303" y1="313" x2="355" y2="313" />
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="457" y="83" width="3" height="65" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="351" y="145" width="109" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="347" y="79" width="110" height="66" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="402" y="90">Buffer</text>
+	<line stroke="black" stroke-opacity="1" x1="347" y1="99" x2="457" y2="99" />
+	<line stroke="black" stroke-opacity="1" x1="347" y1="107" x2="457" y2="107" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="351" y="118">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="365" y="118">length() : Integer</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="351" y="136">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="365" y="136">data() : Real [*]</text>
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="440" y="197" width="3" height="35" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="372" y="229" width="71" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="368" y="193" width="72" height="36" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="404" y="204">Connection</text>
+	<line stroke="black" stroke-opacity="1" x1="368" y1="213" x2="440" y2="213" />
+	<line stroke="black" stroke-opacity="1" x1="368" y1="221" x2="440" y2="221" />
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="591" y="203" width="3" height="95" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="477" y="295" width="117" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="473" y="199" width="118" height="96" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="532" y="210">Dimmer</text>
+	<line stroke="black" stroke-opacity="1" x1="473" y1="219" x2="591" y2="219" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="477" y="230">-</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="491" y="230">min : Real</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="477" y="248">-</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="491" y="248">max : Real</text>
+	<line stroke="black" stroke-opacity="1" x1="473" y1="257" x2="591" y2="257" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="477" y="268">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="491" y="268">value() : Real</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="477" y="286">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="491" y="286">setValue(v : Real)</text>
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="607" y="89" width="3" height="59" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="487" y="145" width="123" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="483" y="85" width="124" height="60" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="545" y="96">Selector</text>
+	<line stroke="black" stroke-opacity="1" x1="483" y1="105" x2="607" y2="105" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="487" y="116">-</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="501" y="116">choices : Integer [*]</text>
+	<line stroke="black" stroke-opacity="1" x1="483" y1="125" x2="607" y2="125" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="487" y="136">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="501" y="136">choice() : Integer</text>
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="122" y="267" width="3" height="47" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="70" y="311" width="55" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="66" y="263" width="56" height="48" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="94" y="274">InPort</text>
+	<line stroke="black" stroke-opacity="1" x1="66" y1="283" x2="122" y2="283" />
+	<line stroke="black" stroke-opacity="1" x1="66" y1="291" x2="122" y2="291" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="70" y="302">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="84" y="302">fetch()</text>
+</g>
+<g>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="274" y="54" width="3" height="167" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="32" y="218" width="245" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="28" y="50" width="246" height="168" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" font-style="italic" text-anchor="middle" x="151" y="61">VirtualPort</text>
+	<line stroke="black" stroke-opacity="1" x1="28" y1="70" x2="274" y2="70" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="32" y="81">-</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="46" y="81">name : String</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="32" y="99">-</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="46" y="99">replicable : Boolean</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="32" y="117">-</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="46" y="117">gate : Boolean</text>
+	<line stroke="black" stroke-opacity="1" x1="28" y1="126" x2="274" y2="126" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="32" y="137">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="46" y="137">connect(other : VirtualPort) : Connection</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="32" y="155">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="46" y="155">disconnect( : Connection) : Boolean</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="32" y="173">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="46" y="173">connectable(other : VirtualPort) : Boolean</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="32" y="191">+</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="46" y="191">available() : Boolean</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" x="32" y="209">#</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="46" y="209">compatible( : VirtualPort) : Boolean</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="327" y="184">connections</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="350" y="209">*</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="136" y="266">target</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="136" y="295">1</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="361" y="272">source</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="334" y="272">1</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="305" y="106">buffer</text>
+</g>
+<g>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="329" y="135">1</text>
+</g>
+</svg>
