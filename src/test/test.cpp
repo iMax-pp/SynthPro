@@ -21,8 +21,8 @@
 int main()
 {
 
-    //TestSampler testSampler;
-    //QTest::qExec(&testSampler);
+    TestSampler testSampler;
+    QTest::qExec(&testSampler);
 
 
     TestInPort testInPort;

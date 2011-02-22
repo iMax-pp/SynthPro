@@ -40,7 +40,7 @@ void TestWavRecorder::testWavRecorder()
     }
 
     bool result;
-    //result = file.seek(SKIP_HEADER_OFFSET);
+    // result = file.seek(SKIP_HEADER_OFFSET);
 
     // Check the validity of the WAV header.
     // It should be a WAV format. Only 44100hz, 16 bits, mono samples are accepted.
