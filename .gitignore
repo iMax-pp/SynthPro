@@ -3,6 +3,7 @@
 *.aux
 *.log
 *.o
+*.out
 *.pro.user*
 *.pyc
 *.session
