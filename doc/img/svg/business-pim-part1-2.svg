@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Bouml (http://bouml.free.fr/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="526"
+   height="383"
+   version="1.1"
+   id="svg3708"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="business-pim-part1-3.svg">
+  <metadata
+     id="metadata3958">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3956">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 191.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="526 : 191.5 : 1"
+       inkscape:persp3d-origin="263 : 127.66667 : 1"
+       id="perspective3960" />
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="782"
+     id="namedview3954"
+     showgrid="false"
+     inkscape:zoom="1.2845953"
+     inkscape:cx="282.72752"
+     inkscape:cy="223.26731"
+     inkscape:window-x="-2"
+     inkscape:window-y="-1"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3708" />
+  <g
+     id="g3718">
+    <rect
+       fill="#808080"
+       stroke="none"
+       stroke-opacity="1"
+       x="223"
+       y="16"
+       width="3"
+       height="35"
+       id="rect3720" />
+    <rect
+       fill="#808080"
+       stroke="none"
+       stroke-opacity="1"
+       x="167"
+       y="48"
+       width="59"
+       height="3"
+       id="rect3722" />
+    <rect
+       fill="#ffffc0"
+       stroke="black"
+       stroke-width="1"
+       stroke-opacity="1"
+       x="163"
+       y="12"
+       width="60"
+       height="36"
+       id="rect3724" />
+    <text
+       font-family="Helvetica"
+       font-size="9"
+       fill="#000000"
+       xml:space="preserve"
+       font-weight="bold"
+       text-anchor="middle"
+       x="193"
+       y="23"
+       id="text3726">SynthPro</text>
+    <line
+       stroke="black"
+       stroke-opacity="1"
+       x1="163"
+       y1="32"
+       x2="223"
+       y2="32"
+       id="line3728" />
+    <line
+       stroke="black"
+       stroke-opacity="1"
+       x1="163"
+       y1="40"
+       x2="223"
+       y2="40"
+       id="line3730" />
+  </g>
+  <g
+     id="g3790">
+    <rect
+       fill="#808080"
+       stroke="none"
+       stroke-opacity="1"
+       x="221"
+       y="83"
+       width="3"
+       height="85"
+       id="rect3792" />
+    <rect
+       fill="#808080"
+       stroke="none"
+       stroke-opacity="1"
+       x="39"
+       y="165"
+       width="185"
+       height="3"
+       id="rect3794" />
+    <rect
+       fill="#ffffc0"
+       stroke="black"
+       stroke-width="1"
+       stroke-opacity="1"
+       x="35"
+       y="79"
+       width="186"
+       height="86"
+       id="rect3796" />
+    <text
+       font-family="Helvetica"
+       font-size="9"
+       fill="#000000"
+       xml:space="preserve"
+       text-anchor="middle"
+       x="128"
+       y="90"
+       id="text3798">&lt;&lt;singleton&gt;&gt;</text>
+    <text
+       font-family="Helvetica"
+       font-size="9"
+       fill="#000000"
+       xml:space="preserve"
+       font-weight="bold"
+       text-anchor="middle"
+       x="128"
+       y="110"
+       id="text3800">Sequencer</text>
+    <line
+       stroke="black"
+       stroke-opacity="1"
+       x1="35"
+       y1="119"
+       x2="221"
+       y2="119"
+       id="line3802" />
+    <line
+       stroke="black"
+       stroke-opacity="1"
+       x1="35"
+       y1="127"
+       x2="221"
+       y2="127"
+       id="line3804" />
+    <text
+       font-family="Helvetica"
+       font-size="9"
+       fill="#000000"
+       xml:space="preserve"
+       font-weight="bold"
+       x="39"
+       y="138"
+       id="text3806">+</text>
+    <text
+       font-family="Helvetica"
+       font-size="9"
+       fill="#000000"
+       xml:space="preserve"
+       x="53"
+       y="138"
+       id="text3808">process()</text>
+    <text
+       font-family="Helvetica"
+       font-size="9"
+       fill="#000000"
+       xml:space="preserve"
+       font-weight="bold"
+       x="39"
+       y="156"
+       id="text3810">+</text>
+    <text
+       font-family="Helvetica"
+       font-size="9"
+       fill="#000000"
+       xml:space="preserve"
+       x="53"
+       y="156"
+       id="text3812">scheduleModules( : SynthPro)</text>
+  </g>
+</svg>

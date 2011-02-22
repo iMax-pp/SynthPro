@@ -1,7 +1,17 @@
-window_sizes 1200 700 300 894 448 176
+window_sizes 1280 782 233 1041 611 95
+diagrams
+  classdiagram_ref 128130 // pim
+    715 358 100 18 0 0
+  classdiagram_ref 141186 // pim-part1
+    779 424 100 18 0 0
+  classdiagram_ref 141314 // pim-light
+    832 488 100 18 0 0
+  active  classdiagram_ref 141442 // pim-part2
+    1041 611 100 18 0 0
+end
 show_stereotypes
-selected 
-package_ref 129 // conception-pim
+selected classdiagram_ref 141442 // pim-part2
 open
+  classview_ref 128130 // pim
 end
 end
