@@ -8,7 +8,7 @@ SynthPro is a modular anolgic synthesizer simulator.
 
 GNU/Linux executable: [SynthPro.tar.gz](https://github.com/downloads/iMax-pp/SynthPro/SynthPro.tar.gz)
 
-Mac OS X executable: [SynthPro.dmg](https://github.com/downloads/iMax-pp/SynthPro/SynthPro.tar.gz)
+Mac OS X executable: [SynthPro.dmg](https://github.com/downloads/iMax-pp/SynthPro/SynthPro.dmg)
 
 ## UML Diagrams
 
