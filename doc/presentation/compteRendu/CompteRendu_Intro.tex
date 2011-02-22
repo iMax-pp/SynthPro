@@ -1,0 +1,94 @@
+\section{Introduction}
+
+Ce projet, baptisé \textbf{SynthPro}, consiste à réaliser d'une
+application permettant de simuler numériquement les sons issus des
+premiers synthétiseurs analogiques, dits à synthèse soustractive.
+
+Le principe de l'application est basée sur la modularité :
+l'utilisateur doit pouvoir assembler des modules sonores entre eux
+et entendre le résultat du montage en temps-réel. Il n'y a,
+\emph{a priori}, pas de limitation quant au nombre de modules
+pouvant être ajoutés, et la manière dont ils sont connectés doit
+rester aussi permissive que possible.
+
+\subsection{L'équipe}
+
+\subsubsection{Présentation de l'équipe}
+
+Notre équipe, portant le nom de \textbf{BackSynth Boys} (en
+l'honneur d'un certain \emph{boys band}) est composée de quatre
+personnes, chacune ayant un rôle particulier à remplir dans la
+gestion du projet en lui-même, mais bien sûr également dans la
+conception et la production de l'application :
+
+\begin{itemize}
+\item
+  Julien Richard-Foy : \textbf{responsable Conception}. Chargé de la
+  bonne conception et structuration du projet. S'est occupé de la
+  partie Métier, de la communication entre celle-ci et l'interface
+  graphique, et l'interface graphique en elle-même ;
+\item
+  Maxime Simon : \textbf{reponsable Qualité}. Chargé de la bonne
+  formation des programmes écrits, aussi bien structurellement que
+  syntaxiquement, et de la pertinence des tests effectués. S'est
+  également occupé de l'interface et de la communication avec la
+  partie Métier ;
+\item
+  Julien Névo : \textbf{responsable Projet}. Chargé de faire les
+  rapports d'avancement du travail auprès de M. Plouzeau. S'est
+  occupé du moteur audio, de la génération sonore des VCO et VCF, et
+  de divers modules ;
+\item
+  Cyrille Folliot : \textbf{responsable Documentation}. Chargé de la
+  qualité de la documentation produite. S'est également attelé au
+  développement des modules et de la partie Métier.
+\end{itemize}
+\subsubsection{Organisation du temps de travail}
+
+Quatre semaines nous étaient imparties pour mener à bien ce projet.
+Les trois premiers jours furent utilisés pour mettre en place
+l'architecture du projet et la conception de la partie Métier. Une
+fois cela fait, nous nous sommes répartis les rôles en fonction de
+nos affinités pour le travail à effectuer. Le travail de chacun a
+pu être fait de manière indépendante très rapidement.
+
+Nous avons mis en place des \textbf{itérations}, très courtes, dans
+lesquelles étaient consignées les tâches que chacun devait
+accomplir. Le but étant qu'à la fin de chaque itération, le projet
+fonctionne toujours et soit à chaque fois agrémenté de nouvelles
+fonctionnalités. Une itération peut durer de 1 à 3 jours.
+
+\subsubsection{Logiciels et outils de développement}
+
+Outils de développement
+
+Notre projet est basé sur le \emph{framework} Qt, dans le langage
+C++. Nous avons utilisé l'environnement fourni, QtCreator, qui
+fonctionne aussi bien sous Linux et Windows. Notre utilisateur de
+Mac~OS~X a utilisé Xcode.
+
+Versionnement
+
+Nous avons choisi d'utiliser Git pour le versionnement de notre
+application, et ce pour trois raisons :
+
+\begin{itemize}
+\item
+  SVN est connu de tous, et nous désirions utiliser un nouveau
+  logiciel pour les comparer~;
+\item
+  Git s'avère plus efficace à gérer les conflits entre les différents
+  \emph{commits} que SVN. Ce projet étant mené par 4 personnes, il
+  était nécessaire de prévoir ce genre de situations~;
+\item
+  GitHub, une interface \emph{Web} de Git et liée au dépôt de
+  fichiers, fut très pratique pour gérer le projet. Elle permet
+  notamment de voir l'historique de chaque fichier, du projet en
+  général, et du travail effectué par chaque personne.
+\end{itemize}
+Documentation
+
+Les schémas UML ont été mis en oeuvre sous BouML. La plupart des
+documents a été écrite dans le wiki de GitHub, puis convertie au
+format LaTeX grâce à Pandoc.
+

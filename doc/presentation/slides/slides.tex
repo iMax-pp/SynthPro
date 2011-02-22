@@ -1,0 +1,131 @@
+\documentclass[frenchb]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{color}
+
+	
+\setbeamercolor{haut}{fg=white,bg=darkgray}
+\setbeamercolor{bas}{fg=black,bg=blue!5}
+\lstset{% general command to set parameter(s)
+basicstyle=\small,
+% print whole listing small
+keywordstyle=\color{green},
+% underlined bold black keywords
+identifierstyle=\color{darkgray},
+% nothing happens
+commentstyle=\color{white}, % white comments
+stringstyle=\ttfamily,
+% typewriter type for strings
+showstringspaces=false}
+% no special string spaces
+	
+\usetheme{CambridgeUS}
+%\usetheme{Hannover}
+%\usetheme{Singapore}	
+	
+\title[M2GL-VET]{Simulateur de synthétiseur de son analogique}
+\author{Maxime Simon, Julien Richard-Foy, Julien Névo \& Cyrille Folliot}
+\institute[ISTIC]{Université de Rennes 1}
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+	
+	
+\begin{frame}{Plan de l'intervention}
+    \tableofcontents
+\end{frame}
+\section{Introduction}
+
+
+\begin{frame}{Présentation du projet}
+\end{frame}
+
+\begin{frame}{Un objectif}
+    \begin{figure}
+        \includegraphics[width=8cm ]{../img/png/synth.jpg}
+    \end{figure}
+\end{frame}
+\begin{frame}{Une équipe}
+    \begin{columns}
+        \begin{column}[l]{7cm}
+            \begin{figure}
+                \includegraphics[width=6cm ]{../img/png/back.jpg}
+            \end{figure}
+        \end{column}
+    \begin{column}[l]{9cm}
+    \begin{itemize}  
+        \item Julien Névo\\\tiny{Responsable projet}\normalsize
+        \item Julien Richard-Foy\\\tiny{Responsable conception}\normalsize
+        \item Maxime Simon\\\tiny{Responsable tests}\normalsize
+        \item Cyrille Folliot\\\tiny{Responsable documentation}\normalsize
+    \end{itemize}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Organisation du travail}
+\begin{frame}{Une organisation du travail liée au modèle PAC}
+ \begin{columns}[t]
+  \begin{column}{5cm}
+  \begin{block}{Code métier~: Julien \& Cyrille}
+             \begin{itemize}
+                \item Moteur audio
+                \item Modules du synthétiseur
+            \end{itemize}    
+  \end{block} 
+  \end{column}
+  
+  \begin{column}{5cm}
+  \begin{block}{IHM~: Maxime \& Julien}
+            \begin{itemize}
+                \item Controlleurs PAC
+                \item Presentations PAC
+            \end{itemize}
+  \end{block}   
+  \end{column}
+ \end{columns}  
+\end{frame}
+
+\begin{frame}{Le choix d'un développement itératif}
+
+\begin{block}{Trois grandes étapes~:}
+\begin{itemize}
+    \item Construction du modèle de l'application : PIM \& PSM
+    \item Développement itératif, chaque itération aboutissant à un programme fonctionnel
+    \item Debuggage et optimisation
+\end{itemize}
+\end{block}
+\end{frame}
+
+\section{Conception}
+\begin{frame}{Conception -- PIM -- Abstraction}
+L'architecture de l'abstraction, c'est à dire de la couche métier :
+    \begin{figure}
+        \includegraphics[width=11cm ]{../img/ps/pim-abstraction.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Le choix d'un langage et d'un framework : C++ \& Qt}
+    \begin{block}{Les motivations de ce choix}
+    \end{block}
+
+\end{frame}
+\section{brouillon}
+\begin{frame}{Brouillon}
+Présentation du projet (JN)
+Membres de l'équipe
+Partage des tâches
+Conception (JRF, M)
+Tests (C)
+Demo (M)
+Conclusion (JN)
+Retour de l'expérience
+\end{frame}
+
+\end{document}
