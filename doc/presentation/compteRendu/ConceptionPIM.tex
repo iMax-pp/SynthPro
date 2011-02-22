@@ -4,9 +4,10 @@
 \centering
 \includegraphics[width=17cm]{../img/ps/business-pim.pdf}
 \caption{Classes principales de la partie métier}
+\label{pim-class}
 \end{figure}
 
-La figure 1 présente la majeure partie de notre modèle de la partie
+La figure \ref{pim-class} présente la majeure partie de notre modèle de la partie
 métier du système. La classe \verb!SynthPro! représente le
 synthétiseur, il contient un ensemble de modules lesquels
 contiennent des ports permettant de créer des connections entre
@@ -81,13 +82,14 @@ filtres (passe-bas, passe-haut, etc.) utilisables par les modules.
 Pour rendre le logiciel interactif le modèle PAC est utilisé~: pour
 chaque classe de la partie métier devant être représentée dans
 l'interface utilisateur, une classe de contrôle et une classe de
-présentation sont créées. La figure 2 montre un tel découpage pour
+présentation sont créées. La figure \ref{pacdimmer-pim} montre un tel découpage pour
 les potentiomètres (classe \verb!Dimmer!).
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=17cm]{../img/ps/pacdimmer-pim.pdf}
 \caption{Modèle PAC appliqué à la classe Dimmer}
+\label{pacdimmer-pim}
 \end{figure}
 
 Nous avons choisi de réaliser un \emph{Proxy} par héritage (plutôt
@@ -120,9 +122,10 @@ polluent pas l'abstraction.
 \centering
 \includegraphics[width=17cm]{../img/ps/drop-sequence.pdf}
 \caption{Diagramme de séquence du drop}
+\label{drop-sequence}
 \end{figure}
 
-La figure k illustre les échanges entre les composants lorsque
+La figure \ref{drop-sequence} illustre les échanges entre les composants lorsque
 l'utilisateur termine une opération de \emph{drag and drop} reliant
 un port d'un module à un autre.
 
