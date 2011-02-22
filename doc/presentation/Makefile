@@ -1,19 +1,32 @@
-all : slides manual report
+## Makefile de compilation LaTeX
 
+# Règle générale compilant toutes les cibles LaTeX.
+all: slides manual report
 
-slides: slides/slides.tex
-	pdflatex -output-directory="slides" slides/slides.tex
+# Sous-règles pour facilité la compilation des éléments seuls.
+slides: slides/slides.pdf
+manual: manuel/manuel.pdf
+report: compteRendu/cr.pdf
 
-manual:
-	pdflatex -output-directory="manuel" manuel/manuel.tex
+# Règle de compilation pour les slides.
+slides/slides.pdf: slides/slides.tex
+	pdflatex -output-directory="slides" $^
 
-report:
-	pdflatex -output-directory="compteRendu" compteRendu/cr.tex
+# Règle de compilation pour le manuel utilisateur.
+manuel/manuel.pdf: manuel/manuel.tex
+	pdflatex -output-directory="manuel" $^
 
+# Règle de compilation pour le compte-rendu.
+compteRendu/cr.pdf: compteRendu/cr.tex
+	pdflatex -output-directory="compteRendu" $^
+
+# Règles de nettoyages des dossiers.
 .PHONY: clean nuke
 
+# Nettoie simplement les fichiers générés par LaTeX.
 clean:
 	rm -rf **/*.aux **/*.log **/*.nav **/*.out **/*.snm **/*.toc **/*.vrb
 
+# Nettoie les fichiers générés par LaTeX, ainsi que le PDF.
 nuke: clean
-	rm -rf  **/*.pdf
+	rm -rf **/*.pdf
