@@ -96,9 +96,11 @@ void Sampler::stopRecording()
     purgeBuffer(m_outPort->buffer());
     m_sampleStart = 0;
     int i = 0;
-    while (m_buffer->data()[i++] == 0) {
+    while (m_buffer->data()[++i] == 0) {
         m_sampleStart++;
+
     }
+    // qDebug() <<"##########################" << m_sampleStart;
     m_state = WAITING;
 
     m_recordButton->setEnabled(true);
@@ -122,9 +124,10 @@ void Sampler::startPlaying()
 void Sampler::ownProcess()
 {
     qreal speed = m_bpmDimmer->value();
+    // qDebug() << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " << speed;
     int sampleMaxInByte = SAMPLER_MAX_DURATION * Buffer::DEFAULT_LENGTH;
 
-
+    // do a loop in the buffer, test the state of the gate (and his evolution) and do the reading or writing necessary.
     for (int i = 0; i < Buffer::DEFAULT_LENGTH; i++) {
 
 
@@ -167,10 +170,16 @@ void Sampler::ownProcess()
         case PLAYING :
             m_positionInBuffer += speed;
             emit valueChanged(m_positionInBuffer);
-
-            if (m_positionInBuffer >= m_sampleSize) {
+         //   qDebug() << "pos" << m_positionInBuffer << m_sampleStart;
+            if (m_positionInBuffer > m_sampleSize && speed > 0) {
                 m_positionInBuffer = m_sampleStart;
             }
+            if (speed <= 0 && m_positionInBuffer <= 0) {
+                m_positionInBuffer = m_sampleSize - 1;
+            }
+
+
+
             m_outPort->buffer()->data()[i] = m_buffer->data()[(int)m_positionInBuffer];
             break;
 

@@ -63,8 +63,12 @@ protected:
 
     /// size of the sample in sample
     int m_sampleSize;
+
+    /// state of the current value of the gate buffer
     bool m_gateState;
     bool m_oldGateState;
+
+    /// current state of the module
     SamplerState m_state;
 
     /// index readed in the buffer while playing
@@ -73,7 +77,7 @@ protected:
     /// index when sample really start ie whenits value is not 0
     int m_sampleStart;
 
-    static const qreal MIN_BPM = 0.4;
+    static const qreal MIN_BPM = -2;
     static const qreal MAX_BPM = 2;
     static const qreal DEFAULT_BPM = 1;
 
