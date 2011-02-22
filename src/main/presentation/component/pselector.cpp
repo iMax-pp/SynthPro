@@ -22,7 +22,7 @@ PSelector::PSelector(QList<QString> items, const QString& name, QGraphicsItem* p
     QSignalMapper* signalMapper = new QSignalMapper(this);
 
     // And for each button, add it to the layout, connect it to the signalMapper.
-    foreach (QString item, items) {
+    foreach (const QString& item, items) {
         QPushButton* button = new QPushButton(item);
         button->setCheckable(true);
         button->setFlat(true);

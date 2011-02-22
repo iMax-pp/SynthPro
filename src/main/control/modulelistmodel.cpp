@@ -63,7 +63,7 @@ QMimeData* ModuleListModel::mimeData(const QModelIndexList& indexes) const
         return mimeData;
     }
 
-    foreach (QModelIndex index, indexes) {
+    foreach (const QModelIndex& index, indexes) {
         if (index.isValid()) {
             encodedData = data(index, Qt::UserRole).toByteArray();
         }
