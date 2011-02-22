@@ -5,11 +5,11 @@ slides: slides/slides.tex
 	pdflatex -output-directory="slides" slides/slides.tex
 
 manual :
-	pdflatex manuel.tex
+	pdflatex manuel/manuel.tex
 
 
 cr :
-	pdflatex compteRendu/cr.tex
+	pdflatex -output-directory="compteRendu"  compteRendu/cr.tex
 
 clean :
 	rm -rf *.aux *.log *.nav *.out *.snm *.toc *.vrb *.pdf
