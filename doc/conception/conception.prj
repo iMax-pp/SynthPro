@@ -1,6 +1,6 @@
 format 74
 "conception"
-  revision 25
+  revision 26
   modified_by 2 "julien"
 
 
@@ -244,17 +244,6 @@ format 74
       idl_decl ""
       explicit_switch_type ""
       
-      operation 128131 "connectable"
-	public explicit_return_type "bool"
-	nparams 1
-	  param in name "other" type class_ref 141827 // VirtualPort
-	
-	
-	
-	
-	
-      end
-
       operation 128386 "connect"
 	public return_type class_ref 141186 // Connection
 	nparams 1
@@ -277,9 +266,31 @@ format 74
 	
       end
 
-      operation 128002 "buffer"
-	cpp_virtual public return_type class_ref 128002 // Buffer
+      operation 128131 "connectable"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "other" type class_ref 141827 // VirtualPort
+	
+	
+	
+	
+	
+      end
+
+      operation 163970 "available"
+	public explicit_return_type "bool"
 	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 164098 "compatible"
+	protected explicit_return_type "bool"
+	nparams 1
+	  param in name "other" type class_ref 141827 // VirtualPort
 	
 	
 	
@@ -289,26 +300,6 @@ format 74
 
       operation 128259 "out"
 	abstract cpp_virtual public explicit_return_type "bool"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 128003 "gate"
-	public explicit_return_type "bool"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 128387 "replicable"
-	public explicit_return_type "bool"
 	nparams 0
 	
 	
@@ -347,6 +338,33 @@ format 74
 	  a role_name "buffer" multiplicity "1" private
 	    classrelation_ref 169858 // buffer (<directional composition>)
 	  b parent class_ref 128002 // Buffer
+      end
+
+      attribute 128002 "name"
+	private explicit_type "QString"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128130 "replicable"
+	private explicit_type "bool"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128258 "gate"
+	private explicit_type "bool"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
       end
     end
 
