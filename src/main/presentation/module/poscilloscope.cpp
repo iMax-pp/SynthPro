@@ -14,6 +14,7 @@
 
 POscilloscope::POscilloscope(COscilloscope* control)
     : PModule(control)
+    , m_pOscilloscopeView(0)
     , m_refreshTimer(0)
     , m_mustRefreshOscilloscopeView(false)
 {

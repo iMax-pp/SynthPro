@@ -21,8 +21,10 @@ void TestSampler::testSampler()
     Sampler* sampler = factory.createSampler(synth);
     Keyboard* keyboard = factory.createKeyboard(synth);
     VCO* vco = factory.createVCO(synth);
+
     vco->outports().first()->connect(sampler->inports().first());
     keyboard->outports().at(1)->connect(sampler->inports().at(1));
+
     QString result;
     QTextStream stream(&result);
     MockSerializerWell output(0, stream, &factory);
@@ -83,13 +85,8 @@ void TestSampler::testSampler()
     sampler->process();
     output.process();
 
-
-
-
-
-    qDebug() << result;
-
-    // QVERIFY(res);
+    // FIXME, Find a better way to "verify" this…
+    QVERIFY(res);
 }
 void TestSampler::setValue(Buffer* buffer, qreal value)
 {

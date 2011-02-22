@@ -25,6 +25,7 @@ public:
 protected:
     QMap<InPort*, Dimmer*>* m_mixInPorts;
     OutPort* m_outPort;
+
     static const qreal SLIDER_MIN = 0;
     static const qreal SLIDER_MAX = 2;
     static const qreal SLIDER_DEFAULT = 1;

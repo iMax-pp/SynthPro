@@ -6,6 +6,9 @@
 class TestInPort : public QObject {
     Q_OBJECT
 
+public:
+    TestInPort() {}
+
 public slots:
     void countVisit();
 

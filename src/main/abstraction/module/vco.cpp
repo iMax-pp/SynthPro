@@ -42,9 +42,7 @@ void VCO::initialize(SynthProFactory* factory)
 
 VCO::~VCO()
 {
-    if (m_waveGenerator) {
-        delete m_waveGenerator;
-    }
+    delete m_waveGenerator;
 }
 
 void VCO::ownProcess()
@@ -65,9 +63,8 @@ void VCO::setK(qreal value)
 
 void VCO::waveShapeChanged(int selectedValue)
 {
-    if (m_waveGenerator) {
-        delete m_waveGenerator;
-    }
+    delete m_waveGenerator;
+    m_waveGenerator = 0;
 
     QString waveType = m_waveGeneratorFactory->selectorConversionMap()[selectedValue];
     m_waveGenerator = m_waveGeneratorFactory->createWaveGenerator(waveType);

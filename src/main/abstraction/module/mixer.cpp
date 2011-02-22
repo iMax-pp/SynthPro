@@ -10,6 +10,8 @@
 
 Mixer::Mixer(SynthPro* parent)
     : Module(parent)
+    , m_mixInPorts(0)
+    , m_outPort(0)
 {
 }
 

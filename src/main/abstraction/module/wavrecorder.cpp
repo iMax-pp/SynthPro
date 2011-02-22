@@ -13,6 +13,8 @@
 WavRecorder::WavRecorder(SynthPro* parent, int nbProcessingBeforeSaving)
     : Module(parent)
     , m_inPort(0)
+    , m_recordButton(0)
+    , m_stopButton(0)
     , m_fileName(QString())
     , m_outputFile(0)
     , m_isRecording(false)
