@@ -9,7 +9,7 @@ manual :
 
 
 cr :
-	pdflatex compteRendu.tex
+	pdflatex compteRendu/cr.tex
 
 clean :
-	rm -f *.aux *.log *.nav *.out *.snm *.toc *.vrb *.pdf
+	rm -rf *.aux *.log *.nav *.out *.snm *.toc *.vrb *.pdf
