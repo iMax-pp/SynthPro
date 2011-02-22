@@ -12,3 +12,4 @@ Makefile
 doc/conception/*.session
 doc/sources
 !doc/presentation/Makefile
+*.session
