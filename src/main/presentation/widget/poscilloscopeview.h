@@ -2,7 +2,9 @@
 #define POSCILLOSCOPEVIEW_H
 
 #include "abstraction/buffer.h"
+
 #include <QGraphicsWidget>
+#include <QPen>
 
 /**
  * The POscilloscopeView take care of displaying the Oscilloscope.
@@ -44,6 +46,9 @@ private:
     Buffer* m_inBuffer;
     qreal m_ratioY;
     bool m_stabilized;
+
+    QPen m_penOscillo;
+    QPen m_penOscilloBackground;
 };
 
 #endif // POSCILLOSCOPEVIEW_H
