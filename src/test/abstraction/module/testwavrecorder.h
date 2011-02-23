@@ -6,9 +6,9 @@ class QFile;
 #include <QObject>
 
 /**
-  * The test consists in linking a VCO with an empty WaveGenerator,
-  * to the ModuleBufferRecorder. We then reload the file, skip the header, and
-  * make sure the whole file is empty.
+  * The test consists in linking a VCO with a WaveGeneratorSquare,
+  * to the ModuleBufferRecorder. We then reload the file, check the WAV header, and
+  * make sure the whole file has either high and low shelf..
   */
 class TestWavRecorder : public QObject {
     Q_OBJECT
@@ -16,7 +16,7 @@ class TestWavRecorder : public QObject {
 private:
     /**
      * Read the given file (must be already open), and check if the format is correct.
-     * Returns the size of the actual data to read.
+     * @returns the size of the actual data to read, or -1 if an error occured.
      */
     int checkWAVFileHeader(QFile*);
 

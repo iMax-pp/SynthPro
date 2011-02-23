@@ -8,7 +8,6 @@
 #include "abstraction/wavegen/wavegeneratorempty.h"
 #include "factory/simplefactory.h"
 
-#include <QDebug>
 #include <QFile>
 #include <QtTest/QTest>
 
@@ -39,27 +38,20 @@ void TestWavRecorder::testWavRecorder()
         return;
     }
 
-    bool result;
-    // result = file.seek(SKIP_HEADER_OFFSET);
+    bool result = false;
 
     // Check the validity of the WAV header.
     // It should be a WAV format. Only 44100hz, 16 bits, mono samples are accepted.
-
     int sizeData = checkWAVFileHeader(&file);
     result = (sizeData > 0);
-    qDebug() << sizeData;
 
-
-
-    // FIXME
-//    qreal nbCompare = VCO::SIGNAL_INTENSITY / VCO::SIGNAL_INTENSITY * WavRecorder::SIGNAL_OUT_SIGNED_INTENSITY;
-
-//    while (result && !file.atEnd()) {
-//        QByteArray data = file.read(2);
-//        qreal nb = (int)((data.at(0)) + data.at(1) * 256);
-//        //qDebug() << "YOUPIIIIIIIIIII " << nb << " --- " << nbCompare;
-//        //result = (nb == qAbs(nbCompare));
-//    }
+    // Make sure that each value of the file is either a high-shelf or a low-shelf.
+    while (result && !file.atEnd()) {
+        QByteArray data = file.read(2);
+        qreal nb = (-(data.at(0) + data.at(1) * 256));
+        nb += (nb >= 0 ? 256 : -256);
+        result = (qAbs(nb) == WavRecorder::SIGNAL_OUT_SIGNED_INTENSITY);
+    }
 
     QVERIFY(result);
 
@@ -68,49 +60,49 @@ void TestWavRecorder::testWavRecorder()
     // The WaveGenerator is automatically deleted with the VCO.
     delete mbr;
     delete vco;
-
 }
 
 /// Indicates if the given file has a correct WAV header.
+/// @returns The size of the data of the file, or -1 if an error occured.
 int TestWavRecorder::checkWAVFileHeader(QFile* file)
 {
      // Check the WAV format. Only 44100hz, 16 bits, mono samples are accepted.
     if ((QString)(file->read(4)) != "RIFF") {
-        return false;
+        return -1;
     }
 
     file->read(4); // Skip Riff size.
     if ((QString)(file->read(8)) != "WAVEfmt ") {
-        return false;
+        return -1;
     }
     if (readLittleEndianInt(file) != AudioDeviceProvider::BIT_RATE) {
-        return false;
+        return -1;
     }
     // Compression code.
     if (readLittleEndianShort(file) != 1) {
-        return false;
+        return -1;
     }
     if (readLittleEndianShort(file) != AudioDeviceProvider::NB_CHANNELS) {
-        return false;
+        return -1;
     }
 
     if (readLittleEndianInt(file) != AudioDeviceProvider::OUTPUT_FREQUENCY) {
-        return false;
+        return -1;
     }
 
     int blockAlign = AudioDeviceProvider::NB_CHANNELS * (AudioDeviceProvider::BIT_RATE / 8);
     readLittleEndianInt(file);
 
     if (readLittleEndianShort(file) != blockAlign) {
-        return false;
+        return -1;
     }
     if (readLittleEndianShort(file) != AudioDeviceProvider::BIT_RATE) {
-        return false;
+        return -1;
     }
 
     // Data chunk
     if ((QString)(file->read(4)) != "data") {
-        return false;
+        return -1;
     }
     int sizeData = readLittleEndianInt(file); // Read data chunk size.
 
@@ -133,8 +125,8 @@ int TestWavRecorder::readLittleEndianShort(QFile* file)
 {
     char tab[2];
     file->read(tab, 2);
-    int nb = tab[1] * 0x100;
-    nb += tab[0];
+    int nb = convertByteToUnsignedByte(tab[1] * 0x100);
+    nb += convertByteToUnsignedByte(tab[0]);
 
     return nb;
 }
