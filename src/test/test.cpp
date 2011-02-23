@@ -24,7 +24,6 @@ int main()
     TestSampler testSampler;
     QTest::qExec(&testSampler);
 
-
     TestInPort testInPort;
     QTest::qExec(&testInPort);
 

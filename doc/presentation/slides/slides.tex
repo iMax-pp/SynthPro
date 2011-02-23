@@ -26,7 +26,13 @@ showstringspaces=false}
 \usetheme{CambridgeUS}
 %\usetheme{Hannover}
 %\usetheme{Singapore}	
-	
+
+\AtBeginSection[] {
+  \begin{frame}<beamer>{}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
 \title[M2GL-VET]{Simulateur de synthétiseur de son analogique}
 \author{Maxime Simon\and Julien Richard-Foy\and Julien Névo \and Cyrille Folliot}
 \institute[ISTIC]{Université de Rennes 1}
@@ -44,9 +50,6 @@ showstringspaces=false}
 
 \section{Introduction}
 
-
-\begin{frame}{Présentation du projet}
-\end{frame}
 
 \begin{frame}{Un objectif}
     \begin{figure}
@@ -71,8 +74,6 @@ showstringspaces=false}
     \end{columns}
 \end{frame}
 
-\section{Organisation du travail}
-
 \begin{frame}{Une organisation du travail liée au modèle PAC}
  \begin{columns}[t]
   \begin{column}{5cm}
@@ -87,8 +88,8 @@ showstringspaces=false}
   \begin{column}{5cm}
   \begin{block}{IHM~: Maxime \& Julien}
             \begin{itemize}
-                \item Controlleurs PAC
-                \item Presentations PAC
+                \item Contrôles PAC
+                \item Présentations PAC
             \end{itemize}
   \end{block}   
   \end{column}
@@ -100,8 +101,8 @@ showstringspaces=false}
 \begin{block}{Trois grandes étapes~:}
 \begin{itemize}
     \item Construction du modèle de l'application : PIM \& PSM
-    \item Développement itératif, chaque itération aboutissant à un programme fonctionnel
-    \item Debuggage et optimisation
+    \item Développement itératif
+    \item Debuggage, optimisation, documentation externe
 \end{itemize}
 \end{block}
 \end{frame}
@@ -168,18 +169,22 @@ showstringspaces=false}
     \end{figure}
 \end{frame}
 
-\begin{frame}{Le choix d'un langage et d'un framework : C++ \& Qt}
+\begin{frame}{Le choix d'un langage et d'un framework}
+    \pause
     \begin{columns}
-        \begin{column}[l]{6cm}
+        \begin{column}[l]{5cm}
+            \begin{block}{Langage}
             \begin{center}
                 \includegraphics[width=2cm]{../img/ps/C_plus_plus.pdf}
             \end{center}
             \begin{itemize}
                 \item Performance
             \end{itemize}
+            \end{block}
         \end{column}
         \pause
-        \begin{column}[r]{6cm}
+        \begin{column}[r]{5cm}
+            \begin{block}{Framework}
             \begin{center}
                 \includegraphics[width=2cm]{../img/ps/Qt.pdf}
             \end{center}
@@ -188,11 +193,45 @@ showstringspaces=false}
                 \item \textit{Full featured}
                 \item «~Meta Object~»
             \end{itemize}
+            \end{block}
         \end{column}
     \end{columns}
 \end{frame}
 
-\section{Problèmes rencontrés}
+\section{Tests}
+
+\begin{frame}{Plan de tests et résultats}
+    \begin{block}{Plop}
+        \begin{itemize}
+            \item Tests unitaires
+            \item Tests fonctionnels
+            \item Développement de mocks
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Qualité}
+        Hook pre-commit
+    \end{block}
+\end{frame}
+
+\section{Documentation}
+
+\begin{frame}{Preview documentation interne et externe}
+    \begin{itemize}
+        \item Doxygen
+        \item Manuel utilisateur
+    \end{itemize}
+\end{frame}
+
+\section{Démonstration}
+
+\begin{frame}{Que le spectacle commence !}
+    \begin{center}
+        Démonstration
+    \end{center}
+\end{frame}
+
+\section{Synthèse sur l’expérience}
 
 \begin{frame}{Problèmes rencontrés}
     \begin{center}
@@ -208,29 +247,6 @@ showstringspaces=false}
         \includegraphics[width=3cm]{../img/png/graphicsview-view.png}
         \end{column}
     \end{columns}
-\end{frame}
-
-\section{Tests}
-
-\section{Démonstration}
-
-\begin{frame}{Démonstration}
-    \begin{center}
-        Démonstration
-    \end{center}
-\end{frame}
-
-\section{Conclusion}
-
-\begin{frame}{Brouillon}
-Présentation du projet (JN)
-Membres de l'équipe
-Partage des tâches
-Conception (JRF, M)
-Tests (C)
-Demo (M)
-Conclusion (JN)
-Retour de l'expérience
 \end{frame}
 
 \end{document}
