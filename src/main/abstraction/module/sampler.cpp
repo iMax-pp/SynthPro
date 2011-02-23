@@ -209,21 +209,6 @@ void Sampler::initializeBuffer()
     m_sampleSize = 0;
 }
 
-QString Sampler::state()
-{
-    switch (m_state) {
-    case WAITING : return "waiting";
-    case PLAYING : return "playing";
-    case RECORDING : return "recording";
-    case EMPTY : return "empty";
-    default: return "error";
-    }
-}
-
-Buffer* Sampler::sampleBuffer()
-{
-    return m_buffer;
-}
 
 void Sampler::purgeBuffer(Buffer* buf)
 {

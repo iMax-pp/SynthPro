@@ -29,9 +29,7 @@ void TestSampler::testSampler()
     QTextStream stream(&result);
     MockSerializerWell output(0, stream, &factory);
     sampler->outports().first()->connect(&output.input);
-    // qreal inValue = 5 ;
     bool res = true;
-    Buffer sampledBuffer;
 
     for (int k = 0 ; k < 10 ; k++) {
         int i = 0;
@@ -40,36 +38,28 @@ void TestSampler::testSampler()
 
         }
         for (int j = 0 ; j < Buffer::DEFAULT_LENGTH ; j++) {
-            vco->outports().first()->buffer()->data()[j] = 10000 + j;
+            vco->outports().first()->buffer()->data()[j] = j;
         }
-        qDebug() << sampler->state();
         sampler->process();
+        for (int i = 0 ; i  < Buffer::DEFAULT_LENGTH ; i++) {
+            switch (k) {
+            case 0 :
+            case 1 :
+            case 3 :
+            case 6 :
+            case 9 : res &= sampler->outports().first()->buffer()->data()[i] == 0;
+                break;
+            case 2 :
+            case 4 :
+            case 5 :
+            case 7 :
+            case 8 : res &= sampler->outports().first()->buffer()->data()[i] == i;
+                break;
+            default :
+                break;
+            }
+                }
         output.process();
-        //        for (int l = 0 ; l< Buffer::DEFAULT_LENGTH ; l++){
-        //            if (sampler->outports().first()->buffer()->data()[l] != 0) {
-        //                qDebug() << "k " << k << "not null";
-        //            }
-        //        }
-        QString resul;
-        QTextStream flux(&resul);
-        qreal value;
-        for (int i = 0 ; i < sampler->sampleBuffer()->length() ; i++) {
-            if ((value = sampler->sampleBuffer()->data()[i]) != 0) {
-            flux <<   value << " ";
-        }
-        }
-        qDebug() << resul;
     }
-
-
-
-
-    // FIXME, Find a better way to "verify" this…
     QVERIFY(res);
-}
-void TestSampler::setValue(Buffer* buffer, qreal value)
-{
-    for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-        buffer->data()[i] = value;
-    }
 }
