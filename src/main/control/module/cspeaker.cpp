@@ -17,6 +17,9 @@ void CSpeaker::initialize(SynthProFactory* factory)
     CInPort* in = dynamic_cast<CInPort*>(m_inPort);
 
     dynamic_cast<PSpeaker*>(presentation())->initialize(in->presentation());
+
+    connect(this, SIGNAL(clippingStateChanged(bool)), dynamic_cast<PSpeaker*>(presentation()), SLOT(clippingStateChanged(bool)));
+
 }
 
 QString CSpeaker::settings() const
