@@ -1,6 +1,6 @@
-\section{Le moteur audio}
+\subsection{Le moteur audio}
 
-\subsection{Présentation des différentes méthodes offertes}
+\subsubsection{Présentation des différentes méthodes offertes}
 
 L'une des raisons pour lesquelles nous avons choisi Qt est la
 richesse de ses librairies. Deux d'entre elles peuvent gérer le son
@@ -30,7 +30,7 @@ générique qui les achemine à la carte son. Le principal
 inconvénient de cette technique est qu'il faut constamment demander
 l'état du buffer de la carte son.
 
-\subsection{Base du moteur audio}
+\subsubsection{Base du moteur audio}
 
 Nous avons créé une classe \verb!AudioDeviceProvider!, singleton
 qui se charge d'initialiser un QAudioOutput. Cette dernière permet
@@ -61,7 +61,7 @@ désinscrivent.
 Le traitement des \emph{Fast Timers} est alors différent, comme
 expliqué plus loin.
 
-\subsection{\emph{Push} : technique non utilisée}
+\subsubsection{\emph{Push} : technique non utilisée}
 
 La technique de base, qui s'avérait être la plus propre d'un point
 de vue architecture, n'a pas été retenue dans l'implémentation
@@ -104,7 +104,7 @@ possible de trouver une explication à nos divers problèmes (mode
 \emph{Pull} à latence instable, mode \emph{Push} avec des pertes
 selon la technique) sur les divers forums visités.
 
-\subsection{\emph{Push} : technique utilisée}
+\subsubsection{\emph{Push} : technique utilisée}
 
 La technique utilisée consiste à déléguer la gestion complète de la
 carte son au module \verb!Speaker!. La \verb!Clock! dispose

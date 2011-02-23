@@ -1,19 +1,26 @@
-\documentclass[a4paper,oneside,frenchb,12pt]{article}
-\usepackage{amsmath}
- \usepackage[utf8x]{inputenc}
-\usepackage[T1]{fontenc}
+\documentclass[a4paper,oneside,frenchb,10pt]{article}
 
-\usepackage[a4paper]{geometry}
-\usepackage{fourier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
 \usepackage{babel}
-\usepackage{textcomp}
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{fourier}
 \usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{url}
+
+\hypersetup{colorlinks=true, linkcolor=black}
+
 \pagestyle{plain}
+
 \setcounter{tocdepth}{2}
 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt plus 2pt minus 1pt}
 
 \title{SynthLab\\Simulateur de Synthétiseur de son analogique}
 \author{Maxime Simon : Responsable qualité,\\ Julien Richard-Foy : Responsable Conception,\\ Cyrille Folliot : Responsable documentation,\\Julien Névo : Responsable projet.} 
@@ -21,13 +28,13 @@
 \begin{document}
 \maketitle
 \tableofcontents
-\include{CompteRendu_Intro}
-%\include{CompteRendu}
-\include{ModeleMetier}
-\include{ConceptionPIM}
-\include{ConceptionPSM}
-\include{PSM_LeMoteurAudio}
-\include{Tests-et-Validation}
 
+\input{compteRendu/CompteRendu_Intro}
+%\input{compteRendu/CompteRendu}
+\input{compteRendu/ModeleMetier}
+\input{compteRendu/ConceptionPIM}
+\input{compteRendu/ConceptionPSM}
+\input{compteRendu/PSM_LeMoteurAudio}
+\input{compteRendu/Tests-et-Validation}
 
 \end{document}
