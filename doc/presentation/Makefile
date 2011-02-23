@@ -17,7 +17,7 @@ manuel/manuel.pdf: manuel/manuel.tex
 	pdflatex -output-directory="manuel" $^
 
 # Règle de compilation pour le compte-rendu.
-compteRendu/cr.pdf: compteRendu/cr.tex
+compteRendu/cr.pdf: compteRendu/cr.tex compteRendu/ConceptionPIM.tex compteRendu/ConceptionPSM.tex
 	pdflatex -output-directory="compteRendu" $^
 
 # Règles de nettoyages des dossiers.

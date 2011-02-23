@@ -1,8 +1,8 @@
-\section{Diagramme de classes de niveau PIM}
+\section{Conception — PIM}
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=17cm]{../img/ps/business-pim.pdf}
+\includegraphics[width=21cm,angle=90]{../img/ps/business-pim-light.pdf}
 \caption{Classes principales de la partie métier}
 \label{pim-class}
 \end{figure}
@@ -12,6 +12,8 @@ métier du système. La classe \verb!SynthPro! représente le
 synthétiseur, il contient un ensemble de modules lesquels
 contiennent des ports permettant de créer des connections entre
 eux.
+
+\subsection{Moteur}
 
 La classe \verb!Sequencer! gère le \emph{dataflow}~: l'opération
 \verb!scheduleModules! trie le graphe des modules contenus dans le
@@ -27,14 +29,20 @@ liste des modules connectés aux ports d'entrée d'un module, le
 séquenceur détermine un ordre d'exécution possible pour satisfaire
 toutes les dépendances. L'algorithme ignore les cycles (il ne
 visite pas deux fois un même nœud).
+Une classe \texttt{Clock} (non représentée sur le diagramme) appelle périodiquement,
+en tâche de fond, l’opération \texttt{process} du séquenceur.
+
+\subsection{Modules}
 
 Le \emph{package} \verb!module! contient l'ensemble des modules (ne
 sont représentés sur le schéma que le VCO et le VCF). La classe
 mère, \verb!Module!, contient l'opération \verb!process! dont
-l'implémentation appelle \verb!fetchInput! puis \verb!ownProcess!,
-cette dernière est abstraite (patron de conception
+l'implémentation appelle \verb!fetchInput! puis \verb!ownProcess!.
+Cette dernière est abstraite (patron de conception
 \emph{Template Method}), laissant le soin à chaque module de
 définir sont traitement spécifique.
+
+\subsection{Composants}
 
 Le \emph{package} \verb!components! définit les classes
 représentant les éléments constitutifs des modules, en particulier
@@ -74,11 +82,10 @@ carrée, en dents de scie, etc. (patron de conception
 \emph{Strategy}). Un \emph{package} analogue, \verb!filter! (non
 représenté sur le schéma) contient les différentes stratégies de
 filtres (passe-bas, passe-haut, etc.) utilisables par les modules.
-\subsection{La \texttt{Clock}}
-\subsection{La \texttt{Factory}}
-\textbf{FIXME} Parler de la \verb!Clock! et de la \verb!Factory!~?
 
-\section{Interface utilisateur}
+\subsection{Interface utilisateur}
+
+\subsubsection{Modèle PAC}
 
 Pour rendre le logiciel interactif le modèle PAC est utilisé~: pour
 chaque classe de la partie métier devant être représentée dans
@@ -88,7 +95,7 @@ les potentiomètres (classe \verb!Dimmer!).
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=17cm]{../img/ps/pacdimmer-pim.pdf}
+\includegraphics[width=16cm]{../img/ps/pacdimmer-pim.pdf}
 \caption{Modèle PAC appliqué à la classe Dimmer}
 \label{pacdimmer-pim}
 \end{figure}
@@ -99,7 +106,7 @@ c'est plus pratique à écrire (nous ne redéfinissons que les
 opérations nécessaires) et d'autre part parce que cela permet
 d'intercepter également les appels internes de l'abstraction (avec
 une solution par délégation, si l'abstraction appelle une de ses
-propres opérations il est impossible de l'intercepter par le
+propres opérations elle n’est pas interceptée par le
 proxy), en dépit du fort couplage que cela introduit entre les
 composants d'abstraction et de contrôle.
 
@@ -119,16 +126,18 @@ ses potentiomètre pour personnaliser leur affichage. De cette
 manière, les informations sur la façon de présenter ces valeurs ne
 polluent pas l'abstraction.
 
+\subsubsection{\textit{Drag and drop}}
+
 \begin{figure}[htb]
 \centering
-\includegraphics[width=17cm]{../img/ps/drop-sequence.pdf}
+\includegraphics[width=16cm]{../img/ps/drop-sequence.pdf}
 \caption{Diagramme de séquence du drop}
 \label{drop-sequence}
 \end{figure}
 
 La figure \ref{drop-sequence} illustre les échanges entre les composants lorsque
 l'utilisateur termine une opération de \emph{drag and drop} reliant
-un port d'un module à un autre.
+un port d'un module à un autre pour les connecter.
 
 Les classes \verb!CPort! et \verb!PPort! ont été ajoutées
 uniquement pour les besoins de l'interface utilisateur et ne
@@ -137,19 +146,15 @@ représentent la notion de port où l'utilisateur peut brancher des
 connexions (un \verb!VirtualPort! peut contenir plusieurs ports).
 De même les classes \verb!CWire! et \verb!PWire! représentent la
 notion de fil et n'ont pas d'équivalent côté abstraction.
-\textbf{FIXME} Un diagramme de classe~? (le problème c'est que
-c'est un peu moche)
 
-L'événement \emph{drop} est capté par la présentation du port
-source (objet \verb!pp1!) qui transmet l'information à son
+(1) L'événement \emph{drop} est capté par la présentation du port
+source (objet \verb!pp1!) qui (2) transmet l'information à son
 contrôle, \verb!cp1!, en lui indiquant le contrôle du port cible
 \verb!cp2! (celui au-dessus duquel l'utilisateur a relâché la
-souris, quand il ne la relâche pas dans le vide). Le contrôle
+souris, quand il ne la relâche pas dans le vide). (3) Le contrôle
 \verb!cp1! supprime le fil qui était créé temporairement durant le
-\emph{drag and drop} puis transmet l'ordre au contrôle de son port
+\emph{drag and drop} puis (4) transmet l'ordre au contrôle de son port
 virtuel \verb!cvp1! d'établir une connexion entre les deux ports.
-La connexion est réalisée en appelant l'opération \verb!connect! de
-l'abstraction, et, selon son résultat (succès ou échec), un fil est
-créé entre les deux ports. \textbf{FIXME} numéroter les messages
-sur le diagramme ?
-
+(6) La connexion est réalisée en appelant l'opération \verb!connect! de
+l'abstraction (7, 8), et, selon son résultat (succès ou échec), un fil est
+créé entre les deux ports (9).

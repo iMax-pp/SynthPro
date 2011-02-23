@@ -1,81 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Bouml (http://bouml.free.fr/) -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="512" height="219" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg width="428" height="207" version="1.1" xmlns="http://www.w3.org/2000/svg">
 <g>
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="210" y="18" width="3" height="35" />
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="166" y="50" width="47" height="3" />
-	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="162" y="14" width="48" height="36" />
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" font-style="italic" text-anchor="middle" x="186" y="25">Module</text>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="126" y="6" width="3" height="35" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="82" y="38" width="47" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="78" y="2" width="48" height="36" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" font-style="italic" text-anchor="middle" x="102" y="13">Module</text>
 </g>
 <g>
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="496" y="92" width="3" height="35" />
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="444" y="124" width="55" height="3" />
-	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="440" y="88" width="56" height="36" />
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="468" y="99">PModule</text>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="412" y="80" width="3" height="35" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="360" y="112" width="55" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="356" y="76" width="56" height="36" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="384" y="87">PModule</text>
 </g>
 <g>
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="127" y="93" width="3" height="35" />
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="91" y="125" width="39" height="3" />
-	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="87" y="89" width="40" height="36" />
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="107" y="100">VCF</text>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="43" y="81" width="3" height="35" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="7" y="113" width="39" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="3" y="77" width="40" height="36" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="23" y="88">VCF</text>
 </g>
 <g>
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="289" y="92" width="3" height="35" />
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="235" y="124" width="57" height="3" />
-	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="231" y="88" width="58" height="36" />
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="260" y="99">CModule</text>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="205" y="80" width="3" height="35" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="151" y="112" width="57" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="147" y="76" width="58" height="36" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="176" y="87">CModule</text>
 </g>
 <g>
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="488" y="171" width="3" height="35" />
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="452" y="203" width="39" height="3" />
-	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="448" y="167" width="40" height="36" />
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="468" y="178">PVCF</text>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="404" y="159" width="3" height="35" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="368" y="191" width="39" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="364" y="155" width="40" height="36" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="384" y="166">PVCF</text>
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="128" y1="88" x2="158" y2="58" />
-	<line stroke="black" stroke-opacity="1" x1="163" y1="54" x2="154" y2="53" />
-	<line stroke="black" stroke-opacity="1" x1="163" y1="54" x2="162" y2="62" />
-	<line stroke="black" stroke-opacity="1" x1="154" y1="53" x2="162" y2="62" />
+	<line stroke="black" stroke-opacity="1" x1="44" y1="76" x2="74" y2="46" />
+	<line stroke="black" stroke-opacity="1" x1="79" y1="42" x2="70" y2="41" />
+	<line stroke="black" stroke-opacity="1" x1="79" y1="42" x2="78" y2="50" />
+	<line stroke="black" stroke-opacity="1" x1="70" y1="41" x2="78" y2="50" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="241" y1="87" x2="212" y2="58" />
-	<line stroke="black" stroke-opacity="1" x1="208" y1="54" x2="208" y2="62" />
-	<line stroke="black" stroke-opacity="1" x1="208" y1="54" x2="216" y2="54" />
-	<line stroke="black" stroke-opacity="1" x1="208" y1="62" x2="216" y2="54" />
+	<line stroke="black" stroke-opacity="1" x1="157" y1="75" x2="128" y2="46" />
+	<line stroke="black" stroke-opacity="1" x1="124" y1="42" x2="124" y2="50" />
+	<line stroke="black" stroke-opacity="1" x1="124" y1="42" x2="132" y2="42" />
+	<line stroke="black" stroke-opacity="1" x1="124" y1="50" x2="132" y2="42" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="293" y1="108" x2="439" y2="108" />
-	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="293,108 299,102 305,108 299,114" />
+	<line stroke="black" stroke-opacity="1" x1="209" y1="96" x2="355" y2="96" />
+	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="209,96 215,90 221,96 215,102" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="470" y1="166" x2="470" y2="134" />
-	<line stroke="black" stroke-opacity="1" x1="470" y1="128" x2="464" y2="134" />
-	<line stroke="black" stroke-opacity="1" x1="470" y1="128" x2="476" y2="134" />
-	<line stroke="black" stroke-opacity="1" x1="464" y1="134" x2="476" y2="134" />
+	<line stroke="black" stroke-opacity="1" x1="386" y1="154" x2="386" y2="122" />
+	<line stroke="black" stroke-opacity="1" x1="386" y1="116" x2="380" y2="122" />
+	<line stroke="black" stroke-opacity="1" x1="386" y1="116" x2="392" y2="122" />
+	<line stroke="black" stroke-opacity="1" x1="380" y1="122" x2="392" y2="122" />
 </g>
 <g>
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="201" y="167" width="3" height="35" />
-	<rect fill="#808080" stroke="none" stroke-opacity="1" x="165" y="199" width="39" height="3" />
-	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="161" y="163" width="40" height="36" />
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="181" y="174">CVCF</text>
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="117" y="155" width="3" height="35" />
+	<rect fill="#808080" stroke="none" stroke-opacity="1" x="81" y="187" width="39" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="77" y="151" width="40" height="36" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="97" y="162">CVCF</text>
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="202" y1="162" x2="232" y2="132" />
-	<line stroke="black" stroke-opacity="1" x1="237" y1="128" x2="228" y2="127" />
-	<line stroke="black" stroke-opacity="1" x1="237" y1="128" x2="236" y2="136" />
-	<line stroke="black" stroke-opacity="1" x1="228" y1="127" x2="236" y2="136" />
+	<line stroke="black" stroke-opacity="1" x1="118" y1="150" x2="148" y2="120" />
+	<line stroke="black" stroke-opacity="1" x1="153" y1="116" x2="144" y2="115" />
+	<line stroke="black" stroke-opacity="1" x1="153" y1="116" x2="152" y2="124" />
+	<line stroke="black" stroke-opacity="1" x1="144" y1="115" x2="152" y2="124" />
 </g>
 <g>
-	<line stroke="black" stroke-opacity="1" x1="162" y1="162" x2="133" y2="133" />
-	<line stroke="black" stroke-opacity="1" x1="129" y1="129" x2="129" y2="137" />
-	<line stroke="black" stroke-opacity="1" x1="129" y1="129" x2="137" y2="129" />
-	<line stroke="black" stroke-opacity="1" x1="129" y1="137" x2="137" y2="129" />
+	<line stroke="black" stroke-opacity="1" x1="78" y1="150" x2="49" y2="121" />
+	<line stroke="black" stroke-opacity="1" x1="45" y1="117" x2="45" y2="125" />
+	<line stroke="black" stroke-opacity="1" x1="45" y1="117" x2="53" y2="117" />
+	<line stroke="black" stroke-opacity="1" x1="45" y1="125" x2="53" y2="117" />
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="361" y="96">presentation</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="277" y="84">presentation</text>
 </g>
 <g>
-	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="303" y="96">control</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="219" y="84">control</text>
 </g>
 </svg>
