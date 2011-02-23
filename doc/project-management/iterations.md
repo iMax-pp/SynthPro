@@ -145,3 +145,6 @@ date :  semaine 8 (lundi 21-jeudi 24)
     - Doc
     - Slides présentation
     - Demo à préparer.
+
+    - JN : vérifie le "sens" vertical de l'oscillo.
+    - Doc : ajout DOxygen dans doc, parler du hook.
