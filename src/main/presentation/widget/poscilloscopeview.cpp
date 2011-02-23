@@ -22,6 +22,7 @@ POscilloscopeView::~POscilloscopeView()
 
 void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 {
+    // Set up the visualisation box.
     painter->fillRect(0, 0, WIDTH, HEIGHT, QBrush(Qt::SolidPattern));
     painter->setPen(QPen(QColor(255, 255, 255)));
     painter->setClipping(true);
@@ -84,17 +85,18 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
         int usedBufferSize;
 
         if (m_stabilized) {
-            // If stabilized, we need to cut a bit of the signal in order to always display
-            // the same amount of data.
+            // If stabilized, we show either the full buffer or the buffer with an offset,
+            // depending on which is the shortest.
             usedBufferSize = m_inBuffer->length() - indexBuffer;
             usedBufferSize = usedBufferSize > MAX_BUFFER_USED ? MAX_BUFFER_USED : usedBufferSize;
         } else {
             usedBufferSize = MAX_BUFFER_USED;
         }
 
-        step = (usedBufferSize / WIDTH);
+        // Display the buffer with the correct radio (both X and Y).
+        step = (usedBufferSize / WIDTH); // X ratio.
         for (int i = 0; i < WIDTH ; i++) {
-            int y = (int)(data[(int)indexBuffer] * currentRatioY);
+            int y = -(int)(data[(int)indexBuffer] * currentRatioY);
             // Limit test.
             if (y > LIMIT_Y) {
                 y = LIMIT_Y;
