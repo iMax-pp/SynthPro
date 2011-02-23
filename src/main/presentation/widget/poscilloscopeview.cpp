@@ -9,8 +9,9 @@ POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
     , m_inBuffer(0)
     , m_ratioY(RATIO_Y_DEFAULT)
     , m_stabilized(false)
-    , m_penOscillo((QColor(255, 255, 255)))
-    , m_penOscilloBackground((QColor(0, 255, 0)))
+    , m_penOscillo(QColor(255, 255, 255))
+    , m_penOscilloBackground(QColor(0, 255, 0))
+    , m_penOscilloHorizontalLimitLine(QColor(255, 0, 0))
 {
     setMinimumSize(boundingRect().size());
 #if QT_VERSION >= 0x040700
@@ -95,6 +96,13 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
         }
 
         // Display the buffer with the correct radio (both X and Y).
+        // Starts with the limit horizontal lines.
+        painter->setPen(m_penOscilloHorizontalLimitLine);
+        int limitYUp = middleY - VCO::SIGNAL_INTENSITY * currentRatioY;
+        int limitYDown = middleY + VCO::SIGNAL_INTENSITY * currentRatioY;
+        painter->drawLine(0, limitYUp, WIDTH - 1, limitYUp);
+        painter->drawLine(0, limitYDown, WIDTH - 1, limitYDown);
+
         step = (usedBufferSize / WIDTH); // X ratio.
         for (int i = 0; i < WIDTH ; i++) {
             int y = -(int)(data[(int)indexBuffer] * currentRatioY);

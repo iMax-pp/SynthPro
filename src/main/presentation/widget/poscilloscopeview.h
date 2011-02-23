@@ -49,6 +49,7 @@ private:
 
     QPen m_penOscillo;
     QPen m_penOscilloBackground;
+    QPen m_penOscilloHorizontalLimitLine;
 };
 
 #endif // POSCILLOSCOPEVIEW_H
