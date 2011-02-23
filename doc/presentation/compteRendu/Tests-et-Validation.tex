@@ -3,7 +3,7 @@
 \subsection{Introduction}
 
 Afin
-d’assurer une stabilité et une fiabilité optimales, nous avons décidé d'effectuer des tests sur les principales classes de l'abstraction. Il s'est agi de tests unitaires pour la plupart des composants (les \verb!Ports! et l'\verb!AudioDeviceProvider!) et le \verb!Sequencer!, qui ont été possibles grâce à la mise en place de bouchons~;
+d'assurer une stabilité et une fiabilité optimales, nous avons décidé d'effectuer des tests sur les principales classes de l'abstraction. Il s'agit de tests unitaires pour la plupart des composants (les \verb!Ports! et l'\verb!AudioDeviceProvider!) et le \verb!Sequencer!, qui ont été possibles grâce à la mise en place de bouchons~;
 ainsi que des tests fonctionnels pour les modules.
 Pour cela, nous avons utilisé le \emph{framework} de tests
 unitaires de Qt.
@@ -76,7 +76,7 @@ désirée (figure \ref{fig:accordeur}).
 \begin{figure}[htb]
 \centering
 \includegraphics[width=17cm]{../img/png/testWaveGeneratorSinus.png}
-\caption{Vérification des ondes générées grace à d'autres logiciels}
+\caption{Vérification des ondes générées grâce à d'autres logiciels}
 \label{fig:accordeur}
 \end{figure}
 
@@ -107,7 +107,7 @@ est pas de même pour les filtres. Nous avons donc décidé de nous fier
 
 \subsubsection{ADSR}
 
-Nous avons testé ce module grâce au fait que son comportement est lié à ce qu'il reçoit dans son port \texttt{gate}. Sur une «~durée~» de trois buffers, nous lui envoyons donc des valeurs 1, puis des zeros, puis des 1, ce qui correspond à un cycle ADSR complet. Les résultats des appels à \texttt{process} sont stockés dans un buffer puis analysés par parcours du dit \emph{buffer} à la recherche de chaque segment du cycle. Les quatres valeurs obtenues sont ensuite comparées à celles données en entrée.
+Nous avons testé ce module grâce au fait que son comportement est lié à ce qu'il reçoit dans son port \texttt{Gate}. Sur une «~durée~» de trois buffers, nous lui envoyons donc des valeurs 1, puis des zeros, puis des 1, ce qui correspond à un cycle ADSR complet. Les résultats des appels à \texttt{process} sont stockés dans un buffer puis analysés par parcours du dit \emph{buffer} à la recherche de chaque segment du cycle. Les quatre valeurs obtenues sont ensuite comparées à celles données en entrée.
 
 
 \subsubsection{Mixer}
@@ -119,32 +119,32 @@ Le test du Mixer est réalisé en plaçant des buffers constants en entrée de c
 
 Le test du \verb!WavRecorder! consiste à relier un \verb!VCO!
 utilisant le \verb!WaveGeneratorSquare!, produisant une forme
-d'onde carrée à periode fixe, à l'entrée du \verb!WavRecorder!,
+d'onde carrée à période fixe, à l'entrée du \verb!WavRecorder!,
 dans un fichier donné, en précisant un nombre défini d'itérations
 au \verb!WavRecorder! afin qu'il ferme le fichier de sortie à l’issue
 de ces itérations.
 
 Une fois l'enregistrement terminé, on ouvre le fichier en lecture,
-puis on passe le header du fichier WAV, et l'on s'assure que l'on
+étudie le header du fichier WAV, et l'on s'assure que l'on
 ne trouve bien que deux valeurs différentes (front
 montant/descendant) jusqu'à la fin du fichier.
 
 \subsubsection{WavLooper}
 
 Le test du \verb!WavLooper! consiste à charger un fichier
-\verb!WAV! ne comportant que deux valeurs différentes, lui faire
+\verb!WAV! ne comportant que deux valeurs différentes consécutives, lui faire
 lire ce fichier, puis vérifier que la sortie du \emph{buffer} ne
-comporte qu'une suite de deux valeurs.
+comporte qu'une suite de ces deux valeurs.
 
 \subsubsection{Sampler}
-Pour effectuer et automatiser le test de ce module, nous utilisons sa capacité à être commandé par un port \texttt{gate}. Le test consiste donc à faire fonctionner le module un nombre arbitraire de fois en lui donnant~: 
+Pour effectuer et automatiser le test de ce module, nous utilisons sa capacité à être commandé par un port \texttt{Gate}. Le test consiste donc à faire fonctionner le module un nombre arbitraire de fois en lui donnant~: 
 \begin{itemize}
-    \item sur le port gate~: alternativement 0, 1 ou 2~;
-    \item sur le port d'entrée, le buffer est rempli d'entiers, chacun d'eux correspondant à sa place dans le buffer.
+    \item sur le port Gate~: alternativement 0, 1 ou 2~;
+    \item sur le port d'entrée, le buffer rempli d'entiers, chacun d'eux correspondant à sa place dans le buffer.
 \end{itemize}
-Le resultat attendu est alors~:
+Le résultat attendu est alors~:
 \begin{itemize}
-    \item une période où le sampler est inactif ($gate=0$)~;
+    \item une période où le sampler est inactif ($Gate=0$)~;
     \item une période d'enregistrement de l'entrée~;
     \item puis alternativement des périodes de lecture et de pause.
 \end{itemize}

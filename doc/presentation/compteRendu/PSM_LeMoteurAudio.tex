@@ -3,7 +3,7 @@
 \subsubsection{Présentation des différentes méthodes offertes}
 
 L'une des raisons pour lesquelles nous avons choisi Qt est la
-richesse de ses librairies. Deux d'entre elles peuvent gérer le son
+richesse de ses librairies. Deux d'entre elles permettent de gérer le son
 : Phonon et QtMultimedia. Phonon a été rapidement abandonnée car
 elle est de très haut niveau et plutôt adaptée pour jouer des
 fichiers audio et vidéo compressés.
@@ -20,7 +20,7 @@ remarquablement simple à mettre en place, la gestion de la latence
 est mauvaise : celle-ci est instable, le nombre d'octets à fournir
 varie de très faible (une centaine d'octets) à très important
 (16k). Il est bien sûr possible de stabiliser le tout en passant
-par un buffer, mais cela aurait augmenté la latence de
+par un buffer intermédiaire, mais cela aurait augmenté la latence de
 l'application de manière insupportable pour l'utilisateur.
 
 Nous avons alors testé le mode \emph{Push}. À l'inverse, il faut
@@ -33,7 +33,7 @@ l'état du buffer de la carte son.
 \subsubsection{Base du moteur audio}
 
 Nous avons créé une classe \verb!AudioDeviceProvider!, singleton
-qui se charge d'initialiser un QAudioOutput. Cette dernière permet
+qui se charge d'initialiser un QAudioOutput. Ce dernier permet
 de trouver un driver audio compatible avec le format désiré,
 indiqué dans un \verb!QAudioFormat! (dans notre cas, du 44100Hz, 16
 bits, mono). \verb!QAudioOutput! fournit en plus, en mode
@@ -45,7 +45,7 @@ dont a besoin la carte son par la méthode \verb!bytesfree!.
 Une classe \verb!Clock!, également singleton et créée par nos
 soins, se charge d'appeler le séquenceur à intervalle régulier
 (toutes les 30 ms). Cela permet à tous les modules qui ont besoin
-d'être rafraichis d'être appelés, même si aucun module
+d'être rafraîchis d'être appelés, même si aucun module
 \verb!Speaker! n'est présent. L'oscilloscope, le File Writer, le
 WAV Looper et le Sampler notamment sont ainsi actualisés.
 
@@ -54,7 +54,7 @@ En revanche, si un module dit «~\emph{time critical}~»
 il s'enregistre auprès de la \verb!Clock! dans une liste de timers
 rapides (\emph{Fast Timers}), appelés à intervalle très rapide (5
 ms). Une fois qu'un module est enregistré dans cette liste, le
-séquenceur n'est plus appelé par le thread non critique. Ce sera le
+séquenceur n'est plus appelé par le thread non critique. Ce sera de nouveau le
 cas si les modules inscrits dans les timers rapides se
 désinscrivent.
 
@@ -89,7 +89,7 @@ les entrées du module \verb!Speaker!, il est important de les
 ajouter directement au buffer circulaire. On alimente ensuite la
 carte son avec les données possédées et dont elle a besoin. Si la
 quantité est insuffisante, au retour de l'appel la boucle de
-\verb!Clock! rappellera de nouveau le séquenceur qui appelera de
+\verb!Clock! rappellera de nouveau le séquenceur qui appellera de
 nouveau le \verb!process()! de chaque module, dont \verb!Speaker!.
 
 La théorie et les traces fonctionnent parfaitement. Pour des

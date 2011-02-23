@@ -5,8 +5,8 @@
 L'application que nous développons consiste à simuler numériquement
 le comportement des synthétiseurs analogiques, dits à synthèse
 soustractive, ainsi que l'aspect modulaire de leur utilisation.
-Chaque synthétiseur est composé de \textbf{Modules}, que l'on
-pourra lier à d'autres modules et pouvoir écouter le résultat du
+Chaque synthétiseur est composé de \textbf{Modules} que l'on
+pourra lier entre eux, tout en écoutant le résultat du
 montage en temps-réel.
 
 \subsection{L'interface}
@@ -21,7 +21,7 @@ temps-réel.
 \subsection{Les modules}
 
 Le module est la partie atomique du montage. Il n'existe pas \emph{a
-priori} de limite du nombre de modules que l'on peut créer. Un
+priori} de limite au nombre de modules que l'on peut créer. Un
 module dispose d'au moins une entrée et/ou une sortie. Certains
 modules, sources de flux, ne disposent pas d'entrée, comme les
 oscillateurs dont le but est de générer des ondes. D'autres, appelés
@@ -38,7 +38,7 @@ Un module possède au minimum une entrée et/ou une sortie (appelés
 également \textbf{ports}). La conception de base des synthétiseurs
 préconisait l'utilisation de démultiplexeurs et multiplexeurs afin
 de pouvoir, respectivement, multiplier une entrée en plusieurs
-sorties afin de leur faire subir un traitement différent, ou au
+sorties pour leur faire subir un traitement différent, ou au
 contraire mixer plusieurs entrées en une sortie.
 
 Ce concept nous a paru quelque peu lourd et peu intuitif, et
@@ -50,7 +50,7 @@ Notre concept est le suivant~: chaque entrée et sortie d'un module
 se duplique à partir du moment où l'une d'elle est utilisée. En
 conséquence, les modules apparaissent initialement dotés d'une
 seule entrée et/ou sortie, mais il suffit de la connecter
-pour en voir apparaitre une nouvelle, libre. L'avantage est double
+pour en voir apparaître une nouvelle, libre. L'avantage est double
 : cela simplifie le montage qui n'est plus pollué par des
 multiplexeurs et démultiplexeurs, et chaque module ne dispose plus
 que du strict nécessaire, simplifiant encore le montage.
@@ -64,22 +64,22 @@ Qu'ils soient de type Gate ou non n'apporte pas de contrainte
 particulière, mais implique une sémantique légèrement différente
 par rapport aux ports conventionnels. Les Gates sont utilisées
 principalement pour réagir à un front montant ou descendant et
-déclencher une action en conséquence. Ainsi, le Gate Out du mode
+déclencher une action en conséquence. Ainsi, le Gate Out du module
 Keyboard (clavier virtuel) produira un front montant à chaque
-pression de touche, et un front descendant à son relâchement.
+pression de touche et un front descendant à son relâchement.
 Branché à un module ADSR, cela lui permet de détecter chaque
 nouvelle note et déclencher la modulation du volume.
 
 \subsubsection{Les \emph{buffers}}
 
 Le simulateur code les signaux analogiques par échantillonnage à $44100$ Hz. Les modules
-traitent ensuite ces valeurs par lots. Chaque port d’entrée ou de sortie possède un
+traitent ensuite ces valeurs par lots. Chaque port d'entrée ou de sortie possède un
 \emph{buffer} contenant le lot de valeurs à traiter.
 
 \subsection{Les câbles}
 
 Pour relier un port à un autre, l'utilisateur peut créer des câbles
-virtuels simplement en désignant le port de source vers le port de
+virtuels simplement en désignant le port source vers le port de
 destination. La seule contrainte imposée est qu'un port d'entrée
 doit forcément être relié à une sortie. Il est également tout à
 fait possible de créer des boucles dans le montage en

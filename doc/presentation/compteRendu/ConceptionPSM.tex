@@ -7,7 +7,8 @@ nous tourner vers le \emph{framework} Qt, dont chacun apprécie
 l'API élégante et performante. Ce framework fournit surtout des
 outils pour la construction d'interfaces homme-machine, mais il est
 très riche et possède également des APIs pour la manipulation de
-collections, ou le traitement de documents XML.
+collections, le traitement de documents XML, ou des fonctions
+donnant un accès simplifié à la carte son.
 
 La meilleure façon de tirer parti de Qt est de programmer en C++,
 c'est donc le langage qui a été choisi pour le développement de
@@ -96,9 +97,9 @@ maximum de ce que la carte son peut supporter, soit de -32767 à
 Notre logiciel simulant du matériel, mais pas leur comportement
 électronique exact, il nous est tout à fait possible de générer des
 tensions que les synthétiseurs seraient (heureusement !) incapables
-de produire. Pour éviter tout débordement, chaque sortie (qu'elle
-soit audio ou non) dispose d'un test aux limites afin de saturer
-plutôt que de déborder. De plus, chaque VCO dispose lui aussi d'un
+de produire. Pour éviter tout débordement, chaque puits (qu'il
+représente une sortie audio ou non) dispose d'un test aux limites afin de saturer
+plutôt que de déborder. De plus, le VCO dispose lui aussi d'un
 limiteur en sortie, évitant le débordement des opérations
-arithmétiques, notamment si les modules sont mis en boucle.
+arithmétiques, ce qui peut notamment se produire si les modules sont mis en boucle.
 
