@@ -10,7 +10,10 @@ class PixmapWidget : public QGraphicsWidget {
     Q_OBJECT
 
 public:
-    PixmapWidget(QString filename, QGraphicsItem* parent);
+    PixmapWidget(const QString& filename, QGraphicsItem* parent);
+    PixmapWidget(const QPixmap& filename, QGraphicsItem* parent);
+
+    void setPixmap(const QPixmap& filename);
 
 protected:
     virtual void mousePressEvent(QGraphicsSceneMouseEvent*);

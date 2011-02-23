@@ -3,10 +3,10 @@
 
 #include "presentation/pmodule.h"
 
-#include <QIcon>
+#include <QPixmap>
 
 class CSpeaker;
-class PPushButton;
+class PixmapWidget;
 class PVirtualPort;
 
 /**
@@ -27,10 +27,10 @@ public slots:
     void clippingStateChanged(bool);
 
 private:
-    PPushButton* m_clippingLight;
+    PixmapWidget* m_clippingLight;
 
-    QIcon m_iconClippingLightOn;
-    QIcon m_iconClippingLightOff;
+    QPixmap m_iconClippingLightOn;
+    QPixmap m_iconClippingLightOff;
 };
 
 #endif // PSPEAKER_H

@@ -1,7 +1,6 @@
 #include "pspeaker.h"
 
 #include "control/module/cspeaker.h"
-#include "presentation/component/ppushbutton.h"
 #include "presentation/component/pvirtualport.h"
 #include "presentation/widget/pixmapwidget.h"
 #include "presentation/widget/textwidget.h"
@@ -14,8 +13,8 @@
 PSpeaker::PSpeaker(CSpeaker* control)
     : PModule(control)
     , m_clippingLight(0)
-    , m_iconClippingLightOn(":/src/resources/images/record-icon.png") // FIXME
-    , m_iconClippingLightOff(":/src/resources/images/play-icon.png") // FIXME
+    , m_iconClippingLightOn(":/src/resources/images/red-led.png")
+    , m_iconClippingLightOff(":/src/resources/images/green-led.png")
 {
 }
 
@@ -26,9 +25,7 @@ void PSpeaker::initialize(PVirtualPort* in)
 
     PixmapWidget* speaker = new PixmapWidget(":/src/resources/images/speaker.png", this);
 
-    m_clippingLight = new PPushButton("Clip", this);
-    m_clippingLight->setIcon(m_iconClippingLightOff);
-    m_clippingLight->setCheckable(false); // FIXME : doesn't work
+    m_clippingLight = new PixmapWidget(m_iconClippingLightOff, this);
 
     // Layout
     leftArea()->addAnchors(in, leftArea());
@@ -43,6 +40,6 @@ void PSpeaker::initialize(PVirtualPort* in)
 void PSpeaker::clippingStateChanged(bool clippingState)
 {
     if (m_clippingLight) {
-        m_clippingLight->setIcon(clippingState ? m_iconClippingLightOn : m_iconClippingLightOff);
+        m_clippingLight->setPixmap(clippingState ? m_iconClippingLightOn : m_iconClippingLightOff);
     }
 }
