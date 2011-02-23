@@ -23,12 +23,16 @@ void PSpeaker::initialize(PVirtualPort* in)
     TextWidget* title = new TextWidget(tr("Out"), this);
     title->setFont(QFont("Courier", 18, QFont::Bold));
 
+    TextWidget* clipText = new TextWidget(tr("Clip"), this);
+    clipText->setFont(QFont("Courier", 8));
+
     PixmapWidget* speaker = new PixmapWidget(":/src/resources/images/speaker.png", this);
 
     m_clippingLight = new PixmapWidget(m_iconClippingLightOff, this);
 
     // Layout
     leftArea()->addAnchors(in, leftArea());
+    rightArea()->addCornerAnchors(clipText, Qt::TopRightCorner, rightArea(), Qt::TopRightCorner);
     rightArea()->addCornerAnchors(m_clippingLight, Qt::TopLeftCorner, rightArea(), Qt::TopLeftCorner);
     centerArea()->addAnchors(title, centerArea());
     bottomArea()->addAnchors(speaker, bottomArea());
