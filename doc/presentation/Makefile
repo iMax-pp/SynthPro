@@ -1,6 +1,6 @@
 ## Makefile de compilation LaTeX
 # Some useful stuff to compile LaTeX…
-LATEX = pdflatex -interaction=batchmode -output-directory=`dirname $^`
+LATEX = pdflatex -output-directory=`dirname $^`
 
 # Toujours recompiler compteRendu (peut importe si la cible existe déjà).
 .PHONY: compteRendu/*.tex
