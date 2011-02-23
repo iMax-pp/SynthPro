@@ -32,8 +32,9 @@ void PSpeaker::initialize(PVirtualPort* in)
 
     // Layout
     leftArea()->addAnchors(in, leftArea());
-    rightArea()->addCornerAnchors(clipText, Qt::TopRightCorner, rightArea(), Qt::TopRightCorner);
-    rightArea()->addCornerAnchors(m_clippingLight, Qt::TopLeftCorner, rightArea(), Qt::TopLeftCorner);
+    rightArea()->addCornerAnchors(clipText, Qt::BottomLeftCorner, rightArea(), Qt::BottomLeftCorner);
+    rightArea()->addCornerAnchors(clipText, Qt::BottomRightCorner, rightArea(), Qt::BottomRightCorner);
+    rightArea()->addCornerAnchors(m_clippingLight, Qt::TopRightCorner, rightArea(), Qt::TopRightCorner);
     centerArea()->addAnchors(title, centerArea());
     bottomArea()->addAnchors(speaker, bottomArea());
 
