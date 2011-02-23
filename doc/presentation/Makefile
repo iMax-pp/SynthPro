@@ -20,6 +20,10 @@ manuel/manuel.pdf: manuel/manuel.tex
 compteRendu/cr.pdf: compteRendu/cr.tex
 	pdflatex -output-directory="compteRendu" $^
 
+# Régle d'exécution du script de conversion des images SVG -> PDF.
+svg2pdf:
+	../img/svg2pdf.sh
+
 # Règles de nettoyages des dossiers.
 .PHONY: clean nuke
 
