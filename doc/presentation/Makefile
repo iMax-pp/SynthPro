@@ -10,15 +10,16 @@ report: compteRendu/cr.pdf
 
 # Règle de compilation pour les slides.
 slides/slides.pdf: slides/slides.tex
-	pdflatex -output-directory="slides" $^
+	pdflatex -draftmode -output-directory="slides" $^ && pdflatex -output-directory="slides" $^
+
 
 # Règle de compilation pour le manuel utilisateur.
 manuel/manuel.pdf: manuel/manuel.tex
-	pdflatex -output-directory="manuel" $^
+	pdflatex -draftmode -output-directory="manuel" $^ && pdflatex -output-directory="manuel" $^
 
 # Règle de compilation pour le compte-rendu.
-compteRendu/cr.pdf: compteRendu/cr.tex compteRendu/ConceptionPIM.tex compteRendu/ConceptionPSM.tex
-	pdflatex -output-directory="compteRendu" $^
+compteRendu/cr.pdf: compteRendu/cr.tex compteRendu/ConceptionPIM.tex compteRendu/CompteRendu_Intro.tex compteRendu/ConceptionPIM.tex compteRendu/ConceptionPSM.tex compteRendu/ModeleMetier.tex  compteRendu/PSM_LeMoteurAudio.tex  compteRendu/Tests-et-Validation.tex
+	pdflatex -draftmode -output-directory="compteRendu" compteRendu/cr.tex &&  pdflatex  -output-directory="compteRendu" compteRendu/cr.tex
 
 # Règles de nettoyages des dossiers.
 .PHONY: clean nuke
@@ -30,3 +31,4 @@ clean:
 # Nettoie les fichiers générés par LaTeX, ainsi que le PDF.
 nuke: clean
 	rm -rf **/*.pdf
+
