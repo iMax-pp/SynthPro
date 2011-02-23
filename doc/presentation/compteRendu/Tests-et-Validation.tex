@@ -8,18 +8,51 @@ ainsi que des tests fonctionnels pour les modules.
 Pour cela, nous avons utilisé le \emph{framework} de tests
 unitaires de Qt.
 
-\subsection{WaveGenerator}
+\subsection{Moteur}
 
-\subsubsection{TestWaveGeneratorEmpty}
+\subsubsection{Ports et connexions}
+
+Une batterie de tests a été écrite pour s’assurer que les classes élémentaires du système étaient valides, ces tests vérifient entre autres choses que~:
+\begin{itemize}
+    \item Les valeurs du \emph{buffer} d’un port d’entrée connecté à rien sont toutes nulles~;
+    \item Il est impossible de connecter deux ports d’entrée ensemble~;
+    \item Il est possible de connecter un port d’entrée à un port de sortie~;
+    \item Il est possible de déconnecter deux ports connectés~;
+    \item Il est possible de connecter un même port \emph{replicable} à plusieurs ports~;
+    \item Pour les ports d’entrée, leur opération \verb!fetch! copie effectivement (en les sommant) les données des ports auxquels ils sont connectés.
+\end{itemize}
+
+Ces tests nous ont également permis de détecter les éventuelles régressions introduites par les évolutions du
+code du moteur.
+
+\subsubsection{Sequenceur}
+
+
+
+\subsection{Modules}
+
+
+\subsubsection{VCO}
+
+\paragraph{Test VCO}
+
+Pour ce module, nous avons testé :
+\begin{itemize}
+    \item qu'un onde  carrée demandée au \texttt{WaveGenerator} se retrouvait bien dans le port d'entrée d'un module \textit{mock}. Ce test est effectué en mettant toutes les valeurs du buffer du mock dans un \verb!QSet! et en constatant qu'au final, il ne contient que deux valeurs et que celles-ci sont opposées~;
+    \item que la variation du \texttt{K} d'une unité faisait doubler la fréquence de l'onde obtenue~;
+    \item que le sélecteur de forme d'onde sélectionnait effectivement l'onde demandée.
+\end{itemize}
+
+\paragraph{TestWaveGeneratorEmpty}
 
 Avant de tester la génération des ondes sonores, nous avons dû
 vérifier qu'une génération simple fonctionnait correctement. Nous
 avons donc créé une \verb!WaveGeneratorEmpty!, implémentation de
 \verb!WaveGenerator!, qui ne sait que remplir un buffer nul. Ce
 test instancie donc ce générateur, lance la génération et vérifie
-que buffer de sortie contient bien des 0.
+que buffer de sortie contient bien uniquement des 0.
 
-\subsubsection{TestWaveGeneratorSinus, TestWaveGeneratorSquare, TestWaveGeneratorSaw, TestWaveGeneratorTriangle}
+\paragraph{TestWaveGeneratorSinus, TestWaveGeneratorSquare, TestWaveGeneratorSaw, TestWaveGeneratorTriangle}
 
 Tester que la production d'ondes est correcte n'est pas aisé. On
 peut passer par l'étude des signaux générés, mais cela demande un
@@ -46,20 +79,12 @@ désirée (figure \ref{fig:accordeur}).
 \label{fig:accordeur}
 \end{figure}
 
-\subsection{VCO}
-Pour ce module, nous avons testé :
-\begin{itemize}
-    \item qu'un onde  carrée demandée au \texttt{WaveGenerator} se retrouvait bien dans le port d'entrée d'un module \textit{mock}. Ce test est effectué en mettant toutes les valeurs du buffer du mock dans un QSet et en constatant qu'au final, il ne contient que deux valeurs et que celles-ci sont opposées~;
-    \item que la variation du \texttt{K} d'une unité faisait doubler la fréquence de l'onde obtenue~;
-    \item que le sélecteur de forme d'onde sélectionnait effectivement l'onde demandée.
-\end{itemize}
-
-\subsection{VCA}
+\subsubsection{VCA}
 Le rôle du \verb!VCA! étant de multiplier chaque valeur de son entrée par un coefficient, son test a consisté à le faire fonctionner avec un gain donné et à vérifier que les valeurs produites dans un \emph{mock} étaient conformes à nos attentes.
 
-\subsection{VCF}
+\subsubsection{VCF}
 
-\subsubsection{Test VCF}
+\paragraph{Test VCF}
 
 Le test du \verb!VCF! consiste à lier une instance de \verb!VCO! à
 un \verb!VCF!. Le VCO ne produira qu'une onde de type \verb!Empty!,
@@ -69,7 +94,7 @@ du buffer d'entrée si elle est positive, ou --1 si elle est
 négative. Le test s'assure que le buffer de sortie du \verb!VCF! ne
 contient que des 1.
 
-\subsubsection{Les filtres}
+\paragraph{Les filtres}
 
 Il n'est pas facile de tester simplement les filtres. Tout comme
 pour les \verb!WaveGenerators!, il faudrait décomposer le signal
@@ -79,17 +104,17 @@ suite sous des logiciels tels que Soundforge ou Audacity, il n'en
 est pas de même pour les filtres. Nous avons donc décidé de nous fier
 à l'écoute du signal et à l’affichage produit par le module Oscilloscope.
 
-\subsection{Test ADSR}
+\subsubsection{ADSR}
 
 Nous avons testé ce module grâce au fait que son comportement est lié à ce qu'il reçoit dans son port \texttt{gate}. Sur une «~durée~» de trois buffers, nous lui envoyons donc des valeurs 1, puis des zeros, puis des 1, ce qui correspond à un cycle ADSR complet. Les résultats des appels à \texttt{process} sont stockés dans un buffer puis analysés par parcours du dit \emph{buffer} à la recherche de chaque segment du cycle. Les quatres valeurs obtenues sont ensuite comparées à celles données en entrée.
 
 
-\subsection{Test Mixer}
+\subsubsection{Mixer}
 
 Le test du Mixer est réalisé en plaçant des buffers constants en entrée de chaque\dots entrée et en constatant que le \emph{buffer} de sortie est également constant avec pour valeur la moyenne des entrées.
 
 
-\subsection{Test WavRecorder}
+\subsubsection{WavRecorder}
 
 Le test du \verb!WavRecorder! consiste à relier un \verb!VCO!
 utilisant le \verb!WaveGeneratorSquare!, produisant une forme
@@ -103,14 +128,14 @@ puis on passe le header du fichier WAV, et l'on s'assure que l'on
 ne trouve bien que deux valeurs différentes (front
 montant/descendant) jusqu'à la fin du fichier.
 
-\subsection{Test WavLooper}
+\subsubsection{WavLooper}
 
 Le test du \verb!WavLooper! consiste à charger un fichier
 \verb!WAV! ne comportant que deux valeurs différentes, lui faire
 lire ce fichier, puis vérifier que la sortie du \emph{buffer} ne
 comporte qu'une suite de deux valeurs.
 
-\subsection{Test Sampler}
+\subsubsection{Sampler}
 Pour effectuer et automatiser le test de ce module, nous utilisons sa capacité à être commandé par un port \texttt{gate}. Le test consiste donc à faire fonctionner le module un nombre arbitraire de fois en lui donnant~: 
 \begin{itemize}
     \item sur le port gate~: alternativement 0, 1 ou 2~;
