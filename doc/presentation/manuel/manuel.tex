@@ -1,22 +1,22 @@
 \documentclass[a4paper,oneside,frenchb,10pt]{article}
-\usepackage{amsmath}
-\usepackage[utf8x]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{babel}
 
-\usepackage[a4paper]{geometry}
-\usepackage{fourier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
 \usepackage{babel}
-\usepackage{textcomp}
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage{multicol, float} % Use float to include figures in multicols.
-\usepackage{listings}
+\usepackage{babel}
+\usepackage{fancyhdr}
+\usepackage{fourier}
 \usepackage{fullpage}
+\usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{listings}
+\usepackage{multicol, float} % Use float to include figures in multicols.
+\usepackage{textcomp}
+\usepackage{url}
+
 \hypersetup{colorlinks=true, linkcolor=black}
 
-\usepackage{fancyhdr}
 
 \setlength{\headheight}{15.2pt}
 \setlength{\headsep}{10pt}
@@ -310,6 +310,8 @@ additionée avec le \verb!Gain! donné par le potentiomètre.
 \end{figure}
 \end{multicols}
 
+\newpage
+
 \subsection{VCF}
 
 \begin{multicols}{2}
@@ -488,6 +490,8 @@ l'\verb!Offset! ajoute une constante au signal de sortie. Cela est utile
 pour centrer l'évolution de la forme d'onde choisie autour d'une
 fréquence choisie, par exemple.
 
+\newpage
+
 \subsection{Delay}
 
 \begin{multicols}{2}
@@ -502,7 +506,6 @@ Ce module permet de créer un effet de délai sur le signal d'entrée.
 Ainsi, le signal émis en entrée \verb!In! sera retransmis normalement
 sur la sortie \verb!Out!, mais ressortira de nouveau sur la sortie plus
 tard et de manière atténuée ou non.
-\end{multicols}
 
 Ce module dispose de deux potentiomètres~:
 
@@ -512,6 +515,7 @@ Ce module dispose de deux potentiomètres~:
 \item
   \verb!Decay!.
 \end{itemize}
+\end{multicols}
 
 Le paramètre \verb!Duration! indique la durée du retard en secondes.
 \verb!Decay! est un pourcentage qui indique le facteur d'atténuation du
@@ -544,7 +548,7 @@ sortie audio, la rendant désagréable à écouter.
 \begin{multicols}{2}
 \begin{figure}[H]
 \centering
-\includegraphics[width=4cm]{../img/png/sampler.png}
+\includegraphics[width=4.5cm]{../img/png/sampler.png}
 \caption{Sampler}
 \end{figure}
 
@@ -552,8 +556,6 @@ Ce module vous permet d'enregistrer en temps-réel une petite séquence de
 maximum 5 secondes et de la rejouer à volonté, à la vitesse choisie. Le
 Sampler dispose d'une entrée \verb!In!, d'où provient le son à
 enregistrer et une sortie \verb!Out!, d'où sortira le son produit.
-
-\end{multicols}
 
 Trois boutons sont disponibles~:
 
@@ -565,6 +567,7 @@ Trois boutons sont disponibles~:
 \item
   \verb!Play!.
 \end{itemize}
+\end{multicols}
 
 Au début, seul le premier est disponible. Une fois l'entrée connectée,
 pressez \verb!Record! pour commencer l'enregistrement. Une barre bleue
