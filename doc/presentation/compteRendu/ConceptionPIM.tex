@@ -73,7 +73,7 @@ réalise le mixage en faisant la somme de toutes ces données).
 Enfin, les classes \verb!Dimmer! et \verb!Selector! définissent des
 composants permettant d'ajouter des réglages aux modules, sous la
 forme d'un potentiomètre (permettant d'indiquer une valeur dans un
-intervalle donné) ou d'un «~sélécteur~» (permettant de choisir une
+intervalle donné) ou d'un «~sélecteur~» (permettant de choisir une
 valeur dans un ensemble fini donné), respectivement.
 
 Le \emph{package} \verb!wavegenerator! contient des classes
@@ -87,7 +87,7 @@ filtres (passe-bas, passe-haut, etc.) utilisables par les modules.
 
 \subsubsection{Modèle PAC}
 
-Pour rendre le logiciel interactif le modèle PAC est utilisé~: pour
+Le modèle PAC est utilisé pour rendre le logiciel interactif~: pour
 chaque classe de la partie métier devant être représentée dans
 l'interface utilisateur, une classe de contrôle et une classe de
 présentation sont créées. La figure \ref{pacdimmer-pim} montre un tel découpage pour
@@ -106,7 +106,7 @@ c'est plus pratique à écrire (nous ne redéfinissons que les
 opérations nécessaires) et d'autre part parce que cela permet
 d'intercepter également les appels internes de l'abstraction (avec
 une solution par délégation, si l'abstraction appelle une de ses
-propres opérations elle n’est pas interceptée par le
+propres opérations elle n'est pas interceptée par le
 proxy), en dépit du fort couplage que cela introduit entre les
 composants d'abstraction et de contrôle.
 
