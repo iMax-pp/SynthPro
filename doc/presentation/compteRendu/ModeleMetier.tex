@@ -1,12 +1,9 @@
 \section{Modèle Métier}
 
-\textbf{ATTENTION : Ce qui suit est composé de deux parties : l'une simplifiée (car selon Julien RF, j'entrais trop dans les classes), et l'originale. La deuxieme version, à la fin, peut être ``picorée'' pour être mise dans le PSM/PIM. Ce qui suit est donc la version ``simplifiée'', utilisée.}
-
-\Huge{PREMIERE VERSION}\normalsize\\
 \subsection{Le synthétiseur}
 
 L'application que nous développons consiste à simuler numériquement
-le comportement des synthétiseurs analogiques, dite à synthèse
+le comportement des synthétiseurs analogiques, dits à synthèse
 soustractive, ainsi que l'aspect modulaire de leur utilisation.
 Chaque synthétiseur est composé de \textbf{Modules}, que l'on
 pourra lier à d'autres modules et pouvoir écouter le résultat du
@@ -23,18 +20,19 @@ temps-réel.
 
 \subsection{Les modules}
 
-Le module est la partie atomique du montage. Il n'existe pas à
-priori de limite du nombre de modules que l'on peut créer. Un
+Le module est la partie atomique du montage. Il n'existe pas \emph{a
+priori} de limite du nombre de modules que l'on peut créer. Un
 module dispose d'au moins une entrée et/ou une sortie. Certains
-modules, sources de flux, ne disposent pas d'entrées, comme les
-oscillators dont le but est de générer des ondes. D'autres, appelés
-*\emph{puits}, n'ont pas de sorties et sont utiles en fin de
+modules, sources de flux, ne disposent pas d'entrée, comme les
+oscillateurs dont le but est de générer des ondes. D'autres, appelés
+\emph{puits}, n'ont pas de sortie et sont utiles en fin de
 montage pour, par exemple, diriger le son vers une sortie audio ou
 afficher le résultat à la manière d'un oscilloscope.
 
 \subsection{Les entrées/sorties}
 
 \subsubsection{Généralités}
+\label{ports-virtuels}
 
 Un module possède au minimum une entrée et/ou une sortie (appelés
 également \textbf{ports}). La conception de base des synthétiseurs
@@ -44,14 +42,14 @@ sorties afin de leur faire subir un traitement différent, ou au
 contraire mixer plusieurs entrées en une sortie.
 
 Ce concept nous a paru quelque peu lourd et peu intuitif, et
-l'avantage de la simulation analogique est qu'elle nous permet de
-ne pas se limiter au monde analogique tel qu'il existe. Ainsi, nous
+l'avantage de la simulation est qu'elle permet de
+ne pas se limiter au monde physique tel qu'il existe. Ainsi, nous
 avons choisi de nous passer de ces étapes intermédiaires.
 
-Notre concept est le suivant : chaque entrée et sortie d'un module
+Notre concept est le suivant~: chaque entrée et sortie d'un module
 se duplique à partir du moment où l'une d'elle est utilisée. En
 conséquence, les modules apparaissent initialement dotés d'une
-seule entrée et/ou sortie, mais il suffit de connecter l'une d'elle
+seule entrée et/ou sortie, mais il suffit de la connecter
 pour en voir apparaitre une nouvelle, libre. L'avantage est double
 : cela simplifie le montage qui n'est plus pollué par des
 multiplexeurs et démultiplexeurs, et chaque module ne dispose plus
@@ -59,173 +57,31 @@ que du strict nécessaire, simplifiant encore le montage.
 
 \subsubsection{Les Gates}
 
-Les ports peuvent éventuellement être de type \textbf{Gate} (Gate
-in pour les entrées, Gate out pour les sorties).
+Les ports peuvent éventuellement être de type \textbf{Gate} (\textbf{Gate
+in} pour les entrées, \textbf{Gate out} pour les sorties).
 
 Qu'ils soient de type Gate ou non n'apporte pas de contrainte
 particulière, mais implique une sémantique légèrement différente
 par rapport aux ports conventionnels. Les Gates sont utilisées
-principalement pour agir à un signal en front montant/descendant et
-enclencher une action en conséquence. Ainsi, le Gate Out du mode
+principalement pour réagir à un front montant ou descendant et
+déclencher une action en conséquence. Ainsi, le Gate Out du mode
 Keyboard (clavier virtuel) produira un front montant à chaque
 pression de touche, et un front descendant à son relâchement.
 Branché à un module ADSR, cela lui permet de détecter chaque
 nouvelle note et déclencher la modulation du volume.
 
+\subsubsection{Les \emph{buffers}}
+
+Le simulateur code les signaux analogiques par échantillonnage à $44100$ Hz. Les modules
+traitent ensuite ces valeurs par lots. Chaque port d’entrée ou de sortie possède un
+\emph{buffer} contenant le lot de valeurs à traiter.
+
 \subsection{Les câbles}
 
 Pour relier un port à un autre, l'utilisateur peut créer des câbles
-virtuels simplement en désigner le port de source vers le port de
+virtuels simplement en désignant le port de source vers le port de
 destination. La seule contrainte imposée est qu'un port d'entrée
 doit forcément être relié à une sortie. Il est également tout à
 fait possible de créer des boucles dans le montage en
-``nourissant'' l'entrée d'un module avec la sortie de ce même
+«~nourissant~» l'entrée d'un module avec la sortie de ce même
 module, ou la sortie d'un module suivant dans le montage.
-
-\Huge{DEUXIEME VERSION}\normalsize\\
-\subsection{Les modules}
-
-La classe abstraite \verb!Module! représente la base de chaque
-module, dérivée par les différentes implémentations (VCO,
-VCA\ldots{}). Chaque module possède au moins une entrée et/ou
-sortie. Certains n'ont pas d'entrée (s'ils génèrent leur données
-eux-mêmes, comme les VCO), ou de sortie (comme les modules Speaker
-ou WAV Recorder).
-
-Chaque sous-classe de \verb!Module! doit implémenter la méthode
-\verb!ownProcess()! dont le rôle est spécifique au module : par
-exemple, lire le signal d'entrée, le traiter, le rediriger vers la
-sortie.
-
-Typiquement, cette méthode n'est pas appelée directement. La classe
-\verb!Module! implémente la méthode \verb!process()! qui va se
-charger de lire les sorties des modules auxquelles sont liées ses
-entrées, et récupérer les données en vue d'être traitées par
-\verb!ownProcess()! justement. \verb!process()! va donc récuperer
-les données d'entrées (méthode \verb!fetch()!), puis appeler
-\verb!ownProcess()! pour traitement.
-
-\section{Les entrées/sorties}
-
-\subsection{Généralités}
-
-La conception de base des synthétiseurs préconisait l'utilisation
-de démultiplexeurs et multiplexeurs afin de pouvoir,
-respectivement, multiplier une entrée en plusieurs sorties afin de
-leur faire subir un traitement différent, ou au contraire mixer
-plusieurs entrées en une sortie.
-
-Ce concept nous a paru quelque peu lourd et peu intuitif, et
-l'avantage de la simulation analogique est qu'elle nous permet de
-ne pas se limiter au monde analogique tel qu'il existe. Ainsi, nous
-avons choisi de nous passer de ces étapes intermédiaires.
-
-Notre concept est le suivant : chaque entrée et sortie d'un module
-se duplique à partir du moment où l'une d'elle est utilisée. En
-conséquence, les modules apparaissent initialement dotés d'une
-seule entrée et/ou sortie, mais il suffit de connecter l'une d'elle
-pour en voir apparaitre une nouvelle, libre. L'avantage est double
-: cela simplifie le montage qui n'est plus pollué par des
-multiplexeurs et démultiplexeurs, et chaque module ne dispose plus
-que du strict nécessaire, simplifiant encore le montage.
-
-\subsection{Les ports}
-
-Un port dispose de plusieurs caractéristiques :
-
-\begin{itemize}
-\item
-  Entrée ou sortie
-\item
-  Réplicable
-\item
-  Gate ou non
-\end{itemize}
-Qu'il soit de type Gate ou non n'a pas d'incidence particulière sur
-sa gestion. Cela permet juste d'implémenter par exemple une
-rétro-action différente lors de la création d'un câble.
-
-``Réplicable'' signifie que le port peut-être dupliqué. Un port
-libre de même type apparait lorsqu'il est connecté.
-
-Techniquement, un module dispose d'une liste de \verb!Inport! et de
-\verb!Outport!, qui eux-mêmes dérivent de \verb!VirtualPort!. Un
-Inport correspond en fait à un ou plusieurs port d'entrée d'un seul
-type (Gate, réplicable\ldots{}). En réalité, ce port d'entrée est
-susceptible de comporter des \verb!Connection! vers plusieurs ports
-de sortie, si la réplication a été autorisée. Une \verb!Connection!
-est une classe simple liant un \verb!OutPort! à un \verb!InPort!.
-
-En pratique, cette architecture permet au Module de ne gérer
-toujours qu'une seule entrée et/ou une seule sortie d'un même type,
-alors qu'elles peuvent être dupliquées en plusieurs exemplaires. On
-peut dire que \verb!InPort! et \verb!OutPort! gèrent l'arrivée et
-la sortie des données au niveau Module sans se soucier du nombre de
-modules liés, alors que \verb!VirtualPort! étend cette vision au
-montage global car il gère la liaison de chaque port avec un module
-particulier.
-
-Enfin, chaque \verb!VirtualPort! dispose de son propre buffer (de
-la classe \verb!Buffer! présentée plus bas). Le \verb!fetch()! d'un
-\verb!Inport! va lire le buffer de sortie des modules d'entrée, et
-les additionner dans le buffer du port. Une implémentation de
-\verb!Module! peut ainsi traiter son buffer d'entrée sans se
-soucier au nombre de modules auquel il est lié.
-
-\subsection{Les câbles}
-
-Puisque les entrées/sorties gèrent eux-même leur conteneur de
-données, nous n'avons pas créé d'abstraction de câbles
-(\emph{wires}), mais uniquement un controleur (\verb!CWire!) et une
-présentation (\verb!PWire!). Un câble n'est donc qu'une
-représentation graphique du lien entre une entrée d'un module et
-une sortie. Il ne dispose d'aucun intelligence, et ne gère
-absolument aucun transfert de données.
-
-\subsection{Les buffers}
-
-Nous avons créé une classe Buffer afin d'avoir un meilleur contrôle
-sur les transferts des données. Il aurait été possible de
-réutiliser une classe déjà existante dans le \emph{framework} Qt
-mais, bien que probablement plus complète, elle aurait été
-également plus lourde.
-
-\section{Données, mesures et ordre de grandeur}
-
-\subsection{Type des données}
-
-Afin de garder un maximum de précision lors du traitement des
-données, nous avons choisi d'utiliser des \verb!double!. Une autre
-alternative aurait été d'utiliser des entiers, mais cela ne
-correspondait pas aux ordres de grandeur que nous souhaitions
-représenter (voir section suivante), à moins de normaliser et
-dénormaliser nos signaux selon le traitement, source de plus de
-complexité et peut-être même de pertes de performance.
-
-\subsection{Signaux entre les modules}
-
-Nos modules étant supposés simuler du matériel analogique
-manipulant des tensions, nous avons généré et traité des signaux de
-même dimension. Ainsi, un VCO produira un signal allant de --5V à
-+5V et une sortie Gate Out de 0V à 1V. De même, notre note musicale
-de référence est un DO de l'octave 4, correspondant à 0V. Une
-octave représente 1V, donc un DO--5 correspond à 1V, et un DO--3 à
---1V.
-
-\subsection{Signaux pour la carte son.}
-
-La sortie son utilisant du 16 bits, nous normalisons le signal au
-maximum de ce que la carte son peut supporter, soit de --32767 à
-32767.
-
-\subsection{Gestion du débordement}
-
-Notre logiciel simulant du matériel, mais pas leur comportement
-électronique exact, il nous est tout à fait possible de générer des
-tensions que les synthétiseurs seraient (heureusement !) incapables
-de produire. Pour éviter tout débordement, chaque sortie (qu'elle
-soit audio ou non) dispose d'un test aux limites afin de saturer
-plutôt que de déborder. De plus, chaque VCO dispose lui aussi d'un
-limiteur en sortie, évitant le débordement des opérations
-arithmétiques, notamment si les modules sont mis en boucle.
-
