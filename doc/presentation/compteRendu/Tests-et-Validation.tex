@@ -49,6 +49,17 @@ désirée :
 Nos tests se contentent donc de générer un buffer, de le
 sauvegarder, et renvoient un résultat à vrai.
 
+\subsection{VCO}
+Pour ce module, nous avons testé :
+\begin{itemize}
+    \item Qu'un onde  carrée demandée au wavegenerator se retrouvait bien dans le port d'entrée d'un module \textit{mock}. Ce test est effectué en mettant toutes les valeurs du buffer du mock dans un QSet et en constatant qu'au final, il ne contient que deux valeurs et que celles-ci sont opposées.
+    \item Que la variation du k d'une unité faisait doubler la fréquence de l'onde obtenue.
+    \item Que le sélecteur de forme d'onde sélectionnait effectivement l'onde demandée.
+\end{itemize}
+
+\subsection{VCA}
+Le rôle du \verb!VCA! étant de multiplier chaque valeur de son entrée par un coeficient, son test a consisté à le faire fonctionner avec un gain donné et de vérifier que les valeurs produites dans un mock était conforme à nos attentes.
+
 \subsection{VCF}
 
 \subsubsection{Test VCF}
@@ -71,6 +82,16 @@ suite sous des logiciels tels que Soundforge ou Audacity, il n'en
 est pas de même pour les filtres. Nous avons donc décidé de se fier
 à l'écoute du signal.
 
+\subsection{Test ADSR}
+
+Nous avons testé ce module grace au fait que son comportement soit lié à ce qu'il reçoit dans son port \texttt{gate}. Sur une \textit{durée} de trois buffers, nous lui envoyons donc des valeurs 1, puis des zeros, puis des 1, ce qui correspond à un cycle ADSR complet. Les résultats des \og{}process\fg{} sont stockés dans un buffer puis analysé par parcours dudit buffer à la recherche de chaque segment du cycle. Les quatres valeurs obtenues sont ensuité comparées à celles données en entrée.
+
+
+\subsection{Test Mixer}
+
+Le test du mixer est réalisé en plaçant des buffers constants en entrée de chaque\dots entrée et en constatant que le buffer de sortie est également constant avec pour valeur celle des entrée.
+
+
 \subsection{Test WavRecorder}
 
 Le test du \verb!WavRecorder! consiste à relier un \verb!VCO!
@@ -92,3 +113,18 @@ Le test du \verb!WavLooper! consiste à charger un fichier
 lire ce fichier, puis de vérifier que la sortie du buffer ne
 comporte qu'une suite de deux valeurs.
 
+\subsection{Test Sampler}
+Pour effectuer et automatiser le test de ce module, nous utilisons sa capacité à être commandé par un port \texttt{gate}
+. Le test consiste donc à faire fonctionner le module un nombre arbitraire de fois en lui donnant~: 
+\begin{itemize}
+    \item sur le port gate~: alternativement 0, 1 ou 2
+    \item sur le port d'entrée, le buffer est rempli d'entier, chacun d'eux correspondant à sa place dans le buffer.
+\end{itemize}
+Le resultat attendu est alors~:
+\begin{itemize}
+    \item une période ou le sampler est inactif (gate = 0)
+    \item une période d'enregistrement de l'entrée
+    \item puis alternativement des périodes de lecture et de pause.
+\end{itemize}
+
+Le buffer de sortie est analysé à chaque pas du test, il doit être conforme aux attentes pour que le résultat du test reste valide.

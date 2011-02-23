@@ -9,6 +9,8 @@ POscilloscopeView::POscilloscopeView(QGraphicsItem* parent)
     , m_inBuffer(0)
     , m_ratioY(RATIO_Y_DEFAULT)
     , m_stabilized(false)
+    , m_penOscillo((QColor(255, 255, 255)))
+    , m_penOscilloBackground((QColor(0, 255, 0)))
 {
     setMinimumSize(boundingRect().size());
 #if QT_VERSION >= 0x040700
@@ -24,7 +26,6 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
 {
     // Set up the visualisation box.
     painter->fillRect(0, 0, WIDTH, HEIGHT, QBrush(Qt::SolidPattern));
-    painter->setPen(QPen(QColor(255, 255, 255)));
     painter->setClipping(true);
     painter->setClipRect(0, 0, WIDTH, HEIGHT, Qt::ReplaceClip);
 
@@ -104,6 +105,13 @@ void POscilloscopeView::paint(QPainter* painter, const QStyleOptionGraphicsItem*
                 y = -LIMIT_Y;
             }
             y += middleY;
+
+            // Darker vertical line
+            painter->setPen(m_penOscilloBackground);
+            painter->drawLine(i, y + 1, i, HEIGHT - 1);
+
+            // Lighter line
+            painter->setPen(m_penOscillo);
             painter->drawLine(i - 1, previousY, i, y);
             previousY = y;
             indexBuffer += step;
