@@ -50,6 +50,16 @@ désirée :
 
 Nos tests se contentent donc de générer un buffer, de le
 sauvegarder, et renvoient un résultat à vrai.
+\subsection{VCO}
+Pour ce module, nous avons testé :
+\begin{itemize}
+    \item Qu'un onde  carrée demandée au wavegenerator se retrouvait bien dans le port d'entrée d'un module \textit{mock}. Ce test est effectué en mettant toutes les valeurs du buffer du mock dans un QSet et en constatant qu'au final, il ne contient que deux valeurs et que celles-ci sont opposées.
+    \item Que la variation du k d'une unité faisait doubler la fréquence de l'onde obtenue.
+    \item Que le sélecteur de forme d'onde sélectionnait effectivement l'onde demandée.
+\end{itemize}
+
+\subsection{VCA}
+Le rôle du \verb!VCA! étant de multiplier chaque valeur de son entrée par un coeficient, son test a consisté à le faire fonctionner avec un gain donné et de vérifier que les valeurs produites dans un mock était conforme à nos attentes.
 
 \subsection{VCF}
 

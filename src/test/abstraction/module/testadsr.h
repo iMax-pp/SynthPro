@@ -10,7 +10,6 @@ class TestADSR : public QObject {
 
 private slots:
     void testADSR();
-    void testADSR2Buffers();
 };
 
 #endif // TESTADSR_H
