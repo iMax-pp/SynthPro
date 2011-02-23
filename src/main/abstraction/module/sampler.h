@@ -30,11 +30,7 @@ public:
         WAITING
     };
 
-    /// Only for mise au point
-    QString state();
-    Buffer* sampleBuffer();
-
-    static const int SAMPLER_MAX_DURATION = 500;
+static const int SAMPLER_MAX_DURATION = 500;
 
 protected slots:
     void startRecording();
