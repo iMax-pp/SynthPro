@@ -66,7 +66,7 @@ faire le reste.
 
 \section{Utilisation du logiciel}
 
-Lorsque vous lancez le logiciel, vous verrez apparaitre son interface~:
+Lorsque vous lancez le logiciel, vous voyez apparaitre son interface~:
 
 \begin{itemize}
 \item
@@ -111,7 +111,7 @@ possédant plusieurs sous-items.
   le développement de ce logiciel.
 \end{description}
 
-\subsection{La barre d'outil}
+\subsection{La barre d'outils}
 
 Les cinq actions disponibles dans la barre d'outils sont identiques à ce
 que l'on peut trouver dans le menu \emph{File}, ci-dessus~: \emph{New}, \emph{Load}, \emph{Save},
@@ -123,19 +123,19 @@ Les modules sont classés en trois catégories~:
 
 \begin{itemize}
 \item
-  Les modules d'entrée (\emph{Input modules})
+  Les modules d'entrée (\emph{Input modules})~;
 \item
-  Les modules de traitement (\emph{Modules})
+  Les modules de traitement (\emph{Modules})~;
 \item
-  Les modules de sortie (\emph{Output modules})
+  Les modules de sortie (\emph{Output modules}).
 \end{itemize}
 
 Les modules d'entrée représentent les modules qui peuvent créer des
 signaux à partir de rien. Ce sont les composants de base d'un montage et
 ne disposent pas de ports d'entrée.
 
-Les modules de traitements sont intermédiaires~: ils prennent un signal,
-le modifient et le renvoient sur leur sortie.
+Les modules de traitement sont intermédiaires~: ils prennent un signal,
+le modifient et l’envoient sur leur sortie.
 
 Enfin, les modules de sortie sont mis en fin de chaîne~: ils acceptent
 une entrée, mais ne renvoient rien car ils n'ont pas de sortie.
@@ -154,16 +154,16 @@ Un module dispose de plusieurs caractéristiques~:
 \item
   Une fonction~;
 \item
-  Éventuellement des ports d'entrées~;
+  Éventuellement des ports d'entrée~;
 \item
-  Éventuellement des ports de sorties~;
+  Éventuellement des ports de sortie~;
 \item
   Des paramètres.
 \end{itemize}
 La fonction du module est en général clairement définie par son nom.
 Ainsi, le module filtre va\ldots{} filtrer ce qu'on lui donne.
 
-Les ports d'entrée servent à fournir du signal au module. Ainsi, un
+Les ports d'entrée servent à fournir un signal au module. Ainsi, un
 filtre aura forcément une entrée, car il a besoin de données à traiter
 sur lesquelles accomplir sa fonction.
 
@@ -194,9 +194,9 @@ curseur au milieu de la zone de montage. Relâchez le bouton. Le module
 va alors être créé.
 
 Essayez de le faire avec le module d'entrée VCO, dont la fonction est de
-générer des ondes sonores. On peut qu'il produit une onde à 261 Hz, soit
-un DO de l'octave 4, grâce à la valeur inscrite au dessus du
-potentiomètre K.
+générer des ondes sonores. Par défaut il produit une onde à 261 Hz, soit
+un DO de l'octave 4. Cette valeur est inscrite au dessus du
+potentiomètre \verb!K!.
 
 Mais pour l'instant, aucun son n'est entendu. Pour cela, il faut une
 sortie son~: placez à droite du module présent un module Speaker.
@@ -208,7 +208,7 @@ d'apparaitre. Vous pouvez voir les ports sur lesquels vous pouvez
 accrocher le câble devenir verts. Les emplacements non accessibles sont
 affichés en rouge. Lâchez alors le bouton pour créer la connexion entre
 les deux ports. Le son produit par le VCO est maintenant reproduit par
-vos haut-parleurs !
+vos haut-parleurs~!
 
 Il vous est possible de relier tout port de sortie vers une entrée, et
 inversement. Pour débrancher un câble, cliquez sur une de ses extrémités
@@ -218,11 +218,11 @@ non-interactive, comme le fond de la zone de montage. Il est vous
 est.
 
 Vous pouvez ainsi ajouter tous les modules que vous désirez et les
-relier entre eux. Si vous souhaitez retirer un module, cliquez
+relier entre eux. Si vous souhaitez retirer des modules, cliquez
 simplement sur la croix en haut à gauche de chacun d'eux.
 
 Vous avez maintenant toutes les clefs en main pour obtenir des sons
-prodigieux !
+prodigieux~!
 
 \subsection{Quelques précisions sur les Gate}
 
@@ -232,17 +232,17 @@ comportent comme des entrées et sorties conventionnelles, dans le sens
 où vous pourrez brancher une \verb!Gate out! à n'importe quelle entrée,
 et n'importe quelle sortie à une \verb!Gate in!.
 
-Qu'est-ce qu'une \verb!Gate! ? Il s'agit d'une entrée ou sortie un peu
-spéciale, qui ne va produire ou interpréter que les fronts montant ou
+Qu'est-ce qu'une \verb!Gate!~? Il s'agit d'une entrée ou sortie un peu
+spéciale, qui ne va produire ou interpréter que des fronts montant ou
 descendant. Cela permet notamment au module Keyboard d'indiquer quand
 une touche est pressée (front montant dans la \verb!Gate out!), ou quand
 elle est relâchée (front descendant dans la \verb!Gate out!). Branchez
 la \verb!Gate out! dans la \verb!Gate In! de l'ADSR, et jouez avec le
-clavier~: l'onde de l'ADSR est déclenchée à chaque pression de touche !
+clavier~: l'onde de l'ADSR est déclenchée à chaque pression de touche~!
 
 Remarquez également que lorsque vous créez un câble partant d'une sortie
 conventionnelle, les \verb!Gates In! deviennent bleues. Cela indique que
-l'utilisation de cette entrée n'est en général pas adaptée à votre
+l'utilisation de ces entrées n'est en général pas adaptée à votre
 sortie, mais l'action reste cependant possible.
 
 \section{Description des modules}
@@ -261,11 +261,11 @@ pourrez utiliser.
 
 Un VCO (Voltage Controlled Oscillator) permet de générer des ondes
 d'amplitude définie (+5V/--5V) et de fréquence variable. Il existe
-plusieurs types d'ondes~:
+plusieurs formes d'ondes~:
 
 \begin{itemize}
 \item
-  Carré (square)~;
+  Carrée (square)~;
 \item
   Dents de scie (saw)~;
 \item
@@ -337,17 +337,17 @@ alors que le filtre passe-haut retire une partie des graves. La
 saturation douce applique une légère saturation sur le signal d'entrée.
 \end{multicols}
 
-Le VCF dispose de deux entrées et de deux potentiomètres~:
+Le VCF dispose de deux entrées et deux potentiomètres~:
 
 \begin{itemize}
 \item
-  Le potentiomètre \verb!Cutoff!
+  Le potentiomètre \verb!Cutoff!~;
 \item
-  Le potentiomètre \verb!Resonance!
+  Le potentiomètre \verb!Resonance!~;
 \item
-  L'entrée \verb!In!
+  L'entrée \verb!In!~;
 \item
-  L'entrée \verb!In Cutoff!
+  L'entrée \verb!In Cutoff!.
 \end{itemize}
 L'entrée \verb!In! permet en toute logique d'introduire dans le VCF le
 signal sur lequel on souhaite appliquer le filtre sélectionné. Le
@@ -360,7 +360,7 @@ atténuera les fréquences inférieures.
 Le signal introduit dans l'entrée \verb!In Cutoff! permet également de
 modifier la fréquence de coupure, qui sera additionnée à celle de
 \verb!Cutoff!. Il est ainsi possible de brancher par exemple un LFO pour
-obtenir des variations de fréquences de coupure dans le temps. Notons
+obtenir des variations de fréquence de coupure dans le temps. Notons
 que les facteurs de \verb!Cutoff! n'ont pas d'incidence sur le filtre de
 saturation douce.
 
@@ -407,7 +407,7 @@ Lorsque l'attaque est terminée, vient le \verb!Decay!. Le signal diminue
 progressivement jusqu'à atteindre la valeur indiquée par le
 \verb!Sustain!, lui même un pourcentage de l'intensité maximum. Le
 \verb!Decay! indique donc le temps en secondes entre la fin de l'attaque
-(l'intensité est donc au maximum) et l'atteinte de l'intensité définie
+(l'intensité est au maximum) et l'atteinte de l'intensité définie
 par le \verb!Sustain!.
 
 L'onde reste alors stable, jusqu'à ce que l'entrée \verb!Gate In!
@@ -690,7 +690,7 @@ chargez un fichier dans un autre format, aucun son ne sera produit.
 
 Une fois votre fichier chargé, il vous suffit de connecter la sortie
 \verb!Out! du module à, par exemple, un Speaker pour entendre votre WAV.
-Il vous est également possible de le filtrer grâce à un VCO, comme
+Il vous est également possible de le filtrer grâce à un VCF, comme
 n'importe quel signal.
 
 \begin{figure}[H]
