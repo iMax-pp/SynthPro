@@ -11,7 +11,7 @@ all: slides manuel compteRendu
 # Sous-règles pour facilité la compilation des éléments seuls.
 slides: slides/slides.pdf
 manuel: manuel/manuel.pdf
-compteRendu: compteRendu/cr.pdf
+compteRendu: svg2pdf compteRendu/cr.pdf
 
 # Règle générale de compilation des fichiers tex en PDF.
 %.pdf: %.tex
