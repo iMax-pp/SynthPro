@@ -1,0 +1,99 @@
+\section{Conclusion}
+
+Notre application, SynthPro est entièrement fonctionnelle, fiable
+et répond aux attentes du cahier des charges initial. Nous avons eu
+le temps de créer des modules à la fois musicalement utiles et
+intéressants à programmer.
+
+\subsection{Ce qui s'est bien passé}
+
+\begin{itemize}
+\item
+  L'organisation de l'équipe a été efficace et nous n'avons jamais eu
+  à attendre qu'un membre ait à finir son travail pour pouvoir
+  avancer. Il n'y a pas eu de situations de blocage~;
+\item
+  Les trois jours de conception se sont montrés efficaces et
+  suffisants pour poser les bases du projet et permettre par la suite
+  l'élaboration des premiers modules et leur communication~;
+\item
+  Notre planning a été respecté et nous n'avons souffert d'aucun
+  retard~;
+\item
+  Le \emph{framework} Qt, de part sa richesse, nous a grandement
+  facilité la tâche :
+  \begin{itemize}
+  \item
+    Extension du C++ grâce à ses structures de données, certaines
+    macros et ses facilités de gestion de mémoire,
+  \item
+    Bibliothèque graphique complète et performante,
+  \item
+    Bibliothèque audio (QtMultimedia) simple à utiliser.
+  \end{itemize}
+\item
+  L'utilisation de Git en système de versionnement nous a
+  probablement fait gagner du temps par rapport à SVN, et nous
+  n'avons pas eu de conflits majeurs.
+\end{itemize}
+
+\subsection{Problèmes rencontrés}
+
+\begin{itemize}
+\item
+  Comme expliqué dans le PSM, le moteur audio a posé problème selon
+  l'organisation de l'architecture. Utiliser la moins élégante était
+  nécessaire pour le faire fonctionner. QtMultimedia étant très
+  jeune, il y a peu d'aide en ligne~;
+\item
+  QtMultimedia ne dispose pas de gestion Midi~;
+\item
+  Nous avons dû utiliser l'héritage multiple, ce qui a rendu la
+  gestion des classes plus complexe~;
+\item
+  Le système de Layout des QGraphicsView a été plus complexe à
+  utiliser que prévu, l'aspect général des modules n'est pas
+  totalement conforme à nos attentes~;
+\item
+  QtCreator, bien qu'assez pratique à utiliser, n'est pas le plus
+  efficace des IDE, et ne possède que des options limitées au niveau
+  refactoring. De plus, le compilateur QMake a tendance à ne pas
+  recompiler certains fichiers, provoquant des erreurs de compilation
+  qui ne disparaissent que si on recompile intégralement le projet.
+\end{itemize}
+
+\subsection{Acquisition}
+
+\begin{itemize}
+\item
+  Nous avons tous consolidé nos connaissances en C++~;
+\item
+  Nous avons acquis une base de traitement du signal~;
+\item
+  Nous nous sommes rendu compte que passer du temps sur une bonne
+  conception vaut largement les jours de code perdus à corriger les
+  erreurs d'une mauvaise conception.
+\end{itemize}
+
+\subsection{Et si c'était à refaire ?}
+
+\begin{itemize}
+\item
+  Peut-être utiliser les QWidgets plutôt que QGraphicsView.
+  L'avantage de ces derniers était de meilleures performances, mais
+  leur gestion est plus laborieuse~;
+\item
+  Passer plus de temps à faire la conception n'aurait pas été un mal,
+  même si les refactorings multiples n'ont que très rarement empêché
+  le code existant de fonctionner.
+\end{itemize}
+
+\subsection{Mot de la fin}
+
+Nous sommes satisfaits de notre application et il n'y a, au final,
+pas beaucoup de choses que nous aurions voulu faire qui n'ont pas
+été intégrées. Nous espérons qu'elle vous apportera entière
+satisfaction.
+
+Les BackSynth Boys.
+
