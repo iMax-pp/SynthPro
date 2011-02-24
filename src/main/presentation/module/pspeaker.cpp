@@ -31,12 +31,15 @@ void PSpeaker::initialize(PVirtualPort* in)
     m_clippingLight = new PixmapWidget(m_iconClippingLightOff, this);
 
     // Layout
+    bottomArea()->addAnchor(clipText, Qt::AnchorRight, m_clippingLight, Qt::AnchorLeft);
+    bottomArea()->addAnchor(clipText, Qt::AnchorTop, bottomArea(), Qt::AnchorTop);
+    bottomArea()->addCornerAnchors(m_clippingLight, Qt::TopRightCorner, bottomArea(), Qt::TopRightCorner);
+    bottomArea()->addCornerAnchors(m_clippingLight, Qt::BottomRightCorner, speaker, Qt::TopRightCorner);
+    bottomArea()->addCornerAnchors(speaker, Qt::BottomLeftCorner, bottomArea(), Qt::BottomLeftCorner);
+    bottomArea()->addCornerAnchors(speaker, Qt::BottomRightCorner, bottomArea(), Qt::BottomRightCorner);
+
     leftArea()->addAnchors(in, leftArea());
-    rightArea()->addCornerAnchors(clipText, Qt::BottomLeftCorner, rightArea(), Qt::BottomLeftCorner);
-    rightArea()->addCornerAnchors(clipText, Qt::BottomRightCorner, rightArea(), Qt::BottomRightCorner);
-    rightArea()->addCornerAnchors(m_clippingLight, Qt::TopRightCorner, rightArea(), Qt::TopRightCorner);
     centerArea()->addAnchors(title, centerArea());
-    bottomArea()->addAnchors(speaker, bottomArea());
 
     bottomArea()->activate();
     layout()->activate();
