@@ -16,12 +16,12 @@ Notre choix d'un développement itératif nous a conduit à une intégration pro
 
 \begin{enumerate}
     \setcounter{enumi}{-1}
-    \item  \texttt{AudioDeviceProvider} ne dépend en rien du reste de l'application, il peut donc être testé indépendemment des autres classes.
+    \item  \texttt{AudioDeviceProvider} ne dépend en rien du reste de l'application, il peut donc être testé indépendemment des autres classes~;
     \item \texttt{InPort}, \texttt{OutPort} et \texttt{VirtualPort} dépendent uniquement de \texttt{Module}, mais cette dépendance est uniquement destinée au parcours du graphe des modules. Le comportement des ports peut donc être testé avant \texttt{Module}.
-    \item La classe \texttt{Module} est abstraite et centrale, son test effectif se fera donc par l'intermédiaire du test de ses classes d'implémentation.
-    \item Le \texttt{Sequencer} sera intégré et testé grace à des \textit{mocks} simulant le comportement de modules.
-    \item Le \texttt{VCO} est le module à la base de la plupart des montages de notre synthétiseur. Il est donc intégré avant les autres modules, il servira dans leurs propres tests.
-    \item Les \texttt{WaveGenerator} et le \texttt{Filter} ont un statut particulier dans notre processus de test. L'automatisation de l'oracle n'a pu être mis en place. Les tests consistent en une vérification auditive ou visuelle des résultats obtenus.
+    \item la classe \texttt{Module} est abstraite et centrale, son test effectif se fera donc par l'intermédiaire du test de ses classes d'implémentation~;
+    \item le \texttt{Sequencer} sera intégré et testé grace à des \textit{mocks} simulant le comportement de modules.~;
+    \item le \texttt{VCO} est le module à la base de la plupart des montages de notre synthétiseur. Il est donc intégré avant les autres modules, il servira dans leurs propres tests~;
+    \item les \texttt{WaveGenerator} et le \texttt{Filter} ont un statut particulier dans notre processus de test. L'automatisation de l'oracle n'a pu être mis en place. Les tests consistent en une vérification auditive ou visuelle des résultats obtenus~;
     \item Les autres modules peuvent alors être intégrés.
 \end{enumerate}
 
@@ -147,7 +147,7 @@ est pas de même pour les filtres. Nous avons donc décidé de nous fier
 
 \subsubsection{ADSR}
 
-Nous avons testé ce module grâce au fait que son comportement est lié à ce qu'il reçoit dans son port \texttt{Gate}. Sur une «~durée~» de trois buffers, nous lui envoyons donc des valeurs 1, puis des zeros, puis des 1, ce qui correspond à un cycle ADSR complet. Les résultats des appels à \texttt{process} sont stockés dans un buffer puis analysés par parcours du dit \emph{buffer} à la recherche de chaque segment du cycle. Les quatre valeurs obtenues sont ensuite comparées à celles données en entrée.
+Nous avons testé ce module grâce au fait que son comportement est lié à ce qu'il reçoit dans son port \texttt{Gate}. Sur une «~durée~» de trois buffers, nous lui envoyons donc des valeurs 1, puis des zeros, puis des 1, ce qui correspond à un cycle ADSR complet. Les résultats des appels à \texttt{process} sont stockés dans un buffer puis analysés par parcours dudit \emph{buffer} à la recherche de chaque segment du cycle. Les quatre valeurs obtenues sont ensuite comparées à celles données en entrée.
 
 
 \subsubsection{Mixer}

@@ -7,7 +7,7 @@
 \label{pim-class}
 \end{figure}
 
-La figure \ref{pim-class} présente la majeure partie de notre modèle de la partie
+La figure \ref{pim-class} présente la majeure partie de notre modèle de la composante
 métier du système. La classe \verb!SynthPro! représente le
 synthétiseur, il contient un ensemble de modules lesquels
 contiennent des ports permettant de créer des connections entre
@@ -20,7 +20,8 @@ La classe \verb!Sequencer! gère le \emph{dataflow}~: l'opération
 synthétiseur en fonction de leurs dépendances, et l'opération
 \verb!process! appelle l'opération du même nom sur chaque élément
 de la liste de modules triée, de telle sorte que chacun réalise son
-traitement. Le tri des modules est un simple tri topologique,
+traitement.\\
+Le tri des modules est un simple tri topologique,
 réalisé par un parcours en profondeur du graphe de modules~: une
 première passe recherche les modules «~puits~» (ceux qui ne
 possèdent pas de port de sortie), puis \emph{via} une opération
@@ -28,19 +29,19 @@ possèdent pas de port de sortie), puis \emph{via} une opération
 liste des modules connectés aux ports d'entrée d'un module, le
 séquenceur détermine un ordre d'exécution possible pour satisfaire
 toutes les dépendances. L'algorithme ignore les cycles (il ne
-visite pas deux fois un même nœud).
+visite pas deux fois un même nœud).\\
 Une classe \texttt{Clock} (non représentée sur le diagramme) appelle périodiquement,
 en tâche de fond, l’opération \texttt{process} du séquenceur.
 
 \subsection{Modules}
 
 Le \emph{package} \verb!module! contient l'ensemble des modules (ne
-sont représentés sur le schéma que le VCO et le VCF). La classe
+sont représentés sur la figure \ref{pim-class} que le VCO et le VCF). La classe
 mère, \verb!Module!, contient l'opération \verb!process! dont
 l'implémentation appelle \verb!fetchInput! (qui récupère les données des ports connectés aux ports d’entrée du module) puis \verb!ownProcess!.
 Cette dernière est abstraite (patron de conception
 \emph{Template Method}), laissant le soin à chaque module de
-définir sont traitement spécifique (p. ex. appliquer un filtre sur le signal).
+définir sont traitement spécifique (par exemple appliquer un filtre sur le signal).
 
 \subsection{Composants}
 
@@ -102,12 +103,12 @@ les potentiomètres (classe \verb!Dimmer!).
 
 Nous avons choisi de réaliser un \emph{Proxy} par héritage (plutôt
 que par délégation) pour définir le contrôle, d'une part parce que
-c'est plus pratique à écrire (nous ne redéfinissons que les
-opérations nécessaires) et d'autre part parce que cela permet
-d'intercepter également les appels internes de l'abstraction (avec
+c'est plus pratique à écrire\footnote{nous ne redéfinissons que les
+opérations nécessaires} et d'autre part parce que cela permet
+d'intercepter également les appels internes de l'abstraction\footnote{avec
 une solution par délégation, si l'abstraction appelle une de ses
 propres opérations elle n'est pas interceptée par le
-proxy), en dépit du fort couplage que cela introduit entre les
+proxy}, en dépit du fort couplage que cela introduit entre les
 composants d'abstraction et de contrôle.
 
 Dans le cas de la classe \verb!Dimmer!, nous voulons pouvoir
