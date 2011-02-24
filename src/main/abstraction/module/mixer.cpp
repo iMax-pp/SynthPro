@@ -50,19 +50,14 @@ void Mixer::ownProcess()
         }
     }
 
-/*
-    for (int j = 0 ; j < inports().size() ;  j++) {
-        if (inports().at(j)->connections().size() != 0)  {
-            nbPortConnected++;
-            for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-                buffer.data()[i] += inports().at(j)->buffer()->data()[i];
-
-            }
+    if (nbPortConnected != 0) {
+        for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
+            buffer.data()[i] /= nbPortConnected;
+            m_outPort->buffer()->data()[i] = buffer.data()[i];
         }
-    }
-*/
-    for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
-        buffer.data()[i] /= nbPortConnected;
-        m_outPort->buffer()->data()[i] = buffer.data()[i];
+    } else {
+        for (int i = 0 ; i < Buffer::DEFAULT_LENGTH ; i++) {
+            m_outPort->buffer()->data()[i] = 0;
+        }
     }
 }
