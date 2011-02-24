@@ -3,21 +3,20 @@
 \subsubsection{Présentation des différentes méthodes offertes}
 
 L'une des raisons pour lesquelles nous avons choisi Qt est la
-richesse de ses librairies. Deux d'entre elles permettent de gérer le son
-: Phonon et QtMultimedia. Phonon a été rapidement abandonnée car
+richesse de ses librairies. Deux d'entre elles permettent de gérer le son~: Phonon et QtMultimedia. Phonon a été rapidement abandonnée car
 elle est de très haut niveau et plutôt adaptée pour jouer des
 fichiers audio et vidéo compressés.
 
 En revanche, QtMultimedia semblait idéale car elle permet de
 fournir des buffers directement à la carte son de la même manière
 qu'on adresserait un fichier. QtMultimedia propose deux modes de
-fonctionnement : en \emph{Pull} ou \emph{Push}.
+fonctionnement~: en \emph{Pull} ou \emph{Push}.
 
 Nous avons d'abord testé le mode \emph{Pull}, car il semblait bien
 adapté à notre séquenceur qui travaille lui aussi en \emph{Pull}.
 Malheureusement, nos essais ont montré que si l'implémentation est
 remarquablement simple à mettre en place, la gestion de la latence
-est mauvaise : celle-ci est instable, le nombre d'octets à fournir
+est mauvaise~: celle-ci est instable, le nombre d'octets à fournir
 varie de très faible (une centaine d'octets) à très important
 (16k). Il est bien sûr possible de stabiliser le tout en passant
 par un buffer intermédiaire, mais cela aurait augmenté la latence de
@@ -61,7 +60,7 @@ désinscrivent.
 Le traitement des \emph{Fast Timers} est alors différent, comme
 expliqué plus loin.
 
-\subsubsection{\emph{Push} : technique non utilisée}
+\subsubsection{\emph{Push}~: technique non utilisée}
 
 La technique de base, qui s'avérait être la plus propre d'un point
 de vue architecture, n'a pas été retenue dans l'implémentation
@@ -107,7 +106,7 @@ possible de trouver une explication à nos divers problèmes (mode
 \emph{Pull} à latence instable, mode \emph{Push} avec des pertes
 selon la technique) sur les divers forums visités.
 
-\subsubsection{\emph{Push} : technique utilisée}
+\subsubsection{\emph{Push}~: technique utilisée}
 
 \begin{figure}[ht]
 \centering
@@ -151,5 +150,5 @@ conséquence, les méthodes \verb!registerFastTimer! et
 \verb!unregisterFastTimer! de \verb!Clock! n'accepteront que des
 \verb!TimeCriticalModule!.
 
-L'avantage de cette méthode est indéniable : elle fonctionne en
+L'avantage de cette méthode est indéniable~: elle fonctionne en
 pratique. La latence est très faible et le son stable.
