@@ -1,0 +1,18 @@
+synthpro 1.0
+4
+4CVCO 0x1a454fc -1191 -672
+2 -2.166
+1
+0 2 0xf9bde4 0 0xfb0cc4 0 
+4CVCA 0xf9bde4 -765 -661
+1
+2
+0 1 0x1a454fc 0 
+1 1 0xfb0cc4 0 
+4CLFO 0xfb0cc4 -990 -379
+2 -9.443 0.269 0.941
+0
+8CSpeaker 0x1a6aae4 -456 -658
+
+1
+0 1 0xf9bde4 0 
