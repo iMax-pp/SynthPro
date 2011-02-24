@@ -37,10 +37,10 @@ en tâche de fond, l’opération \texttt{process} du séquenceur.
 Le \emph{package} \verb!module! contient l'ensemble des modules (ne
 sont représentés sur le schéma que le VCO et le VCF). La classe
 mère, \verb!Module!, contient l'opération \verb!process! dont
-l'implémentation appelle \verb!fetchInput! puis \verb!ownProcess!.
+l'implémentation appelle \verb!fetchInput! (qui récupère les données des ports connectés aux ports d’entrée du module) puis \verb!ownProcess!.
 Cette dernière est abstraite (patron de conception
 \emph{Template Method}), laissant le soin à chaque module de
-définir sont traitement spécifique.
+définir sont traitement spécifique (p. ex. appliquer un filtre sur le signal).
 
 \subsection{Composants}
 
@@ -53,7 +53,7 @@ connecter les sorties de plusieurs modules à l'entrée d'un même
 module (mixage). Pour cela nous avons introduit la notion de port
 «~virtuel~»~: un tel port peut se répliquer à l'infini, permettant
 d'être connecté à plusieurs autres ports et réalisant
-automatiquement le travail de démultiplexage ou de mixage. Il est
+automatiquement le travail de démultiplexage ou de mixage (cf. explication en section \ref{ports-virtuels}). Il est
 défini par la classe \verb!VirtualPort!. L'attribut
 \verb!replicable! indique si un port peut effectivement se
 répliquer et les opérations \verb!connect! et \verb!disconnect!
@@ -64,7 +64,7 @@ sortie de type \emph{gate} sont plus susceptibles d'être connectés
 à des ports d'entrée de type \emph{gate}, mais le système
 n'interdit pas de les connecter sur les autres ports.
 
-La class \verb!InPort! hérite de \verb!VirtualPort!, elle définit
+La classe \verb!InPort! hérite de \verb!VirtualPort!, elle définit
 la notion de port d'entrée et contient une opération
 supplémentaire, \verb!fetch!, qui copie les données des ports de
 sortie auxquels elle est reliée dans son propre \emph{buffer} (elle
@@ -73,7 +73,7 @@ réalise le mixage en faisant la somme de toutes ces données).
 Enfin, les classes \verb!Dimmer! et \verb!Selector! définissent des
 composants permettant d'ajouter des réglages aux modules, sous la
 forme d'un potentiomètre (permettant d'indiquer une valeur dans un
-intervalle donné) ou d'un «~sélécteur~» (permettant de choisir une
+intervalle donné) ou d'un «~sélecteur~» (permettant de choisir une
 valeur dans un ensemble fini donné), respectivement.
 
 Le \emph{package} \verb!wavegenerator! contient des classes
@@ -87,7 +87,7 @@ filtres (passe-bas, passe-haut, etc.) utilisables par les modules.
 
 \subsubsection{Modèle PAC}
 
-Pour rendre le logiciel interactif le modèle PAC est utilisé~: pour
+Le modèle PAC est utilisé pour rendre le logiciel interactif~: pour
 chaque classe de la partie métier devant être représentée dans
 l'interface utilisateur, une classe de contrôle et une classe de
 présentation sont créées. La figure \ref{pacdimmer-pim} montre un tel découpage pour
@@ -106,7 +106,7 @@ c'est plus pratique à écrire (nous ne redéfinissons que les
 opérations nécessaires) et d'autre part parce que cela permet
 d'intercepter également les appels internes de l'abstraction (avec
 une solution par délégation, si l'abstraction appelle une de ses
-propres opérations elle n’est pas interceptée par le
+propres opérations elle n'est pas interceptée par le
 proxy), en dépit du fort couplage que cela introduit entre les
 composants d'abstraction et de contrôle.
 
@@ -145,7 +145,7 @@ correspondent pas à des classes dans l'abstraction, elles
 représentent la notion de port où l'utilisateur peut brancher des
 connexions (un \verb!VirtualPort! peut contenir plusieurs ports).
 De même les classes \verb!CWire! et \verb!PWire! représentent la
-notion de fil et n'ont pas d'équivalent côté abstraction.
+notion (graphique) de fil et n'ont pas d'équivalent côté abstraction.
 
 (1) L'événement \emph{drop} est capté par la présentation du port
 source (objet \verb!pp1!) qui (2) transmet l'information à son

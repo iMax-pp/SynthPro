@@ -20,6 +20,7 @@ Speaker::Speaker(SynthPro* parent, QIODevice* device, QAudioOutput* audioOutput)
     , m_generationBuffer(0)
     , m_generationBufferIndex(0)
     , m_nbGeneratedBytesRemaining(0)
+    , m_clipping(false)
     , m_sequencer(Sequencer::instance())
 {
 }
@@ -89,11 +90,18 @@ void Speaker::fastTimerExpired()
             qreal* data = m_inPort->buffer()->data();
 
             int iG = 0;
+            bool previousClipping = m_clipping;
+            m_clipping = false;
             for (int i = 0, size = m_inPort->buffer()->length(); i < size; i++) {
                 int nb = (int)(data[i] / VCO::SIGNAL_INTENSITY * SIGNAL_OUT_UNSIGNED_INTENSITY);
                 // Limit tests.
-                nb = (nb > SIGNAL_OUT_UNSIGNED_INTENSITY ? SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
-                nb = (nb < -SIGNAL_OUT_UNSIGNED_INTENSITY ? -SIGNAL_OUT_UNSIGNED_INTENSITY : nb);
+                if (nb > SIGNAL_OUT_UNSIGNED_INTENSITY) {
+                    nb = SIGNAL_OUT_UNSIGNED_INTENSITY;
+                    m_clipping = true;
+                } else if (nb < -SIGNAL_OUT_UNSIGNED_INTENSITY) {
+                    nb = -SIGNAL_OUT_UNSIGNED_INTENSITY;
+                    m_clipping = true;
+                }
                 // Fill the generation buffer with the data from the InPort.
                 m_generationBuffer[iG++] = nb & 255;
                 m_generationBuffer[iG++] = (nb / 256) & 255;
@@ -101,6 +109,11 @@ void Speaker::fastTimerExpired()
 
             m_generationBufferIndex = 0;
             m_nbGeneratedBytesRemaining = Buffer::DEFAULT_LENGTH * 2;
+
+            if (previousClipping != m_clipping) {
+                previousClipping = m_clipping;
+                emit clippingStateChanged(m_clipping);
+            }
         }
 
         fillCounter++;

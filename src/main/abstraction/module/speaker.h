@@ -45,6 +45,9 @@ public:
 public slots:
     virtual void fastTimerExpired();
 
+signals:
+    void clippingStateChanged(bool);
+
 protected:
     static const int FILL_COUNTER_MAX = 10;
 
@@ -59,6 +62,7 @@ protected:
     int m_generationBufferIndex; // Index inside the generation buffer.
     int m_nbGeneratedBytesRemaining; // Indicates how many bytes of the generated buffer are still unused.
                                      // This value doesn't take account of the looping.
+    bool m_clipping; // Indicates if the buffer has clipped.
     Sequencer& m_sequencer;
 };
 

@@ -7,7 +7,8 @@ nous tourner vers le \emph{framework} Qt, dont chacun apprécie
 l'API élégante et performante. Ce framework fournit surtout des
 outils pour la construction d'interfaces homme-machine, mais il est
 très riche et possède également des APIs pour la manipulation de
-collections, ou le traitement de documents XML.
+collections, le traitement de documents XML, ou des fonctions
+donnant un accès simplifié à la carte son.
 
 La meilleure façon de tirer parti de Qt est de programmer en C++,
 c'est donc le langage qui a été choisi pour le développement de
@@ -61,4 +62,44 @@ avons donc pu goûter aux joies de l'héritage virtuel en C++.
 Nous avons utilisé le \emph{framework} GraphicsView de Qt pour
 gérer l'affichage des modules. Ce \emph{framework} est conçu pour
 afficher des objets 2D dans une scène très efficacement.
+
+
+\subsection{Données, mesures et ordre de grandeur}
+
+\subsubsection{Type des données}
+
+Afin de garder un maximum de précision lors du traitement des
+données, nous avons choisi d'utiliser des \verb!double!. Une autre
+alternative aurait été d'utiliser des entiers, mais cela ne
+correspondait pas aux ordres de grandeur que nous souhaitions
+représenter (voir section suivante), à moins de normaliser et
+dénormaliser nos signaux selon le traitement, source de plus de
+complexité et peut-être même de pertes de performances.
+
+\subsubsection{Signaux entre les modules}
+
+Nos modules étant supposés simuler du matériel analogique
+manipulant des tensions, nous avons généré et traité des signaux de
+même dimension. Ainsi, un VCO produira un signal allant de -5V à
++5V et une sortie Gate Out de 0V à 1V. De même, notre note musicale
+de référence est un DO de l'octave 4, correspondant à 0V. Une
+octave représente 1V, donc un DO--5 correspond à 1V, et un DO-3 à
+-1V.
+
+\subsubsection{Signaux pour la carte son.}
+
+La sortie son utilisant du 16 bits, nous normalisons le signal au
+maximum de ce que la carte son peut supporter, soit de -32767 à
+32767.
+
+\subsubsection{Gestion du débordement}
+
+Notre logiciel simulant du matériel, mais pas leur comportement
+électronique exact, il nous est tout à fait possible de générer des
+tensions que les synthétiseurs seraient (heureusement !) incapables
+de produire. Pour éviter tout débordement, chaque puits (qu'il
+représente une sortie audio ou non) dispose d'un test aux limites afin de saturer
+plutôt que de déborder. De plus, le VCO dispose lui aussi d'un
+limiteur en sortie, évitant le débordement des opérations
+arithmétiques, ce qui peut notamment se produire si les modules sont mis en boucle.
 
