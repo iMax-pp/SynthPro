@@ -4,12 +4,20 @@
 
 \subsection{Introduction}
 
-Afin
-d`assurer une stabilité et une fiabilité optimales, nous avons décidé d'effectuer des tests sur les principales classes de l'abstraction. Il a s'agi de tests unitaires pour la plupart des composants (les \verb!Ports! et l'\verb!AudioDeviceProvider!)
-et le \verb!Sequencer!, grâce à la mise en place de bouchons~;
-ainsi que des tests fonctionnels pour les modules le permettant.
-Pour cela, nous avons utilisé le \emph{framework} de tests
-unitaires de Qt.
+Afin d`assurer une stabilité et une fiabilité optimales, nous avons décidé d'effectuer des tests sur les principales classes de l'abstraction. Il a s'agi de tests unitaires pour la plupart des composants (les \verb!Ports! et l'\verb!AudioDeviceProvider!) et le \verb!Sequencer!, grâce à la mise en place de bouchons~; ainsi que des tests fonctionnels pour les modules le permettant.
+Pour cela, nous avons utilisé le \emph{framework} de tests unitaires de Qt.
+
+Au vu de la complexité de l'application et afin de pouvoir développer parallèlement les différentes sous parties du système, les tests ont également servi d'environnement de mise au point, évitant ainsi de démarrer un application pas forcement fonctionnelle afin de tester les nouveaux composant.
+
+\subsection{Tests unitaires et tests d'intégration}
+
+Notre choix d'un développement itératif nous a conduit à un intégration progressive des modules. La dépendance étant forte entre certains d'entre eux (par exemple entre un module et ses ports) un plan d'intégration s'est naturellement dégagé, il est explicité dans la figure \ref{integration}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=17cm]{../img/ps/algoDep.pdf}
+\caption{Vérification des ondes générées grace à d'autres logiciels}
+\label{integration}
+\end{figure}
 
 \subsection{WaveGenerator}
 

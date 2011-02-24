@@ -21,9 +21,6 @@
 int main()
 {
 
-    TestSampler testSampler;
-    QTest::qExec(&testSampler);
-
     TestInPort testInPort;
     QTest::qExec(&testInPort);
 
@@ -73,6 +70,9 @@ int main()
 
     TestMixer testMixer;
     QTest::qExec(&testMixer);
+
+    TestSampler testSampler;
+    QTest::qExec(&testSampler);
 
 
     TestWavLooper testWavLooper;
