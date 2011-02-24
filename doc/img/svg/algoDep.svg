@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="35cm" height="24cm" viewBox="-8 -4980 688 479" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #90ee90" x="150.725" y="-4901" width="98.55" height="49"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="150.725" y="-4901" width="98.55" height="49"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="200" y="-4872.6">
+      <tspan x="200" y="-4872.6">Sequencer</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffc0cb" x="337.7" y="-4851" width="94.3" height="159"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="337.7" y="-4851" width="94.3" height="159"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="384.85" y="-4767.6">
+      <tspan x="384.85" y="-4767.6">Module</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #00ff00" x="473.774" y="-4908" width="66.45" height="54"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="473.774" y="-4908" width="66.45" height="54"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="506.999" y="-4877.1">
+      <tspan x="506.999" y="-4877.1">InPort</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #00ff00" x="461.7" y="-4783" width="76.6" height="54"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="461.7" y="-4783" width="76.6" height="54"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="500" y="-4752.1">
+      <tspan x="500" y="-4752.1">outPort</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #00ff00" x="578" y="-4826" width="101.55" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="578" y="-4826" width="101.55" height="38"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="628.775" y="-4803.1">
+      <tspan x="628.775" y="-4803.1">VirtualPort</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #1e90ff" x="104.425" y="-4978" width="173.15" height="54"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="104.425" y="-4978" width="173.15" height="54"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="191" y="-4947.1">
+      <tspan x="191" y="-4947.1">AudioDeviceProvider</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffff00" x="253.9" y="-4702" width="52.2" height="39"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="253.9" y="-4702" width="52.2" height="39"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="280" y="-4678.6">
+      <tspan x="280" y="-4678.6">VCO</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="303.96" y1="-4702.84" x2="333.303" y2="-4727.75"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="330.62,-4718.91 335.008,-4729.19 324.149,-4726.53 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="252.4" y="-4644" width="51.2" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="252.4" y="-4644" width="51.2" height="38"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="278" y="-4621.1">
+      <tspan x="278" y="-4621.1">VCA</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="292.589" y1="-4645" x2="334.085" y2="-4701.9"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="333.55,-4692.68 335.403,-4703.7 325.471,-4698.57 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="420.198" y="-4648" width="61.6" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="420.198" y="-4648" width="61.6" height="38"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="450.998" y="-4625.1">
+      <tspan x="450.998" y="-4625.1">ADSR</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="249.974" y="-4592" width="50.05" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="249.974" y="-4592" width="50.05" height="38"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="274.999" y="-4569.1">
+      <tspan x="274.999" y="-4569.1">VCF</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #a020f0" x="413.75" y="-4568" width="134.5" height="54"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="413.75" y="-4568" width="134.5" height="54"/>
+    <text style="fill: #ffffff;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="481" y="-4537.1">
+      <tspan x="481" y="-4537.1">WaveGenerator</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="248.1" y="-4540" width="49.8" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="248.1" y="-4540" width="49.8" height="38"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="273" y="-4517.1">
+      <tspan x="273" y="-4517.1">LFO</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="36.825" y="-4814" width="62.35" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="36.825" y="-4814" width="62.35" height="38"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="68" y="-4791.1">
+      <tspan x="68" y="-4791.1">Delay</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="98.9424" y1="-4792.71" x2="332.255" y2="-4775.4"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="324.143,-4770.99 334.485,-4775.24 324.883,-4780.96 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="12.125" y="-4671" width="81.75" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="12.125" y="-4671" width="81.75" height="38"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="53" y="-4648.1">
+      <tspan x="53" y="-4648.1">Sampler</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="-6.2" y="-4883" width="62.4" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-6.2" y="-4883" width="62.4" height="38"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="25" y="-4860.1">
+      <tspan x="25" y="-4860.1">Mixer</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 57.1567 -4864 C 198.257,-4864 195.628,-4771.5 332.256,-4771.5"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="324.492,-4766.5 334.492,-4771.5 324.492,-4776.5 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="20.725" y="-4750" width="102.55" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="20.725" y="-4750" width="102.55" height="38"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="72" y="-4727.1">
+      <tspan x="72" y="-4727.1">WavLooper</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 124.13 -4744.13 C 263.13,-4779.13 152.844,-4862.99 332.534,-4792.13"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="323.477,-4790.33 334.614,-4791.31 327.145,-4799.63 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="169.975" y="-4768" width="118.05" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="169.975" y="-4768" width="118.05" height="38"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="229" y="-4745.1">
+      <tspan x="229" y="-4745.1">WavRecorder</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 289.02 -4749 C 342.754,-4749 282.975,-4771.5 332.237,-4771.5"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="324.473,-4766.5 334.473,-4771.5 324.473,-4776.5 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 94.856 -4664.33 C 223.856,-4702.33 184.416,-4731.75 333.228,-4731.75"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="325.464,-4726.75 335.464,-4731.75 325.464,-4736.75 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 298.814 -4521 C 373.182,-4521 338.424,-4541 408.32,-4541"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="400.556,-4536 410.556,-4541 400.556,-4546 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 307.103 -4682.5 C 379.147,-4682.5 340.707,-4541 408.279,-4541"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="400.515,-4536 410.515,-4541 400.515,-4546 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 419.192 -4629 C 390.59,-4629 396.31,-4660.54 393.62,-4686.59"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="399.391,-4679.38 393.39,-4688.81 389.444,-4678.35 "/>
+  </g>
+  <g>
+    <path style="fill: #00ff00" d="M 479.667 -4975 L 506.333,-4975 C 510.015,-4975 513,-4966.05 513,-4955 C 513,-4943.95 510.015,-4935 506.333,-4935 L 479.667,-4935 C 475.985,-4935 473,-4943.95 473,-4955 C 473,-4966.05 475.985,-4975 479.667,-4975z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #eeeaea" d="M 479.667 -4975 L 506.333,-4975 C 510.015,-4975 513,-4966.05 513,-4955 C 513,-4943.95 510.015,-4935 506.333,-4935 L 479.667,-4935 C 475.985,-4935 473,-4943.95 473,-4955 C 473,-4966.05 475.985,-4975 479.667,-4975"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="493" y="-4951">
+      <tspan x="493" y="-4951">1</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #1e90ff" d="M 288.667 -4978 L 315.333,-4978 C 319.015,-4978 322,-4969.05 322,-4958 C 322,-4946.95 319.015,-4938 315.333,-4938 L 288.667,-4938 C 284.985,-4938 282,-4946.95 282,-4958 C 282,-4969.05 284.985,-4978 288.667,-4978z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #eeeaea" d="M 288.667 -4978 L 315.333,-4978 C 319.015,-4978 322,-4969.05 322,-4958 C 322,-4946.95 319.015,-4938 315.333,-4938 L 288.667,-4938 C 284.985,-4938 282,-4946.95 282,-4958 C 282,-4969.05 284.985,-4978 288.667,-4978"/>
+    <text style="fill: #eeeaea;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="302" y="-4954">
+      <tspan x="302" y="-4954">0</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #90ee90" d="M 282.667 -4879 L 309.333,-4879 C 313.015,-4879 316,-4870.05 316,-4859 C 316,-4847.95 313.015,-4839 309.333,-4839 L 282.667,-4839 C 278.985,-4839 276,-4847.95 276,-4859 C 276,-4870.05 278.985,-4879 282.667,-4879z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #eeeaea" d="M 282.667 -4879 L 309.333,-4879 C 313.015,-4879 316,-4870.05 316,-4859 C 316,-4847.95 313.015,-4839 309.333,-4839 L 282.667,-4839 C 278.985,-4839 276,-4847.95 276,-4859 C 276,-4870.05 278.985,-4879 282.667,-4879"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="296" y="-4855">
+      <tspan x="296" y="-4855">3</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffff00" d="M 209.667 -4699 L 236.333,-4699 C 240.015,-4699 243,-4690.05 243,-4679 C 243,-4667.95 240.015,-4659 236.333,-4659 L 209.667,-4659 C 205.985,-4659 203,-4667.95 203,-4679 C 203,-4690.05 205.985,-4699 209.667,-4699z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #eeeaea" d="M 209.667 -4699 L 236.333,-4699 C 240.015,-4699 243,-4690.05 243,-4679 C 243,-4667.95 240.015,-4659 236.333,-4659 L 209.667,-4659 C 205.985,-4659 203,-4667.95 203,-4679 C 203,-4690.05 205.985,-4699 209.667,-4699"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="223" y="-4675">
+      <tspan x="223" y="-4675">5</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #a020f0" d="M 570.667 -4566 L 597.333,-4566 C 601.015,-4566 604,-4557.05 604,-4546 C 604,-4534.95 601.015,-4526 597.333,-4526 L 570.667,-4526 C 566.985,-4526 564,-4534.95 564,-4546 C 564,-4557.05 566.985,-4566 570.667,-4566z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #eeeaea" d="M 570.667 -4566 L 597.333,-4566 C 601.015,-4566 604,-4557.05 604,-4546 C 604,-4534.95 601.015,-4526 597.333,-4526 L 570.667,-4526 C 566.985,-4526 564,-4534.95 564,-4546 C 564,-4557.05 566.985,-4566 570.667,-4566"/>
+    <text style="fill: #ffffff;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="584" y="-4542">
+      <tspan x="584" y="-4542">4</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 504.667 -4662.5 L 531.333,-4662.5 C 535.015,-4662.5 538,-4653.55 538,-4642.5 C 538,-4631.45 535.015,-4622.5 531.333,-4622.5 L 504.667,-4622.5 C 500.985,-4622.5 498,-4631.45 498,-4642.5 C 498,-4653.55 500.985,-4662.5 504.667,-4662.5z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #eeeaea" d="M 504.667 -4662.5 L 531.333,-4662.5 C 535.015,-4662.5 538,-4653.55 538,-4642.5 C 538,-4631.45 535.015,-4622.5 531.333,-4622.5 L 504.667,-4622.5 C 500.985,-4622.5 498,-4631.45 498,-4642.5 C 498,-4653.55 500.985,-4662.5 504.667,-4662.5"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="518" y="-4638.5">
+      <tspan x="518" y="-4638.5">6</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 250.267 -4876.5 C 311.637,-4876.5 388.157,-4942.5 386.595,-4861.73"/>
+    <polygon style="fill: #000000" points="386.45,-4854.23 381.644,-4864.33 386.595,-4861.73 391.642,-4864.13 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="386.45,-4854.23 381.644,-4864.33 386.595,-4861.73 391.642,-4864.13 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 408.425 -4851 C 441.151,-4851 440.047,-4881 463.039,-4881"/>
+    <polygon style="fill: #000000" points="470.539,-4881 460.539,-4876 463.039,-4881 460.539,-4886 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="470.539,-4881 460.539,-4876 463.039,-4881 460.539,-4886 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 432.991 -4771.5 C 458.505,-4771.5 436.186,-4769.5 451.964,-4769.5"/>
+    <polygon style="fill: #000000" points="459.464,-4769.5 449.464,-4764.5 451.964,-4769.5 449.464,-4774.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="459.464,-4769.5 449.464,-4764.5 451.964,-4769.5 449.464,-4774.5 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 432 -4731.75 C 454.576,-4731.75 497.293,-4698 498.239,-4718.27"/>
+    <polygon style="fill: #000000" points="498.589,-4725.76 503.117,-4715.54 498.239,-4718.27 493.128,-4716.01 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="498.589,-4725.76 503.117,-4715.54 498.239,-4718.27 493.128,-4716.01 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 539.303 -4756 C 598.913,-4756 642.826,-4727 630.96,-4778.51"/>
+    <polygon style="fill: #000000" points="629.276,-4785.82 636.393,-4777.2 630.96,-4778.51 626.648,-4774.95 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="629.276,-4785.82 636.393,-4777.2 630.96,-4778.51 626.648,-4774.95 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 541.093 -4881 C 581.521,-4881 629.93,-4876.98 629.265,-4836.72"/>
+    <polygon style="fill: #000000" points="629.141,-4829.22 624.307,-4839.3 629.265,-4836.72 634.306,-4839.14 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="629.141,-4829.22 624.307,-4839.3 629.265,-4836.72 634.306,-4839.14 "/>
+  </g>
+  <g>
+    <path style="fill: #ffc0cb" d="M 406.667 -4912 L 433.333,-4912 C 437.015,-4912 440,-4903.05 440,-4892 C 440,-4880.95 437.015,-4872 433.333,-4872 L 406.667,-4872 C 402.985,-4872 400,-4880.95 400,-4892 C 400,-4903.05 402.985,-4912 406.667,-4912z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ffffff" d="M 406.667 -4912 L 433.333,-4912 C 437.015,-4912 440,-4903.05 440,-4892 C 440,-4880.95 437.015,-4872 433.333,-4872 L 406.667,-4872 C 402.985,-4872 400,-4880.95 400,-4892 C 400,-4903.05 402.985,-4912 406.667,-4912"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:700" x="420" y="-4888">
+      <tspan x="420" y="-4888">2</tspan>
+    </text>
+  </g>
+</svg>
