@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="14cm"
+   height="13cm"
+   viewBox="-144 108 265 253"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="tests-sequencer-8.svg">
+  <metadata
+     id="metadata228">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs226">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 230.31496 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="496.06299 : 230.31496 : 1"
+       inkscape:persp3d-origin="248.03149 : 153.5433 : 1"
+       id="perspective230" />
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="782"
+     id="namedview224"
+     showgrid="false"
+     inkscape:zoom="0.75526258"
+     inkscape:cx="222.00185"
+     inkscape:cy="202.3447"
+     inkscape:window-x="-2"
+     inkscape:window-y="-1"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <g
+     id="g4">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 24.4721 120 C 29.96,120 40.04,120 50,120"
+       id="path6" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="32.2361,115 22.2361,120 32.2361,125 "
+       id="polyline8" />
+  </g>
+  <g
+     id="g10">
+    <rect
+       style="fill: #ffffff"
+       x="0"
+       y="110"
+       width="20"
+       height="20"
+       id="rect12" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="0"
+       y="110"
+       width="20"
+       height="20"
+       id="rect14" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="10"
+     y="124.425"
+     id="text16">
+    <tspan
+       x="10"
+       y="124.425"
+       id="tspan18">1</tspan>
+  </text>
+  <g
+     id="g20">
+    <rect
+       style="fill: #ffffff"
+       x="50"
+       y="110"
+       width="20"
+       height="20"
+       id="rect22" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000099"
+       x="50"
+       y="110"
+       width="20"
+       height="20"
+       id="rect24" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="60"
+     y="124.425"
+     id="text26">
+    <tspan
+       x="60"
+       y="124.425"
+       id="tspan28">2</tspan>
+  </text>
+  <text
+     style="fill: #000000;text-anchor:end;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="-20"
+     y="124.425"
+     id="text30">
+    <tspan
+       x="-20"
+       y="124.425"
+       id="tspan32">« 12 »</tspan>
+  </text>
+  <g
+     id="g34">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 24.4721 160 C 29.96,160 40.04,160 50,160"
+       id="path36" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="32.2361,155 22.2361,160 32.2361,165 "
+       id="polyline38" />
+  </g>
+  <g
+     id="g40">
+    <rect
+       style="fill: #ffffff"
+       x="0"
+       y="150"
+       width="20"
+       height="20"
+       id="rect42" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="0"
+       y="150"
+       width="20"
+       height="20"
+       id="rect44" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="10"
+     y="164.425"
+     id="text46">
+    <tspan
+       x="10"
+       y="164.425"
+       id="tspan48">1</tspan>
+  </text>
+  <g
+     id="g50">
+    <rect
+       style="fill: #ffffff"
+       x="50"
+       y="150"
+       width="20"
+       height="20"
+       id="rect52" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="50"
+       y="150"
+       width="20"
+       height="20"
+       id="rect54" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="60"
+     y="164.425"
+     id="text56">
+    <tspan
+       x="60"
+       y="164.425"
+       id="tspan58">2</tspan>
+  </text>
+  <g
+     id="g60">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 74.762 156.837 C 98.3892,151.774 90.04,160 100,160"
+       id="path62" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="81.306,150.321 72.5756,157.305 83.4013,160.099 "
+       id="polyline64" />
+  </g>
+  <g
+     id="g66">
+    <rect
+       style="fill: #ffffff"
+       x="100"
+       y="150"
+       width="20"
+       height="20"
+       id="rect68" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000099"
+       x="100"
+       y="150"
+       width="20"
+       height="20"
+       id="rect70" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="110"
+     y="164.425"
+     id="text72">
+    <tspan
+       x="110"
+       y="164.425"
+       id="tspan74">3</tspan>
+  </text>
+  <g
+     id="g76">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 75.1933 165.064 C 130.951,183.65 -40,190 0,160"
+       id="path78" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="84.1399,162.776 73.0719,164.357 80.9776,172.263 "
+       id="polyline80" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:end;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="-20"
+     y="164.425"
+     id="text82">
+    <tspan
+       x="-20"
+       y="164.425"
+       id="tspan84">« 123 »</tspan>
+  </text>
+  <g
+     id="g86">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 25.3671 206.454 C 47.0095,201.459 40,210 50,210"
+       id="path88" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="31.8079,199.836 23.1883,206.957 34.0565,209.58 "
+       id="polyline90" />
+  </g>
+  <g
+     id="g92">
+    <rect
+       style="fill: #ffffff"
+       x="0"
+       y="200"
+       width="20"
+       height="20"
+       id="rect94" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="0"
+       y="200"
+       width="20"
+       height="20"
+       id="rect96" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="10"
+     y="214.425"
+     id="text98">
+    <tspan
+       x="10"
+       y="214.425"
+       id="tspan100">1</tspan>
+  </text>
+  <g
+     id="g102">
+    <rect
+       style="fill: #ffffff"
+       x="50"
+       y="200"
+       width="20"
+       height="20"
+       id="rect104" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000099"
+       x="50"
+       y="200"
+       width="20"
+       height="20"
+       id="rect106" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="60"
+     y="214.425"
+     id="text108">
+    <tspan
+       x="60"
+       y="214.425"
+       id="tspan110">2</tspan>
+  </text>
+  <g
+     id="g112">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 25.3201 214.178 C 43.0055,219.002 40.04,240 50,240"
+       id="path114" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="34.126,211.397 23.1628,213.59 31.4948,221.045 "
+       id="polyline116" />
+  </g>
+  <g
+     id="g118">
+    <rect
+       style="fill: #ffffff"
+       x="50"
+       y="230"
+       width="20"
+       height="20"
+       id="rect120" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="50"
+       y="230"
+       width="20"
+       height="20"
+       id="rect122" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="60"
+     y="244.425"
+     id="text124">
+    <tspan
+       x="60"
+       y="244.425"
+       id="tspan126">3</tspan>
+  </text>
+  <g
+     id="g128">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 75.4487 240 C 100.977,240 80,240 100,240"
+       id="path130" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="83.2126,235 73.2126,240 83.2126,245 "
+       id="polyline132" />
+  </g>
+  <g
+     id="g134">
+    <rect
+       style="fill: #ffffff"
+       x="100"
+       y="230"
+       width="20"
+       height="20"
+       id="rect136" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000099"
+       x="100"
+       y="230"
+       width="20"
+       height="20"
+       id="rect138" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="110"
+     y="244.425"
+     id="text140">
+    <tspan
+       x="110"
+       y="244.425"
+       id="tspan142">4</tspan>
+  </text>
+  <text
+     style="fill: #000000;text-anchor:end;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="-20"
+     y="224.425"
+     id="text144">
+    <tspan
+       x="-20"
+       y="224.425"
+       id="tspan146">« 1(234|324|342) »</tspan>
+  </text>
+  <g
+     id="g148">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 24.4721 280 C 29.96,280 40.04,280 50,280"
+       id="path150" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="32.2361,275 22.2361,280 32.2361,285 "
+       id="polyline152" />
+  </g>
+  <g
+     id="g154">
+    <rect
+       style="fill: #ffffff"
+       x="0"
+       y="270"
+       width="20"
+       height="20"
+       id="rect156" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="0"
+       y="270"
+       width="20"
+       height="20"
+       id="rect158" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="10"
+     y="284.425"
+     id="text160">
+    <tspan
+       x="10"
+       y="284.425"
+       id="tspan162">1</tspan>
+  </text>
+  <g
+     id="g164">
+    <rect
+       style="fill: #ffffff"
+       x="50"
+       y="270"
+       width="20"
+       height="20"
+       id="rect166" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="50"
+       y="270"
+       width="20"
+       height="20"
+       id="rect168" />
+  </g>
+  <text
+     style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal"
+     x="60"
+     y="284.425"
+     id="text170">
+    <tspan
+       x="60"
+       y="284.425"
+       id="tspan172">2</tspan>
+  </text>
+</svg>
