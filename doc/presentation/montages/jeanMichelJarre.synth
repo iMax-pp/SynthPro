@@ -1,0 +1,40 @@
+synthpro 1.0
+9
+8CSpeaker 0x8d799a4 46 -228
+
+1
+0 1 0x8e335b4 0 
+13COscilloscope 0x8e02040 63 -6
+0
+1
+0 1 0x8e335b4 0 
+10CWavLooper 0x8c1c7c0 -438 139
+1.705 /home/julien/workspace/projet/SynthPro/BonhamLoopMono.wav
+0
+6CMixer 0x8e335b4 -198 5
+2 0.687 0 0 
+4
+0 1 0x8c1c7c0 0 
+1 1 0x8bfa44c 0 
+2 0 
+3 0 
+6CDelay 0x8bfa44c -220 -234
+0.386 0.562
+1
+0 1 0x8f62584 0 
+4CVCO 0x8f3b0e4 -649 -243
+0 0
+1
+0 1 0x8f63114 0 
+4CVCA 0x8f62584 -431 -226
+0
+2
+0 1 0x8f3b0e4 0 
+1 1 0x8f1f2c8 0 
+9CKeyboard 0x8f63114 -657 -31
+
+0
+5CADSR 0x8f1f2c8 -649 106
+0 0.2 0.5 0.5
+1
+0 1 0x8f63114 1 
