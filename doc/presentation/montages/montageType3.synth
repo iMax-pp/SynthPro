@@ -1,0 +1,14 @@
+synthpro 1.0
+3
+4CVCO 0x1a8749c -256 -151
+2 1.934
+1
+0 1 0xfcd3cc 0 
+4CVCO 0xfcd3cc -549 6
+1 0.629
+1
+0 0 
+8CSpeaker 0x176bdf94 62 -194
+
+1
+0 1 0x1a8749c 0 
