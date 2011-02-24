@@ -12,22 +12,26 @@ Au vu de la complexité de l'application et afin de pouvoir développer parallè
 
 \subsection{Tests unitaires et tests d'intégration}
 
-Notre choix d'un développement itératif nous a conduit à une intégration progressive des modules. La dépendance étant forte entre certains d'entre eux (par exemple entre un module et ses ports) un plan d'intégration s'est naturellement dégagé, il est explicité dans la figure \ref{integration}
-\begin{enumerate}
-    \item  \texttt{AudioDeviceProvider} ne dépend en rien du reste de l'application, il peut donc être testé indépendemment des autres classes.
-    \item \texttt{InPort}, \texttt{OutPort} et \texttt{VirtualPort} dépendent uniquement de \texttt{Module}, mais cette dépendance est uniquement destinée au parcours du graphe des modules. Le comportement des ports peut donc être testé avant \texttt{Module}.
-    \item La classe \texttt{Module} est abstraite est centrale, son test effectif se fera donc par l'intermédiaire du test de ses classes d'implémentation.
-    \item Le \texttt{Sequencer} sera intégré et testé grace à des \textit{mocks} simulant le comportement de modules dans la création du l'ordre de traitement.
-    \item Le \texttt{VCO} est le module à la base de la plupart des montages de notre synthétiseur. Il est donc intégré avant les autres modules, il servira dans leurs propres tests.
-    \item Les \texttt{WaveGenerator} et le \texttt{Filter} ont un statut particulier dans notre processus de test. L'automatisation de l'oracle n'a pu être mis en place. Les tests consistent en une vérification auditive ou visuelle des résultats obtenus.
-    \item Les autres modules peuvent alors être intégrés.
-\end{enumerate}
+Notre choix d'un développement itératif nous a conduit à une intégration progressive des modules. La dépendance étant forte entre certains d'entre eux (par exemple entre un module et ses ports) un plan d'intégration s'est naturellement dégagé, il est explicité dans la figure \ref{integration}.
+
 \begin{figure}[ht]
 \centering
 \includegraphics[width=13cm]{../img/ps/algoDep.pdf}
 \caption{Graphe d’intégration des composants testés}
 \label{integration}
 \end{figure}
+
+\begin{enumerate}
+    \item  \texttt{AudioDeviceProvider} ne dépend en rien du reste de l'application, il peut donc être testé indépendamment des autres classes~;
+    \item \texttt{InPort}, \texttt{OutPort} et \texttt{VirtualPort} dépendent uniquement de \texttt{Module}, mais cette dépendance sert seulement au parcours du graphe d’objets. Le comportement des ports peut donc être testé avant \texttt{Module}~;
+    \item La classe \texttt{Module} est abstraite est centrale, son test effectif se fera donc par l'intermédiaire du test de ses classes d'implémentation~;
+    \item Le \texttt{Sequencer} sera intégré et testé grâce à des \textit{mocks} simulant le comportement de modules~;
+    \item Le \texttt{VCO} est le module à la base de la plupart des montages de notre synthétiseur. Il est donc intégré avant les autres modules, il servira dans leurs propres tests~;
+    \item Les \texttt{WaveGenerator} et le \texttt{Filter} ont un statut particulier dans notre processus de test. L'automatisation de l'oracle n'a pu être mis en place. Les tests consistent en une vérification auditive ou visuelle des résultats obtenus~;
+    \item Les autres modules peuvent alors être intégrés.
+\end{enumerate}
+
+
 \subsection{Moteur}
 
 \subsubsection{Ports et connexions}
@@ -54,10 +58,10 @@ Nous avons écrits des \emph{mocks} de modules à cet effet~: leur traitement co
 de retrouver l’ordre d’exécution.
 
 \begin{figure}[ht]
-    \label{fig:tests-sequencer}
     \centering
     \includegraphics[width=7cm]{../img/ps/tests-sequencer.pdf}
     \caption{Montages de tests pour le séquenceur. Les modules bleus sont des puits et les flèches représentent la relation de dépendance entre deux modules (dans le sens contraire du flot de données). Les expressions entre guillemets représentent les ordres d’exécution possibles.}
+    \label{fig:tests-sequencer}
 \end{figure}
 
 La figure \ref{fig:tests-sequencer} illustre les types de montages de test réalisés et les sorties possibles
