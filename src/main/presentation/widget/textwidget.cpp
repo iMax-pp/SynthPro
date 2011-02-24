@@ -8,6 +8,7 @@ TextWidget::TextWidget(const QString& text, QGraphicsItem* parent)
     , m_textitem(text, this)
 {
     setMinimumSize(childrenBoundingRect().size());
+    setPreferredSize(childrenBoundingRect().size());
 }
 
 void TextWidget::setFont(const QFont& font)
