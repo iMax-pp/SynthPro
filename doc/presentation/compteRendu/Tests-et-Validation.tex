@@ -8,7 +8,7 @@ ainsi que des tests fonctionnels pour les modules.
 Pour cela, nous avons utilisé le \emph{framework} de tests
 unitaires de Qt.
 
-Au vu de la complexité de l'application et afin de pouvoir développer parallèlement les différentes sous parties du système, les tests ont également servi d'environnement de mise au point, évitant ainsi de démarrer un application pas forcément fonctionnelle afin de tester les nouveaux composants.
+Au vu de la complexité de l'application et afin de pouvoir développer parallèlement les différentes sous parties du système, les tests ont également servi d'environnement de mise au point, évitant ainsi de démarrer une application pas forcément fonctionnelle afin de tester les nouveaux composants.
 
 \subsection{Tests unitaires et tests d'intégration}
 
@@ -18,8 +18,8 @@ Notre choix d'un développement itératif nous a conduit à une intégration pro
     \setcounter{enumi}{-1}
     \item  \texttt{AudioDeviceProvider} ne dépend en rien du reste de l'application, il peut donc être testé indépendemment des autres classes.
     \item \texttt{InPort}, \texttt{OutPort} et \texttt{VirtualPort} dépendent uniquement de \texttt{Module}, mais cette dépendance est uniquement destinée au parcours du graphe des modules. Le comportement des ports peut donc être testé avant \texttt{Module}.
-    \item La classe \texttt{Module} est abstraite est centrale, son test effectif se fera donc par l'intermédiaire du test de ses classes d'implémentation.
-    \item Le \texttt{Sequencer} sera intégré et testé grace à des \textit{mocks} simulant le comportement de modules dans la création du l'ordre de traitement.
+    \item La classe \texttt{Module} est abstraite et centrale, son test effectif se fera donc par l'intermédiaire du test de ses classes d'implémentation.
+    \item Le \texttt{Sequencer} sera intégré et testé grace à des \textit{mocks} simulant le comportement de modules.
     \item Le \texttt{VCO} est le module à la base de la plupart des montages de notre synthétiseur. Il est donc intégré avant les autres modules, il servira dans leurs propres tests.
     \item Les \texttt{WaveGenerator} et le \texttt{Filter} ont un statut particulier dans notre processus de test. L'automatisation de l'oracle n'a pu être mis en place. Les tests consistent en une vérification auditive ou visuelle des résultats obtenus.
     \item Les autres modules peuvent alors être intégrés.
@@ -110,7 +110,7 @@ conforme.
 
 Nous avons poussé l'étude plus loin en passant les échantillons
 sous un accordeur virtuel : la fréquence générée est alors affichée
-et il nous est alors possible de savoir si le signal a la fréquence
+et il nous est possible de savoir si le signal a la fréquence
 désirée (figure \ref{fig:accordeur}).
 
 \begin{figure}[ht]
