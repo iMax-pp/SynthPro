@@ -201,13 +201,13 @@ showstringspaces=false}
 \section{Tests et qualité}
 
 \begin{frame}{Plan de tests et Résultats}
-    \begin{block}{Des tests divers…}
+    \begin{block}{Des tests divers\ldots{}}
         \begin{columns}
-            \begin{column}[l]{5cm}
+            \begin{column}[l]{6cm}
                 \begin{itemize}
-                    \item Tests unitaires
-                    \item Tests fonctionnels
+                    \item Tests unitaires (+ bouchons)
                     \item Tests d'intégration
+                    \item Tests fonctionnels
                 \end{itemize}
             \end{column}
             \begin{column}[r]{5cm}
@@ -218,40 +218,39 @@ showstringspaces=false}
         \end{columns}
     \end{block}
 
-    \vspace{0.7cm}
-
-    \begin{block}{\centering …pour des parties diverses}
+    \begin{block}{\centering \ldots{}pour des parties diverses}
         \begin{itemize}
             \item Abstraction des modules
-            \item Séquenceur, \texttt{Clock}, ports…
+            \item \texttt{WaveGenerator}s
+            \item Séquenceur, \texttt{Clock}, ports\ldots{}
         \end{itemize}
     \end{block}
 \end{frame}
 
 \begin{frame}{Plan de tests et Résultats}
-  // \textbf{TODO}, les résultats… Parler de Soundforge et cie.
+  // \textbf{TODO}, les résultats\ldots{} Parler de Soundforge et cie.
 \end{frame}
 
 \begin{frame}{Qualité}
     \begin{block}{Gestion de projet}
         \begin{itemize}
             \item Cycle itératif
-            \item 8 itérations en 4 semaines
+            \item 8 itérations en 4 semaines\ldots{}
         \end{itemize}
     \end{block}
 
     \begin{block}{Versionnement}
         \begin{columns}
             \begin{column}[l]{3cm}
-                \begin{itemize}
-                    \item Git \\(et \href{https://github.com/}{GitHub})
-                    \item \emph{Pre-commit hook}.
-                \end{itemize}
-            \end{column}
-            \begin{column}[c]{3cm}
                 \begin{center}
                     \includegraphics[width=3cm]{../img/png/octocat.png}
                 \end{center}
+            \end{column}
+            \begin{column}[c]{4cm}
+                \begin{itemize}
+                    \item Git (et \href{https://github.com/}{GitHub})
+                    \item \emph{Pre-commit hook}
+                \end{itemize}
             \end{column}
             \begin{column}[r]{3cm}
                 \begin{center}
