@@ -2,11 +2,14 @@
 *~
 *.aux
 *.log
+*.nav
 *.o
 *.out
+*.pdf
 *.pro.user*
 *.pyc
 *.session
+*.snm
 *.toc
 *.xcodeproj
 bin
