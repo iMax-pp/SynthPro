@@ -20,7 +20,8 @@ La classe \verb!Sequencer! gère le \emph{dataflow}~: l'opération
 synthétiseur en fonction de leurs dépendances, et l'opération
 \verb!process! appelle l'opération du même nom sur chaque élément
 de la liste de modules triée, de telle sorte que chacun réalise son
-traitement.\\
+traitement.
+
 Le tri des modules est un simple tri topologique,
 réalisé par un parcours en profondeur du graphe de modules~: une
 première passe recherche les modules «~puits~» (ceux qui ne
@@ -29,7 +30,8 @@ possèdent pas de port de sortie), puis \emph{via} une opération
 liste des modules connectés aux ports d'entrée d'un module, le
 séquenceur détermine un ordre d'exécution possible pour satisfaire
 toutes les dépendances. L'algorithme ignore les cycles (il ne
-visite pas deux fois un même nœud).\\
+visite pas deux fois un même nœud).
+
 Une classe \texttt{Clock} (non représentée sur le diagramme) appelle périodiquement,
 en tâche de fond, l’opération \texttt{process} du séquenceur.
 
