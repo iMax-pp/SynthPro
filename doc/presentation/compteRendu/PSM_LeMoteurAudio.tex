@@ -3,7 +3,8 @@
 \subsubsection{Présentation des différentes méthodes offertes}
 
 L'une des raisons pour lesquelles nous avons choisi Qt est la
-richesse de ses librairies. Deux d'entre elles permettent de gérer le son~: Phonon et QtMultimedia. Phonon a été rapidement abandonnée car
+richesse de ses bibliothèques. Deux d'entre elles permettent de gérer le son~:
+Phonon et QtMultimedia. Phonon a été rapidement abandonnée car
 elle est de très haut niveau et plutôt adaptée pour jouer des
 fichiers audio et vidéo compressés.
 
@@ -18,13 +19,13 @@ Malheureusement, nos essais ont montré que si l'implémentation est
 remarquablement simple à mettre en place, la gestion de la latence
 est mauvaise~: celle-ci est instable, le nombre d'octets à fournir
 varie de très faible (une centaine d'octets) à très important
-(16k). Il est bien sûr possible de stabiliser le tout en passant
+(16ko). Il est bien sûr possible de stabiliser le tout en passant
 par un buffer intermédiaire, mais cela aurait augmenté la latence de
 l'application de manière insupportable pour l'utilisateur.
 
 Nous avons alors testé le mode \emph{Push}. À l'inverse, il faut
 demander régulièrement à la carte son si elle a besoin de données,
-à fournir au travers d'un QIODevice, composant d'entrée/sortie
+à fournir au travers d'un \verb!QIODevice!, composant d'entrée/sortie
 générique qui les achemine à la carte son. Le principal
 inconvénient de cette technique est qu'il faut constamment demander
 l'état du buffer de la carte son.
@@ -32,7 +33,7 @@ l'état du buffer de la carte son.
 \subsubsection{Base du moteur audio}
 
 Nous avons créé une classe \verb!AudioDeviceProvider!, singleton
-qui se charge d'initialiser un QAudioOutput. Ce dernier permet
+qui se charge d'initialiser un \verb!QAudioOutput!. Ce dernier permet
 de trouver un driver audio compatible avec le format désiré,
 indiqué dans un \verb!QAudioFormat! (dans notre cas, du 44100Hz, 16
 bits, mono). \verb!QAudioOutput! fournit en plus, en mode
@@ -50,11 +51,11 @@ WAV Looper et le Sampler notamment sont ainsi actualisés.
 
 En revanche, si un module dit «~\emph{time critical}~»
 (typiquement, un module \verb!Speaker!) est placé sur l'interface,
-il s'enregistre auprès de la \verb!Clock! dans une liste de timers
+il s'enregistre auprès de la \verb!Clock! dans une liste de \emph{timers}
 rapides (\emph{Fast Timers}), appelés à intervalle très rapide (5
 ms). Une fois qu'un module est enregistré dans cette liste, le
-séquenceur n'est plus appelé par le thread non critique. Ce sera de nouveau le
-cas si les modules inscrits dans les timers rapides se
+séquenceur n'est plus appelé par le \emph{thread} non critique. Ce sera de nouveau le
+cas si les modules inscrits dans les \emph{timers} rapides se
 désinscrivent.
 
 Le traitement des \emph{Fast Timers} est alors différent, comme
