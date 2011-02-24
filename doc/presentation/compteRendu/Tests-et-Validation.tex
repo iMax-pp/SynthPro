@@ -13,7 +13,7 @@ Au vu de la complexité de l'application et afin de pouvoir développer parallè
 \subsection{Tests unitaires et tests d'intégration}
 
 Notre choix d'un développement itératif nous a conduit à une intégration progressive des modules. La dépendance étant forte entre certains d'entre eux (par exemple entre un module et ses ports) un plan d'intégration s'est naturellement dégagé, il est explicité dans la figure \ref{integration}
-\begin{figure}[htb]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=17cm]{../img/ps/algoDep.pdf}
 \caption{Graphe d’intégration des composants testés}
@@ -44,7 +44,7 @@ assemblés de façon plus ou moins complexes satisfaisait leur dépendances.
 Nous avons écrits des \emph{mocks} de modules à cet effet~: leur traitement consistait simplement à écrire une trace dans un flux. Après l’exécution du traitement de chaque module par le séquenceur, le contenu du flux nous permet
 de retrouver l’ordre d’exécution.
 
-\begin{figure}
+\begin{figure}[ht]
     \label{fig:tests-sequencer}
     \centering
     \includegraphics[width=7cm]{../img/ps/tests-sequencer.pdf}
@@ -99,7 +99,7 @@ sous un accordeur virtuel : la fréquence générée est alors affichée
 et il nous est alors possible de savoir si le signal a la fréquence
 désirée (figure \ref{fig:accordeur}).
 
-\begin{figure}[htb]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=17cm]{../img/png/testWaveGeneratorSinus.png}
 \caption{Vérification des ondes générées grâce à d'autres logiciels}
