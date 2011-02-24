@@ -57,6 +57,10 @@ void FilterSoftSaturation::apply(Buffer* bufferIn, Buffer* bufferShaper, qreal, 
             x = -x;
         }
 
+        // Limit test
+        x = x > INTENSITY_LIMIT ? INTENSITY_LIMIT : x;
+        x = x < -INTENSITY_LIMIT ? -INTENSITY_LIMIT : x;
+
         dataOut[i] = x;
     }
 }
