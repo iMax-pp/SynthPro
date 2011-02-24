@@ -61,7 +61,7 @@ désinscrivent.
 Le traitement des \emph{Fast Timers} est alors différent, comme
 expliqué plus loin.
 
-\subsubsection{\emph{Push} : technique non utilisée}
+\subsubsection{\emph{Push}~: technique non utilisée}
 
 La technique de base, qui s'avérait être la plus propre d'un point
 de vue architecture, n'a pas été retenue dans l'implémentation
@@ -107,7 +107,7 @@ possible de trouver une explication à nos divers problèmes (mode
 \emph{Pull} à latence instable, mode \emph{Push} avec des pertes
 selon la technique) sur les divers forums visités.
 
-\subsubsection{\emph{Push} : technique utilisée}
+\subsubsection{\emph{Push}~: technique utilisée}
 
 \begin{figure}[ht]
 \centering
@@ -151,5 +151,5 @@ conséquence, les méthodes \verb!registerFastTimer! et
 \verb!unregisterFastTimer! de \verb!Clock! n'accepteront que des
 \verb!TimeCriticalModule!.
 
-L'avantage de cette méthode est indéniable : elle fonctionne en
+L'avantage de cette méthode est indéniable~: elle fonctionne en
 pratique. La latence est très faible et le son stable.

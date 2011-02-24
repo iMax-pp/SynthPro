@@ -77,7 +77,7 @@ Par la suite des tests utilisant les vrais modules ont été ajoutés à ceux d�
 
 \paragraph{Test VCO}
 
-Pour ce module, nous avons testé :
+Pour ce module, nous avons testé~:
 \begin{itemize}
     \item qu'un onde  carrée demandée au \texttt{WaveGenerator} se retrouvait bien dans le port d'entrée d'un module \textit{mock}. Ce test est effectué en mettant toutes les valeurs du buffer du mock dans un \verb!QSet! et en constatant qu'au final, il ne contient que deux valeurs et que celles-ci sont opposées~;
     \item que la variation du \texttt{K} d'une unité faisait doubler la fréquence de l'onde obtenue~;
@@ -98,7 +98,7 @@ que buffer de sortie contient bien uniquement des 0.
 Tester que la production d'ondes est correcte n'est pas aisé. On
 peut passer par l'étude des signaux générés, mais cela demande un
 travail de traitement du signal important qui ne nous paraissait
-pas forcément utile, ni très pertinent : l'étude des signaux peut
+pas forcément utile, ni très pertinent~: l'étude des signaux peut
 être bien plus sujette aux erreurs que la génération d'ondes
 elle-même.
 
@@ -109,7 +109,7 @@ Audacity ou Soundforge nous indique si le résultat paraît
 conforme.
 
 Nous avons poussé l'étude plus loin en passant les échantillons
-sous un accordeur virtuel : la fréquence générée est alors affichée
+sous un accordeur virtuel~: la fréquence générée est alors affichée
 et il nous est possible de savoir si le signal a la fréquence
 désirée (figure \ref{fig:accordeur}).
 
