@@ -81,7 +81,7 @@ valeur dans un ensemble fini donné), respectivement.
 
 Le \emph{package} \verb!wavegenerator! contient des classes
 définissant des générateurs de signaux de formes différentes~:
-carrée, en dents de scie, etc. (patron de conception
+carrée, triangle, etc. (patron de conception
 \emph{Strategy}). Un \emph{package} analogue, \verb!filter! (non
 représenté sur le schéma) contient les différentes stratégies de
 filtres (passe-bas, passe-haut, etc.) utilisables par les modules.
@@ -105,12 +105,12 @@ les potentiomètres (classe \verb!Dimmer!).
 
 Nous avons choisi de réaliser un \emph{Proxy} par héritage (plutôt
 que par délégation) pour définir le contrôle, d'une part parce que
-c'est plus pratique à écrire\footnote{nous ne redéfinissons que les
-opérations nécessaires} et d'autre part parce que cela permet
-d'intercepter également les appels internes de l'abstraction\footnote{avec
+c'est plus pratique à écrire\footnote{Nous ne redéfinissons que les
+opérations à «~intercepter~».} et d'autre part parce que cela permet
+d'intercepter également les appels internes de l'abstraction\footnote{Avec
 une solution par délégation, si l'abstraction appelle une de ses
 propres opérations elle n'est pas interceptée par le
-proxy}, en dépit du fort couplage que cela introduit entre les
+proxy.}, en dépit du fort couplage que cela introduit entre les
 composants d'abstraction et de contrôle.
 
 Dans le cas de la classe \verb!Dimmer!, nous voulons pouvoir

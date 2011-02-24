@@ -56,17 +56,15 @@ Les tests du séquenceur ont consisté à vérifier que l’ordre d’exécution
 assemblés de façon plus ou moins complexes satisfaisait leur dépendances.
 
 Nous avons écrits des \emph{mocks} de modules à cet effet~: leur traitement consistait simplement à écrire une trace dans un flux. Après l’exécution du traitement de chaque module par le séquenceur, le contenu du flux nous permet
-de retrouver l’ordre d’exécution.
+de retrouver l’ordre d’exécution. La figure \ref{fig:tests-sequencer} illustre les types de montages de test réalisés et les sorties possibles
+attendues.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=7cm]{../img/ps/tests-sequencer.pdf}
-    \caption{Montages de tests pour le séquenceur. Les modules bleus sont des puits et les flèches représentent la relation de dépendance entre deux modules (dans le sens contraire du flot de données). Les expressions entre guillemets représentent les ordres d’exécution possibles.}
+    \caption{Montages de tests pour le séquenceur. Les modules en pointillés sont des puits et les flèches représentent la relation de dépendance entre deux modules (dans le sens contraire du flot de données). Les expressions entre guillemets représentent les ordres d’exécution possibles.}
     \label{fig:tests-sequencer}
 \end{figure}
-
-La figure \ref{fig:tests-sequencer} illustre les types de montages de test réalisés et les sorties possibles
-attendues.
 
 Par la suite des tests utilisant les vrais modules ont été ajoutés à ceux décrits ci-dessus.
 
