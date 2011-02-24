@@ -69,6 +69,14 @@ finale, car nous n'avons jamais pu obtenir un résultat correct en
 sortie (son qui «~saute~»), malgré les traces que nous avons
 implanté et montrant un acheminement correct des informations.
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=17cm]{../img/ps/psm_unusedAudioEngine.pdf}
+\caption{Diagramme de séquence du moteur audio inutilisé car non fonctionnel}
+\label{fig:unused-audioengine}
+\end{figure}
+
+La figure \ref{fig:unused-audioengine} illustre cette technique.
 Lorsque le \emph{Fast Timer} est écoulé, la \verb!Clock! vérifie si
 la carte son a besoin d'être alimentée. Si c'est le cas, le
 séquenceur est appelé une fois. On recommence l'appel au séquenceur
@@ -77,11 +85,6 @@ arbitraire de 10 itérations). Lors de l'appel au séquenceur,
 celui-ci appelle la fonction \verb!process()! du module
 \verb!Speaker!.
 
-\begin{figure}[htb]
-\centering
-\includegraphics[width=17cm]{../img/ps/psm_unusedAudioEngine.pdf}
-\caption{Diagramme de séquence du moteur audio inutilisé car non fonctionnel}
-\end{figure}
 Celui-ci dispose d'un buffer circulaire qui contient des données
 formatées pour être envoyées à la carte son (format char, little
 endian). L'appel à \verb!process()! ayant au préalable mis à jour
@@ -106,7 +109,15 @@ selon la technique) sur les divers forums visités.
 
 \subsubsection{\emph{Push} : technique utilisée}
 
-La technique utilisée consiste à déléguer la gestion complète de la
+\begin{figure}[ht]
+\centering
+\includegraphics[width=17cm]{../img/ps/psm_currentAudioEngine.pdf}
+\caption{Moteur Audio utilisé par l'application}
+\label{fig:audioengine}
+\end{figure}
+
+La figure \ref{fig:audioengine} illustre la technique utilisée,
+elle consiste à déléguer la gestion complète de la
 carte son au module \verb!Speaker!. La \verb!Clock! dispose
 toujours du même mécanisme de timers normaux/critiques, mais le
 timer critique appelle le \emph{slot} \verb!fastTimerExpired()! de
@@ -118,6 +129,14 @@ données. Si oui, on appelle le séquenceur à partir du
 \verb!Speaker! et on envoie directement le buffer d'entrée du
 module vers la carte son. Si celle-ci a encore besoin de données,
 on réitère la boucle, avec une limite arbitraire de 10 itérations.
+La figure \ref{fig:audioengine-sequence} montre les ces échanges.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=17cm]{../img/ps/psm_currentAudioEngine_Sequence.pdf}
+\caption{Diagramme de séquence du moteur audio utilisé}
+\label{fig:audioengine-sequence}
+\end{figure}
 
 L'inconvénient de cette méthode est que, sans module critique,
 c'est la \verb!Clock! qui appelle le séquenceur, mais avec un
@@ -134,17 +153,3 @@ conséquence, les méthodes \verb!registerFastTimer! et
 
 L'avantage de cette méthode est indéniable : elle fonctionne en
 pratique. La latence est très faible et le son stable.
-\begin{figure}[htb]
-\centering
-\includegraphics[width=17cm]{../img/ps/psm_currentAudioEngine.pdf}
-\caption{Moteur Audio utilisé par l'application}
-\end{figure}
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=17cm]{../img/ps/psm_currentAudioEngine_Sequence.pdf}
-\caption{Diagramme de séquence du moteur audio utilisé}
-\end{figure}
-
-
-
