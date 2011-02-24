@@ -2,6 +2,8 @@
 
 dir=`dirname $0`
 
+mkdir $dir/ps
+
 for file in `ls $dir/svg/*.svg`
   do
     echo $file
