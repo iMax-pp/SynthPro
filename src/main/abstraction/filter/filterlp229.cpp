@@ -89,6 +89,11 @@ void FilterLP229::apply(Buffer* bufferIn, Buffer* bufferInCutOff, qreal cutOffBa
         // Process the filter.
         qreal in = dataIn[i];
         qreal out = m_a1 * in + m_a2 * m_valueInM1 + m_a1 * m_valueInM2 - m_b1 * m_valueOutM1 - m_b2 * m_valueOutM2;
+
+        // Limit test
+        out = out > INTENSITY_LIMIT ? INTENSITY_LIMIT : out;
+        out = out < -INTENSITY_LIMIT ? -INTENSITY_LIMIT : out;
+
         dataOut[i] = out;
 
         m_valueInM2 = m_valueInM1;

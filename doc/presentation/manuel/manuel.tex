@@ -79,7 +79,7 @@ Lorsque vous lancez le logiciel, vous voyez apparaitre son interface~:
 \subsection{Les menus}
 
 Ils sont composés de deux sous-menus~: \emph{File} et \emph{Help}, chacun 
-possédant plusieurs sous-items.
+possédant plusieurs éléments.
 
 \paragraph{File}
 \begin{description}
@@ -161,7 +161,7 @@ Un module dispose de plusieurs caractéristiques~:
   Des paramètres.
 \end{itemize}
 La fonction du module est en général clairement définie par son nom.
-Ainsi, le module filtre va\ldots{} filtrer ce qu'on lui donne.
+Ainsi, le module VCF (Voltage Controlled Filter) va filtrer ce qu'on lui donne.
 
 Les ports d'entrée servent à fournir un signal au module. Ainsi, un
 filtre aura forcément une entrée, car il a besoin de données à traiter
@@ -174,7 +174,7 @@ entrées des autres.
 
 Les paramètres des modules peuvent apparaître sous plusieurs formes~:
 potentiomètres ou \emph{slider} à coulisser. Ces paramètres dépendent
-entièrement du module. Ainsi, un module Mixer pourra changer le volume
+entièrement du module. Un module Mixer pourra changer le volume
 de chacune de ses entrées grâce au paramètre Gain qui leur est attribué.
 
 Les modules peuvent être reliés par des câbles virtuels, qui
@@ -224,7 +224,7 @@ simplement sur la croix en haut à gauche de chacun d'eux.
 Vous avez maintenant toutes les clefs en main pour obtenir des sons
 prodigieux~!
 
-\subsection{Quelques précisions sur les Gate}
+\subsection{Quelques précisions sur les \emph{Gates}}
 
 Comme vous avez pu le constater, certains modules disposent d'entrées
 appelées \verb!Gate in!, et des sorties \verb!Gate out!. Elles se
@@ -233,8 +233,8 @@ où vous pourrez brancher une \verb!Gate out! à n'importe quelle entrée,
 et n'importe quelle sortie à une \verb!Gate in!.
 
 Qu'est-ce qu'une \verb!Gate!~? Il s'agit d'une entrée ou sortie un peu
-spéciale, qui ne va produire ou interpréter que des fronts montant ou
-descendant. Cela permet notamment au module Keyboard d'indiquer quand
+spéciale, qui ne va produire ou interpréter que des fronts montants ou
+descendants. Cela permet notamment au module Keyboard d'indiquer quand
 une touche est pressée (front montant dans la \verb!Gate out!), ou quand
 elle est relâchée (front descendant dans la \verb!Gate out!). Branchez
 la \verb!Gate out! dans la \verb!Gate In! de l'ADSR, et jouez avec le
@@ -407,7 +407,7 @@ secondes.
 
 Lorsque l'attaque est terminée, vient le \verb!Decay!. Le signal diminue
 progressivement jusqu'à atteindre la valeur indiquée par le
-\verb!Sustain!, lui même un pourcentage de l'intensité maximum. Le
+\verb!Sustain!, lui-même un pourcentage de l'intensité maximum. Le
 \verb!Decay! indique donc le temps en secondes entre la fin de l'attaque
 (l'intensité est au maximum) et l'atteinte de l'intensité définie
 par le \verb!Sustain!.
@@ -553,7 +553,7 @@ sortie audio, la rendant désagréable à écouter.
 \end{figure}
 
 Ce module vous permet d'enregistrer en temps-réel une petite séquence de
-maximum 5 secondes et de la rejouer à volonté, à la vitesse choisie. Le
+maximum 10 secondes et de la rejouer à volonté, à la vitesse choisie. Le
 Sampler dispose d'une entrée \verb!In!, d'où provient le son à
 enregistrer et une sortie \verb!Out!, d'où sortira le son produit.
 
@@ -572,8 +572,8 @@ Trois boutons sont disponibles~:
 Au début, seul le premier est disponible. Une fois l'entrée connectée,
 pressez \verb!Record! pour commencer l'enregistrement. Une barre bleue
 indique la progression de l'enregistrement, qui peut au maximum
-atteindre 5 secondes. Pour le stopper, pressez le bouton \verb!Stop!, ou
-attendez que la limite des 5 secondes soit atteinte.
+atteindre 10 secondes. Pour le stopper, pressez le bouton \verb!Stop!, ou
+attendez que la limite des 10 secondes soit atteinte.
 
 Une fois qu'une séquence est enregistrée, appuyez simplement sur
 \verb!Play! pour qu'elle soit produite en boucle sur la sortie
@@ -619,7 +619,7 @@ désactivée.
 \begin{multicols}{2}
 Ce module fait apparaître un clavier virtuel sur votre écran. Sa
 principale utilité est de permettre à un VCO de produire un son à la
-fréquence correspondant à la touche du clavier que vous auriez appuyée.
+fréquence correspondant à la touche du clavier pressée.
 
 Il est possible d'interagir avec le clavier virtuel de deux manières~:
 
@@ -648,8 +648,8 @@ votre disposition~:
 \end{itemize}
 La sortie \verb!Out! produit une tension relative à la fréquence émise
 par le clavier. En branchant la sortie \verb!Out! sur l'entrée
-\verb!Vfm! d'un VCO, il vous est ainsi possible de produire des sons à
-la fréquence produite par le clavier.
+\verb!Vfm! d'un VCO, il vous est donc possible de produire des sons à
+des fréquences musicales.
 
 La sortie \verb!Gate Out! crée une onde dont le front est montant quand
 une touche du clavier virtuel est pressée, et descendant quand elle est
@@ -685,8 +685,8 @@ rapports que vous entretenez avec vos voisins.
 
 \begin{multicols}{2}
 Ce module permet de charger un fichier WAV et de le jouer en boucle,
-perpétuellement. Dès l'apparition du WAV Looper sur l'écran, un panneau
-s'ouvre et vous propose de charger votre fichier WAV. Attention, seuls
+perpétuellement. Dès l'apparition du WAV Looper à l'écran, un panneau
+s'ouvre et vous propose de charger votre fichier. Attention, seuls
 les fichiers WAV au format 44kHz, 16 bits, mono sont autorisés. Si vous
 chargez un fichier dans un autre format, aucun son ne sera produit.
 
@@ -722,7 +722,7 @@ plus lente.
 
 Ce module vous permet d'enregistrer tout signal audio qui serait
 connecté à son entrée \verb!In!, vers un fichier WAV. Lors de
-l'apparition du module à l'écran, un fenêtre de dialogue vous demande de
+l'apparition du module à l'écran, une fenêtre de dialogue vous demande de
 choisir le fichier WAV à créer ou remplacer.
 
 Une fois cela fait, il vous
@@ -739,6 +739,8 @@ la disquette afin de choisir un nouveau fichier de destination.
 
 Nous espérons que ce produit vous apportera entière satisfaction.
 N'hésitez pas à nous faire part de vos suggestions afin que nous
-continuions d'améliorer notre produit~!
+continuions d'améliorer notre produit~!\\
+
+Les \emph{BackSynth Boys}.
 
 \end{document}
