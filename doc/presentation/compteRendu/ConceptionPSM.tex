@@ -18,7 +18,7 @@ SynthPro.
 
 \subsubsection{Diagramme de classes de niveau PSM}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics[width=21cm,angle=90]{../img/ps/business-psm.pdf}
 \caption{Classes métier au niveau PSM}
@@ -47,14 +47,15 @@ elle gère l'accès à la carte son en utilisant l'API QtMultimedia.
 
 \subsubsection{Héritage en diamant}
 
-\begin{figure}[htb]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=12cm]{../img/ps/pacmodule-psm.pdf}
 \caption{Héritage en diamant sur le contrôle du module VCF}
+\label{fig:diamond-problem}
 \end{figure}
 
 Notre choix de faire hériter les contrôles des composants de leur
-abstraction a conduit à un problème d'héritage en diamant. Nous
+abstraction a conduit à un problème d'héritage en diamant (cf. figure \ref{fig:diamond-problem}). Nous
 avons donc pu goûter aux joies de l'héritage virtuel en C++.
 
 \subsection{Conséquences sur l'interface utilisateur}

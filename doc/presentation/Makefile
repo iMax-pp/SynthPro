@@ -9,7 +9,7 @@ LATEX = pdflatex -output-directory=`dirname $^`
 all: slides manuel compteRendu
 
 # Sous-règles pour facilité la compilation des éléments seuls.
-slides: slides/slides.pdf
+slides: svg2pdf slides/slides.pdf
 manuel: manuel/manuel.pdf
 compteRendu: svg2pdf compteRendu/cr.pdf
 
