@@ -14,7 +14,7 @@
   </text>
   <g>
     <rect style="fill: #ffffff" x="50" y="110" width="20" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000099" x="50" y="110" width="20" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" x="50" y="110" width="20" height="20"/>
   </g>
   <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="60" y="124.425">
     <tspan x="60" y="124.425">2</tspan>
@@ -46,7 +46,7 @@
   </g>
   <g>
     <rect style="fill: #ffffff" x="100" y="150" width="20" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000099" x="100" y="150" width="20" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" x="100" y="150" width="20" height="20"/>
   </g>
   <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="110" y="164.425">
     <tspan x="110" y="164.425">3</tspan>
@@ -71,7 +71,7 @@
   </text>
   <g>
     <rect style="fill: #ffffff" x="50" y="200" width="20" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000099" x="50" y="200" width="20" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" x="50" y="200" width="20" height="20"/>
   </g>
   <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="60" y="214.425">
     <tspan x="60" y="214.425">2</tspan>
@@ -93,7 +93,7 @@
   </g>
   <g>
     <rect style="fill: #ffffff" x="100" y="230" width="20" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000099" x="100" y="230" width="20" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" x="100" y="230" width="20" height="20"/>
   </g>
   <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="110" y="244.425">
     <tspan x="110" y="244.425">4</tspan>
@@ -146,7 +146,7 @@
   </g>
   <g>
     <rect style="fill: #ffffff" x="50" y="340" width="20" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000099" x="50" y="340" width="20" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" x="50" y="340" width="20" height="20"/>
   </g>
   <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="60" y="354.425">
     <tspan x="60" y="354.425">3</tspan>
