@@ -12,7 +12,7 @@ Mac OS X executable: [SynthPro.dmg](https://github.com/downloads/iMax-pp/SynthPr
 
 Source code documentation Doxygen.: [source-doc.tar.gz](https://github.com/downloads/iMax-pp/SynthPro/source-doc.tar.gz)
 
-Sources (final version : 02/25/10) :[source.tar.gz](https://github.com/downloads/iMax-pp/SynthPro/source.tar.gz)
+Sources (final version : 02/25/10) : [source.tar.gz](https://github.com/downloads/iMax-pp/SynthPro/source.tar.gz)
 
 Reports and User Manual : [SynthPro-Rapports.zip](https://github.com/downloads/iMax-pp/SynthPro/SynthPro-Rapports.zip)
 
