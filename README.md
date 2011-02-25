@@ -10,6 +10,8 @@ GNU/Linux executable: [SynthPro.tar.gz](https://github.com/downloads/iMax-pp/Syn
 
 Mac OS X executable: [SynthPro.dmg](https://github.com/downloads/iMax-pp/SynthPro/SynthPro.dmg)
 
+Source code documentation Doxygen.: [source-doc.tar.gz](https://github.com/downloads/iMax-pp/SynthPro/source-doc.tar.gz)
+
 ## UML Diagrams
 
 [PicasaWeb](http://picasaweb.google.com/simon.maxime/SynthPro?authkey=Gv1sRgCND6ouPy7s6rvAE) **(outdated)**
